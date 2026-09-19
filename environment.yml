@@ -1,0 +1,8 @@
+name: paint-dss
+channels:
+  - conda-forge
+dependencies:
+  - python=3.13
+  - pandas
+  - numpy
+  - psycopg2
