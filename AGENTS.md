@@ -33,14 +33,15 @@
 - `analytics_db` @ 127.0.0.1:5432，用户 `root`（本机超管）。
 - **所有时间/班次查询必须 `SET TIME ZONE 'Asia/Shanghai'`**——会话默认 UTC，工厂时 = UTC+8，否则边界全部错位 8 小时。
 - 列名大写需双引号：`"DATE_EVT"`、`"BODY_ID"`、`"BODY_TYPE"`、`"RW_STATION_ID"`、`"MDS_DATA"`、`"SKID_ID"`。
-- 核心表 `ods.carbody_history`（过站事件流，~627.6 万条 / 83,493 车 / 259 站，2026-04-14 ~ 09-18）；数据为存量（源库在车间内网，公网环境不续更）。
+- 核心表 `ods.carbody_history`（过站事件流，633.9 万条 / 84,274 车 / 259 站，2026-04-14 ~ 09-19 16:40，2026-09-19 实测）；数据截止随用户同步（2026-09-19 用户同步至当日；源库在车间内网，公网环境不自动续更，再续更取决于用户）。
 - **只读原则**：不得修改 `ods` / `dim` / `fct` / `mart` / `meta` 层任何表与视图；本项目产物只写 `dss` schema（`dss.dim_*`、`dss.work_*`），dss 内可 DROP + CREATE。
 - 连接凭据不离开本机：将来若推 GitHub remote，先把凭据移到环境变量或 gitignore 的配置文件。
 
 ## 开发约定
 
 - Git：`main` 分支；commit message 用中文（例：`W1: 节拍学习器 v1，五张学习表产出`）；**暂不推 remote**；**每次 commit 前必须向用户报告变更文件清单 + commit message 并得到明确确认，禁止自动 commit**。
-- 目录：`spike_w1/` = W1（01 学习器 → 02 回放），后续 `spike_w2/` …；`output/` 存运行报告 / CSV（gitignore）。
+- `CHANGELOG.md`：代码变更摘要，波次级粒度、每波关账时写入（非逐 commit）；设计决策/口径/踩坑进 BM 线程笔记，本文件只记代码产物时间线。
+- 目录：`spike_w1/` = W1（01 学习器 → 02 回放），后续 `spike_w2/` …；`output/` 存运行报告 / CSV（内容默认忽略，正式报告 `*.md`/`*.json` 入库——见 .gitignore 的 `output/*` + 放行规则）。
 - 运行：专用 conda 环境 `paint-dss`（`environment.yml` 固化；`conda activate paint-dss` 后 `python spike_w1\01_learn_takt.py`）。
   - Windows 坑：`conda run -n paint-dss python -c "多行代码"` 报错（不支持含换行的参数）——改用环境解释器直调 `D:\000_software_install\miniconda3\envs\paint-dss\python.exe`，或保持单行参数。
 - 验收门（不达标不进入下一步，如实上报）：
