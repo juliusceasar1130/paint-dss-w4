@@ -1,0 +1,37 @@
+# 涂装车间 DSS — 开发仓库
+
+模块②（班次产量达成预测）为核心起点。设计定稿见 Basic Memory 笔记
+`basic-memory/projects/paint-dss/涂装车间-dss-方案设计与开发路线`（口径唯一来源）。
+
+## 数据源
+
+- `analytics_db` @ 127.0.0.1:5432（root/root，本机超管）
+- 核心表：`ods.carbody_history`（过站事件流，627.6 万条 / 83,493 车 / 259 站，2026-04-14 ~ 09-18）
+- **所有时间查询必须 `SET TIME ZONE 'Asia/Shanghai'`**（会话默认 UTC，工厂时 = UTC+8）
+- 列名大写需双引号：`"DATE_EVT"`, `"BODY_ID"`, `"BODY_TYPE"`, `"RW_STATION_ID"`, `"MDS_DATA"`, `"SKID_ID"`, `"SKID_IS_EMPTY"`
+
+## 关键口径（2026-09-19 五确，详见 BM 笔记）
+
+| 项 | 口径 |
+|---|---|
+| 产品车（学习样本） | `"BODY_ID" LIKE '78202%'` |
+| 上线点（3） | 01IS205 / 1L360RB / 01IS045 |
+| 下线点（4） | K3IS140 / 1J440RB / K2IS075 / K1IS135 |
+| 行程口径 | 逐车：实际经过的上线点事件 → 下线点事件（单程，返工/黑顶为线内环） |
+| 返工/黑顶标志 | `SUBSTRING("MDS_DATA" FROM 139 FOR 1)`（1-based）：0=正常 1=返工 2=黑顶二喷 -=未填充 |
+| 主分布样本 | 每车**最后一次 flag∈{1,2} 事件之后**的 flag=0 事件（干净后缀） |
+| 环分布 | `车型 × 标志{1,2} × 站` 剩余时间分布 |
+| 08IS/09IS 并行线 | 等价工艺线（负荷分派），无需分桶 |
+
+## 目录
+
+- `spike_w1/` — W1 离线 spike：节拍学习器 + 单车 ETA 回放
+  - 学习器五步：过滤 → 分段 → 清洗（Q3+3×IQR per 桶）→ 聚合（P50/均值/P90/n，三级回退）→ 自校准
+  - 验收门：单车 ETA 中位误差 ≤ 30min（三估计器对打：Σ中位数 / Σ均值 / 直接剩余分布）
+
+## 运行
+
+```bash
+python spike_w1\01_learn_takt.py   # 学习器（写 dss schema 聚合表）
+python spike_w1\02_replay_eta.py   # 历史回放（读聚合表 + 事件流，输出误差报告）
+```
