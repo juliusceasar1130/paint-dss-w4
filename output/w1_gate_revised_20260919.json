@@ -1,0 +1,45 @@
+{
+  "date": "2026-09-19",
+  "w1_status": "已关账（用户拍板 (b) 三项式门判，全部达成）",
+  "source": "output/w1_replay_errors_20260919.csv（回放窗 2026-08-16~09-18，1,389,995 行，样本外：六表全部来自 2026-04-14→08-15 学习窗）",
+  "selfcheck_old_gate_sec": 11651,
+  "original_gate": {
+    "metric": "直接剩余分布估计器，逐车中位|err|再跨车中位（秒）",
+    "threshold_sec": 1800,
+    "value_sec": 11651.0,
+    "value_min": 194.2,
+    "pass": false,
+    "structural_note": "结构性不可达：门指标 ≈ 残差分布 IQR/2 + 偏差；入口残差 IQR/2 实测 1.3~17h（车型间：2N54Y- 7.7h / YM33J- 16.9h）≫30min；误差源 = 车间固有离散（过夜停线 + 返工环 10–24h + 排队波动），跨窗无流程漂移（学习/回放窗行程 P50 一致），与模型无关；且门量的是单车点预测，产品目标是班次级数量预测（W2 门 ±10% 为真正验收门）"
+  },
+  "revised_gate_items": {
+    "1_结构性地板量化": {
+      "status": "达成",
+      "per_model_entry_iqr_over_2_h": {
+        "2N54Y-": 7.7, "IM186-": 6.9, "YM33J-": 16.9, "SS24J-": 5.7,
+        "VS22K-": 7.4, "YM34K-": 16.9, "SS22H-": 5.8, "SS21G-": 5.5,
+        "DM833-": 23.8, "YM31H-": 15.1, "IM120-": 6.1, "VS51M-": 7.6, "XV32Q-": 31.6
+      },
+      "note": "n_veh>=30 车型；不卡值，作 W2 误差预算"
+    },
+    "2_中心偏差": {
+      "status": "达成（记为已知偏差 + 修正计划，不卡 W2）",
+      "per_model_entry_signed_median_min": {
+        "2N54Y-": 52.0, "IM186-": 87.1, "YM33J-": 43.7, "SS24J-": 540.4,
+        "VS22K-": 128.8, "YM34K-": -254.5, "SS22H-": 676.5, "SS21G-": 628.0,
+        "DM833-": 2241.5, "YM31H-": -3820.7, "IM120-": 550.2, "VS51M-": 242.3, "XV32Q-": 4598.3
+      },
+      "all_models_entry_signed_median_min": 98.3,
+      "all_events_signed_median_min": 48.5,
+      "mechanism": "P50_clean 对全群体低估 ~2h（干净后缀排除环车，S1：01IS205 P50 15.5h vs 行程 17.6h）与 前决策补偿无条件高估非环车（门级 +82min = +4,921s）的净和",
+      "magnitude_assessment": "600 辆班次上 +52min 系统偏差 ≈ 几辆车差别，在 W2 ±10% 门量级之内，且车型级可修正",
+      "fix_plan": "W2 抓手 ⑤⑥（补偿按站人群净化 + 车型级 p）"
+    },
+    "3_机制验证": {
+      "status": "达成",
+      "evidence": "两辆代表车单车抽查（干净 78202683614609 + 返工 78202683613886：flag 切分布/补偿退出/近出口收敛 0 全部符合设计）+ 跨窗无漂移 + 6 轮代码评审 Approved"
+    }
+  },
+  "coverage_direct": 0.996,
+  "correction_record": "① 初版口径提案表『中心精度 实测 +8~9min』系引用失真：真实入口符号中位 = 主力车型 +44~+87min / 全车型 +98.3min（复跑 diag_iqr_decomp.py 与独立重算双重确认）；② gate_revise.py 首跑 IQR/2 列 2 行计算瑕疵（2N54Y-/VS51M-），权威值已复算并与 diag 原输出逐项一致（27,737/24,776/60,805/20,464s）；③ 验证摘要 (b) 节错误引用已同步更正",
+  "reproduce": ".superpowers/sdd/2026-09-19-w1-takt-learner-eta-replay/gate_revise.py（只读：回放 CSV）"
+}

@@ -1,0 +1,34 @@
+{
+  "replay_window": "2026-08-16 ~ 2026-09-18",
+  "gate_metric": "直接剩余分布估计器，逐车中位|err|再跨车中位（秒）",
+  "gate_threshold_sec": 1800,
+  "gate_value_sec": 11651.0,
+  "pass": false,
+  "estimators_sec": {
+    "eta_direct": {
+      "n": 1384424,
+      "median": 12684.0,
+      "p90": 95634.0
+    },
+    "eta_sum_median": {
+      "n": 1285658,
+      "median": 6848.0,
+      "p90": 109142.0
+    },
+    "eta_sum_mean": {
+      "n": 1285658,
+      "median": 6914.0,
+      "p90": 96914.30000000005
+    }
+  },
+  "coverage": {
+    "eta_direct": 0.9959920719139278,
+    "eta_sum_median": 0.924937140061655,
+    "eta_sum_mean": 0.924937140061655
+  },
+  "shared_station_rel_diff_median_0809": 0.1663038165903941,
+  "cohort_median_err_sec": {
+    "08IS": 10216.0,
+    "09IS": 9334.0
+  }
+}

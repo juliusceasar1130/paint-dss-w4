@@ -19,7 +19,7 @@
 
 - **时区**：所有 DB 查询必须 `SET TIME ZONE 'Asia/Shanghai'`（会话默认 UTC，工厂时 = UTC+8，否则边界全部错位 8 小时）。本计划所有连接一律经 `common.connect()`（内部已 SET）。
 - **只读原则**：不得修改 `ods` / `dim` / `fct` / `mart` / `meta` 层任何表与视图；本项目产物只写 `dss` schema（`dss` 内可 DROP + CREATE）。学习器对 `ods` 只 SELECT。
-- **学习样本**：产品车 `"BODY_ID" LIKE '78202%'`（全量 83,343 车 / 536.1 万事件；项目车 144 台与异常车不进学习链）。
+- **学习样本**：产品车 `"BODY_ID" LIKE '78202%'`（全量 83,343 车 / 5,371,895 事件——2026-09-20 冒烟测试对活库钉死，替代原估 536.1 万；项目车 144 台与异常车不进学习链）。
 - **上线点（3）**：`01IS205` / `1L360RB` / `01IS045`；**下线点（4）**：`K3IS140` / `1J440RB` / `K2IS075` / `K1IS135`。行程口径 = 逐车实际经过的上线点事件 → 下线点事件（单程，返工/黑顶为线内环，上下线点各 1 次）。
 - **标志位**：`SUBSTRING("MDS_DATA" FROM 139 FOR 1)`（1-based）：`0` 正常 / `1` 返工 / `2` 黑顶二喷 / `-` 未填充（视同未知，不参与环判定）/ `3` 未定义（全库 2 条，归异常日志）。
 - **主分布 = 干净后缀**：每车最后一次 flag∈{1,2} 事件**之后**的 flag=0 事件（此前 flag=0 站的剩余时间含环内延迟，有偏必须弃）；环分布 = `车型×标志{1,2}×站` 独立学习。
@@ -1075,7 +1075,7 @@ def write_sanity_report(conn, checks, win_start, win_end):
     cur.execute("SELECT station, p1, p2, n FROM dss.dim_future_flag "
                 "WHERE body_type = 'ALL' ORDER BY p1 DESC LIMIT 20")
     lines += [f"- {r[0]}: p1={r[1]:.4f} p2={r[2]:.4f} n={r[3]}" for r in cur.fetchall()]
-    lines += ["", "## 首条 flag=1 / flag=2 站分布（六复证复证）", ""]
+    lines += ["", "## 首条 flag=1 / flag=2 站分布（六确）", ""]
     cur.execute(SQL_FIRST_FLAG1)
     lines += ["首条 flag=1 top-8："]
     lines += [f"- {r[0]}: {r[1]}车" for r in cur.fetchall()[:8]]
