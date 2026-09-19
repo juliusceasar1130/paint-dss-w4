@@ -2,8 +2,12 @@ __pycache__/
 *.pyc
 .venv/
 venv/
-output/
+# output/: 内容默认忽略（CSV/调试件），正式报告放行
+output/*
+!output/*.md
+!output/*.json
 *.log
 .DS_Store
 Thumbs.db
 nul
+.pytest_cache/
