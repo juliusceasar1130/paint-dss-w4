@@ -41,6 +41,7 @@
 - Git：`main` 分支；commit message 用中文（例：`W1: 节拍学习器 v1，五张学习表产出`）；**暂不推 remote**；**每次 commit 前必须向用户报告变更文件清单 + commit message 并得到明确确认，禁止自动 commit**。
 - 目录：`spike_w1/` = W1（01 学习器 → 02 回放），后续 `spike_w2/` …；`output/` 存运行报告 / CSV（gitignore）。
 - 运行：专用 conda 环境 `paint-dss`（`environment.yml` 固化；`conda activate paint-dss` 后 `python spike_w1\01_learn_takt.py`）。
+  - Windows 坑：`conda run -n paint-dss python -c "多行代码"` 报错（不支持含换行的参数）——改用环境解释器直调 `D:\000_software_install\miniconda3\envs\paint-dss\python.exe`，或保持单行参数。
 - 验收门（不达标不进入下一步，如实上报）：
   - W1：单车 ETA 中位误差 ≤ 30min（三估计器对打，设计见 BM 笔记）
   - W2：班次级第 5 小时预测误差 ≤ ±10%
