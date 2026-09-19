@@ -8,17 +8,25 @@
 
 涂装车间决策支持系统（物流均衡 + 班次产量达成预测 + 缺口预警），开发顺序：先做模块②。
 
-- **设计与口径单一事实源**：Basic Memory 笔记 `basic-memory/projects/paint-dss/涂装车间-dss-方案设计与开发路线`——设计决策、数据实测结论、全部口径拍板记录在该笔记（含完整决策历史）。
-- **实现速查**：本仓库 `README.md` 的口径对照表（笔记关键口径的固化快照；写代码前先对表，口径变更时先改 BM 笔记，再同步此表与代码）。
+- **设计与口径单一事实源**：Basic Memory 笔记（见下节「知识库（Basic Memory）约定」）；本仓库 `README.md` 的口径对照表是其固化快照——写代码前先对表，口径变更时先改 BM 笔记，再同步此表与代码。
 - 本仓库只放代码 + 验证脚本 + 报告，不放生产数据与业务文档。
 
-## Basic Memory（BM）操作规则
+## 知识库（Basic Memory）约定
 
-1. 每次 BM 调用（read / search / write / list）显式使用项目 `"basic-memory"`（`.mcp.json` 已固定），绝不写到别的项目。
-2. 任何知识库工作之前，先阅读 **Startup Router** 笔记（`memory://instructions/startup-router`；无法解析时先按标题搜索该笔记），按其分发表加载对应指令笔记；加载完成前不做任何写操作。
-3. 覆盖任何现有笔记之前先完整阅读，保留原有结构（分节 / changelog / observations）。
-4. 笔记读写必须走 Basic Memory MCP 工具；禁止用宿主原生文件工具（read / write / edit）直接操作笔记文件；MCP 不可用降级 `bm` CLI；裸文件直写永远禁止。豁免：本仓库与 BM 仓库（`F:\basic-memory`）的非笔记配置文件（AGENTS.md、CLAUDE.md、.mcp.json 等）与路径检查可用原生文件工具。
-5. 设计决策与重要发现追加到上述笔记（同一线程、不新建重复笔记）；thread_id 在笔记 frontmatter。
+本项目的工作知识（设计决策 / 口径拍板 / 实测结论 / 踩坑沉淀）在 Basic Memory 项目
+`basic-memory`（F:\basic-memory），单线程笔记：
+`basic-memory/projects/paint-dss/涂装车间-dss-方案设计与开发路线`。
+
+1. 读写走 BM MCP 工具（本目录 `.mcp.json` 已注册 `basic-memory` server，锁定该项目）；
+   不可用时降级 CLI `bm tool <动词>`（中文需 `PYTHONUTF8=1`）；裸文件直写永远禁止。
+   豁免：本仓库与 BM 仓库的非笔记配置文件（AGENTS.md、CLAUDE.md、.mcp.json 等）与路径检查可用原生文件工具。
+2. BM 操作前先读 Startup Router（`memory://instructions/startup-router`；无法解析时按标题搜索该笔记），
+   按其分发表加载对应指令笔记；加载完成前不写。
+3. 写入前先 `search_notes` 搜 "paint-dss" 确认线程笔记，再 `read_note` 读全文，然后覆盖
+   （保留原有结构：分节 / changelog / observations）。
+4. 每次 BM 调用显式传 `project: "basic-memory"`，绝不写到别的项目。
+5. 设计决策 / 重要发现 / 踩坑追加到上述线程笔记（同一线程、不新建重复笔记）。
+6. 任务 → Basic Memory 的 Task Board（笔记前缀 `paint-dss:`）；代码事实 / 口径速查 → 本仓库 `README.md`。
 
 ## 数据访问（analytics_db）
 
