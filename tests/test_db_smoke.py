@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 """DB 集成冒烟：真实 DB 只读。钉死 tz / 引号 / 口径常量（数据为存量，精确值可断言）。
+快照钉 2026-09-19 16:40 数据同步（全表 6,338,917 行）；数据再同步后需刷新为本条实测值。
 DB 不可达时自动 skip（公网环境 DB 正常，正常路径不应触发）。"""
 import socket
 from datetime import datetime, timedelta, timezone
@@ -44,7 +45,7 @@ def test_flag_distribution_product_vehicles():
             got = dict(cur.fetchall())
     finally:
         conn.close()
-    assert got == {"0": 4768035, "1": 416905, "2": 182720, "-": 4233, "3": 2}
+    assert got == {"0": 4864033, "1": 425809, "2": 185474, "-": 4298, "3": 2}  # 2026-09-21 16:28 同步后存量快照（09-21 晚实测刷新；上一版 09-19 16:40）
 
 
 def test_entry_exit_station_counts():

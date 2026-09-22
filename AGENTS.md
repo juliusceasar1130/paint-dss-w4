@@ -39,11 +39,12 @@
 
 ## 开发约定
 
-- Git：`main` 分支；commit message 用中文（例：`W1: 节拍学习器 v1，五张学习表产出`）；**暂不推 remote**；**每次 commit 前必须向用户报告变更文件清单 + commit message 并得到明确确认，禁止自动 commit**。
+- Git：`main` 分支；commit message 用中文（例：`W1: 节拍学习器 v1，五张学习表产出`）；**暂不推 remote**；**agent 不执行 git commit（2026-09-20 用户拍板）——提交全部由用户自行执行；agent 只在任务/波次完成时呈报变更文件清单 + 建议 commit message，用户核对后自己提交**。
 - `CHANGELOG.md`：代码变更摘要，波次级粒度、每波关账时写入（非逐 commit）；设计决策/口径/踩坑进 BM 线程笔记，本文件只记代码产物时间线。
 - 目录：`spike_w1/` = W1（01 学习器 → 02 回放），后续 `spike_w2/` …；`output/` 存运行报告 / CSV（内容默认忽略，正式报告 `*.md`/`*.json` 入库——见 .gitignore 的 `output/*` + 放行规则）。
 - 运行：专用 conda 环境 `paint-dss`（`environment.yml` 固化；`conda activate paint-dss` 后 `python spike_w1\01_learn_takt.py`）。
-  - Windows 坑：`conda run -n paint-dss python -c "多行代码"` 报错（不支持含换行的参数）——改用环境解释器直调 `D:\000_software_install\miniconda3\envs\paint-dss\python.exe`，或保持单行参数。
+  - Windows 运行坑 ①（2026-09-21 实测修正）：连库脚本（psycopg2）一律用 `conda run --no-capture-output -n paint-dss python <脚本>` 启动（不依赖 shell 激活状态）——直调环境解释器 `D:\000_software_install\miniconda3\envs\paint-dss\python.exe` 实测出现过 `psycopg2.connect` 处 access violation 崩溃（exit -1073741819 = 0xC0000005；依赖 shell 的 DLL/PATH 状态、非必现，09-19 / 09-21 均遇过），旧指引「改用环境解释器直调」作废；`conda activate paint-dss` 后交互直跑 `python` 正常。
+  - Windows 运行坑 ②：`conda run -n paint-dss python -c "多行代码"` 报错（不支持含换行的参数）——`-c` 仅限单行；脚本文件不受此限。另：02 脚本门判 FAIL 时约定 `exit 2`，conda run 会打印 `ERROR conda.cli... failed` 行——属上报约定而非运行失败，以产物为准。
 - 验收门（不达标不进入下一步，如实上报）：
   - W1：单车 ETA 中位误差 ≤ 30min（三估计器对打，设计见 BM 笔记）
   - W2：班次级第 5 小时预测误差 ≤ ±10%

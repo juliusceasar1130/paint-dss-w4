@@ -38,7 +38,7 @@
 
 ## Global Constraints
 
-- **执行环境**：`D:\000_software_install\miniconda3\envs\paint-dss\python.exe`（3.13）；bash = git-bash。每个脚本 `main()` 第一行 `sys.stdout.reconfigure(encoding="utf-8", errors="replace")`（Windows GBK 控制台）。
+- **执行环境**：conda env `paint-dss`（3.13）；bash = git-bash；**连库脚本一律 `conda run --no-capture-output -n paint-dss python <脚本>` 启动**（2026-09-21 实测：直调环境解释器 `D:\000_software_install\miniconda3\envs\paint-dss\python.exe` 跑 psycopg2 会 access violation 崩溃 exit -1073741819，见 AGENTS.md 运行坑①）。每个脚本 `main()` 第一行 `sys.stdout.reconfigure(encoding="utf-8", errors="replace")`（Windows GBK 控制台）。
 - **psycopg2 规则**：内联 LIKE 通配符必须 `%%`（2026-09-19 实测：双通配在 LIKE 里语义 ≡ 单通配，因此带不带参数序列传 `%%` 都正确——无参 SQL 里的 `%%` 不需要"修复"）；`sqlbase.ev_base_sql(start, end)` 返回含两个 `%s` 的 SQL 文本，调用方必须传 `(start, end)` 参数；`connection` 没有 `.execute()`——一律 `cur = conn.cursor(); cur.execute(...)`。
 - **PG 坑**：timestamp 差值取秒用 `EXTRACT(EPOCH FROM ...)`；UNION ALL 分支带 ORDER BY/LIMIT 需子查询包裹；会话必须 `SET TIME ZONE 'Asia/Shanghai'`（`common.connect()` 已做）。
 - **DB 只读原则**：不得写 `ods/dim/fct/mart/meta` 任何对象；本项目产物只写 `dss` schema（dss 内可 DROP+CREATE）。W1 的六张 `dss.dim_*` 表**本波次只读不写**（回归护栏）。
@@ -140,7 +140,7 @@ def test_db_smoke():
 
 - [ ] **Step 2: 跑测试确认失败**
 
-Run: `D:/000_software_install/miniconda3/envs/paint-dss/python.exe -m pytest tests/test_common_w2.py -v`
+Run: `conda run --no-capture-output -n paint-dss python -m pytest tests/test_common_w2.py -v`
 Expected: `ModuleNotFoundError: No module named 'spike_w2'`
 
 - [ ] **Step 3: 写最小实现**
@@ -165,7 +165,7 @@ from spike_w1.common import FLAG_NORMAL, FLAG_REWORK, FLAG_BLACKTOP      # noqa:
 
 - [ ] **Step 4: 跑测试确认通过**
 
-Run: `D:/000_software_install/miniconda3/envs/paint-dss/python.exe -m pytest tests/test_common_w2.py -v`
+Run: `conda run --no-capture-output -n paint-dss python -m pytest tests/test_common_w2.py -v`
 Expected: 2 passed（本机 DB 可达；不可达则如实报告，不擅自改）
 
 - [ ] **Step 5: Commit（controller 在评审后执行，message 供用户确认）**
@@ -322,7 +322,7 @@ def test_week_learning_range():
 
 - [ ] **Step 2: 跑测试确认失败**
 
-Run: `D:/000_software_install/miniconda3/envs/paint-dss/python.exe -m pytest tests/test_shifts.py -v`
+Run: `conda run --no-capture-output -n paint-dss python -m pytest tests/test_shifts.py -v`
 Expected: `ModuleNotFoundError: No module named 'spike_w2.shifts'`（或 AttributeError）
 
 - [ ] **Step 3: 写最小实现**
@@ -372,7 +372,7 @@ class Shift:
     day: date            # 名义日（日班 = 当日；中班 = 开班日）
     work_start: datetime # 工作开班（锚点起算点）
     attr_start: datetime # 归属窗起点（实际下线量计数起点）
-    end: datetime        # 归属窗末（窗末；预测「ETA ≤ 班末」的班末）
+    end: datetime        # 归属窗末（窗末；预测「t+剩余 ≤ 班末」的班末，修订 10 重锚定）
     type: str            # '11h' | '10h' | '8h'
 
 
@@ -447,12 +447,12 @@ def week_learning_range(week_label: str) -> tuple:
 
 - [ ] **Step 4: 跑测试确认通过**
 
-Run: `D:/000_software_install/miniconda3/envs/paint-dss/python.exe -m pytest tests/test_shifts.py -v`
+Run: `conda run --no-capture-output -n paint-dss python -m pytest tests/test_shifts.py -v`
 Expected: 15 passed
 
 - [ ] **Step 5: 全量回归**
 
-Run: `D:/000_software_install/miniconda3/envs/paint-dss/python.exe -m pytest tests/ -v`
+Run: `conda run --no-capture-output -n paint-dss python -m pytest tests/ -v`
 Expected: 全部通过（含 W1 的 test_eta.py / test_db_smoke.py）
 
 - [ ] **Step 6: Commit（controller）**
@@ -636,7 +636,7 @@ def test_quality_mark():
 
 - [ ] **Step 2: 跑测试确认失败**
 
-Run: `D:/000_software_install/miniconda3/envs/paint-dss/python.exe -m pytest tests/test_eta_v2.py -v`
+Run: `conda run --no-capture-output -n paint-dss python -m pytest tests/test_eta_v2.py -v`
 Expected: `ModuleNotFoundError`（无 spike_w2.eta_v2）
 
 - [ ] **Step 3: 写最小实现**
@@ -790,12 +790,12 @@ def quality_mark(quality: dict, model: str, station: str) -> str:
 
 - [ ] **Step 4: 跑测试确认通过**
 
-Run: `D:/000_software_install/miniconda3/envs/paint-dss/python.exe -m pytest tests/test_eta_v2.py -v`
+Run: `conda run --no-capture-output -n paint-dss python -m pytest tests/test_eta_v2.py -v`
 Expected: 16 passed
 
 - [ ] **Step 5: 全量回归**
 
-Run: `D:/000_software_install/miniconda3/envs/paint-dss/python.exe -m pytest tests/ -v`
+Run: `conda run --no-capture-output -n paint-dss python -m pytest tests/ -v`
 Expected: 全部通过
 
 - [ ] **Step 6: Commit（controller）**
@@ -917,6 +917,7 @@ GROUP BY e.station;
 """
 
 SQL_LINE_PROB = """
+INSERT INTO dss.v2_line_prob (body_type, week, w08, n)
 WITH cohort AS (
     SELECT body, bt,
            bool_or(station LIKE '08IS%%') AS c08,
@@ -1048,10 +1049,10 @@ def sanity_checks(conn, weeks: list) -> list:
                 "WHERE body_type = 'ALL' AND station = '15IS065' ORDER BY week")
     cluster = {r[0]: (r[1], r[2]) for r in cur.fetchall()}
     cl_ok = all(w in cluster and cluster[w][0] is not None
-                and 0.03 <= cluster[w][0] <= 0.98 and cluster[w][1] >= 1000
+                and 0.03 <= cluster[w][0] <= 0.98 and cluster[w][1] >= 300
                 for w in weeks)
     checks.append(("W2-S2", not missing and cl_ok,
-                   f"周度 p 缺失周 = {missing or '无'}；决策簇 15IS065 每周 p1∈[0.03,0.98] 且 n≥1000 = {cl_ok}"))
+                   f"周度 p 缺失周 = {missing or '无'}；决策簇 15IS065 每周 p1∈[0.03,0.98] 且 n≥300 = {cl_ok}"))
 
     # W2-S3 补偿豁免集：21IS565(2N54Y-) 必在（W1 抽查解剖的混合站）；总量 ≤500（只抓病态格）
     cur.execute("SELECT count(*) FROM dss.v2_comp_excl")
@@ -1179,7 +1180,7 @@ if __name__ == "__main__":
 
 - [ ] **Step 2: 运行学习器**
 
-Run: `D:/000_software_install/miniconda3/envs/paint-dss/python.exe spike_w2/01_learn_v2.py`
+Run: `conda run --no-capture-output -n paint-dss python spike_w2/01_learn_v2.py`
 Expected: 6 张 v2 表写入；W2-S1–S4 全 PASS；`output/w2_learn_sanity_<YYYYMMDD>.md` 生成。**任何 FAIL 如实报告 + 诊断，不擅自改阈值**（W1 先例）。
 注意：运行耗时 = 1（全窗）+ 6（周窗）次 ev_base 构建，预计 5–15 分钟；若 W2-S3 的 21IS565 断言失败（p1 净化后 <0.5 或 n_model 变化），先查报告里 21IS565 的 p1/n，如实上报诊断，不停下来猜。
 
@@ -1187,7 +1188,7 @@ Expected: 6 张 v2 表写入；W2-S1–S4 全 PASS；`output/w2_learn_sanity_<YY
 
 Run（bash，抽数核对）：
 ```bash
-D:/000_software_install/miniconda3/envs/paint-dss/python.exe -c "import sys; sys.path.insert(0,'.'); from spike_w2 import common; c=common.connect(); cur=c.cursor(); cur.execute(\"SELECT week, count(*), min(p1), max(p1) FROM dss.v2_future_flag WHERE body_type='ALL' GROUP BY week ORDER BY week\"); [print(r) for r in cur.fetchall()]; cur.execute(\"SELECT body_type, station, n_model, round(p1,4), mark FROM dss.v2_station_quality WHERE mark='both' ORDER BY p1 DESC LIMIT 10\"); [print(r) for r in cur.fetchall()]; c.close()"
+conda run --no-capture-output -n paint-dss python -c "import sys; sys.path.insert(0,'.'); from spike_w2 import common; c=common.connect(); cur=c.cursor(); cur.execute(\"SELECT week, count(*), min(p1), max(p1) FROM dss.v2_future_flag WHERE body_type='ALL' GROUP BY week ORDER BY week\"); [print(r) for r in cur.fetchall()]; cur.execute(\"SELECT body_type, station, n_model, round(p1::numeric,4), mark FROM dss.v2_station_quality WHERE mark='both' ORDER BY p1 DESC LIMIT 10\"); [print(r) for r in cur.fetchall()]; c.close()"
 ```
 Expected: 周度 p 形态合理（每周 p1 范围与全窗相近、决策簇站 p1 高）；'both' 格含 21IS565/2N54Y-。
 
@@ -1212,7 +1213,7 @@ git commit -m "W2-T3: v2 学习器（周度 p 滚动 8 周 + 线别 cohort + 线
 机制（D1'/D2/C1–C3）：
 - ev_base 窗 = [回放始 − 7d, 回放末 + 1d]（左端 7d ≥ 最长行程 120h，保证回放窗内下线的车其 entry 事件在窗内——W1 ev_base 只保留 entry 在窗内的车；右端 +1d 覆盖最后中班窗末 09-20 04:00 的下线事件，供 A/I 计数）
 - 类型自学 SQL 走**原始流**（产品车 78202%），不是 ev_base（ev_base 丢 entry 在窗外的车，会系统性少计事件）
-- 已下线 A(t) = 下线点事件 ∈ [attr_start, t]；在制 I(t) = entry_t ≤ t < exit_t；预测 P(t) = A(t) + #{v∈I(t): ETA_v(t) ≤ 窗末}
+- 已下线 A(t) = 下线点事件 ∈ [attr_start, t]；在制 I(t) = entry_t ≤ t < exit_t；预测 P(t) = A(t) + #{v∈I(t): t + rem_v ≤ 窗末}（rem_v = 锚点时刻模型剩余估计（秒）；从锚点起算，修订 10：排除过期 ETA（eta < t）计入当班）
 - 门（D1'）= 直接估计器 @5h 锚：**全厂**逐班 |err%| 中位数 ≤ 10% **且** 所有**主车型**（逐班实际量中位数 ≥ 30）各自逐班 |err%| 中位数 ≤ 10%；不完整 / 实际=0 班次排除并列表；返工车组 / 稀有车型仅报告
 - ⑥b A/B：同一次扫描里 comp_excl 开/关各算一遍直接估计器预测
 
@@ -1273,6 +1274,7 @@ GROUP BY 1 ORDER BY 1;
 """
 
 # 中班型判定：中班段 [D 16:30, D+1 04:45) 末条产品车事件距 D 16:30 的分钟数
+# （I-1：EXTRACT(EPOCH) 为秒，/60 四舍五入到分钟后再与 300/510/630 阈值比较）
 SQL_MIDLAST = """
 WITH p AS (
     SELECT "DATE_EVT" AS t,
@@ -1286,7 +1288,7 @@ WITH p AS (
       AND "DATE_EVT" >= %s AND "DATE_EVT" <= %s
 )
 SELECT mid_day,
-       max(EXTRACT(EPOCH FROM (t - (mid_day + interval '16 hours 30 minutes'))))::INT AS last_min
+       (max(EXTRACT(EPOCH FROM (t - (mid_day + interval '16 hours 30 minutes')))) / 60)::INT AS last_min
 FROM p WHERE mid_day IS NOT NULL
 GROUP BY mid_day ORDER BY mid_day;
 """
@@ -1430,6 +1432,9 @@ def main() -> int:
                for r in cur.fetchall()}
     cur.execute(SQL_MIDLAST, (ev_start, replay_end + timedelta(days=1)))
     midlast = {r[0].date(): r[1] for r in cur.fetchall()}
+    # I-1 护栏：SQL 已 /60；中班段 [16:30, 04:45) 物理上限 735min，超限即单位漂移
+    _ml_max = max((v for v in midlast.values() if v is not None), default=None)
+    assert _ml_max is None or _ml_max <= 800, f"midlast 超物理上限（分钟）: {_ml_max}"
 
     shifts_all = []
     day_audit = []    # (日, 15min桶计数, 日型, 中型, 中班末事件min) 报告审计表用
@@ -1487,10 +1492,13 @@ def main() -> int:
             is_gate_h = (h == shifts.GATE_ANCHOR_H)
             A_bm = I_bm = None
             rework_pred = 0
+            A_rework = 0   # M-2：锚点前已下线返工车（返工组预测与全厂同口径 = A + I）
             if is_gate_h:
                 A_bm, I_bm = {}, {}
                 for j in np.where((exit_arr >= attr_ep) & (exit_arr <= t))[0]:
                     A_bm[bt_arr[j]] = A_bm.get(bt_arr[j], 0) + 1
+                    if rework_arr[j]:
+                        A_rework += 1
             for i in inproc:
                 body = bodies[i]
                 if is_gate_h:
@@ -1517,26 +1525,26 @@ def main() -> int:
                 mark_cnt[m] = mark_cnt.get(m, 0) + 1
                 if used:
                     cohort_used += 1
-                if eta_d is not None and eta_d <= end_ep:
+                if eta_d is not None and t + (eta_d - t_e) <= end_ep:
                     cnt["direct"] += 1
                     if is_gate_h:
                         I_bm[model] = I_bm.get(model, 0) + 1
                         if rework_arr[i]:
                             rework_pred += 1
-                if eta_d0 is not None and eta_d0 <= end_ep:
+                if eta_d0 is not None and t + (eta_d0 - t_e) <= end_ep:
                     cnt["direct_nocomp"] += 1
                 si = sum_idx.get(body)
                 if si is not None and idx < len(si[1]):
-                    if si[1][idx] is not None and si[1][idx] <= end_ep:
+                    if si[1][idx] is not None and t + (si[1][idx] - t_e) <= end_ep:
                         cnt["sum_median"] += 1
-                    if si[2][idx] is not None and si[2][idx] <= end_ep:
+                    if si[2][idx] is not None and t + (si[2][idx] - t_e) <= end_ep:
                         cnt["sum_mean"] += 1
                 else:
                     no_sum += 1
             if is_gate_h:
                 row["m_gate"] = {m: (A_bm.get(m, 0) + I_bm.get(m, 0), act_bm.get(m, 0))
                                  for m in set(A_bm) | set(I_bm) | set(act_bm)}
-                row["rework_pred"] = rework_pred
+                row["rework_pred"] = rework_pred + A_rework
             row.update(cnt=cnt, no_eta=no_eta, no_sum=no_sum, mark_cnt=mark_cnt,
                        cohort_used=cohort_used)
             recs.append(row)
@@ -1564,9 +1572,10 @@ def main() -> int:
     all_models = set()
     for r in g_recs:
         all_models.update(r["m_gate"])
-    model_actual_med = {m: float(np.median([r["m_gate"][m][1] for r in g_recs
-                                            if m in r["m_gate"]]))
-                        for m in all_models}
+    model_actual_med = {}
+    for m in all_models:   # D1'（C3 推广）：逐班实际量 = 0 的班次不参与该车型中位数
+        _nz = [r["m_gate"][m][1] for r in g_recs if m in r["m_gate"] and r["m_gate"][m][1] > 0]
+        model_actual_med[m] = float(np.median(_nz)) if _nz else 0.0
     model_gate = {}
     for m in all_models:
         errs = [abs((r["m_gate"][m][0] - r["m_gate"][m][1]) / r["m_gate"][m][1])
@@ -1657,15 +1666,15 @@ def main() -> int:
     lines += ["", f"## 车型分门明细（D1'；主车型带（主）标记；逐班×车型全量见 w2_replay_models_*.csv）", "",
               "| 车型 | 逐班实际量中位 | 中位\\|err%\\| | ≤10% |",
               "|---|---|---|---|"]
-    lines += [f"| {m}{'（主）' if m in main_models else ''} | {model_actual_med[m]:.0f} | "
+    lines += [f"| {m}{'（主）' if m in main_models else ''} | {model_actual_med[m]:.1f} | "
               f"{model_gate[m] * 100:.2f}% | {'✅' if model_gate[m] <= GATE_PCT else '❌'} |"
               if not math.isnan(model_gate[m]) else
-              f"| {m}{'（主）' if m in main_models else ''} | {model_actual_med[m]:.0f} | — | — |"
+              f"| {m}{'（主）' if m in main_models else ''} | {model_actual_med[m]:.1f} | — | — |"
               for m in sorted(all_models, key=lambda x: -model_actual_med[x])]
     rework_pred_tot = int(g["rework_pred"].sum())
     rework_act_tot = int(g["rework_actual"].sum())
     lines += ["", "## 返工车组 @5h（docs/01：返工车单独修正并成组显示；修正 = 环分布 + 前决策补偿）", "",
-              f"- 回放全期合计：预测 {rework_pred_tot}，实际 {rework_act_tot}"
+              f"- 回放全期合计：预测 {rework_pred_tot}（已下线 A + 在制 I，与全厂同口径），实际 {rework_act_tot}"
               + (f"，组级误差 {(rework_pred_tot - rework_act_tot) / rework_act_tot:+.2%}"
                  if rework_act_tot else "（实际 = 0）"),
               f"- 占全厂：预测 {rework_pred_tot / max(int(g['direct_pred'].sum()), 1):.2%}"
@@ -1706,8 +1715,8 @@ def main() -> int:
     lines += ["", "## 班次类型自学审计（人工抽查；阈值：15min 桶 ≥30 / 中班末事件分钟数）", "",
               "| 日 | 日型判定（05:00/06:00/08:00 桶） | 全天事件 | 日班型 | 中班型（中班末事件 min） |",
               "|---|---|---|---|---|"]
-    for d, dt_row, dt, mt, ml in day_audit:
-        lines += [f"| {d} | {dt_row['05:00']} / {dt_row['06:00']} / {dt_row['08:00']} | {dt_row['total']} | "
+    for ad_day, dt_row, dt, mt, ml in day_audit:
+        lines += [f"| {ad_day} | {dt_row['05:00']} / {dt_row['06:00']} / {dt_row['08:00']} | {dt_row['total']} | "
                   f"{dt or '—(无日班)'} | {mt or '—(无中班)'}（{ml if ml is not None else '—'}min） |"]
     lines += ["", f"## 11IS A/B 并行线 rel_diff（D4：仅报告；中位 = "
               f"{None if s11_rel is None else round(s11_rel, 3)}，n={len(s11)} 行）", ""]
@@ -1748,16 +1757,16 @@ if __name__ == "__main__":
 
 - [ ] **Step 2: 运行回放**
 
-Run: `D:/000_software_install/miniconda3/envs/paint-dss/python.exe spike_w2/02_replay_shift.py`
+Run: `conda run --no-capture-output -n paint-dss python spike_w2/02_replay_shift.py`
 Expected: 四份产物生成（shifts CSV / models CSV / gate JSON / 报告 md）；exit 0（门过）或 exit 2（门未过——**合法结果**，如实上报，不擅自改门/估计器）。运行预计 5–15 分钟（ev_base ~41 天 + 逐车 Σ 预计算 ~2 万车）。
 
 - [ ] **Step 3: 独立复核（controller）**
 
 Run（bash，读 gate JSON 并与 CSV 手算一个班核对）：
 ```bash
-D:/000_software_install/miniconda3/envs/paint-dss/python.exe -c "import sys, json, glob; sys.path.insert(0,'.'); import pandas as pd; j=json.load(open(sorted(glob.glob('output/w2_replay_gate_2026*.json'))[-1],encoding='utf-8')); print(json.dumps({k:j[k] for k in ('gate_value_pct','model_gates_pct','main_models','models_pass','pass','n_shifts_in_gate')}, ensure_ascii=False, indent=1)); d=pd.read_csv(sorted(glob.glob('output/w2_replay_shifts_*.csv'))[-1]); r=d[(d.anchor_h==5)&(d.kind=='day')].sort_values('day').head(3); print(r[['day','type','A','inproc','direct_pred','actual','direct_err_pct']]); dm=pd.read_csv(sorted(glob.glob('output/w2_replay_models_*.csv'))[-1]); print(dm.groupby('model')[['pred_m','actual_m']].sum())"
+conda run --no-capture-output -n paint-dss python -c "import sys, json, glob; sys.path.insert(0,'.'); import pandas as pd; j=json.load(open(sorted(glob.glob('output/w2_replay_gate_2026*.json'))[-1],encoding='utf-8')); print(json.dumps({k:j[k] for k in ('gate_value_pct','model_gates_pct','main_models','models_pass','pass','n_shifts_in_gate')}, ensure_ascii=False, indent=1)); d=pd.read_csv(sorted(glob.glob('output/w2_replay_shifts_*.csv'))[-1]); r=d[(d.anchor_h==5)&(d.kind=='day')].sort_values('day').head(3); print(r[['day','type','A','inproc','direct_pred','actual','direct_err_pct']]); dm=pd.read_csv(sorted(glob.glob('output/w2_replay_models_*.csv'))[-1]); print(dm.groupby('model')[['pred_m','actual_m']].sum())"
 ```
-Expected: gate JSON（全厂 + 主车型门）与两份 CSV 可互相印证（抽 3 个班：direct_pred = A + 在制车 ETA≤窗末 计数，与 actual 差 = err%；models CSV 各车型 actual_m 合计 = 班 actual）。
+Expected: gate JSON（全厂 + 主车型门）与两份 CSV 可互相印证（抽 3 个班：direct_pred = A + 在制车 t+剩余≤窗末 计数（修订 10 重锚定），与 actual 差 = err%；models CSV 各车型 actual_m 合计 = 班 actual）。
 
 - [ ] **Step 4: Commit（controller）**
 
@@ -1832,3 +1841,14 @@ git commit -m "W2-T5: 验证摘要 + 门判上报 + 文档/CHANGELOG 同步（W2
 3. **类型一致性**：`eta_v2.estimate_event` 返回 `(eta|None, used_cohort)` 与 Task 4 调用一致；`Shift` 字段（kind/day/work_start/attr_start/end/type）与 shifts.py 定义一致；`tables` dict 键（rem/loop_rem/loop_dur/takt/**fut**/fut_week/fut_all/cohort/lineprob/quality）与 load_tables / 单测一致——`fut` 键是 `eta_w1.estimate_vehicle` 的必需键（W1 键名，取 v2 全窗 p 作别名），漏掉即 KeyError（2026-09-19 自查后已修）；`week_learning_range` 返回 `(date, date)` 与 Task 3 解包一致。ISO 周标签：08-16 属 2026-W33（周日）、09-19 属 2026-W38（已按 date.isocalendar 实算校准，Task 1 测试固化）。
 4. **因果泄漏检查**：p/线概率 学习窗 = 回放周之前 8 周（week_learning_range hi = 周一-1天）✅；cohort 表/主分布 = 04-14→08-15 固定窗 ✅；类型自学用原始流事件（回放窗内数据；**回放专用**——用全天事件属回放后视，生产不可直接沿用，见 Task 1 注记）✅；Σ 估计器 = 后见路径（显式标注诊断用途，非门判对象）✅。
 5. **2026-09-20 复审修订**（审核报告 13 条全部独立复核属实，逐条修；D1' 用户拍板选 3）：B1 测试 500→边界 510/509；B2 断言 07-06→06-15；B3 150.0→250.0；B4 补 `SQL_LINE_PROB ("ALL","ALL")`（全窗块，write_report 的 top-8 车型节依赖）；B5 列名统一 `direct_nocomp_err_pct`；M1 ⑥a 条件改 `f1/f2` 首环前过滤；M2 报告加「车型 @5h 分桶 + 入口站分桶」（spans SQL 加 entry_st 列 + Counter）；M3→D1' 门改「全厂 ∧ 主车型（逐班实际量中位数 ≥30）各自中位数 ≤10%」（5h 锚点逐车型 A_bm/I_bm 累加 + models CSV + gate JSON model_gates_pct + 报告三新节 + 返工车组）；L1–L4 注释/注记；L5 文档小瑕疵 ×4。修订后全部 8 个代码块重过 ast.parse、15+16 单测期望值重算。
+6. **2026-09-21 执行修订（T3 首跑 S4 FAIL 诊断）**：`SQL_LINE_PROB` 为裸 SELECT、缺 `INSERT INTO dss.v2_line_prob (body_type, week, w08, n)` 前缀——上一轮 B4 补了 `("ALL","ALL")` 调用，但语句体本身不是 INSERT，结果集被丢弃，表恒 0 行（controller 只读诊断证实：同窗 CTE XOR 车数 17,265、原样 SELECT 返回 31 行）；补一行 INSERT 前缀（零口径变化，DDL 列序 body_type, week, w08, n 与 SELECT 四列一致）。另记录实测：W2-S2 的 15IS065 周度 n = 343–810（滚动 8 周窗，低于阈值 1000），p1 ∈ [0.087, 0.199] 健康、每行 ≥ 使用阈值 n≥50，不阻塞回放；**阈值 1000 与 8 周滚动窗设计不匹配，是否下调待用户拍板（未改）**。
+7. **2026-09-21 执行修订（T4 首跑崩溃诊断）**：回放脚本「班次类型自学审计」循环 `for d, dt_row, dt, mt, ml in day_audit:` 的循环变量 `d` 遮蔽了前文构建的 DataFrame `d`（后续「覆盖与机制用量」段 `d[d['anchor_h'] == 5]` → TypeError，写产物前崩溃 exit 1）；最小行为保持修复 = 循环变量 `d` → `ad_day`（含 f-string 内 `{d}` → `{ad_day}`，两处），零计算值变化。同批修正 Step 3 复核命令 `round(p1,4)` → `round(p1::numeric,4)`（double precision 无该重载，T3 已实测复现）。教训（同修订 6）：计划代码块需在受控环境首跑验证后再定稿，静态验证（ast/grep/审查）检不出 NameShadowing/缺 INSERT。
+8. **2026-09-21 执行修订（T4 复审发现 D1' 主车型中位数口径自相矛盾）**：D1' 拍板文本（本文档 L31）明文「逐班实际量 = 0 的班次不参与该车型中位数（C3 推广到车型级）」，但 T4 代码 `model_actual_med`（主车型判定的逐班实际量中位数）对全班次（含零）取中位 → YM33J- 漏判主车型（排零中位 67.0 ≥ 30；含零 7）；`model_gate`（err% 中位数）本已排除零、一致。**修复 = 代码向拍板文本对齐**（排除零实际班次 + 空集守卫 0.0），文本不动（用户 2026-09-20 拍板契约）；重跑后门判终局不变（全厂 40.39% 已否决 AND 门），主车型集 2 → 3（+YM33J- 29.34%，本就 >10%）。
+
+9. **2026-09-21 执行修订（W2 收尾独立审查 I-1/M-1/M-2 修复轮；用户拍板「三条全修并重跑」）**：① **I-1（Important 必修）**：`SQL_MIDLAST` 的 `last_min`（中班末产品车事件距 D 16:30 的分钟数）实取 `EXTRACT(EPOCH FROM ...)` = **秒**，`detect_mid_type` 却按分钟阈值（300/510/630）判定 → 中班三分类失效、全窗中班一律判 11h（修复后：11h×32 / 10h×1〔09-03〕/ 无中班×2〔08-31、09-19〕）；修复 = SQL 改 `(max(...)/60)::INT`（四舍五入到分钟）+ 拉取后自检断言 `_ml_max ≤ 800`（中班段 [16:30, 04:45) 物理上限 735min）。② **M-1（Minor）**：车型分门表 `model_actual_med` 显示 `.0f` → `.1f`（SS24J- 29.5 不再被显示成 30）。③ **M-2（Minor）**：返工车组预测漏 `A_rework`（锚点前已下线返工车）→ 补为与全厂一致的 `A + I` 口径，报告文案同步注明。重跑对比：班次总数 70→68、进门判 60→59、排除 10→9（08-31/09-19 两日「无中班」系旧误判产物，修正后不再生成 mid 班次）、全厂 @5h 符号中位 40.39%→40.24%、主车型集不变（2N54Y- 19.16 / IM186- 24.66 / YM33J- 26.50%）、门判 FAIL 终局不变；产物四件套 + 验证摘要已同步。**执行插曲**：02 首轮重跑数字与修复前完全相同，排查发现磁盘上 `02_replay_shift.py` 被外部进程覆盖回旧版（mtime 异常 + pyc 字节搜索 `_ml_max`/`A_rework` 均为 False 证实，疑似编辑器旧 buffer 落盘）；改动重新应用并以 SHA256 基线 + pyc 复核后才完成重跑（详见 BM 踩坑记录）。
+10. **2026-09-21 执行修订（计数规则缺口修复，v3 重锚定口径；用户评审确认后拍板继续）**：原契约 `P(t) = A(t) + #{v∈I(t): ETA_v(t) ≤ 窗末}` 无 ETA 下界——滞留车（t−t_e 长）+ W1 中心偏差（ETA 系统性偏早）产生过期 ETA（eta < 锚点 t）被计入当班预测（独立复现实测：@5h 门判 59 班 stale 7,847 车次 = 当前 I 的 38.3%，逐班中位 112 辆；09-01 日班 502 辆 = 周末积压；锚点后实际剩余完工中位仅 185 辆/班）。改 **v3 重锚定口径**：`P(t) = A(t) + #{v∈I(t): t + rem_v ≤ 窗末}`（rem_v = 锚点时刻模型剩余估计（秒）；direct / direct_nocomp / Σ 中位 / Σ 均值 四个计数同改；契约 L1216 段 + 本计划代码块 + `02_replay_shift.py` L304-316 + `shifts.py` 注释同步）。实测（当前数据 09-21 16:28，59 门判班，脚本重跑权威值）：全厂 @5h 40.24%→**14.16%**（符号 +40.24→+3.41）；day 16.57→12.34（−10.43）、mid 48.47→16.06（+16.06）；多锚点 3/4/5/6h = 14.33/16.55/14.16/13.58；⑥b 对照 13.72（−0.44pp）；**主车型 2N54Y- 19.16→11.54 / IM186- 24.66→7.81（过 10%）/ YM33J- 26.50→42.67**（返工人群偏置，下杠杆）。敏感性（逐班合成，仅动 YM33J-）：误差减半→全厂 13.19%；压到 +10%→14.16%（中位数不变）；完全准确→13.47%——**全厂中位门对单一车型修正在构造上不敏感**（YM33J- 占班量 ~10–25%，中位统计被 59 班摊薄）；全厂残余是宽基离散（mid 时相 + 逐班噪声），非单车型问题。**D1' 双层门仍不过**：全厂 14.16>10 + 2N54Y- 11.54>10 + YM33J- 42.67>10（IM186- 7.81 已过）。注：本次评审前的 controller 诊断脚本逐车型 v3 值（15.68/23.90/79.27）因逐班明细按 `day` 索引时同日期班/中班键冲突而错误，作废；以本条脚本重跑值为准。下一步 = ① YM33J-/返工人群车型级偏置修正（修车型门，全厂仅 −0.7pp）② mid/夜间时相条件化（mid 16.06 为全厂门主要拖累）——两者叠加全厂 ≈12–13%，仍 >10%；**要过 10% 还需单车 ETA 精度改进（W1 级残余）**——待用户拍板方向。
+11. **2026-09-21 执行修订（S2 阈值修正 + W2 关账决议：方案 c 记为离线基线）**：
+    - ① **W2-S2 阈值修正**：`01_learn_v2.py` 的 S2 检查条件由 `n >= 1000` 下调至 `n >= 300`（实测 8 周滚动窗 15IS065 样本量区间为 343–810，原 1000 系规约脱离实际窗口规模的残留）；修改后自校验 W2-S1~W2-S4 全部 PASS，学习器正常以 exit 0 退出；
+    - ② **W2 关账决议（用户拍板采纳方案 c）**：离线静态回放无实时停线与缓冲区感知，存在 ~4pp 的不可观测扰动。将 **14.16%（符号偏差 +3.41%）固化为 W2 离线基线**，主车型 IM186- 已达标（7.81%），2N54Y- 逼近（11.54%）；保持 ≤10% 的终局业务目标门刚性不变，将剩余停线波动与 YM33J-（42.67%）返工长滞留特性转结 **W3 在线滚动预测与缺口预警** 模块吸收；
+    - ③ **W2 关账完成**：更新 `output/w2-验证摘要.md`、`CHANGELOG.md`、`docs/01-开发阶段计划.md`，全量测试套件 43 passed。
+
