@@ -11,3 +11,6 @@ output/*
 Thumbs.db
 nul
 .pytest_cache/
+# .claude/skills 是指向 .agents/skills 的目录联接（junction），单一真相源在 .agents；
+# git 会穿透 junction 看到文件，必须忽略，避免同一套技能被重复提交
+.claude/skills/
