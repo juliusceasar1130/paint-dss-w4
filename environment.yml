@@ -7,3 +7,6 @@ dependencies:
   - numpy
   - psycopg2
   - pytest
+  - python-dotenv
+  - rich        # T6.1 控制台展示（W3 方案 Tech Stack）
+  - openpyxl    # T1.1 周计划 Excel 形态解析（plan_inbox 明示 Excel 输入）

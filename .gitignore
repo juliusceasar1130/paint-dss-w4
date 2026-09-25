@@ -6,6 +6,8 @@ venv/
 output/*
 !output/*.md
 !output/*.json
+# W3 5min 高频快照（本地验收留痕，不入库；仅根目录正式报告 *.md/*.json 放行，2026-09-23 复审补）
+output/snapshots/
 *.log
 .DS_Store
 Thumbs.db
@@ -15,3 +17,7 @@ nul
 # git 会穿透 junction 看到文件，必须忽略，避免同一套技能被重复提交
 .claude/skills/
 scratch/
+# 本地配置与环境变量（敏感参数不入库；.env.example 模版放行）
+.env
+.env.*
+!.env.example
