@@ -45,7 +45,7 @@ def test_flag_distribution_product_vehicles():
             got = dict(cur.fetchall())
     finally:
         conn.close()
-    assert got == {"0": 4864033, "1": 425809, "2": 185474, "-": 4298, "3": 2}  # 2026-09-21 16:28 同步后存量快照（09-21 晚实测刷新；上一版 09-19 16:40）
+    assert got == {"0": 5029835, "1": 444384, "2": 192851, "-": 4473, "3": 2}  # 2026-09-24 16:32 同步后存量快照（09-24 实测刷新；上一版 09-23 16:24）
 
 
 def test_entry_exit_station_counts():
