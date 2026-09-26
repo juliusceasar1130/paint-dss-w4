@@ -3,6 +3,15 @@
 > **粒度**：波次级，每波关账时写入（非逐 commit；逐 commit 明细看 `git log`）。
 > **分工**：设计决策 / 口径 / 踩坑 → BM 线程笔记（`basic-memory/projects/paint-dss/`）；验收证据细节 → `output/` 下各波报告；本文件只记代码产物时间线。
 
+## 2026-09-26 — W3-T4 关账：缺口告警 + 瓶颈定位（T4.0–T4.5 TDD 174/174 绿；M10 真库回测 8/8 ✅；agy 关账复审 0 阻断 0 中 2 低；G4 拍板 B）
+
+- **产物**：`spike_w3/alert_engine.py`（split_target H 拆分 / grade 红黄绿 −5/−10 / Debouncer 双向 10min 物理时差 / Alert dataclass / AlertEngine：引擎自算 pred 防 M9 误差传递、双 scope（班次视图 + 全天主视图仅 [16:30, 次日 04:00) 激活 F10）、_split_pool 恒等式池=在制+瓶颈+no-ETA、STALE 冻结、naive ts 抛 TypeError）+ `render_alert_line`（双轨提示：班次红+全天绿 → 拆分偏置注记）+ `build_station_section` 两级段映射（前缀码 + profile 众数 n≥3）+ `02_shadow_replay.run_rolling` 加 `alert_hook`（默认 None 零生产影响）+ `spike_w3/03_alert_backtest.py`（M10 驱动：G0–G6 纯函数门判 + JSON/MD 双产物）+ `tests/test_w3_alert.py`（T4.0–T4.4 66 单测）；全套件 **174 passed**
+- **段映射**（T4.2）：`output/w3-T4-段映射表.md` 259 站 = 174 自动 67% + 85 待确认（已呈用户，生产启用前补段名，不阻断关账）
+- **M10 真库回测（09-05~09-13，2592 轮 5min 步 ~13min/跑）**：首跑 7/8（G4 旧「转换 ≤3」上限唯一失败 = 09-09_mid 确认转换 7 次）→ agy 关账复审（0 阻断 0 中 2 低）：139 步真库重放逐条验真 7 次转换全部 ≥10min 持续证据（最短间隔 20min）、伪影四类排除（A(t) 逐台闭合 / 死车清扫未跳档 / no-ETA 10–25 台微幅 / hook 与 M9 通路同态）、**物理根因 = 01:50–04:00 停线（2h10m 仅 2 台下线）+ 整夜贴红/黄分界线 ±10 台**、终局 378/478 = −20.9% 深红 → **用户拍板 B（2026-09-26）**：G4 终版 = 5h 锚点前 10min 窗口 [anchor−10min, anchor) 无确认转换 + 次数降观测项（JSON `G4_obs`）→ 重跑 **8/8 ✅**（G1 中位 3.87pp+零红 / G1b 14/14 / G2 21/21 / G3 4/4 中班 / G5 14/14 / G6 21/21；G4_obs = {09-05_day:2, 09-05:3, 09-07_day:2, 09-09_mid:7, 09-12_day:2}）
+- **报告注记（agy 2 低已修）**：G1 诚实性注记（plan CSV 出车计划 = 实测回填 → all_day_final ≡ 0，G1 实际度量 21:30 锚点预测 vs 实际）+ G4 窗口开闭区间文档注记；`day_scope_bias_note`（09-12_day 班次红/全天绿 = F8 拆分偏置，不进 G3）
+- **首跑踩坑沉淀（已修）**：Debouncer 属性名 current/pending/pending_since；G1 section `t0` 变量遮蔽顶层 datetime.now()（datetime−float）；G4 初版窗口 `t ≥ anchor−10min` 误判锚点后全窗口（正确 = [anchor−10min, anchor)）
+- **关键文件**：`spike_w3/alert_engine.py` · `spike_w3/03_alert_backtest.py` · `spike_w3/02_shadow_replay.py`（alert_hook）· `tests/test_w3_alert.py` · `output/w3-T4-缺口告警回测.{json,md}` · `output/w3-T4-段映射表.md` · `docs/05`（v3 拍板版 + G4-B 终版 + 全勾）
+
 ## 2026-09-25 — W3-T3 关账：滚动预测 + α 自适应（T3.0–T3.3 TDD 108/108 绿；M9 影子回放三跑 ✅ G1–G3 过 + G4 软化；agy 三轮独立审核全闭环）
 
 - **产物**：`spike_w3/predictor.py`（rem_of / a_of 有界闭区间 SQL / predict α 只作用 rem / build_takt_baseline P50+工时距 fallback / obs_window 3h 尾带截断 / AlphaTracker EMA β=0.3 + 同向 2 周期迟滞 + clamp [0.6,1.5]）+ `spike_w3/02_shadow_replay.py`（Step A 静态参照×2（W2 原窗：自检+对拍 / 延展窗：G1 对比侧）/ Step B 5min 滚动驱动（复用 T2 run_one_round/168h bootstrap/24h rebuild 生产语义）/ Step C p3_inproc+G1–G4 门判（按 DSS_ALPHA_MODE 分判）+报告）+ `tests/test_w3_{predictor,alpha,m9}.py`（10 单测）；全套件 **108 passed**
