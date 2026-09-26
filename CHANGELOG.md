@@ -3,6 +3,16 @@
 > **粒度**：波次级，每波关账时写入（非逐 commit；逐 commit 明细看 `git log`）。
 > **分工**：设计决策 / 口径 / 踩坑 → BM 线程笔记（`basic-memory/projects/paint-dss/`）；验收证据细节 → `output/` 下各波报告；本文件只记代码产物时间线。
 
+## 2026-09-25 — W3-T3 关账：滚动预测 + α 自适应（T3.0–T3.3 TDD 108/108 绿；M9 影子回放三跑 ✅ G1–G3 过 + G4 软化；agy 三轮独立审核全闭环）
+
+- **产物**：`spike_w3/predictor.py`（rem_of / a_of 有界闭区间 SQL / predict α 只作用 rem / build_takt_baseline P50+工时距 fallback / obs_window 3h 尾带截断 / AlphaTracker EMA β=0.3 + 同向 2 周期迟滞 + clamp [0.6,1.5]）+ `spike_w3/02_shadow_replay.py`（Step A 静态参照×2（W2 原窗：自检+对拍 / 延展窗：G1 对比侧）/ Step B 5min 滚动驱动（复用 T2 run_one_round/168h bootstrap/24h rebuild 生产语义）/ Step C p3_inproc+G1–G4 门判（按 DSS_ALPHA_MODE 分判）+报告）+ `tests/test_w3_{predictor,alpha,m9}.py`（10 单测）；全套件 **108 passed**
+- **DSSConfig 19→23**（T3.0 +eta_stale_hours/learn_win_start/learn_win_end；M9 拍板轮 +alpha_mode，非法值 ValueError + env 覆盖）
+- **M9 真库首跑（2592 轮，13min）FAIL 归因闭环（报告 (vi) 节，逐车对账 14 班 Δ 全精确吻合）**：G1 主因 = 静态窗尾盲区（出口 >09-14 在制车 132 台/84%；静态 spans 对出口表 INNER JOIN 抹除 1079 台窗内入口车）；其余 = F-1 偏斜残留 15（11 台车，毫秒级水位取证）+ P3/ETA/M7 口径差 14；**滚动引擎无新 bug**；G2–G4 = α 参数化追噪声（班次型分化：日班 5/7 改善 14.29→10.34%、中班 1/7 9.04→11.64%，病根 = 观察窗撞 18:30–19:30 就餐停工）；**α=off 9.79% ≤ 10% 达标**；agy 独立审核：「归因成立 + 选项可用」（0 阻断 / 2 中 / 1 低）
+- **用户拍板（2026-09-25）+ 二跑（2592 轮，18.5min）✅**：① G1 窗尾 → 静态参照延展窗（尾 +7d 与 7d 前置边对称；容差 p3+2 维持；自检/对拍/基线保持 W2 原窗 8.74% 固定带）→ G1 逐班 Δ 最大 +5（首跑 +37）、全厂相对差 0.256pp / 中班 0.282pp ≤ 0.5pp ✅；② α → 门按 α=off 判定、生产默认 off（`DSS_ALPHA_MODE`，on=实验开关；G2 off 9.79% ≤ 10% ✅、G3 定义成立 ✅）；③ G4 软化默认（G1–G3 达成不阻断 + 敏感性数据；`DSS_G4_HARD=1` 恢复硬门）→ **总判定 ✅**；中班 α 修复（就餐工时日历）另立任务（Task Board：paint-dss 日班 α 启用与多周验证）
+- **agy 审核轮 3（二跑关账复审，只读 + 真库重推）**：总判定「拍板落地保真 + 数字闭合 + 无阻断 + 残差可归因」——cls4 消除 14 班精确闭合（二跑 Δ = 首跑 Δ − cls4 台数逐班吻合）；p3 753→757 的 +4 真库核验（4 台首事件 09-16~18、回放窗内未出现，对 p3_inproc 影响 = 0）；残差逐车抽查（09-05_day +5 / 09-09_mid +5 逐台穿透，全归 F-1 残留 + P3 + M7，无新类）。2 条发现已修：中① 正式 JSON 补延展窗逐车明细（`static_ext_view`：5h I_bodies/A_bodies + p3 清单，产物自包含）+ 低① 报告/docs 注明 DSS_G4_HARD=1 仅 DSS_ALPHA_MODE=on 时有生产准入意义；M9 三跑（1585s）数字与二跑逐位一致（确定性）
+- **真库踩坑沉淀**：psycopg2 本环境 `execute()` 返回 None（禁链式 fetch）；SQL 站名单引号（双引号=标识符，`_A_OF_SQL`/`_EXIT_HOURS_SQL` 潜在 bug 一并修 + 测试断言单引号形状）；MDS_DATA flag = 定长位 139（`SUBSTRING FROM 139 FOR 1`，`flag=` 正则全 NULL 勿用）
+- **关键文件**：`spike_w3/predictor.py` · `spike_w3/02_shadow_replay.py` · `tests/test_w3_*.py` · `output/w3-影子回放验收.md/.json`（含 (vi) 归因与拍板闭环节）· `docs/04`（v2.1 + 拍板终版门判）· `scratch/tmp_w3_m9_{diff,diag3,diag5,diag6}.py`（归因工具）
+
 ## 2026-09-25 — W3-T2 关账：WIP 池 + 增量管道（T2.0–T2.6 全量，96/96 绿，KW37 干跑 GT 真值核对 0.11%）
 
 - **产物**：`spike_w3/`（common 参数层 DSSConfig 19 项 / stream_pipeline 池状态机+增量流+护栏+重建+死车 / 01_boot_online 启动序列+主循环）+ `tests/test_w3_*`（7 文件 43 单测，全套件 96 passed）；`dss.work_alert_log`（死车审计表，DDL 懒建）
