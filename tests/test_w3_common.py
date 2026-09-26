@@ -21,6 +21,8 @@ def test_defaults():
     assert (c.alpha_clamp_min, c.alpha_clamp_max) == (0.6, 1.5)
     assert (c.alert_red, c.alert_yellow, c.alert_debounce_min) == (-0.10, -0.05, 10)
     assert (c.line_stop_min, c.observe_min) == (30, 15)
+    # 2026-09-25 拍板：M9 门基线 / 生产默认 α off（agy 审核轮 3 同推荐）
+    assert c.alpha_mode == "off"
 
 
 def test_bootstrap_bound_to_dead(monkeypatch):
@@ -39,6 +41,38 @@ def test_env_override(monkeypatch):
     monkeypatch.setenv("DSS_CLOCK_MODE", "replay_cursor")
     c = common.load_config()
     assert c.stale_min == 45 and c.clock_mode == "replay_cursor"
+
+
+def test_t3_new_defaults():
+    # T3.0（docs/04 §2）：+3 参数 19→22（L4 stale 阈值 / α 基准学习窗 起、止，W1 同窗）
+    c = DSSConfig()
+    assert c.eta_stale_hours == 6.0
+    assert c.learn_win_start == "2026-04-14"
+    assert c.learn_win_end == "2026-08-15"
+
+
+def test_t3_env_override(monkeypatch):
+    monkeypatch.setenv("DSS_ETA_STALE_HOURS", "8")
+    monkeypatch.setenv("DSS_LEARN_WIN_START", "2026-05-01")
+    monkeypatch.setenv("DSS_LEARN_WIN_END", "2026-07-01")
+    c = common.load_config()
+    assert c.eta_stale_hours == 8.0
+    assert c.learn_win_start == "2026-05-01"
+    assert c.learn_win_end == "2026-07-01"
+
+
+def test_alpha_mode_env(monkeypatch):
+    """DSS_ALPHA_MODE：默认 off；on/off 大小写归一；非法值 ValueError。"""
+    monkeypatch.delenv("DSS_ALPHA_MODE", raising=False)
+    assert common.load_config().alpha_mode == "off"
+    monkeypatch.setenv("DSS_ALPHA_MODE", "ON")
+    assert common.load_config().alpha_mode == "on"
+    monkeypatch.setenv("DSS_ALPHA_MODE", "banana")
+    try:
+        common.load_config()
+        assert False, "非法 DSS_ALPHA_MODE 应 ValueError"
+    except ValueError:
+        pass
 
 
 def test_reexport_station_constants():

@@ -104,11 +104,16 @@ class DSSConfig:
     # Task 1 周计划（T1 生效）
     plan_folder: str = "plan_inbox"
     # Task 3 α（T3 再启用，此处提前载入；迟滞 0.05/2 周期为代码级常量，不入 env）
+    alpha_mode: str = "off"            # M9 门基线/生产默认（2026-09-25 拍板：off；on = 实验开关，B5 原口径）
     alpha_window_hours: float = 3.0
     alpha_min_samples: int = 30
     alpha_ema_beta: float = 0.3
     alpha_clamp_min: float = 0.6
     alpha_clamp_max: float = 1.5
+    # Task 3（T3.0 新增，docs/04 §2）
+    eta_stale_hours: float = 6.0       # L4 stale：last_event 超此时长仅标记仍计 pred（静态无此概念，保构造性一致）
+    learn_win_start: str = "2026-04-14"  # α 基准学习窗起（= W1 学习窗，纯历史、无未来泄漏）
+    learn_win_end: str = "2026-08-15"    # α 基准学习窗止
     # Task 4 红黄绿告警（T4 再启用）
     alert_red: float = -0.10
     alert_yellow: float = -0.05
@@ -116,6 +121,13 @@ class DSSConfig:
     # Task 5 停线感知（T5 再启用）
     line_stop_min: int = 30
     observe_min: int = 15
+
+
+def _env_alpha_mode() -> str:
+    v = _env_str("DSS_ALPHA_MODE", "off").lower()
+    if v not in ("on", "off"):
+        raise ValueError(f"DSS_ALPHA_MODE 必须为 on/off，当前: {v!r}")
+    return v
 
 
 def load_config() -> DSSConfig:
@@ -138,11 +150,15 @@ def load_config() -> DSSConfig:
         bootstrap_hours=bootstrap,
         rebuild_hours=_env_float("DSS_REBUILD_HOURS", 24.0),
         plan_folder=_env_str("DSS_PLAN_FOLDER", "plan_inbox"),
+        alpha_mode=_env_alpha_mode(),
         alpha_window_hours=_env_float("DSS_ALPHA_WINDOW_HOURS", 3.0),
         alpha_min_samples=_env_int("DSS_ALPHA_MIN_SAMPLES", 30),
         alpha_ema_beta=_env_float("DSS_ALPHA_EMA_BETA", 0.3),
         alpha_clamp_min=_env_float("DSS_ALPHA_CLAMP_MIN", 0.6),
         alpha_clamp_max=_env_float("DSS_ALPHA_CLAMP_MAX", 1.5),
+        eta_stale_hours=_env_float("DSS_ETA_STALE_HOURS", 6.0),
+        learn_win_start=_env_str("DSS_LEARN_WIN_START", "2026-04-14"),
+        learn_win_end=_env_str("DSS_LEARN_WIN_END", "2026-08-15"),
         alert_red=_env_float("DSS_ALERT_RED", -0.10),
         alert_yellow=_env_float("DSS_ALERT_YELLOW", -0.05),
         alert_debounce_min=_env_int("DSS_ALERT_DEBOUNCE_MIN", 10),
