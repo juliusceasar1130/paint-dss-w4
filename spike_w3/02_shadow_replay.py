@@ -347,14 +347,18 @@ def _count_exits_in(exits: dict, start_ep: float, end_ep: float) -> int:
 
 
 def run_rolling(conn, cfg, replay_start: datetime, replay_end: datetime,
-                schedule: dict, tables: dict, comp_excl: frozenset) -> dict:
+                schedule: dict, tables: dict, comp_excl: frozenset,
+                alert_hook=None) -> dict:
     """Step B：T2 管线原样 + 锚点 predict（off/on）+ α 接线。
 
     bootstrap_hours=168 显式注入（round2 低④：DSSConfig frozen 必须 dataclasses.replace；
     后续 _rebuild 周期重建全部用 cfg_m9——否则第 2 天重建回 120h 窗）；rebuild_hours=24
     生产语义；锚定回放起点（agy 中①：bootstrap 锚定 start 而非墙钟）。
     返回 {"shifts": {shift_id: {kind, pred_off/on: {h}, alpha: {h}, inproc_5h: set}},
-          "alpha_trace": {shift_id: [(ts, alpha)]}}。
+          "alpha_trace": {shift_id: [(ts, alpha)]}, "alerts": [...], "cfg_echo": {...}}。
+    T4.4：alert_hook 默认 None = 生产零影响（M9 行为不变）；非 None 时每步调用
+    alert_hook(cur, pool, conn, tables, comp_excl, cfg_m9, [active_shift]|[])
+    → list[dict]（已序列化告警），累积进返回的 alerts。
     """
     boot_mod = _w3_boot()
     cfg_m9 = dataclasses.replace(cfg, bootstrap_hours=168.0)   # round2 低④
@@ -386,6 +390,7 @@ def run_rolling(conn, cfg, replay_start: datetime, replay_end: datetime,
            {"kind": s.kind, "pred_off": {}, "pred_on": {}, "alpha": {},
             "inproc_5h": set()} for s in shifts_list}
     alpha_trace: dict[str, list] = {}
+    alerts: list = []
 
     last_rebuild = replay_start
     cur = replay_start
@@ -444,9 +449,16 @@ def run_rolling(conn, cfg, replay_start: datetime, replay_end: datetime,
                 out[sid]["roll_A_bodies"] = [r[0] for r in cur_a.fetchall()]
                 cur_a.close()
                 alpha_trace.setdefault(sid, []).append((cur, a_now))
+        # T4.4 告警 hook（默认 None = 零影响；非 None 时每步评估）
+        if alert_hook is not None:
+            step_alerts = alert_hook(cur, pool, conn, tables, comp_excl,
+                                     cfg_m9, [active] if active is not None else [])
+            if step_alerts:
+                alerts.extend(step_alerts)
         cur = cur + timedelta(seconds=STEP_SEC)
     print(f"[M9-B] 完成 {n_rounds} 轮（5min 步，rebuild 24h 生产语义）")
-    return {"shifts": out, "alpha_trace": alpha_trace, "cfg_echo":
+    return {"shifts": out, "alpha_trace": alpha_trace, "alerts": alerts,
+            "cfg_echo":
             {k: getattr(cfg_m9, k) for k in ("bootstrap_hours", "rebuild_hours",
                                               "eta_stale_hours")}}
 
