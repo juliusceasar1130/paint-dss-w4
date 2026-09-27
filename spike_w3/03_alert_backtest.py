@@ -443,41 +443,48 @@ def main() -> int:
 
 def _render_report(ctx: dict) -> str:
     """(vii) 缺口告警回测节渲染（报告 §2 形态；告警行 = render_alert_line）。"""
+    note_backfill = ("注：plan CSV 出车计划列为实测回填（计划=实际）→ all_day_final ≡ 0，"
+                     "G1 实际度量 = 21:30 锚点全天预测 vs 实际误差（真前瞻计划下 dfinal 非零，门判逻辑同式适用）")
+    _adf = ctx.get("all_day_final") or {}
+    note = (note_backfill if _adf and all(abs(v) < 1e-12 for v in _adf.values())
+            else "注：本窗为真前瞻计划（计划≠实际）→ all_day_final = 实际 vs 计划真实缺口，"
+                 "G1 = 21:30 锚点全天预测与终局缺口的真实差距（前瞻预测误差中位）")
     L = ["# (vii) 缺口告警回测（T4 / M10）", "",
          f"窗 {ctx['meta']['window'][0][:16]} ~ {ctx['meta']['window'][1][:16]}"
          f"（α={ctx['meta']['alpha']}，DSS_ALPHA_MODE={ctx['meta']['alpha_mode']}）",
-         "注：plan CSV 出车计划列为实测回填（计划=实际）→ all_day_final ≡ 0，"
-         "G1 实际度量 = 21:30 锚点全天预测 vs 实际误差（真前瞻计划下 dfinal 非零，门判逻辑同式适用）",
+         note,
          f"段映射 {ctx['meta']['section_map_n']} 站"
          f"（待确认 {ctx['meta']['section_pending_n']}）", ""]
     L += ["## 门判 M10", "", "| 门 | 判定 | 明细 |", "|---|---|---|"]
     g, det = ctx["gates"], ctx["gate_detail"]
+    n5 = len(ctx["engine_view_5h"])
+    n_sd = n5 + len(ctx["engine_view_all5h"])
     L.append(f"| G0 单测 | {'✅' if g['G0'] else '❌'} | tests/test_w3_alert.py |")
     L.append(f"| G1 全天准度（21:30 中位≤5pp+零红） | {'✅' if g['G1'] else '❌'} | "
              f"中位 {det['G1']['median_pp']}pp，21:30 红 {det['G1']['n_red']} |")
-    L.append(f"| G1b 管线一致（14/14） | {'✅' if g['G1b'] else '❌'} | "
+    L.append(f"| G1b 管线一致（{n5}/{n5}） | {'✅' if g['G1b'] else '❌'} | "
              f"miss {det['G1b_miss']} |")
-    L.append(f"| G2 level==grade（21 scope-day） | {'✅' if g['G2'] else '❌'} | "
+    L.append(f"| G2 level==grade（{n_sd} scope-day） | {'✅' if g['G2'] else '❌'} | "
              f"bad {det['G2_bad']} |")
     L.append(f"| G3 提前量 ≥2h | {'✅' if g['G3'] else '❌'} | "
              f"miss {det['G3_miss']}（终局非绿 {len(ctx['finals_non_green'])} scope-day） |")
     L.append(f"| G4 锚点前 10min 无转换（拍板 B；次数=观测） | {'✅' if g['G4'] else '❌'} | "
              f"bad {det['G4_bad']}；观测 {det.get('G4_obs', {})} |")
     L.append(f"| G5 自洽恒等式（F4） | {'✅' if g['G5'] else '❌'} | bad {det['G5_bad']} |")
-    L.append(f"| G6 21 scope-day 全覆盖 | {'✅' if g['G6'] else '❌'} | miss {det['G6_miss']} |")
+    L.append(f"| G6 {n_sd} scope-day 全覆盖 | {'✅' if g['G6'] else '❌'} | miss {det['G6_miss']} |")
     if ctx.get("day_scope_bias_note"):
         L += ["", "## 日班 scope 拆分偏置注记（F8 双轨对照，不进 G3）", ""]
         for b in ctx["day_scope_bias_note"]:
             L.append(f"- {b['sid']} 班次视图终局 {b['shift_final_level']} / "
                      f"全天终局 Δ {b['all_day_final_delta']:+.1%}（{b['all_day_final_level']}）：{b['note']}")
     L += ["", f"总判定：{'✅ 通过' if ctx['pass'] else '❌ 未通过'}", "",
-          "## 5h 锚点引擎视图（shift scope，14）", ""]
+          f"## 5h 锚点引擎视图（shift scope，{n5}）", ""]
     for s in ctx["engine_view_5h"]:
         L.append(f"- {s['sid']} Δ {s['delta'] * 100:+.1f}% {s['level']}"
                  f"（grade {s['grade']}）pred {s['pred']} / 目标 {s['target']}"
                  f" / 池 {s['pool_n']}（在制 {s['hit']} + 瓶颈 {s['bottleneck']}"
                  f" + no-ETA {s['no_eta']}）")
-    L += ["", "## 5h 锚点全天主视图（7）", ""]
+    L += ["", f"## 5h 锚点全天主视图（{len(ctx['engine_view_all5h'])}）", ""]
     for s in ctx["engine_view_all5h"]:
         L.append(f"- {s['sid']}_全天 Δ {s['delta'] * 100:+.1f}% {s['level']}"
                  f"（grade {s['grade']}）pred {s['pred']} / 计划 {s['target']}")
