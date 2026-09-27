@@ -55,12 +55,20 @@ class FakeCursor:
 class FakeConn:
     def __init__(self, cursor):
         self._cursor = cursor
+        self.committed = 0
+        self.rolled_back = 0
 
     def cursor(self):
         return self._cursor
 
     def close(self):
         pass
+
+    def commit(self):          # T1.4：boot 序列含周计划表 DDL（plan_loader.ensure_weekly_plan_tables）
+        self.committed += 1
+
+    def rollback(self):
+        self.rolled_back += 1
 
 
 def make_stream_rows(n: int = 50_000):

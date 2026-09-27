@@ -17,9 +17,11 @@ import os
 import sys
 from dataclasses import dataclass
 from datetime import datetime, timedelta
+from pathlib import Path
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from spike_w3 import plan_loader  # noqa: E402  T1-lite 周计划解析器
 from spike_w3.common import (  # noqa: E402
     DSSConfig, POST_EXIT_STATIONS, load_config, connect,
 )
@@ -35,6 +37,7 @@ DSS_DIM_TABLES = (
     "dim_loop_duration", "dim_loop_remaining", "dim_learner_meta",
     "v2_line_prob", "v2_cohort_remaining", "v2_future_flag",
     "v2_comp_excl", "v2_station_quality", "v2_learner_meta",
+    "dim_weekly_plan",   # T1-lite（周计划入库表，docs/06）
 )
 
 
@@ -54,8 +57,51 @@ class BootReport:
 
 
 def load_week_plan(cfg: DSSConfig):
-    """读周计划（T1 解析器未就绪 = 返回 None + 启动报告标注跳过；T1 完成后接入 plan_loader）。"""
-    return None  # T1 未就绪
+    """读周计划（T1-lite，docs/06）：DSS_PLAN_CSV env = 单文件模式（回放干跑显式覆盖，
+    旧 main 行为保留）；否则 load_plan(cfg.plan_folder)（目录扫描 + 跨文件合并）。
+    无文件 / 全失败 / 跨文件冲突 → None（兜底自学模式：班制推断、无目标）。"""
+    single = os.environ.get("DSS_PLAN_CSV")
+    if single:
+        p = Path(single)
+        if not p.is_file():
+            return None
+        parse = plan_loader.parse_csv if p.suffix.lower() == ".csv" else plan_loader.parse_excel
+        try:
+            w = parse(p)
+        except Exception:
+            return None
+        return w if w.rows else None
+    try:
+        w = plan_loader.load_plan(cfg.plan_folder)
+    except ValueError:
+        return None          # 跨文件冲突（同日期不同值）→ 兜底自学，人工修文件
+    return w if w.rows else None
+
+
+def plan_note_text(plan, now: datetime) -> str:
+    """plan_note 三态（T1.4）：无计划 = 兜底自学 / 已加载（+ 当周缺日标注 + 坏行数）。"""
+    if plan is None:
+        return "无周计划文件 → 兜底自学模式（班制推断、无目标）"
+    parts = [f"周计划已加载: {len(plan.rows)} 天 / {len(plan.file_hashes)} 文件"]
+    d0 = now.date() - timedelta(days=now.weekday())
+    miss = plan.missing(d0, d0 + timedelta(days=6))
+    if miss:
+        parts.append(f"当周缺 {len(miss)} 天（{miss[0]}~{miss[-1]}），兜底标注")
+    if plan.bad_rows:
+        parts.append(f"坏行 {len(plan.bad_rows)}")
+    if len(parts) == 1:
+        return parts[0]
+    return parts[0] + "（" + "，".join(parts[1:]) + "）"
+
+
+def replay_rest_days(cfg: DSSConfig) -> set:
+    """回放休息日（B3 expected_silence）：DSS_PLAN_CSV = 单文件（旧行为）；
+    否则目录合并 rest_days（与 02 逐文件 |= 语义逐位一致，T1.4 回归钉死）。"""
+    single = os.environ.get("DSS_PLAN_CSV")
+    if single:
+        return load_rest_days(single)
+    w = load_week_plan(cfg)
+    return w.rest_days() if w else set()
 
 
 def check_dim_tables(conn) -> dict:
@@ -74,8 +120,17 @@ def boot_sequence(conn, cfg: DSSConfig, now: datetime,
     pool 可外部注入（main：主循环复用同一池实例）；缺省自建。
     """
     plan = load_week_plan(cfg)
-    plan_note = ("周计划已加载: " + str(plan) if plan is not None
-                 else "T1 周计划解析器未就绪，跳过（预测期按需即用即给）")
+    plan_note = plan_note_text(plan, now)
+    warnings = []
+    plan_loader.ensure_weekly_plan_tables(conn)   # T1.4：DDL 先行（全新库首启 13 项检查前建表，agy 低 L3）
+    if plan is not None:
+        try:
+            n_written = plan_loader.persist_plan(conn, plan)
+            if n_written:
+                plan_note += f"（入库 {n_written} 行）"
+        except Exception as e:
+            plan_note += f"（入库失败 {type(e).__name__}——旧数据保留，只报告不中止）"
+            warnings.append(f"周计划入库失败（旧数据保留）: {e}")
     dim_tables = check_dim_tables(conn)
     # 出站延续站 derive 启动闸门（2026-09-24 agy 审核中②接入）：数据驱动重推 vs 常量，
     # 不一致只进启动报告 + warning，不自动改常量
@@ -91,7 +146,6 @@ def boot_sequence(conn, cfg: DSSConfig, now: datetime,
         raise RuntimeError("回放窗无数据（watermark=0），中止启动——增量流不得从 0 起步（F8）")
     guard = FreshnessGuard(cfg)
     frozen = guard.check(now, report.data_max_ts, expected_silence=expected_silence)
-    warnings = []
     if report.cross_check_pct > 0.01:
         warnings.append(f"cross_check 差集率 {report.cross_check_pct * 100:.2f}% > 1% "
                         f"（差 {report.cross_check_diff} 台）——人工核对，不自动修")
@@ -225,15 +279,10 @@ def run_wall_clock(pool, stream, guard, conn, cfg: DSSConfig,
 
 
 def load_rest_days(csv_path: str) -> set:
-    """周计划最小读取器（T1 plan_loader 未就绪前的直读注入，2026-09-25）：
-    日班工时=休 且 中班工时=休 的日期（停产日）→ B3 休息日降级 expected_silence。"""
-    import csv as _csv
-    rest = set()
-    with open(csv_path, encoding="utf-8") as f:
-        for row in _csv.DictReader(f):
-            if row.get("日班工时") == "休" and row.get("中班工时") == "休":
-                rest.add(datetime.strptime(row["日期"], "%Y-%m-%d").date())
-    return rest
+    """向后兼容垫片（供 02/03 冻结回放器调用——02 L363–367 动态加载本模块并调本函数；
+    **T1 接线后禁止删除**，agy 中 M3）。实现委托 plan_loader：utf-8-sig / M-D 双格式 /
+    坏行跳过；休息日语义不变 = 日+中皆休。"""
+    return plan_loader.parse_csv(csv_path).rest_days()
 
 
 def main():
@@ -262,8 +311,7 @@ def main():
         stream.front = br.bootstrap.data_max_ts
         guard = FreshnessGuard(cfg)
         if cfg.clock_mode == "replay_cursor":
-            plan_csv = _os.environ.get("DSS_PLAN_CSV")
-            rest = load_rest_days(plan_csv) if plan_csv else set()
+            rest = replay_rest_days(cfg)   # T1.4：目录合并（单文件 DSS_PLAN_CSV 时 = 旧行为）
             run_replay(
                 pool, stream, guard, conn, cfg,
                 start=replay_start, end=replay_end,
