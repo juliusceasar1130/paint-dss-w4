@@ -1,0 +1,3988 @@
+{
+  "nodes": [
+    {
+      "id": "01IS045",
+      "label": "01IS045\n(预处理线1)",
+      "section": "预处理线1",
+      "stage": "预处理",
+      "car_count": 386,
+      "events": 393,
+      "in_degree": 0,
+      "out_degree": 1
+    },
+    {
+      "id": "01IS205",
+      "label": "01IS205\n(预处理线2)",
+      "section": "预处理线2",
+      "stage": "预处理",
+      "car_count": 72096,
+      "events": 72166,
+      "in_degree": 0,
+      "out_degree": 1
+    },
+    {
+      "id": "01IS320",
+      "label": "01IS320\n(车身检查旁路)",
+      "section": "车身检查旁路",
+      "stage": "预处理",
+      "car_count": 14297,
+      "events": 14384,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "02IS030",
+      "label": "02IS030\n(前处理线1)",
+      "section": "前处理线1",
+      "stage": "前处理",
+      "car_count": 46626,
+      "events": 46951,
+      "in_degree": 2,
+      "out_degree": 1
+    },
+    {
+      "id": "02IS060",
+      "label": "02IS060\n(前处理线1)",
+      "section": "前处理线1",
+      "stage": "前处理",
+      "car_count": 46646,
+      "events": 47098,
+      "in_degree": 2,
+      "out_degree": 4
+    },
+    {
+      "id": "03IS035",
+      "label": "03IS035\n(前处理线2)",
+      "section": "前处理线2",
+      "stage": "前处理",
+      "car_count": 40232,
+      "events": 40413,
+      "in_degree": 2,
+      "out_degree": 1
+    },
+    {
+      "id": "03IS060",
+      "label": "03IS060\n(前处理线2)",
+      "section": "前处理线2",
+      "stage": "前处理",
+      "car_count": 40769,
+      "events": 41178,
+      "in_degree": 3,
+      "out_degree": 2
+    },
+    {
+      "id": "02IS125",
+      "label": "02IS125\n(电泳线1)",
+      "section": "电泳线1",
+      "stage": "电泳",
+      "car_count": 27422,
+      "events": 27589,
+      "in_degree": 2,
+      "out_degree": 3
+    },
+    {
+      "id": "03IS135",
+      "label": "03IS135\n(电泳线2)",
+      "section": "电泳线2",
+      "stage": "电泳",
+      "car_count": 40810,
+      "events": 41013,
+      "in_degree": 2,
+      "out_degree": 3
+    },
+    {
+      "id": "03IS330",
+      "label": "03IS330\n(电泳线2)",
+      "section": "电泳线2",
+      "stage": "电泳",
+      "car_count": 9,
+      "events": 18,
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "04IS005",
+      "label": "04IS005\n(电泳缓存线1)",
+      "section": "电泳缓存线1",
+      "stage": "电泳缓存",
+      "car_count": 27123,
+      "events": 27384,
+      "in_degree": 2,
+      "out_degree": 7
+    },
+    {
+      "id": "04IS115",
+      "label": "04IS115\n(电泳缓存线1)",
+      "section": "电泳缓存线1",
+      "stage": "电泳缓存",
+      "car_count": 21155,
+      "events": 21191,
+      "in_degree": 5,
+      "out_degree": 2
+    },
+    {
+      "id": "05IS005",
+      "label": "05IS005\n(电泳缓存线2)",
+      "section": "电泳缓存线2",
+      "stage": "电泳缓存",
+      "car_count": 40707,
+      "events": 40908,
+      "in_degree": 2,
+      "out_degree": 3
+    },
+    {
+      "id": "05IS130",
+      "label": "05IS130\n(电泳缓存线2)",
+      "section": "电泳缓存线2",
+      "stage": "电泳缓存",
+      "car_count": 64934,
+      "events": 64969,
+      "in_degree": 7,
+      "out_degree": 1
+    },
+    {
+      "id": "05IS163",
+      "label": "05IS163\n(电泳缓存线2)",
+      "section": "电泳缓存线2",
+      "stage": "电泳缓存",
+      "car_count": 25586,
+      "events": 25618,
+      "in_degree": 5,
+      "out_degree": 6
+    },
+    {
+      "id": "28IS050",
+      "label": "28IS050\n(前处理电泳缓存)",
+      "section": "前处理电泳缓存",
+      "stage": "雪橇缓存",
+      "car_count": 10146,
+      "events": 10254,
+      "in_degree": 3,
+      "out_degree": 4
+    },
+    {
+      "id": "28IS115",
+      "label": "28IS115\n(前处理电泳缓存)",
+      "section": "前处理电泳缓存",
+      "stage": "雪橇缓存",
+      "car_count": 13400,
+      "events": 13534,
+      "in_degree": 4,
+      "out_degree": 3
+    },
+    {
+      "id": "30IS005",
+      "label": "30IS005\n(前处理电泳缓存1)",
+      "section": "前处理电泳缓存1",
+      "stage": "雪橇缓存",
+      "car_count": 124,
+      "events": 126,
+      "in_degree": 2,
+      "out_degree": 2
+    },
+    {
+      "id": "30IS220",
+      "label": "30IS220\n(前处理电泳缓存2)",
+      "section": "前处理电泳缓存2",
+      "stage": "雪橇缓存",
+      "car_count": 14,
+      "events": 14,
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "26IS475",
+      "label": "26IS475\n(面漆空雪橇缓存区)",
+      "section": "面漆空雪橇缓存区",
+      "stage": "雪橇缓存",
+      "car_count": 3,
+      "events": 15642,
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "06IS010",
+      "label": "06IS010\n(雪橇到面漆控制线)",
+      "section": "雪橇到面漆控制线",
+      "stage": "雪橇转运",
+      "car_count": 21476,
+      "events": 21971,
+      "in_degree": 4,
+      "out_degree": 1
+    },
+    {
+      "id": "06IS105",
+      "label": "06IS105\n(雪橇到面漆控制线)",
+      "section": "雪橇到面漆控制线",
+      "stage": "雪橇转运",
+      "car_count": 65509,
+      "events": 65535,
+      "in_degree": 6,
+      "out_degree": 1
+    },
+    {
+      "id": "06IS130",
+      "label": "06IS130\n(雪橇到面漆控制线)",
+      "section": "雪橇到面漆控制线",
+      "stage": "雪橇转运",
+      "car_count": 65507,
+      "events": 65525,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "07IS005",
+      "label": "07IS005\n(电泳检查线1)",
+      "section": "电泳检查线1",
+      "stage": "电泳检查",
+      "car_count": 139,
+      "events": 533,
+      "in_degree": 1,
+      "out_degree": 0
+    },
+    {
+      "id": "L3AUB11IS02",
+      "label": "L3AUB11IS02\n(电泳检查线1)",
+      "section": "电泳检查线1",
+      "stage": "电泳检查",
+      "car_count": 57,
+      "events": 113,
+      "in_degree": 0,
+      "out_degree": 1
+    },
+    {
+      "id": "08IS005",
+      "label": "08IS005\n(电泳检查线2)",
+      "section": "电泳检查线2",
+      "stage": "电泳检查",
+      "car_count": 62600,
+      "events": 62746,
+      "in_degree": 2,
+      "out_degree": 1
+    },
+    {
+      "id": "L3AUB21IS02",
+      "label": "L3AUB21IS02\n(电泳检查线2)",
+      "section": "电泳检查线2",
+      "stage": "电泳检查",
+      "car_count": 62632,
+      "events": 62772,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "09IS005",
+      "label": "09IS005\n(电泳检查线3)",
+      "section": "电泳检查线3",
+      "stage": "电泳检查",
+      "car_count": 24340,
+      "events": 24374,
+      "in_degree": 2,
+      "out_degree": 1
+    },
+    {
+      "id": "09IS055",
+      "label": "09IS055\n(电泳检查线3)",
+      "section": "电泳检查线3",
+      "stage": "电泳检查",
+      "car_count": 24328,
+      "events": 24333,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "07IS060",
+      "label": "07IS060\n(UBS线1)",
+      "section": "UBS线1",
+      "stage": "UBS喷涂",
+      "car_count": 56,
+      "events": 62,
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "07IS175",
+      "label": "07IS175\n(UBS线1)",
+      "section": "UBS线1",
+      "stage": "UBS喷涂",
+      "car_count": 57,
+      "events": 121,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "08IS060",
+      "label": "08IS060\n(UBS线2)",
+      "section": "UBS线2",
+      "stage": "UBS喷涂",
+      "car_count": 62597,
+      "events": 62655,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "08IS175",
+      "label": "08IS175\n(UBS线2)",
+      "section": "UBS线2",
+      "stage": "UBS喷涂",
+      "car_count": 62634,
+      "events": 62766,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "09IS060",
+      "label": "09IS060\n(UBS线3)",
+      "section": "UBS线3",
+      "stage": "UBS喷涂",
+      "car_count": 24327,
+      "events": 24331,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "09IS175",
+      "label": "09IS175\n(UBS线3)",
+      "section": "UBS线3",
+      "stage": "UBS喷涂",
+      "car_count": 24339,
+      "events": 24352,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "07IS400",
+      "label": "07IS400\n(粗密封线1)",
+      "section": "粗密封线1",
+      "stage": "粗密封",
+      "car_count": 56,
+      "events": 57,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "L3ASD11IS01",
+      "label": "L3ASD11IS01\n(粗密封线1)",
+      "section": "粗密封线1",
+      "stage": "粗密封",
+      "car_count": 59,
+      "events": 64,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "08IS400",
+      "label": "08IS400\n(粗密封线2)",
+      "section": "粗密封线2",
+      "stage": "粗密封",
+      "car_count": 62585,
+      "events": 62640,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "L3ASW21IS01",
+      "label": "L3ASW21IS01\n(粗密封线2)",
+      "section": "粗密封线2",
+      "stage": "粗密封",
+      "car_count": 62589,
+      "events": 62656,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "09IS400",
+      "label": "09IS400\n(粗密封线3)",
+      "section": "粗密封线3",
+      "stage": "粗密封",
+      "car_count": 24322,
+      "events": 24326,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "L3ASW31IS01",
+      "label": "L3ASW31IS01\n(粗密封线3)",
+      "section": "粗密封线3",
+      "stage": "粗密封",
+      "car_count": 24319,
+      "events": 24430,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "L3AGA11IS01",
+      "label": "L3AGA11IS01\n(细密封线1)",
+      "section": "细密封线1",
+      "stage": "细密封",
+      "car_count": 57,
+      "events": 68,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "07IS465",
+      "label": "07IS465\n(细密封线1)",
+      "section": "细密封线1",
+      "stage": "细密封",
+      "car_count": 57,
+      "events": 62,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "L3AGA21IS01",
+      "label": "L3AGA21IS01\n(细密封线2)",
+      "section": "细密封线2",
+      "stage": "细密封",
+      "car_count": 62576,
+      "events": 62844,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "08IS465",
+      "label": "08IS465\n(细密封线2)",
+      "section": "细密封线2",
+      "stage": "细密封",
+      "car_count": 62587,
+      "events": 62649,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "L3AGA31IS01",
+      "label": "L3AGA31IS01\n(细密封线3)",
+      "section": "细密封线3",
+      "stage": "细密封",
+      "car_count": 24320,
+      "events": 24327,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "09IS465",
+      "label": "09IS465\n(细密封线3)",
+      "section": "细密封线3",
+      "stage": "细密封",
+      "car_count": 24320,
+      "events": 24325,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "10IS001",
+      "label": "10IS001\n(TF TO UBSOVEN)",
+      "section": "TF TO UBSOVEN",
+      "stage": "PVC转运",
+      "car_count": 69,
+      "events": 92,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "10IS011",
+      "label": "10IS011\n(TF TO UBSOVEN)",
+      "section": "TF TO UBSOVEN",
+      "stage": "PVC转运",
+      "car_count": 62592,
+      "events": 62687,
+      "in_degree": 1,
+      "out_degree": 2
+    },
+    {
+      "id": "10IS021",
+      "label": "10IS021\n(TF TO UBSOVEN)",
+      "section": "TF TO UBSOVEN",
+      "stage": "PVC转运",
+      "car_count": 24340,
+      "events": 24362,
+      "in_degree": 1,
+      "out_degree": 2
+    },
+    {
+      "id": "11IS005",
+      "label": "11IS005\n(UBS缓存1)",
+      "section": "UBS缓存1",
+      "stage": "UBS缓存",
+      "car_count": 36478,
+      "events": 36492,
+      "in_degree": 2,
+      "out_degree": 1
+    },
+    {
+      "id": "12IS165",
+      "label": "12IS165\n(UBS缓存1)",
+      "section": "UBS缓存1",
+      "stage": "UBS缓存",
+      "car_count": 36600,
+      "events": 36615,
+      "in_degree": 1,
+      "out_degree": 3
+    },
+    {
+      "id": "11IS010",
+      "label": "11IS010\n(UBS缓存2)",
+      "section": "UBS缓存2",
+      "stage": "UBS缓存",
+      "car_count": 50363,
+      "events": 50392,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "12IS575",
+      "label": "12IS575\n(UBS缓存2)",
+      "section": "UBS缓存2",
+      "stage": "UBS缓存",
+      "car_count": 5465,
+      "events": 5891,
+      "in_degree": 3,
+      "out_degree": 3
+    },
+    {
+      "id": "13IS205",
+      "label": "13IS205\n(UBS审计线1)",
+      "section": "UBS审计线1",
+      "stage": "UBS审计",
+      "car_count": 44,
+      "events": 88,
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "14IS205",
+      "label": "14IS205\n(UBS审计线2)",
+      "section": "UBS审计线2",
+      "stage": "UBS审计",
+      "car_count": 172,
+      "events": 351,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "15IS205",
+      "label": "15IS205\n(UBS审计线3)",
+      "section": "UBS审计线3",
+      "stage": "UBS审计",
+      "car_count": 3,
+      "events": 8,
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "13IS015",
+      "label": "13IS015\n(面漆打磨1)",
+      "section": "面漆打磨1",
+      "stage": "面漆打磨",
+      "car_count": 9493,
+      "events": 10987,
+      "in_degree": 4,
+      "out_degree": 2
+    },
+    {
+      "id": "13IS075",
+      "label": "13IS075\n(面漆打磨1)",
+      "section": "面漆打磨1",
+      "stage": "面漆打磨",
+      "car_count": 9883,
+      "events": 11604,
+      "in_degree": 1,
+      "out_degree": 2
+    },
+    {
+      "id": "14IS015",
+      "label": "14IS015\n(面漆打磨2)",
+      "section": "面漆打磨2",
+      "stage": "面漆打磨",
+      "car_count": 82698,
+      "events": 83318,
+      "in_degree": 4,
+      "out_degree": 2
+    },
+    {
+      "id": "14IS075",
+      "label": "14IS075\n(面漆打磨2)",
+      "section": "面漆打磨2",
+      "stage": "面漆打磨",
+      "car_count": 83059,
+      "events": 91075,
+      "in_degree": 1,
+      "out_degree": 2
+    },
+    {
+      "id": "15IS015",
+      "label": "15IS015\n(面漆打磨3)",
+      "section": "面漆打磨3",
+      "stage": "面漆打磨",
+      "car_count": 10333,
+      "events": 12428,
+      "in_degree": 4,
+      "out_degree": 1
+    },
+    {
+      "id": "15IS075",
+      "label": "15IS075\n(面漆打磨3)",
+      "section": "面漆打磨3",
+      "stage": "面漆打磨",
+      "car_count": 10331,
+      "events": 12519,
+      "in_degree": 1,
+      "out_degree": 2
+    },
+    {
+      "id": "13IS260",
+      "label": "13IS260\n(面漆控制缓存线1)",
+      "section": "面漆控制缓存线1",
+      "stage": "面漆控制缓存",
+      "car_count": 8990,
+      "events": 14064,
+      "in_degree": 2,
+      "out_degree": 1
+    },
+    {
+      "id": "13IS400",
+      "label": "13IS400\n(面漆控制缓存线1)",
+      "section": "面漆控制缓存线1",
+      "stage": "面漆控制缓存",
+      "car_count": 3348,
+      "events": 3411,
+      "in_degree": 0,
+      "out_degree": 1
+    },
+    {
+      "id": "14IS260",
+      "label": "14IS260\n(面漆控制缓存线2)",
+      "section": "面漆控制缓存线2",
+      "stage": "面漆控制缓存",
+      "car_count": 83107,
+      "events": 162536,
+      "in_degree": 3,
+      "out_degree": 2
+    },
+    {
+      "id": "14IS400",
+      "label": "14IS400\n(面漆控制缓存线2)",
+      "section": "面漆控制缓存线2",
+      "stage": "面漆控制缓存",
+      "car_count": 47297,
+      "events": 49486,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "15IS260",
+      "label": "15IS260\n(面漆控制缓存线3)",
+      "section": "面漆控制缓存线3",
+      "stage": "面漆控制缓存",
+      "car_count": 11621,
+      "events": 16007,
+      "in_degree": 2,
+      "out_degree": 2
+    },
+    {
+      "id": "15IS400",
+      "label": "15IS400\n(面漆控制缓存线3)",
+      "section": "面漆控制缓存线3",
+      "stage": "面漆控制缓存",
+      "car_count": 3094,
+      "events": 3863,
+      "in_degree": 0,
+      "out_degree": 1
+    },
+    {
+      "id": "13IS120",
+      "label": "13IS120\n(返修准备线1)",
+      "section": "返修准备线1",
+      "stage": "返修准备",
+      "car_count": 732,
+      "events": 765,
+      "in_degree": 2,
+      "out_degree": 1
+    },
+    {
+      "id": "14IS120",
+      "label": "14IS120\n(返修准备线2)",
+      "section": "返修准备线2",
+      "stage": "返修准备",
+      "car_count": 7412,
+      "events": 7988,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "15IS120",
+      "label": "15IS120\n(返修准备线3)",
+      "section": "返修准备线3",
+      "stage": "返修准备",
+      "car_count": 19,
+      "events": 165,
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "L3ABC11IS02",
+      "label": "L3ABC11IS02\n(面漆喷房1)",
+      "section": "面漆喷房1",
+      "stage": "面漆喷房",
+      "car_count": 8989,
+      "events": 9572,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "L3ACC11IS02",
+      "label": "L3ACC11IS02\n(面漆喷房1)",
+      "section": "面漆喷房1",
+      "stage": "面漆喷房",
+      "car_count": 8987,
+      "events": 9571,
+      "in_degree": 1,
+      "out_degree": 2
+    },
+    {
+      "id": "L3ABC21IS02",
+      "label": "L3ABC21IS02\n(面漆喷房2)",
+      "section": "面漆喷房2",
+      "stage": "面漆喷房",
+      "car_count": 83075,
+      "events": 90985,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "L3ACC21IS02",
+      "label": "L3ACC21IS02\n(面漆喷房2)",
+      "section": "面漆喷房2",
+      "stage": "面漆喷房",
+      "car_count": 83079,
+      "events": 90966,
+      "in_degree": 1,
+      "out_degree": 2
+    },
+    {
+      "id": "L3ABC31IS02",
+      "label": "L3ABC31IS02\n(面漆喷房3)",
+      "section": "面漆喷房3",
+      "stage": "面漆喷房",
+      "car_count": 7326,
+      "events": 8798,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "L3ACC31IS02",
+      "label": "L3ACC31IS02\n(面漆喷房3)",
+      "section": "面漆喷房3",
+      "stage": "面漆喷房",
+      "car_count": 7327,
+      "events": 8798,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "16IS200",
+      "label": "16IS200\n(面漆烘房线1)",
+      "section": "面漆烘房线1",
+      "stage": "面漆烘房",
+      "car_count": 8916,
+      "events": 9482,
+      "in_degree": 1,
+      "out_degree": 2
+    },
+    {
+      "id": "16IS305",
+      "label": "16IS305\n(面漆烘房线1)",
+      "section": "面漆烘房线1",
+      "stage": "面漆烘房",
+      "car_count": 8982,
+      "events": 9566,
+      "in_degree": 1,
+      "out_degree": 2
+    },
+    {
+      "id": "17IS200",
+      "label": "17IS200\n(面漆烘房线2)",
+      "section": "面漆烘房线2",
+      "stage": "面漆烘房",
+      "car_count": 82869,
+      "events": 90736,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "17IS305",
+      "label": "17IS305\n(面漆烘房线2)",
+      "section": "面漆烘房线2",
+      "stage": "面漆烘房",
+      "car_count": 83079,
+      "events": 90959,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "18IS225",
+      "label": "18IS225\n(面漆烘房线3)",
+      "section": "面漆烘房线3",
+      "stage": "面漆烘房",
+      "car_count": 7327,
+      "events": 8797,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "18IS345",
+      "label": "18IS345\n(面漆烘房线3)",
+      "section": "面漆烘房线3",
+      "stage": "面漆烘房",
+      "car_count": 7323,
+      "events": 8794,
+      "in_degree": 1,
+      "out_degree": 2
+    },
+    {
+      "id": "19IS010",
+      "label": "19IS010\n(面漆缓存线1)",
+      "section": "面漆缓存线1",
+      "stage": "面漆缓存",
+      "car_count": 8856,
+      "events": 9416,
+      "in_degree": 1,
+      "out_degree": 2
+    },
+    {
+      "id": "19IS225",
+      "label": "19IS225\n(面漆缓存线1)",
+      "section": "面漆缓存线1",
+      "stage": "面漆缓存",
+      "car_count": 8779,
+      "events": 9375,
+      "in_degree": 2,
+      "out_degree": 1
+    },
+    {
+      "id": "20IS010",
+      "label": "20IS010\n(面漆缓存线2)",
+      "section": "面漆缓存线2",
+      "stage": "面漆缓存",
+      "car_count": 83040,
+      "events": 90913,
+      "in_degree": 1,
+      "out_degree": 2
+    },
+    {
+      "id": "20IS225",
+      "label": "20IS225\n(面漆缓存线2)",
+      "section": "面漆缓存线2",
+      "stage": "面漆缓存",
+      "car_count": 81073,
+      "events": 88711,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "21IS010",
+      "label": "21IS010\n(面漆缓存线3)",
+      "section": "面漆缓存线3",
+      "stage": "面漆缓存",
+      "car_count": 7216,
+      "events": 8652,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "21IS580",
+      "label": "21IS580\n(面漆缓存线3)",
+      "section": "面漆缓存线3",
+      "stage": "面漆缓存",
+      "car_count": 10769,
+      "events": 18052,
+      "in_degree": 2,
+      "out_degree": 2
+    },
+    {
+      "id": "22IS520",
+      "label": "22IS520\n(点修补1线入口)",
+      "section": "点修补1线入口",
+      "stage": "点修补",
+      "car_count": 3174,
+      "events": 4684,
+      "in_degree": 0,
+      "out_degree": 3
+    },
+    {
+      "id": "22IS340",
+      "label": "22IS340\n(点修补1线出口)",
+      "section": "点修补1线出口",
+      "stage": "点修补",
+      "car_count": 7214,
+      "events": 10341,
+      "in_degree": 7,
+      "out_degree": 3
+    },
+    {
+      "id": "23IS470",
+      "label": "23IS470\n(点修补2线入口)",
+      "section": "点修补2线入口",
+      "stage": "点修补",
+      "car_count": 8345,
+      "events": 11457,
+      "in_degree": 1,
+      "out_degree": 2
+    },
+    {
+      "id": "23IS340",
+      "label": "23IS340\n(点修补2线出口)",
+      "section": "点修补2线出口",
+      "stage": "点修补",
+      "car_count": 16654,
+      "events": 28862,
+      "in_degree": 13,
+      "out_degree": 7
+    },
+    {
+      "id": "24IS540",
+      "label": "24IS540\n(点修补3线入口)",
+      "section": "点修补3线入口",
+      "stage": "点修补",
+      "car_count": 183,
+      "events": 698,
+      "in_degree": 0,
+      "out_degree": 2
+    },
+    {
+      "id": "24IS380",
+      "label": "24IS380\n(点修补3线出口)",
+      "section": "点修补3线出口",
+      "stage": "点修补",
+      "car_count": 8099,
+      "events": 11114,
+      "in_degree": 4,
+      "out_degree": 2
+    },
+    {
+      "id": "22IS110",
+      "label": "22IS110\n(报交1.1线入口)",
+      "section": "报交1.1线入口",
+      "stage": "报交",
+      "car_count": 4232,
+      "events": 4387,
+      "in_degree": 0,
+      "out_degree": 3
+    },
+    {
+      "id": "22IS005",
+      "label": "22IS005\n(报交1.1线出口)",
+      "section": "报交1.1线出口",
+      "stage": "报交",
+      "car_count": 10155,
+      "events": 13189,
+      "in_degree": 3,
+      "out_degree": 2
+    },
+    {
+      "id": "22IS170",
+      "label": "22IS170\n(报交1.2线入口)",
+      "section": "报交1.2线入口",
+      "stage": "报交",
+      "car_count": 5053,
+      "events": 5150,
+      "in_degree": 1,
+      "out_degree": 3
+    },
+    {
+      "id": "22IS120",
+      "label": "22IS120\n(报交1.2线出口)",
+      "section": "报交1.2线出口",
+      "stage": "报交",
+      "car_count": 5055,
+      "events": 5153,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "23IS110",
+      "label": "23IS110\n(报交2.1线入口)",
+      "section": "报交2.1线入口",
+      "stage": "报交",
+      "car_count": 40906,
+      "events": 41964,
+      "in_degree": 1,
+      "out_degree": 3
+    },
+    {
+      "id": "23IS005",
+      "label": "23IS005\n(报交2.1线出口)",
+      "section": "报交2.1线出口",
+      "stage": "报交",
+      "car_count": 83649,
+      "events": 100830,
+      "in_degree": 3,
+      "out_degree": 3
+    },
+    {
+      "id": "23IS170",
+      "label": "23IS170\n(报交2.2线入口)",
+      "section": "报交2.2线入口",
+      "stage": "报交",
+      "car_count": 43907,
+      "events": 44958,
+      "in_degree": 1,
+      "out_degree": 3
+    },
+    {
+      "id": "23IS120",
+      "label": "23IS120\n(报交2.2线出口)",
+      "section": "报交2.2线出口",
+      "stage": "报交",
+      "car_count": 43912,
+      "events": 44963,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "24IS115",
+      "label": "24IS115\n(报交3.1线入口)",
+      "section": "报交3.1线入口",
+      "stage": "报交",
+      "car_count": 3744,
+      "events": 4291,
+      "in_degree": 1,
+      "out_degree": 2
+    },
+    {
+      "id": "24IS060",
+      "label": "24IS060\n(报交3.1线出口)",
+      "section": "报交3.1线出口",
+      "stage": "报交",
+      "car_count": 3744,
+      "events": 4291,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "24IS185",
+      "label": "24IS185\n(报交3.2线入口)",
+      "section": "报交3.2线入口",
+      "stage": "报交",
+      "car_count": 7661,
+      "events": 8434,
+      "in_degree": 1,
+      "out_degree": 2
+    },
+    {
+      "id": "24IS130",
+      "label": "24IS130\n(报交3.2线出口)",
+      "section": "报交3.2线出口",
+      "stage": "报交",
+      "car_count": 7671,
+      "events": 8445,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "32IS015",
+      "label": "32IS015\n(HRK线1)",
+      "section": "HRK线1",
+      "stage": "HRK",
+      "car_count": 21081,
+      "events": 21097,
+      "in_degree": 2,
+      "out_degree": 2
+    },
+    {
+      "id": "32IS010",
+      "label": "32IS010\n(HRK线2)",
+      "section": "HRK线2",
+      "stage": "HRK",
+      "car_count": 67281,
+      "events": 67289,
+      "in_degree": 1,
+      "out_degree": 3
+    },
+    {
+      "id": "34IS340",
+      "label": "34IS340\n(HRK缓存线1)",
+      "section": "HRK缓存线1",
+      "stage": "HRK",
+      "car_count": 16678,
+      "events": 16679,
+      "in_degree": 2,
+      "out_degree": 1
+    },
+    {
+      "id": "34IS230",
+      "label": "34IS230\n(HRK缓存线2)",
+      "section": "HRK缓存线2",
+      "stage": "HRK",
+      "car_count": 15489,
+      "events": 15491,
+      "in_degree": 2,
+      "out_degree": 1
+    },
+    {
+      "id": "K1IS135",
+      "label": "K1IS135\n(注蜡线1)",
+      "section": "注蜡线1",
+      "stage": "注蜡下线",
+      "car_count": 385,
+      "events": 386,
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "K2IS075",
+      "label": "K2IS075\n(注蜡线2)",
+      "section": "注蜡线2",
+      "stage": "注蜡下线",
+      "car_count": 3640,
+      "events": 3640,
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "K3IS140",
+      "label": "K3IS140\n(注蜡线3)",
+      "section": "注蜡线3",
+      "stage": "注蜡下线",
+      "car_count": 68504,
+      "events": 68510,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "09IS350",
+      "label": "09IS350\n(连廊交接MEB)",
+      "section": "连廊交接MEB",
+      "stage": "出站连廊",
+      "car_count": 381,
+      "events": 381,
+      "in_degree": 0,
+      "out_degree": 0
+    },
+    {
+      "id": "09IS360",
+      "label": "09IS360\n(连廊交接MQB)",
+      "section": "连廊交接MQB",
+      "stage": "出站连廊",
+      "car_count": 72114,
+      "events": 72127,
+      "in_degree": 1,
+      "out_degree": 0
+    },
+    {
+      "id": "10IS255",
+      "label": "10IS255\n(PVC烘房入口交汇枢纽)",
+      "section": "PVC烘房入口交汇枢纽",
+      "stage": "PVC转运",
+      "car_count": 86910,
+      "events": 86973,
+      "in_degree": 3,
+      "out_degree": 4
+    },
+    {
+      "id": "11IS240",
+      "label": "11IS240\n(UBS缓存区主移载站A)",
+      "section": "UBS缓存区主移载站A",
+      "stage": "UBS缓存",
+      "car_count": 50525,
+      "events": 50552,
+      "in_degree": 2,
+      "out_degree": 2
+    },
+    {
+      "id": "12IS015",
+      "label": "12IS015\n(UBS缓存区主移载站B)",
+      "section": "UBS缓存区主移载站B",
+      "stage": "UBS缓存",
+      "car_count": 50403,
+      "events": 50428,
+      "in_degree": 1,
+      "out_degree": 3
+    },
+    {
+      "id": "14IS065",
+      "label": "14IS065\n(面漆2线打磨出站探头)",
+      "section": "面漆2线打磨出站探头",
+      "stage": "面漆打磨",
+      "car_count": 83061,
+      "events": 91272,
+      "in_degree": 2,
+      "out_degree": 1
+    },
+    {
+      "id": "14IS330",
+      "label": "14IS330\n(面漆2线控制缓存过渡站)",
+      "section": "面漆2线控制缓存过渡站",
+      "stage": "面漆控制缓存",
+      "car_count": 64586,
+      "events": 71455,
+      "in_degree": 2,
+      "out_degree": 2
+    },
+    {
+      "id": "17IS270",
+      "label": "17IS270\n(面漆烘房2线内部检测点A)",
+      "section": "面漆烘房2线内部检测点A",
+      "stage": "面漆烘房",
+      "car_count": 83076,
+      "events": 90677,
+      "in_degree": 2,
+      "out_degree": 1
+    },
+    {
+      "id": "17IS285",
+      "label": "17IS285\n(面漆烘房2线内部检测点B)",
+      "section": "面漆烘房2线内部检测点B",
+      "stage": "面漆烘房",
+      "car_count": 83074,
+      "events": 90675,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "25IS110",
+      "label": "25IS110\n(面漆下线至修补主分流站)",
+      "section": "面漆下线至修补主分流站",
+      "stage": "面漆缓存",
+      "car_count": 80036,
+      "events": 80362,
+      "in_degree": 3,
+      "out_degree": 2
+    },
+    {
+      "id": "25IS395",
+      "label": "25IS395\n(面漆修补移载过渡站A)",
+      "section": "面漆修补移载过渡站A",
+      "stage": "面漆缓存",
+      "car_count": 67326,
+      "events": 67343,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "25IS460",
+      "label": "25IS460\n(面漆修补移载过渡站B)",
+      "section": "面漆修补移载过渡站B",
+      "stage": "面漆缓存",
+      "car_count": 67328,
+      "events": 67334,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "32IS230",
+      "label": "32IS230\n(HRK注蜡前主缓存移载站A)",
+      "section": "HRK注蜡前主缓存移载站A",
+      "stage": "HRK",
+      "car_count": 71866,
+      "events": 71873,
+      "in_degree": 2,
+      "out_degree": 7
+    },
+    {
+      "id": "32IS408",
+      "label": "32IS408\n(HRK注蜡前主缓存移载站B)",
+      "section": "HRK注蜡前主缓存移载站B",
+      "stage": "HRK",
+      "car_count": 60391,
+      "events": 60396,
+      "in_degree": 3,
+      "out_degree": 4
+    },
+    {
+      "id": "L3ATK11IS01",
+      "label": "L3ATK11IS01\n(空腔注蜡后出站检测站)",
+      "section": "空腔注蜡后出站检测站",
+      "stage": "注蜡下线",
+      "car_count": 70320,
+      "events": 70357,
+      "in_degree": 5,
+      "out_degree": 1
+    },
+    {
+      "id": "01IS285",
+      "label": "01IS285\n(预处理上线主缓存过渡站)",
+      "section": "预处理上线主缓存过渡站",
+      "stage": "预处理",
+      "car_count": 72082,
+      "events": 72189,
+      "in_degree": 1,
+      "out_degree": 2
+    },
+    {
+      "id": "K3IS055",
+      "label": "K3IS055\n(注蜡3线出站前探头)",
+      "section": "注蜡3线出站前探头",
+      "stage": "注蜡下线",
+      "car_count": 68452,
+      "events": 68458,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "K3IS230",
+      "label": "K3IS230\n(连廊交接过渡站)",
+      "section": "连廊交接过渡站",
+      "stage": "出站连廊",
+      "car_count": 68508,
+      "events": 68516,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "06IS140",
+      "label": "06IS140\n(雪橇到面漆控制线移载段C)",
+      "section": "雪橇到面漆控制线移载段C",
+      "stage": "雪橇转运",
+      "car_count": 65468,
+      "events": 65487,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "06IS160",
+      "label": "06IS160\n(雪橇到面漆控制线移载段D)",
+      "section": "雪橇到面漆控制线移载段D",
+      "stage": "雪橇转运",
+      "car_count": 65463,
+      "events": 65484,
+      "in_degree": 1,
+      "out_degree": 2
+    },
+    {
+      "id": "08IS100",
+      "label": "08IS100\n(UBS2线内部过渡站)",
+      "section": "UBS2线内部过渡站",
+      "stage": "UBS喷涂",
+      "car_count": 62629,
+      "events": 62683,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "35IS025",
+      "label": "35IS025\n(HRK注蜡主线站)",
+      "section": "HRK注蜡主线站",
+      "stage": "空腔注蜡",
+      "car_count": 44177,
+      "events": 46359,
+      "in_degree": 2,
+      "out_degree": 3
+    },
+    {
+      "id": "33IS005",
+      "label": "33IS005\n(HRK注蜡输送线站)",
+      "section": "HRK注蜡输送线站",
+      "stage": "空腔注蜡",
+      "car_count": 43554,
+      "events": 45723,
+      "in_degree": 4,
+      "out_degree": 4
+    },
+    {
+      "id": "23IS060",
+      "label": "23IS060\n(终检/报交检查站)",
+      "section": "终检/报交检查站",
+      "stage": "报交检查",
+      "car_count": 40903,
+      "events": 41841,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "35IS050",
+      "label": "35IS050\n(HRK注蜡主线站)",
+      "section": "HRK注蜡主线站",
+      "stage": "空腔注蜡",
+      "car_count": 39163,
+      "events": 39173,
+      "in_degree": 2,
+      "out_degree": 2
+    },
+    {
+      "id": "35IS045",
+      "label": "35IS045\n(HRK注蜡主线站)",
+      "section": "HRK注蜡主线站",
+      "stage": "空腔注蜡",
+      "car_count": 38428,
+      "events": 38431,
+      "in_degree": 2,
+      "out_degree": 3
+    },
+    {
+      "id": "11IS310",
+      "label": "11IS310\n(UBS缓存移载站)",
+      "section": "UBS缓存移载站",
+      "stage": "细密封",
+      "car_count": 36606,
+      "events": 36836,
+      "in_degree": 2,
+      "out_degree": 1
+    },
+    {
+      "id": "11IS225",
+      "label": "11IS225\n(UBS缓存移载站)",
+      "section": "UBS缓存移载站",
+      "stage": "细密封",
+      "car_count": 36475,
+      "events": 36488,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "33IS025",
+      "label": "33IS025\n(HRK注蜡输送线站)",
+      "section": "HRK注蜡输送线站",
+      "stage": "空腔注蜡",
+      "car_count": 33843,
+      "events": 34108,
+      "in_degree": 2,
+      "out_degree": 1
+    },
+    {
+      "id": "03IS170",
+      "label": "03IS170\n(电泳2线工艺站)",
+      "section": "电泳2线工艺站",
+      "stage": "电泳",
+      "car_count": 29820,
+      "events": 29822,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "02IS260",
+      "label": "02IS260\n(电泳1线工艺站)",
+      "section": "电泳1线工艺站",
+      "stage": "电泳",
+      "car_count": 27352,
+      "events": 27368,
+      "in_degree": 1,
+      "out_degree": 7
+    },
+    {
+      "id": "09IS100",
+      "label": "09IS100\n(UBS缓存与准备线站)",
+      "section": "UBS缓存与准备线站",
+      "stage": "UBS喷涂",
+      "car_count": 24344,
+      "events": 24348,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "06IS040",
+      "label": "06IS040\n(雪橇到面漆控制线移载站)",
+      "section": "雪橇到面漆控制线移载站",
+      "stage": "雪橇转运",
+      "car_count": 21477,
+      "events": 21513,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "06IS070",
+      "label": "06IS070\n(雪橇到面漆控制线移载站)",
+      "section": "雪橇到面漆控制线移载站",
+      "stage": "雪橇转运",
+      "car_count": 21472,
+      "events": 21516,
+      "in_degree": 1,
+      "out_degree": 3
+    },
+    {
+      "id": "06IS050",
+      "label": "06IS050\n(雪橇到面漆控制线移载站)",
+      "section": "雪橇到面漆控制线移载站",
+      "stage": "雪橇转运",
+      "car_count": 21467,
+      "events": 21529,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "25IS365",
+      "label": "25IS365\n(面漆报交下线移载站)",
+      "section": "面漆报交下线移载站",
+      "stage": "报交下线",
+      "car_count": 19519,
+      "events": 19534,
+      "in_degree": 2,
+      "out_degree": 2
+    },
+    {
+      "id": "02IS190",
+      "label": "02IS190\n(电泳1线工艺站)",
+      "section": "电泳1线工艺站",
+      "stage": "电泳",
+      "car_count": 18766,
+      "events": 18778,
+      "in_degree": 2,
+      "out_degree": 3
+    },
+    {
+      "id": "35IS080",
+      "label": "35IS080\n(HRK注蜡主线站)",
+      "section": "HRK注蜡主线站",
+      "stage": "空腔注蜡",
+      "car_count": 16672,
+      "events": 16672,
+      "in_degree": 1,
+      "out_degree": 2
+    },
+    {
+      "id": "L3ATK11IS02",
+      "label": "L3ATK11IS02\n(HRK注蜡出站站)",
+      "section": "HRK注蜡出站站",
+      "stage": "空腔注蜡",
+      "car_count": 16504,
+      "events": 16539,
+      "in_degree": 7,
+      "out_degree": 1
+    },
+    {
+      "id": "35IS075",
+      "label": "35IS075\n(HRK注蜡主线站)",
+      "section": "HRK注蜡主线站",
+      "stage": "空腔注蜡",
+      "car_count": 15487,
+      "events": 15489,
+      "in_degree": 1,
+      "out_degree": 2
+    },
+    {
+      "id": "42IS455",
+      "label": "42IS455\n(底盘高温烘房2线站)",
+      "section": "底盘高温烘房2线站",
+      "stage": "底盘烘干",
+      "car_count": 15228,
+      "events": 15504,
+      "in_degree": 3,
+      "out_degree": 2
+    },
+    {
+      "id": "42IS050",
+      "label": "42IS050\n(底盘高温烘房2线站)",
+      "section": "底盘高温烘房2线站",
+      "stage": "底盘烘干",
+      "car_count": 15197,
+      "events": 15276,
+      "in_degree": 3,
+      "out_degree": 2
+    },
+    {
+      "id": "42IS245",
+      "label": "42IS245\n(底盘高温烘房2线站)",
+      "section": "底盘高温烘房2线站",
+      "stage": "底盘烘干",
+      "car_count": 15184,
+      "events": 15261,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "42IS210",
+      "label": "42IS210\n(底盘高温烘房2线站)",
+      "section": "底盘高温烘房2线站",
+      "stage": "底盘烘干",
+      "car_count": 15183,
+      "events": 15263,
+      "in_degree": 2,
+      "out_degree": 1
+    },
+    {
+      "id": "32IS130",
+      "label": "32IS130\n(HRK注蜡前缓存站)",
+      "section": "HRK注蜡前缓存站",
+      "stage": "空腔注蜡",
+      "car_count": 14974,
+      "events": 14989,
+      "in_degree": 3,
+      "out_degree": 4
+    },
+    {
+      "id": "32IS406",
+      "label": "32IS406\n(HRK注蜡前缓存站)",
+      "section": "HRK注蜡前缓存站",
+      "stage": "空腔注蜡",
+      "car_count": 14969,
+      "events": 14983,
+      "in_degree": 2,
+      "out_degree": 3
+    },
+    {
+      "id": "1F250RB",
+      "label": "1F250RB\n(预处理过渡工位)",
+      "section": "预处理过渡工位",
+      "stage": "工位交接",
+      "car_count": 14786,
+      "events": 14863,
+      "in_degree": 3,
+      "out_degree": 1
+    },
+    {
+      "id": "01IS255",
+      "label": "01IS255\n(预处理线过渡站)",
+      "section": "预处理线过渡站",
+      "stage": "预处理",
+      "car_count": 14779,
+      "events": 14857,
+      "in_degree": 1,
+      "out_degree": 2
+    },
+    {
+      "id": "42IS230",
+      "label": "42IS230\n(底盘高温烘房2线站)",
+      "section": "底盘高温烘房2线站",
+      "stage": "底盘烘干",
+      "car_count": 14503,
+      "events": 14582,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "22IS625",
+      "label": "22IS625\n(点修补返修循环枢纽站)",
+      "section": "点修补返修循环枢纽站",
+      "stage": "面漆修补",
+      "car_count": 14445,
+      "events": 24573,
+      "in_degree": 3,
+      "out_degree": 3
+    },
+    {
+      "id": "1L360RB",
+      "label": "1L360RB\n(涂装第2上线点)",
+      "section": "涂装第2上线点",
+      "stage": "车身上线",
+      "car_count": 14389,
+      "events": 14426,
+      "in_degree": 0,
+      "out_degree": 2
+    },
+    {
+      "id": "1J440RB",
+      "label": "1J440RB\n(涂装第2下线点)",
+      "section": "涂装第2下线点",
+      "stage": "车身下线",
+      "car_count": 14318,
+      "events": 14335,
+      "in_degree": 1,
+      "out_degree": 0
+    },
+    {
+      "id": "41IS315",
+      "label": "41IS315\n(底盘高温烘房1线站)",
+      "section": "底盘高温烘房1线站",
+      "stage": "底盘烘干",
+      "car_count": 13923,
+      "events": 13999,
+      "in_degree": 1,
+      "out_degree": 2
+    },
+    {
+      "id": "42IS110",
+      "label": "42IS110\n(底盘高温烘房2线站)",
+      "section": "底盘高温烘房2线站",
+      "stage": "底盘烘干",
+      "car_count": 13443,
+      "events": 13513,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "42IS135",
+      "label": "42IS135\n(底盘高温烘房2线站)",
+      "section": "底盘高温烘房2线站",
+      "stage": "底盘烘干",
+      "car_count": 13419,
+      "events": 13489,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "10IS335",
+      "label": "10IS335\n(PVC胶房/烘房站)",
+      "section": "PVC胶房/烘房站",
+      "stage": "粗密封",
+      "car_count": 12192,
+      "events": 12197,
+      "in_degree": 4,
+      "out_degree": 2
+    },
+    {
+      "id": "21IS565",
+      "label": "21IS565\n(双色漆/修补喷房站)",
+      "section": "双色漆/修补喷房站",
+      "stage": "双色漆/修补",
+      "car_count": 11096,
+      "events": 19400,
+      "in_degree": 2,
+      "out_degree": 3
+    },
+    {
+      "id": "03IS260",
+      "label": "03IS260\n(电泳2线工艺站)",
+      "section": "电泳2线工艺站",
+      "stage": "电泳",
+      "car_count": 10924,
+      "events": 10930,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "15IS065",
+      "label": "15IS065\n(面漆2线辅助移载站)",
+      "section": "面漆2线辅助移载站",
+      "stage": "色漆喷涂",
+      "car_count": 10338,
+      "events": 12285,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "13IS065",
+      "label": "13IS065\n(面漆1线打磨与喷房前移载站)",
+      "section": "面漆1线打磨与喷房前移载站",
+      "stage": "色漆喷涂",
+      "car_count": 9888,
+      "events": 11634,
+      "in_degree": 2,
+      "out_degree": 1
+    },
+    {
+      "id": "42IS015",
+      "label": "42IS015\n(底盘高温烘房2线站)",
+      "section": "底盘高温烘房2线站",
+      "stage": "底盘烘干",
+      "car_count": 9328,
+      "events": 9402,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "16IS285",
+      "label": "16IS285\n(面漆1线烘房内部检测站)",
+      "section": "面漆1线烘房内部检测站",
+      "stage": "面漆烘烤",
+      "car_count": 8963,
+      "events": 9530,
+      "in_degree": 2,
+      "out_degree": 1
+    },
+    {
+      "id": "16IS270",
+      "label": "16IS270\n(面漆1线烘房内部检测站)",
+      "section": "面漆1线烘房内部检测站",
+      "stage": "面漆烘烤",
+      "car_count": 8883,
+      "events": 9447,
+      "in_degree": 2,
+      "out_degree": 1
+    },
+    {
+      "id": "33IS487",
+      "label": "33IS487\n(HRK注蜡输送线站)",
+      "section": "HRK注蜡输送线站",
+      "stage": "空腔注蜡",
+      "car_count": 7807,
+      "events": 7812,
+      "in_degree": 3,
+      "out_degree": 3
+    },
+    {
+      "id": "18IS325",
+      "label": "18IS325\n(面漆强冷/检查支线站)",
+      "section": "面漆强冷/检查支线站",
+      "stage": "面漆检查",
+      "car_count": 7327,
+      "events": 8600,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "21IS535",
+      "label": "21IS535\n(双色漆/修补喷房站)",
+      "section": "双色漆/修补喷房站",
+      "stage": "双色漆/修补",
+      "car_count": 7243,
+      "events": 8516,
+      "in_degree": 2,
+      "out_degree": 1
+    },
+    {
+      "id": "25IS010",
+      "label": "25IS010\n(面漆报交下线移载站)",
+      "section": "面漆报交下线移载站",
+      "stage": "报交下线",
+      "car_count": 6328,
+      "events": 6422,
+      "in_degree": 3,
+      "out_degree": 1
+    },
+    {
+      "id": "1C470RB",
+      "label": "1C470RB\n(电泳缓存至雪橇交接工位)",
+      "section": "电泳缓存至雪橇交接工位",
+      "stage": "雪橇转运",
+      "car_count": 5228,
+      "events": 5230,
+      "in_degree": 1,
+      "out_degree": 1
+    },
+    {
+      "id": "23IS440",
+      "label": "23IS440\n(终检/报交检查站)",
+      "section": "终检/报交检查站",
+      "stage": "报交检查",
+      "car_count": 5146,
+      "events": 6215,
+      "in_degree": 1,
+      "out_degree": 1
+    }
+  ],
+  "links": [
+    {
+      "source": "01IS045",
+      "target": "1F250RB",
+      "car_count": 379,
+      "duration_median": 19.18,
+      "duration_p90": 240.26
+    },
+    {
+      "source": "01IS205",
+      "target": "01IS285",
+      "car_count": 72058,
+      "duration_median": 8.52,
+      "duration_p90": 17.21
+    },
+    {
+      "source": "01IS320",
+      "target": "1F250RB",
+      "car_count": 14284,
+      "duration_median": 1.25,
+      "duration_p90": 1.25
+    },
+    {
+      "source": "02IS030",
+      "target": "02IS060",
+      "car_count": 46625,
+      "duration_median": 28.17,
+      "duration_p90": 30.27
+    },
+    {
+      "source": "02IS060",
+      "target": "02IS125",
+      "car_count": 27346,
+      "duration_median": 18.06,
+      "duration_p90": 19.73
+    },
+    {
+      "source": "02IS060",
+      "target": "02IS190",
+      "car_count": 18710,
+      "duration_median": 22.64,
+      "duration_p90": 23.89
+    },
+    {
+      "source": "02IS060",
+      "target": "03IS060",
+      "car_count": 553,
+      "duration_median": 2.34,
+      "duration_p90": 4.19
+    },
+    {
+      "source": "02IS060",
+      "target": "30IS005",
+      "car_count": 64,
+      "duration_median": 32.08,
+      "duration_p90": 102.56
+    },
+    {
+      "source": "03IS035",
+      "target": "03IS060",
+      "car_count": 40211,
+      "duration_median": 28.14,
+      "duration_p90": 29.01
+    },
+    {
+      "source": "03IS060",
+      "target": "03IS135",
+      "car_count": 40754,
+      "duration_median": 20.15,
+      "duration_p90": 22.21
+    },
+    {
+      "source": "03IS060",
+      "target": "30IS005",
+      "car_count": 52,
+      "duration_median": 21.49,
+      "duration_p90": 38.63
+    },
+    {
+      "source": "02IS125",
+      "target": "02IS260",
+      "car_count": 27310,
+      "duration_median": 4.63,
+      "duration_p90": 4.95
+    },
+    {
+      "source": "02IS125",
+      "target": "02IS190",
+      "car_count": 56,
+      "duration_median": 5.17,
+      "duration_p90": 6.66
+    },
+    {
+      "source": "02IS125",
+      "target": "03IS135",
+      "car_count": 55,
+      "duration_median": 0.71,
+      "duration_p90": 2.05
+    },
+    {
+      "source": "03IS135",
+      "target": "03IS170",
+      "car_count": 29818,
+      "duration_median": 3.72,
+      "duration_p90": 4.58
+    },
+    {
+      "source": "03IS135",
+      "target": "03IS260",
+      "car_count": 10921,
+      "duration_median": 4.81,
+      "duration_p90": 5.61
+    },
+    {
+      "source": "03IS135",
+      "target": "02IS125",
+      "car_count": 63,
+      "duration_median": 0.54,
+      "duration_p90": 2.79
+    },
+    {
+      "source": "04IS005",
+      "target": "04IS115",
+      "car_count": 9168,
+      "duration_median": 4.94,
+      "duration_p90": 306.71
+    },
+    {
+      "source": "04IS005",
+      "target": "05IS130",
+      "car_count": 6974,
+      "duration_median": 27.63,
+      "duration_p90": 68.41
+    },
+    {
+      "source": "04IS005",
+      "target": "28IS050",
+      "car_count": 4965,
+      "duration_median": 1.74,
+      "duration_p90": 1.86
+    },
+    {
+      "source": "04IS005",
+      "target": "28IS115",
+      "car_count": 2774,
+      "duration_median": 349.77,
+      "duration_p90": 958.52
+    },
+    {
+      "source": "04IS005",
+      "target": "06IS010",
+      "car_count": 173,
+      "duration_median": 16.03,
+      "duration_p90": 111.02
+    },
+    {
+      "source": "04IS005",
+      "target": "05IS163",
+      "car_count": 133,
+      "duration_median": 103.03,
+      "duration_p90": 650.5
+    },
+    {
+      "source": "04IS005",
+      "target": "06IS105",
+      "car_count": 54,
+      "duration_median": 18.4,
+      "duration_p90": 51.47
+    },
+    {
+      "source": "04IS115",
+      "target": "06IS010",
+      "car_count": 15640,
+      "duration_median": 1.55,
+      "duration_p90": 11.21
+    },
+    {
+      "source": "04IS115",
+      "target": "1C470RB",
+      "car_count": 5195,
+      "duration_median": 0.38,
+      "duration_p90": 3.61
+    },
+    {
+      "source": "05IS005",
+      "target": "05IS163",
+      "car_count": 25135,
+      "duration_median": 1.87,
+      "duration_p90": 1.95
+    },
+    {
+      "source": "05IS005",
+      "target": "05IS130",
+      "car_count": 15471,
+      "duration_median": 34.68,
+      "duration_p90": 110.94
+    },
+    {
+      "source": "05IS005",
+      "target": "06IS105",
+      "car_count": 94,
+      "duration_median": 76.2,
+      "duration_p90": 303.72
+    },
+    {
+      "source": "05IS130",
+      "target": "06IS105",
+      "car_count": 64911,
+      "duration_median": 2.95,
+      "duration_p90": 7.43
+    },
+    {
+      "source": "05IS163",
+      "target": "05IS130",
+      "car_count": 13919,
+      "duration_median": 69.87,
+      "duration_p90": 192.18
+    },
+    {
+      "source": "05IS163",
+      "target": "28IS115",
+      "car_count": 4464,
+      "duration_median": 292.56,
+      "duration_p90": 1054.01
+    },
+    {
+      "source": "05IS163",
+      "target": "04IS115",
+      "car_count": 4223,
+      "duration_median": 17.37,
+      "duration_p90": 526.84
+    },
+    {
+      "source": "05IS163",
+      "target": "28IS050",
+      "car_count": 2310,
+      "duration_median": 0.77,
+      "duration_p90": 0.93
+    },
+    {
+      "source": "05IS163",
+      "target": "06IS105",
+      "car_count": 140,
+      "duration_median": 81.73,
+      "duration_p90": 607.53
+    },
+    {
+      "source": "05IS163",
+      "target": "06IS010",
+      "car_count": 90,
+      "duration_median": 28.76,
+      "duration_p90": 73.14
+    },
+    {
+      "source": "28IS050",
+      "target": "05IS130",
+      "car_count": 5250,
+      "duration_median": 29.73,
+      "duration_p90": 64.34
+    },
+    {
+      "source": "28IS050",
+      "target": "28IS115",
+      "car_count": 2458,
+      "duration_median": 265.26,
+      "duration_p90": 658.33
+    },
+    {
+      "source": "28IS050",
+      "target": "04IS115",
+      "car_count": 1589,
+      "duration_median": 13.84,
+      "duration_p90": 257.04
+    },
+    {
+      "source": "28IS050",
+      "target": "05IS163",
+      "car_count": 60,
+      "duration_median": 64.73,
+      "duration_p90": 167.59
+    },
+    {
+      "source": "28IS115",
+      "target": "05IS130",
+      "car_count": 13165,
+      "duration_median": 31.2,
+      "duration_p90": 85.89
+    },
+    {
+      "source": "28IS115",
+      "target": "06IS105",
+      "car_count": 119,
+      "duration_median": 36.09,
+      "duration_p90": 90.72
+    },
+    {
+      "source": "28IS115",
+      "target": "05IS163",
+      "car_count": 83,
+      "duration_median": 175.52,
+      "duration_p90": 317.94
+    },
+    {
+      "source": "30IS005",
+      "target": "03IS060",
+      "car_count": 63,
+      "duration_median": 3.41,
+      "duration_p90": 16.9
+    },
+    {
+      "source": "30IS005",
+      "target": "02IS060",
+      "car_count": 61,
+      "duration_median": 1.71,
+      "duration_p90": 13.76
+    },
+    {
+      "source": "06IS010",
+      "target": "06IS040",
+      "car_count": 21474,
+      "duration_median": 0.58,
+      "duration_p90": 3.61
+    },
+    {
+      "source": "06IS105",
+      "target": "06IS130",
+      "car_count": 65493,
+      "duration_median": 1.04,
+      "duration_p90": 2.51
+    },
+    {
+      "source": "06IS130",
+      "target": "06IS140",
+      "car_count": 65453,
+      "duration_median": 1.67,
+      "duration_p90": 4.01
+    },
+    {
+      "source": "L3AUB11IS02",
+      "target": "07IS175",
+      "car_count": 55,
+      "duration_median": 23.93,
+      "duration_p90": 44.69
+    },
+    {
+      "source": "08IS005",
+      "target": "08IS060",
+      "car_count": 62530,
+      "duration_median": 9.38,
+      "duration_p90": 14.42
+    },
+    {
+      "source": "L3AUB21IS02",
+      "target": "08IS175",
+      "car_count": 62595,
+      "duration_median": 9.25,
+      "duration_p90": 12.41
+    },
+    {
+      "source": "09IS005",
+      "target": "09IS055",
+      "car_count": 24267,
+      "duration_median": 9.03,
+      "duration_p90": 27.25
+    },
+    {
+      "source": "09IS055",
+      "target": "09IS060",
+      "car_count": 24324,
+      "duration_median": 0.36,
+      "duration_p90": 2.15
+    },
+    {
+      "source": "07IS175",
+      "target": "07IS400",
+      "car_count": 56,
+      "duration_median": 0.35,
+      "duration_p90": 0.35
+    },
+    {
+      "source": "08IS060",
+      "target": "08IS100",
+      "car_count": 62590,
+      "duration_median": 0.06,
+      "duration_p90": 0.06
+    },
+    {
+      "source": "08IS175",
+      "target": "08IS400",
+      "car_count": 62583,
+      "duration_median": 0.37,
+      "duration_p90": 0.37
+    },
+    {
+      "source": "09IS060",
+      "target": "09IS100",
+      "car_count": 24327,
+      "duration_median": 0.06,
+      "duration_p90": 0.06
+    },
+    {
+      "source": "09IS175",
+      "target": "09IS400",
+      "car_count": 24322,
+      "duration_median": 0.37,
+      "duration_p90": 0.37
+    },
+    {
+      "source": "07IS400",
+      "target": "L3AGA11IS01",
+      "car_count": 56,
+      "duration_median": 0.36,
+      "duration_p90": 3.76
+    },
+    {
+      "source": "L3ASD11IS01",
+      "target": "10IS001",
+      "car_count": 57,
+      "duration_median": 2.64,
+      "duration_p90": 31.82
+    },
+    {
+      "source": "08IS400",
+      "target": "L3AGA21IS01",
+      "car_count": 62570,
+      "duration_median": 0.38,
+      "duration_p90": 0.45
+    },
+    {
+      "source": "L3ASW21IS01",
+      "target": "10IS011",
+      "car_count": 62584,
+      "duration_median": 3.88,
+      "duration_p90": 4.25
+    },
+    {
+      "source": "09IS400",
+      "target": "L3AGA31IS01",
+      "car_count": 24315,
+      "duration_median": 0.4,
+      "duration_p90": 2.17
+    },
+    {
+      "source": "L3ASW31IS01",
+      "target": "10IS021",
+      "car_count": 24319,
+      "duration_median": 4.33,
+      "duration_p90": 4.73
+    },
+    {
+      "source": "L3AGA11IS01",
+      "target": "07IS465",
+      "car_count": 57,
+      "duration_median": 15.67,
+      "duration_p90": 73.38
+    },
+    {
+      "source": "07IS465",
+      "target": "L3ASD11IS01",
+      "car_count": 57,
+      "duration_median": 459.31,
+      "duration_p90": 2578.87
+    },
+    {
+      "source": "L3AGA21IS01",
+      "target": "08IS465",
+      "car_count": 62553,
+      "duration_median": 3.78,
+      "duration_p90": 5.64
+    },
+    {
+      "source": "08IS465",
+      "target": "L3ASW21IS01",
+      "car_count": 62517,
+      "duration_median": 15.67,
+      "duration_p90": 25.69
+    },
+    {
+      "source": "L3AGA31IS01",
+      "target": "09IS465",
+      "car_count": 24282,
+      "duration_median": 4.21,
+      "duration_p90": 17.17
+    },
+    {
+      "source": "09IS465",
+      "target": "L3ASW31IS01",
+      "car_count": 24246,
+      "duration_median": 16.5,
+      "duration_p90": 50.93
+    },
+    {
+      "source": "10IS001",
+      "target": "10IS335",
+      "car_count": 65,
+      "duration_median": 6.26,
+      "duration_p90": 9.28
+    },
+    {
+      "source": "10IS011",
+      "target": "10IS255",
+      "car_count": 57999,
+      "duration_median": 3.12,
+      "duration_p90": 3.47
+    },
+    {
+      "source": "10IS011",
+      "target": "10IS335",
+      "car_count": 4557,
+      "duration_median": 7.06,
+      "duration_p90": 19.21
+    },
+    {
+      "source": "10IS021",
+      "target": "10IS255",
+      "car_count": 22188,
+      "duration_median": 1.85,
+      "duration_p90": 2.21
+    },
+    {
+      "source": "10IS021",
+      "target": "10IS335",
+      "car_count": 2150,
+      "duration_median": 4.81,
+      "duration_p90": 9.14
+    },
+    {
+      "source": "11IS005",
+      "target": "11IS225",
+      "car_count": 36410,
+      "duration_median": 2.29,
+      "duration_p90": 41.34
+    },
+    {
+      "source": "12IS165",
+      "target": "14IS015",
+      "car_count": 31419,
+      "duration_median": 30.49,
+      "duration_p90": 57.62
+    },
+    {
+      "source": "12IS165",
+      "target": "13IS015",
+      "car_count": 3208,
+      "duration_median": 6.16,
+      "duration_p90": 23.8
+    },
+    {
+      "source": "12IS165",
+      "target": "15IS015",
+      "car_count": 1787,
+      "duration_median": 303.89,
+      "duration_p90": 1652.82
+    },
+    {
+      "source": "11IS010",
+      "target": "11IS240",
+      "car_count": 50342,
+      "duration_median": 2.26,
+      "duration_p90": 13.94
+    },
+    {
+      "source": "12IS575",
+      "target": "14IS015",
+      "car_count": 5191,
+      "duration_median": 30.31,
+      "duration_p90": 103.35
+    },
+    {
+      "source": "12IS575",
+      "target": "13IS015",
+      "car_count": 318,
+      "duration_median": 8.13,
+      "duration_p90": 38.61
+    },
+    {
+      "source": "12IS575",
+      "target": "15IS015",
+      "car_count": 207,
+      "duration_median": 255.24,
+      "duration_p90": 1132.1
+    },
+    {
+      "source": "14IS205",
+      "target": "23IS340",
+      "car_count": 172,
+      "duration_median": 1.63,
+      "duration_p90": 10.11
+    },
+    {
+      "source": "13IS015",
+      "target": "13IS065",
+      "car_count": 9386,
+      "duration_median": 10.55,
+      "duration_p90": 77.84
+    },
+    {
+      "source": "13IS015",
+      "target": "22IS340",
+      "car_count": 136,
+      "duration_median": 0.79,
+      "duration_p90": 20.49
+    },
+    {
+      "source": "13IS075",
+      "target": "13IS260",
+      "car_count": 8990,
+      "duration_median": 1.38,
+      "duration_p90": 3.06
+    },
+    {
+      "source": "13IS075",
+      "target": "12IS575",
+      "car_count": 1967,
+      "duration_median": 17.75,
+      "duration_p90": 170.2
+    },
+    {
+      "source": "14IS015",
+      "target": "14IS065",
+      "car_count": 82651,
+      "duration_median": 11.12,
+      "duration_p90": 17.94
+    },
+    {
+      "source": "14IS015",
+      "target": "23IS340",
+      "car_count": 192,
+      "duration_median": 0.69,
+      "duration_p90": 1.88
+    },
+    {
+      "source": "14IS075",
+      "target": "14IS260",
+      "car_count": 83039,
+      "duration_median": 2.22,
+      "duration_p90": 3.09
+    },
+    {
+      "source": "14IS075",
+      "target": "12IS575",
+      "car_count": 174,
+      "duration_median": 12.63,
+      "duration_p90": 251.27
+    },
+    {
+      "source": "15IS015",
+      "target": "15IS065",
+      "car_count": 10319,
+      "duration_median": 9.42,
+      "duration_p90": 42.02
+    },
+    {
+      "source": "15IS075",
+      "target": "15IS260",
+      "car_count": 7327,
+      "duration_median": 0.95,
+      "duration_p90": 2.46
+    },
+    {
+      "source": "15IS075",
+      "target": "12IS575",
+      "car_count": 3477,
+      "duration_median": 22.85,
+      "duration_p90": 218.14
+    },
+    {
+      "source": "13IS260",
+      "target": "L3ABC11IS02",
+      "car_count": 8985,
+      "duration_median": 5.52,
+      "duration_p90": 10.13
+    },
+    {
+      "source": "13IS400",
+      "target": "13IS260",
+      "car_count": 3335,
+      "duration_median": 14.97,
+      "duration_p90": 120.19
+    },
+    {
+      "source": "14IS260",
+      "target": "L3ABC21IS02",
+      "car_count": 83070,
+      "duration_median": 6.16,
+      "duration_p90": 9.77
+    },
+    {
+      "source": "14IS260",
+      "target": "14IS330",
+      "car_count": 60765,
+      "duration_median": 0.92,
+      "duration_p90": 1.36
+    },
+    {
+      "source": "14IS400",
+      "target": "14IS260",
+      "car_count": 47195,
+      "duration_median": 18.25,
+      "duration_p90": 88.39
+    },
+    {
+      "source": "15IS260",
+      "target": "L3ABC31IS02",
+      "car_count": 7325,
+      "duration_median": 1.81,
+      "duration_p90": 8.54
+    },
+    {
+      "source": "15IS260",
+      "target": "14IS330",
+      "car_count": 4731,
+      "duration_median": 3.27,
+      "duration_p90": 27.47
+    },
+    {
+      "source": "15IS400",
+      "target": "15IS260",
+      "car_count": 3016,
+      "duration_median": 232.05,
+      "duration_p90": 954.74
+    },
+    {
+      "source": "13IS120",
+      "target": "13IS065",
+      "car_count": 710,
+      "duration_median": 46.63,
+      "duration_p90": 327.75
+    },
+    {
+      "source": "14IS120",
+      "target": "14IS065",
+      "car_count": 7377,
+      "duration_median": 52.07,
+      "duration_p90": 133.4
+    },
+    {
+      "source": "L3ABC11IS02",
+      "target": "L3ACC11IS02",
+      "car_count": 8967,
+      "duration_median": 27.73,
+      "duration_p90": 58.0
+    },
+    {
+      "source": "L3ACC11IS02",
+      "target": "16IS200",
+      "car_count": 8910,
+      "duration_median": 7.52,
+      "duration_p90": 9.58
+    },
+    {
+      "source": "L3ACC11IS02",
+      "target": "16IS270",
+      "car_count": 77,
+      "duration_median": 103.69,
+      "duration_p90": 1184.9
+    },
+    {
+      "source": "L3ABC21IS02",
+      "target": "L3ACC21IS02",
+      "car_count": 83059,
+      "duration_median": 28.13,
+      "duration_p90": 33.51
+    },
+    {
+      "source": "L3ACC21IS02",
+      "target": "17IS200",
+      "car_count": 82868,
+      "duration_median": 7.56,
+      "duration_p90": 8.3
+    },
+    {
+      "source": "L3ACC21IS02",
+      "target": "17IS270",
+      "car_count": 220,
+      "duration_median": 52.04,
+      "duration_p90": 53.72
+    },
+    {
+      "source": "L3ABC31IS02",
+      "target": "L3ACC31IS02",
+      "car_count": 7279,
+      "duration_median": 26.05,
+      "duration_p90": 131.32
+    },
+    {
+      "source": "L3ACC31IS02",
+      "target": "18IS225",
+      "car_count": 7306,
+      "duration_median": 7.73,
+      "duration_p90": 75.49
+    },
+    {
+      "source": "16IS200",
+      "target": "16IS270",
+      "car_count": 8743,
+      "duration_median": 44.91,
+      "duration_p90": 88.24
+    },
+    {
+      "source": "16IS200",
+      "target": "16IS285",
+      "car_count": 106,
+      "duration_median": 46.74,
+      "duration_p90": 52.71
+    },
+    {
+      "source": "16IS305",
+      "target": "19IS010",
+      "car_count": 8851,
+      "duration_median": 0.79,
+      "duration_p90": 1.14
+    },
+    {
+      "source": "16IS305",
+      "target": "19IS225",
+      "car_count": 78,
+      "duration_median": 366.82,
+      "duration_p90": 1682.58
+    },
+    {
+      "source": "17IS200",
+      "target": "17IS270",
+      "car_count": 82840,
+      "duration_median": 45.24,
+      "duration_p90": 45.66
+    },
+    {
+      "source": "17IS305",
+      "target": "20IS010",
+      "car_count": 83039,
+      "duration_median": 0.79,
+      "duration_p90": 0.88
+    },
+    {
+      "source": "18IS225",
+      "target": "18IS325",
+      "car_count": 7280,
+      "duration_median": 44.99,
+      "duration_p90": 526.4
+    },
+    {
+      "source": "18IS345",
+      "target": "21IS010",
+      "car_count": 7211,
+      "duration_median": 0.27,
+      "duration_p90": 0.69
+    },
+    {
+      "source": "18IS345",
+      "target": "21IS535",
+      "car_count": 113,
+      "duration_median": 269.5,
+      "duration_p90": 1029.61
+    },
+    {
+      "source": "19IS010",
+      "target": "19IS225",
+      "car_count": 8296,
+      "duration_median": 33.07,
+      "duration_p90": 1133.84
+    },
+    {
+      "source": "19IS010",
+      "target": "22IS005",
+      "car_count": 93,
+      "duration_median": 38.37,
+      "duration_p90": 1097.69
+    },
+    {
+      "source": "19IS225",
+      "target": "22IS005",
+      "car_count": 8765,
+      "duration_median": 2.5,
+      "duration_p90": 14.8
+    },
+    {
+      "source": "20IS010",
+      "target": "20IS225",
+      "car_count": 80706,
+      "duration_median": 12.17,
+      "duration_p90": 118.61
+    },
+    {
+      "source": "20IS010",
+      "target": "23IS005",
+      "car_count": 2101,
+      "duration_median": 18.78,
+      "duration_p90": 90.35
+    },
+    {
+      "source": "20IS225",
+      "target": "23IS005",
+      "car_count": 81048,
+      "duration_median": 2.55,
+      "duration_p90": 6.28
+    },
+    {
+      "source": "21IS010",
+      "target": "21IS535",
+      "car_count": 6767,
+      "duration_median": 358.74,
+      "duration_p90": 1493.74
+    },
+    {
+      "source": "21IS580",
+      "target": "21IS565",
+      "car_count": 10414,
+      "duration_median": 0.83,
+      "duration_p90": 0.84
+    },
+    {
+      "source": "21IS580",
+      "target": "22IS625",
+      "car_count": 6759,
+      "duration_median": 4.8,
+      "duration_p90": 26.91
+    },
+    {
+      "source": "22IS520",
+      "target": "25IS010",
+      "car_count": 2623,
+      "duration_median": 2.21,
+      "duration_p90": 2.88
+    },
+    {
+      "source": "22IS520",
+      "target": "22IS340",
+      "car_count": 736,
+      "duration_median": 31.39,
+      "duration_p90": 337.9
+    },
+    {
+      "source": "22IS520",
+      "target": "23IS340",
+      "car_count": 654,
+      "duration_median": 47.28,
+      "duration_p90": 327.81
+    },
+    {
+      "source": "22IS340",
+      "target": "13IS015",
+      "car_count": 3839,
+      "duration_median": 0.62,
+      "duration_p90": 0.83
+    },
+    {
+      "source": "22IS340",
+      "target": "13IS120",
+      "car_count": 360,
+      "duration_median": 0.33,
+      "duration_p90": 0.46
+    },
+    {
+      "source": "22IS340",
+      "target": "23IS340",
+      "car_count": 279,
+      "duration_median": 1.82,
+      "duration_p90": 90.26
+    },
+    {
+      "source": "23IS470",
+      "target": "25IS110",
+      "car_count": 6546,
+      "duration_median": 2.42,
+      "duration_p90": 3.8
+    },
+    {
+      "source": "23IS470",
+      "target": "23IS340",
+      "car_count": 2965,
+      "duration_median": 19.68,
+      "duration_p90": 149.03
+    },
+    {
+      "source": "23IS340",
+      "target": "14IS120",
+      "car_count": 7412,
+      "duration_median": 0.57,
+      "duration_p90": 0.75
+    },
+    {
+      "source": "23IS340",
+      "target": "23IS440",
+      "car_count": 5134,
+      "duration_median": 48.32,
+      "duration_p90": 108.98
+    },
+    {
+      "source": "23IS340",
+      "target": "22IS340",
+      "car_count": 3440,
+      "duration_median": 1.07,
+      "duration_p90": 11.38
+    },
+    {
+      "source": "23IS340",
+      "target": "24IS380",
+      "car_count": 1017,
+      "duration_median": 1.48,
+      "duration_p90": 3.18
+    },
+    {
+      "source": "23IS340",
+      "target": "14IS015",
+      "car_count": 838,
+      "duration_median": 1.2,
+      "duration_p90": 2.15
+    },
+    {
+      "source": "23IS340",
+      "target": "13IS120",
+      "car_count": 375,
+      "duration_median": 0.86,
+      "duration_p90": 0.99
+    },
+    {
+      "source": "23IS340",
+      "target": "14IS205",
+      "car_count": 172,
+      "duration_median": 1.02,
+      "duration_p90": 26.19
+    },
+    {
+      "source": "24IS540",
+      "target": "23IS340",
+      "car_count": 72,
+      "duration_median": 14.15,
+      "duration_p90": 89.32
+    },
+    {
+      "source": "24IS540",
+      "target": "24IS380",
+      "car_count": 62,
+      "duration_median": 10.26,
+      "duration_p90": 68.05
+    },
+    {
+      "source": "24IS380",
+      "target": "15IS015",
+      "car_count": 7216,
+      "duration_median": 0.62,
+      "duration_p90": 0.74
+    },
+    {
+      "source": "24IS380",
+      "target": "23IS340",
+      "car_count": 752,
+      "duration_median": 3.43,
+      "duration_p90": 71.36
+    },
+    {
+      "source": "22IS110",
+      "target": "22IS340",
+      "car_count": 1896,
+      "duration_median": 8.16,
+      "duration_p90": 39.29
+    },
+    {
+      "source": "22IS110",
+      "target": "25IS010",
+      "car_count": 1637,
+      "duration_median": 2.42,
+      "duration_p90": 7.04
+    },
+    {
+      "source": "22IS110",
+      "target": "23IS340",
+      "car_count": 744,
+      "duration_median": 30.58,
+      "duration_p90": 117.34
+    },
+    {
+      "source": "22IS005",
+      "target": "22IS120",
+      "car_count": 5047,
+      "duration_median": 2.18,
+      "duration_p90": 9.0
+    },
+    {
+      "source": "22IS005",
+      "target": "22IS625",
+      "car_count": 3592,
+      "duration_median": 3.83,
+      "duration_p90": 26.13
+    },
+    {
+      "source": "22IS170",
+      "target": "25IS010",
+      "car_count": 2066,
+      "duration_median": 1.61,
+      "duration_p90": 3.78
+    },
+    {
+      "source": "22IS170",
+      "target": "22IS340",
+      "car_count": 1963,
+      "duration_median": 7.08,
+      "duration_p90": 35.17
+    },
+    {
+      "source": "22IS170",
+      "target": "23IS340",
+      "car_count": 1040,
+      "duration_median": 25.36,
+      "duration_p90": 90.77
+    },
+    {
+      "source": "22IS120",
+      "target": "22IS170",
+      "car_count": 5028,
+      "duration_median": 18.91,
+      "duration_p90": 131.27
+    },
+    {
+      "source": "23IS110",
+      "target": "25IS110",
+      "car_count": 34897,
+      "duration_median": 1.63,
+      "duration_p90": 2.36
+    },
+    {
+      "source": "23IS110",
+      "target": "23IS340",
+      "car_count": 6570,
+      "duration_median": 13.32,
+      "duration_p90": 44.56
+    },
+    {
+      "source": "23IS110",
+      "target": "22IS340",
+      "car_count": 66,
+      "duration_median": 31.94,
+      "duration_p90": 94.01
+    },
+    {
+      "source": "23IS005",
+      "target": "23IS120",
+      "car_count": 43891,
+      "duration_median": 3.69,
+      "duration_p90": 8.68
+    },
+    {
+      "source": "23IS005",
+      "target": "23IS060",
+      "car_count": 40890,
+      "duration_median": 2.48,
+      "duration_p90": 5.85
+    },
+    {
+      "source": "23IS005",
+      "target": "22IS625",
+      "car_count": 13340,
+      "duration_median": 0.84,
+      "duration_p90": 1.83
+    },
+    {
+      "source": "23IS170",
+      "target": "25IS110",
+      "car_count": 38592,
+      "duration_median": 2.09,
+      "duration_p90": 3.2
+    },
+    {
+      "source": "23IS170",
+      "target": "23IS340",
+      "car_count": 5885,
+      "duration_median": 14.63,
+      "duration_p90": 46.73
+    },
+    {
+      "source": "23IS170",
+      "target": "22IS340",
+      "car_count": 73,
+      "duration_median": 34.22,
+      "duration_p90": 103.97
+    },
+    {
+      "source": "23IS120",
+      "target": "23IS170",
+      "car_count": 43888,
+      "duration_median": 17.81,
+      "duration_p90": 26.84
+    },
+    {
+      "source": "24IS115",
+      "target": "24IS380",
+      "car_count": 3042,
+      "duration_median": 7.04,
+      "duration_p90": 31.08
+    },
+    {
+      "source": "24IS115",
+      "target": "23IS340",
+      "car_count": 587,
+      "duration_median": 42.47,
+      "duration_p90": 208.4
+    },
+    {
+      "source": "24IS060",
+      "target": "24IS115",
+      "car_count": 3735,
+      "duration_median": 18.26,
+      "duration_p90": 183.06
+    },
+    {
+      "source": "24IS185",
+      "target": "24IS380",
+      "car_count": 4686,
+      "duration_median": 6.04,
+      "duration_p90": 32.44
+    },
+    {
+      "source": "24IS185",
+      "target": "23IS340",
+      "car_count": 2947,
+      "duration_median": 31.71,
+      "duration_p90": 142.78
+    },
+    {
+      "source": "24IS130",
+      "target": "24IS185",
+      "car_count": 7642,
+      "duration_median": 18.52,
+      "duration_p90": 95.25
+    },
+    {
+      "source": "32IS015",
+      "target": "32IS130",
+      "car_count": 14328,
+      "duration_median": 3.85,
+      "duration_p90": 18.55
+    },
+    {
+      "source": "32IS015",
+      "target": "32IS230",
+      "car_count": 6650,
+      "duration_median": 4.57,
+      "duration_p90": 15.9
+    },
+    {
+      "source": "32IS010",
+      "target": "32IS230",
+      "car_count": 65166,
+      "duration_median": 3.85,
+      "duration_p90": 5.85
+    },
+    {
+      "source": "32IS010",
+      "target": "32IS015",
+      "car_count": 1726,
+      "duration_median": 0.26,
+      "duration_p90": 0.67
+    },
+    {
+      "source": "32IS010",
+      "target": "32IS130",
+      "car_count": 366,
+      "duration_median": 4.95,
+      "duration_p90": 20.95
+    },
+    {
+      "source": "34IS340",
+      "target": "35IS080",
+      "car_count": 16531,
+      "duration_median": 51.63,
+      "duration_p90": 361.77
+    },
+    {
+      "source": "34IS230",
+      "target": "35IS075",
+      "car_count": 15355,
+      "duration_median": 44.07,
+      "duration_p90": 272.48
+    },
+    {
+      "source": "K3IS140",
+      "target": "K3IS230",
+      "car_count": 68485,
+      "duration_median": 14.36,
+      "duration_p90": 27.9
+    },
+    {
+      "source": "10IS255",
+      "target": "11IS010",
+      "car_count": 50336,
+      "duration_median": 20.8,
+      "duration_p90": 21.75
+    },
+    {
+      "source": "10IS255",
+      "target": "11IS005",
+      "car_count": 31010,
+      "duration_median": 20.8,
+      "duration_p90": 21.76
+    },
+    {
+      "source": "10IS255",
+      "target": "10IS335",
+      "car_count": 5420,
+      "duration_median": 0.18,
+      "duration_p90": 0.19
+    },
+    {
+      "source": "10IS255",
+      "target": "11IS240",
+      "car_count": 158,
+      "duration_median": 24.09,
+      "duration_p90": 34.2
+    },
+    {
+      "source": "11IS240",
+      "target": "12IS015",
+      "car_count": 50358,
+      "duration_median": 4.81,
+      "duration_p90": 24.31
+    },
+    {
+      "source": "11IS240",
+      "target": "11IS310",
+      "car_count": 126,
+      "duration_median": 2.36,
+      "duration_p90": 17.34
+    },
+    {
+      "source": "12IS015",
+      "target": "14IS015",
+      "car_count": 45207,
+      "duration_median": 26.94,
+      "duration_p90": 59.15
+    },
+    {
+      "source": "12IS015",
+      "target": "13IS015",
+      "car_count": 3285,
+      "duration_median": 5.16,
+      "duration_p90": 14.29
+    },
+    {
+      "source": "12IS015",
+      "target": "15IS015",
+      "car_count": 1584,
+      "duration_median": 266.89,
+      "duration_p90": 1432.15
+    },
+    {
+      "source": "14IS065",
+      "target": "14IS075",
+      "car_count": 83055,
+      "duration_median": 0.6,
+      "duration_p90": 0.96
+    },
+    {
+      "source": "14IS330",
+      "target": "14IS400",
+      "car_count": 47274,
+      "duration_median": 7.48,
+      "duration_p90": 21.44
+    },
+    {
+      "source": "14IS330",
+      "target": "14IS260",
+      "car_count": 20671,
+      "duration_median": 11.27,
+      "duration_p90": 62.49
+    },
+    {
+      "source": "17IS270",
+      "target": "17IS285",
+      "car_count": 83070,
+      "duration_median": 1.34,
+      "duration_p90": 1.35
+    },
+    {
+      "source": "17IS285",
+      "target": "17IS305",
+      "car_count": 83073,
+      "duration_median": 1.7,
+      "duration_p90": 1.7
+    },
+    {
+      "source": "25IS110",
+      "target": "25IS395",
+      "car_count": 66830,
+      "duration_median": 2.22,
+      "duration_p90": 2.55
+    },
+    {
+      "source": "25IS110",
+      "target": "25IS365",
+      "car_count": 13196,
+      "duration_median": 5.54,
+      "duration_p90": 6.41
+    },
+    {
+      "source": "25IS395",
+      "target": "25IS460",
+      "car_count": 67326,
+      "duration_median": 2.57,
+      "duration_p90": 2.57
+    },
+    {
+      "source": "25IS460",
+      "target": "32IS010",
+      "car_count": 67281,
+      "duration_median": 0.24,
+      "duration_p90": 0.29
+    },
+    {
+      "source": "32IS230",
+      "target": "32IS408",
+      "car_count": 59684,
+      "duration_median": 2.79,
+      "duration_p90": 5.21
+    },
+    {
+      "source": "32IS230",
+      "target": "33IS005",
+      "car_count": 6006,
+      "duration_median": 10.14,
+      "duration_p90": 26.44
+    },
+    {
+      "source": "32IS230",
+      "target": "34IS340",
+      "car_count": 2568,
+      "duration_median": 3.54,
+      "duration_p90": 16.64
+    },
+    {
+      "source": "32IS230",
+      "target": "34IS230",
+      "car_count": 1867,
+      "duration_median": 6.18,
+      "duration_p90": 20.26
+    },
+    {
+      "source": "32IS230",
+      "target": "33IS487",
+      "car_count": 618,
+      "duration_median": 5.41,
+      "duration_p90": 19.81
+    },
+    {
+      "source": "32IS230",
+      "target": "32IS406",
+      "car_count": 473,
+      "duration_median": 2.93,
+      "duration_p90": 10.76
+    },
+    {
+      "source": "32IS230",
+      "target": "42IS455",
+      "car_count": 438,
+      "duration_median": 2.08,
+      "duration_p90": 3.22
+    },
+    {
+      "source": "32IS408",
+      "target": "33IS005",
+      "car_count": 26675,
+      "duration_median": 1.78,
+      "duration_p90": 4.24
+    },
+    {
+      "source": "32IS408",
+      "target": "34IS340",
+      "car_count": 14093,
+      "duration_median": 0.76,
+      "duration_p90": 0.83
+    },
+    {
+      "source": "32IS408",
+      "target": "34IS230",
+      "car_count": 13607,
+      "duration_median": 0.51,
+      "duration_p90": 0.61
+    },
+    {
+      "source": "32IS408",
+      "target": "33IS487",
+      "car_count": 4918,
+      "duration_median": 0.85,
+      "duration_p90": 0.98
+    },
+    {
+      "source": "L3ATK11IS01",
+      "target": "K3IS055",
+      "car_count": 68365,
+      "duration_median": 8.77,
+      "duration_p90": 18.35
+    },
+    {
+      "source": "01IS285",
+      "target": "02IS030",
+      "car_count": 36748,
+      "duration_median": 6.27,
+      "duration_p90": 9.78
+    },
+    {
+      "source": "01IS285",
+      "target": "03IS035",
+      "car_count": 35328,
+      "duration_median": 9.82,
+      "duration_p90": 12.13
+    },
+    {
+      "source": "K3IS055",
+      "target": "K3IS140",
+      "car_count": 68452,
+      "duration_median": 0.0,
+      "duration_p90": 0.0
+    },
+    {
+      "source": "K3IS230",
+      "target": "09IS360",
+      "car_count": 68450,
+      "duration_median": 4.66,
+      "duration_p90": 19.81
+    },
+    {
+      "source": "06IS140",
+      "target": "06IS160",
+      "car_count": 65447,
+      "duration_median": 2.87,
+      "duration_p90": 7.54
+    },
+    {
+      "source": "06IS160",
+      "target": "08IS005",
+      "car_count": 42283,
+      "duration_median": 22.12,
+      "duration_p90": 51.17
+    },
+    {
+      "source": "06IS160",
+      "target": "09IS005",
+      "car_count": 23035,
+      "duration_median": 16.34,
+      "duration_p90": 48.64
+    },
+    {
+      "source": "08IS100",
+      "target": "L3AUB21IS02",
+      "car_count": 62596,
+      "duration_median": 5.77,
+      "duration_p90": 6.65
+    },
+    {
+      "source": "35IS025",
+      "target": "35IS045",
+      "car_count": 32793,
+      "duration_median": 0.88,
+      "duration_p90": 2.4
+    },
+    {
+      "source": "35IS025",
+      "target": "L3ATK11IS02",
+      "car_count": 11141,
+      "duration_median": 1.47,
+      "duration_p90": 4.48
+    },
+    {
+      "source": "35IS025",
+      "target": "L3ATK11IS01",
+      "car_count": 189,
+      "duration_median": 7.07,
+      "duration_p90": 17.6
+    },
+    {
+      "source": "33IS005",
+      "target": "33IS025",
+      "car_count": 18734,
+      "duration_median": 0.77,
+      "duration_p90": 3.28
+    },
+    {
+      "source": "33IS005",
+      "target": "42IS230",
+      "car_count": 14497,
+      "duration_median": 4.45,
+      "duration_p90": 6.78
+    },
+    {
+      "source": "33IS005",
+      "target": "35IS025",
+      "car_count": 9907,
+      "duration_median": 62.23,
+      "duration_p90": 975.84
+    },
+    {
+      "source": "33IS005",
+      "target": "L3ATK11IS02",
+      "car_count": 63,
+      "duration_median": 69.88,
+      "duration_p90": 719.48
+    },
+    {
+      "source": "23IS060",
+      "target": "23IS110",
+      "car_count": 40883,
+      "duration_median": 17.76,
+      "duration_p90": 27.46
+    },
+    {
+      "source": "35IS050",
+      "target": "L3ATK11IS01",
+      "car_count": 38332,
+      "duration_median": 3.55,
+      "duration_p90": 6.07
+    },
+    {
+      "source": "35IS050",
+      "target": "L3ATK11IS02",
+      "car_count": 825,
+      "duration_median": 2.85,
+      "duration_p90": 7.43
+    },
+    {
+      "source": "35IS045",
+      "target": "35IS050",
+      "car_count": 34485,
+      "duration_median": 0.91,
+      "duration_p90": 2.51
+    },
+    {
+      "source": "35IS045",
+      "target": "L3ATK11IS02",
+      "car_count": 3661,
+      "duration_median": 2.78,
+      "duration_p90": 7.85
+    },
+    {
+      "source": "35IS045",
+      "target": "L3ATK11IS01",
+      "car_count": 278,
+      "duration_median": 5.12,
+      "duration_p90": 15.56
+    },
+    {
+      "source": "11IS310",
+      "target": "12IS165",
+      "car_count": 36549,
+      "duration_median": 9.3,
+      "duration_p90": 27.01
+    },
+    {
+      "source": "11IS225",
+      "target": "11IS310",
+      "car_count": 36444,
+      "duration_median": 3.52,
+      "duration_p90": 17.79
+    },
+    {
+      "source": "33IS025",
+      "target": "35IS025",
+      "car_count": 33708,
+      "duration_median": 33.89,
+      "duration_p90": 137.12
+    },
+    {
+      "source": "03IS170",
+      "target": "05IS005",
+      "car_count": 29786,
+      "duration_median": 46.55,
+      "duration_p90": 48.32
+    },
+    {
+      "source": "02IS260",
+      "target": "05IS130",
+      "car_count": 9027,
+      "duration_median": 77.06,
+      "duration_p90": 111.78
+    },
+    {
+      "source": "02IS260",
+      "target": "04IS005",
+      "car_count": 8718,
+      "duration_median": 47.31,
+      "duration_p90": 56.94
+    },
+    {
+      "source": "02IS260",
+      "target": "04IS115",
+      "car_count": 4341,
+      "duration_median": 56.26,
+      "duration_p90": 528.09
+    },
+    {
+      "source": "02IS260",
+      "target": "28IS115",
+      "car_count": 2937,
+      "duration_median": 455.78,
+      "duration_p90": 1284.95
+    },
+    {
+      "source": "02IS260",
+      "target": "28IS050",
+      "car_count": 976,
+      "duration_median": 48.22,
+      "duration_p90": 49.9
+    },
+    {
+      "source": "02IS260",
+      "target": "05IS163",
+      "car_count": 169,
+      "duration_median": 92.61,
+      "duration_p90": 205.33
+    },
+    {
+      "source": "02IS260",
+      "target": "06IS105",
+      "car_count": 157,
+      "duration_median": 91.35,
+      "duration_p90": 146.02
+    },
+    {
+      "source": "09IS100",
+      "target": "09IS175",
+      "car_count": 24251,
+      "duration_median": 15.4,
+      "duration_p90": 55.6
+    },
+    {
+      "source": "06IS040",
+      "target": "06IS050",
+      "car_count": 21464,
+      "duration_median": 0.84,
+      "duration_p90": 4.16
+    },
+    {
+      "source": "06IS070",
+      "target": "08IS005",
+      "car_count": 20046,
+      "duration_median": 20.76,
+      "duration_p90": 53.02
+    },
+    {
+      "source": "06IS070",
+      "target": "09IS005",
+      "car_count": 1257,
+      "duration_median": 20.53,
+      "duration_p90": 42.49
+    },
+    {
+      "source": "06IS070",
+      "target": "07IS005",
+      "car_count": 132,
+      "duration_median": 7.28,
+      "duration_p90": 275.56
+    },
+    {
+      "source": "06IS050",
+      "target": "06IS070",
+      "car_count": 21456,
+      "duration_median": 3.49,
+      "duration_p90": 17.37
+    },
+    {
+      "source": "25IS365",
+      "target": "32IS015",
+      "car_count": 19356,
+      "duration_median": 0.24,
+      "duration_p90": 0.3
+    },
+    {
+      "source": "25IS365",
+      "target": "32IS130",
+      "car_count": 162,
+      "duration_median": 6.03,
+      "duration_p90": 40.68
+    },
+    {
+      "source": "02IS190",
+      "target": "04IS005",
+      "car_count": 18373,
+      "duration_median": 46.46,
+      "duration_p90": 49.89
+    },
+    {
+      "source": "02IS190",
+      "target": "04IS115",
+      "car_count": 216,
+      "duration_median": 70.64,
+      "duration_p90": 405.8
+    },
+    {
+      "source": "02IS190",
+      "target": "05IS130",
+      "car_count": 65,
+      "duration_median": 77.93,
+      "duration_p90": 168.64
+    },
+    {
+      "source": "35IS080",
+      "target": "L3ATK11IS01",
+      "car_count": 16492,
+      "duration_median": 9.66,
+      "duration_p90": 35.15
+    },
+    {
+      "source": "35IS080",
+      "target": "L3ATK11IS02",
+      "car_count": 168,
+      "duration_median": 21.67,
+      "duration_p90": 62.74
+    },
+    {
+      "source": "L3ATK11IS02",
+      "target": "1J440RB",
+      "car_count": 14288,
+      "duration_median": 25.95,
+      "duration_p90": 55.4
+    },
+    {
+      "source": "35IS075",
+      "target": "L3ATK11IS01",
+      "car_count": 14986,
+      "duration_median": 7.08,
+      "duration_p90": 22.74
+    },
+    {
+      "source": "35IS075",
+      "target": "L3ATK11IS02",
+      "car_count": 498,
+      "duration_median": 7.45,
+      "duration_p90": 23.38
+    },
+    {
+      "source": "42IS455",
+      "target": "41IS315",
+      "car_count": 13853,
+      "duration_median": 65.37,
+      "duration_p90": 342.13
+    },
+    {
+      "source": "42IS455",
+      "target": "42IS050",
+      "car_count": 1246,
+      "duration_median": 210.99,
+      "duration_p90": 316.46
+    },
+    {
+      "source": "42IS050",
+      "target": "42IS110",
+      "car_count": 13411,
+      "duration_median": 6.91,
+      "duration_p90": 45.51
+    },
+    {
+      "source": "42IS050",
+      "target": "42IS210",
+      "car_count": 1751,
+      "duration_median": 0.5,
+      "duration_p90": 10.65
+    },
+    {
+      "source": "42IS245",
+      "target": "33IS025",
+      "car_count": 15166,
+      "duration_median": 2.96,
+      "duration_p90": 13.79
+    },
+    {
+      "source": "42IS210",
+      "target": "42IS245",
+      "car_count": 15178,
+      "duration_median": 0.56,
+      "duration_p90": 2.99
+    },
+    {
+      "source": "32IS130",
+      "target": "32IS406",
+      "car_count": 14442,
+      "duration_median": 2.24,
+      "duration_p90": 14.2
+    },
+    {
+      "source": "32IS130",
+      "target": "42IS455",
+      "car_count": 287,
+      "duration_median": 2.17,
+      "duration_p90": 3.22
+    },
+    {
+      "source": "32IS130",
+      "target": "33IS005",
+      "car_count": 96,
+      "duration_median": 7.14,
+      "duration_p90": 23.7
+    },
+    {
+      "source": "32IS130",
+      "target": "32IS408",
+      "car_count": 52,
+      "duration_median": 5.07,
+      "duration_p90": 29.71
+    },
+    {
+      "source": "32IS406",
+      "target": "33IS005",
+      "car_count": 10733,
+      "duration_median": 1.44,
+      "duration_p90": 2.78
+    },
+    {
+      "source": "32IS406",
+      "target": "33IS487",
+      "car_count": 2255,
+      "duration_median": 0.5,
+      "duration_p90": 0.7
+    },
+    {
+      "source": "32IS406",
+      "target": "32IS408",
+      "car_count": 636,
+      "duration_median": 0.31,
+      "duration_p90": 1.09
+    },
+    {
+      "source": "1F250RB",
+      "target": "01IS255",
+      "car_count": 14777,
+      "duration_median": 0.88,
+      "duration_p90": 0.92
+    },
+    {
+      "source": "01IS255",
+      "target": "02IS030",
+      "car_count": 9866,
+      "duration_median": 6.12,
+      "duration_p90": 9.9
+    },
+    {
+      "source": "01IS255",
+      "target": "03IS035",
+      "car_count": 4904,
+      "duration_median": 9.85,
+      "duration_p90": 13.8
+    },
+    {
+      "source": "42IS230",
+      "target": "42IS455",
+      "car_count": 14502,
+      "duration_median": 0.64,
+      "duration_p90": 0.65
+    },
+    {
+      "source": "22IS625",
+      "target": "21IS580",
+      "car_count": 10435,
+      "duration_median": 2.07,
+      "duration_p90": 5.63
+    },
+    {
+      "source": "22IS625",
+      "target": "23IS005",
+      "car_count": 9721,
+      "duration_median": 1.54,
+      "duration_p90": 7.38
+    },
+    {
+      "source": "22IS625",
+      "target": "22IS005",
+      "car_count": 3648,
+      "duration_median": 3.04,
+      "duration_p90": 4.83
+    },
+    {
+      "source": "1L360RB",
+      "target": "01IS320",
+      "car_count": 14284,
+      "duration_median": 2.55,
+      "duration_p90": 4.25
+    },
+    {
+      "source": "1L360RB",
+      "target": "1F250RB",
+      "car_count": 103,
+      "duration_median": 6.9,
+      "duration_p90": 12.92
+    },
+    {
+      "source": "41IS315",
+      "target": "42IS015",
+      "car_count": 9275,
+      "duration_median": 11.32,
+      "duration_p90": 109.08
+    },
+    {
+      "source": "41IS315",
+      "target": "42IS050",
+      "car_count": 4606,
+      "duration_median": 30.81,
+      "duration_p90": 138.94
+    },
+    {
+      "source": "42IS110",
+      "target": "42IS135",
+      "car_count": 13403,
+      "duration_median": 1.84,
+      "duration_p90": 16.05
+    },
+    {
+      "source": "42IS135",
+      "target": "42IS210",
+      "car_count": 13399,
+      "duration_median": 2.49,
+      "duration_p90": 17.03
+    },
+    {
+      "source": "10IS335",
+      "target": "10IS255",
+      "car_count": 6730,
+      "duration_median": 0.52,
+      "duration_p90": 0.9
+    },
+    {
+      "source": "10IS335",
+      "target": "11IS005",
+      "car_count": 5462,
+      "duration_median": 21.22,
+      "duration_p90": 21.35
+    },
+    {
+      "source": "21IS565",
+      "target": "24IS130",
+      "car_count": 7671,
+      "duration_median": 1.96,
+      "duration_p90": 5.18
+    },
+    {
+      "source": "21IS565",
+      "target": "21IS580",
+      "car_count": 6752,
+      "duration_median": 0.56,
+      "duration_p90": 1.65
+    },
+    {
+      "source": "21IS565",
+      "target": "24IS060",
+      "car_count": 3744,
+      "duration_median": 1.6,
+      "duration_p90": 2.81
+    },
+    {
+      "source": "03IS260",
+      "target": "05IS005",
+      "car_count": 10923,
+      "duration_median": 46.58,
+      "duration_p90": 56.51
+    },
+    {
+      "source": "15IS065",
+      "target": "15IS075",
+      "car_count": 10331,
+      "duration_median": 0.42,
+      "duration_p90": 0.69
+    },
+    {
+      "source": "13IS065",
+      "target": "13IS075",
+      "car_count": 9879,
+      "duration_median": 0.27,
+      "duration_p90": 1.09
+    },
+    {
+      "source": "42IS015",
+      "target": "42IS050",
+      "car_count": 9314,
+      "duration_median": 9.1,
+      "duration_p90": 44.7
+    },
+    {
+      "source": "16IS285",
+      "target": "16IS305",
+      "car_count": 8954,
+      "duration_median": 1.73,
+      "duration_p90": 1.76
+    },
+    {
+      "source": "16IS270",
+      "target": "16IS285",
+      "car_count": 8853,
+      "duration_median": 1.39,
+      "duration_p90": 2.37
+    },
+    {
+      "source": "33IS487",
+      "target": "35IS045",
+      "car_count": 3994,
+      "duration_median": 57.06,
+      "duration_p90": 1011.3
+    },
+    {
+      "source": "33IS487",
+      "target": "35IS050",
+      "car_count": 3375,
+      "duration_median": 46.12,
+      "duration_p90": 920.46
+    },
+    {
+      "source": "33IS487",
+      "target": "L3ATK11IS02",
+      "car_count": 65,
+      "duration_median": 117.45,
+      "duration_p90": 2443.92
+    },
+    {
+      "source": "18IS325",
+      "target": "18IS345",
+      "car_count": 7317,
+      "duration_median": 1.68,
+      "duration_p90": 8.82
+    },
+    {
+      "source": "21IS535",
+      "target": "21IS565",
+      "car_count": 7232,
+      "duration_median": 1.52,
+      "duration_p90": 16.82
+    },
+    {
+      "source": "25IS010",
+      "target": "25IS365",
+      "car_count": 6325,
+      "duration_median": 5.49,
+      "duration_p90": 16.68
+    },
+    {
+      "source": "1C470RB",
+      "target": "06IS010",
+      "car_count": 4838,
+      "duration_median": 1.37,
+      "duration_p90": 9.21
+    },
+    {
+      "source": "23IS440",
+      "target": "23IS470",
+      "car_count": 5146,
+      "duration_median": 0.61,
+      "duration_p90": 1.28
+    }
+  ]
+}

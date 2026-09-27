@@ -1,0 +1,102 @@
+[
+  {
+    "station_id": "02IS120",
+    "name": "L3FKT1",
+    "section": "电泳线1",
+    "area_code": "",
+    "stage": "电泳",
+    "status": "DRAWING_ONLY_NOT_IN_PG",
+    "suspected_pg_station": "02IS125",
+    "note": "图纸标为02IS120，PG实际走02IS125(2.7万车)及转运站02IS190/260"
+  },
+  {
+    "station_id": "04IS410",
+    "name": "L3F02",
+    "section": "电泳缓存线1",
+    "area_code": "L200_1",
+    "stage": "电泳缓存",
+    "status": "DRAWING_ONLY_NOT_IN_PG",
+    "suspected_pg_station": "04IS115",
+    "note": "图纸标为电泳缓存1线出口04IS410，PG实际出口探头为04IS115(2.1万车)"
+  },
+  {
+    "station_id": "05IS230",
+    "name": "L3F03",
+    "section": "电泳缓存线2",
+    "area_code": "L200_2",
+    "stage": "电泳缓存",
+    "status": "DRAWING_ONLY_NOT_IN_PG",
+    "suspected_pg_station": "05IS130",
+    "note": "图纸标为电泳缓存2线出口05IS230，PG实际出口探头为05IS130(6.5万车)"
+  },
+  {
+    "station_id": "28IS680",
+    "name": "L3F21",
+    "section": "前处理电泳缓存",
+    "area_code": "",
+    "stage": "雪橇缓存",
+    "status": "DRAWING_ONLY_NOT_IN_PG",
+    "suspected_pg_station": "28IS115",
+    "note": "图纸标为前处理电泳缓存出口28IS680，PG实际出口探头为28IS115(1.3万车)"
+  },
+  {
+    "station_id": "27IS510",
+    "name": "L3F20",
+    "section": "电泳空雪橇缓存区",
+    "area_code": "",
+    "stage": "雪橇缓存",
+    "status": "DRAWING_ONLY_NOT_IN_PG",
+    "suspected_pg_station": "无 (备用存道)",
+    "note": "纯空雪橇回流线备用道，PG全库0条记录，同区空雪橇走27IS105/110/240"
+  },
+  {
+    "station_id": "29IS005",
+    "name": "L3F22",
+    "section": "电泳涂漆雪橇缓存2",
+    "area_code": "",
+    "stage": "雪橇缓存",
+    "status": "DRAWING_ONLY_NOT_IN_PG",
+    "suspected_pg_station": "29IS045",
+    "note": "纯空雪橇回流线，图纸标入口29IS005，PG实际入口为29IS045(1.45万空载)及出口29IS300"
+  },
+  {
+    "station_id": "30IS335",
+    "name": "L3F23",
+    "section": "前处理电泳缓存2",
+    "area_code": "",
+    "stage": "雪橇缓存",
+    "status": "DRAWING_ONLY_NOT_IN_PG",
+    "suspected_pg_station": "无 (备用存道)",
+    "note": "前处理电泳雪橇备用存道，PG全库0条记录，同区仅30IS005有少量转运"
+  },
+  {
+    "station_id": "26IS005",
+    "name": "L3F19",
+    "section": "面漆空雪橇缓存区",
+    "area_code": "",
+    "stage": "雪橇缓存",
+    "status": "DRAWING_ONLY_NOT_IN_PG",
+    "suspected_pg_station": "无 (备用存道)",
+    "note": "面漆空雪橇备用道，PG全库0条记录，同区空雪橇走26IS295/330/375"
+  },
+  {
+    "station_id": "06IS490",
+    "name": "L3F04",
+    "section": "雪橇到面漆控制线",
+    "area_code": "",
+    "stage": "雪橇转运",
+    "status": "DRAWING_ONLY_NOT_IN_PG",
+    "suspected_pg_station": "06IS105 / 06IS130",
+    "note": "图纸标为控制线出口06IS490，PG实际交接面漆探头为06IS105/130(各6.5万车)"
+  },
+  {
+    "station_id": "35IS425",
+    "name": "L3F28",
+    "section": "HRK旁路1",
+    "area_code": "",
+    "stage": "HRK",
+    "status": "DRAWING_ONLY_NOT_IN_PG",
+    "suspected_pg_station": "35IS025 / 35IS050",
+    "note": "图纸标为HRK旁路1线，PG全库0条记录，产品车走主线35IS025/045/050"
+  }
+]
