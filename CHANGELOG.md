@@ -3,6 +3,14 @@
 > **粒度**：波次级，每波关账时写入（非逐 commit；逐 commit 明细看 `git log`）。
 > **分工**：设计决策 / 口径 / 踩坑 → BM 线程笔记（`basic-memory/projects/paint-dss/`）；验收证据细节 → `output/` 下各波报告；本文件只记代码产物时间线。
 
+## 2026-09-27 — W3-T1-lite 关账：周计划解析器（T1.1–T1.4 TDD 215/215 绿；M1-lite 离线验收 G0–G4 全过；agy 两轮计划审 0 阻断）
+
+- **产物**：`spike_w3/plan_loader.py` 新增（CSV/Excel 双格式解析 + BOM + M/D 候选年算法（file_year±1 三候选、ISO 周双对齐、唯一性已证）+ 坏行收集不崩 + 跨文件合并（异值 ValueError 写库前抛）；persist_plan 文件哈希幂等 upsert（ON CONFLICT (plan_date) DO UPDATE 显式列清单，同事务失败回滚）+ `work_plan_file_meta` sha256；因果兜底 classify_completed_day（15min 桶阈值复用 shifts）/ infer_shift_causal（纯函数、同星期几众数）/ recent_shift_history（max_date 钳制：未观测日≠休、DATE_EVT<now 因果上界）/ resolve_shift（plan 优先→inferred））+ `spike_w3/01_boot_online.py` 接线（load_week_plan 三模式 / plan_note_text 三态 / replay_rest_days / load_rest_days 垫片委托 parse_csv（02/03 冻结回放器依赖，禁删）/ DSS_DIM_TABLES 12→13 / boot 顺序 ensure→check→persist（失败=警告不中止））+ DDL 两表 `dss.dim_weekly_plan`（plan_date PK）/ `dss.work_plan_file_meta`（inferred 不入库，2026-09-27 拍板①）；`tests/test_w3_plan.py` 41 新增 + `tests/test_w3_bootstrap.py` FakeConn 补 commit/rollback；全套件 **215 passed**（基线 174 + 41 零回归）
+- **M1-lite 验收（报告 `output/w3-T1-lite-干跑报告.md`）**：G0 215/215；G1 plan_inbox 4 文件 23 行坏行 0 + KW38 逐格与用户确认值一致；G2 真库幂等（23 行 + meta 4 行，二次 0 写入，改一格→仅 7 行）；G3 真库 boot 两档（档 1 钉 09-24 23:27：池 837 逐字 / cross_check 0.358% / 13 表全 ✓ / STALE 预期；档 2 墙钟：0.12% ≤1% + STALE）；G4 兜底（空目录/缺日标注、缺计划日 total=None 不猜、无历史 (11,11,inferred) 不崩）
+- **拍板（2026-09-27，全按推荐）**：① DDL 两表确认 ② 日/中目标拆分复用 `split_target`（零公式重复）③ 缺计划日 total=None 不猜（宁可不报不报假数）
+- **踩坑沉淀**：Windows 文本模式换行回环（read_text/write_text LF↔CRLF）破坏文件哈希幂等——文件哈希比较/临时副本必须字节级（read_bytes/write_bytes）；plan_loader 本体 read_bytes 不受影响
+- **关键文件**：`spike_w3/plan_loader.py` · `spike_w3/01_boot_online.py` · `tests/test_w3_plan.py` · `docs/06`（v1.2 + 拍板记录）· `output/w3-T1-lite-干跑报告.md`
+
 ## 2026-09-27 — W3-T4c + KW38 真前瞻计划模拟（渲染器窗自适应；用户原计划周 09-14~09-20 回测 M9 G2❌/M10 6-8 门；agy 独立复核 22/22 通过）
 
 - **代码**：`03_alert_backtest.py::_render_report` 窗自适应 2 处（门判逻辑零改动，174/174 绿）：① 报告注记按 `all_day_final` 计划性质条件化（全 0 → 旧「实测回填」注记逐字保留；非零 → 真前瞻计划注记）② 硬编码计数标签（14/14、21 scope-day、shift scope 14、全天 7）→ 动态 `len`（KW38 窗实际 12 shift + 6 全天 = 18 scope-day；KW36/37 窗重渲染逐字不变）
