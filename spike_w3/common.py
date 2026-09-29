@@ -121,6 +121,10 @@ class DSSConfig:
     # Task 5 停线感知（T5 再启用）
     line_stop_min: int = 30
     observe_min: int = 15
+    # Task 6 控制台/快照（T6 生效，docs/07 v1.2 拍板④⑤）
+    console: bool = True            # DSS_CONSOLE 默认 1；0 = 关控制台与快照（回归基准）
+    run_tag: str = ""               # DSS_RUN_TAG 默认空（自动生成 YYYYMMDD-HHMMSS）
+    snapshot_dir: str = "output/snapshots"
 
 
 def _env_alpha_mode() -> str:
@@ -128,6 +132,16 @@ def _env_alpha_mode() -> str:
     if v not in ("on", "off"):
         raise ValueError(f"DSS_ALPHA_MODE 必须为 on/off，当前: {v!r}")
     return v
+
+
+def _env_console() -> bool:
+    """DSS_CONSOLE：1/0（大小写宽松）；其他值报错（同 alpha_mode 纪律）。"""
+    v = (os.environ.get("DSS_CONSOLE") or "1").strip().lower()
+    if v in ("1", "true", "on"):
+        return True
+    if v in ("0", "false", "off"):
+        return False
+    raise ValueError(f"DSS_CONSOLE 必须为 1/0，当前: {v!r}")
 
 
 def load_config() -> DSSConfig:
@@ -164,4 +178,7 @@ def load_config() -> DSSConfig:
         alert_debounce_min=_env_int("DSS_ALERT_DEBOUNCE_MIN", 10),
         line_stop_min=_env_int("DSS_LINE_STOP_MIN", 30),
         observe_min=_env_int("DSS_OBSERVE_MIN", 15),
+        console=_env_console(),
+        run_tag=_env_str("DSS_RUN_TAG", ""),
+        snapshot_dir=_env_str("DSS_SNAPSHOT_DIR", "output/snapshots"),
     )

@@ -126,6 +126,25 @@ class AlertEngine:
             self._deb[key] = Debouncer(debounce_min=self.cfg.alert_debounce_min)
         return self._deb[key]
 
+    def deb_state(self, now: datetime) -> dict:
+        """纯读去抖器状态（docs/07 拍板⑥，T6-lite 快照留痕）：
+        {scope_key: {current_level, pending_level, pending_min}}（pending_min =
+        now − pending_since 分钟，1 位小数；无 pending → None）。
+
+        **零语义变化**：不触碰 _deb 任何字段（单测钉死前后深拷贝相等）；
+        不调 feed/不推进状态机。T6 v1 对 alert_engine.py 的唯一允许微动。
+        """
+        Debouncer._require_aware(now)
+        out = {}
+        for k, deb in self._deb.items():
+            pm = None
+            if deb.pending is not None and deb.pending_since is not None:
+                pm = round((now - deb.pending_since).total_seconds() / 60, 1)
+            out[k] = {"current_level": deb.current,
+                      "pending_level": deb.pending,
+                      "pending_min": pm}
+        return out
+
     @staticmethod
     def _plan_entry(plan: dict, day) -> Optional[tuple]:
         """(total, h_day, h_mid)；缺排班日/休/total=0 → None（无 scope，口径 9/10）。"""

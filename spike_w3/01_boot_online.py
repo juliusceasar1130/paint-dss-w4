@@ -230,7 +230,7 @@ def _rebuild(conn, cfg: DSSConfig, pool, stream, now) -> None:
 def run_replay(pool, stream, guard, conn, cfg: DSSConfig, start, end,
                step_sec: int | None = None, expected_silence_fn=None,
                verbose: bool = False, rebuild_hours: float | None = None,
-               last_rebuild=None) -> list[dict]:
+               last_rebuild=None, round_hook=None) -> list[dict]:
     """replay_cursor 模式主循环（回放干跑 / 回归）。
 
     游标步进 start→end（步长 = step_sec，默认 poll_interval_sec，可 env 覆盖；
@@ -239,6 +239,9 @@ def run_replay(pool, stream, guard, conn, cfg: DSSConfig, start, end,
     rebuild_hours（T2.6 F-1 自愈，2026-09-25）：每间隔做一次 120h 全量重建
     （consume 水位跳过的丢行/中毒上限 = 一个重建间隔）；回放结束后在终点
     再做一次重建（回放终态 = 终点纯 bootstrap 真值，验收锚点）。缺省 None = 关。
+
+    round_hook（T6-lite，docs/07 v1.2）：每轮 run_one_round 后调用
+    hook(cur, pool, conn, cfg, st)（T6 控制台/快照 ctx 挂接点）；默认 None = 零影响。
     """
     _require_aware(start)   # R7 同纪律
     _require_aware(end)
@@ -252,6 +255,8 @@ def run_replay(pool, stream, guard, conn, cfg: DSSConfig, start, end,
             last_rebuild = cur
         exp = bool(expected_silence_fn(cur)) if expected_silence_fn else False
         st = run_one_round(pool, stream, guard, conn, cur, expected_silence=exp)
+        if round_hook is not None:
+            round_hook(cur, pool, conn, cfg, st)
         status.append(st)
         if verbose:
             print(_render_status_line(st))
@@ -262,9 +267,11 @@ def run_replay(pool, stream, guard, conn, cfg: DSSConfig, start, end,
 
 
 def run_wall_clock(pool, stream, guard, conn, cfg: DSSConfig,
-                   expected_silence_fn=None) -> None:
+                   expected_silence_fn=None, round_hook=None) -> None:
     """wall_clock 在线主循环（生产形态）：5min 轮询（poll_interval_sec），now = 墙钟 aware；
-    每 rebuild_hours 一次 120h 全量重建（F-1 丢行/水位中毒自愈，默认 24h）。"""
+    每 rebuild_hours 一次 120h 全量重建（F-1 丢行/水位中毒自愈，默认 24h）。
+    round_hook（T6-lite，docs/07 v1.2）：每轮 run_one_round 后调用
+    hook(now, pool, conn, cfg, st)；默认 None = 零影响。"""
     import time as _time
     last_rebuild = datetime.now().astimezone()
     while True:
@@ -274,6 +281,8 @@ def run_wall_clock(pool, stream, guard, conn, cfg: DSSConfig,
             last_rebuild = now
         exp = bool(expected_silence_fn(now)) if expected_silence_fn else False
         st = run_one_round(pool, stream, guard, conn, now, expected_silence=exp)
+        if round_hook is not None:
+            round_hook(now, pool, conn, cfg, st)
         print(_render_status_line(st))
         _time.sleep(cfg.poll_interval_sec)
 
@@ -310,6 +319,25 @@ def main():
                              skew_window_min=cfg.skew_window_min)
         stream.front = br.bootstrap.data_max_ts
         guard = FreshnessGuard(cfg)
+        # T6-lite（docs/07 v1.2 拍板④）：控制台/快照 hook（DSS_CONSOLE 默认开；
+        # 0 = 关，回归基准两跑 diff 判据）；装配失败不阻断主循环（console 是附属件）
+        round_hook = None
+        if cfg.console:
+            try:
+                from spike_w3 import dashboard as _dash
+                plan_w = load_week_plan(cfg)
+                comps = _dash.build_t6_components(
+                    conn, cfg, plan_w, guard,
+                    mode="replay" if cfg.clock_mode == "replay_cursor" else "wall",
+                    snapshot_dir=cfg.snapshot_dir, sink=print,
+                    run_tag_src_ts=(replay_start if cfg.clock_mode == "replay_cursor"
+                                    else None),
+                    get_watermark=lambda: stream.watermark)
+                print(f"[T6] run_tag={comps['run_tag']}"
+                      + (f"（{comps['tag_note']}）" if comps["tag_note"] else ""))
+                round_hook = comps["hook"]
+            except Exception as e:  # console 是附属件：装配失败不阻断主循环
+                print(f"[T6] WARNING 装配失败，主循环继续（无控制台/快照）: {e!r}")
         if cfg.clock_mode == "replay_cursor":
             rest = replay_rest_days(cfg)   # T1.4：目录合并（单文件 DSS_PLAN_CSV 时 = 旧行为）
             run_replay(
@@ -319,9 +347,10 @@ def main():
                 rebuild_hours=cfg.rebuild_hours,
                 last_rebuild=replay_start,  # 回放起点 = 初始状态锚点
                 verbose=True,
+                round_hook=round_hook,
             )
         else:
-            run_wall_clock(pool, stream, guard, conn, cfg)
+            run_wall_clock(pool, stream, guard, conn, cfg, round_hook=round_hook)
     finally:
         conn.close()
 
