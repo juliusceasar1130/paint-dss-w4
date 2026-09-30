@@ -3,6 +3,13 @@
 > **粒度**：波次级，每波关账时写入（非逐 commit；逐 commit 明细看 `git log`）。
 > **分工**：设计决策 / 口径 / 踩坑 → BM 线程笔记（`basic-memory/projects/paint-dss/`）；验收证据细节 → `output/` 下各波报告；本文件只记代码产物时间线。
 
+## 2026-09-29 — W3-M5 准备件：验收收账脚本 04 + 内网运行手册 docs/09 + agy 一审 5 项修复（TDD 297/297 绿；未 commit，待二轮审核）
+
+- **产物**：`spike_w3/04_m5_acceptance.py` 新增（M5 验收收账 CLI：5h 锚点 Δ实际 ±10% 判分 / 实际终局 = 4 下线点产品车闭区间计数（日 [04:45,16:30] / 中 [16:30,次日按型]）/ 四桶互斥 reason（gated/actual_zero/stale/anchor_missing）/ 断流连续段归并 / 告警台账 / 多目录合并收账 + 同前缀 -rN 目录 WARNING；只读零库写）+ `tests/test_w3_m5_acceptance.py` 21 新增+ `docs/09-M5内网在线验收运行手册.md` 新增（阶段 0 / D0 checklist / D1–D5 PowerShell 自动重启循环 + 每日检查单 + 三张记录模板 / 收账 / 红线 / 排障速查 7 项）
+- **agy 一审（BLOCK 3 阻断 / 2 中等）修复**：F1 = `spike_w1/common.py` DSN 支持 `DSS_DB_*` env 覆盖（`_dsn()` 纯函数 + `connect()` 现解析，此前硬编码 127.0.0.1 导致 .env 改了不生效）；F2 = `01_boot_online.next_grid_wait()` 纯函数 5min 网格对齐 + 漂移补偿（帧 ts 分钟恒落网格，M5 锚点帧可匹配）；F3 = `dashboard.resolve_run_tag` 显式 tag 幂等追加同目录（重启不再割裂 -r2）+ 04 多目录收账 + `find_sibling_run_dirs` 提醒；F4 = 04 结构化 reason 四桶互斥（旧 note 子串匹配会误判 actual=0 为锚点缺失 + STALE 双重计数）；F5 = 04 锚点按班次型（日 11h→10:00 / 10h→11:00 / 8h→13:00；中恒 21:30）+ 容差匹配 ±180s（旧硬编码 10:00 对 10h/8h 日班错锚）
+- **验证**：全套件 **297 passed**（基线 270 + 27：M5 收账 21 + DSN env 4 + 网格对齐 2；分项见各测试文件）；冒烟 t6dry1 09-09 数字与修复前逐位一致（日 Δ实际 −10.4% / 中 +11.6% / 578+378=956，回填日预期 FAIL）；DSN 覆盖 / 网格对齐 / 显式 tag / 多目录均有独立单测
+- **关键文件**：`spike_w3/04_m5_acceptance.py` · `spike_w1/common.py` · `spike_w3/01_boot_online.py` · `spike_w3/dashboard.py` · `tests/test_w3_m5_acceptance.py` · `tests/test_w1_dsn_env.py` · `tests/test_w3_snapshot.py` · `tests/test_w3_mainloop.py` · `docs/09-M5内网在线验收运行手册.md` · `scratch/tmp_m5prep_review_findings.md`（agy 一审）
+
 ## 2026-09-28 — W3-T6-lite 关账：控制台四件套 + 5min 快照 + ETA 菜单 + 主循环挂接（TDD 270/270 绿；干跑门 G0–G3 全过；agy 两轮审核 r1 BLOCK 全整改 / r2 PASS）
 
 - **产物**：`spike_w3/dashboard.py` 新增（`active_shifts_at` 动态班次解析含跨日 union / `build_frame_ctx`+`render_frame` 纯函数帧渲染（班次轨 target=split_target 分摊、day_total 轨仅中班窗激活、池三分复用 `AlertEngine._split_pool`、pre 锚点「观测进度」无红黄绿、`[DSS] ` 前缀=G1 机械判据）/ `write_snapshot` 原子写 + tag -r2 防覆盖 + `validate_snapshot` / `compute_eta`+CLI `--eta`（仅 4 下线点、已出站=最近事件∈下线点∪POST_EXIT、n≥30 不猜数、返修标注）/ `make_t6_hook`+`build_t6_components`+`EngineGuardAdapter`）+ `spike_w3/01_boot_online.py`（`run_replay`/`run_wall_clock` +`round_hook=None` 默认零影响；main() console 门装配，装配失败 WARNING 不阻断）+ `spike_w3/alert_engine.py` 仅 +`deb_state()` 纯读（拍板⑥）+ `spike_w3/common.py` DSSConfig +3 env 字段（DSS_CONSOLE 严格 1/0 / DSS_RUN_TAG / DSS_SNAPSHOT_DIR，纯新增）；`tests/test_w3_{dashboard,snapshot,eta_menu,t64_hook}.py` 55 新增；全套件 **270 passed**（基线 215 + 55 零回归；分项 12/10/6/18/9，2026-09-28 agy 关账复审纠错）
