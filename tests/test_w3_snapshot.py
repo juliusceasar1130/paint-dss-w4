@@ -139,6 +139,8 @@ def test_resolve_run_tag_auto_and_collision(tmp_path):
 
 
 def test_resolve_run_tag_explicit(tmp_path):
+    """显式 run_tag（M5 准备 agy 阻断 F3 改语义）：目录已有 snap_* 也幂等追加同目录，
+    不落 -r2（文件名自带时间戳不冲撞；重启自愈不落新目录）。"""
     d = tmp_path / "snapshots"
     d.mkdir()
     cfg2 = DSSConfig(run_tag="kw37_0909")
@@ -146,5 +148,5 @@ def test_resolve_run_tag_explicit(tmp_path):
     assert tag == "kw37_0909" and note is None
     (d / tag).mkdir()
     (d / tag / "snap_x.json").write_text("{}", encoding="utf-8")
-    tag2, _ = resolve_run_tag(cfg2, TS, d)
-    assert tag2 == "kw37_0909-r2"
+    tag2, note2 = resolve_run_tag(cfg2, TS, d)
+    assert tag2 == "kw37_0909" and note2 is None          # 显式 tag：追加，不 -r2

@@ -530,11 +530,14 @@ def _alpha_disp(a: dict) -> str:
 def resolve_run_tag(cfg, ts: datetime, snapshot_dir: Path) -> tuple:
     """(最终 tag, 防覆盖注记)（F-LOW-01，M5 留痕审计不可逆覆盖防护）。
 
-    cfg.run_tag 空 → 自动生成 YYYYMMDD-HHMMSS（ts aware 墙钟/游标）；目标目录
+    cfg.run_tag 空 → 自动生成 YYYYMMDD-HHMMSS（ts aware 墙钟/游标）；自动 tag 目标目录
     已有 snap_* → 追加 -r2/-r3 递增（检测时机 = 启动一次，单进程无并发竞争）。
-    """
+    显式 run_tag（DSS_RUN_TAG 非空）= 操作者意图续跑同目录（M5 准备 agy 阻断 F3）：
+    幂等追加（文件名自带时间戳 snap_YYYYMMDDTHHMMSS.json 不重名冲撞），重启自愈不落 -r2。"""
     _require_aware(ts)
     base = cfg.run_tag or ts.strftime("%Y%m%d-%H%M%S")
+    if cfg.run_tag:
+        return base, None
     tag, n = base, 1
     while any((Path(snapshot_dir) / tag).glob("snap_*")):
         n += 1

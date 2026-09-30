@@ -292,3 +292,29 @@ def test_rebuild_shadow_pool_keeps_old_on_failure(monkeypatch):
     assert pool.snapshot() == {}            # 影子池（本 fake 未喂入）已置换为主池
     assert stream.wm == 100
     assert stream.front == T0 + timedelta(hours=5)
+
+
+# ---------- M5 准备（agy 阻断 F2）：wall_clock 5min 网格对齐 ----------
+
+def test_next_grid_wait_pure():
+    """next_grid_wait：下一 poll 网格点等待秒数（下限 1.0s 防忙循环）。"""
+    mod = _load_boot_module()
+    from zoneinfo import ZoneInfo
+    TZ = ZoneInfo("Asia/Shanghai")
+    # 09:58:00 + 300s 网格 → 下一网格 10:00:00 → 120s
+    w = mod.next_grid_wait(datetime(2026, 9, 9, 9, 58, 0, tzinfo=TZ), 300)
+    assert w == 120.0
+    # 恰在网格点上 10:00:00 → 下一格 10:05:00 → 300s（不返回 0）
+    assert mod.next_grid_wait(datetime(2026, 9, 9, 10, 0, 0, tzinfo=TZ), 300) == 300.0
+    # 10:04:59 → 1s
+    assert mod.next_grid_wait(datetime(2026, 9, 9, 10, 4, 59, tzinfo=TZ), 300) == 1.0
+    # 下限 1.0：10:00:00.4 → 299.6s 正常；极近边界不出现 0/负
+    assert mod.next_grid_wait(datetime(2026, 9, 9, 10, 0, 0, tzinfo=TZ), 300) >= 1.0
+
+
+def test_next_grid_wait_arbitrary_poll():
+    mod = _load_boot_module()
+    from zoneinfo import ZoneInfo
+    TZ = ZoneInfo("Asia/Shanghai")
+    # poll=5s（调试）：09:58:03 → 09:58:05 → 2s
+    assert mod.next_grid_wait(datetime(2026, 9, 9, 9, 58, 3, tzinfo=TZ), 5) == 2.0

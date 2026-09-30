@@ -284,7 +284,18 @@ def run_wall_clock(pool, stream, guard, conn, cfg: DSSConfig,
         if round_hook is not None:
             round_hook(now, pool, conn, cfg, st)
         print(_render_status_line(st))
-        _time.sleep(cfg.poll_interval_sec)
+        _time.sleep(next_grid_wait(now, cfg.poll_interval_sec))
+
+
+def next_grid_wait(now_dt, poll_sec: float) -> float:
+    """下一个 poll 网格点的等待秒数（5min 网格对齐 + 漂移补偿，M5 准备 agy 阻断 F2）。
+
+    纯函数（可单测）：now_dt（aware）→ 距下一个整 poll 边界（epoch 网格，与 UTC+8 的
+    :00/:05/.../:55 分钟一致）的秒数，下限 1.0s（防 0 忙循环）。每轮按下一网格点
+    补偿 sleep（而非裸 sleep(poll)），保证帧 ts 分钟落在 5min 网格（M5 锚点帧可匹配）。"""
+    e = now_dt.timestamp()
+    nxt = (int(e) // poll_sec + 1) * poll_sec
+    return max(1.0, nxt - e)
 
 
 def load_rest_days(csv_path: str) -> set:
