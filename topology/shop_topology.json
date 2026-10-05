@@ -948,7 +948,7 @@
       "car_count": 183,
       "events": 698,
       "in_degree": 0,
-      "out_degree": 2
+      "out_degree": 3
     },
     {
       "id": "24IS380",
@@ -1048,7 +1048,7 @@
       "car_count": 3744,
       "events": 4291,
       "in_degree": 1,
-      "out_degree": 2
+      "out_degree": 3
     },
     {
       "id": "24IS060",
@@ -1068,7 +1068,7 @@
       "car_count": 7661,
       "events": 8434,
       "in_degree": 1,
-      "out_degree": 2
+      "out_degree": 3
     },
     {
       "id": "24IS130",
@@ -1257,7 +1257,7 @@
       "stage": "面漆缓存",
       "car_count": 67326,
       "events": 67343,
-      "in_degree": 1,
+      "in_degree": 2,
       "out_degree": 1
     },
     {
@@ -1817,6 +1817,16 @@
       "stage": "报交下线",
       "car_count": 6328,
       "events": 6422,
+      "in_degree": 3,
+      "out_degree": 1
+    },
+    {
+      "id": "25IS210",
+      "label": "25IS210\n(面漆3线报交下线站)",
+      "section": "面漆3线报交下线站",
+      "stage": "报交下线",
+      "car_count": 547,
+      "events": 566,
       "in_degree": 3,
       "out_degree": 1
     },
@@ -2866,6 +2876,13 @@
     },
     {
       "source": "24IS540",
+      "target": "25IS210",
+      "car_count": 99,
+      "duration_median": 2.09,
+      "duration_p90": 2.55
+    },
+    {
+      "source": "24IS540",
       "target": "23IS340",
       "car_count": 72,
       "duration_median": 14.15,
@@ -3040,6 +3057,13 @@
       "duration_p90": 208.4
     },
     {
+      "source": "24IS115",
+      "target": "25IS210",
+      "car_count": 173,
+      "duration_median": 1.89,
+      "duration_p90": 12.9
+    },
+    {
       "source": "24IS060",
       "target": "24IS115",
       "car_count": 3735,
@@ -3059,6 +3083,13 @@
       "car_count": 2947,
       "duration_median": 31.71,
       "duration_p90": 142.78
+    },
+    {
+      "source": "24IS185",
+      "target": "25IS210",
+      "car_count": 268,
+      "duration_median": 1.23,
+      "duration_p90": 2.83
     },
     {
       "source": "24IS130",
@@ -3969,6 +4000,13 @@
       "car_count": 6325,
       "duration_median": 5.49,
       "duration_p90": 16.68
+    },
+    {
+      "source": "25IS210",
+      "target": "25IS395",
+      "car_count": 493,
+      "duration_median": 1.59,
+      "duration_p90": 3.68
     },
     {
       "source": "1C470RB",

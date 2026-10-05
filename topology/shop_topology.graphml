@@ -1651,6 +1651,15 @@
       <data key="d5">6422</data>
       <data key="d6">现场高频过车站（6328车），暂定名：面漆报交下线移载站，后续人工需要核准正式的名称</data>
     </node>
+    <node id="25IS210">
+      <data key="d0">L3F17</data>
+      <data key="d1">面漆3线报交下线站</data>
+      <data key="d2">L1200_1</data>
+      <data key="d3">报交下线</data>
+      <data key="d4">547</data>
+      <data key="d5">566</data>
+      <data key="d6">现场物理探头（547车），面漆3线报交下线站（三线报交网关组之一；产线近期无生产任务、后续启用）</data>
+    </node>
     <node id="1C470RB">
       <data key="d0">1C470</data>
       <data key="d1">电泳缓存至雪橇交接工位</data>
@@ -2691,6 +2700,13 @@
       <data key="d10">26.19</data>
       <data key="d11">1.02</data>
     </edge>
+    <edge source="24IS540" target="25IS210">
+      <data key="d7">99</data>
+      <data key="d8">100</data>
+      <data key="d9">2.09</data>
+      <data key="d10">2.55</data>
+      <data key="d11">2.09</data>
+    </edge>
     <edge source="24IS540" target="23IS340">
       <data key="d7">72</data>
       <data key="d8">101</data>
@@ -2866,6 +2882,13 @@
       <data key="d10">208.4</data>
       <data key="d11">42.47</data>
     </edge>
+    <edge source="24IS115" target="25IS210">
+      <data key="d7">173</data>
+      <data key="d8">173</data>
+      <data key="d9">1.89</data>
+      <data key="d10">12.9</data>
+      <data key="d11">1.89</data>
+    </edge>
     <edge source="24IS060" target="24IS115">
       <data key="d7">3735</data>
       <data key="d8">4101</data>
@@ -2886,6 +2909,13 @@
       <data key="d9">31.71</data>
       <data key="d10">142.78</data>
       <data key="d11">31.71</data>
+    </edge>
+    <edge source="24IS185" target="25IS210">
+      <data key="d7">268</data>
+      <data key="d8">268</data>
+      <data key="d9">1.23</data>
+      <data key="d10">2.83</data>
+      <data key="d11">1.23</data>
     </edge>
     <edge source="24IS130" target="24IS185">
       <data key="d7">7642</data>
@@ -3796,6 +3826,13 @@
       <data key="d9">5.49</data>
       <data key="d10">16.68</data>
       <data key="d11">5.49</data>
+    </edge>
+    <edge source="25IS210" target="25IS395">
+      <data key="d7">493</data>
+      <data key="d8">495</data>
+      <data key="d9">1.59</data>
+      <data key="d10">3.68</data>
+      <data key="d11">1.59</data>
     </edge>
     <edge source="1C470RB" target="06IS010">
       <data key="d7">4838</data>

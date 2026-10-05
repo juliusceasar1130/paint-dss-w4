@@ -2035,6 +2035,18 @@
     "note": "现场高频过车站（6328车），暂定名：面漆报交下线移载站，后续人工需要核准正式的名称"
   },
   {
+    "station_id": "25IS210",
+    "drawing_label": "25IS210",
+    "name": "L3F17",
+    "section": "面漆3线报交下线站",
+    "area_code": "L1200_1",
+    "stage": "报交下线",
+    "status": "MATCHED",
+    "db_total_events": 566,
+    "db_car_count": 547,
+    "note": "现场物理探头（547车），面漆3线报交下线站（三线报交网关组之一；产线近期无生产任务、后续启用）"
+  },
+  {
     "station_id": "1C470RB",
     "name": "1C470",
     "section": "电泳缓存至雪橇交接工位",
