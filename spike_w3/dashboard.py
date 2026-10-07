@@ -18,6 +18,7 @@ import os
 from datetime import date, datetime, timedelta
 from pathlib import Path
 
+from spike_w2 import eta_v2
 from spike_w3.alert_engine import AlertEngine, grade as _grade_fn
 from spike_w3.common import CST, EXIT_STATIONS, iso_week_label
 from spike_w3.plan_loader import WeeklyPlan
@@ -226,6 +227,98 @@ def _fmt_eta(sec: float) -> str:
     return (f"{h}h {m:02d}m {s_:02d}s" if h else f"{m}m {s_:02d}s")
 
 
+def _w2_replay_cli():
+    """W2 回放模块别名懒加载（W4.3d：compute_eta 统一路径需 load_tables；
+    与 predictor/build_t6_components 同模式——sys.modules 首查，单测可预注入 stub）。"""
+    import importlib.util
+    import sys
+    key = "w2_replay_cli_eta"
+    if key in sys.modules:
+        return sys.modules[key]
+    root = Path(__file__).resolve().parent.parent
+    spec = importlib.util.spec_from_file_location(
+        key, root / "spike_w2" / "02_replay_shift.py")
+    m = importlib.util.module_from_spec(spec)
+    sys.modules[key] = m
+    spec.loader.exec_module(m)
+    return m
+
+
+def _compute_eta_unified(out0, body_id, station, body_type, flag, flag137,
+                         ts, target_station, conn, as_of, cur) -> dict:
+    """DUAL_RING=1 统一引擎路径（W4.3d）：137 位 + passed_oven 轨迹派生 +
+    25IS 出环轨迹派生（W4.4c (α) Doc14 v1.4 出环守卫）+ Doc14 在线状态机 +
+    estimate_event_unified(mode='vehicle' 列语义：rem/delay 消费 p50 列，单车 CLI 口径）。
+    响应新增 eff_flag/flag_137/eta_kind；in_loop 按 effective flag（原始 139=2 但状态机静默
+    '0' 的车 → 主线口径，不误标环内）。
+    ⚠️ loop_exited 为无状态单查询（该车 ≤ as_of 是否到过 25IS 出口）——镜像池状态但无
+    「最近一次 raw-1 起窗」语义：极罕见的「出环后二次返修」车会误判为主线（真库实测
+    KW36/37 窗内 0 辆）；在线滚动池路径有完整状态，不受此简化影响。"""
+    # passed_oven 轨迹派生（该车自身轨迹：烘房出口站存在性，≤ as_of）
+    cur.execute(
+        'SELECT COUNT(*) FROM ods.carbody_history '
+        'WHERE "BODY_ID" = %s AND "DATE_EVT" <= %s '
+        "AND \"RW_STATION_ID\" IN ('16IS305', '17IS305', '18IS345')",
+        (body_id, as_of))
+    passed_oven = cur.fetchone()[0] > 0
+    # W4.4c (α)：25IS 出环轨迹派生（出环守卫信号；与 passed_oven 同模式单查询）
+    cur.execute(
+        'SELECT COUNT(*) FROM ods.carbody_history '
+        'WHERE "BODY_ID" = %s AND "DATE_EVT" <= %s '
+        "AND \"RW_STATION_ID\" IN ('25IS010', '25IS110', '25IS210')",
+        (body_id, as_of))
+    loop_exited = cur.fetchone()[0] > 0
+    tables = _w2_replay_cli().load_tables(conn)
+    week = iso_week_label(as_of.date())
+    eff = eta_v2.resolve_effective_flag(station, flag137, flag, passed_oven, loop_exited)
+    last = int(ts.timestamp())
+    eta, used_cohort = eta_v2.estimate_event_unified(
+        last, station, flag137, flag, body_type, week, tables,
+        mode='vehicle', passed_oven=passed_oven, loop_exited=loop_exited)
+    if eta is None:
+        return {**out0, "status": "error",
+                "error": (f"当前站 {station} 残差样本不足"
+                          f"（统一引擎 车型/前缀/ALL 全缺或 n<30），不估")}
+    rem_sec = float(eta - last)
+    in_loop = eff in ("1", "2")
+    if in_loop:
+        source, n = None, None           # 环分布行 n 不在展示层镜像（引擎已 n≥30 门）
+        eta_kind = "in-loop"
+    elif used_cohort:
+        source, n = "cohort 混合", None
+        eta_kind = "mainline"
+    else:
+        # rem 层级展示镜像（车型 → 前缀 → ALL，n≥30；与引擎 resolve_hierarchical 同门）
+        tiers = eta_v2._model_tiers(body_type)
+        cur.execute(
+            'SELECT body_type, p50, n FROM dss.dim_remaining_time '
+            'WHERE station = %s AND body_type = ANY(%s)', (station, tiers))
+        rem = {r[0]: (r[1], r[2]) for r in cur.fetchall()}
+        src = next((m for m in tiers if m in rem and rem[m][1] >= 30), None)
+        if src is None:      # 防御（引擎已返回非 None 时不该发生）
+            return {**out0, "status": "error",
+                    "error": f"当前站 {station} 残差展示镜像缺行（与引擎不一致），不估"}
+        source, n = src, int(rem[src][1])
+        eta_kind = "mainline"
+    loop_note, loop_back = None, None
+    if in_loop:
+        loop_note = (f"该车在返修循环中（effective flag={eff}；原始 139 位={flag}，"
+                     f"137 位={flag137}，出炉={'是' if passed_oven else '否'}）")
+        cur.execute(
+            'SELECT p50, n FROM dss.dim_loop_remaining '
+            'WHERE body_type = %s AND flag = %s AND station = %s',
+            (body_type, eff, station))
+        lr = cur.fetchall()
+        if lr:
+            loop_back = float(lr[0][0])
+    return {**out0, "status": "eta", "target": target_station,
+            "station_now": station, "flag": flag, "flag_137": flag137,
+            "body_type": body_type, "eff_flag": eff, "eta_kind": eta_kind,
+            "eta_sec": rem_sec, "eta_label": _fmt_eta(rem_sec),
+            "source": source, "n": n,
+            "in_loop": in_loop, "loop_note": loop_note, "loop_back_sec": loop_back}
+
+
 def compute_eta(conn, body_id: str, target_station: str, as_of: datetime) -> dict:
     """工位 ETA（v1 仅 4 下线点；docs/07 v1.2 §2.3；独立连库只读，不读内存池）。
 
@@ -248,17 +341,18 @@ def compute_eta(conn, body_id: str, target_station: str, as_of: datetime) -> dic
         return {**out0, "status": "error",
                 "error": f"非产品车（无 {PRODUCT_PREFIX} 前缀）：{body_id}"}
     cur = conn.cursor()
-    # —— 最近事件（<= as_of；同 ts 取 ID 大 = 消费顺序一致） ——
+    # —— 最近事件（<= as_of；同 ts 取 ID 大 = 消费顺序一致；W4.3d +137 位） ——
     cur.execute(
         'SELECT "DATE_EVT", "RW_STATION_ID", "BODY_TYPE", '
-        'SUBSTRING("MDS_DATA" FROM 139 FOR 1) FROM ods.carbody_history '
+        'SUBSTRING("MDS_DATA" FROM 139 FOR 1), SUBSTRING("MDS_DATA" FROM 137 FOR 1) '
+        'FROM ods.carbody_history '
         'WHERE "BODY_ID" = %s AND "DATE_EVT" <= %s '
         'ORDER BY "DATE_EVT" DESC, "ID" DESC LIMIT 1', (body_id, as_of))
     rows = cur.fetchall()
     if not rows:
         return {**out0, "status": "error",
                 "error": f"车 {body_id} 不存在或 as-of 前无事件"}
-    ts, station, body_type, flag = rows[0]
+    ts, station, body_type, flag, flag137 = rows[0]
     # —— 已出站判定（F-R2-01：下线点 ∪ 出站延续站） ——
     if station in _EX:
         return {**out0, "status": "exited", "exit_ts": ts.isoformat(),
@@ -277,6 +371,11 @@ def compute_eta(conn, body_id: str, target_station: str, as_of: datetime) -> dic
         return {**out0, "status": "error",
                 "error": (f"中间站 ETA v1 未开放（Phase 3：takt 图最短路）："
                           f"目标 {target_station} ∉ 4 下线点")}
+    # —— W4.3d 双环门：DUAL_RING=1 → 统一引擎（137 位 + 出炉轨迹 + 状态机）；
+    #     =0 → 旧路径零漂移（下方 n≥30 纪律原逻辑） ——
+    if eta_v2.dual_ring_enabled():
+        return _compute_eta_unified(out0, body_id, station, body_type, flag,
+                                    flag137, ts, target_station, conn, as_of, cur)
     # —— 残差 n≥30 纪律：车型优先 → ALL ——
     cur.execute(
         'SELECT body_type, p50, n FROM dss.dim_remaining_time '
@@ -333,6 +432,16 @@ def main(argv=None, _connect=None) -> int:
         extra = f"（{r['loop_note']}）" if r["loop_note"] else ""
         ref = (f" | 预计 ~{_fmt_eta(r['loop_back_sec'])} 回主线"
                if r["loop_back_sec"] is not None else "")
+        if "eff_flag" in r:      # W4.3d 统一路径（DUAL_RING=1）
+            if r["in_loop"]:
+                src_label = f"环内分布 | effective flag={r['eff_flag']}"
+            else:
+                src_label = (f"统一引擎 vehicle（P50+净延误） | {r['source']}"
+                             + (f" n={r['n']}" if r["n"] is not None else ""))
+            print(f"ETA {r['body_id']} → {r['target']}: {r['eta_label']}"
+                  f"（{src_label} | 当前站 {r['station_now']}）"
+                  f"{extra}{ref}")
+            return 0
         print(f"ETA {r['body_id']} → {r['target']}: {r['eta_label']}"
               f"（P50 | {r['source']} n={r['n']} | 当前站 {r['station_now']}）"
               f"{extra}{ref}")

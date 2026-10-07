@@ -31,12 +31,13 @@ from spike_w3.stream_pipeline import (  # noqa: E402
 )
 from spike_w3.stream_pipeline import _require_aware  # noqa: E402  R7 同纪律
 
-# dss 学习表存在性清单（W1 六表 + W2 v2 六表；启动只查存在性，内容 T3 用）
+# dss 学习表存在性清单（W1 六表 + W2 v2 六表 + W4.2c 净延误表；启动只查存在性，内容 T3 用）
 DSS_DIM_TABLES = (
     "dim_station_takt", "dim_remaining_time", "dim_future_flag",
     "dim_loop_duration", "dim_loop_remaining", "dim_learner_meta",
     "v2_line_prob", "v2_cohort_remaining", "v2_future_flag",
     "v2_comp_excl", "v2_station_quality", "v2_learner_meta",
+    "dim_expected_delay",  # W4.2c（doc10 净延误表，双审 B8：学习器新建表须进启动完整性检查）
     "dim_weekly_plan",   # T1-lite（周计划入库表，docs/06）
 )
 

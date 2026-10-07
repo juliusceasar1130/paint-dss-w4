@@ -1,0 +1,164 @@
+{
+  "replay_window": "2026-09-05 ~ 2026-09-13",
+  "gate_metric": "D1'：直接剩余分布估计器（v2：cohort 混合 + 周度 p + ⑥b 豁免），第 5 小时锚；门 = 全厂逐班 |预测-实际|/实际 中位数 ≤10% 且 所有主车型（逐班实际量中位数 ≥ 30）各自逐班 |err%| 中位数 ≤10%",
+  "gate_threshold_pct": 10.0,
+  "gate_value_pct": 17.03,
+  "model_gates_pct": {
+    "XV33R-": 0.0,
+    "VS51M-": 0.0,
+    "XV38W-": 0.0,
+    "IM120-": 33.33,
+    "YE73F-": 0.0,
+    "IE14.-": 57.14,
+    "VH229-": 50.0,
+    "YM31H-": 55.0,
+    "YE71D-": 0.0,
+    "XV32Q-": 0.0,
+    "YM33J-": 44.69,
+    "DM833-": 60.0,
+    "SS22H-": 26.79,
+    "VS22K-": 28.08,
+    "YM3DT-": 100.0,
+    "YM34K-": 45.45,
+    "SS21G-": 23.21,
+    "IE18+-": 50.0,
+    "2N54Y-": 28.5,
+    "VS52N-": 0.0,
+    "IM186-": 31.01,
+    "SS24J-": 23.29
+  },
+  "main_models": [
+    "2N54Y-",
+    "IM186-",
+    "SS24J-",
+    "YM33J-"
+  ],
+  "model_actual_median": {
+    "2N54Y-": 201.0,
+    "IM186-": 64.5,
+    "SS24J-": 30.5,
+    "YM33J-": 64.0
+  },
+  "models_pass": false,
+  "pass": false,
+  "n_shifts_in_gate": 14,
+  "excluded_shifts": [
+    {
+      "kind": "day",
+      "day": "2026-09-06",
+      "type": "10h",
+      "reason": "实际=0（停产/无下线）"
+    },
+    {
+      "kind": "mid",
+      "day": "2026-09-06",
+      "type": "11h",
+      "reason": "实际=0（停产/无下线）"
+    },
+    {
+      "kind": "day",
+      "day": "2026-09-13",
+      "type": "11h",
+      "reason": "实际=0（停产/无下线）"
+    },
+    {
+      "kind": "mid",
+      "day": "2026-09-13",
+      "type": "11h",
+      "reason": "不完整（跨回放窗）"
+    }
+  ],
+  "anchors_direct": {
+    "3": {
+      "n": 14,
+      "median_abs_pct": 35.08,
+      "mean_abs_pct": 33.21,
+      "p90_abs_pct": 45.91,
+      "signed_median_pct": -35.08
+    },
+    "4": {
+      "n": 14,
+      "median_abs_pct": 25.65,
+      "mean_abs_pct": 23.03,
+      "p90_abs_pct": 35.85,
+      "signed_median_pct": -25.65
+    },
+    "5": {
+      "n": 14,
+      "median_abs_pct": 17.03,
+      "mean_abs_pct": 17.52,
+      "p90_abs_pct": 30.35,
+      "signed_median_pct": -17.03
+    },
+    "6": {
+      "n": 14,
+      "median_abs_pct": 12.41,
+      "mean_abs_pct": 14.13,
+      "p90_abs_pct": 26.73,
+      "signed_median_pct": -12.19
+    }
+  },
+  "estimators_at_5h": {
+    "direct": {
+      "n": 14,
+      "median_abs_pct": 17.03,
+      "mean_abs_pct": 17.52,
+      "p90_abs_pct": 30.35,
+      "signed_median_pct": -17.03
+    },
+    "direct_nocomp": {
+      "n": 14,
+      "median_abs_pct": 13.95,
+      "mean_abs_pct": 18.16,
+      "p90_abs_pct": 36.13,
+      "signed_median_pct": 11.66
+    },
+    "summed_median": {
+      "n": 14,
+      "median_abs_pct": 38.77,
+      "mean_abs_pct": 38.67,
+      "p90_abs_pct": 63.89,
+      "signed_median_pct": 38.77
+    },
+    "summed_mean": {
+      "n": 14,
+      "median_abs_pct": 15.3,
+      "mean_abs_pct": 16.12,
+      "p90_abs_pct": 23.65,
+      "signed_median_pct": 14.95
+    }
+  },
+  "by_kind_at_5h": {
+    "day": {
+      "n": 7,
+      "median_abs_pct": 23.46,
+      "mean_abs_pct": 21.99,
+      "p90_abs_pct": 31.55,
+      "signed_median_pct": -23.46
+    },
+    "mid": {
+      "n": 7,
+      "median_abs_pct": 12.74,
+      "mean_abs_pct": 13.05,
+      "p90_abs_pct": 20.64,
+      "signed_median_pct": -12.74
+    }
+  },
+  "by_week_at_5h": {
+    "2026-W36": {
+      "n": 2,
+      "median_abs_pct": 27.13,
+      "mean_abs_pct": 27.13,
+      "p90_abs_pct": 32.04,
+      "signed_median_pct": -27.13
+    },
+    "2026-W37": {
+      "n": 12,
+      "median_abs_pct": 14.31,
+      "mean_abs_pct": 15.92,
+      "p90_abs_pct": 29.57,
+      "signed_median_pct": -14.31
+    }
+  },
+  "is11_pair_rel_diff_median": 0.08053121184764449
+}

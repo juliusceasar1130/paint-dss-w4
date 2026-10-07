@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "runId": "2b05a878-02c4-4c37-bca0-4bd3a37cf333",
+  "mode": "init",
+  "phase": "planning",
+  "startedAt": "2026-10-06T11:21:56.189Z",
+  "language": "en",
+  "languageChanged": false,
+  "requiredRewritePages": [],
+  "initialPages": [],
+  "sourceFingerprint": "sha256:34e0e2af82ae36bef7c5f82f270072a61fff69aa2f88cb2564776ec7f52bb17b",
+  "targetGitHead": "019508ecb34b12070aa51053f7edd8df4d122a06",
+  "actor": {
+    "producerActor": "openwiki/0.7.0",
+    "metadataModel": "qwen3.8-27b"
+  },
+  "previousLastUpdate": null,
+  "wikiGoal": "# OpenWiki Brief（用户自撰，OpenWiki 只读不改）\n\n## 项目定位\n\n涂装车间 DSS（决策支持系统）：物流均衡 + 班次产量达成预测 + 缺口预警。\n开发顺序先做模块②（班次产量达成预测），当前处于 W4 阶段（总览见 `docs/01-开发阶段计划.md`、`CHANGELOG.md`）。\n\n## 单一事实源（优先级从高到低）\n\n1. Basic Memory 笔记 `basic-memory/projects/paint-dss/涂装车间-dss-方案设计与开发路线` —— 设计决策 / 口径 / 实测结论的唯一事实源\n2. 本仓库 `README.md` 的「关键口径」对照表 —— 上述笔记的固化快照\n3. `CHANGELOG.md` —— 代码产物时间线\n\n**wiki 不得与以上来源冲突**。发现冲突时，在相关页面显式标注差异并注明「以 BM 笔记为准」，不得自行改写口径。\n\n## 内容范围\n\n- 代码：`spike_w1/`（节拍学习器 + ETA 回放）、`spike_w2/`（v2 学习器 + 班次级回放 + 排班日历）、`spike_w3/`（在线引擎：启动/影子回放/告警回测/验收）、`tests/`\n- 设计文档：`docs/`（编号文档 01–15 为设计与审核文档，是理解口径演进的关键上下文）\n- **禁止引用**：`output/` 下实产数据报告（已被 `.openwikiignore` 排除）；`.env` 中的数据库凭据\n- wiki 生成不得连接数据库，不得执行任何 DB 读写；只描述代码与文档\n\n## 写作要求\n\n- 页面用中文，代码标识符（表名、列名、站点编码如 `15IS065`、列 `\"MDS_DATA\"` 等）保持原样\n- 口径类页面必须标注口径出处（README 行 / docs 文档编号 / BM 笔记）\n- 优先用 Mermaid 图表达：学习器管线（过滤→分段→清洗→聚合→自校准）、ETA 决策链（flag=0/1/2 状态机 + 前决策补偿 + 烘房锚定）、W3 在线主循环（新鲜度熔断 / 死车超时 / 缺口预警）\n- 时间口径提醒：所有班次/时间查询以 `Asia/Shanghai` 为准（会话默认 UTC），wiki 中描述时间逻辑时不得丢失这一点",
+  "beforeContentSnapshot": "bc79a2c0bb3ec65719a9ccf1bdb35d2ffc49a7a4cf4773949894cda283c24a17",
+  "preparedWiki": {
+    "generatedProvenance": []
+  }
+}

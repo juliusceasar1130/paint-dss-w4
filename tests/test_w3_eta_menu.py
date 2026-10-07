@@ -18,6 +18,14 @@ import pytest
 from spike_w3.dashboard import compute_eta, main as eta_main
 from spike_w3.common import EXIT_STATIONS, POST_EXIT_STATIONS
 
+
+@pytest.fixture(autouse=True)
+def _pin_legacy_engine(monkeypatch):
+    """W4.3d：本文件 = 旧路径（DUAL_RING=0）行为回归钉死；统一路径测试在
+    tests/test_w4_engine_wiring.py（compute_eta DUAL_RING=1 用例）。"""
+    monkeypatch.setenv("DSS_DUAL_RING", "0")
+    monkeypatch.delenv("DSS_USE_NET_DELAY", raising=False)
+
 TZ = ZoneInfo("Asia/Shanghai")
 ASOF = datetime(2026, 9, 9, 5, 0, tzinfo=TZ)
 EXIT1 = "K3IS140"
@@ -58,7 +66,7 @@ class FakeEtaConn:
 
 def _sc(**kw):
     base = {"latest": (datetime(2026, 9, 9, 4, 30, tzinfo=TZ), "10IS255",
-                       "78202A", "0"),
+                       "78202A", "0", "0"),
             "rem": [("78202A", 5000.0, 120), ("ALL", 5200.0, 3000)]}
     base.update(kw)
     return base
@@ -108,7 +116,7 @@ def test_eta_intermediate_station_error():
 
 
 def test_eta_exited_at_exit_station():
-    sc = _sc(latest=(datetime(2026, 9, 9, 3, 0, tzinfo=TZ), EXIT1, "78202A", "0"))
+    sc = _sc(latest=(datetime(2026, 9, 9, 3, 0, tzinfo=TZ), EXIT1, "78202A", "0", "0"))
     r = compute_eta(FakeEtaConn(sc), "78202T1", EXIT1, ASOF)
     assert r["status"] == "exited"
     assert r["exit_ts"] == datetime(2026, 9, 9, 3, 0, tzinfo=TZ).isoformat()
@@ -116,7 +124,7 @@ def test_eta_exited_at_exit_station():
 
 def test_eta_exited_at_post_exit_station():
     """最新事件 = 出站延续站（r2 实测 76% 出站车形态）→ 已出站，出口时刻 = 下线点 MAX。"""
-    sc = _sc(latest=(datetime(2026, 9, 9, 3, 5, tzinfo=TZ), POST1, "78202A", "0"),
+    sc = _sc(latest=(datetime(2026, 9, 9, 3, 5, tzinfo=TZ), POST1, "78202A", "0", "0"),
              exit_ts=datetime(2026, 9, 9, 3, 0, tzinfo=TZ))
     r = compute_eta(FakeEtaConn(sc), "78202T1", EXIT1, ASOF)
     assert r["status"] == "exited"
@@ -126,17 +134,17 @@ def test_eta_exited_at_post_exit_station():
 def test_eta_exited_any_of_four_exits():
     """任一 4 下线点皆算已出站（目标站无关）。"""
     for e in EXIT_STATIONS:
-        sc = _sc(latest=(ASOF, e, "78202A", "0"))
+        sc = _sc(latest=(ASOF, e, "78202A", "0", "0"))
         r = compute_eta(FakeEtaConn(sc), "78202T1", EXIT1, ASOF)
         assert r["status"] == "exited", e
     for p in POST_EXIT_STATIONS:
-        sc = _sc(latest=(ASOF, p, "78202A", "0"), exit_ts=ASOF)
+        sc = _sc(latest=(ASOF, p, "78202A", "0", "0"), exit_ts=ASOF)
         r = compute_eta(FakeEtaConn(sc), "78202T1", EXIT1, ASOF)
         assert r["status"] == "exited", p
 
 
 def test_eta_rework_annotation_with_loop_ref():
-    sc = _sc(latest=(ASOF, "12IS575", "2N54Y-", "1"),
+    sc = _sc(latest=(ASOF, "12IS575", "2N54Y-", "1", "0"),
              rem=[("2N54Y-", 4000.0, 200), ("ALL", 4100.0, 1000)],
              loop=[(30967.0, 271)])
     r = compute_eta(FakeEtaConn(sc), "78202T2", EXIT1, ASOF)
@@ -147,7 +155,7 @@ def test_eta_rework_annotation_with_loop_ref():
 
 def test_eta_rework_no_loop_ref():
     """loop 参考行缺失 → 标注保留、参考值 None（可缺则省）。"""
-    sc = _sc(latest=(ASOF, "12IS575", "2N54Y-", "2"),
+    sc = _sc(latest=(ASOF, "12IS575", "2N54Y-", "2", "0"),
              rem=[("ALL", 4100.0, 1000)], loop=[])
     r = compute_eta(FakeEtaConn(sc), "78202T3", EXIT1, ASOF)
     assert r["in_loop"] is True and r["loop_back_sec"] is None
@@ -186,7 +194,7 @@ def test_cli_main_eta_success(capsys):
 
 
 def test_cli_main_eta_error(capsys):
-    sc = _sc(latest=(ASOF, POST1, "78202A", "0"), exit_ts=ASOF)
+    sc = _sc(latest=(ASOF, POST1, "78202A", "0", "0"), exit_ts=ASOF)
     rc = eta_main(["--eta", "78202T1", EXIT1,
                    "--as-of", ASOF.isoformat()], _connect=lambda: FakeEtaConn(sc))
     assert rc == 0                          # exited 也是正常答复

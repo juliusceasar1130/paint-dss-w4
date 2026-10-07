@@ -28,6 +28,25 @@
 5. 设计决策 / 重要发现 / 踩坑追加到上述线程笔记（同一线程、不新建重复笔记）。
 6. 任务 → Basic Memory 的 Task Board（笔记前缀 `paint-dss:`）；代码事实 / 口径速查 → 本仓库 `README.md`。
 
+## 知识库分工：Basic Memory × OpenWiki（2026-10-06 拍板）
+
+两级 agent 记忆：**BM = 决策记忆**（为什么、拍板了什么、实测结论、踩坑），
+**OpenWiki = 代码记忆**（代码现在长什么样、模块怎么连、怎么跑）。OpenWiki 产物在仓库 `openwiki/`
+（随 git 入库），排除边界 `.openwikiignore`，brief 为 `openwiki/INSTRUCTIONS.md`（用户自撰，OpenWiki 只读不改）。
+
+- 定位：BM 线程笔记是**口径唯一事实源**（项目级、跨仓库、不可再生）；OpenWiki 是**派生产物**
+  （代码 grounding、可再生、仅本仓库有效、所有接入 agent 可读）。
+- 分工硬边界（每类内容只写一处，不重复）：
+  - 口径 / 决策理由 / 演进历史 → 只进 BM（`README.md` 口径表是其快照）；OpenWiki 只引用出处（README 行 / docs 编号 / BM 笔记），不复制口径细节
+  - 代码架构 / 模块职责 / 运行路径 / `DSS_*` 参数 → 只进 OpenWiki；BM 只提产物路径，不展开代码结构
+  - 实测结论与验收结果 → BM 存「结论 + 理由 + 日期」；数字在 `output/` 报告；OpenWiki 只引报告文件名（`output/` 被 ignore）
+  - 任务 / 工单 → BM Task Board（前缀 `paint-dss:`）；OpenWiki 不管任务
+  - 代码变更时间线 → `CHANGELOG.md`（波次级）；设计决策 → BM
+- 冲突优先级：**代码 > BM 笔记 > README 快照 > OpenWiki**。OpenWiki 口径漂移 → 相关页面标注差异、以 BM 为准、下次 update 自愈；代码与 BM 口径不一致 → 流程违规（代码应跟随拍板），报出修代码，文档层不得掩盖。
+- 生成与维护：主开发 agent（Pi）发起 `init` / `update`；多 agent 可并行读 / 搜，生成写串行（`openwiki/` 队列为单写者）。
+- 波次关账流程：用户提交代码 → BM 线程笔记追加本波决策 / 实测 → `CHANGELOG.md` → Pi 发起 `openwiki update` → 呈报文件清单 + 建议 commit message → 用户提交。
+- 新 agent 上手顺序：本文件（自动加载）→ `README.md` 口径表（速查）→ 涉口径 / 决策查 BM 线程笔记（按上节 BM 协议）→ 涉代码结构用 OpenWiki `search` / `read`（可选上下文，非每次任务起手式）。
+
 ## 数据访问（analytics_db）
 
 - `analytics_db` @ 127.0.0.1:5432，用户 `root`（本机超管）。
@@ -55,3 +74,20 @@
 ## 文件删除安全
 
 全局规则适用（见 `C:\Users\julius\.pi\agent\AGENTS.md`）：删除前列清单、等用户明确确认才动手；拿不准移 `C:\Users\julius\.Trash\` 代替删。
+
+<!-- OPENWIKI:START -->
+
+## OpenWiki
+
+This repository has a generated `openwiki/` evidence index. It is optional just-in-time context, not required startup reading.
+
+- Do not enumerate, preload, or search wikis at task start. Use retrieval when the user asks for it, when unfamiliar architecture or dependency behavior materially affects the task, or when source inspection leaves an important uncertainty. Stop once the question is grounded.
+- When those conditions apply and OpenWiki retrieval tools are available, use `openwiki_search` for just-in-time context and `openwiki_read` for the relevant complete sections. If search returns `workspace_required`, ask which listed workspace to use and retry with its ID.
+- Use `openwiki_list_workspaces` or `openwiki_list_wikis` when workspace membership itself needs to be discovered.
+- If the retrieval tools are unavailable, read `openwiki/quickstart.md` and follow its links to the relevant pages.
+- Treat source code and tests as authoritative. A brief's unknowns and review items are verification gaps, not automatic requirements.
+- Prefer the narrowest quiet validation that proves the changed behavior. Preserve complete failure output.
+
+The scheduled OpenWiki GitHub Actions workflow refreshes the repository wiki. Do not hand-edit generated OpenWiki pages unless explicitly asked; prefer updating source code/docs and letting OpenWiki regenerate.
+
+<!-- OPENWIKI:END -->

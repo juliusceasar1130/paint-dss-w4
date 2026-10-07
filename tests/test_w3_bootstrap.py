@@ -84,6 +84,7 @@ def make_stream_rows(n: int = 50_000):
             "2N54Y-",
             stations[i % len(stations)],         # 顺序过站（含入口 R3 新周期）
             "0",
+            "0",                                  # flag137（W4.3c 行形状 7 元组）
             t0 + timedelta(seconds=i * 8),       # 50000×8s ≈ 111h ⊂ 120h 窗
         ))
     return rows
@@ -112,7 +113,7 @@ def test_bootstrap_replay_same_path(monkeypatch):
 
     assert elapsed < 30                          # 量级检查
     assert len(pool.snapshot()) == 50            # 池非空
-    assert report.data_max_ts == rows[-1][5]     # max ts = 流末尾
+    assert report.data_max_ts == rows[-1][6]     # max ts = 流末尾（W4.3c 后 ts 索引 5→6）
     assert report.watermark == rows[-1][0]       # 水位 = 回放窗最大行 ID（F8 增量流起点）
     assert calls["n"] == 50_000                  # 同一状态机：全部走 pool.ingest
 
@@ -158,12 +159,12 @@ def test_cross_check():
 def test_bootstrap_report_fields():
     # 6 行 3 车：A(10IS255,flag=1) B(14IS015,flag=0) C(01IS205,flag=-)；参考集只 {A,B} → diff=1
     rows = [
-        (11, "78202A1111", "2N54Y-", "10IS255", "1", NOW - timedelta(hours=2)),
-        (12, "78202A1111", "2N54Y-", "10IS255", "1", NOW - timedelta(hours=1)),
-        (13, "78202A2222", "2N54Y-", "14IS015", "0", NOW - timedelta(hours=2)),
-        (14, "78202A2222", "2N54Y-", "14IS015", "0", NOW - timedelta(hours=1)),
-        (15, "78202A3333", "2N54Y-", "01IS205", "-", NOW - timedelta(hours=2)),
-        (16, "78202A3333", "2N54Y-", "01IS205", "-", NOW - timedelta(minutes=30)),
+        (11, "78202A1111", "2N54Y-", "10IS255", "1", "0", NOW - timedelta(hours=2)),
+        (12, "78202A1111", "2N54Y-", "10IS255", "1", "0", NOW - timedelta(hours=1)),
+        (13, "78202A2222", "2N54Y-", "14IS015", "0", "0", NOW - timedelta(hours=2)),
+        (14, "78202A2222", "2N54Y-", "14IS015", "0", "0", NOW - timedelta(hours=1)),
+        (15, "78202A3333", "2N54Y-", "01IS205", "-", "0", NOW - timedelta(hours=2)),
+        (16, "78202A3333", "2N54Y-", "01IS205", "-", "0", NOW - timedelta(minutes=30)),
     ]
     cur = FakeCursor([rows, [("78202A1111",), ("78202A2222",)]])
     report = bootstrap(FakeConn(cur), cfg(), VehiclePool(), NOW)

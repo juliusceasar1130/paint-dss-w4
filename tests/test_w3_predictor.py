@@ -7,9 +7,19 @@
 from datetime import date, datetime, timedelta
 from zoneinfo import ZoneInfo
 
+import pytest
+
 from spike_w2 import eta_v2
 from spike_w3.common import EXIT_STATIONS, Shift
 from spike_w3.stream_pipeline import VehicleState
+
+
+@pytest.fixture(autouse=True)
+def _pin_legacy_engine(monkeypatch):
+    """W4.3d：本文件 = 旧引擎（DUAL_RING=0 + DSS_USE_NET_DELAY=0）行为回归钉死；
+    统一引擎 rem_of 语义见 tests/test_w4_engine_wiring.py。"""
+    monkeypatch.setenv("DSS_DUAL_RING", "0")
+    monkeypatch.setenv("DSS_USE_NET_DELAY", "0")
 
 CST = ZoneInfo("Asia/Shanghai")
 ALL = eta_v2.ALL

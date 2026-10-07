@@ -11,7 +11,7 @@
   rem:      {(station, model): (p50, mean, p90, n)}
   loop_rem: {(station, flag, model): (p50, mean, p90, n)}
   fut:      {(station, model): (p1, p2, n)}
-  loop_dur: {(flag, model): (l, n)}
+  loop_dur: {(flag, model): (l, l_mean, l_p90, n)}   # W4.2a 2→4 元组（l=P50 兼容名；resolve 取 row[0]/row[-1] 零改动）
   takt:     {(frm, to, model): (p50, mean, p90, n)}
 """
 from dataclasses import dataclass

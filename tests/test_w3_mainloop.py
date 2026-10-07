@@ -28,14 +28,14 @@ END = timedelta(hours=48)
 def _build_rows():
     """合成事件表（id 严格 ts 升序 → 无迟到路径，纯顺序消费）。
 
-    返回 [(id, body_id, body_type, station, flag, ts)]。
+    返回 [(id, body_id, body_type, station, flag, flag137, ts)]（W4.3c 行形状 7 元组）。
     """
     rows = []
     rid = 0
     # 车 A：T0+10k min（k=0..5）后停摆
     for k in range(6):
         ts = T0 + timedelta(minutes=10 * k)
-        rows.append((rid, "78202TAAA1", "78202A-", STATIONS[k % 4], "0", ts))
+        rows.append((rid, "78202TAAA1", "78202A-", STATIONS[k % 4], "0", "0", ts))
         rid += 1
     # 车 B/C/D：每 10min，跳过 [24h, 25h) 全局停流
     for body, off in (("78202TBBB1", 0), ("78202TCCC1", 1), ("78202TDDD1", 2)):
@@ -45,11 +45,11 @@ def _build_rows():
             if GAP_START <= dt < GAP_END:
                 k += 1
                 continue
-            rows.append((rid, body, "78202A-", STATIONS[(off + k) % 4], "0", T0 + dt))
+            rows.append((rid, body, "78202A-", STATIONS[(off + k) % 4], "0", "0", T0 + dt))
             rid += 1
             k += 1
-    rows.sort(key=lambda r: (r[5], r[0]))   # ts 升序（同 ts 按 id）
-    return [(i, r[1], r[2], r[3], r[4], r[5]) for i, r in enumerate(rows, 1)]  # id 从 1 起（wm=0 起步）
+    rows.sort(key=lambda r: (r[6], r[0]))   # ts 升序（同 ts 按 id；W4.3c 后 ts 索引 5→6）
+    return [(i, r[1], r[2], r[3], r[4], r[5], r[6]) for i, r in enumerate(rows, 1)]  # id 从 1 起（wm=0 起步）
 
 
 class FakeStoreCursor:
@@ -64,10 +64,10 @@ class FakeStoreCursor:
         self.queries.append((sql, params))
         if params is not None and len(params) == 2 and '"ID" > %s' in sql and '"DATE_EVT" <= %s' in sql:
             wm, now = params
-            self._out = [r for r in self._rows if r[0] > wm and r[5] <= now]
+            self._out = [r for r in self._rows if r[0] > wm and r[6] <= now]
         elif params is not None and len(params) == 2 and '"DATE_EVT" >= %s' in sql and '"DATE_EVT" <= %s' in sql:
             since, now = params
-            self._out = [r for r in self._rows if since <= r[5] <= now]
+            self._out = [r for r in self._rows if since <= r[6] <= now]
         else:
             self._out = []
         return self
@@ -176,9 +176,9 @@ def _poison_rows():
     for k in range(24):  # k=0..23 → T0..T0+230min
         for body, off in (("78202TBBB1", 0), ("78202TCCC1", 1)):
             rid += 1
-            rows.append((rid, body, "78202A-", STATIONS[(off + k) % 4], "0",
+            rows.append((rid, body, "78202A-", STATIONS[(off + k) % 4], "0", "0",
                          T0 + timedelta(minutes=10 * k)))
-    rows.append((1000, "78202TP001", "78202A-", STATIONS[0], "0", T0))
+    rows.append((1000, "78202TP001", "78202A-", STATIONS[0], "0", "0", T0))
     return rows
 
 

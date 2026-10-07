@@ -97,7 +97,12 @@ ORDER BY bt, station;
 
 
 def load_tables(conn) -> dict:
-    """W1 表 + v2 表 → eta_v2/eta_w1 行形状 dict（车型在 key 末位，n 在行尾）。"""
+    """W1 表 + v2 表 + W4 净延误表 → eta_v2/eta_w1 行形状 dict（车型在 key 末位，n 在行尾）。
+
+    W4.3b：新增 expected_delay 键 = {(station, model): (delay_mean_s, delay_p50_s, n_fut, n_clean)}
+    （三层行：车型/平台前缀/'ALL' 全量装载；⚠️ 列序与 rem 族相反——mean 在前、p50 第二，
+    消费必须走 eta_v2.resolve_expected_delay 显式索引 + 双人群双门槛，禁行内解析；
+    W4.4b 修订 2026-10-06：两档均消费 delay_p50_s——shift 档原 mean 列经 G2 阈值计数实测证伪）。"""
     cur = conn.cursor()
 
     def rows(sql):
@@ -116,8 +121,8 @@ def load_tables(conn) -> dict:
         "loop_rem": {(r[2], r[1], r[0]): (r[3], r[4], r[5], r[6])
                      for r in rows("SELECT body_type, flag, station, p50, mean, p90, n "
                                    "FROM dss.dim_loop_remaining")},
-        "loop_dur": {(r[1], r[0]): (r[2], r[3])
-                     for r in rows("SELECT body_type, flag, l, n FROM dss.dim_loop_duration")},
+        "loop_dur": {(r[1], r[0]): (r[2], r[3], r[4], r[5])
+                     for r in rows("SELECT body_type, flag, l, l_mean, l_p90, n FROM dss.dim_loop_duration")},
         "takt": {(r[0], r[1], r[2]): (r[3], r[4], r[5], r[6])
                  for r in rows("SELECT frm, to_station, body_type, p50, mean, p90, n "
                                "FROM dss.dim_station_takt")},
@@ -135,7 +140,35 @@ def load_tables(conn) -> dict:
         "quality": {(r[0], r[1]): r[4]
                     for r in rows("SELECT body_type, station, n_model, p1, mark "
                                   "FROM dss.v2_station_quality")},
+        # W4.2c 净延误表（doc10 合流日）；三层行全量装载，消费走 resolve_expected_delay
+        "expected_delay": {(r[1], r[0]): (r[2], r[3], r[4], r[5])
+                           for r in rows("SELECT body_type, station, delay_mean_s, delay_p50_s, "
+                                         "sample_n, sample_n_clean "
+                                         "FROM dss.dim_expected_delay")},
     }
+
+
+def _eta_pair(t_e, st_e, fl_e, model, week, tables, comp_excl):
+    """W4.3d 双臂分发（docs/15 W4.3d；direct_nocomp 重定义——agy 建议 2 + cc 阻断项 3）。
+
+    DUAL_RING=1: (统一引擎净化 flag 直通, 净延误关闭基线 = expected_delay 强制 0)——
+      direct_nocomp 现度量 expected_delay 表的净效果（旧「豁免列表」语义作废：
+      新引擎无 p×L 补偿，无豁免对象；表缺失/门槛不过时两臂相等，对比恒平，语义成立）；
+    DUAL_RING=0: (旧引擎 comp_excl 语义保持, 旧引擎不豁免旧 ⑥b 语义)，
+      ND=1 时两臂同走 doc10 retrofit（p×L → expected_delay）。
+    返回 (eta_d, eta_d0, used)——used = d 臂 cohort 命中标志（cohort_used 计数保持）。"""
+    if eta_v2.dual_ring_enabled():
+        eta_d, used = eta_v2.estimate_for_replay(t_e, st_e, fl_e, model, week, tables)
+        tables_nc = {**tables, "expected_delay": {}}
+        eta_d0, _ = eta_v2.estimate_for_replay(t_e, st_e, fl_e, model, week, tables_nc)
+        return eta_d, eta_d0, used
+    if eta_v2.use_net_delay_enabled():
+        eta_d, used = eta_v2.estimate_event_net_delay(t_e, st_e, fl_e, model, week, tables, comp_excl)
+        eta_d0, _ = eta_v2.estimate_event_net_delay(t_e, st_e, fl_e, model, week, tables, frozenset())
+    else:
+        eta_d, used = eta_v2.estimate_event(t_e, st_e, fl_e, model, week, tables, comp_excl)
+        eta_d0, _ = eta_v2.estimate_event(t_e, st_e, fl_e, model, week, tables, frozenset())
+    return eta_d, eta_d0, used
 
 
 def main() -> int:
@@ -295,10 +328,7 @@ def main() -> int:
                     continue
                 t_e, st_e, fl_e = evlist[idx]
                 model = bt_arr[i]
-                eta_d, used = eta_v2.estimate_event(t_e, st_e, fl_e, model, week,
-                                                    tables, comp_excl)
-                eta_d0, _ = eta_v2.estimate_event(t_e, st_e, fl_e, model, week,
-                                                  tables, frozenset())
+                eta_d, eta_d0, used = _eta_pair(t_e, st_e, fl_e, model, week, tables, comp_excl)
                 m = eta_v2.quality_mark(tables["quality"], model, st_e)
                 mark_cnt[m] = mark_cnt.get(m, 0) + 1
                 if used:
@@ -484,7 +514,8 @@ def main() -> int:
     lines += [f"| {e} | {estimators[e]['median_abs_pct']:.2f}% | {estimators[e]['mean_abs_pct']:.2f}%"
               f" | {estimators[e]['p90_abs_pct']:.2f}% | {estimators[e]['signed_median_pct']:+.2f}% |"
               for e in ("direct", "direct_nocomp", "summed_median", "summed_mean")]
-    lines += ["", "（direct_nocomp = ⑥b 豁免关闭的对照——量化补偿净化的班次级净效果）", "",
+    lines += ["", f"（direct_nocomp = W4.3d 门控重定义：DUAL_RING=1 → 净延误关闭基线"
+              f"（expected_delay 强制 0，度量该表净效果）；DUAL_RING=0 → ⑥b 豁免关闭对照）", "",
               "## 分桶 @5h（直接估计器）", "",
               f"- 按班次种：{ {k: v['median_abs_pct'] for k, v in by_kind.items()} }%",
               f"- 按 ISO 周：{ {k: v['median_abs_pct'] for k, v in by_week.items()} }%", "",

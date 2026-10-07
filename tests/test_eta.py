@@ -54,6 +54,35 @@ def test_pre_decision_compensation():
     assert out[1].eta_direct == 500
 
 
+def test_pre_decision_compensation_4tuple_loop_dur():
+    # W4.2a 解包回归留痕（docs/15 W4.2a / agy 建议项 4）：loop_dur 行形状 2→4 元组
+    # (l, l_mean, l_p90, n)——resolve 取 row[0]=l / row[-1]=n，消费端零改动钉死。
+    events = [eta.Event(0, "up", "0"), eta.Event(500, "EXIT", "0")]
+    tables = _tables(
+        rem={("up", "m"): (500, 520, 700, 50)},
+        fut={("up", "m"): (0.2, 0.1, 50)},
+        loop_dur={("1", "m"): (3600, 4000, 9000, 40), ("2", "m"): (1800, 2000, 5000, 30)},
+    )
+    out = eta.estimate_vehicle(events, 500, tables, "m")
+    assert out[0].eta_direct == 500 + 0.2 * 3600 + 0.1 * 1800   # row[0]=l
+
+
+def test_pre_decision_compensation_4tuple_low_n_fallback():
+    # 4 元组下 n（row[-1]）<30 仍按不可用处理（行尾 n 语义不变）
+    events = [eta.Event(0, "up", "0"), eta.Event(500, "EXIT", "0")]
+    tables = _tables(
+        rem={("up", "m"): (500, 520, 700, 50)},
+        fut={("up", "m"): (0.2, 0.1, 50)},
+        loop_dur={("1", "m"): (3600, 4000, 9000, 5)},
+    )
+    out = eta.estimate_vehicle(events, 500, tables, "m")
+    assert out[0].eta_direct == 500                            # l1=0（n<30 回退缺行）
+
+
+def test_eta_header_documents_4tuple():
+    assert "(l, l_mean, l_p90, n)" in eta.__doc__
+
+
 def test_sum_median_underestimates_vs_mean():
     # 中位数不可加演示：每段 P50=100 但均值 600（右偏排队段），实际 600s/段
     stations = ["a", "b", "c", "d", "e"]

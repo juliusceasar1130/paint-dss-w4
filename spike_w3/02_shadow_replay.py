@@ -55,8 +55,42 @@ BASELINE_MIN_SAMPLES = 30  # docs/04 §4：n_hours < 30 → 回退班次型
 P3_CAP = 25          # p3_inproc 硬上限（docs/04 §1，round2 中②；超 = 池异常 → G1 fail）
 PP_TOL = 0.005       # G1 相对差容差 0.5 个百分点
 GATE_PCT = 0.10      # G2 绝对线（docs/02 原文：全厂 5h 中位 |err%| ≤ 10%）
-SELF_CHECK_BAND = (0.080, 0.105)  # Step A 自检固定带（§7：超带 = 结构性漂移，exit 2）
+SELF_CHECK_BAND = (0.1089, 0.1339)  # Step A 自检固定带（§7：超带 = 结构性漂移，exit 2）。
+# W4.4c D5(a) 重锚 2026-10-06：新栈静态复测 11.63%（独立窗 n=14，新表 + 统一引擎 shift/p50 delay），
+# 原 band 几何（锚点 8.74%：下沿−0.74pp / 上沿+1.76pp，上沿同时覆盖全窗变体 10.04%）锚点平移 →
+# [11.63−0.74, 11.63+1.76] = [10.89%, 13.39%]（全窗变体参照：新栈 sc3 全窗 12.03% 在带内）。
 CROSS_MAX_DELTA = 2  # scratch 交叉对拍逐班 |Δpred| 上限（台）
+
+
+def load_self_check_band() -> tuple:
+    """自检固定带：缺省 SELF_CHECK_BAND；DSS_SELF_CHECK_BAND='lo,hi' 覆盖（严格校验，
+    参数配置规范 2026-09-22：非法值启动报错、不静默回落缺省）。"""
+    raw = os.environ.get("DSS_SELF_CHECK_BAND", "").strip()
+    if not raw:
+        return SELF_CHECK_BAND
+    try:
+        lo, hi = (float(x) for x in raw.split(","))
+    except ValueError:
+        raise ValueError(
+            f"DSS_SELF_CHECK_BAND 格式错: {raw!r}（应为 'lo,hi'，如 '0.080,0.105'）")
+    if not (0.0 < lo < hi < 1.0):
+        raise ValueError(f"DSS_SELF_CHECK_BAND 超界: {raw!r}（需 0<lo<hi<1）")
+    return (lo, hi)
+
+
+def cross_machine_path() -> Path:
+    """本地交叉对拍机器（缺省 = W3 原路径 scratch/02_replay_kw37.py；
+    W4 工作区该 W2.1 冻结副本不存在，用 DSS_M9_CROSS_MACHINE 指 scratch/tmp_w4_4b_scene.py
+    ——其 --scenario 2 日历与 plan_inbox 逐日一致（2026-10-06 核）且走当前引擎/表。"""
+    return Path(os.environ.get("DSS_M9_CROSS_MACHINE",
+                               str(ROOT / "scratch" / "02_replay_kw37.py")))
+
+
+def cross_outdir() -> Path:
+    """交叉对拍机器产物目录（缺省 = W3 原路径；W4 工作区覆盖机器时须同步覆盖
+    DSS_M9_CROSS_DIR 为机器实际输出目录）。"""
+    return Path(os.environ.get("DSS_M9_CROSS_DIR",
+                               str(ROOT / "output" / "tmp_kw37_review")))
 
 ENTRY_STATIONS = ("01IS205", "1L360RB", "01IS045")
 
@@ -263,8 +297,9 @@ def static_reference(conn, replay_start: datetime, replay_end: datetime,
                     no_eta += 1          # 末事件即窗内末事件 → 过期 ETA 不计（W2 口径）
                     continue
                 t_e, st_e, fl_e = evlist[idx]
-                eta_d, _used = eta_v2.estimate_event(int(t_e), st_e, fl_e, bt_arr[i],
-                                                     week, tables, comp_excl)
+                # W4.3d（cc 阻断项 3）：静态参照侧同引擎分发（G1 同引擎门）
+                eta_d, _used = eta_v2.estimate_for_replay(int(t_e), st_e, fl_e, bt_arr[i],
+                                                          week, tables, comp_excl)
                 if eta_d is not None and t + (int(eta_d) - int(t_e)) <= end_ep:
                     cnt += 1
                     if h == shifts.GATE_ANCHOR_H:
@@ -292,8 +327,8 @@ def static_reference(conn, replay_start: datetime, replay_end: datetime,
                         no_eta_clip += 1
                         continue
                     t_e, st_e, fl_e = evlist[idx]
-                    eta_d, _u = eta_v2.estimate_event(int(t_e), st_e, fl_e, bt_arr[i],
-                                                      week, tables, comp_excl)
+                    eta_d, _u = eta_v2.estimate_for_replay(int(t_e), st_e, fl_e, bt_arr[i],
+                                                           week, tables, comp_excl)
                     if eta_d is not None and t + (int(eta_d) - int(t_e)) <= clip_ep:
                         cnt_clip += 1
                 rec["clip_pred"][h] = A_clip + cnt_clip
@@ -467,12 +502,13 @@ def run_rolling(conn, cfg, replay_start: datetime, replay_end: datetime,
 # Step A 自检：固定带 + scratch 交叉对拍
 # ---------------------------------------------------------------------------
 
-def selfcheck_static(static: dict) -> float:
-    """自检门：全厂 5h 中位 |err%| ∈ [8.0%, 10.5%] 固定带（§7：超带 = 结构性漂移，exit 2）。"""
+def selfcheck_static(static: dict, band: tuple = None) -> float:
+    """自检门：全厂 5h 中位 |err%| ∈ 固定带（§7：超带 = 结构性漂移，exit 2）。
+    band 缺省 = load_self_check_band()（DSS_SELF_CHECK_BAND 可覆盖）。"""
     errs = [abs(r["pred"][5] - r["actual"]) / r["actual"]
             for r in static["shifts"].values() if r["actual"] > 0]
     med = float(statistics.median(errs))
-    lo, hi = SELF_CHECK_BAND
+    lo, hi = band if band is not None else load_self_check_band()
     if not (lo <= med <= hi):
         raise SystemExit(
             f"自检失败：静态复测全厂 5h 中位 |err%| = {med * 100:.2f}% 超出固定带 "
@@ -487,11 +523,12 @@ def scratch_crosscheck(static: dict) -> dict:
     返回 {shift_id: scratch_pred5}。
     """
     print("[M9-A] scratch 交叉对拍（02_replay_kw37.py 独立窗 场景 2 复跑）…")
-    outdir = ROOT / "output" / "tmp_kw37_review"
+    outdir = cross_outdir()
+    outdir.mkdir(parents=True, exist_ok=True)
     pre_mtime = max((p.stat().st_mtime for p in outdir.glob("w2_replay_shifts_*_sc2.csv")),
                     default=0.0)
     proc = subprocess.run(
-        [sys.executable, str(ROOT / "scratch" / "02_replay_kw37.py"),
+        [sys.executable, str(cross_machine_path()),
          "--replay-start", "2026-09-05", "--replay-end", "2026-09-13",
          "--scenario", "2"],
         cwd=str(ROOT), capture_output=True, text=True, encoding="utf-8", errors="replace")
@@ -570,7 +607,7 @@ def render_report(ctx: dict) -> str:
                  f"| {e_st * 100:.2f}% / {e_off * 100:.2f}% / {e_on * 100:.2f}% |")
     L += ["", "## (ii) 终值 vs W2.1 基线（5h 中位 |err%|）", "",
           f"- 本跑静态复测（W2 原窗口径，自检值）：**{ctx['median_err_static_selfcheck'] * 100:.2f}%**"
-          f"（自检固定带 {SELF_CHECK_BAND[0] * 100:.1f}–{SELF_CHECK_BAND[1] * 100:.1f}% 内）",
+          f"（自检固定带 {ctx['self_check_band'][0] * 100:.1f}–{ctx['self_check_band'][1] * 100:.1f}%）",
           f"- 延展窗静态 5h 中位（G1 对比侧）：{d['median_err_static'] * 100:.2f}%"
           f"（与 (i) 原窗值不可互比；G1 全厂相对差以此为基准）",
           f"- 本跑滚动 off：{d['median_err_off'] * 100:.2f}%；滚动 on：{d['median_err_on'] * 100:.2f}%",
@@ -657,10 +694,11 @@ def main() -> int:
               f"{M9_START.date()}~{M9_END.date()}）")
 
         # --- Step A：静态参照 + 自检（W2 原窗：尾 +1d，W2 兼容口径）---
+        band = load_self_check_band()
         static = static_reference(conn, M9_START, M9_END, schedule)
-        med_static = selfcheck_static(static)
+        med_static = selfcheck_static(static, band)
         print(f"[M9-A] 自检通过：全厂 5h 中位 |err%| = {med_static * 100:.2f}%"
-              f"（固定带 {SELF_CHECK_BAND[0] * 100:.1f}–{SELF_CHECK_BAND[1] * 100:.1f}%）")
+              f"（固定带 {band[0] * 100:.1f}–{band[1] * 100:.1f}%，DSS_SELF_CHECK_BAND 可覆盖）")
         scratch5 = scratch_crosscheck(static)
 
         # G1 对比侧：延展窗静态（尾 +7d 与 7d 前置边对称；2026-09-25 拍板 A——
@@ -697,6 +735,7 @@ def main() -> int:
         ctx = {"static": static, "rolling": rolling, "gates": g, "rows": rows,
                "pass": passed, "g4_soft": g4_soft,
                "alpha_mode": cfg.alpha_mode,
+               "self_check_band": band,
                "static_ext": static_ext_view(static_ext),
                "g4_note": "硬门或软化" + ("（DSS_G4_HARD=1 已恢复硬门）" if g4_hard else ""),
                "scratch5": scratch5,

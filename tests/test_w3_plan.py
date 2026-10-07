@@ -595,8 +595,10 @@ def test_plan_note_three_states(tmp_path):
 # --- T1.4-28 DSS_DIM_TABLES 13 项 ---
 def test_dim_tables_13():
     boot = _load_boot()
-    assert len(boot.DSS_DIM_TABLES) == 13
+    # W4.2c（双审 B8）：+dim_expected_delay（doc10 净延误表）→ 14
+    assert len(boot.DSS_DIM_TABLES) == 14
     assert "dim_weekly_plan" in boot.DSS_DIM_TABLES
+    assert "dim_expected_delay" in boot.DSS_DIM_TABLES
 
 
 # --- T1.4-29 replay 休息日等价（09-05~09-13 窗回归钉死） ---

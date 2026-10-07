@@ -88,6 +88,17 @@ def _env_float_opt(key: str):
     return float(v) if v not in (None, "") else None
 
 
+def _env_strict01(key: str, default: int) -> int:
+    """严格 1/0（W4.3d §0.5 契约：非法值报错，缺省默认值；与 _env_console 宽松规则不同）。"""
+    v = os.environ.get(key)
+    if v is None or v.strip() == "":
+        return default
+    v = v.strip()
+    if v not in ("0", "1"):
+        raise ValueError(f"{key} 必须为严格 1/0（D6 回滚门纪律），当前: {v!r}")
+    return int(v)
+
+
 @dataclass(frozen=True)
 class DSSConfig:
     """DSS_* 参数汇总（python-dotenv 加载根 .env，缺失用默认；启动报告打印全部生效值）。"""
@@ -122,6 +133,9 @@ class DSSConfig:
     line_stop_min: int = 30
     observe_min: int = 15
     # Task 6 控制台/快照（T6 生效，docs/07 v1.2 拍板④⑤）
+    # W4.3d 双环门（§0.5 / D6）：严格 1/0，非法值启动报错
+    dual_ring: int = 1                 # DSS_DUAL_RING：1 = 统一引擎（生产默认）；0 = 旧路径回滚
+    use_net_delay: int = 1             # DSS_USE_NET_DELAY：仅 DUAL_RING=0 生效（doc10 retrofit）；=1 时忽略（B11）
     console: bool = True            # DSS_CONSOLE 默认 1；0 = 关控制台与快照（回归基准）
     run_tag: str = ""               # DSS_RUN_TAG 默认空（自动生成 YYYYMMDD-HHMMSS）
     snapshot_dir: str = "output/snapshots"
@@ -178,6 +192,8 @@ def load_config() -> DSSConfig:
         alert_debounce_min=_env_int("DSS_ALERT_DEBOUNCE_MIN", 10),
         line_stop_min=_env_int("DSS_LINE_STOP_MIN", 30),
         observe_min=_env_int("DSS_OBSERVE_MIN", 15),
+        dual_ring=_env_strict01("DSS_DUAL_RING", 1),
+        use_net_delay=_env_strict01("DSS_USE_NET_DELAY", 1),
         console=_env_console(),
         run_tag=_env_str("DSS_RUN_TAG", ""),
         snapshot_dir=_env_str("DSS_SNAPSHOT_DIR", "output/snapshots"),

@@ -30,17 +30,34 @@ def rem_of(v: VehicleState, t: datetime, tables: dict,
            comp_excl: frozenset) -> Optional[float]:
     """单车模型剩余秒数（docs/04 §0）。
 
-    = eta_v2.estimate_event(int(last_event_ts), station, flag, body_type,
-    iso_week_label(t.date()), tables, comp_excl) 的 ETA − last_event_ts。
-    查不到分布（主/环表缺行 n<30）→ None（no-ETA 桶，报告可见化，不计 pred）。
-    """
+    W4.3d 双环门（DSS_DUAL_RING）：
+      =1 → 统一引擎 estimate_event_unified(mode='shift' 列语义：rem/delay 消费 mean 列，
+        与 W4.2e 重学表列语义一致；全状态机路径：effective_flag=None，吃原始 139 位 +
+        flag_137 + passed_oven + 37 站出环网关 + loop_exited 出环守卫（W4.4c (α) Doc14 v1.4）；α 不内嵌）；
+      =0 + DSS_USE_NET_DELAY=1 → doc10 retrofit（p×L → expected_delay）；=0 + ND=0 → 旧引擎。
+
+    B10 留痕（cc 阻断项 2）：本 rem = base + delay 全口径（含净延误）；α 只在 predict()
+    消费点对整 rem 缩一次（rem·α，单缩放点），不在估计器内二次缩放。"""
     _require_aware(t)
     _require_aware(v.last_event_ts, "v.last_event_ts")
     last = int(v.last_event_ts.timestamp())
-    eta, _used = eta_v2.estimate_event(
-        last, v.station, v.flag, v.body_type,
-        iso_week_label(t.date()), tables, comp_excl,
-    )
+    if eta_v2.dual_ring_enabled():
+        eta, _used = eta_v2.estimate_event_unified(
+            last, v.station, v.flag_137, v.flag, v.body_type,
+            iso_week_label(t.date()), tables,
+            mode='shift', passed_oven=v.passed_oven, comp_excl=comp_excl,
+            loop_exited=v.loop_exited,
+        )
+    elif eta_v2.use_net_delay_enabled():
+        eta, _used = eta_v2.estimate_event_net_delay(
+            last, v.station, v.flag, v.body_type,
+            iso_week_label(t.date()), tables, comp_excl,
+        )
+    else:
+        eta, _used = eta_v2.estimate_event(
+            last, v.station, v.flag, v.body_type,
+            iso_week_label(t.date()), tables, comp_excl,
+        )
     if eta is None:
         return None
     return float(eta - last)

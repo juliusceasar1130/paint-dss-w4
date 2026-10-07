@@ -1,0 +1,7 @@
+{
+  "updatedAt": "2026-10-06T11:21:56.195Z",
+  "command": "init",
+  "model": "qwen3.8-27b",
+  "status": "interrupted",
+  "language": "en"
+}

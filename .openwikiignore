@@ -1,0 +1,21 @@
+# 凭据 / 本地配置（模版放行）
+.env
+.env.*
+!.env.example
+
+# 本地 agent 状态
+.pi/
+
+# 草稿与缓存
+scratch/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# 实产数据报告（口径已在 README/AGENTS.md 固化，wiki 不重复收录）
+output/
+
+# 本地系统文件
+.DS_Store
+Thumbs.db
+nul

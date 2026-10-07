@@ -13,6 +13,12 @@
 状态机单一实现（B4 七点）：在线消费与 bootstrap 回放喂同一个 `ingest`，不建第二套逻辑。
 规则 R1–R7 见 docs/03 §2 规则表（R1 同站幂等 / R2 flag 继承 / R3 多次进出 /
 R4 中途收养排出站 / R5 BODY_TYPE 直取 / R6 loop 计数 / R7 tz 强制）。
+W4.3c 契约扩展（docs/03 §0 同步，本波唯一冻结契约变更）：
+- Event +1 字段 flag_137（SUBSTRING MDS_DATA 第 137 位；4 处 consume SQL 同步）；
+- VehicleState +2 字段：passed_oven（O1：过烘房出口站单调置 True，永不复位）/
+  flag_137（O2：137 位随车，ingest/replay_car/收养三路径取该车最新事件值，'-' 按 '0'）；
+- 不变式：passed_oven / flag_137 只随车自身轨迹（不跨车串染）；出站/死车移除路径
+  成对清理不受影响（字段随 VehicleState 对象整体删除，无额外清理）。
 """
 from __future__ import annotations
 
@@ -24,23 +30,35 @@ try:  # 包内导入（测试 / 01_boot_online 走包）
 except ImportError:  # 脚本直跑（python spike_w3\01_boot_online.py）
     from common import ENTRY_STATIONS, EXIT_STATIONS, POST_EXIT_STATIONS
 
+from spike_w2 import eta_v2  # W4.3c：物理常量单一事实源（OVEN_OUT_STATIONS，W4.3a）
+
 _VALID_FLAGS = ("0", "1", "2")
+
+
+def _norm137(v) -> str:
+    """137 位归一化（O2）：'-'（缺失）/NULL/其他 → '0'；仅 '0'/'1' 原值。"""
+    return v if v in ("0", "1") else "0"
 
 
 @dataclass
 class Event:
-    """过站事件（DB 行映射；body_type = 列 "BODY_TYPE" 直取，R5 禁前缀推导）。"""
+    """过站事件（DB 行映射；body_type = 列 "BODY_TYPE" 直取，R5 禁前缀推导）。
+    flag_137 = MDS_DATA 第 137 位原值（'-' 保留，池层 O2 归一化）。"""
     body_id: str
     body_type: str
     station: str
     flag: str
     ts: datetime
     row_id: int
+    flag_137: str = "0"
 
 
 @dataclass
 class VehicleState:
-    """在制车状态（§0 契约字段；内部辅助结构留在 VehiclePool 侧）。"""
+    """在制车状态（§0 契约字段；内部辅助结构留在 VehiclePool 侧）。
+    W4.3c +2：passed_oven（O1 烘房出炉单调标记）/ flag_137（O2 最新事件 137 位）。
+    W4.4c +1：loop_exited（Doc14 v1.4 R3' 出环守卫，2026-10-06）——过 25IS010/110/210 出口置 True；
+    R3 泛化再过入口站重置 False（返线头必经入口站，池注释 R4 双保险①）；缺省 False = 旧语义。"""
     body_type: str
     station: str
     flag: str
@@ -48,6 +66,9 @@ class VehicleState:
     entry_ts: datetime
     exits_seen: int
     loop_count: int
+    passed_oven: bool = False
+    flag_137: str = "0"
+    loop_exited: bool = False
 
 
 @dataclass
@@ -98,7 +119,7 @@ class EventStream:
         cur.execute(_CONSUME_SQL, (self._wm, now))
         rows = cur.fetchall()
         out: list[Event] = []
-        for row in sorted(rows, key=lambda r: (r[5], r[0])):  # (ts, ID) 升序
+        for row in sorted(rows, key=lambda r: (r[6], r[0])):  # (ts, ID) 升序（W4.3c 后 ts 索引 5→6）
             self._dispatch(_row_to_event(row), pool, now, out)
         return out
 
@@ -135,7 +156,8 @@ class EventStream:
 
 _CONSUME_SQL = (
     'SELECT "ID", "BODY_ID", "BODY_TYPE", "RW_STATION_ID", '
-    'SUBSTRING("MDS_DATA" FROM 139 FOR 1) AS flag, "DATE_EVT" '
+    'SUBSTRING("MDS_DATA" FROM 139 FOR 1) AS flag, '
+    'SUBSTRING("MDS_DATA" FROM 137 FOR 1) AS flag137, "DATE_EVT" '  # W4.3c O2：137 位随车
     'FROM ods.carbody_history '
     'WHERE "ID" > %s AND "DATE_EVT" <= %s '
     'ORDER BY "ID"'
@@ -143,7 +165,8 @@ _CONSUME_SQL = (
 
 _CAR_LOG_SQL = (
     'SELECT "ID", "BODY_ID", "BODY_TYPE", "RW_STATION_ID", '
-    'SUBSTRING("MDS_DATA" FROM 139 FOR 1) AS flag, "DATE_EVT" '
+    'SUBSTRING("MDS_DATA" FROM 139 FOR 1) AS flag, '
+    'SUBSTRING("MDS_DATA" FROM 137 FOR 1) AS flag137, "DATE_EVT" '  # W4.3c O2：137 位随车
     'FROM ods.carbody_history '
     'WHERE "BODY_ID" = %s AND "DATE_EVT" BETWEEN %s AND %s '
     'ORDER BY "DATE_EVT","ID"'
@@ -151,8 +174,10 @@ _CAR_LOG_SQL = (
 
 
 def _row_to_event(row) -> Event:
-    """DB 行（ID, BODY_ID, BODY_TYPE, RW_STATION_ID, flag, DATE_EVT）→ Event（R5：body_type 列直取）。"""
-    return Event(body_id=row[1], body_type=row[2], station=row[3], flag=row[4], ts=row[5], row_id=row[0])
+    """DB 行（ID, BODY_ID, BODY_TYPE, RW_STATION_ID, flag, flag137, DATE_EVT）→ Event
+    （R5：body_type 列直取；W4.3c：flag137 原值透传，池层 O2 归一化）。"""
+    return Event(body_id=row[1], body_type=row[2], station=row[3],
+                 flag=row[4], flag_137=row[5], ts=row[6], row_id=row[0])
 
 
 @dataclass
@@ -166,7 +191,8 @@ class ReconcileReport:
 
 _RECONCILE_SQL = (
     'SELECT "ID", "BODY_ID", "BODY_TYPE", "RW_STATION_ID", '
-    'SUBSTRING("MDS_DATA" FROM 139 FOR 1) AS flag, "DATE_EVT" '
+    'SUBSTRING("MDS_DATA" FROM 139 FOR 1) AS flag, '
+    'SUBSTRING("MDS_DATA" FROM 137 FOR 1) AS flag137, "DATE_EVT" '  # W4.3c O2：137 位随车
     'FROM ods.carbody_history '
     'WHERE "BODY_ID" LIKE \'78202%\' AND "DATE_EVT" >= %s '
     'ORDER BY "DATE_EVT","ID"'
@@ -364,6 +390,11 @@ class VehiclePool:
                 body_type=ev.body_type or "", station=ev.station, flag=flag,  # R5：DB 列 NULL 兜底空串
                 last_event_ts=ev.ts, entry_ts=ev.ts,
                 exits_seen=self.audit["exits"].get(body, 0), loop_count=0,
+                # W4.3c O1/O2：收养事件即在烘房出口 → 已出炉；137 位取首事件值（'-' 按 '0'）
+                passed_oven=(ev.station in eta_v2.OVEN_OUT_STATIONS),
+                flag_137=_norm137(ev.flag_137),
+                # W4.4c (α)：收养事件即 25IS 出口 → 已出环（其余缺省 False，与旧行为同）
+                loop_exited=(ev.station in eta_v2.LOOP_EXIT_GATEWAYS),
             )
             self._visited[body] = {ev.station}
             return
@@ -383,6 +414,14 @@ class VehiclePool:
         st.last_event_ts = ev.ts
         if ev.body_type:  # R5：直取透传（空值保持原值）
             st.body_type = ev.body_type
+        # W4.3c O1/O2：137 位随车 = 最新事件值（'-' 按 '0'）；烘房出口单调置 True（永不复位）
+        st.flag_137 = _norm137(ev.flag_137)
+        if ev.station in eta_v2.OVEN_OUT_STATIONS:
+            st.passed_oven = True
+        # W4.4c (α)：25IS010/110/210 出口 → 出环（Doc14 v1.4 R3'；主线残留位事件不重置——
+        # 位不清除是数据事实，重置只在「新周期」信号：再过入口站，见 R3 泛化分支）
+        if ev.station in eta_v2.LOOP_EXIT_GATEWAYS:
+            st.loop_exited = True
         if ev.station in POST_EXIT_STATIONS:
             # R4 双保险②：在池车过出站延续站 → 池移除（防穿透 + 漏扫出站站清理；静默不计 exits）
             del self._vehicles[body]
@@ -393,10 +432,11 @@ class VehiclePool:
             self.audit["same_station_dups"][body] = self.audit["same_station_dups"].get(body, 0) + 1
             return
         if ev.station in ENTRY_STATIONS:
-            # R3 泛化：在池车再过入站站（返工回线头）= 新周期
+            # R3 泛化：在池车再过入站站（返工回线头）= 新周期（W4.4c (α)：新周期 = 出环守卫重置）
             st.station = ev.station
             st.entry_ts = ev.ts
             st.loop_count = 0
+            st.loop_exited = False
             self._visited[body] = {ev.station}
             return
         # 过站：R6 非连续重过同站 +1（连续段不算；在池车 _visited 必已初始化，直接索引）
@@ -450,6 +490,10 @@ class VehiclePool:
         最新事件在出站站或出站延续站 → 在池车移除 / 不在池不收养（仅审计，R4 双保险）；
         不在池 + 最新非出站非延续站（且过动态历史锁）→ R4 收养（entry_ts = 日志首事件 ts，近似）；
         row_id 去重（审计计数不重复，幂等）；站级 ts 并入（max 语义幂等）。
+        W4.3c O1/O2 合并：flag_137 = 重算切片最新事件值（'-' 按 '0'）；
+        passed_oven = 重算轨迹 OR（在池车与已存值单调 OR，永不复位）。
+        W4.4c (α) 合并：loop_exited = 切片轨迹信号（25IS 出口 → True / 入口站 → False，
+        走查序与 _ingest_core 同）；切片无信号 → 不动原值。
         """
         if not events:
             return
@@ -463,11 +507,17 @@ class VehiclePool:
         dups_new = 0
         invalid_new = 0
         last_ts: datetime | None = None
+        le: bool | None = None          # W4.4c (α)：切片轨迹出环信号（None = 无 25IS/入口站信号）
         for ev in events:
             if ev.station in EXIT_STATIONS or ev.station in POST_EXIT_STATIONS:
                 pos = None            # 出站/出站延续（切片内再入 = 新周期）
                 visited = set()
             else:
+                # W4.4c (α)：出环守卫轨迹信号（镜像 _ingest_core 更新序：入口 = 重置 / 25IS = 出环）
+                if ev.station in eta_v2.LOOP_EXIT_GATEWAYS:
+                    le = True
+                elif ev.station in ENTRY_STATIONS:
+                    le = False
                 if pos is None:
                     # 切片内入池/再入（R4 语义，含动态历史锁：已出站车 + 非入口站 → 不收养）
                     if ev.station in ENTRY_STATIONS or self.audit["exits"].get(body_id, 0) == 0:
@@ -489,6 +539,9 @@ class VehiclePool:
             last_ts = ev.ts
         # —— 合并 ——
         last = events[-1]
+        # W4.3c O1/O2：轨迹级重算（137 位 = 最新事件值；出炉 = 轨迹 OR）
+        f137 = _norm137(last.flag_137)
+        oven_seen = any(ev.station in eta_v2.OVEN_OUT_STATIONS for ev in events)
         st = self._vehicles.get(body_id)
         if last.station in EXIT_STATIONS or last.station in POST_EXIT_STATIONS:
             # 最新在出站/出站延续站：不在池 → 不收养仅审计；在池 → 池移除（不变式），exits 计数不动（顺序事件归口）
@@ -502,6 +555,10 @@ class VehiclePool:
                     body_type=events[0].body_type or "", station=pos, flag=flag,
                     last_event_ts=last_ts, entry_ts=events[0].ts,
                     exits_seen=self.audit["exits"].get(body_id, 0), loop_count=loop,
+                    # W4.3c O1/O2：重算轨迹 OR / 最新事件 137 位
+                    passed_oven=oven_seen, flag_137=f137,
+                    # W4.4c (α)：切片轨迹出环信号（无信号 → False，与新鲜收养同）
+                    loop_exited=(le if le is not None else False),
                 )
                 self._visited[body_id] = visited  # 收养必初始化（在池 ⇒ _visited 存在不变式，2026-09-24 干跑踩坑修）
             # pos None = 动态锁拒绝切片内收养 → 不收养仅审计
@@ -512,6 +569,12 @@ class VehiclePool:
                 self._visited.pop(body_id, None)
             else:
                 st.station, st.flag, st.loop_count, st.last_event_ts = pos, flag, loop, last_ts
+                # W4.3c O1/O2：137 位取重算最新事件值；出炉标记单调 OR（切片无烘房事件不清除）
+                st.flag_137 = f137
+                st.passed_oven = st.passed_oven or oven_seen
+                # W4.4c (α)：出环信号仅当切片含信号时合并（无 25IS/入口站事件 = 不动原值）
+                if le is not None:
+                    st.loop_exited = le
                 self._visited[body_id] = visited
         if dups_new:
             self.audit["same_station_dups"][body_id] = self.audit["same_station_dups"].get(body_id, 0) + dups_new
@@ -665,7 +728,8 @@ class FreshnessGuard:
 
 _BOOTSTRAP_SQL = (
     'SELECT "ID", "BODY_ID", "BODY_TYPE", "RW_STATION_ID", '
-    'SUBSTRING("MDS_DATA" FROM 139 FOR 1) AS flag, "DATE_EVT" '
+    'SUBSTRING("MDS_DATA" FROM 139 FOR 1) AS flag, '
+    'SUBSTRING("MDS_DATA" FROM 137 FOR 1) AS flag137, "DATE_EVT" '  # W4.3c O2：137 位随车
     'FROM ods.carbody_history '
     'WHERE "DATE_EVT" >= %s AND "DATE_EVT" <= %s '
     'ORDER BY "ID"'
