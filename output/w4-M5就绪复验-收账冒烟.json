@@ -1,0 +1,148 @@
+{
+  "snap_dirs": [
+    "output/snapshots/w4dry1"
+  ],
+  "n_dup": 0,
+  "siblings_unlisted": [],
+  "tol": 0.1,
+  "results": [
+    {
+      "pred": 506,
+      "target": 478,
+      "actual": 578,
+      "delta_plan": 0.0586,
+      "delta_actual": -0.1246,
+      "pass": false,
+      "reason": "gated",
+      "note": "",
+      "date": "2026-09-09",
+      "weekday": "周三",
+      "kind": "day",
+      "anchor_ts": "2026-09-09T10:00:00+08:00",
+      "A": 283,
+      "grade": "green",
+      "stale": false
+    },
+    {
+      "pred": 437,
+      "target": 478,
+      "actual": 378,
+      "delta_plan": -0.0858,
+      "delta_actual": 0.1561,
+      "pass": false,
+      "reason": "gated",
+      "note": "",
+      "date": "2026-09-09",
+      "weekday": "周三",
+      "kind": "mid",
+      "anchor_ts": "2026-09-09T21:30:00+08:00",
+      "A": 221,
+      "grade": "yellow",
+      "stale": false
+    }
+  ],
+  "stale": {
+    "n_rounds": 0,
+    "minutes": 0,
+    "spans": []
+  },
+  "ledger": [
+    {
+      "ts": "2026-09-09T00:00:00+08:00",
+      "sid": "2026-09-08_mid",
+      "level": "green",
+      "prev_level": null,
+      "gap_n": 0,
+      "delta": 0.12568306010928962
+    },
+    {
+      "ts": "2026-09-09T00:00:00+08:00",
+      "sid": "2026-09-08",
+      "level": "green",
+      "prev_level": null,
+      "gap_n": 0,
+      "delta": 0.07532467532467532
+    },
+    {
+      "ts": "2026-09-09T04:45:00+08:00",
+      "sid": "2026-09-09_day",
+      "level": "green",
+      "prev_level": null,
+      "gap_n": 19,
+      "delta": -0.0397489539748954
+    },
+    {
+      "ts": "2026-09-09T05:15:00+08:00",
+      "sid": "2026-09-09_day",
+      "level": "yellow",
+      "prev_level": "green",
+      "gap_n": 26,
+      "delta": -0.05439330543933055
+    },
+    {
+      "ts": "2026-09-09T07:25:00+08:00",
+      "sid": "2026-09-09_day",
+      "level": "green",
+      "prev_level": "yellow",
+      "gap_n": 23,
+      "delta": -0.04811715481171548
+    },
+    {
+      "ts": "2026-09-09T07:40:00+08:00",
+      "sid": "2026-09-09_day",
+      "level": "yellow",
+      "prev_level": "green",
+      "gap_n": 41,
+      "delta": -0.08577405857740586
+    },
+    {
+      "ts": "2026-09-09T08:35:00+08:00",
+      "sid": "2026-09-09_day",
+      "level": "green",
+      "prev_level": "yellow",
+      "gap_n": 11,
+      "delta": -0.02301255230125523
+    },
+    {
+      "ts": "2026-09-09T16:30:00+08:00",
+      "sid": "2026-09-09_mid",
+      "level": "red",
+      "prev_level": null,
+      "gap_n": 122,
+      "delta": -0.25523012552301255
+    },
+    {
+      "ts": "2026-09-09T16:30:00+08:00",
+      "sid": "2026-09-09",
+      "level": "green",
+      "prev_level": null,
+      "gap_n": 22,
+      "delta": -0.02301255230125523
+    },
+    {
+      "ts": "2026-09-09T21:40:00+08:00",
+      "sid": "2026-09-09_mid",
+      "level": "yellow",
+      "prev_level": "red",
+      "gap_n": 36,
+      "delta": -0.07531380753138076
+    },
+    {
+      "ts": "2026-09-09T22:40:00+08:00",
+      "sid": "2026-09-09_mid",
+      "level": "red",
+      "prev_level": "yellow",
+      "gap_n": 78,
+      "delta": -0.16317991631799164
+    },
+    {
+      "ts": "2026-09-09T23:40:00+08:00",
+      "sid": "2026-09-09_mid",
+      "level": "yellow",
+      "prev_level": "red",
+      "gap_n": 32,
+      "delta": -0.06694560669456066
+    }
+  ],
+  "rest_days": []
+}

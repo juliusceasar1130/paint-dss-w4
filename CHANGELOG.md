@@ -3,6 +3,15 @@
 > **粒度**：波次级，每波关账时写入（非逐 commit；逐 commit 明细看 `git log`）。
 > **分工**：设计决策 / 口径 / 踩坑 → BM 线程笔记（`basic-memory/projects/paint-dss/`）；验收证据细节 → `output/` 下各波报告；本文件只记代码产物时间线。
 
+## 2026-10-07 — W4 关账：物理双环统一状态机 + 净延误第一迭代（TDD 297→449 绿；M10 8/8；G2 10.60%/11.26% 留痕 FAIL 关账；agy 计划审 + 定向审 + 二次审核通过）
+
+- **产物（跨切重构，无 `spike_w4/`；W3 冻结红线仅最小契约扩展）**：W4.1 统一纯净抽取（`sqlbase._EV_BASE_SQL` 全史复现 + 消费端零改动坐实）→ W4.2 净延误学习（`dim_expected_delay` 1,793 格 + loop_dur 扩列 + 4 表前缀三层行 + 覆盖率报告）→ W4.3 统一状态机引擎（`eta_v2.resolve_effective_flag` + `estimate_event_unified` + `estimate_event_net_delay` ND retrofit；管道契约 flag137 + passed_oven + rem_of + 25IS 出环信号；dashboard 统一路径）→ W4.4 全量回放验证（W1 窗延展 / W2 班次 / W3 M9+M10 / doc10 对账 / KW38/39 跨窗）
+- **关键拍板（详见 docs/15 + BM 线程笔记）**：D1–D8（含 D6 `DSS_DUAL_RING` 默认 1 / D8 烘房通道存储死车列已知假阳）；W4.4b (b)≡(d) shift 档 delay 改消费 `delay_p50_s`（mean 列肥尾否决）；W4.4c (α) 出环记忆 R3'（25IS 三网关置 `loop_exited` + 再过入口站重置 + 黑顶 '2' 同守；agy-2 二审裁决 (A) 接受实现偏差）；G2 留痕 FAIL 关账（W2 (a) / W3 (i)，不软化不删门）
+- **验证（证据 = `output/w4-双环重构验证摘要.md` + 各波报告）**：全套件 **449 passed**（297 基线 + W4 新增 152）；W1 回放 186.6min（−3.9% 无退化，三估计器形态一致，主力/返工组 −9%/−14%）；W2 sc3 G2 = 10.60%（符号中位 −5.61→+0.71% 系统性低估消除；同机基线 9.02%）；M9 (α) 后 G1 逐班 14/14 + 全厂 0.374pp ✅（中班 0.565pp 边际）、G2 11.26% 留痕、残留 13 辆 4 类逐车闭核（无一 (α) 致因）；**M10 8/8 ✅**（G1 3.78pp / G1b 14/14 / G4 bad []）；KW38/39 跨窗无结构性恶化（门模式不变，交叉对拍 ≤2 台）；doc10 5 门对账闭合（ND=1 半迁移实测 11.00%/11.99% ❌ → 真回滚 = DUAL_RING=0 ∧ ND=0 语义澄清）；回滚 288/288 零 diff（DUAL_RING=0）
+- **审核**：agy 计划审 1 轮（3 阻断 + 4 建议全修）+ agy/cc 双审（W4.2/W4.4b 各 1 轮）+ agy-2 W4.4c 一轮 + (α) 二次审核通过（2026-10-07）
+- **关键文件**：`spike_w1/sqlbase.py` · `spike_w1/01_learn_takt.py` · `spike_w1/eta.py`（仅注释行形状）· `spike_w2/eta_v2.py` · `spike_w2/01_learn_v2.py` · `spike_w2/02_replay_shift.py` · `spike_w3/stream_pipeline.py` · `spike_w3/predictor.py` · `spike_w3/dashboard.py` · `spike_w3/common.py` · `spike_w3/02_shadow_replay.py`（零改动红线的明示例外 3 处：estimate_for_replay 分发 ×2 / SELF_CHECK_BAND 重锚 / 参数化）· `.env.example` · `pytest.ini`（新建）· `tests/test_w4_*.py`（9 文件）· `docs/03`（契约同步）· `docs/14`（v1.4）· `docs/09`（假阳类别节）· `docs/15`（关账）· `output/w4-*.md`（验证报告群）
+- **跟办单（不阻塞 M5）**：P2×1（F1 YM33J- 净化效应诊断）；P3×7（ID/ts 乱序 7 辆 / 池 stale 守卫 3 辆 / dashboard 窗口查询 / F2 251 格覆盖 / 跨窗口径位移 / 回滚语义注记 / 09-26_mid 贴线根因）；第二迭代（doc10 深层链/返工组单车精度：SCC 切环 + 环类型条件化）
+
 ## 2026-09-29 — W3-M5 准备件：验收收账脚本 04 + 内网运行手册 docs/09 + agy 一审 5 项修复（TDD 297/297 绿；未 commit，待二轮审核）
 
 - **产物**：`spike_w3/04_m5_acceptance.py` 新增（M5 验收收账 CLI：5h 锚点 Δ实际 ±10% 判分 / 实际终局 = 4 下线点产品车闭区间计数（日 [04:45,16:30] / 中 [16:30,次日按型]）/ 四桶互斥 reason（gated/actual_zero/stale/anchor_missing）/ 断流连续段归并 / 告警台账 / 多目录合并收账 + 同前缀 -rN 目录 WARNING；只读零库写）+ `tests/test_w3_m5_acceptance.py` 21 新增+ `docs/09-M5内网在线验收运行手册.md` 新增（阶段 0 / D0 checklist / D1–D5 PowerShell 自动重启循环 + 每日检查单 + 三张记录模板 / 收账 / 红线 / 排障速查 7 项）
