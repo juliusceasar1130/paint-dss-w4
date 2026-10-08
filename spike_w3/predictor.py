@@ -47,6 +47,9 @@ def rem_of(v: VehicleState, t: datetime, tables: dict,
             iso_week_label(t.date()), tables,
             mode='shift', passed_oven=v.passed_oven, comp_excl=comp_excl,
             loop_exited=v.loop_exited,
+            # W4.4h：入口事件班次归属（VehicleState.entry_ts 入口事件时刻 → 固定带 DAY/MID，
+            # 与 eta_v2.entry_shift_of 同口径；DSS_SHIFT_TIER_DELAY=0 时引擎不消费，零漂移）
+            entry_shift=eta_v2.entry_shift_of(v.entry_ts),
         )
     elif eta_v2.use_net_delay_enabled():
         eta, _used = eta_v2.estimate_event_net_delay(

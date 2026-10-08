@@ -3,6 +3,15 @@
 > **粒度**：波次级，每波关账时写入（非逐 commit；逐 commit 明细看 `git log`）。
 > **分工**：设计决策 / 口径 / 踩坑 → BM 线程笔记（`basic-memory/projects/paint-dss/`）；验收证据细节 → `output/` 下各波报告；本文件只记代码产物时间线。
 
+## 2026-10-07 — W4.4h 班次型档延误实验（新表并存 + `DSS_SHIFT_TIER_DELAY` 开关默认 off；TDD 449→470 绿；KW37 双臂复测：off 零漂移逐位 / on G2 11.26→11.90 +0.64pp 未改善 → 拍板停线，开关保持 0、机制保留）
+
+- **产物**：`dss.dim_expected_delay_shift` 新表（2,768 行 DAY 1,657/MID 1,111；学习 SQL `01_learn_v2.SQL_EXPECTED_DELAY_SHIFT` 与 `SQL_EXPECTED_DELAY` 同源同纪律 + 入口事件班次固定带 DAY [04:45,16:30)/MID [16:30,04:45) 归属；与现有 `dim_expected_delay` 并存、现有表冻结未触碰）；`eta_v2` + `entry_shift_of`（固定带纯函数）/ `resolve_expected_delay_shift`（车型→前缀→ALL，p50 列，双人群双门槛，缺行→None）/ `shift_tier_delay_enabled`（严格 1/0，默认 0）+ `estimate_event_unified`/`estimate_for_replay` + `entry_shift` 可选参数（缺省 None = 零漂移；shift 档仅接 DUAL_RING=1 路径）；透传链 = `02_replay_shift`（load_tables 新键缺表→空 dict + 计数循环 entry_shift_arr）/ `02_shadow_replay`（静态参照侧 + 尾带）/ `predictor.rem_of`（←VehicleState.entry_ts）/ `dashboard` 单车 CLI（入口事件单查询）；`.env.example` + `DSS_SHIFT_TIER_DELAY=0` 模版；`01_boot_online` 新表不进必填清单（可选表，注释注记）
+- **测试**：`tests/test_w4_shift_tier_delay.py` 21 新增（固定带边界/回退链/双门槛/开关/零漂移/G1 parity）+ 两既有 stub 文件 +1 入口归属查询响应；全套件 **470 passed**（449 基线 + 21 零回归）
+- **实测（KW37 M9 影子回放 09-05→09-13，报告 `output/w4-W4.4h-班次型档-KW37双臂复测.md`）**：off 臂零漂移 ✓（静态 11.63 / 滚动 off 11.26 / 滚动 on 13.99 与 10-06 基线逐位一致）；on 臂 G2 门指标 11.26→**11.90%（+0.64pp 劣）**（静态 11.04 −0.59pp / 日班中位 12.46 −0.76pp / 中班 7.34 −1.42pp / 逐班 9 改善 2 平 3 劣）；shift 行回退率 DAY 0.0% / MID 0.6% → **归因错配（入口班次 ≠ 计入班次窗）非数据量地板**；学习方向与 F-05 计数层暗示相反（2N54Y-@01IS205：DAY 185 > 共享 136 > MID 69min）；旁证（非门）：α-on 13.99→11.96（班次条件化与 α 自适应正向交互，留档）
+- **结论（2026-10-07 拍板停线条件触发，如实）**：G2 未达「降 1–2pp」目标 → 不继续调参；`DSS_SHIFT_TIER_DELAY` 保持默认 0（= 现状零漂移）；机制（表 + 引擎 + 测试）整体保留，「计入班次窗」归属 = 未来重启候选方向；docs/15 §0.2 契约不动（未采纳）
+- **同波输出（单车/班次回放核验系列，非代码产物）**：`output/w1_replay_10_sample_cars_kw39_mid.md` · `output/w4_replay_10_sample_cars_kw39_mid.md`（KW39 10 台旧式 vs W4 双轨）· `output/w4_replay_100_sample_cars_kw37.md`（KW37 100 台双臂）· `output/w4-KW37-影子回放.md/.json`（KW37 基线 11.63/11.26/13.99）· `output/w4-KW37-影子回放_{off,on}_4h.md/.json`（W4.4h 双臂）
+- **关键文件**：`spike_w2/eta_v2.py` · `spike_w2/01_learn_v2.py` · `spike_w2/02_replay_shift.py` · `spike_w3/02_shadow_replay.py` · `spike_w3/predictor.py` · `spike_w3/dashboard.py` · `spike_w3/01_boot_online.py`（仅注释）· `.env.example` · `tests/test_w4_shift_tier_delay.py`（新增）· `tests/test_w4_engine_wiring.py` / `tests/test_w4_loop_exit_guard.py`（stub +1）
+
 ## 2026-10-07 — W4 关账：物理双环统一状态机 + 净延误第一迭代（TDD 297→449 绿；M10 8/8；G2 10.60%/11.26% 留痕 FAIL 关账；agy 计划审 + 定向审 + 二次审核通过）
 
 - **产物（跨切重构，无 `spike_w4/`；W3 冻结红线仅最小契约扩展）**：W4.1 统一纯净抽取（`sqlbase._EV_BASE_SQL` 全史复现 + 消费端零改动坐实）→ W4.2 净延误学习（`dim_expected_delay` 1,793 格 + loop_dur 扩列 + 4 表前缀三层行 + 覆盖率报告）→ W4.3 统一状态机引擎（`eta_v2.resolve_effective_flag` + `estimate_event_unified` + `estimate_event_net_delay` ND retrofit；管道契约 flag137 + passed_oven + rem_of + 25IS 出环信号；dashboard 统一路径）→ W4.4 全量回放验证（W1 窗延展 / W2 班次 / W3 M9+M10 / doc10 对账 / KW38/39 跨窗）

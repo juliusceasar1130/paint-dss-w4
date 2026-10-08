@@ -112,6 +112,8 @@ def load_tables(conn) -> dict:
     fut_all = {(r[1], r[0]): (r[2], r[3], r[4])
                for r in rows("SELECT body_type, station, p1, p2, n "
                              "FROM dss.v2_future_flag WHERE week = 'ALL'")}
+    # W4.4h：班次型档表存在性检查（缺表/未学习 → 空 dict，解析器回退共享行 = 零漂移）
+    _reg = rows("SELECT to_regclass('dss.dim_expected_delay_shift')")
     return {
         # W1 形状（eta_w1.estimate_vehicle 消费；键名必须与 W1 eta.py 完全一致：
         # rem/loop_rem/loop_dur/takt/fut——"fut" 取 v2 全窗 p 作别名，供 W1 直接/Σ 逻辑用）
@@ -145,10 +147,18 @@ def load_tables(conn) -> dict:
                            for r in rows("SELECT body_type, station, delay_mean_s, delay_p50_s, "
                                          "sample_n, sample_n_clean "
                                          "FROM dss.dim_expected_delay")},
+        # W4.4h 班次型档净延误表（可选表：缺表 → 空 dict，解析器回退共享行 = 现状零漂移）；
+        # 键 = (station, model, shift)，shift ∈ DAY/MID（入口事件班次固定带归属）；
+        # 消费必须走 eta_v2.resolve_expected_delay_shift，禁行内解析（列序与 expected_delay 同）
+        "expected_delay_shift": ({(r[1], r[0], r[2]): (r[3], r[4], r[5], r[6])
+                                  for r in rows("SELECT body_type, station, shift_type, "
+                                                "delay_mean_s, delay_p50_s, sample_n, sample_n_clean "
+                                                "FROM dss.dim_expected_delay_shift")}
+                                 if _reg and _reg[0][0] else {}),
     }
 
 
-def _eta_pair(t_e, st_e, fl_e, model, week, tables, comp_excl):
+def _eta_pair(t_e, st_e, fl_e, model, week, tables, comp_excl, entry_shift=None):
     """W4.3d 双臂分发（docs/15 W4.3d；direct_nocomp 重定义——agy 建议 2 + cc 阻断项 3）。
 
     DUAL_RING=1: (统一引擎净化 flag 直通, 净延误关闭基线 = expected_delay 强制 0)——
@@ -156,11 +166,14 @@ def _eta_pair(t_e, st_e, fl_e, model, week, tables, comp_excl):
       新引擎无 p×L 补偿，无豁免对象；表缺失/门槛不过时两臂相等，对比恒平，语义成立）；
     DUAL_RING=0: (旧引擎 comp_excl 语义保持, 旧引擎不豁免旧 ⑥b 语义)，
       ND=1 时两臂同走 doc10 retrofit（p×L → expected_delay）。
+    W4.4h：entry_shift 透传 D 臂统一引擎；d0 臂（净延误关闭基线）同时清空两张 delay 表。
     返回 (eta_d, eta_d0, used)——used = d 臂 cohort 命中标志（cohort_used 计数保持）。"""
     if eta_v2.dual_ring_enabled():
-        eta_d, used = eta_v2.estimate_for_replay(t_e, st_e, fl_e, model, week, tables)
-        tables_nc = {**tables, "expected_delay": {}}
-        eta_d0, _ = eta_v2.estimate_for_replay(t_e, st_e, fl_e, model, week, tables_nc)
+        eta_d, used = eta_v2.estimate_for_replay(t_e, st_e, fl_e, model, week, tables,
+                                                 entry_shift=entry_shift)
+        tables_nc = {**tables, "expected_delay": {}, "expected_delay_shift": {}}
+        eta_d0, _ = eta_v2.estimate_for_replay(t_e, st_e, fl_e, model, week, tables_nc,
+                                               entry_shift=entry_shift)
         return eta_d, eta_d0, used
     if eta_v2.use_net_delay_enabled():
         eta_d, used = eta_v2.estimate_event_net_delay(t_e, st_e, fl_e, model, week, tables, comp_excl)
@@ -200,6 +213,11 @@ def main() -> int:
                          columns=["body", "bt", "entry_t", "exit_t", "entry_st"]).set_index("body")
     bodies = spans.index.to_numpy()
     entry_arr = spans["entry_t"].to_numpy(dtype=np.int64)
+    # W4.4h：入口事件班次归属（固定带 DAY [04:45,16:30) / MID [16:30,04:45)，计划无关；
+    # 与 eta_v2.entry_shift_of 同口径；供 _eta_pair 透传统一引擎班次型档 delay）
+    _CST = ZoneInfo("Asia/Shanghai")
+    entry_shift_arr = [eta_v2.entry_shift_of(datetime.fromtimestamp(int(x), tz=_CST))
+                       for x in entry_arr]
     exit_arr = spans["exit_t"].to_numpy(dtype=np.float64)
     exit_arr = np.where(np.isnan(exit_arr), np.inf, exit_arr)
     bt_arr = spans["bt"].to_numpy()
@@ -328,7 +346,8 @@ def main() -> int:
                     continue
                 t_e, st_e, fl_e = evlist[idx]
                 model = bt_arr[i]
-                eta_d, eta_d0, used = _eta_pair(t_e, st_e, fl_e, model, week, tables, comp_excl)
+                eta_d, eta_d0, used = _eta_pair(t_e, st_e, fl_e, model, week, tables, comp_excl,
+                                                entry_shift=entry_shift_arr[i])
                 m = eta_v2.quality_mark(tables["quality"], model, st_e)
                 mark_cnt[m] = mark_cnt.get(m, 0) + 1
                 if used:

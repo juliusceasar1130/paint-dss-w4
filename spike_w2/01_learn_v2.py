@@ -3,7 +3,8 @@
 
 用法：python spike_w2\\01_learn_v2.py [--learn-start 2026-04-14] [--learn-end 2026-08-15]
                               [--replay-start 2026-08-16] [--replay-end 2026-09-19]
-只写 dss.v2_* 六张表 + dss.dim_expected_delay（W4.2c 新建，doc10 §2 双列净延误）；
+只写 dss.v2_* 六张表 + dss.dim_expected_delay（W4.2c 新建，doc10 §2 双列净延误）
++ dss.dim_expected_delay_shift（W4.4h 新建，班次型档净延误，入口事件班次归属）；
 W1 六张 dss.dim_*（含 meta）只读不写（回归护栏）。
 sanity W2-S1–S4 全 PASS 才 exit 0（否则 exit 1），报告 output/w2_learn_sanity_<YYYYMMDD>.md。
 """
@@ -57,6 +58,12 @@ CREATE TABLE dss.dim_expected_delay (
     delay_mean_s BIGINT, delay_p50_s BIGINT,
     sample_n INT, sample_n_clean INT,
     PRIMARY KEY (body_type, station));
+DROP TABLE IF EXISTS dss.dim_expected_delay_shift;   -- W4.4h 班次型档（2026-10-07 拍板，新表并存不改现有表）
+CREATE TABLE dss.dim_expected_delay_shift (
+    body_type TEXT NOT NULL, station TEXT NOT NULL, shift_type TEXT NOT NULL,
+    delay_mean_s BIGINT, delay_p50_s BIGINT,
+    sample_n INT, sample_n_clean INT,
+    PRIMARY KEY (body_type, station, shift_type));
 """
 
 # ⑥a 净化：p 只从前环人群学（flag=0 且早于该车首个 flag 1 与首个 flag 2 事件）
@@ -240,6 +247,89 @@ p1s AS (
 )
 INSERT INTO dss.dim_expected_delay
 SELECT a.lvl_key, a.station,
+       GREATEST(0, round(COALESCE(pm.p1, pa.p1, 0.0) * a.mean_diff
+                         + (a.mean_clean - a.p50_clean)))::BIGINT,
+       GREATEST(0, round(COALESCE(pm.p1, pa.p1, 0.0) * a.p50_diff))::BIGINT,
+       a.n_fut::INT, a.n_clean::INT
+FROM agg a
+LEFT JOIN p1s pm ON pm.body_type = a.lvl_key AND pm.station = a.station
+LEFT JOIN p1s pa ON pa.body_type = 'ALL' AND pa.station = a.station
+WHERE a.n_fut >= 30 AND a.n_clean >= 30;
+"""
+
+# W4.4h：班次型档净延误表（2026-10-07 用户拍板；任务单 paint-dss W4.4h 班次型档延误实验）
+#   与 SQL_EXPECTED_DELAY 同源同纪律（ev 人群 / base 同源基线 / ⑥a 全窗 P(fut) /
+#   双人群 N≥30 / 外层 max(0,·) 截断），仅加 shift 维：样本归属 = 入口事件班次
+#   （entry_t 固定带：DAY [04:45,16:30) / MID [16:30,04:45)，与 shifts.py 归属窗同口径；
+#   低谷尾隙（中班窗末, 04:45）并入 MID 尾，事件量可忽略）。
+#   P(fut) 复用不分班次的 v2_future_flag（概率不做班次条件化——W4.4h 只拆延误分布）。
+#   消费侧：eta_v2.resolve_expected_delay_shift（DSS_SHIFT_TIER_DELAY=1；缺行回退共享行）。
+SQL_EXPECTED_DELAY_SHIFT = """
+WITH ff AS (
+    SELECT body,
+           min(t) FILTER (WHERE flag = '1') AS f1,
+           min(t) FILTER (WHERE flag = '2') AS f2
+    FROM tmp_ev_base GROUP BY body
+),
+ev AS (
+    SELECT e.bt, e.station,
+           EXTRACT(EPOCH FROM (e.exit_t - e.t))::BIGINT AS rem,
+           CASE WHEN f.f1 IS NOT NULL AND f.f1 > e.t THEN 1 ELSE 0 END AS fut,
+           CASE WHEN (EXTRACT(HOUR FROM (e.entry_t AT TIME ZONE 'Asia/Shanghai')) * 60
+                     + EXTRACT(MINUTE FROM (e.entry_t AT TIME ZONE 'Asia/Shanghai')))::INT
+                      BETWEEN 285 AND 989 THEN 'DAY' ELSE 'MID' END AS shift
+    FROM tmp_ev_base e JOIN ff f ON f.body = e.body
+    WHERE e.flag = '0' AND e.t < e.exit_t
+      AND (f.f1 IS NULL OR e.t < f.f1)
+      AND (f.f2 IS NULL OR e.t < f.f2)
+),
+eb AS (
+    SELECT ev.bt, ev.station, ev.shift, ev.rem, ev.fut,
+           COALESCE(rm.p50, rp.p50, ra.p50) AS base
+    FROM ev
+    LEFT JOIN dss.dim_remaining_time rm
+           ON rm.body_type = ev.bt AND rm.station = ev.station AND rm.n >= 30
+    LEFT JOIN dss.dim_remaining_time rp
+           ON rp.body_type = LEFT(ev.bt, 2) AND rp.station = ev.station AND rp.n >= 30
+    LEFT JOIN dss.dim_remaining_time ra
+           ON ra.body_type = 'ALL' AND ra.station = ev.station AND ra.n >= 30
+),
+agg AS (
+    SELECT bt AS lvl_key, station, shift,
+           AVG(rem - base) FILTER (WHERE fut = 1) AS mean_diff,
+           percentile_cont(0.5) WITHIN GROUP (ORDER BY (rem - base)) FILTER (WHERE fut = 1) AS p50_diff,
+           count(*) FILTER (WHERE fut = 1) AS n_fut,
+           AVG(rem) FILTER (WHERE fut = 0) AS mean_clean,
+           percentile_cont(0.5) WITHIN GROUP (ORDER BY rem) FILTER (WHERE fut = 0) AS p50_clean,
+           count(*) FILTER (WHERE fut = 0) AS n_clean
+    FROM eb WHERE base IS NOT NULL
+    GROUP BY bt, station, shift
+    UNION ALL
+    SELECT LEFT(bt, 2), station, shift,
+           AVG(rem - base) FILTER (WHERE fut = 1),
+           percentile_cont(0.5) WITHIN GROUP (ORDER BY (rem - base)) FILTER (WHERE fut = 1),
+           count(*) FILTER (WHERE fut = 1),
+           AVG(rem) FILTER (WHERE fut = 0),
+           percentile_cont(0.5) WITHIN GROUP (ORDER BY rem) FILTER (WHERE fut = 0),
+           count(*) FILTER (WHERE fut = 0)
+    FROM eb WHERE base IS NOT NULL
+    GROUP BY LEFT(bt, 2), station, shift
+    UNION ALL
+    SELECT 'ALL', station, shift,
+           AVG(rem - base) FILTER (WHERE fut = 1),
+           percentile_cont(0.5) WITHIN GROUP (ORDER BY (rem - base)) FILTER (WHERE fut = 1),
+           count(*) FILTER (WHERE fut = 1),
+           AVG(rem) FILTER (WHERE fut = 0),
+           percentile_cont(0.5) WITHIN GROUP (ORDER BY rem) FILTER (WHERE fut = 0),
+           count(*) FILTER (WHERE fut = 0)
+    FROM eb WHERE base IS NOT NULL
+    GROUP BY station, shift
+),
+p1s AS (
+    SELECT body_type, station, p1 FROM dss.v2_future_flag WHERE week = 'ALL'
+)
+INSERT INTO dss.dim_expected_delay_shift
+SELECT a.lvl_key, a.station, a.shift,
        GREATEST(0, round(COALESCE(pm.p1, pa.p1, 0.0) * a.mean_diff
                          + (a.mean_clean - a.p50_clean)))::BIGINT,
        GREATEST(0, round(COALESCE(pm.p1, pa.p1, 0.0) * a.p50_diff))::BIGINT,
@@ -455,6 +545,10 @@ def main() -> int:
     print("dim_expected_delay（W4.2c，doc10 §2 双列净延误）…")
     cur.execute(SQL_EXPECTED_DELAY)
     print("  行数:", _scalar(cur, "SELECT count(*) FROM dss.dim_expected_delay"))
+    # 1c) W4.4h：班次型档净延误表（同窗 ev_base；与 1b 同源，加 shift 维）
+    print("dim_expected_delay_shift（W4.4h 班次型档，入口事件班次归属）…")
+    cur.execute(SQL_EXPECTED_DELAY_SHIFT)
+    print("  行数:", _scalar(cur, "SELECT count(*) FROM dss.dim_expected_delay_shift"))
 
     # 2) 每回放周：滚动 8 周 ev_base → fut_week + lineprob
     for w in weeks:
@@ -480,7 +574,8 @@ def main() -> int:
             "n_v2_cohort_remaining": str(_scalar(cur, "SELECT count(*) FROM dss.v2_cohort_remaining")),
             "n_v2_line_prob": str(_scalar(cur, "SELECT count(*) FROM dss.v2_line_prob")),
             "n_v2_comp_excl": str(n_excl),
-            "n_dim_expected_delay": str(_scalar(cur, "SELECT count(*) FROM dss.dim_expected_delay"))}
+            "n_dim_expected_delay": str(_scalar(cur, "SELECT count(*) FROM dss.dim_expected_delay")),
+        "n_dim_expected_delay_shift": str(_scalar(cur, "SELECT count(*) FROM dss.dim_expected_delay_shift"))}
     cur.executemany("INSERT INTO dss.v2_learner_meta (key, value) VALUES (%s, %s)", meta.items())
 
     checks = sanity_checks(conn, weeks)

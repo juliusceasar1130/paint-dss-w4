@@ -238,6 +238,10 @@ def static_reference(conn, replay_start: datetime, replay_end: datetime,
                          columns=["body", "bt", "entry_t", "exit_t"]).set_index("body")
     bodies = spans.index.to_numpy()
     entry_arr = spans["entry_t"].to_numpy(dtype=np.int64)
+    # W4.4h：入口事件班次归属（固定带，计划无关；与 eta_v2.entry_shift_of 同口径）
+    _CST = ZoneInfo("Asia/Shanghai")
+    entry_shift_arr = [eta_v2.entry_shift_of(datetime.fromtimestamp(int(x), tz=_CST))
+                       for x in entry_arr]
     exit_arr = np.where(spans["exit_t"].isna(), np.inf,
                         spans["exit_t"].to_numpy(dtype=np.float64))
     bt_arr = spans["bt"].to_numpy()
@@ -299,7 +303,8 @@ def static_reference(conn, replay_start: datetime, replay_end: datetime,
                 t_e, st_e, fl_e = evlist[idx]
                 # W4.3d（cc 阻断项 3）：静态参照侧同引擎分发（G1 同引擎门）
                 eta_d, _used = eta_v2.estimate_for_replay(int(t_e), st_e, fl_e, bt_arr[i],
-                                                          week, tables, comp_excl)
+                                                          week, tables, comp_excl,
+                                                          entry_shift=entry_shift_arr[i])
                 if eta_d is not None and t + (int(eta_d) - int(t_e)) <= end_ep:
                     cnt += 1
                     if h == shifts.GATE_ANCHOR_H:
@@ -328,7 +333,8 @@ def static_reference(conn, replay_start: datetime, replay_end: datetime,
                         continue
                     t_e, st_e, fl_e = evlist[idx]
                     eta_d, _u = eta_v2.estimate_for_replay(int(t_e), st_e, fl_e, bt_arr[i],
-                                                           week, tables, comp_excl)
+                                                           week, tables, comp_excl,
+                                                           entry_shift=entry_shift_arr[i])
                     if eta_d is not None and t + (int(eta_d) - int(t_e)) <= clip_ep:
                         cnt_clip += 1
                 rec["clip_pred"][h] = A_clip + cnt_clip

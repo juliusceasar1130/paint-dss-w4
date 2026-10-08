@@ -268,13 +268,22 @@ def _compute_eta_unified(out0, body_id, station, body_type, flag, flag137,
         "AND \"RW_STATION_ID\" IN ('25IS010', '25IS110', '25IS210')",
         (body_id, as_of))
     loop_exited = cur.fetchone()[0] > 0
+    # W4.4h：入口事件班次归属（与 passed_oven/loop_exited 同模式单查询；缺 → None = 共享行回退）
+    cur.execute(
+        'SELECT MIN("DATE_EVT") FROM ods.carbody_history '
+        'WHERE "BODY_ID" = %s AND "DATE_EVT" <= %s '
+        "AND \"RW_STATION_ID\" IN ('01IS205', '1L360RB', '01IS045')",
+        (body_id, as_of))
+    _entry_ts = cur.fetchone()[0]
+    entry_shift = eta_v2.entry_shift_of(_entry_ts) if _entry_ts is not None else None
     tables = _w2_replay_cli().load_tables(conn)
     week = iso_week_label(as_of.date())
     eff = eta_v2.resolve_effective_flag(station, flag137, flag, passed_oven, loop_exited)
     last = int(ts.timestamp())
     eta, used_cohort = eta_v2.estimate_event_unified(
         last, station, flag137, flag, body_type, week, tables,
-        mode='vehicle', passed_oven=passed_oven, loop_exited=loop_exited)
+        mode='vehicle', passed_oven=passed_oven, loop_exited=loop_exited,
+        entry_shift=entry_shift)
     if eta is None:
         return {**out0, "status": "error",
                 "error": (f"当前站 {station} 残差样本不足"

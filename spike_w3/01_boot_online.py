@@ -38,6 +38,8 @@ DSS_DIM_TABLES = (
     "v2_line_prob", "v2_cohort_remaining", "v2_future_flag",
     "v2_comp_excl", "v2_station_quality", "v2_learner_meta",
     "dim_expected_delay",  # W4.2c（doc10 净延误表，双审 B8：学习器新建表须进启动完整性检查）
+    # dss.dim_expected_delay_shift（W4.4h 班次型档）为可选表：不进必填清单（缺表 → 装载空 dict →
+    # 解析器回退共享行；仅 DSS_SHIFT_TIER_DELAY=1 时生效，默认 0 零漂移）
     "dim_weekly_plan",   # T1-lite（周计划入库表，docs/06）
 )
 

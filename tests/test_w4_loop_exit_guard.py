@@ -282,6 +282,9 @@ def _dashboard_fake_conn(latest, oven_cnt=0, exit_cnt=0, rem=(), rem_rows=()):
                 self._out = [(oven_cnt,)]
             elif "COUNT(*)" in sql and "25IS010" in sql:
                 self._out = [(exit_cnt,)]
+            elif "MIN(" in sql and "01IS205" in sql:
+                # W4.4h：入口事件班次归属查询（缺省 = 日班带内时刻；开关 off 时不参与计算）
+                self._out = [(datetime(2026, 9, 9, 6, 0),)]
             elif "FROM dss.dim_remaining_time" in sql:
                 self._out = list(rem)
             else:

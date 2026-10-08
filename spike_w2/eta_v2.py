@@ -274,14 +274,53 @@ def resolve_expected_delay(tables: dict, station: str, model: str,
     return None
 
 
+def resolve_expected_delay_shift(tables: dict, station: str, model: str,
+                                 shift: str) -> Optional[int]:
+    """W4.4h 班次型档净延误解析（DSS_SHIFT_TIER_DELAY=1 消费）：车型 → 前缀 → ALL → None；
+    与 resolve_expected_delay 同纪律（显式列索引：row[1]=delay_p50_s；双人群双门槛
+    n_fut≥30 且 n_clean≥30，缺一降层）；键 = (station, model, shift)，shift ∈ {'DAY','MID'}。
+    缺行/门槛不过/表缺失（空 dict）→ None，调用方回退共享行（不猜数纪律；
+    回退路径与开关 off 完全一致 = 零漂移）。"""
+    table = tables.get("expected_delay_shift") or {}
+    for m in _model_tiers(model):
+        row = table.get((station, m, shift))
+        if row is not None and row[2] >= DELAY_MIN_N and row[3] >= DELAY_MIN_N:
+            return int(row[1])
+    return None
+
+
+def entry_shift_of(ts) -> str:
+    """W4.4h 入口事件班次归属（固定带，计划无关，纯函数）：
+    DAY = [04:45, 16:30)，MID = [16:30, 次日 04:45)——与 shifts.py 归属窗同口径
+    （日班窗末 16:30 含 30min 交班尾；提早开工 04:45–正式开班计日班）；低谷尾隙
+    （中班窗末, 04:45）并入 MID 尾（事件量可忽略，固定带无空档）。
+    ts 必须 aware（Asia/Shanghai 工厂时）；返回 'DAY'/'MID'。"""
+    m = ts.hour * 60 + ts.minute
+    return "DAY" if 4 * 60 + 45 <= m < 16 * 60 + 30 else "MID"
+
+
+def shift_tier_delay_enabled() -> bool:
+    """DSS_SHIFT_TIER_DELAY 门（W4.4h，2026-10-07 用户拍板）：=1 → 统一引擎 delay 优先
+    查班次型档行（expected_delay_shift，入口事件班次归属）；缺行/门槛不过回退共享行；
+    默认 0 = 现状（共享行，零漂移）。仅影响 estimate_event_unified/estimate_for_replay
+    的 DUAL_RING=1 路径；旧引擎路径不消费。"""
+    return _strict01("DSS_SHIFT_TIER_DELAY", 0) == 1
+
+
 def estimate_event_unified(t: int, station: str, flag137: Optional[str],
                            flag139: Optional[str], model: str, week: str,
                            tables: dict, mode: str = 'vehicle',
                            passed_oven: bool = False,
                            comp_excl: frozenset = frozenset(),
                            effective_flag: Optional[str] = None,
-                           loop_exited: bool = False) -> tuple:
+                           loop_exited: bool = False,
+                           entry_shift: Optional[str] = None) -> tuple:
     """统一单车 ETA 与班次产量在线推断核心函数（Doc14 §5 语义 + W2 既有 week/comp_excl 超集参数）。
+
+    W4.4h（2026-10-07）：entry_shift（'DAY'/'MID'/None = 入口事件班次归属，
+      eta_v2.entry_shift_of 派生）+ DSS_SHIFT_TIER_DELAY=1 → delay 优先班次型档行
+      （resolve_expected_delay_shift），缺行/门槛不过回退共享行；
+      开关 off 或 entry_shift=None → 与 W4.4h 前逐位一致（零漂移）。
     返回 (eta 绝对秒|None, used_cohort bool)，与旧入口同形状。
 
     eff = effective_flag if effective_flag is not None \
@@ -298,8 +337,9 @@ def estimate_event_unified(t: int, station: str, flag137: Optional[str],
       C8：loop_rem/loop_dur 训练目标为 station→exit（含网关后主线段），eta = t + round(rem) 不叠加任何项。
     分支 B（eff == '0'）：base = ① 线别 cohort 混合（与旧引擎同机制，model→ALL）
       → 缺则 rem 三层回退；base 缺 → (None, used_cohort)。
-      delay = 0（station ∈ 37 站通用出环后）否则 resolve_expected_delay（缺 → 0）；
-      新表替代旧 p×L1+p×L2（doc10 合流日语义）；comp_excl 参数仅旧路径消费，本函数不消费。
+      delay = 0（station ∈ 37 站通用出环后）否则：W4.4h shift 档（DSS_SHIFT_TIER_DELAY=1
+      ∧ entry_shift 非 None）优先 resolve_expected_delay_shift → 回退 resolve_expected_delay
+      （缺 → 0）；新表替代旧 p×L1+p×L2（doc10 合流日语义）；comp_excl 参数仅旧路径消费，本函数不消费。
     α 不在本函数消费（消费点 rem/α 单次，doc10 L121 / 双审 B10，无双重缩放）。
     """
     eff = effective_flag if effective_flag is not None \
@@ -326,7 +366,11 @@ def estimate_event_unified(t: int, station: str, flag137: Optional[str],
     if station in UNIVERSAL_EXIT_STATIONS:
         delay = 0.0
     else:
-        delay = resolve_expected_delay(tables, station, model, mode)
+        delay = None
+        if shift_tier_delay_enabled() and entry_shift is not None:
+            delay = resolve_expected_delay_shift(tables, station, model, entry_shift)
+        if delay is None:
+            delay = resolve_expected_delay(tables, station, model, mode)
         if delay is None:
             delay = 0.0
     eta = t + int(round(base + delay))
@@ -393,7 +437,8 @@ def estimate_event_net_delay(t: int, station: str, flag: str, model: str, week: 
 
 def estimate_for_replay(t: int, station: str, flag_purified: str, model: str,
                         week: str, tables: dict, comp_excl: frozenset = frozenset(),
-                        dual_ring: Optional[bool] = None) -> tuple:
+                        dual_ring: Optional[bool] = None,
+                        entry_shift: Optional[str] = None) -> tuple:
     """回放/影子静态参照共享分发（双审 cc 阻断项 3 修复 → G1 恢复同引擎一致性门）。
 
     DSS_DUAL_RING=1 → estimate_event_unified(mode='shift', effective_flag=flag_purified 直通，
@@ -402,12 +447,15 @@ def estimate_for_replay(t: int, station: str, flag_purified: str, model: str,
       §0.5 / B11）；=0 → 旧 estimate_event（comp_excl 语义保持）。两侧同调本分发：
     滚动侧（predictor 静态参照）与静态参照侧（02_shadow_replay L266/L295）差异只来自
     滚动池/α 状态；回滚路径两侧同走旧引擎、门判语义保持。
+    W4.4h：entry_shift（'DAY'/'MID'/None）仅透传 DUAL_RING=1 分支（班次型档 delay）；
+    ND/旧路径不消费。
     """
     if _dual_ring(dual_ring):
         return estimate_event_unified(t, station, None, flag_purified, model,
                                       week, tables, mode='shift',
                                       comp_excl=comp_excl,
-                                      effective_flag=flag_purified)
+                                      effective_flag=flag_purified,
+                                      entry_shift=entry_shift)
     if use_net_delay_enabled():
         return estimate_event_net_delay(t, station, flag_purified, model, week, tables,
                                         comp_excl)
