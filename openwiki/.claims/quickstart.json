@@ -1,0 +1,322 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:b84c8282a5ad177c22a3904d4794e9afce5ffa856284423ce81bd92e1b94fe67",
+  "claims": [
+    {
+      "id": "claim_11e2578f940d4c3fb3d826922b546297",
+      "statement": "本仓库是涂装车间 DSS（决策支持系统）：三大功能为物流均衡、班次产量达成预测、缺口预警；开发顺序先做模块②（班次产量达成预测），模块①（WIP 看板 + 水位预警）与模块③（流量均衡建议）在②之后；数据源为 analytics_db（开发库 @ 127.0.0.1:5432），核心表 ods.carbody_history 为只读过站事件流。",
+      "evidence": [
+        {
+          "resource": "repo://AGENTS.md#L52-L52",
+          "version": "repo-lines-v1:sha256:91dade5c05a087219599e7bbff3af2765057eff5a82ea31752284ddb63608251:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOTFkYWRlNWMwNWEwODcyMTk1OTllN2JiZmYzYWYyNzY1MDU3ZWZmNWE4MmVhMzE3NTIyODRkZGI2MzYwODI1MSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOTFkYWRlNWMwNWEwODcyMTk1OTllN2JiZmYzYWYyNzY1MDU3ZWZmNWE4MmVhMzE3NTIyODRkZGI2MzYwODI1MSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNzA3MjMwMzE2MDI1NDFlYmY1OGIzODJhY2Q5YTA3YTRiMTMwOWRkM2IzZDc5ZjczYTBkZTZiZDEyYzkwMjVmZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTQzOWU5MTIxMThmZDc3ODUxZTE5ODQwOGY4NTJlYTM2MDk0Njc4NzIxZTFiNjI3YmQxMTJiY2EyNzVmMzdhMyJ9"
+        },
+        {
+          "resource": "repo://AGENTS.md#L9-L9",
+          "version": "repo-lines-v1:sha256:0e20b2b46ca1b5965f0afb22081c1527d499afbeb01d6904e877607019ac0e03:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMGUyMGIyYjQ2Y2ExYjU5NjVmMGFmYjIyMDgxYzE1MjdkNDk5YWZiZWIwMWQ2OTA0ZTg3NzYwNzAxOWFjMGUwMyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMGUyMGIyYjQ2Y2ExYjU5NjVmMGFmYjIyMDgxYzE1MjdkNDk5YWZiZWIwMWQ2OTA0ZTg3NzYwNzAxOWFjMGUwMyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZGQ0ZDc4NTgyZjc3MTBjYWFkMzRhMzU2ZDBkN2NlYTExYmE3MzdhZjFjNzgyZTkyZDc2MjFlOWJkMGRiMmRjYyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZmFhYjg2ZDJmOGUxOTdhY2RlNjZlMThmMzAxZDUwMmRkZmY4ZmJjMzljYWNlNWE4ODRjZjU0MWQ2OWViOGI5MiJ9"
+        },
+        {
+          "resource": "repo://README.md#L3-L4",
+          "version": "repo-lines-v1:sha256:e12bfc2fc9baff5ba2055a8bc9957c5cf8d829f56f5086886c10e4179fb109c2:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiY2I2Yjk5ZDRhNTk1MjkxNzIxNTRhMTZkMjY5YjUzZGE0MzllMjgyODMzMDQzODA3Nzk0NTYxYTAyMzNhNjk2ZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNDgwNmZjNGM1ZWYzOGVmOTIxNjhmMmIyYTUzMTQwMWI2ODcxZjc5YTBlOTQwYmUxZmE4YmE3ZDhkY2UwOGYxNSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjIsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiODExYzc4MTQ0OTZlYzZmYWJhMmI2ODJlNGExNTZhYmM5ODVjYjk3MTJiYjc3ZjAxZjM1Yjc2YTk3Nzk0NDVhMiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYTM0MDFlNzA1ZDM3MTVkMjE4YThlYjljYTUyYTZiYTNkYjc4YjNmODI5MTczYTMxYzI4NGMxOGY5NGIyM2NkMyJ9"
+        },
+        {
+          "resource": "repo://docs/01-%E5%BC%80%E5%8F%91%E9%98%B6%E6%AE%B5%E8%AE%A1%E5%88%92.md#L9-L19",
+          "version": "repo-lines-v1:sha256:b2d7526d397350e8230c89318e4e98eeb6d4539359bb48d7bdf25e66d4084b31:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdlZjFkZjM5ZjBhZDYwMDMwYjYxMDAzYTM5OGJiNTcyZjM4M2YwMjYxYTQzNGFkOTg5ZjgyN2FjYjg1NDI5NjIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI3ODU2NTM1NzUzMzZkYzcwNTM1NDE3YmRiNzRkNDA2Y2QzOTQ5YTY1YWRjMDAyNmJiMjJlZTU0MjhjOTc3Y2QiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjczODE4NWRiMTNjMzg0ODE3MjQyMjE0ZWYwMjY4MDc4N2E1MzQxNjg3YjRkYzgyYjc5NGQxZWFkMjZkODUwMGEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImZiNTBkZmNjYTdmZjI5MmRiZjFiMmU2OWYzMTA4YjczOGU1MWY4OGY5ZWFjYTM5MWI1YTc2M2VkYjgzNWJjYTQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_235327abf41b4698853e3f2374f2695b",
+      "statement": "当前开发状态：W4（物理双环统一状态机 + 净延误第一迭代）于 2026-10-07 关账，为跨切重构、无新代码目录；全套件基线 470 passed（W4.4h 后）；M5 内网 5 天在线验收已就绪，定版产物为收账脚本 spike_w3/04_m5_acceptance.py、内网运行手册 docs/09-M5内网在线验收运行手册.md 与 D0 快查 d0_check.py。",
+      "evidence": [
+        {
+          "resource": "repo://CHANGELOG.md#L6-L22",
+          "version": "repo-lines-v1:sha256:b26a2aee31f8a0866a7983376adbff83ae1454c5533760acb3798f0844b01ae2:eyJzZWxlY3RlZExpbmVDb3VudCI6MTcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImYyMjZjMDBmN2Q0ZTJjOGJjMGI5Yzg5N2ZiMjJkZGYwNzk2MjUyMDM4NGU5OTg4ZjMzODc4OTk5ODliMTc3NDEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjEzYzMzMjc5ZGVkYWZhYmUxNzkzM2FiYTU1NzM2ZTgxNmMxOWEzOTdkMDU1YzNjMGQ2YWYwYjEyZTRlNjBkZTgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijk1YmYzYzA2OGE4Y2I1NzYyMmQ5NjA1ZDRiNjkxMjVmZGVhYjdjMTg1NDU2YmE4ZjU3ZDU2MGNmODgzNmFmOTQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjcwMTcyYWM5OWZlYWRhOGIzNjI3ZGEwYTk5ZGM2NDZhYTQ2MjQ2OGY0ZjFkNmZkNmY0YTBmNGFmOGU5YTMyNjEifQ"
+        },
+        {
+          "resource": "repo://d0_check.py",
+          "version": "repo-file-v1:sha256:11a06aac7cbe0e97fabe311b05acc2ece2c20e8afc5f2849ba6e26247c8b8727"
+        },
+        {
+          "resource": "repo://spike_w3/04_m5_acceptance.py",
+          "version": "repo-file-v1:sha256:022c7ab3411be5edc5fced28882ef9bd1627b13fbb4c0f2ffb4a69e8aa75751a"
+        }
+      ]
+    },
+    {
+      "id": "claim_fdf133d280ea413bbe584210c883f2a8",
+      "statement": "项目实行两级 agent 记忆：BM（Basic Memory）= 决策记忆（为什么、拍板了什么、实测结论、踩坑），OpenWiki = 代码记忆（派生产物、代码 grounding、可再生、仅本仓库有效、所有接入 agent 可读）。内容分工硬边界（每类只写一处）：口径/决策理由/演进历史只进 BM；代码架构/模块职责/运行路径/DSS_* 参数只进 OpenWiki；实测结论数字只进 output/ 报告；任务/工单只进 BM Task Board（前缀 paint-dss:）；代码变更时间线只进 CHANGELOG.md。",
+      "evidence": [
+        {
+          "resource": "repo://AGENTS.md#L37-L44",
+          "version": "repo-lines-v1:sha256:592150269389dda74825b6899dcf692b9f741bb9983a002ee658a74ca4ec88f9:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMDlmM2VlYzM1MjMwYzc3ZDQ3ZTEyOGZiY2Y1Zjk3NTQ1Yjk3ZWE4Y2M0OTBlZTNiZWYzMWYzNDZiYjdjMGMyNSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNGVmNWZlYTk1MTU3MDRjOTZmZTI2OThkMmM2NjE3ZDlhNTljNWM5ZDMzZDMyNzgwYjUwOTI5MTE0M2UyMGI1NSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZjUzYzhmYTQ1YjcwMWVhOWM2Yjg3MDk3OTA0NDdmMzFjZGQxYzQ0YTgyOTEyMjY5MDY1MzAwYTRmZjQyMWRjOSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNTFjYWNkNjlkNmU2MzQyOWE3MzJhNzM3ZWRhZjI1NzIyZTNmYTQzOThjNTE0MDgwZWY0ZTQwNGM3M2QyOTg5OCJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_d56e8257a67b4b6e8fd50415c83dcf2a",
+      "statement": "口径类事实的唯一事实源是 BM 线程笔记（basic-memory/projects/paint-dss/涂装车间-dss-方案设计与开发路线，项目级、跨仓库、不可再生）；本仓库 README.md 关键口径表是其固化快照；OpenWiki 是派生产物（代码 grounding、可再生、仅本仓库有效），只引用出处（README 行 / docs 编号 / BM 笔记）、不复制口径细节，发现冲突时以 BM 为准。",
+      "evidence": [
+        {
+          "resource": "repo://AGENTS.md#L11-L11",
+          "version": "repo-lines-v1:sha256:cb33bb7563c675e7241b3623d254ef51d5310c9b02111a074229c79dea9bd0b1:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiY2IzM2JiNzU2M2M2NzVlNzI0MWIzNjIzZDI1NGVmNTFkNTMxMGM5YjAyMTExYTA3NDIyOWM3OWRlYTliZDBiMSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiY2IzM2JiNzU2M2M2NzVlNzI0MWIzNjIzZDI1NGVmNTFkNTMxMGM5YjAyMTExYTA3NDIyOWM3OWRlYTliZDBiMSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZDJlY2MyOTVjNGJmNmYxMzg4M2QyYzJhYTk2ODQyYmQyMTJmN2ZkZGFjNzYyNmQyZmMzMjZjOTA1MTZlMzlkZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNmQxNTIxM2MwYWE5ZGMxYzM5YmNhMjk5NGFiYjIzYTI1NGVkNDhmMDg2ZDdkMzI0ODYzMzJmZTRlNzc3MWRjZiJ9"
+        },
+        {
+          "resource": "repo://AGENTS.md#L37-L41",
+          "version": "repo-lines-v1:sha256:28ac32a44b86b8affbb63803b6245b55cea86c862ff4565c43cb995844db174b:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMDlmM2VlYzM1MjMwYzc3ZDQ3ZTEyOGZiY2Y1Zjk3NTQ1Yjk3ZWE4Y2M0OTBlZTNiZWYzMWYzNDZiYjdjMGMyNSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOWY2M2UwMmUyNzM1NzM3MWU3MDdhZGMyYWI1NTVmMjU2YzQ0NmIzMjhhMzdlNWVlMzE2MTAzOTBlYjkwZDA2NyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZjUzYzhmYTQ1YjcwMWVhOWM2Yjg3MDk3OTA0NDdmMzFjZGQxYzQ0YTgyOTEyMjY5MDY1MzAwYTRmZjQyMWRjOSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMzUyMzgyMjczOGE5NGNkNzIyZDAwZDMyZmIxMjg3M2EwOTg4YWFjZjhlNWE1NWIxZjE1MDM0NDJjNGFhYjgwYiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_65e5b543c96d4dec8fcf6da674851191",
+      "statement": "漂移/冲突处理优先级（AGENTS.md 硬规则）：代码 > BM 笔记 > README 快照 > OpenWiki；OpenWiki 口径漂移由相关页面标注差异、以 BM 为准、下次 update 自愈；代码与 BM 口径不一致属流程违规（代码应跟随拍板），必须报出并修代码，文档层不得掩盖。",
+      "evidence": [
+        {
+          "resource": "repo://AGENTS.md#L45-L45",
+          "version": "repo-lines-v1:sha256:e427a98957618f571a9a23b32661d5ce917647b7259a7bf165df5b9ebe79f21c:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZTQyN2E5ODk1NzYxOGY1NzFhOWEyM2IzMjY2MWQ1Y2U5MTc2NDdiNzI1OWE3YmYxNjVkZjViOWViZTc5ZjIxYyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZTQyN2E5ODk1NzYxOGY1NzFhOWEyM2IzMjY2MWQ1Y2U5MTc2NDdiNzI1OWE3YmYxNjVkZjViOWViZTc5ZjIxYyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMzUyMzgyMjczOGE5NGNkNzIyZDAwZDMyZmIxMjg3M2EwOTg4YWFjZjhlNWE1NWIxZjE1MDM0NDJjNGFhYjgwYiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiY2QzZDA3NDJmZjIzNmQ0NzFlMDM1ODc4NzcxNTdmMzJmYTljZjdiNTE4Y2FhNmY1MzAyNjM3YWQwYzRhNDkyZCJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_5c89e40aa85443b390a9ff443c913c2a",
+      "statement": "波次关账流程：用户提交代码 → BM 线程笔记追加本波决策/实测 → CHANGELOG.md 条目 → 主开发 agent 发起 openwiki update → 呈报变更文件清单 + 建议 commit message → 用户提交；agent 不执行 git commit（2026-09-20 用户拍板），且暂不推 remote。",
+      "evidence": [
+        {
+          "resource": "repo://AGENTS.md#L47-L47",
+          "version": "repo-lines-v1:sha256:8da53faafa74e0230bd654b091f5724349cf887834feab44e425d3d074141363:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOGRhNTNmYWFmYTc0ZTAyMzBiZDY1NGIwOTFmNTcyNDM0OWNmODg3ODM0ZmVhYjQ0ZTQyNWQzZDA3NDE0MTM2MyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOGRhNTNmYWFmYTc0ZTAyMzBiZDY1NGIwOTFmNTcyNDM0OWNmODg3ODM0ZmVhYjQ0ZTQyNWQzZDA3NDE0MTM2MyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNDY3NDExODg5M2I3ZjE0MjdhYWQ5NTdlN2QxYWQ4OTQ0NWFhYTk2YjQ1YjA0NTNmNjNmMjBhZWVlOGIzNjk2ZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZjE1YmFlZDIzMTUxMWQ2NjEyYzQxNTY2ZDk2ZTY0NWQ4OTRjYzRmMTU4MmQxNjQ0ODA2NzQ3ODljNGRjNmVkNiJ9"
+        },
+        {
+          "resource": "repo://AGENTS.md#L62-L62",
+          "version": "repo-lines-v1:sha256:6dc84a7d5f64f0f9990bbfa4bf650317e5b034cdcdffe12d46bf355833183b69:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNmRjODRhN2Q1ZjY0ZjBmOTk5MGJiZmE0YmY2NTAzMTdlNWIwMzRjZGNkZmZlMTJkNDZiZjM1NTgzMzE4M2I2OSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNmRjODRhN2Q1ZjY0ZjBmOTk5MGJiZmE0YmY2NTAzMTdlNWIwMzRjZGNkZmZlMTJkNDZiZjM1NTgzMzE4M2I2OSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTk3ZWU3ODEzNDFmOWIzNWRkODcxODAwY2NjMjgxNTMwZTYwMTdmYWJlM2NjZTA0OWVmMWNhYjY1YjUyMjM4NiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiODAwMTUzOTJlOWJhZGY4ZGYyOTJiMTlmZmRiYWY3NjZkZDI0ZDUwN2I1NGRhNjEwNGJlMWYwZTljOGJiOWE4ZCJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_027e62874a65408e92f79fc2360aa475",
+      "statement": "时间口径统一以 Asia/Shanghai（工厂时 = UTC+8）为基准，而会话默认 UTC；所有时间/班次查询必须 SET TIME ZONE 'Asia/Shanghai'，该时区由 spike_w1/common.py 的 connect() 统一执行、d0_check.py 亦自行 SET，否则班次边界全部错位 8 小时；本 wiki 描述任何时间逻辑时以 Asia/Shanghai 为基准。",
+      "evidence": [
+        {
+          "resource": "repo://AGENTS.md#L53-L53",
+          "version": "repo-lines-v1:sha256:c40952e30d17bb7239ff70e159fb5bd312014e6db3af8dce3e024bd8b172950f:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYzQwOTUyZTMwZDE3YmI3MjM5ZmY3MGUxNTlmYjViZDMxMjAxNGU2ZGIzYWY4ZGNlM2UwMjRiZDhiMTcyOTUwZiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYzQwOTUyZTMwZDE3YmI3MjM5ZmY3MGUxNTlmYjViZDMxMjAxNGU2ZGIzYWY4ZGNlM2UwMjRiZDhiMTcyOTUwZiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMjA5NWNmODA3NTdkMWFhNzE4MDNhNzhhYzVhYTJlMWZmODI3ZTQwN2IxYTdjZGY2OTkwMWZmYmY1ZjkxMzRmZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiY2RiNDBjMTZjODc5NTY4Mzc0ZWY0OTExMzlhZGY3YWI2MDg4Y2M1ZjM0NTVlNzI0NTJiNmYwMmQ3OTQ0NjgwMSJ9"
+        },
+        {
+          "resource": "repo://README.md#L10-L10",
+          "version": "repo-lines-v1:sha256:e141b1a131ccafdb0d8d13976223c676fcd549e5ce8204d871b4c252e7f04550:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZTE0MWIxYTEzMWNjYWZkYjBkOGQxMzk3NjIyM2M2NzZmY2Q1NDllNWNlODIwNGQ4NzFiNGMyNTJlN2YwNDU1MCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZTE0MWIxYTEzMWNjYWZkYjBkOGQxMzk3NjIyM2M2NzZmY2Q1NDllNWNlODIwNGQ4NzFiNGMyNTJlN2YwNDU1MCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNWY5Zjk3MGQyMTQxZmEwNzk2OGEwNDAxMWU4MDhjZDFiYjIwYjQxOTJiOTliNDgzZmNmOGNkNTU0YzgwZjRjMyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNzdiOTA2ZDkyN2I3ZTIyNzczN2VlOGRkYTYzNzRiNTE1N2ExZTc2YWZkNGNiZDcwYTRjOTVmMmE2NjUzY2Y1MSJ9"
+        },
+        {
+          "resource": "repo://d0_check.py#L19-L23",
+          "version": "repo-lines-v1:sha256:bd1a91793df50c44048a47ecf0cdb8691987c1935b692f3011b46b6dc8098daa:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNTc5NWUyZjMxNTc0ZjI1MTQxMjAxNDkyNTZiM2I0Nzc5NmNjMTQ4MjVhYjI1YjAxZTdiNmU4YzRiZTI1YjlhMyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiN2UyZDc1NmY1OTk3MzRjYThkZWI1ZmZjODkzNDM5MGNlNjNlMzJjZWNmNmE0NTIzMzI2MWY4MWIyYmJmMmYxZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiODA3YjIxZTM2YmRlNWM0NDdiZDRmMDQwMmZmYWViMmY4ZmI3MzZlNTQxZmQzYzI0MWUzZjQ0MThiMmNkMmU0NSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMTFlNjRmN2Q0ZDY0NmI3YWNjNmQ5MDE5MDBmNzFiNzUxMmZiMmM3ZTk2ZjQzOTY2MmVkYjQ2N2Y5ZGE4ZDQzNyJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_cb4bb59922dc438c880ba24926742278",
+      "statement": "数据访问只读原则：不得修改 ods / dim / fct / mart / meta 层的任何表与视图；本项目产物只写 dss schema（dss.dim_* / dss.work_*），dss 内可 DROP + CREATE。",
+      "evidence": [
+        {
+          "resource": "repo://AGENTS.md#L56-L56",
+          "version": "repo-lines-v1:sha256:1b3cf39cdce13ddf852165d65e6272015413b44e948db413678c70080d1201d1:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMWIzY2YzOWNkY2UxM2RkZjg1MjE2NWQ2NWU2MjcyMDE1NDEzYjQ0ZTk0OGRiNDEzNjc4YzcwMDgwZDEyMDFkMSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMWIzY2YzOWNkY2UxM2RkZjg1MjE2NWQ2NWU2MjcyMDE1NDEzYjQ0ZTk0OGRiNDEzNjc4YzcwMDgwZDEyMDFkMSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTQzOWU5MTIxMThmZDc3ODUxZTE5ODQwOGY4NTJlYTM2MDk0Njc4NzIxZTFiNjI3YmQxMTJiY2EyNzVmMzdhMyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZjAyMjUwYWU2YmY1M2RhOTU1MzllMjFkYmNiNjA0NDg1Zjc1MDQ1ZjBiMjVmMjA0MzI2MTBjZTdjMDMxZDNjNiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_77edfa3bda354265af03d7079d6512c0",
+      "statement": "wiki 引用与凭据纪律：output/ 下实产数据报告被 .openwikiignore 排除（wiki 只许引用报告文件名，不复制内容）；连接凭据不离开本机（将来推 GitHub remote 前须先把凭据移到环境变量），.env 中的数据库凭据不落 wiki；OpenWiki 生成不得连接数据库、只描述代码与文档。",
+      "evidence": [
+        {
+          "resource": "repo://.openwikiignore#L15-L16",
+          "version": "repo-lines-v1:sha256:c9e5f1ea3dde6cddc1ff4769e06ac51f1a544a8e18c1f0b2a9682cb7b4d7e1c9:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiN2ZkODNiMjhiMDVjZWMyNjllYzBjMzQ5NWQyNzg0ZGJmNTlkOGIwZjlhYzI0YTc1YzQ5Yjg1ZjIzNmVhYjIxYSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYjU3MjZkM2VjOTMzNWEwOWMxMjQ0NjllY2EwMzk1MjM4NDdhNmIwZjA4YTA4M2VmYWVmZDAwMmI4MzMyNjYwMCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNTc1YjE1NmVkNjQxODIzYmE3MGI4NWU5MDdiOGNhZjQ1M2VjNGQ1ODk0NDM4OTZhNzRkMWJlOTdiMzI5YTM0NyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMDQyNzJlN2I3Mjk2OGFmYjhjOTA1YjgyYjI4ZDI0MDVjMGI4ODQ0MDllNDU4NmVhYWVhMDc5MDJlMzQ4ZTNkNyJ9"
+        },
+        {
+          "resource": "repo://AGENTS.md#L58-L58",
+          "version": "repo-lines-v1:sha256:c62e2fac391acdef05578858a29adad77e5a14aed524c47ffd4f33cf6f35b01e:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYzYyZTJmYWMzOTFhY2RlZjA1NTc4ODU4YTI5YWRhZDc3ZTVhMTRhZWQ1MjRjNDdmZmQ0ZjMzY2Y2ZjM1YjAxZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYzYyZTJmYWMzOTFhY2RlZjA1NTc4ODU4YTI5YWRhZDc3ZTVhMTRhZWQ1MjRjNDdmZmQ0ZjMzY2Y2ZjM1YjAxZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZjg5MjBkMmQ1ZjU3MmU4YjA5ZTI3ZjExMTliMjFmMzJkMDczY2RhZWY4ZjY0ZGFiODczZWY0MGNiMDA4MjhjOCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTk3ZWU3ODEzNDFmOWIzNWRkODcxODAwY2NjMjgxNTMwZTYwMTdmYWJlM2NjZTA0OWVmMWNhYjY1YjUyMjM4NiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_a2edfc93aa8f42338af9e9feccbe5d31",
+      "statement": "运行约定：专用 conda 环境 paint-dss（environment.yml 固化），连库脚本一律以 conda run --no-capture-output -n paint-dss python <脚本> 启动（不依赖 shell 激活状态）；python -c 仅限单行（多行参数报错）；脚本门判约定 exit 0 = 过 / exit 1 = sanity 失败 / exit 2 = 门未过，conda run 在 exit 2 时打印的 ERROR conda.cli 行属上报约定而非运行失败、以产物为准。",
+      "evidence": [
+        {
+          "resource": "repo://AGENTS.md#L65-L67",
+          "version": "repo-lines-v1:sha256:e9f151e452ed971b196ea7386345464e783b5b734d34862114247f8681d771e7:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZGM2MmQzM2QyYTczYmI1NmY4MmZlODU0NjE2YjkzNjU5NDg5NDhiZmVmOTk5MWMxMzRhYTI2ZDczNDIyNDQ1MSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOTU2OTY3ODlkMzM2MTg1YzRiY2ZlYmI1ZDI4MDE4MTk5OTgwZjQzYTkzZWRmNTQ3MmUwN2RiZGNkOTI3M2U5NiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMzI4ZTVkYzYzNWNmNjM2OTk3MzdmMzI0NDg5NGYwOTZiNWE2M2E5YTEwMTk1ZjYzMjM3ODhiNDExZTUwMTk0YyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZDViNDRhYjdjYzA2ODJlOGI3MjNmNzI0MTM1YzZiZGMyMDlmN2Q0Y2UzN2I5NGFjODIzMjQxNTFiNDFhNDU3YiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_8aaabc69a57f4b4c889024026e8b6d64",
+      "statement": "参数配置纪律：关键业务与算法参数一律支持 DSS_* 环境变量配置与调试，统一用 python-dotenv 从项目根 .env 加载；.env 不入库、.env.example 为配置模版；严格 1/0 门对非法值启动报错、不静默回落。",
+      "evidence": [
+        {
+          "resource": "repo://AGENTS.md#L71-L71",
+          "version": "repo-lines-v1:sha256:b2f4afd7e3ad6194db0cf2de704843cf00402b8f6ff4e645a3858593bd953b60:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYjJmNGFmZDdlM2FkNjE5NGRiMGNmMmRlNzA0ODQzY2YwMDQwMmI4ZjZmZjRlNjQ1YTM4NTg1OTNiZDk1M2I2MCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYjJmNGFmZDdlM2FkNjE5NGRiMGNmMmRlNzA0ODQzY2YwMDQwMmI4ZjZmZjRlNjQ1YTM4NTg1OTNiZDk1M2I2MCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZDViNDRhYjdjYzA2ODJlOGI3MjNmNzI0MTM1YzZiZGMyMDlmN2Q0Y2UzN2I5NGFjODIzMjQxNTFiNDFhNDU3YiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNTk3NGNmMTkzODE1ZDc1NDRiNGQyODQ0YzZmOGE0OWNkYzk5ZmMzNDFlZTE5ZTkyNWFjZjI4NDRiOGQ3ZDM1ZSJ9"
+        },
+        {
+          "resource": "repo://README.md#L33-L33",
+          "version": "repo-lines-v1:sha256:689d9c90f0a61e6f371aef1f262abb18fa18e79023395df374578b563687a4fe:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNjg5ZDljOTBmMGE2MWU2ZjM3MWFlZjFmMjYyYWJiMThmYTE4ZTc5MDIzMzk1ZGYzNzQ1NzhiNTYzNjg3YTRmZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNjg5ZDljOTBmMGE2MWU2ZjM3MWFlZjFmMjYyYWJiMThmYTE4ZTc5MDIzMzk1ZGYzNzQ1NzhiNTYzNjg3YTRmZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNTc2MzI1ZDE1MmY5OTcxNjZmN2JiZmM4NTY4YmNhYTc2ZTRiZjQwMGFkMDJjNmIxNjA2Zjg1ODY1MTZhMGIwZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZjk4YzNlODQzYjJiYzAxNGRkODAwNDgzNGJiODMxNGM5OWUxMjExNWFmODUzOGFlOTNhYmMxODAyOGU3ODEzZiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_2ed6d5f5c8184775b5f04eea85c7cded",
+      "statement": "新 agent 上手顺序：AGENTS.md（agent 启动自动加载）→ README.md 口径表（速查）→ 涉口径/决策查 BM 线程笔记（按 BM 协议）→ 涉代码结构用 OpenWiki search/read（可选 just-in-time 上下文、非每次任务起手式）；检索工具不可用时读 openwiki/quickstart.md 并沿链接走到相关页面。",
+      "evidence": [
+        {
+          "resource": "repo://AGENTS.md#L48-L48",
+          "version": "repo-lines-v1:sha256:fcecb530edcb1be4c29889ddd1429b0404661bf5c5b58941acaa51d2193b219c:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZmNlY2I1MzBlZGNiMWJlNGMyOTg4OWRkZDE0MjliMDQwNDY2MWJmNWM1YjU4OTQxYWNhYTUxZDIxOTNiMjE5YyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZmNlY2I1MzBlZGNiMWJlNGMyOTg4OWRkZDE0MjliMDQwNDY2MWJmNWM1YjU4OTQxYWNhYTUxZDIxOTNiMjE5YyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNTFjYWNkNjlkNmU2MzQyOWE3MzJhNzM3ZWRhZjI1NzIyZTNmYTQzOThjNTE0MDgwZWY0ZTQwNGM3M2QyOTg5OCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNzA3MjMwMzE2MDI1NDFlYmY1OGIzODJhY2Q5YTA3YTRiMTMwOWRkM2IzZDc5ZjczYTBkZTZiZDEyYzkwMjVmZiJ9"
+        },
+        {
+          "resource": "repo://AGENTS.md#L87-L87",
+          "version": "repo-lines-v1:sha256:07553b0d52eb824ef41e76bf45b562f1ce483a1263f4ffb43b11b09a072858ba:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMDc1NTNiMGQ1MmViODI0ZWY0MWU3NmJmNDViNTYyZjFjZTQ4M2ExMjYzZjRmZmI0M2IxMWIwOWEwNzI4NThiYSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDc1NTNiMGQ1MmViODI0ZWY0MWU3NmJmNDViNTYyZjFjZTQ4M2ExMjYzZjRmZmI0M2IxMWIwOWEwNzI4NThiYSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOTAyZDFlNjcyNTU4MTg3NTZjYjYyYmUxNGViZDVjMWI1M2FlYmQxOGZhZTVkNWMyMGVkYWNiYWZiYjdjZTMzZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNjZjYjMwYThmOTQ4MTMxNDkwODJmM2RjYjkxOWRiMTJmMjIwYjMxYTI5NWZiZWU5NTM1MWNmOGYxNGJhZGEyZSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_78118f4539d24d57b1bd4daefa24a0cf",
+      "statement": "运行顺序与启动表清单约束：W1 学习器（spike_w1/01_learn_takt.py）必须先于 W2 学习器（spike_w2/01_learn_v2.py），因为 W1 六张 dss.dim_* 是 W2 的只读输入（01_learn_v2.py 头注钉死只读不写的回归护栏）；在线启动存在性清单 = spike_w3/01_boot_online.py 的 DSS_DIM_TABLES（14 张必填：W1 六表 + W2 v2 六表 + dim_expected_delay + dim_weekly_plan），dim_expected_delay_shift 为可选表、缺表不阻断启动（引擎回退共享行）。",
+      "evidence": [
+        {
+          "resource": "repo://spike_w2/01_learn_v2.py#L2-L9",
+          "version": "repo-lines-v1:sha256:5b600abba8d3d347cd800f7b8110a888c7d93b743f29b4afa8ae3394d96a4f90:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiODc0Y2EwNGRjNDEyZDE5ODEwZGVkNzEyMTYzODMwNTQ2Y2FhNmFlOTI2MzM3Zjk4NjhkNjliZTBjMjQ2MmMzMiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiODAxMzE5ZGJkMTJkZTBkNjAwMGI3MDUzMDU1YmMzMmNjYmFiN2VjYzg1YWUxMGM0MzI3YTM0MjYwMDkyNTc4YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjEsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOTU1MmY4NTRmY2Y3NzM4OTE2MGEwOGNmYjRiZTJlYjkwMmNkOWEwYzBhZjc2YWI1N2RmMDJjYmY5MTI1ZDM2OSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMjI4ZjVkMGNjZTllMjIwZmVhMTVmNDY5ZGU2MjhlOWNkODFhNDZkYjU0ZWY0ZDVhMmJjZjZhM2VkODU2NTA5MiJ9"
+        },
+        {
+          "resource": "repo://spike_w3/01_boot_online.py#L34-L44",
+          "version": "repo-lines-v1:sha256:91b3ab78fa786ed78b9bd8fd2d2aac5ad008e2f2779ec9608511fac66bf68d1d:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI4NDUyNmU5NWJjMDU5ZGQ4MzRjZDA1OWZiZjQ2ZDE0NTI1OGZkM2UxNTY4NzQzZDAxOTkxZGQwYTFlYTEyODYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjliMzllMDIyZTBkODU0MTIwMDAzZDc5MGMyOGI3NTk2MmVkZDMwMzc1NmQ1MTMzM2RmNzQ1Y2ZiODZlYTExY2UiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImQ3OTYyYTM1YWI5OTUyNmYwMWFjM2JkMzA1MmEyY2ViOTQ5MTBiMDIwYjJkZjMyMzQ2ZTZlMzBlNzVkNGQxODAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjZmN2ZjZmRhMjcyNzE3MmFiNmQwMDc3NjMxYmIyNmQxY2E0ZTgwOTQ4MzBkMWFjMzk2ZjY4N2QzZGVkM2MzNGYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_5dcc362d7d0e4c3eb978fb747b166eda",
+      "statement": "本仓库是涂装车间 DSS（决策支持系统）：三大功能为物流均衡、班次产量达成预测、缺口预警；开发顺序先做模块②（班次产量达成预测），模块①（WIP 看板 + 水位预警）与模块③（流量均衡建议）在②之后；数据源为 analytics_db（开发库 @ 127.0.0.1:5432），核心表 ods.carbody_history 为只读过站事件流。",
+      "evidence": [
+        {
+          "resource": "repo://AGENTS.md#L52-L52",
+          "version": "repo-lines-v1:sha256:91dade5c05a087219599e7bbff3af2765057eff5a82ea31752284ddb63608251:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOTFkYWRlNWMwNWEwODcyMTk1OTllN2JiZmYzYWYyNzY1MDU3ZWZmNWE4MmVhMzE3NTIyODRkZGI2MzYwODI1MSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOTFkYWRlNWMwNWEwODcyMTk1OTllN2JiZmYzYWYyNzY1MDU3ZWZmNWE4MmVhMzE3NTIyODRkZGI2MzYwODI1MSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNzA3MjMwMzE2MDI1NDFlYmY1OGIzODJhY2Q5YTA3YTRiMTMwOWRkM2IzZDc5ZjczYTBkZTZiZDEyYzkwMjVmZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTQzOWU5MTIxMThmZDc3ODUxZTE5ODQwOGY4NTJlYTM2MDk0Njc4NzIxZTFiNjI3YmQxMTJiY2EyNzVmMzdhMyJ9"
+        },
+        {
+          "resource": "repo://AGENTS.md#L9-L9",
+          "version": "repo-lines-v1:sha256:0e20b2b46ca1b5965f0afb22081c1527d499afbeb01d6904e877607019ac0e03:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMGUyMGIyYjQ2Y2ExYjU5NjVmMGFmYjIyMDgxYzE1MjdkNDk5YWZiZWIwMWQ2OTA0ZTg3NzYwNzAxOWFjMGUwMyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMGUyMGIyYjQ2Y2ExYjU5NjVmMGFmYjIyMDgxYzE1MjdkNDk5YWZiZWIwMWQ2OTA0ZTg3NzYwNzAxOWFjMGUwMyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZGQ0ZDc4NTgyZjc3MTBjYWFkMzRhMzU2ZDBkN2NlYTExYmE3MzdhZjFjNzgyZTkyZDc2MjFlOWJkMGRiMmRjYyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZmFhYjg2ZDJmOGUxOTdhY2RlNjZlMThmMzAxZDUwMmRkZmY4ZmJjMzljYWNlNWE4ODRjZjU0MWQ2OWViOGI5MiJ9"
+        },
+        {
+          "resource": "repo://README.md#L3-L4",
+          "version": "repo-lines-v1:sha256:e12bfc2fc9baff5ba2055a8bc9957c5cf8d829f56f5086886c10e4179fb109c2:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiY2I2Yjk5ZDRhNTk1MjkxNzIxNTRhMTZkMjY5YjUzZGE0MzllMjgyODMzMDQzODA3Nzk0NTYxYTAyMzNhNjk2ZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNDgwNmZjNGM1ZWYzOGVmOTIxNjhmMmIyYTUzMTQwMWI2ODcxZjc5YTBlOTQwYmUxZmE4YmE3ZDhkY2UwOGYxNSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjIsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiODExYzc4MTQ0OTZlYzZmYWJhMmI2ODJlNGExNTZhYmM5ODVjYjk3MTJiYjc3ZjAxZjM1Yjc2YTk3Nzk0NDVhMiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYTM0MDFlNzA1ZDM3MTVkMjE4YThlYjljYTUyYTZiYTNkYjc4YjNmODI5MTczYTMxYzI4NGMxOGY5NGIyM2NkMyJ9"
+        },
+        {
+          "resource": "repo://docs/01-%E5%BC%80%E5%8F%91%E9%98%B6%E6%AE%B5%E8%AE%A1%E5%88%92.md#L9-L19",
+          "version": "repo-lines-v1:sha256:b2d7526d397350e8230c89318e4e98eeb6d4539359bb48d7bdf25e66d4084b31:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdlZjFkZjM5ZjBhZDYwMDMwYjYxMDAzYTM5OGJiNTcyZjM4M2YwMjYxYTQzNGFkOTg5ZjgyN2FjYjg1NDI5NjIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI3ODU2NTM1NzUzMzZkYzcwNTM1NDE3YmRiNzRkNDA2Y2QzOTQ5YTY1YWRjMDAyNmJiMjJlZTU0MjhjOTc3Y2QiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjczODE4NWRiMTNjMzg0ODE3MjQyMjE0ZWYwMjY4MDc4N2E1MzQxNjg3YjRkYzgyYjc5NGQxZWFkMjZkODUwMGEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImZiNTBkZmNjYTdmZjI5MmRiZjFiMmU2OWYzMTA4YjczOGU1MWY4OGY5ZWFjYTM5MWI1YTc2M2VkYjgzNWJjYTQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_7d3862b58b0441bfa67b16e7186a221e",
+      "statement": "口径类事实的唯一事实源是 BM 线程笔记（basic-memory/projects/paint-dss/涂装车间-dss-方案设计与开发路线，项目级、跨仓库、不可再生）；本仓库 README.md 关键口径表是其固化快照；OpenWiki 是派生产物（代码 grounding、可再生、仅本仓库有效），只引用出处（README 行 / docs 编号 / BM 笔记）、不复制口径细节，发现冲突时以 BM 为准。",
+      "evidence": [
+        {
+          "resource": "repo://AGENTS.md#L11-L11",
+          "version": "repo-lines-v1:sha256:cb33bb7563c675e7241b3623d254ef51d5310c9b02111a074229c79dea9bd0b1:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiY2IzM2JiNzU2M2M2NzVlNzI0MWIzNjIzZDI1NGVmNTFkNTMxMGM5YjAyMTExYTA3NDIyOWM3OWRlYTliZDBiMSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiY2IzM2JiNzU2M2M2NzVlNzI0MWIzNjIzZDI1NGVmNTFkNTMxMGM5YjAyMTExYTA3NDIyOWM3OWRlYTliZDBiMSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZDJlY2MyOTVjNGJmNmYxMzg4M2QyYzJhYTk2ODQyYmQyMTJmN2ZkZGFjNzYyNmQyZmMzMjZjOTA1MTZlMzlkZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNmQxNTIxM2MwYWE5ZGMxYzM5YmNhMjk5NGFiYjIzYTI1NGVkNDhmMDg2ZDdkMzI0ODYzMzJmZTRlNzc3MWRjZiJ9"
+        },
+        {
+          "resource": "repo://AGENTS.md#L37-L41",
+          "version": "repo-lines-v1:sha256:28ac32a44b86b8affbb63803b6245b55cea86c862ff4565c43cb995844db174b:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMDlmM2VlYzM1MjMwYzc3ZDQ3ZTEyOGZiY2Y1Zjk3NTQ1Yjk3ZWE4Y2M0OTBlZTNiZWYzMWYzNDZiYjdjMGMyNSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOWY2M2UwMmUyNzM1NzM3MWU3MDdhZGMyYWI1NTVmMjU2YzQ0NmIzMjhhMzdlNWVlMzE2MTAzOTBlYjkwZDA2NyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZjUzYzhmYTQ1YjcwMWVhOWM2Yjg3MDk3OTA0NDdmMzFjZGQxYzQ0YTgyOTEyMjY5MDY1MzAwYTRmZjQyMWRjOSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMzUyMzgyMjczOGE5NGNkNzIyZDAwZDMyZmIxMjg3M2EwOTg4YWFjZjhlNWE1NWIxZjE1MDM0NDJjNGFhYjgwYiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_2dc1f84c2ddb467cae2b5c32550dded7",
+      "statement": "漂移/冲突处理优先级（AGENTS.md 硬规则）：代码 > BM 笔记 > README 快照 > OpenWiki；OpenWiki 口径漂移由相关页面标注差异、以 BM 为准、下次 update 自愈；代码与 BM 口径不一致属流程违规（代码应跟随拍板），必须报出并修代码，文档层不得掩盖。",
+      "evidence": [
+        {
+          "resource": "repo://AGENTS.md#L45-L45",
+          "version": "repo-lines-v1:sha256:e427a98957618f571a9a23b32661d5ce917647b7259a7bf165df5b9ebe79f21c:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZTQyN2E5ODk1NzYxOGY1NzFhOWEyM2IzMjY2MWQ1Y2U5MTc2NDdiNzI1OWE3YmYxNjVkZjViOWViZTc5ZjIxYyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZTQyN2E5ODk1NzYxOGY1NzFhOWEyM2IzMjY2MWQ1Y2U5MTc2NDdiNzI1OWE3YmYxNjVkZjViOWViZTc5ZjIxYyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMzUyMzgyMjczOGE5NGNkNzIyZDAwZDMyZmIxMjg3M2EwOTg4YWFjZjhlNWE1NWIxZjE1MDM0NDJjNGFhYjgwYiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiY2QzZDA3NDJmZjIzNmQ0NzFlMDM1ODc4NzcxNTdmMzJmYTljZjdiNTE4Y2FhNmY1MzAyNjM3YWQwYzRhNDkyZCJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_5bd6d66e104f47f687a930c188e5dbfb",
+      "statement": "波次关账流程：用户提交代码 → BM 线程笔记追加本波决策/实测 → CHANGELOG.md 条目 → 主开发 agent 发起 openwiki update → 呈报变更文件清单 + 建议 commit message → 用户提交；agent 不执行 git commit（2026-09-20 用户拍板），且暂不推 remote。",
+      "evidence": [
+        {
+          "resource": "repo://AGENTS.md#L47-L47",
+          "version": "repo-lines-v1:sha256:8da53faafa74e0230bd654b091f5724349cf887834feab44e425d3d074141363:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOGRhNTNmYWFmYTc0ZTAyMzBiZDY1NGIwOTFmNTcyNDM0OWNmODg3ODM0ZmVhYjQ0ZTQyNWQzZDA3NDE0MTM2MyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOGRhNTNmYWFmYTc0ZTAyMzBiZDY1NGIwOTFmNTcyNDM0OWNmODg3ODM0ZmVhYjQ0ZTQyNWQzZDA3NDE0MTM2MyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNDY3NDExODg5M2I3ZjE0MjdhYWQ5NTdlN2QxYWQ4OTQ0NWFhYTk2YjQ1YjA0NTNmNjNmMjBhZWVlOGIzNjk2ZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZjE1YmFlZDIzMTUxMWQ2NjEyYzQxNTY2ZDk2ZTY0NWQ4OTRjYzRmMTU4MmQxNjQ0ODA2NzQ3ODljNGRjNmVkNiJ9"
+        },
+        {
+          "resource": "repo://AGENTS.md#L62-L62",
+          "version": "repo-lines-v1:sha256:6dc84a7d5f64f0f9990bbfa4bf650317e5b034cdcdffe12d46bf355833183b69:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNmRjODRhN2Q1ZjY0ZjBmOTk5MGJiZmE0YmY2NTAzMTdlNWIwMzRjZGNkZmZlMTJkNDZiZjM1NTgzMzE4M2I2OSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNmRjODRhN2Q1ZjY0ZjBmOTk5MGJiZmE0YmY2NTAzMTdlNWIwMzRjZGNkZmZlMTJkNDZiZjM1NTgzMzE4M2I2OSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTk3ZWU3ODEzNDFmOWIzNWRkODcxODAwY2NjMjgxNTMwZTYwMTdmYWJlM2NjZTA0OWVmMWNhYjY1YjUyMjM4NiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiODAwMTUzOTJlOWJhZGY4ZGYyOTJiMTlmZmRiYWY3NjZkZDI0ZDUwN2I1NGRhNjEwNGJlMWYwZTljOGJiOWE4ZCJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_f8649399349e410a883dba561f7571d2",
+      "statement": "时间口径统一以 Asia/Shanghai（工厂时 = UTC+8）为基准，而会话默认 UTC；所有时间/班次查询必须 SET TIME ZONE 'Asia/Shanghai'，该时区由 spike_w1/common.py 的 connect() 统一执行、d0_check.py 亦自行 SET，否则班次边界全部错位 8 小时；本 wiki 描述任何时间逻辑时以 Asia/Shanghai 为基准。",
+      "evidence": [
+        {
+          "resource": "repo://AGENTS.md#L53-L53",
+          "version": "repo-lines-v1:sha256:c40952e30d17bb7239ff70e159fb5bd312014e6db3af8dce3e024bd8b172950f:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYzQwOTUyZTMwZDE3YmI3MjM5ZmY3MGUxNTlmYjViZDMxMjAxNGU2ZGIzYWY4ZGNlM2UwMjRiZDhiMTcyOTUwZiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYzQwOTUyZTMwZDE3YmI3MjM5ZmY3MGUxNTlmYjViZDMxMjAxNGU2ZGIzYWY4ZGNlM2UwMjRiZDhiMTcyOTUwZiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMjA5NWNmODA3NTdkMWFhNzE4MDNhNzhhYzVhYTJlMWZmODI3ZTQwN2IxYTdjZGY2OTkwMWZmYmY1ZjkxMzRmZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiY2RiNDBjMTZjODc5NTY4Mzc0ZWY0OTExMzlhZGY3YWI2MDg4Y2M1ZjM0NTVlNzI0NTJiNmYwMmQ3OTQ0NjgwMSJ9"
+        },
+        {
+          "resource": "repo://README.md#L10-L10",
+          "version": "repo-lines-v1:sha256:e141b1a131ccafdb0d8d13976223c676fcd549e5ce8204d871b4c252e7f04550:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZTE0MWIxYTEzMWNjYWZkYjBkOGQxMzk3NjIyM2M2NzZmY2Q1NDllNWNlODIwNGQ4NzFiNGMyNTJlN2YwNDU1MCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZTE0MWIxYTEzMWNjYWZkYjBkOGQxMzk3NjIyM2M2NzZmY2Q1NDllNWNlODIwNGQ4NzFiNGMyNTJlN2YwNDU1MCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNWY5Zjk3MGQyMTQxZmEwNzk2OGEwNDAxMWU4MDhjZDFiYjIwYjQxOTJiOTliNDgzZmNmOGNkNTU0YzgwZjRjMyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNzdiOTA2ZDkyN2I3ZTIyNzczN2VlOGRkYTYzNzRiNTE1N2ExZTc2YWZkNGNiZDcwYTRjOTVmMmE2NjUzY2Y1MSJ9"
+        },
+        {
+          "resource": "repo://d0_check.py#L19-L23",
+          "version": "repo-lines-v1:sha256:bd1a91793df50c44048a47ecf0cdb8691987c1935b692f3011b46b6dc8098daa:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNTc5NWUyZjMxNTc0ZjI1MTQxMjAxNDkyNTZiM2I0Nzc5NmNjMTQ4MjVhYjI1YjAxZTdiNmU4YzRiZTI1YjlhMyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiN2UyZDc1NmY1OTk3MzRjYThkZWI1ZmZjODkzNDM5MGNlNjNlMzJjZWNmNmE0NTIzMzI2MWY4MWIyYmJmMmYxZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiODA3YjIxZTM2YmRlNWM0NDdiZDRmMDQwMmZmYWViMmY4ZmI3MzZlNTQxZmQzYzI0MWUzZjQ0MThiMmNkMmU0NSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMTFlNjRmN2Q0ZDY0NmI3YWNjNmQ5MDE5MDBmNzFiNzUxMmZiMmM3ZTk2ZjQzOTY2MmVkYjQ2N2Y5ZGE4ZDQzNyJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_3f17ab3cdf364d02b7c7bd55bcbaf368",
+      "statement": "数据访问只读原则：不得修改 ods / dim / fct / mart / meta 层的任何表与视图；本项目产物只写 dss schema（dss.dim_* / dss.work_*），dss 内可 DROP + CREATE。",
+      "evidence": [
+        {
+          "resource": "repo://AGENTS.md#L56-L56",
+          "version": "repo-lines-v1:sha256:1b3cf39cdce13ddf852165d65e6272015413b44e948db413678c70080d1201d1:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMWIzY2YzOWNkY2UxM2RkZjg1MjE2NWQ2NWU2MjcyMDE1NDEzYjQ0ZTk0OGRiNDEzNjc4YzcwMDgwZDEyMDFkMSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMWIzY2YzOWNkY2UxM2RkZjg1MjE2NWQ2NWU2MjcyMDE1NDEzYjQ0ZTk0OGRiNDEzNjc4YzcwMDgwZDEyMDFkMSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTQzOWU5MTIxMThmZDc3ODUxZTE5ODQwOGY4NTJlYTM2MDk0Njc4NzIxZTFiNjI3YmQxMTJiY2EyNzVmMzdhMyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZjAyMjUwYWU2YmY1M2RhOTU1MzllMjFkYmNiNjA0NDg1Zjc1MDQ1ZjBiMjVmMjA0MzI2MTBjZTdjMDMxZDNjNiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_d15fe00793d64d37aee547dc8d740c8d",
+      "statement": "wiki 引用与凭据纪律：output/ 下实产数据报告被 .openwikiignore 排除（wiki 只许引用报告文件名，不复制内容）；连接凭据不离开本机（将来推 GitHub remote 前须先把凭据移到环境变量），.env 中的数据库凭据不落 wiki；OpenWiki 生成不得连接数据库、只描述代码与文档。",
+      "evidence": [
+        {
+          "resource": "repo://.openwikiignore#L15-L16",
+          "version": "repo-lines-v1:sha256:c9e5f1ea3dde6cddc1ff4769e06ac51f1a544a8e18c1f0b2a9682cb7b4d7e1c9:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiN2ZkODNiMjhiMDVjZWMyNjllYzBjMzQ5NWQyNzg0ZGJmNTlkOGIwZjlhYzI0YTc1YzQ5Yjg1ZjIzNmVhYjIxYSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYjU3MjZkM2VjOTMzNWEwOWMxMjQ0NjllY2EwMzk1MjM4NDdhNmIwZjA4YTA4M2VmYWVmZDAwMmI4MzMyNjYwMCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNTc1YjE1NmVkNjQxODIzYmE3MGI4NWU5MDdiOGNhZjQ1M2VjNGQ1ODk0NDM4OTZhNzRkMWJlOTdiMzI5YTM0NyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMDQyNzJlN2I3Mjk2OGFmYjhjOTA1YjgyYjI4ZDI0MDVjMGI4ODQ0MDllNDU4NmVhYWVhMDc5MDJlMzQ4ZTNkNyJ9"
+        },
+        {
+          "resource": "repo://AGENTS.md#L58-L58",
+          "version": "repo-lines-v1:sha256:c62e2fac391acdef05578858a29adad77e5a14aed524c47ffd4f33cf6f35b01e:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYzYyZTJmYWMzOTFhY2RlZjA1NTc4ODU4YTI5YWRhZDc3ZTVhMTRhZWQ1MjRjNDdmZmQ0ZjMzY2Y2ZjM1YjAxZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYzYyZTJmYWMzOTFhY2RlZjA1NTc4ODU4YTI5YWRhZDc3ZTVhMTRhZWQ1MjRjNDdmZmQ0ZjMzY2Y2ZjM1YjAxZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZjg5MjBkMmQ1ZjU3MmU4YjA5ZTI3ZjExMTliMjFmMzJkMDczY2RhZWY4ZjY0ZGFiODczZWY0MGNiMDA4MjhjOCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTk3ZWU3ODEzNDFmOWIzNWRkODcxODAwY2NjMjgxNTMwZTYwMTdmYWJlM2NjZTA0OWVmMWNhYjY1YjUyMjM4NiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_ab88139c786b41678a0c89eeebe23f6c",
+      "statement": "参数配置纪律：关键业务与算法参数一律支持 DSS_* 环境变量配置与调试，统一用 python-dotenv 从项目根 .env 加载；.env 不入库、.env.example 为配置模版；严格 1/0 门对非法值启动报错、不静默回落。",
+      "evidence": [
+        {
+          "resource": "repo://AGENTS.md#L71-L71",
+          "version": "repo-lines-v1:sha256:b2f4afd7e3ad6194db0cf2de704843cf00402b8f6ff4e645a3858593bd953b60:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYjJmNGFmZDdlM2FkNjE5NGRiMGNmMmRlNzA0ODQzY2YwMDQwMmI4ZjZmZjRlNjQ1YTM4NTg1OTNiZDk1M2I2MCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYjJmNGFmZDdlM2FkNjE5NGRiMGNmMmRlNzA0ODQzY2YwMDQwMmI4ZjZmZjRlNjQ1YTM4NTg1OTNiZDk1M2I2MCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZDViNDRhYjdjYzA2ODJlOGI3MjNmNzI0MTM1YzZiZGMyMDlmN2Q0Y2UzN2I5NGFjODIzMjQxNTFiNDFhNDU3YiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNTk3NGNmMTkzODE1ZDc1NDRiNGQyODQ0YzZmOGE0OWNkYzk5ZmMzNDFlZTE5ZTkyNWFjZjI4NDRiOGQ3ZDM1ZSJ9"
+        },
+        {
+          "resource": "repo://README.md#L33-L33",
+          "version": "repo-lines-v1:sha256:689d9c90f0a61e6f371aef1f262abb18fa18e79023395df374578b563687a4fe:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNjg5ZDljOTBmMGE2MWU2ZjM3MWFlZjFmMjYyYWJiMThmYTE4ZTc5MDIzMzk1ZGYzNzQ1NzhiNTYzNjg3YTRmZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNjg5ZDljOTBmMGE2MWU2ZjM3MWFlZjFmMjYyYWJiMThmYTE4ZTc5MDIzMzk1ZGYzNzQ1NzhiNTYzNjg3YTRmZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNTc2MzI1ZDE1MmY5OTcxNjZmN2JiZmM4NTY4YmNhYTc2ZTRiZjQwMGFkMDJjNmIxNjA2Zjg1ODY1MTZhMGIwZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZjk4YzNlODQzYjJiYzAxNGRkODAwNDgzNGJiODMxNGM5OWUxMjExNWFmODUzOGFlOTNhYmMxODAyOGU3ODEzZiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_87547cf0f5f945a59a449c7ec3bd79db",
+      "statement": "新 agent 上手顺序：AGENTS.md（agent 启动自动加载）→ README.md 口径表（速查）→ 涉口径/决策查 BM 线程笔记（按 BM 协议）→ 涉代码结构用 OpenWiki search/read（可选 just-in-time 上下文、非每次任务起手式）；检索工具不可用时读 openwiki/quickstart.md 并沿链接走到相关页面。",
+      "evidence": [
+        {
+          "resource": "repo://AGENTS.md#L48-L48",
+          "version": "repo-lines-v1:sha256:fcecb530edcb1be4c29889ddd1429b0404661bf5c5b58941acaa51d2193b219c:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZmNlY2I1MzBlZGNiMWJlNGMyOTg4OWRkZDE0MjliMDQwNDY2MWJmNWM1YjU4OTQxYWNhYTUxZDIxOTNiMjE5YyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZmNlY2I1MzBlZGNiMWJlNGMyOTg4OWRkZDE0MjliMDQwNDY2MWJmNWM1YjU4OTQxYWNhYTUxZDIxOTNiMjE5YyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNTFjYWNkNjlkNmU2MzQyOWE3MzJhNzM3ZWRhZjI1NzIyZTNmYTQzOThjNTE0MDgwZWY0ZTQwNGM3M2QyOTg5OCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNzA3MjMwMzE2MDI1NDFlYmY1OGIzODJhY2Q5YTA3YTRiMTMwOWRkM2IzZDc5ZjczYTBkZTZiZDEyYzkwMjVmZiJ9"
+        },
+        {
+          "resource": "repo://AGENTS.md#L87-L87",
+          "version": "repo-lines-v1:sha256:07553b0d52eb824ef41e76bf45b562f1ce483a1263f4ffb43b11b09a072858ba:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMDc1NTNiMGQ1MmViODI0ZWY0MWU3NmJmNDViNTYyZjFjZTQ4M2ExMjYzZjRmZmI0M2IxMWIwOWEwNzI4NThiYSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDc1NTNiMGQ1MmViODI0ZWY0MWU3NmJmNDViNTYyZjFjZTQ4M2ExMjYzZjRmZmI0M2IxMWIwOWEwNzI4NThiYSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOTAyZDFlNjcyNTU4MTg3NTZjYjYyYmUxNGViZDVjMWI1M2FlYmQxOGZhZTVkNWMyMGVkYWNiYWZiYjdjZTMzZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNjZjYjMwYThmOTQ4MTMxNDkwODJmM2RjYjkxOWRiMTJmMjIwYjMxYTI5NWZiZWU5NTM1MWNmOGYxNGJhZGEyZSJ9"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.7.0",
+    "at": "2026-10-08T13:05:24.547Z"
+  }
+}

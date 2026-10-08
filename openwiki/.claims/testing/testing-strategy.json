@@ -1,0 +1,250 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:9e3bf62721c4b64fad3d61e0ec83fd9f1fe454beed193fc73b7d8151fd56fbc0",
+  "claims": [
+    {
+      "id": "claim_62ff6c308c1c4bb287d144bea5a0ae5e",
+      "statement": "pytest.ini's only global option is addopts = --basetemp=scratch/.pytest-tmp, added (双审 agy 建议 4, 2026-10-05) because the Windows default temp tree C:\\Users\\<user>\\AppData\\Local\\Temp\\pytest-of-* accumulates stale permission residue that makes a full-suite teardown raise 38 PermissionError (an environment issue, not a code regression); scratch/ is already gitignored so no extra ignore entry is needed.",
+      "evidence": [
+        {
+          "resource": "repo://.gitignore#L19-L19",
+          "version": "repo-lines-v1:sha256:795a3ebb07ecbccc0e0244c675adebf44300ec4aa046373171f205e12111f323:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNzk1YTNlYmIwN2VjYmNjYzBlMDI0NGM2NzVhZGViZjQ0MzAwZWM0YWEwNDYzNzMxNzFmMjA1ZTEyMTExZjMyMyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNzk1YTNlYmIwN2VjYmNjYzBlMDI0NGM2NzVhZGViZjQ0MzAwZWM0YWEwNDYzNzMxNzFmMjA1ZTEyMTExZjMyMyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOWRkZTRiNjQwZDkyNDI0Mjg3MzMyNzNmMGIyZWFjMjQ2YzVlYjA3NDNhNDg1ZGNjNTNiY2JlMTU5YjFkZmViMiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNDYyZGE4NWRlNDYyZjM2OTM5NGY3MTVhYmE4MGFkYzhhM2M4NTcwY2QxMDViYTBlZmY5NGJjMTcwNmYxNTg3YSJ9"
+        },
+        {
+          "resource": "repo://pytest.ini#L1-L6",
+          "version": "repo-lines-v1:sha256:e12a891c3fc04e2a613a133830744ae46a2c8bac2697494eff83afb07fe09e17:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMTk4NTQ5ZWNjZTdiODZlYmMzOWY4ZDk1ODJjNmMwOTBhMTVlMTQ4Mjg2MjI2YTMzYzBjYmZjMmQ4Zjk2YTYyZiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOWI5NmU5NzRhOGEyYWI0OWI4OWQ4NTIyYzU3MjllODdhOGFlNTFmNDg5MjEyZmUwNDAwOWI2ZWI5YWQxODI1MSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjAsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjAsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_eb92667054e542588a1df7f914d70040",
+      "statement": "Functions that must execute SQL are tested with hand-written FakeConn/FakeCursor stand-ins defined locally per test file (no shared conftest.py exists in the repo); FakeCursor pops one pre-baked row batch per execute() and records (sql, params) for later assertions, and some variants assert the SQL shape (read-only SELECT, double-bounded \"DATE_EVT\" >= %s / <= %s window, ORDER BY \"ID\", and sql.count(\"%s\") == len(params) placeholder-count guard against a 2026-09-24 real-DB IndexError regression).",
+      "evidence": [
+        {
+          "resource": "repo://tests/test_w3_bootstrap.py#L120-L154",
+          "version": "repo-lines-v1:sha256:033b3b0d5f332a3b1cd9b5f3916c8d4ab16921c846ebebce3452b946d777a102:eyJzZWxlY3RlZExpbmVDb3VudCI6MzUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImM4MzI4ZDkwNGVhNDI5Y2ZiNjk2MGYzYWRkMDVhYTU3ZjQ2Y2M1NDhiYjk1MDdlYmM5YWJlNGVhNDcxOTMxY2QiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjUyYjAyOWQ5ODFlMjkxM2RkM2JhOWU4YjdhYWRmMTc3ZDljNWEyNGEwZGQ3OGFjYzE1ZTAwODU3NTkxYTdlOTIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijc2Yjg5YTE1MDI3OWZhMmZlYTAwNzU1MjFmZDcwZjYxZjIxMjJlNmM1MWEyZGZjNGIzZjY3YjAwOGFmN2I3ZGYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjgwZWU4MWJiMTFjYmY1ODMwZTZmMzUwMzNjMWQwMGMwY2IwZjk4MjZkNmFjYWJmNTE5NjkzZWZjMGIwMjAzZDEifQ"
+        },
+        {
+          "resource": "repo://tests/test_w3_bootstrap.py#L35-L49",
+          "version": "repo-lines-v1:sha256:b2a0c0472b41dc94d1ce80331f96d442b2fc1c9554ac3d771958b2b9a4b2dc11:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI5M2VjNzM5ZTJiMmYyYjc4YmFiNGNmZjk3YzQ1NGM3ZjY5MTMzN2JhNzVkM2Y4MzhkMTY2ODM0Yzc5NjBlMTYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImEyYWIwOTBiY2QxNjIwZmE2MmVhZWUxNTdhNzRmY2E2MzVhYTI5ZTEyY2JmZmQ2MThiNTc5MmQ4N2JjMDNhM2YiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImQ5ZTAzMDZiNTg0M2I1MWIwYWNmZmRhMTk1NDI5MDE0NDQ4Mjg3MGJhNDdlNTY1MTU0OGY1YWEyMWRhZGFiZmIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjAzMDcxYWMyOTc1NDFmZTgzZjYzZmIyNGYzM2FiOWMwZjEwYTdjMTI1NTY5NTI4ZmIxNjE4ZTFmNDRhZGQ2OTIifQ"
+        },
+        {
+          "resource": "repo://tests/test_w3_freshness.py#L23-L48",
+          "version": "repo-lines-v1:sha256:1b95b845172fa4890ebc9e0561d58266c2c9f1a1d11ebe27833473c371485fd3:eyJzZWxlY3RlZExpbmVDb3VudCI6MjYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk1M2QxY2Y0NWYwMjkzZDE3YjExODlmZDg0N2YxZjk2MmU0OWI0MWU2ZmJiZmMyMzdkZGQwZWFmMzljNTBlZGEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjZlOGQ3NmU2NmJiNzhhZmIzYTE2NTZlN2ZhZjE0NTU2YWM5M2RkYmExOGQ3NzVjNDNmYmI4NzEzOTFlOTJiYjQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjZjZDMxYzhiYWMxMDMzNzA4MjkzN2YzZWZmYTA3YzUxODc5OTkyMmQwMmRkZGE2ZWYxYjI0M2RiYzc0YjkwNWIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjY5MDUyMWUyOWQ1MjAxNmZiMDcwOTBiNmJjMTAyY2FkOTM0YWFkOTA5YWM4NTI4ODRlZTgzZDVjNmYwMDQ3MzUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_aaa35f84aec8478f88e0dfda954f2225",
+      "statement": "FakeConn variants record commit()/rollback() calls so transaction behavior is asserted offline: tests/test_w3_bootstrap.py FakeConn tracks committed/rolled_back counters for the boot DDL (weekly-plan tables via plan_loader.ensure_weekly_plan_tables, same-transaction rollback on failure), and tests/test_w3_mainloop.py asserts conn.commits >= 1 after the dead-vehicle audit INSERT INTO dss.work_alert_log (write-to-dss-only discipline).",
+      "evidence": [
+        {
+          "resource": "repo://tests/test_w3_bootstrap.py#L55-L71",
+          "version": "repo-lines-v1:sha256:2273cd56b2eb5a455bbb6e534289a70dc55d0f44ab430ce4a881f65422966d7e:eyJzZWxlY3RlZExpbmVDb3VudCI6MTcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE2ZGNhNDQ3OGQ3NDNmNGFkODI2ZDA2MTA1NmU0YWQ5MWZmZGRjODczNmIxYjIzNDlkZTk4Mjk4MzcwMzllZTkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjlmMTc0OWQ5Nzc0NzU3MzMwZjMyZTIxMDQzZGNlNjZmNDI0NDc4NTAyMDE2NDUxMjI1NTc4OWEwMTdhMDcyYTYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjA0ZDNkYTU5OGU4NjQwOTFhMjFjOTk1MWM1MTg2MDhjNWFmYTg1ZGUwZTYxNzRiZDQxOWJjMGQ3ZDhmZWEyMjQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjA3MGQwZWQ0ODIyMWQxNDQ5NzYxNzcyMmIxNzc0NzA0MjUzOGIzYTFkNjcyZDU3NGRmNDQyNWI5NTUzZTkxZjYifQ"
+        },
+        {
+          "resource": "repo://tests/test_w3_mainloop.py#L150-L153",
+          "version": "repo-lines-v1:sha256:12fb6d6307dd065dd99ad508d3b3ac07b1f8dac96a8c4ab92acedec56b78ca08:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZmY0MjNlOTYxODg2YmZiNmY0MWM2ODZiNzhhMTdiYzUwZGJjN2Q5NGE5MDdlZjRjOTBiZmZjYWY3NjEyYzA5YyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMWJlOGVlZWNiMGEyMDc0OWJmMWFkZWE5NWU4NTIzOWNmMWY0ZWNhYWYyMWQwZTkzMzNhZjQyYWNlOWVmYWU3MiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMDM4YzQ3ZTc4MzhjMTU5ODBjOTVkOGFjNWU2YWFmZTFkYTRkYWU5ZWU4NTYyY2E1YzQxYzI5YTc2M2FmMDI4NiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZmMyNjNlMzc5YjQzNzEzMjk4ZTliMmYwOTdkODU0MjZkN2VmMjdiNWE0ZTRlYTgzYzg4Nzk1ZGMzYmNkZGRiNiJ9"
+        },
+        {
+          "resource": "repo://tests/test_w3_mainloop.py#L79-L88",
+          "version": "repo-lines-v1:sha256:e95882a764cbe84389eca2be39b2824a5f16e8cfc486b9423dcea54171a1b5dc:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBmNDQzNjU4MjI1ZDY2MDkxNTg3MzFjOWUxY2UyZTVmMWE0NTgyZmMyZmYyY2M5YmUwNjdjNjMxZGFiNGNiNTIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE5ZmMyY2I0ZjA0YmUyZGY1NTA5ZjExMDliOTBmMGFiMjUxMDI0NWRmNTI4ZDlhMmYxZWM3OGU4OThjODkzOTciLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjIyNjg5OWE5ODFjZDc3OTJhYzY2NTBkZTUzNjdlMTNiMTk4MDk0ZGQ1YmY1ZWU1YTFhMmY2N2ViMTY0NTBkNjgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjUwYTI3MWMyNGNjZGZmNDA2YWExMWJjYTQ5NTk4M2VmMzAwZWM2N2Y0ZjI2YjAyY2JiMTA3MDc2NjU1YjgzMmMifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_67a2d37484124810bbb337b72650bb8b",
+      "statement": "Tests load numeric-prefixed cross-package scripts (spike_w3/01_boot_online.py, 02_shadow_replay.py, 04_m5_acceptance.py, spike_w2/02_replay_shift.py) by file path via importlib.util.spec_from_file_location, register a dot-free sys.modules alias before exec_module, and guard with `if name in sys.modules: return sys.modules[name]`; the registration is mandatory because spec_from_file_location does not auto-register and dataclass deferred annotations resolve by module name at runtime, and module names must not contain '.'.",
+      "evidence": [
+        {
+          "resource": "repo://CHANGELOG.md#L31-L38",
+          "version": "repo-lines-v1:sha256:ab8a9d440ecfe1f0700e59745fb8caa7bb1e929d1015b514197a800bb2e5a75b:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNGQyYWZlM2FhNTk2ZDJlYjExOTQ2NWZiMDFiNmJjYWYwNWFkZGRmYzM5NmM4ZWQyYzIxMDZkODMwNzNmZjExOSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiN2E2ZGRhZmY0NjAzNzA3YWFhZmQ0ODBmNDUxNGY2Yjg0ODM2MTk2ZmU1MGVlNTA0NjllNmExMmZjYmM4NmYxYiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiY2ZiYmVjZTg5Y2NkOGRiZmJkNGQ1N2M3NWVlMTA0ZDQzODE1ZjE4ZmRiMDY5ZWRmNDUwNTc4ODBiNzU3MGQ2NiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiN2QwZGU4Y2I0OTc4OWY5ZDU1NzA2YmY4YmVhNjVmM2FhYmIwNTNjYWUwZmY1MzQzNTc2NGM2YTBiNmUzMDI4YyJ9"
+        },
+        {
+          "resource": "repo://tests/test_w3_alert.py#L32-L39",
+          "version": "repo-lines-v1:sha256:b645fa6717ece451f9892c0958667dbe70283f1928ed3fa1ea8cdd9da05d08ae:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMGEzMTIyNzdhMGIwNDczZGRmOGJmMjZkNTMxZTMyMTEzYjg4MWNkMDNmMDcxYjdmZWU0Yzk2ZTRkZTNhMTQ4OSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOTI5YWY4NDI0NDgzODYzN2E3ODljMDlmMGU0MzhjODhkMDJlNjg2OGU1YTk5ZDY4NDliN2M2MDU1ZGNkZmI4MSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNGY1OWNiYWVkNWIwYjc2NThmZDk1YjExZGEyYmQyMmVhMTQ5ZTcwOTlkZmZiNzQ1MzVlY2VlNTNmY2NjMzY2ZCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiOTRjZGMwNDhiN2E1ODBhYjc5MDY1YWIyMDBmMjdjNGE5MjZjY2M0NmNmMDcyMTQ4Yjg5Mzk3OTBjMDE5ZTBlOCJ9"
+        },
+        {
+          "resource": "repo://tests/test_w3_bootstrap.py#L186-L195",
+          "version": "repo-lines-v1:sha256:872bca18e2e61f49d1e3110ba4ed2275e7c32337dc3506202a791c32a5f35ca3:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRkMGRhZDYwOTgwNzY3YWEzMDE2MmY5NDUyOTEzZWM0YTEwMTg2OWRhMzA2NGY4OGY3ZjI3ODU2ODY2MjU0ZDgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxNjQyYjU4ZmI2ZTRkZTYwMmY0NzVhMzE3ZmMxM2IxNzZkYzJmMGI0OWJlMTgzMzk5Y2ZiMTY3NGNmNzk5NGQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjE3ZGZjZjQ5ODQ3NDc3ZjQ3OWJjYjc5M2I1N2Y1NTRlZWU5NWZiYzM0NDc5YmEwYThlNmEzMjMyMzY3YTRkNDUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjY0NjUyNWFkZTQ0MjllOTMxMTE3YWYzYjIyOWVlMzk4Y2Q3NTRhM2NmNGM4NjBkMDQxMmFmYmNlY2U4NGRkYzgifQ"
+        },
+        {
+          "resource": "repo://tests/test_w3_m5_acceptance.py#L27-L40",
+          "version": "repo-lines-v1:sha256:2275bc1c319fdea7454b039865444f0cfda3e9703bf3605151b9f3e8e0d15819:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjUyZDRlY2NiZmQ3Y2JlNmQzYTJlYjUzMGI4OTU3OWEwYzM0ODM1NjBjZWQzZThkZGE0YzYxOWZhNWQzMTBmNGIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFkYzA5YmYzOTExNzMxYjExMmYzZWJhYWUxMmNhYjMyNTU5MTg4ZTNjZDYzNWE4MmIzZjc3ZTYzNzBkZTU3ZTYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijc1ZjJhMmY5NDk1YzBhZWExZGU1NjZhMjExZjI3MmVhOTY1YTA4NTE2ZmVlY2I1Nzg4NzFmMDY1Y2VkYWI2ZjQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjUwZTllMDBlOTk4NTVlOTk0ZmE4Y2NkZTkzYzA2ODk0NDQ3ODc1MGFhOGI2ZTRlNWI4ZTg1MTg4ZjRmYzMxMzIifQ"
+        },
+        {
+          "resource": "repo://tests/test_w3_mainloop.py#L91-L103",
+          "version": "repo-lines-v1:sha256:505cf741a225cccbf4be8cf96f38383a64d7415a23a3a69432be87a58fe40b47:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijc3NDI2ZjhkNjFkYWNmYzY5YTcyMDI1M2NhMzNhN2NmZDc0OGI1MDc0NjhiZDJhNzRkNjBmMzY1ZGI5MWUzNDQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImM3MDAyYWQ0NzhmZmMyN2FhN2RlMTE3YjMwZDkyNzUzYjczNzhhMDgwMjg4ZDE5NDZiYTA2YTIzZjhkOGNhYjciLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjliNWI1ZDEwNTE1MGUxN2E5YmEwZWIyMzNiNzYxZWJkNzEwYzk4ZjI2NjBmNTliNGViZDY1ZTcyMWVjMzNhMTAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjlkMGVmODg0MzhkZjYwOTQzOGY3NGJjMGU1ZWQ2ZWE4YmE5NTcyZTFlYjk4YTNjZGJmOTJkYzVkMTAyMmJjMzYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_a8888c3be46846deb4279c86006eed41",
+      "statement": "tests/test_db_smoke.py is the only true real-DB smoke test: it probes socket.create_connection to 127.0.0.1:5432 and auto-skips the whole file via pytest.mark.skipif when the DB is unreachable; when up it pins tz/quoting/constant 口径 against exact stock values from the 2026-09-30 11:36 sync snapshot (min(\"DATE_EVT\") lower bound with CST=UTC+8, MDS_DATA flag-139 distribution per flag, entry/exit station counts with %% -escaped LIKE), which must be refreshed after each data re-sync.",
+      "evidence": [
+        {
+          "resource": "repo://tests/test_db_smoke.py#L1-L65",
+          "version": "repo-lines-v1:sha256:b8b8424861460c701b803b698ffe9aed807f97253ac6a66dafed9ab04f79c2f1:eyJzZWxlY3RlZExpbmVDb3VudCI6NjUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk1NTJmODU0ZmNmNzczODkxNjBhMDhjZmI0YmUyZWI5MDJjZDlhMGMwYWY3NmFiNTdkZjAyY2JmOTEyNWQzNjkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAyYzA5N2ZiNjFkMGQ0N2RjMWZmNTIzYWMxMzczYzI1MWUyZGIxZTRkMmRiMmJiOWVlNjA4ZWE4ZDk3MzhhNmUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjoxLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImJmYjQ3N2Q3ODE5NWYxNjcxNjk5ZjQzMDkwNWMxNDI0MjRjZjllNjU5ZTA4NzVkYmM0NGNmMjY4MjhhODEzZWQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_e95f4f25dc264288877080733af07bc6",
+      "statement": "tests/test_w1_dsn_env.py pins the DSN override contract (M5 prep, agy blocking F1): spike_w1.common._dsn() defaults to 127.0.0.1/root/root with zero behavior change, DSS_DB_HOST/PORT/NAME/USER/PASSWORD env vars override it with port parsed to int, and connect() resolves the DSN fresh at call time (not frozen at import), verified without a real connection by monkeypatching psycopg2.connect to capture kwargs.",
+      "evidence": [
+        {
+          "resource": "repo://tests/test_w1_dsn_env.py#L1-L57",
+          "version": "repo-lines-v1:sha256:1526edb37bb2c3673d9c54a5cfaad18b9218f7dfcbcbce6e751c7599f4324b46:eyJzZWxlY3RlZExpbmVDb3VudCI6NTcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk1NTJmODU0ZmNmNzczODkxNjBhMDhjZmI0YmUyZWI5MDJjZDlhMGMwYWY3NmFiNTdkZjAyY2JmOTEyNWQzNjkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjMxNzRlZTFiZTNlYzgzOTYxOTRhMzVjOTMwNzg3YzAwYjkxMzI1MGRkMDA4ODdkZjE1OWMwMTI0MTkxYmNlNDgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjoxLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjRiYzdjMjNlZTE4YzNkMDEzOTZlM2QyNjM3ZDNhZGY1YmYxMWQzYjU3ZGI3NjkwNzcyOTYzNDQ2NTVmZjFkZmQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_b769d864a25e43ce8c296040732d103a",
+      "statement": "The test suite is TDD-first and overwhelmingly offline: pure-function tests target the zero-I/O cores with synthetic data and zero DB dependency, covering the W2/W4 ETA engine in tests/test_eta_v2.py (fallback chains, cohort mixing, estimate_event branches), the FreshnessGuard three-state machine in tests/test_w3_freshness.py (30-min latch, STALE freeze, rest-day downgrade, four-signal diagnose), pool state machine R1-R7 in tests/test_w3_pool_state.py, and the run_replay cursor-stepping dry run in tests/test_w3_mainloop.py (48h synthetic stream, 576 rounds).",
+      "evidence": [
+        {
+          "resource": "repo://tests/test_eta_v2.py#L1-L147",
+          "version": "repo-lines-v1:sha256:aeba813c391ffa3f228a7382958a7bc589c722d5dfe6a0dd66e06ff90eddaeb0:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQ3LCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiI5NTUyZjg1NGZjZjc3Mzg5MTYwYTA4Y2ZiNGJlMmViOTAyY2Q5YTBjMGFmNzZhYjU3ZGYwMmNiZjkxMjVkMzY5IiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiIxYjg2ZTk4MjlkMzdhM2I5Mzc2M2FjMDk1MTkwMTZkODY4NTAwY2YzYjI0MzBkY2VhOTZiYjBlYTNlZWVlMWYyIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MCwicHJlY2VkaW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1IiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MCwiZm9sbG93aW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1In0"
+        },
+        {
+          "resource": "repo://tests/test_w3_freshness.py#L1-L114",
+          "version": "repo-lines-v1:sha256:a504ec8dd0a9efc467b276f8d13efdf23dca38ba8555987ba303eff1f7a56398:eyJzZWxlY3RlZExpbmVDb3VudCI6MTE0LCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiI5NTUyZjg1NGZjZjc3Mzg5MTYwYTA4Y2ZiNGJlMmViOTAyY2Q5YTBjMGFmNzZhYjU3ZGYwMmNiZjkxMjVkMzY5IiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiI3ZWI3MDI1NzU5M2RhMDZmNjgyYTNkZGRhNTRhOWQyNjBkNGZjNTE0ZjY0NTIzN2Y1Y2E3NGIwOGY4ZGE2MWE2IiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MCwicHJlY2VkaW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1IiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MywiZm9sbG93aW5nQ29udGV4dEhhc2giOiI4Mzk2OTQ2ZmQyYTY1N2VjYjJhZGUyNWExMWRjMTdjN2ZhODMwZWVmM2E0NTVhMDM2Yjk5Y2NmZTY3MDAyYTI3In0"
+        },
+        {
+          "resource": "repo://tests/test_w3_mainloop.py#L1-L52",
+          "version": "repo-lines-v1:sha256:0bdd5f885e18941405a270b52f4e2117d3c6b81239e2e6f99c5fad551b67bf49:eyJzZWxlY3RlZExpbmVDb3VudCI6NTIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk1NTJmODU0ZmNmNzczODkxNjBhMDhjZmI0YmUyZWI5MDJjZDlhMGMwYWY3NmFiNTdkZjAyY2JmOTEyNWQzNjkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImYwZmNiYjZjMzE1MTc2ZDcyY2FkZmU3MjliNmFiZjNkYmI4NTA4ZGYxYjkzNzc2MzA1NjM3OWNkNWNiNGI4YjYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjZkN2EyY2FhOTc0NTMyYzFkMTkzMmUyNGFlNjE0ZjE1Yzc1MmUwODI5MmU2ZGNkNjRkN2E4NDEwOTcyNWE3YzEifQ"
+        },
+        {
+          "resource": "repo://tests/test_w3_mainloop.py#L108-L126",
+          "version": "repo-lines-v1:sha256:7405b32773a028b144c21c0d8c51920bee6546c5aa2ce631285870c8761d8cad:eyJzZWxlY3RlZExpbmVDb3VudCI6MTksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ0ZDIyODBkOWU3MzQ3MTZkNGQ3MmQ1YzQ0MGM0M2MxYmExNDIxZDk1OTFjMzQ3NjI4MjlmZjY1ZmM4Y2Y1NzgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI2YjI1NDI5YzljNjZlNzJlOGI2MTM2ZjZhZTdhMjY3NjY3YjZkYzQ2NjhhMjkwYTE5YjAxYzU1YTExODhhM2IiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjY1YzkwMmNiNDM4YTU1ZGIzZDgxYWMxZWQ5OTg0ZWFjMmM1YTA1NmNhMWQ1NDhhYWMzZDg1ZWQ5M2ZkMzQ5M2QiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjI5ZTExYjQ2ZmIyMDQ5NzI2ODRhNjg4NWYwMmFiZjA0OGRiZWVkNDE3MWM1NzEyNzcxNzYyZDI4YTRkODEzZWEifQ"
+        },
+        {
+          "resource": "repo://tests/test_w3_pool_state.py#L1-L39",
+          "version": "repo-lines-v1:sha256:c20ffe76e3907391bc005c07749b361316bb62d4bd14e2af2c07112d0ace6f5a:eyJzZWxlY3RlZExpbmVDb3VudCI6MzksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk1NTJmODU0ZmNmNzczODkxNjBhMDhjZmI0YmUyZWI5MDJjZDlhMGMwYWY3NmFiNTdkZjAyY2JmOTEyNWQzNjkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQ4Yzc3MzYzMDVjMTUwZGMzNjNmMDJmOTJhYmI2ZDc0OWY2Y2ViMzRiZjkwYTYyZjliZTYxOTg4NGQ1OGRiZGQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImVhMzg1MjkxNzZhODE3ODQ1MzFkZjc1ODVkYWQ3ZDZlY2I2ZjFhM2YzMTZmYWQ1ZjZjMTFiMGQyMDU5YmEyZGMifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_c6bc86c38f5b44b5aaa65aafe6b2e831",
+      "statement": "The frozen red lines (docs/15 §红线, docs/07 v1.1) are: (1) W1/W2/W3 closeout conclusions are not re-opened and their acceptance gates become W4 regression gates (docs/15 §G), with failures attributed and reported honestly rather than gates soft-deleted or re-scoped; (2) existing gate semantics are unchanged — gates() in 02_shadow_replay.py and the gate logic in 03_alert_backtest.py, plus run_one_round fixed order and _render_status_line in 01_boot_online.py, are byte-for-byte frozen, with the only sanctioned exception being the W4.3 minimal contract extension (Event +1 flag_137 field, VehicleState +2 fields, rules O1+O2) recorded in docs/03 §0; (3) red-line verification is done via git diff showing frozen modules have zero change at wave closeout.",
+      "evidence": [
+        {
+          "resource": "repo://docs/07-T6-lite%E8%AF%A6%E7%BB%86%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92.md#L5-L5",
+          "version": "repo-lines-v1:sha256:2c38510fe5fb2d61dac79931d7a230a7da0d46626df9f1d154f85caf29a4ae23:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMmMzODUxMGZlNWZiMmQ2MWRhYzc5OTMxZDdhMjMwYTdkYTBkNDY2MjZkZjlmMWQxNTRmODVjYWYyOWE0YWUyMyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMmMzODUxMGZlNWZiMmQ2MWRhYzc5OTMxZDdhMjMwYTdkYTBkNDY2MjZkZjlmMWQxNTRmODVjYWYyOWE0YWUyMyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMjdjNGQ3Yjk0M2I1ZDllN2ZmYmU5NmEzZDYwM2U4YTY3ZjJjZWQ0ZDk3YWM5NTQ1Y2E1ZTZhMTQ2ZmEwMTUyNCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiODAyYmEyODMxNDQzNzc3MWU5M2ZiNTU4MDFmNjYzZjk2NmZlNzViZjE5YjIyMzgwY2QwNDEyZDVkNjljNTYxNSJ9"
+        },
+        {
+          "resource": "repo://docs/15-W4%E5%8F%8C%E7%8E%AF%E9%87%8D%E6%9E%84%E6%AD%A5%E7%BA%A7%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92.md#L250-L250",
+          "version": "repo-lines-v1:sha256:dc77812f5d8a60e4e66a8252320d03d17f36f27783bcbdb4a1c991cf69c50737:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZGM3NzgxMmY1ZDhhNjBlNGU2NmE4MjUyMzIwZDAzZDE3ZjM2ZjI3NzgzYmNiZGI0YTFjOTkxY2Y2OWM1MDczNyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZGM3NzgxMmY1ZDhhNjBlNGU2NmE4MjUyMzIwZDAzZDE3ZjM2ZjI3NzgzYmNiZGI0YTFjOTkxY2Y2OWM1MDczNyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZDNmYTI0Y2E3ZDc3ZGQ5YzdmYjVhNzNhNWU1ZjdkOTlmNDk5NWExYjBmNzQwZjEyMmM5OTdmMGE1MjhlNzU0NiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMzQ3ZjhmNjU0NWU1MjJlN2NjYWMxMzAxODgxZjU4MjVkYzA1NTk2N2ZiN2UzNjBlMDUwYzk3MmUwNDRmMjQ3NiJ9"
+        },
+        {
+          "resource": "repo://docs/15-W4%E5%8F%8C%E7%8E%AF%E9%87%8D%E6%9E%84%E6%AD%A5%E7%BA%A7%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92.md#L272-L274",
+          "version": "repo-lines-v1:sha256:29ab54c6901df67ca84d61506348c0d1b3e8da36e928002ee38942d6b0f173bd:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNzYxMGM2MjNkZmI0NzUyZWQwN2FiZjAyZjVjMWFmYmU4NzlkNjJhNWRlZDIxMjc5YTRmM2E0OTExOWU4MTlmNiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNzhmYTcxY2E4MjljZWMxNDM3ZGRmM2U5NWFhYjY4MTRjM2I3YzA0OWJhMjhhMDhkNmQ3M2ZhMTMzZDQ4YjJiMiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMTI4NTdlMzViZWE5YTVhZTdiMjJhNmEzM2FlY2M2OTM3ZjY5YzkwYjhjZDU5NWE2OWRmMjY1YzkwYjMzYTIzYyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMzI5MjgwZTEzMGZkZDA1N2UzNmM4ZDA1YWM2YjM4OTUzM2E0ZjhkOWYxYjc1NzgwN2M1YWEwMmEyM2E1YTQ5MSJ9"
+        },
+        {
+          "resource": "repo://docs/15-W4%E5%8F%8C%E7%8E%AF%E9%87%8D%E6%9E%84%E6%AD%A5%E7%BA%A7%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92.md#L39-L46",
+          "version": "repo-lines-v1:sha256:dabaeca2e877a4acbf284be0f1c2f71191cb314ecbf6c0721ad874f950dc2459:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNjJiYjJlODE1OWNjYmNlYjdjYjUwYTMzNGMwMWFhYWEwZWU2YTlhMTk3NTVmMGM1MzdiZmRlNjBjZjMwODc0NyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiN2ViNzAyNTc1OTNkYTA2ZjY4MmEzZGRkYTU0YTlkMjYwZDRmYzUxNGY2NDUyMzdmNWNhNzRiMDhmOGRhNjFhNiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMjU3MGVjMjE3MWM5MWE3MDgyYzg5ZGI2YTM3OWFhMWU3Y2UwNmMwYjgzMWJiZWNhZDA5NDZiNzE1Yjc0YTZmZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYWU5YWQ2ZTQ1YWM5MTIwNzVkZTYyNTM1NGQ1ZjkyYzVjM2Q5MzBhYmY0ZDZkMDgxMDRmOTYzYTU0OTM5Njc1OCJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_5f5586a10bab40169dda8f03b876641b",
+      "statement": "The DSS_DUAL_RING=0 rollback path is deliberately retained as a test anchor: spike_w2/eta_v2.py keeps the old entrypoint estimate_event and quality_mark/resolve_p untouched because they are the DSS_DUAL_RING=0 full-path rollback plus existing test anchors, and the old entrypoint estimate_event is frozen (deleting them would silently remove rollback capability); tests/test_w3_predictor.py and tests/test_w3_eta_menu.py pin the old engine/old path with an autouse fixture forcing DUAL_RING=0 + DSS_USE_NET_DELAY=0, and tests/test_w4_engine_wiring.py asserts both gate sides and that dashboard.compute_eta under DUAL_RING=0 returns a zero-drift old-path response shape.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w2/eta_v2.py#L6-L6",
+          "version": "repo-lines-v1:sha256:e03110b1b2986691b424c86b32dc817ec0fe9ffa924ef36bf13df63d47df1d30:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZTAzMTEwYjFiMjk4NjY5MWI0MjRjODZiMzJkYzgxN2VjMGZlOWZmYTkyNGVmMzZiZjEzZGY2M2Q0N2RmMWQzMCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZTAzMTEwYjFiMjk4NjY5MWI0MjRjODZiMzJkYzgxN2VjMGZlOWZmYTkyNGVmMzZiZjEzZGY2M2Q0N2RmMWQzMCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiODRjYzllNDIzNzNiYWMxMWQ1ZGQ5NGE0ZGY4NjhkOGJjYzVlMDY2NzRkOGM5MWI1MjE3MTRlNDAzY2VlZmQ3YSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNDEwNTY5YjRhZTUxYTJhNzM5NjFiZWU3ZDRkM2JkZDU3ZmIyMDFmODNhNjJiYmNlMzE4ZjY1NjhhNjkzOTQxMyJ9"
+        },
+        {
+          "resource": "repo://tests/test_w3_eta_menu.py#L24-L26",
+          "version": "repo-lines-v1:sha256:208aa811ef33804e60d801631d5c0152a3c95d1bb995a3631cadac7e8ab981fe:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNmY4ZjhlNjhkMDJiMTVlMzgwNDQ0M2Q5YmE4YzJmNTYzMWYyMjJlYmZiMTVlZjY2OGJmMmM5ZDAyNjZhMjg5YyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYzU4YTgxOTdkZDJlMTQxNWNmNTRiMjM3YTNjYjhmYTVlN2M3YzljOTg4MzJlOWQ1MmY0OWE5Mjg4ZDdiODAwZCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMWQzYTRkNGY1N2NiMmIzYzBmNmZhZGI1OGFlZDcwYTgyZTRlMjg0MzgyNTAzNDM3N2YzZjFhMDVhNmM3ZDE5NiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNzA0NTNjODgxNTUwZTUzOTZhODFjNTM0ODNlZWY3OTlmNWM4MGUxNTFiZWRhNjYxNGFkYzUwZmJhMjIzMWEwYiJ9"
+        },
+        {
+          "resource": "repo://tests/test_w3_predictor.py#L17-L22",
+          "version": "repo-lines-v1:sha256:8b4d1d3678694769fd5616a7572c01d8fad60483afe6b3615fd42bc693a5b36e:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZTJjMWYxMDBhOThjMmZjOTYzYjlhMzMyYmJmNTZiOGZmZmIzZTgzYmMwZTdjZjRmMjA3NzkwNzgxNDA2MGRmNiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMjRmNjFjNGUzZWQ5ZDc0NGQyOTc2ZmJiMmJlNmQxNzgzNjcwMmI0NjkxMDRhMGY1ZTFiMDM1MGQ5OWQyMzQ1MSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZDAwMjIyOWRmMGM3MWU0MjI4MmUzMDUxNzk2Y2I4YjE3ODcxODhmMjIxNTNmODRiODI4MWJkNDg0M2Y3OTUyZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYzUyN2U3ZDRmZmFlMTBhMDBiMzNmNDYxYTdjZTEyOWUzN2E0ZmU4NmJlNDNlYzUxMTNjNThmMTQ0Mjc3MmNkZCJ9"
+        },
+        {
+          "resource": "repo://tests/test_w4_engine_wiring.py#L132-L199",
+          "version": "repo-lines-v1:sha256:c12d6384887cf36b3b18cf45f027bec15aba2d1a4b905a20d9da93bed22ba651:eyJzZWxlY3RlZExpbmVDb3VudCI6NjgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjUxYWM5YTZlMTAzMGFhZWYwMmJhZmE4OTE0NmJjZTdiY2Y1YzM5NjJhMjFkNWM2OWUyMTQzNGEyNGZlZjU4YzYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjZlY2VmYWJlODI4YTA3MWZmNjg0YmViNWE0ZTAzMWM4YjY0ZTdlY2VjY2FhYTJmOTRjZjI5ZjBiMjM4Mzk1NDUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImI1YmRhZWFlNzhjMDliZjllM2RkZDJhMjc3NWRlYWQ0MWI2ODViNTI0NDQ0NzE3NzhkMzhmYmZhMTU5YzU4NGUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjFhNWU0OGIzZjc4NjI4NDIxM2E3Y2IzMDE5OGM4YTc3ZmE2NTg3MWYyNWU1M2I3YTg4MGMxMGMwOWVmMzUwMTAifQ"
+        },
+        {
+          "resource": "repo://tests/test_w4_engine_wiring.py#L356-L367",
+          "version": "repo-lines-v1:sha256:2bbaca5fb1ab3725e497cc6919cf0f0a87d4c4fb32f01d5ff69a4d46122a0de6:eyJzZWxlY3RlZExpbmVDb3VudCI6MTIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImJhODVhMjFjNTU1MWZkNzkxOTFiNDY1M2M1NjJjNWYwZDM0YTFmNjU3Yjk1NGQ2NjhmMTNkNjU0OGViM2RjMWYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjlkOGZjY2Q5MDBmZjZlNDI3Mzc1MWMyZGYwYzQ3NGYyZjM4NDAyMTA1NzM3MDQ5YzkzMzg2OGNhYzU1NGMyNTYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImYwNzg0OGI0OTI3NzllNDNkNDYyNTE0OGJmOWQyNDMyNzgyMDE5ZDU4NTJlZjUwOWFmMDZlOWIzZjFhM2ZlMTEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_0f47ee3843eb497aac248ea447fc3d32",
+      "statement": "The per-round status-line sequence (now/pool_size/max_ts/guard_state/frozen/dead_count) is the G1 regression criterion rather than full console output: tests/test_w3_dashboard.py::test_run_replay_hook_none_unchanged runs run_replay twice with round_hook=None and asserts the status-line dict sequence is identical round-for-round, and test_run_wall_clock_hook_param_static pins by source inspection that round_hook=None is a default parameter and the hook call happens after run_one_round; docs/15 §G G6 defines the regression-red-line gate as the t6dry1 09-09 status-line sequence (baseline hash), the KW36/37 original artifact hashes, and frozen-path diff = 0.",
+      "evidence": [
+        {
+          "resource": "repo://docs/15-W4%E5%8F%8C%E7%8E%AF%E9%87%8D%E6%9E%84%E6%AD%A5%E7%BA%A7%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92.md#L250-L250",
+          "version": "repo-lines-v1:sha256:dc77812f5d8a60e4e66a8252320d03d17f36f27783bcbdb4a1c991cf69c50737:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZGM3NzgxMmY1ZDhhNjBlNGU2NmE4MjUyMzIwZDAzZDE3ZjM2ZjI3NzgzYmNiZGI0YTFjOTkxY2Y2OWM1MDczNyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZGM3NzgxMmY1ZDhhNjBlNGU2NmE4MjUyMzIwZDAzZDE3ZjM2ZjI3NzgzYmNiZGI0YTFjOTkxY2Y2OWM1MDczNyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZDNmYTI0Y2E3ZDc3ZGQ5YzdmYjVhNzNhNWU1ZjdkOTlmNDk5NWExYjBmNzQwZjEyMmM5OTdmMGE1MjhlNzU0NiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMzQ3ZjhmNjU0NWU1MjJlN2NjYWMxMzAxODgxZjU4MjVkYzA1NTk2N2ZiN2UzNjBlMDUwYzk3MmUwNDRmMjQ3NiJ9"
+        },
+        {
+          "resource": "repo://tests/test_w3_dashboard.py#L128-L146",
+          "version": "repo-lines-v1:sha256:70e748f0d256ebf676e3ab1abcd15084d5bd965b27cee8cc3a24e2728dc643f4:eyJzZWxlY3RlZExpbmVDb3VudCI6MTksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjM2MzdjZTExZDcwNTIwNGQ3Nzg0ZmMzNWIzYWMyOGFkMzMwOTVmNmE0OTU5YzdhZGJkY2Q3NTRjYTMyNjZhM2YiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImMyNWI2ZWVjMTNmNWI4NjMwNzBjNzdkM2U2NWM3ODRlMzc1Y2M4MzYyMWE4NzAzNzA4NDBmN2JiOGMyZWVkMTUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijg0NTY2MTI2MTNiODE2NzRlY2EyMjY4NzM0ZDkxZTMxNzE4M2I3MjNkNGQ4YTdhY2Q3OGY4ZWFiZmQ2MjNiODEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImU3NWY3ZjUzZTVlYjg4ZTExODBkMDMzZWE5MzVjMzc1M2Y0NWFmOGM5NDYxYTQ1ZWJiNjZjMjdmNDFiNDE0OGQifQ"
+        },
+        {
+          "resource": "repo://tests/test_w3_dashboard.py#L175-L186",
+          "version": "repo-lines-v1:sha256:514eac7ae9db910d2b0b9ee7898f8d4ae2b10d9c1499def4fe478843accf086f:eyJzZWxlY3RlZExpbmVDb3VudCI6MTIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAyY2M0MjJkZmMyMGI5ZDBiYWRjMGQxYThhYjM5Y2NlNTEyNWZlZTY0MzY3MmE2MmVhODZkMDZjZDdiYWMyYWUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjYxYTIwOTE4Zjk4YjlmNzc5OGYxYjZjOGMwMjRiYjhkOGU1NDg5NGU1ZjQ2NTRkNGU3MGZjOThlN2E2ODAxMTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImIzZTE3MGQ0NTUwZDA5MTcxYTRhNDI5NTk0MDRiY2Y0ZjdmMTU4YjdkMGE4Y2UyMWI4OWJiZjRkODVkNjZhMmIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjRhMTdiNjBjN2Y0NGNkZTRlMzc3NjYyMzRhNzkyNTA3ZDRmMGNlZDgxODU1M2RkYzUzNjdmN2E2MTBkMmE3NGUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_aac4e822c685490b9d2418028271dbae",
+      "statement": "Windows run discipline (AGENTS.md 运行坑): DB-connected scripts are always launched as conda run --no-capture-output -n paint-dss python <脚本> (direct env-interpreter invocation crashed with access violation 0xC0000005, non-deterministic); conda run -c is single-line only (multi-line -c fails, script files are not limited); and gate-FAIL exit 2 is a reporting convention — the ERROR conda.cli... failed line printed by conda run is not a run failure, judge by the produced artifact.",
+      "evidence": [
+        {
+          "resource": "repo://AGENTS.md#L66-L67",
+          "version": "repo-lines-v1:sha256:06fd18b8360e32859ee72c82bdc89aba7fa8909dd00275de2cc3dd696c92b2ed:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZDQ4MjBkZWJmNzkyODkzMWNiZjMzMzIzNjU3MTRjNzk5YzlhNTIyNDEzNjc2MjY2YzAzMzdiYWNhMDk5NDNiOSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOTU2OTY3ODlkMzM2MTg1YzRiY2ZlYmI1ZDI4MDE4MTk5OTgwZjQzYTkzZWRmNTQ3MmUwN2RiZGNkOTI3M2U5NiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiODAwMTUzOTJlOWJhZGY4ZGYyOTJiMTlmZmRiYWY3NjZkZDI0ZDUwN2I1NGRhNjEwNGJlMWYwZTljOGJiOWE4ZCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZDViNDRhYjdjYzA2ODJlOGI3MjNmNzI0MTM1YzZiZGMyMDlmN2Q0Y2UzN2I5NGFjODIzMjQxNTFiNDFhNDU3YiJ9"
+        },
+        {
+          "resource": "repo://docs/15-W4%E5%8F%8C%E7%8E%AF%E9%87%8D%E6%9E%84%E6%AD%A5%E7%BA%A7%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92.md#L45-L45",
+          "version": "repo-lines-v1:sha256:9c3d87efc50a1658693f1714e00314955d3209d0c78a6c75d94de469057e6d9a:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOWMzZDg3ZWZjNTBhMTY1ODY5M2YxNzE0ZTAwMzE0OTU1ZDMyMDlkMGM3OGE2Yzc1ZDk0ZGU0NjkwNTdlNmQ5YSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOWMzZDg3ZWZjNTBhMTY1ODY5M2YxNzE0ZTAwMzE0OTU1ZDMyMDlkMGM3OGE2Yzc1ZDk0ZGU0NjkwNTdlNmQ5YSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMGVjZjAzZGY2MmIxMjEyODVmNjJkOThmNzI4YTc4NDkyOGZlZGMwZWQ4MTFmM2RjODJkNWVjNGRkN2JkMGQ5YyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZjIzMTA2YTQ5OTNkMTJkOTVmYTgzNmMxZmJlZjUyYjExY2ZjZGFlODgzZDdmMzhkNjk0MGFmN2U1NTUzZjQ3NCJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_1d84c94b8c3540a8a30ab31d3f0191fd",
+      "statement": "The suite-size timeline per CHANGELOG.md is 43 (W2 closeout) → 96 (W3-T2) → 215 (W3-T1-lite) → 270 (W3-T6-lite) → 297 (W3-M5 prep) → 449 (W4 closeout, 297 baseline + 152) → 470 passed (W4.4h: 449 baseline + 21, zero regression); the W4 baseline 449 and 470 passed figures are the authoritative zero-regression numbers, and detailed acceptance measurements live in output/ reports that are cited by filename only, not expanded.",
+      "evidence": [
+        {
+          "resource": "repo://AGENTS.md#L42-L42",
+          "version": "repo-lines-v1:sha256:21e1cb39b12520629c59e22a30770667a24f4102cb72b60f1de803b9c691f021:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMjFlMWNiMzliMTI1MjA2MjljNTllMjJhMzA3NzA2NjdhMjRmNDEwMmNiNzJiNjBmMWRlODAzYjljNjkxZjAyMSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMjFlMWNiMzliMTI1MjA2MjljNTllMjJhMzA3NzA2NjdhMjRmNDEwMmNiNzJiNjBmMWRlODAzYjljNjkxZjAyMSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNGUyNWVlNTExYTNkZTM0NjZlNmI4MTc2YjIyNTI2NjRlMTZiYWRhMjZiYjJmYzI4OWYwOWJjM2VlMGRmMGMwYiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNjQwZjVlOWM1ZGJhMjUwNTE2MzM5MTI5Yzc5NTA3MTc2MDU3OTYwZTExM2JmNWNiMDgwM2Q5NTBlYjBjYTE4NiJ9"
+        },
+        {
+          "resource": "repo://CHANGELOG.md#L112-L121",
+          "version": "repo-lines-v1:sha256:4a20e6127a3e2acf373b35952ad0739ed363de707963661bb1479816453fdc63:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjZkMTFjODAwY2ZkMDc0NzIyZWY2NjFjYjE3YTY1NDc5OGY5OWMzNzBjNTIxMDA1OTY5MjIzZjZjZDk0MDUzNDAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjY2NGRhM2ZlYTJhNjk2ZTc2ZjhlNzIwOGVmY2Y5YWJmNDhiNDQ1OGE2ZjNkOGE3NmM1OTcyMTg2ZTljYzUwMjkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImExMDIxNGVlM2NhZmJkOTZlYzFkNjBhNzc4YjRlMzg5OTI4Yjc4ODIwYzdlZWExMzU4ZGI2ZDg2MGY2MDJjODkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjZkOTZmNmE1MjdjMzE0MTg5MzNiZmM1OGNhMDViMzQ1MjVhYTYxMWI2ZThmN2UzZWJjZTg3MDRhYzc3OWNhZmYifQ"
+        },
+        {
+          "resource": "repo://CHANGELOG.md#L15-L19",
+          "version": "repo-lines-v1:sha256:ef480ec6ce39a8f9b2006bdf84964132c12b72591620dade2f35c023db93e9ed:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiY2I3YTZlYTMyNTc2Yzg0ODQ2NDU3ZGQ0ZGViZDMzMzZiN2NlYTAzMTk0NjUzMzAzMDg3ZTE2ODUyNGYwMGQ2YSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNzczOGZlNDk4NzU1Mjk4NTM3YmI2YjY1NDE4NWI5YjcxZGUzNWQyNjVjOThiNjZhYmQyZDk1NTRlYTNkZDYxNyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZWFmZjdmY2U3MjkyNzI1NWE0ZjJkYWUxMjc1ODI4NWUwNDhhYWYzODViZDk0YjA1N2UxOGY4ZTcwOWEwOTFkMyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMjIyYmViOTk4M2JjMWIxMDA4ZDJhMmI0NTY3ODRjNWU4ZTRjMWJmNzA1ZTVmZDhmNjIyZDJhNzk1YjA5NTIxYSJ9"
+        },
+        {
+          "resource": "repo://CHANGELOG.md#L24-L28",
+          "version": "repo-lines-v1:sha256:dcebb90468a70b27f3b84080662b1cb618bcce567a5e5af64e9d6bc657064ff3:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNTdkM2Y3Mjc4ZTg3ZDU3Yzc0MzM5ZTY2NDk4NTc5NGNmMmE0NDVlNDkyMTM3Y2E1OGZhMTc5MGIyNjc2OWExNyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOGE0MDBmZWY0ZGZkNjA3OWQ2ZDhhNGQ4OWZkZDEzMjVhMzg2YzNmNGMwYjdlNmY3ZWE0MjY4MDY1YzAxZDVkYSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMzY3NDI5OWQ3N2U3NzNiYTg4Yjk2MmYyYzY2NzgyZWI1OTNkOTk2YmUxN2RlYTIzMDRkYjgyNDFjNzhjMzQ1MiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZWFiZmFlNzhiODRlODExZmQ4NTVhMzJhMTJjZDg5MDE5NzU0MGJlZjI4OGFkNGViZDZlYTRlYmNmYmE5OGUwYSJ9"
+        },
+        {
+          "resource": "repo://CHANGELOG.md#L31-L38",
+          "version": "repo-lines-v1:sha256:ab8a9d440ecfe1f0700e59745fb8caa7bb1e929d1015b514197a800bb2e5a75b:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNGQyYWZlM2FhNTk2ZDJlYjExOTQ2NWZiMDFiNmJjYWYwNWFkZGRmYzM5NmM4ZWQyYzIxMDZkODMwNzNmZjExOSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiN2E2ZGRhZmY0NjAzNzA3YWFhZmQ0ODBmNDUxNGY2Yjg0ODM2MTk2ZmU1MGVlNTA0NjllNmExMmZjYmM4NmYxYiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiY2ZiYmVjZTg5Y2NkOGRiZmJkNGQ1N2M3NWVlMTA0ZDQzODE1ZjE4ZmRiMDY5ZWRmNDUwNTc4ODBiNzU3MGQ2NiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiN2QwZGU4Y2I0OTc4OWY5ZDU1NzA2YmY4YmVhNjVmM2FhYmIwNTNjYWUwZmY1MzQzNTc2NGM2YTBiNmUzMDI4YyJ9"
+        },
+        {
+          "resource": "repo://CHANGELOG.md#L40-L46",
+          "version": "repo-lines-v1:sha256:e75e98f8e42c526be2cf1b69c11643c797e4d6058a026e4e4b085989e8c24396:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMjNlYWU0OGZmNDA2NmM4MDY5ZWUyMjdhNzVhYTgzYWEyNGEyYzhmNTZmYjgyNDVkMDRlMWUyYTk3OGI5NTVlMiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNWE3ZWUyOTYyNmJiMmRkNDRkOTZhMTQ3NzZiYTAwOTg2MDU0Y2Q4MTdhMzhlNTE2OTNhNjA0MmE3YmRmNGVjOCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNjY2MzE0OWY1ZTM5YzgxZGYwYjAxOTFjZWVmMjRjOGY1MGNmNDFhOTIwODE3Njc0YWIzODA3YmUyZjc1NWQ3ZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMzEwOThhMTAxYjM5NGM5ODllYTY3NGUzYmJiZGI0MjI5MDM5NDJhOGZiOTI5NWJkM2I3OTNkYzhjMTM0ZmJkNCJ9"
+        },
+        {
+          "resource": "repo://CHANGELOG.md#L79-L86",
+          "version": "repo-lines-v1:sha256:650b925b931b1566051f360da2503ee9236b11ed0dd78c7ebfacc17fb162061b:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNWY2N2E4NTlmMWRlZGYzOGMyNWY4ZDNiYjg5ZTBkYjdmZWU5ODljZjEwYzNiN2VmYTk1Y2M0NzAzODY3ZGM5YiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYjI4NjE2NTIyNjYxYjkyOTk3OGU0M2M4ZjY5YjZmYzhiM2Q4ZTI4MmQxMDgyZTY0ZTQ3YTRhYTZlNGIxMTY5MyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMTQ1YjJjYTk3MDI0ZGZjOGQ1MTY3YjYzMjk1NzdkOGEyYjhjNjdiNjUyMmZkNGE5ZTEyMTlkMDQ1OGEwYmJhMiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYmU0MDE2ZWQzNzkzYmNmZWM0NTQ5YTc2YTkxNjFhMDM2OTg4MGY2ODkyYmNhYzBhOGNmNjljZmJlMzM5NDhkYSJ9"
+        },
+        {
+          "resource": "repo://CHANGELOG.md#L9-L9",
+          "version": "repo-lines-v1:sha256:4db5893ab77c435452d600be925d996e525d1d65e2a6a7996c04c8a93d1957c1:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNGRiNTg5M2FiNzdjNDM1NDUyZDYwMGJlOTI1ZDk5NmU1MjVkMWQ2NWUyYTZhNzk5NmMwNGM4YTkzZDE5NTdjMSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNGRiNTg5M2FiNzdjNDM1NDUyZDYwMGJlOTI1ZDk5NmU1MjVkMWQ2NWUyYTZhNzk5NmMwNGM4YTkzZDE5NTdjMSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMGUwMGQxYjc3ZGUwY2I1MmZhNzljYmZmZjhiMmExNzVmMmEyN2ZhMjM0MWVhYWEwNTNmZjI1YTRkOWE4ZDMwZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZjUxZTIyM2MzMGUxN2ZlZWMzZjU4ZTViMGM5ZTU2OTYyMjhmYmJmMjIxMDc5OWQzMTEyOTJkN2NiYWNhMzkxYiJ9"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.7.0",
+    "at": "2026-10-08T13:05:24.547Z"
+  }
+}

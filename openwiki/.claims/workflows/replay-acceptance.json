@@ -1,0 +1,356 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:05864e64afba6ddf5fd7928a785959a2fdaad3b386a107b5a46b29069cafb0cb",
+  "claims": [
+    {
+      "id": "claim_1f9ffa9bead84f318637e06979bf023d",
+      "statement": "The replay/acceptance drivers use a three-way exit code convention: exit 0 = gate passed, exit 1 = sanity/self-check failure (the 01_learn_* learners exit 1 when their S self-checks fail), exit 2 = gate not passed; because scripts run through conda run, a gate-FAIL (exit 2) makes conda print an ERROR line, which is a reporting convention not a crash — the output/ reports are the source of truth. Every gate driver returns `0 if passed else 2` from main().",
+      "evidence": [
+        {
+          "resource": "repo://AGENTS.md#L66-L67",
+          "version": "repo-lines-v1:sha256:06fd18b8360e32859ee72c82bdc89aba7fa8909dd00275de2cc3dd696c92b2ed:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZDQ4MjBkZWJmNzkyODkzMWNiZjMzMzIzNjU3MTRjNzk5YzlhNTIyNDEzNjc2MjY2YzAzMzdiYWNhMDk5NDNiOSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOTU2OTY3ODlkMzM2MTg1YzRiY2ZlYmI1ZDI4MDE4MTk5OTgwZjQzYTkzZWRmNTQ3MmUwN2RiZGNkOTI3M2U5NiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiODAwMTUzOTJlOWJhZGY4ZGYyOTJiMTlmZmRiYWY3NjZkZDI0ZDUwN2I1NGRhNjEwNGJlMWYwZTljOGJiOWE4ZCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZDViNDRhYjdjYzA2ODJlOGI3MjNmNzI0MTM1YzZiZGMyMDlmN2Q0Y2UzN2I5NGFjODIzMjQxNTFiNDFhNDU3YiJ9"
+        },
+        {
+          "resource": "repo://spike_w1/02_replay_eta.py#L276-L276",
+          "version": "repo-lines-v1:sha256:573260a82346e2d26179450b38312f32edd246d49b29bf5b2f077c8c1c7f4a81:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNTczMjYwYTgyMzQ2ZTJkMjYxNzk0NTBiMzgzMTJmMzJlZGQyNDZkNDliMjliZjViMmYwNzdjOGMxYzdmNGE4MSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNTczMjYwYTgyMzQ2ZTJkMjYxNzk0NTBiMzgzMTJmMzJlZGQyNDZkNDliMjliZjViMmYwNzdjOGMxYzdmNGE4MSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTY5ZWFkOWFlZDU2ZmU1N2ZiMDM0ZDI4NTZlMDg4ZTQ1OTBhZTIyNzliMTY5ZTUyNDE0N2FmMmMyMWMxOGFjNSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTlmN2Y3YWExNjMwNTY3YzFiNWU2NjQ0ZTIxY2JlYzgzYTQzOTMzZGM1YjBkYTBkOTBjZDUzYmE0OGU5MTBkMiJ9"
+        },
+        {
+          "resource": "repo://spike_w2/01_learn_v2.py#L9-L9",
+          "version": "repo-lines-v1:sha256:801319dbd12de0d6000b7053055bc32ccbab7ecc85ae10c4327a34260092578b:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiODAxMzE5ZGJkMTJkZTBkNjAwMGI3MDUzMDU1YmMzMmNjYmFiN2VjYzg1YWUxMGM0MzI3YTM0MjYwMDkyNTc4YiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiODAxMzE5ZGJkMTJkZTBkNjAwMGI3MDUzMDU1YmMzMmNjYmFiN2VjYzg1YWUxMGM0MzI3YTM0MjYwMDkyNTc4YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiY2NkYWFjNmY1M2JiYTdiNGVlODBmYTU2NGMzN2YzODAzZGE2YTFhMTVlODIyYjEwZTBkMDZiNjMwZjU4ZWFhMiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMjI4ZjVkMGNjZTllMjIwZmVhMTVmNDY5ZGU2MjhlOWNkODFhNDZkYjU0ZWY0ZDVhMmJjZjZhM2VkODU2NTA5MiJ9"
+        },
+        {
+          "resource": "repo://spike_w2/02_replay_shift.py#L574-L574",
+          "version": "repo-lines-v1:sha256:573260a82346e2d26179450b38312f32edd246d49b29bf5b2f077c8c1c7f4a81:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNTczMjYwYTgyMzQ2ZTJkMjYxNzk0NTBiMzgzMTJmMzJlZGQyNDZkNDliMjliZjViMmYwNzdjOGMxYzdmNGE4MSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNTczMjYwYTgyMzQ2ZTJkMjYxNzk0NTBiMzgzMTJmMzJlZGQyNDZkNDliMjliZjViMmYwNzdjOGMxYzdmNGE4MSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMzQ2YzI0NjMwMDE4ZTQyY2M3Nzg3NzllYWM3YjJiMDRiMjZiZmM4MTJhYjdlZjgyYTgxZDQ0OTIwMWMzMmU0MSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTlmN2Y3YWExNjMwNTY3YzFiNWU2NjQ0ZTIxY2JlYzgzYTQzOTMzZGM1YjBkYTBkOTBjZDUzYmE0OGU5MTBkMiJ9"
+        },
+        {
+          "resource": "repo://spike_w3/02_shadow_replay.py#L765-L765",
+          "version": "repo-lines-v1:sha256:235f85a518c61df1c37c2b68606c7dd8fab4ea24bc3104dd12d82e5c693ed0a6:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMjM1Zjg1YTUxOGM2MWRmMWMzN2MyYjY4NjA2YzdkZDhmYWI0ZWEyNGJjMzEwNGRkMTJkODJlNWM2OTNlZDBhNiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMjM1Zjg1YTUxOGM2MWRmMWMzN2MyYjY4NjA2YzdkZDhmYWI0ZWEyNGJjMzEwNGRkMTJkODJlNWM2OTNlZDBhNiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYjFjM2YwYjUxZGM0NzM5MGE0NTYxMjVmZjU2NjZhMzdlODQxM2QzZDE1OWY4NjdkOGJhMjc0OGI4NjQ4NWQzYSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiODk2ZGMyYmZiYmQ5OTU0MWU4YmVhNWJmNWU1Y2FlNDc0ZTg0YzhkZWQyNTliOTQyNzJhMzgyN2QxZjExMTM5MiJ9"
+        },
+        {
+          "resource": "repo://spike_w3/03_alert_backtest.py#L439-L439",
+          "version": "repo-lines-v1:sha256:235f85a518c61df1c37c2b68606c7dd8fab4ea24bc3104dd12d82e5c693ed0a6:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMjM1Zjg1YTUxOGM2MWRmMWMzN2MyYjY4NjA2YzdkZDhmYWI0ZWEyNGJjMzEwNGRkMTJkODJlNWM2OTNlZDBhNiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMjM1Zjg1YTUxOGM2MWRmMWMzN2MyYjY4NjA2YzdkZDhmYWI0ZWEyNGJjMzEwNGRkMTJkODJlNWM2OTNlZDBhNiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMTE3NGJjM2JhZjdjYzA1NWNjNjFkNGZiMWY5NThjMDIzNmNhYzk5MWIyMTNlMjliNmY2MmVlYzlkM2U0YzQ0ZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiODk2ZGMyYmZiYmQ5OTU0MWU4YmVhNWJmNWU1Y2FlNDc0ZTg0YzhkZWQyNTliOTQyNzJhMzgyN2QxZjExMTM5MiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_0d49bc15046f4c04b75737272b5f1bd2",
+      "statement": "The causal split (因果切分) is a hard invariant in Asia/Shanghai time that must not be broken: the learn window is frozen at 2026-04-14 to 2026-08-15 (DSS_LEARN_WIN_START/DSS_LEARN_WIN_END), replay windows use only later dates, and every prediction anchored at time t consumes only the per-car event with the largest timestamp <= t (rolling side via the T2 watermark line, static side via bisect lookups). The static side rebuilds the shared tmp_ev_base with a 7-day front margin (MARGIN_DAYS=7, >= longest journey 120h) so any car exiting inside the window has its entry event inside the extended window.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w1/02_replay_eta.py#L90-L92",
+          "version": "repo-lines-v1:sha256:63de20bbdb03064ed302499f2a5078a62ef4568b0b06e2ab4e9d6e85dce09be7:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZjU0MzRkMTJmMjk2Yjg3NGUwZDVhZmRkMjg5MGUwNjk0MmU5YTAzNGQxOWI1MDY5MGZkY2U1YmYxYmVlNDVmMCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNmFjNGViNjA3OWM1ZTZmZTU2Y2I3NzZhZTYwZDA3ZWY3YzljOTAwMDA4OGViZTZiMjQ5MzczNDI4M2U2NzEwMSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNWNhZTNkMWM5ZTBjOWU4ZTg3ODVkYWM5ZTEzMTIzZGJhMWU0OTU1ZjU2ZjQzYzBlODM3M2NhN2RmNmMxMjliMyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYjg0MTNiYzkxMzYzOWY3Yjk4MjZkZDY1ZmFmZGVhZDMwMzY5NjE4NzhmMzhjMmQ1MDVlM2I5NzZiZjhhNWQ5NiJ9"
+        },
+        {
+          "resource": "repo://spike_w2/02_replay_shift.py#L195-L196",
+          "version": "repo-lines-v1:sha256:31acddb93c33e0e655fa26e8d32829ad8ddd4f5f4fcda171554400b9d244f21f:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZWU0MDA1ZTE3YTdiMTNkYTU5YmVmYmRmNjQ1MzlkMjMyMDdiNDc4MTUxMmNjZjY2MjQyMGM3MWI0NjQ0MmVjMSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiY2UxMThmYWQ4NjQ5ZTBkYmRhODY1MDZhMTc1MmQ3ZGQ0ZmEyMGMxNGMzMjQwMDVkMzg1MjMxODU0YmRkZDU1NyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNGYyZWY2ZmIwZThkOWY5ZTUwZjdiN2MxYTg2YjcyYWU4NmJjNTY0OTU0MzFhZmM0OWM1MGY1ODdkOGYwMjBkNyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYjg0MTNiYzkxMzYzOWY3Yjk4MjZkZDY1ZmFmZGVhZDMwMzY5NjE4NzhmMzhjMmQ1MDVlM2I5NzZiZjhhNWQ5NiJ9"
+        },
+        {
+          "resource": "repo://spike_w2/02_replay_shift.py#L35-L35",
+          "version": "repo-lines-v1:sha256:e90602685bf0ee421351175de1cfc80170191d1b7e01526892752d9de192d641:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZTkwNjAyNjg1YmYwZWU0MjEzNTExNzVkZTFjZmM4MDE3MDE5MWQxYjdlMDE1MjY4OTI3NTJkOWRlMTkyZDY0MSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZTkwNjAyNjg1YmYwZWU0MjEzNTExNzVkZTFjZmM4MDE3MDE5MWQxYjdlMDE1MjY4OTI3NTJkOWRlMTkyZDY0MSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMzRlYzBlZTVmMmFhOTFhZmEwNGYwZmIyZDA4N2E1ODAyZWZkODM0YTYzMWRlMzFhZGMyMzUyZjdkMGFjNmFjMSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMjU2YWNlODUzM2U1MDU1N2FiYWIxNGM5NWY2MmYwNDFlZjY2NGE3OTA3Yzk3OGM3YjkzMzIxMTdjZjg1ZTI5MiJ9"
+        },
+        {
+          "resource": "repo://spike_w3/02_shadow_replay.py#L15-L15",
+          "version": "repo-lines-v1:sha256:6515968b280f74c0f31b3557db045439d4e06462602141d1803f51e36d058809:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNjUxNTk2OGIyODBmNzRjMGYzMWIzNTU3ZGIwNDU0MzlkNGUwNjQ2MjYwMjE0MWQxODAzZjUxZTM2ZDA1ODgwOSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNjUxNTk2OGIyODBmNzRjMGYzMWIzNTU3ZGIwNDU0MzlkNGUwNjQ2MjYwMjE0MWQxODAzZjUxZTM2ZDA1ODgwOSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNjIxZTFlMTk1ZTI1ODEyYTBhZWQ5NjU4MzI5ZDgwMjg3ZTE3ZjBiYWZhNjA1YTYwZTI0NDQ2OGM2ZWM4YmQzNCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMWQwMDAzOWUwODc4MDhjMjMyOWRjMjllNGU5ZWZlNjkxZDIxZTQ3ZDFlYzY3NzZlMWFiNDM0MTQ4N2MzZDc2ZSJ9"
+        },
+        {
+          "resource": "repo://spike_w3/common.py#L126-L127",
+          "version": "repo-lines-v1:sha256:51745915a6ce64164081c45ac1ea09394e38af5d0f9aecb934f323b97d79524d:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNDEzODY1ZDgyM2QxMjM5Yjk5Y2FkZTNkYzA2ZmIwODQzM2Y1MzhhMGNlYTNhN2Q4N2Y0NDY1MzAwOTQ0MzgxMSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMWU2NTMyYWI0MzlmMzA4MDMyY2ViMWM2NDhiMzNhYjJjMTk2YjhhMWE2OGRiNDY2ZGY2Y2Q1NGE0MmMzNDUwYiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiY2ZjNWM5Y2QxODZmOWY0MzQyNTZiNDgxZmY3N2JjOTA3NzA0ZTU0MDMwYzk1OWExMWU5ZGQzNmNkZjNjNDJlYiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiODZmZTc3NDc3NzdhNTBkZDcxN2U0NDZmMmU5ZDQwYWNkMmRhYzgyNjkxMzg5MWIxNTY4MTVjMzg5YmY4MTRhZSJ9"
+        },
+        {
+          "resource": "repo://spike_w3/predictor.py#L76-L90",
+          "version": "repo-lines-v1:sha256:cbf356446baab75820d59ac8264bbb0b1dac5ac3248a7ad873beb287068261bb:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImVkZjdmYjNmOTdjOWY1YTA3NDRlNjY5Y2RjYTM3Y2YyZWJlY2ZkZDdkMDZiMzQxNzE0YTIwNGQ5NmJlNjlkODciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI1MTU0OTQxODlmYmUwODhjNjU3Y2JkNjMyODgzYjYwNDVjNDliMDA0Y2Q0M2ZjZTM0ZWE0NDQ2NTRhM2U3YTMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjE2NDYyZmVlMDY5NDA2MzliZDIxOGYwNDI0ZmI2ZmJmOTJiMWIyYzlmY2IyOTNkMDQyNTkzOTY2Y2ZkNzg2OWYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImI3ZDNkMWE3ODcwYjVjMWJiZmEyODlhNTk3Nzk4MTllYTExOGUxYjc4NjVjZGViMjM2NjNkNzQzYjkzZGUxMzAifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_c62f006b8e3e428d92d971671b52c584",
+      "statement": "W1 acceptance (02_replay_eta.py) is a three-estimator offline replay (Σ段中位数 / Σ段均值 / 直接剩余分布) where the gate is the direct-remaining estimator: per-vehicle median |err| then cross-vehicle median <= 30min (GATE_SEC=1800s). The Σ estimators are hindsight path diagnostics only, not the production caliber.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w1/02_replay_eta.py#L138-L142",
+          "version": "repo-lines-v1:sha256:a1d56c74ecdd2ca3480e30c6fb540d60fe3e32194b4c68043e337455add0376b:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZWZkY2ZmZWY4ZDkxMjAzM2E3NmY4MmI0MDhiNDJiMmM1NDVmMzk2N2Q0ODAwMjY2MmZlYjNjODU5NmJjNjA1MyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNzdhZDI3Zjc0N2Q1NGYxOWNhMjFiZWEwMjIyZmYzMzQzMDQ3YTVmNDJlNmNjN2ViY2IwMWFmYWJlZTBlM2FlNyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMGM2YzQ0MzE0MDY3MjUwYjc1NzU1OTRkMzQxMTZjYmU3MmJhZmViM2FiYTRjZTBlMWQ3ZjM5NDNjODY3NzdmMiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiY2FiN2YzYzQzMWI3NmFlZjY4MDg3ZmY2M2IyZDA1MWQ0YjZlN2IyMGNkYjdhYmYzMjEzODliZjIwMmU4OGFiMyJ9"
+        },
+        {
+          "resource": "repo://spike_w1/02_replay_eta.py#L24-L24",
+          "version": "repo-lines-v1:sha256:ec70c35ffc7105449f971f8f8ea8c095014229f6ca1359f3aebd97283b6639c4:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZWM3MGMzNWZmYzcxMDU0NDlmOTcxZjhmOGVhOGMwOTUwMTQyMjlmNmNhMTM1OWYzYWViZDk3MjgzYjY2MzljNCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZWM3MGMzNWZmYzcxMDU0NDlmOTcxZjhmOGVhOGMwOTUwMTQyMjlmNmNhMTM1OWYzYWViZDk3MjgzYjY2MzljNCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNWIxN2RiYzUwNDdiNmYxYmE3Y2M0YjllYjAyNTU2M2MxM2JiMjc2NjhkN2JhNjhlYzA1ZDhlMzY3ODgwMDJmZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNTJlMzc0OTE1Njc0MGM3NWExN2IxZjk4MDM2ZDYwNDZlODc0OTJhZjY1MWE3NDAyOTNjODNjYTMwMGY1ZjRhMiJ9"
+        },
+        {
+          "resource": "repo://spike_w1/eta.py#L51-L60",
+          "version": "repo-lines-v1:sha256:74d33bdef6998076389518dbf50f797e6bd556e4d96abceb2ef451a719015f72:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjVhMTdhYzhhMGUzM2E1N2NiZjVkYWY1NTUyMTI0ZGUzYzNmMTQ3ZDlmYTMwNTAwNDkxMGUxMzE3NjM3MjczNmUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ3ODcxY2U5ZGY0M2MyNDhhY2Y2OWI4N2NhNmI3NDVmN2FlNGIzM2NiN2Q4NzNmMmMxZGNkNzc2MGU4MTA5YzIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjMyZTA2MzAyMTQ4ZWNiODU5MzU4NzEzOWZjMjZkOTM1YTc1YWM3NDkyOTJlNjIzZTg4NjVjMGY3MmJmMGM3OTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjJiNjY2YjJlYmNmNWYzY2U0NTZjNTFmMzliNmQxZDQ0MWM5MWUzZjIyODkxMDliYjY0ZGY0NmZhYmY5MjA3YjUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_afb1f1f63a2c4b51a74eb5626b62e9cf",
+      "statement": "W2 acceptance (02_replay_shift.py) D1' gate = plant-wide per-shift @5h median |err%| <= 10% AND each main model (per-shift actual median >= 30, MAIN_MODEL_MIN_MEDIAN) individually <= 10%; the count caliber (v3 re-anchor, 2026-09-21, revision 10) counts an in-progress car only if t + model_remaining <= window end, excluding stale ETAs (eta < anchor) from the shift.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w2/02_replay_shift.py#L10-L11",
+          "version": "repo-lines-v1:sha256:deff1e8f38f1b12ea85e2f0f3e6fcc963865542bcb1872d198a75a548dc07da1:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNjVlZjA1NzA0NDIwYzFkNmQzZmY2YmIwYTM2NzJkMGE0OTMyYWVhMjhmODE2NzdlNTkzMjI4YzE5YTE2NjNkZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYTliYzBmZmU1OGIzNWQ4ZTU3MTBjMTBmMjJjOWNjMjQ1YmNiNmQzZDhiMTNiZDMzNjczMmQzMGY4MGU1YWMxNyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNjg5NWI2OWNjN2ZhNjhiY2RjYzRjZDg3NDMxYzgzYTQyOGYyNDI3YzQzZGEzYWQ5MjA5YjBiOGEzZDAwNjhkZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNjljYmQwYzhjOWQyYWUwNDc0NzdkNWMwOTc3ZjY4NDU4MjAyYjMzMmQ3ODRmNGQ5MWJlYmU4NDVjZjE4MzZiMiJ9"
+        },
+        {
+          "resource": "repo://spike_w2/02_replay_shift.py#L34-L36",
+          "version": "repo-lines-v1:sha256:10638a8b087b0a545304ce5ea10c82590708fd287d927bfe77c7be7b3d3b38cf:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMmJhMDY0MmRlZWEzMWNlZDUzMTQ3YmQ4ODI0Y2JlM2Q4OTUwNWI0NTZhNzVkOWJmOTE1ZjE0YWZlNTk4NmEyMiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZWE2N2UzNzQ0ZDZlMzExZDY3ZjYzMDJkZDdjMWY1M2EwNTQxZjA4ZmEyNjllMjA3MDkzYjViNDBlMTA4ODcwMSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNDVjNmU4MGExODM5NjdiNTM1MTM2Y2Q5NGZmM2RjM2I0NjBiMDk2MjZhN2I2NTM3Nzg2OWY1ZGFiZWE0OGY4ZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNWI0Y2RhMDBhMWZmYzQwOWYwZjNiMGM2NTM3OWZhYzA4NWU1ZTIyY2FjZGE1ZjcxNDZmYjZkYzRlMTY3YjMzNSJ9"
+        },
+        {
+          "resource": "repo://spike_w2/02_replay_shift.py#L355-L355",
+          "version": "repo-lines-v1:sha256:34ce3f71ddf9f6c4a184752abb3bb28e9f6572cb719a555b34a1d4849eb110d6:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMzRjZTNmNzFkZGY5ZjZjNGExODQ3NTJhYmIzYmIyOGU5ZjY1NzJjYjcxOWE1NTViMzRhMWQ0ODQ5ZWIxMTBkNiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMzRjZTNmNzFkZGY5ZjZjNGExODQ3NTJhYmIzYmIyOGU5ZjY1NzJjYjcxOWE1NTViMzRhMWQ0ODQ5ZWIxMTBkNiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZjRhZTRhZDJiMTZlYzZhN2QxMTcxMzU1MGU0YjM5OTNiMWNhODU3YWQwYTdiYjNkNDZiYTFkZmRkMTI1YTdjMiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZDlhMTRjMTk0Mjk2MzM0M2QwZmRiNzZkMDBhY2RiMmZlMjE2MTE4ZDUyMDA0Y2MyOGE5NzBmNzE0NmQwMDM1OCJ9"
+        },
+        {
+          "resource": "repo://spike_w2/02_replay_shift.py#L396-L414",
+          "version": "repo-lines-v1:sha256:225cf0950914d0ae209b2827f299a09875ab18fef04ed4a0f430aa6443e55ce6:eyJzZWxlY3RlZExpbmVDb3VudCI6MTksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBkMjE4OTkyMWNjYzBiN2Y0NDM1ZjdmNGNhZjVmOTdiYTRmYzBiNWFkOWY2YWZmOWNmYzM5YjU1MDY1NjIxYTAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk2YTQ0MGFjOTc1YWM5MzY3NWRkY2ZhZDExZDUxOGVhYzk2NjVmYzBhZDU5NGVmNzBhYWZlZWZmYzkwOTlkZjQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjQ5ZjM3MDUzM2UxNTVkYTlkYzZhNjY5NzE2ZWUzMmZjNjdjM2Y4NDVjM2IxYmExY2Y4ZTAzOTE1NTgxY2Y3NDQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImY2MTFiNzI3YzI5Mjc4MjUzM2NhZjY4ZTE3NTcxZjk5ZGViNDE3MjQyYTkzNTJkZThkMjRkNTkzYzI3NDkyMzMifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_c2f2d1dfca584b06ab688258f40e5d38",
+      "statement": "M9 Step B (run_rolling) drives the production T2 pipeline unmodified in replay cursor time: bootstrap_hours=168 is injected via dataclasses.replace on the frozen DSSConfig so bootstrap and every 24h periodic rebuild use a 168h window matching the static 7d edge, the bootstrap is anchored at the replay start (not wall clock), each 5-minute step (STEP_SEC=300) calls the production run_one_round, and α observation uses pre-fetched exit events (one SQL, counted only within the observed window, no future leak). The alert_hook defaults to None (zero production impact).",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/01_boot_online.py#L189-L210",
+          "version": "repo-lines-v1:sha256:007eb8ddfaae60552533b3e208fc9cee9f254ec457bad0b6545e3e5372f533c4:eyJzZWxlY3RlZExpbmVDb3VudCI6MjIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNkOTM4Y2Q1YzUyMjdlZGI1MTAxMjdjZjdmYmI5ZmNkYWUwOGYyNjVmMTQ2MDIwNTEzNGMzN2I3YTUyMzkzOGMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE0MTlhNmRjYzA0ZTIxM2EzYzdhNzdhNDU2YjAxZTc2ZDFlZjc4Y2QwMGJiZWMxZDhmODE0NThmZTkzZWRjNTYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjQzMTZlNTFjOGQ3MzYwMDk4YTJiNDg5NjQxYzM3MzRkMTFiMjQ0ZGMxODkxYWNjOWU2MjljZDljYzlmOWE0YTEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjI4N2IxNmY1NDk3NzEyMzQ1NDQ1MTY2Mjg3NDk2M2NkMTEwZjYzZDMyMGNjMTA4MDNjNzA5OTRkOWY1MGFmNWEifQ"
+        },
+        {
+          "resource": "repo://spike_w3/02_shadow_replay.py#L390-L445",
+          "version": "repo-lines-v1:sha256:b4d31c6b71aada79f10da8183325be8115d230856132993735f1f022f72607e4:eyJzZWxlY3RlZExpbmVDb3VudCI6NTYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjljYmJkNDExZmY3NDA0MDcyNzI0NDhjNDcwODIyNDQyYjJmZTNlNzYyNmJmYTdhYWEyYzE4MjY3NDFmODJmNDMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI0ZDMzNWE2OWMxNjcwM2M5YTcyMmU2ZGNlZDdkNmJjY2MxYjUzNjdjZTRlMGQ4OTc1MTE1NGM3Njk4MWUyNDEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjA3NmMwNjVhZWMzMjYzMTE5NWNkYjNiMmMwZGY2OGQ5YjNhMjI1N2JhMTg5Y2M5MzQ3MmU4MjVmOTQ1NTE5ZjYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImU5NTU4MTc0MDE3MGQ0MTJlNjY1NTYwN2I2Y2VhNDcyMzYyODYyMjc2YWY1ZWUyY2FlMmFhZDQ1MmUyNGVhMTIifQ"
+        },
+        {
+          "resource": "repo://spike_w3/02_shadow_replay.py#L52-L52",
+          "version": "repo-lines-v1:sha256:9b4b3dec89553eb7b0ff10c6281dd22e1b613141a9c73913250e8297fc96c2c1:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOWI0YjNkZWM4OTU1M2ViN2IwZmYxMGM2MjgxZGQyMmUxYjYxMzE0MWE5YzczOTEzMjUwZTgyOTdmYzk2YzJjMSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOWI0YjNkZWM4OTU1M2ViN2IwZmYxMGM2MjgxZGQyMmUxYjYxMzE0MWE5YzczOTEzMjUwZTgyOTdmYzk2YzJjMSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMTIxMzYxNGUxNzBmN2I5MWExOWUyYTY0NDYwOTY0MjUwMDE5MGM2MWY5Y2IwMDM1YTM4NzdhMjU0ZWUwMzQyNiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNDc3YWJlY2Q2MjVhZjc4YjNjMWMyYWM5M2M5NjNkMDg1ZWNmMzUzYTBkMWU5ZTA1NGVlYWRhZjNkNGM1ZDkwZSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_7589c9def50d443480957cd84e2412a4",
+      "statement": "The M9 Step A self-check requires the plant-wide 5h median |err%| to lie within SELF_CHECK_BAND, default (0.1089, 0.1339) — re-anchored in W4.4c (2026-10-06) from the old 8.74% anchor to the new-stack 11.63% static retest with band geometry (anchor −0.74pp / +1.76pp) preserved. Being out of band is a structural-drift declaration that stops the run with SystemExit (exit 2) to re-calibrate, and DSS_SELF_CHECK_BAND can override it with strict validation (malformed or out-of-range values raise ValueError rather than silently falling back).",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/02_shadow_replay.py#L511-L522",
+          "version": "repo-lines-v1:sha256:79ce03e3407876f01df0520bdd80c5ef411728621eee8cb5c4d810e18791a070:eyJzZWxlY3RlZExpbmVDb3VudCI6MTIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNmYmI2MDZlM2Q0MzVmYWE4ZmJhZTI2M2FjOTc4NDQzOGMwODcyODBkNWE2MWRmY2I2MWE1MjZlNjBmYzBhMTIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImNiMDYxY2U4MTVlZjVlOTMzMzRiMThjYTk2YTEwMzM2ZDNjZjVmNjk1OWYyZmZkMjRjN2I3NjhkYjI4ODUyMGUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImQ0OGNjMjNmMGE3MzhlNjkxMjM4MGU5NTkzZTMzZDg4ZWIwNTJlMmM3ODUyMGU3NmRhMjE1MGIzNDQ2OWUxOGMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImVkYjlhNGNhODYwY2ZiNWQ5NGY1YTU2OTVkMmEwOTliZGQxYzQ5NGE5NzYxMTMzOTZkOWIxM2I3YTIzYTZjZjUifQ"
+        },
+        {
+          "resource": "repo://spike_w3/02_shadow_replay.py#L58-L62",
+          "version": "repo-lines-v1:sha256:8bbf33192a7f5e457d122ed58a4f0554e39b7400df14bbbef22540b55122f41e:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZmFlYjhjNTcwMDkwNzNhNTNmMjdkMGFjNWQ0ZGNlZmZkY2FkODkxYjRlYjE0NDU4ZmM3MTc2MmIzMTk4N2E5NCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMWFhMWE5NzM1OWUzMzEwMWJmZTZjMjRjNDI5ZDk5ZGVhYmYzZWY1ZDEyMTM0NzIzMGFmM2I5ZGI2ZWJkNmQyYSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZGJiNmI1N2JhOThlZjI2MzNmODNmZjVhYWM0OWEzMWZjOWExNmQ3NDE4ZWUxMjFmNDQ0MGNlMzk3OWQ1ZGQ4MSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiOTU3MmViMmIyYmQzMzVkOTk1NzM1NjIxNGFhNWJhYzk5MDVmN2E3NmUxMzdlNGIyZDQyODQyNzZhNTE1ZDRlZCJ9"
+        },
+        {
+          "resource": "repo://spike_w3/02_shadow_replay.py#L65-L78",
+          "version": "repo-lines-v1:sha256:2720f27eda392770f9c112b8be047cd5b3d90a9ed3d9bbcfe957b0a6301ac2ce:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjA3ZjUzMjEwZTRlMGMyNmFjMmI3M2RiYWUyOGJlOWM3YjIyM2VkY2QwY2I2NGE1NjNiZTZjOGQyZWZiYzY5ODUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjYxNzkyOWRjNDJkNzU0NDM3ZDdkNTA2NzkyODc5NGRlMmI0ZGI3ZTM5Y2ZlZmM4MGVhYzEyNjAzNmYzMWJmMzMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjlhNTRkZGYwYWUxMDI0NDU2ZTQ1ZDNlNjAzZGQwNGJiOWIxNzQ1ZWIzNWY2M2YyZGRlOWViNmZiY2Y2ZWExZTYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjlmODc1MjBlMzI2NjhjOGQzNWNjMjhjNjQ5ZmIxZGI0YjkyNGJmOWE2NzFlNDAyNmEzN2UyYmNlODI4ZGYzMmEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_256134d3cdc4450895ec994c3c7f1a9a",
+      "statement": "M9 Step A runs a frozen local W2.1 replay script (default scratch/02_replay_kw37.py, overridable via DSS_M9_CROSS_MACHINE / DSS_M9_CROSS_DIR) as a subprocess for the fixed 09-05 to 09-13 scenario-2 window and compares 5h predictions per shift; |Δpred| > 2 台 (CROSS_MAX_DELTA) on any one shift, or a missing shift / no fresh CSV produced, raises SystemExit under the 单班超差停机规约 (single-shift over-diff stop rule) and prevents entry to Step B.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/02_shadow_replay.py#L525-L561",
+          "version": "repo-lines-v1:sha256:89fef2e7d90912c9d57c624a8870cca9539f5466e14c14a8df40e6a4f52af942:eyJzZWxlY3RlZExpbmVDb3VudCI6MzcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjVjZTUyOTI5ZTUxOTk3M2U5ZDRjY2NhMzJjNWM0NTBiNWM0NWY3MTE3ZjNhMzVkYzcxN2NkOTNmMzkwYmM2NjAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU5MGRiZWFlN2Y2YTBhNjhhZDM0ZGZiNGNjNTk0ODM3ODQ2NTNjOTA2YzExNWVlNjVkMTIzYWEwNmY5MTk5ODkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjMyZDdjMDFkYzgxODMzNTc2YTNlODA4NTZlMDgxYmFkMDU0ZDA5NDEzNzcwMzA5ZTIxYWNmOTg1ZjlhYjViYjgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjIxZTQ3MjhkNmY0NmI2MWRlZDdkYjQ3ZmVlOWNkYTAxMzJiZjlkMDIzNDE2YWQ0OGNhYWU2YzRlOTA1ZTFhMTkifQ"
+        },
+        {
+          "resource": "repo://spike_w3/02_shadow_replay.py#L62-L62",
+          "version": "repo-lines-v1:sha256:1aa1a97359e33101bfe6c24c429d99deabf3ef5d121347230af3b9db6ebd6d2a:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMWFhMWE5NzM1OWUzMzEwMWJmZTZjMjRjNDI5ZDk5ZGVhYmYzZWY1ZDEyMTM0NzIzMGFmM2I5ZGI2ZWJkNmQyYSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMWFhMWE5NzM1OWUzMzEwMWJmZTZjMjRjNDI5ZDk5ZGVhYmYzZWY1ZDEyMTM0NzIzMGFmM2I5ZGI2ZWJkNmQyYSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMzQ3OTk2MTE0NjQyMTk5YzFkZDBkNTI1NTBkMmY3YWY2ODQ4MzQ5MzFjNWYxYTE2MDJiMzY2OGJiZTlkMDlhNCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiOTU3MmViMmIyYmQzMzVkOTk1NzM1NjIxNGFhNWJhYzk5MDVmN2E3NmUxMzdlNGIyZDQyODQyNzZhNTE1ZDRlZCJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_04a5d1e9901246a1852ef8224b5870f7",
+      "statement": "M9 gates() is a pure function judged per DSS_ALPHA_MODE: G1 (α=off engine consistency, unchanged in both modes) = per-shift |roll_off − static| <= min(p3_inproc,25)+2, p3 hard cap 25 (P3_CAP), and full-plant plus mid-shift 5h relative error difference <= 0.5pp (PP_TOL). With alpha_mode=off (production default) G2 = plant off 5h median <= 10%, G3 = True by definition, G4 = False by definition; with on, G2 = on <= 10%, G3 = on <= off, G4 = mid on < off. Overall pass = G1 ∧ G2 ∧ G3 ∧ (G4 ∨ g4_soft), where g4_soft requires G1–G3 met and DSS_G4_HARD != 1 (G4 软化: a failing G4 does not block when G1–G3 hold); DSS_G4_HARD=1 restores the hard gate and has production meaning only when DSS_ALPHA_MODE=on.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/02_shadow_replay.py#L106-L163",
+          "version": "repo-lines-v1:sha256:301fe40b7451fcd26316cdce8543181306d012f85d1c8b48f01982467d34f837:eyJzZWxlY3RlZExpbmVDb3VudCI6NTgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjEyZWEzNjAyMWRkM2ExYmY5MWUzNGU0ZDA4ZDFmMmI0ODdhZGNlMGY3MWMzZWVlOThhN2E1YmRlZjEwNGU4MzAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE0MTlhNmRjYzA0ZTIxM2EzYzdhNzdhNDU2YjAxZTc2ZDFlZjc4Y2QwMGJiZWMxZDhmODE0NThmZTkzZWRjNTYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjA4NDI5MDRhYjQxM2QwNTRjYjcyZTRhYTU3NmM2YTMzM2VhYTgyNTEzZWU5YTkwMTM4YzNiMWQyNzYxOTg4NDMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjIxZTQ3MjhkNmY0NmI2MWRlZDdkYjQ3ZmVlOWNkYTAxMzJiZjlkMDIzNDE2YWQ0OGNhYWU2YzRlOTA1ZTFhMTkifQ"
+        },
+        {
+          "resource": "repo://spike_w3/02_shadow_replay.py#L55-L57",
+          "version": "repo-lines-v1:sha256:dbb6b57ba98ef2633f83ff5aac49a31fc9a16d7418ee121f4440ce3979d5dd81:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYTQyOTcxYjVlNmQ0MzM0YWNmYzJlYWE0YmE0YTQ5MDI1MDAyZTY3NmFlNDExYTExMDkxMDY1NTYwOTBmZWY5OSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOGM2YmQ5ZDY1ZDI4ZGQwMDcwZjE5OTAzZjQxNTVkNTY4OGNlZDVhMDE3NDE2ZjBiZjVlODZlODg0MDgzN2I4ZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZGQ1MGY3MmJkNjQ5N2UwNjE5NTAyNzg4MjA2NWE1MDdmMWVlNWFlZTdmNWJkYjJkMTgzZjJjOTAzMGMwODNiNSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZjU5OWM4OTY0ZjM1NDgyYjZhNzM2MGEzZTlhODI0Yjc0MmE3MDAxNTNkMTJlODMxZTc1ZGNlZGEzN2M0OTYxMyJ9"
+        },
+        {
+          "resource": "repo://spike_w3/02_shadow_replay.py#L737-L740",
+          "version": "repo-lines-v1:sha256:4446b8c05a52a1cd44e304aef05e258a05f5abf283d7dd7a9491a6c9ad9596f1:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNzAyOGVlMzBlZDc2MTg2NGQ4ZGVkNzI2ODJhNzk4OTMzMmFjNDEwNjQyMjIxMTJiMWE5NWVlMWI2OWU2OWE2ZiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOWY5NDZhM2IyNTQ5NGVkNDlkMWIwMzQzYzlhNDAyNmI3ODkzZDRhNTI2NjkwMWY0ZDJlNDE0ODUwYTIwZWVmOSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMjJlODkxOTM2ZWQwYTY1OTZhN2U3NGI5MDFjM2IwODNhNDIyNTMyMDZjYTZmOTQ1ZjNkZDAxZDdlYTk2ZDJlZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNzdjZTMxNWRkY2RjMDNlMjk3YWE0NWI3MDBkYTM4ODc5Njk1ZTRhMjdkZDE5ZDI4MjJiOTcwYjgyNmMyMjRhOCJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_8dac5c18dad84136a288f07250416f9c",
+      "statement": "M10 (03_alert_backtest.py) reuses M9 run_rolling with an alert_hook that runs the production AlertEngine each 5-minute step (engine self-computes predictions from the pool to prevent M9 error propagation) and captures anchor snapshots; M10 alerts are emitted only as JSON/MD and never written to any dss table (2026-09-25 拍板⑤), and the backtest run is α=1.0 pinned.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/03_alert_backtest.py#L296-L298",
+          "version": "repo-lines-v1:sha256:113c15ea7b631df0e812dba36744f04abcb09203aa223ea747090cba16d4b388:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYjcwZjQ0ZjNjOGU2MmQ0YTZlZmY3MTM2MmMwOWRlOTk2MTYzYTUwOTUyNzM5NjY4MjdmYzg4ZjRiNWI3OWY1MCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNzlhNGE4NzYxYWQ0ZmI0YzA4ZWRmMzY2YzM1ZjlmOTNjYmZjODc4MjZiNmE5MjQwM2Y3ZTQyOGJkMjM5NmZmOCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNzc0OTAyZmVjMjdlOTkzZjljNGQ2YjZlNDMwODhhNjAwMGUzYWY3MDlhNTI4M2JiYzQyMGNkYmJhNzI1MzcwMiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiY2M4MTQ1YjRkY2M5NDVkMzdhODllOTZmMzgyN2JlMWY0Zjg2NjM2YjhiMGY1OTFmMzFmNzVlYzcyZTU1MjBhNCJ9"
+        },
+        {
+          "resource": "repo://spike_w3/03_alert_backtest.py#L4-L5",
+          "version": "repo-lines-v1:sha256:94aef1612d4e4ede11db7e078c261a64585438277689d2869fae7e168aab9898:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZWFhZDVlYWExMzBhMDc4MTY4MjhjNmM3MGI0YjhjMmU4MzA1Nzc1NDE4N2YyZGQ2ZmQ2MWE4ZDQ1NDE0ZjM1NyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZGY0YTYyYjUzOTI3NDQyZDFmN2E1NWNjYzUxZmY2NjAwOTE5NjE4M2I2MDFmMGY5ZGZiYTQ5MmVjM2U0ZTE1NiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYmEwYTZjZGZlMDc3MGQyNzQ5MDQ3YzRkN2ZlNDlhNTQ3MTQxMWExNTc0MTcxNGJlMTI3MzUwNTEzMmI4NTNiZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiODAyYzdmM2NkMDkxOTRkZjMxZjRiN2ExNDY1NWRmYzA5NGNiNzMyMTEzODY5YzA0ZGM5MGNkNWE0YzY4ZjViZSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_b2a5f8f12bbf4f9888c9806e438f7bda",
+      "statement": "The M10 gate set: G0 = the tests/test_w3_alert.py subprocess passes (returncode 0 and 'passed'); G1 = all-day main-view 21:30 anchor median |Δ5h − Δ终局| <= 5pp over all-day scope-days and zero all-day red at 21:30; G1b = engine 5h pred == M9 JSON pred_off@5h for every shift (14/14); G2 = 21 scope-day (14 shift + 7 all-day) level == grade(Δ) with the debouncer-lag exemption; G3 = every non-green final scope-day's first confirmed final-level alert (baseline included) arrives no later than the 3h anchor (lead time >= 2h); G4 = no confirmed transition inside the half-open [anchor−10min, anchor) window before the 5h anchor (2026-09-26 拍板 B; transition count downgraded to the observation item G4_obs); G5 = pool product cars = in-progress + bottleneck + no-ETA (exact) and pool n == M9 inproc_5h_n; G6 = all 21 scope-days covered by at least one alert. Overall pass = all eight gates.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/03_alert_backtest.py#L302-L410",
+          "version": "repo-lines-v1:sha256:f532ddcea2f8e8a5b7bb5f811d4d3d435c6209e1f1046b0593cde34ce9f26ad1:eyJzZWxlY3RlZExpbmVDb3VudCI6MTA5LCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiI4YTUxNDRjYjMyYjA3NDk1MDEzZDg1N2ViODJkNWFlMDk5NDA5MWM0MWIyYWE1MDRmOGMzOTA2OGU3ZjkzMmVkIiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiIyOTg3NTUxMDNkMmQ2YjhmZWU1ZTk0YzNhNTA2OGNlMjgzNzA5NDQzNzFjNTE3OWNhYjk5OGI2YTIwOTY2NTA0IiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MywicHJlY2VkaW5nQ29udGV4dEhhc2giOiJjYzgxNDViNGRjYzk0NWQzN2E4OWU5NmYzODI3YmUxZjRmODY2MzZiOGIwZjU5MWYzMWY3NWVjNzJlNTUyMGE0IiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MywiZm9sbG93aW5nQ29udGV4dEhhc2giOiIwODlmYmNjZmFkMDcwOTM5OTU0NDJiNGRkNDc0MWU0YWYzYjMzNTU1MzJjZjZjODE2Njc4NGNlZGY0Njg1OWUwIn0"
+        },
+        {
+          "resource": "repo://spike_w3/03_alert_backtest.py#L403-L406",
+          "version": "repo-lines-v1:sha256:ec63649e3f85141001dd6f62537b6fb862b2e3e05c1535c822fa9b737a65ad50:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZDI0YmM2ZDJjM2NmZjQwMTA2MTliNjUyZmQ1NjUzZjFkNTUzZDcxZjA0NjY2OTE1NzNkYjFjMGI1NTUwNzM5YiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiM2Q3NGFmM2FmYjcxNGQ5NmFhZmRlYWIxMTE0NGFjOGM5ZjM0OTBjOGY1Y2U0ZWRhODVhZTBiYjQ3Y2QyYjJmNyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMGNlNDIxNWNiNjhjOTE5ZGIxMDJkYmI3NGE3MTlmYWM1NDc2MWJhYmIyYzc0NTAzMDY1ZWYyYTdhNWI3OTE4MiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYWJjMjFlMjcyYjI1ZjdmZTFhM2JlNGNlNzgzNDE2ZjNiOGM3MDFjMzJjNmExODlhYjUwZjU3N2QwNmJkNzVmNSJ9"
+        },
+        {
+          "resource": "repo://spike_w3/03_alert_backtest.py#L76-L159",
+          "version": "repo-lines-v1:sha256:4777bc77e7790e77dbb72df4f8101c008f7c479bb35aa569842cabfef0d65719:eyJzZWxlY3RlZExpbmVDb3VudCI6ODQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI1MGJiN2EwNmM5MDU3ZDg4YWUwZDYyNTY3OTY3MDU1YWQyZmM2ZmY2YzgxMzc1ZWVmZDk4YjhhYmMzNjY1YmUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBkZDI4NzM4MWVjNTYyNTIzOTkyNGRhZGY1MDFjZTliNjNhNDAyNmVmNTBlM2UwNGQzZTk3ZDdjNjc4NzdlZTkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImE1MGZkZDZiNmU1NjhiNTAwNWVjZjRkNDdjZjRjZDZiYmM0ZGMwNzY1N2ZkY2UwNGRjYjBiYjNiNTU2Y2RiOWYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjIxZTQ3MjhkNmY0NmI2MWRlZDdkYjQ3ZmVlOWNkYTAxMzJiZjlkMDIzNDE2YWQ0OGNhYWU2YzRlOTA1ZTFhMTkifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_8cc764eb38c843a2a5be225b6ade589a",
+      "statement": "M5 acceptance (04_m5_acceptance.py) primary criterion is per workday per shift-row 5h-anchor |Δ实际| <= tol (default 10%), where Δ实际 = (pred − 实际终局) / 实际终局. The 5h anchor is work_start+5h (day anchors follow shift type via DAY_TYPES: 11h→10:00 / 10h→11:00 / 8h→13:00; mid constant 21:30) matched by ±3min tolerance (ANCHOR_TOL_SEC=180); 实际终局 = the 4 offline-point (K3IS140 / 1J440RB / K2IS075 / K1IS135) product-car closed-interval count (day [D 04:45, D 16:30], mid [D 16:30, D+1 MID_END_TIMES[type]]), the same <= end closed-interval semantics as the predictor's a_of.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w1/common.py#L33-L33",
+          "version": "repo-lines-v1:sha256:e3bbf6e76a551ddb17270e79152070dcdbd7fa5741451c4dc5f794a06799e3f0:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZTNiYmY2ZTc2YTU1MWRkYjE3MjcwZTc5MTUyMDcwZGNkYmQ3ZmE1NzQxNDUxYzRkYzVmNzk0YTA2Nzk5ZTNmMCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZTNiYmY2ZTc2YTU1MWRkYjE3MjcwZTc5MTUyMDcwZGNkYmQ3ZmE1NzQxNDUxYzRkYzVmNzk0YTA2Nzk5ZTNmMCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMTY2MzMyZmEyOTdkNDkzYzFkYTY2MmRhYzc5OTkxYTdkN2VkNTZjZDQwNzJjNGM4OTNiZTQwNGFkMmMyYTA2MCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNTgxZDg5Y2M3OGQ5MTQ2NDY2M2RmMjg5ODhlY2VlMjAzN2I3ZTc4Mzc4ZTg5ZmU0ZDgzMjM5ODdlNjk2OGFmMiJ9"
+        },
+        {
+          "resource": "repo://spike_w3/04_m5_acceptance.py#L106-L124",
+          "version": "repo-lines-v1:sha256:dc3216e23f2ce5f5bdaafda3404251bc8e8254bd97cc44a926cdd18959fef4a6:eyJzZWxlY3RlZExpbmVDb3VudCI6MTksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBmNmExY2NlZDA3MTJmZDg1YzYzNzgzYTE3MGNlZWUyYTYxODYzMzA0OTZiMjc2ZjBmNDJjMzcyZmZiODc5ZGIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjgxMDk2NmU2YjE5NWUzOGM3MzUxZDA2ODcyY2E4OTI5YjZhYmIzYjcwZTg2YWIzZTk1MzY5ZGMxYjFjN2RmYzQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImIwMzJlY2VhMjExOGFjNDRlZGVjYzgwNTM1NzU0ZGZjNzAzNTJkMWZiMDMzYTVjMTc5ZDA1ZmY2OWJkODA5Y2QiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjI1MzY2MzRiZTE0OWEwMmRmODA2OTlkMGY4OWQ2NmM0MDg3YzY5ZjM5MDQzYTE1MzZjOWFhNTk1YzcxYTAwYzMifQ"
+        },
+        {
+          "resource": "repo://spike_w3/04_m5_acceptance.py#L160-L174",
+          "version": "repo-lines-v1:sha256:cd0f4694ff2916b20d351a273330145653e48dbee7bd3b780efdc80c5ccb60cc:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg1NjkwOTliNThlMmYxYTJhYjY2ZDU2NzJhNmIzNjVhYTE4Mjk3NTI1YTJhYzg4ZjlhZDAyODIzYjhmNjA3ZDkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImM3ZmQxODNlZGM4MzExYjEyYWNkNTVmYmU2NGQ5YjE2YWU3NDEwNDUxOWI3ZWUzY2I1MTFmNDJmYzk1OTM0MzAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjAyNmZlYzNiOTZiZmI0YjRlNmIyNDBmZTNjOWNkOGQ0OGQ1NmFmMmRmZGJhM2QyODgyYmZiYzFiZTc0NDNhZDUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjgxZGI4NzMzNDZmODU0N2I5MTNiYjk0YWJhMzQ3N2ZmZTg3OTE2MGE1ZjZmN2VlNjgwMjliZjcwZjQxNGFmZDEifQ"
+        },
+        {
+          "resource": "repo://spike_w3/04_m5_acceptance.py#L44-L44",
+          "version": "repo-lines-v1:sha256:6b769ae8f547b9f09a0ea9f2693e6ec699a147ad5ecef2f78d94842b7198bf57:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNmI3NjlhZThmNTQ3YjlmMDlhMGVhOWYyNjkzZTZlYzY5OWExNDdhZDVlY2VmMmY3OGQ5NDg0MmI3MTk4YmY1NyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNmI3NjlhZThmNTQ3YjlmMDlhMGVhOWYyNjkzZTZlYzY5OWExNDdhZDVlY2VmMmY3OGQ5NDg0MmI3MTk4YmY1NyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTc0ODRhZGQ5MjU4NjQ1ZTNlNmQyY2JhYWE0ZDM0YmJmOWI5OGJmOTdmMTZkNjViYWUyY2ZlYzliODc5NGFmZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiOTBmZjRkNzRhZmUwMzc3N2JjZGZlNjY4NTc4M2EwMTNhMTVlNTBlYzE2MzZjNmUxZGMyOGFiNjM1ODIyOWQ2MyJ9"
+        },
+        {
+          "resource": "repo://spike_w3/04_m5_acceptance.py#L54-L103",
+          "version": "repo-lines-v1:sha256:afafa4b942ea7bad301e018b5356bceb9b65c4ae0b12f323ad55bf29e7613fc6:eyJzZWxlY3RlZExpbmVDb3VudCI6NTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjgxNTYzNjE3ZjZmMzA0YmI1OGQ0NzE2OTEyMmYwOGZjODEyMWM0YmM0MGM3YmY3NjQ2MDYyNjdjMGQzNTQ3Y2IiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImY0NTJjMmM1M2NkNmVjN2YyNzY3OWMwODBhMjljMzhlMGNiNGI3MzMwMmM2MzY4OTUwMDExYjdjM2UwODJhZGMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjBmNTk2MjIzMmE2MDQ2Mzg1NWRiYjVkYjQ4NmUxMzZjMDI5M2YzMTYzZTdmZjgzNzMyY2MxOTRiZTMzYzg5ZGEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImIwOTk0YWI2OTc1YWRhMjM4NzNlMWI4YjBmMGFkNDA3YjNmNWY2NGE2ODkwZDc2YmYyMjUxN2E4ODFlZjRkNDUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_46481547a6cb4c51997df35979277e59",
+      "statement": "M5 rows are classified into four mutually exclusive reason buckets — gated (scored), actual_zero (actual final 0, out of gate), stale (anchor frame guard status STALE, out of gate), anchor_missing (no anchor frame within tolerance — an explicit recorded row, never silently skipped) — with priority stale > actual_zero > anchor_missing; the final verdict is PASS only if no gated row fails.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/04_m5_acceptance.py#L18-L19",
+          "version": "repo-lines-v1:sha256:8e4e37d22a6b90604da25c32a64fcf3f0a9412394cf93b02604da8a2ffd9cc9b:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZDNlYzRlMzQ3Yjg5OTdlYTg1MjFiMmJkZTY2NTg3OWMzMTgwNjM0YzhiMGM4MDVmYWQwZWQwYzQ2YTc0N2RhZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZTE1ZGNjNGIwYjExNTZkZjFiMWJhYzRjMDlkN2YxOGEzMzc2OTNjZGM2YmEwMTFhMDcyOGViZjZjYmZhNzM1MCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOTY5MjkyN2Y4ODJjZWRkNzI1ZDVmODA4ZjQwZjBjZTdmMTFmOTY0MzRhZWEwNGY5ZDRkYmU5MzczOWE2MDRjOCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMjc1NWYyMGU3NmMzMDFiMzIzYjJkZjA5M2IzZTI0ZmNlMGJlMWEyNWM3NmI5ZTczYzEwNDVkMzQxN2JkYWIyMCJ9"
+        },
+        {
+          "resource": "repo://spike_w3/04_m5_acceptance.py#L237-L242",
+          "version": "repo-lines-v1:sha256:70ac6f645c687648fe5de569e35e6dba2e0e4ed512ff681712a3c357d98df720:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiODdlYTk2NzgxYWNhYjA3ZjllYzUzMTM4M2Q4ZWVmNmJiYzljNWMxZmE1MmQyMmY3YjRmYjhjODAyMmY2OTFkYyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZjFiNjA4NTAyNmVlMjY5YWQ2NDE3ZjViOTY5ZDBhMDc3ZWZmNTE0NWRmMjk3ZmJhOWU0YTg4MjViZGU0ZjIxNyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYTZkODJhMzk0YmMwNGRjOGMxYjI4ZjQxOTU0YmIzMTI0ZDI2YWM5OTg0MWUzYmE3MzI1ZjhmYWQ5ZjUwYmFhYiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNWJmNzJlM2ViOGYwZDFlMjRmMzIxZjU2MmFmOWI1YTZiNDY2OTFjMDZiNDYyOTlkODdmN2FjNGYzMDcwMzAyOSJ9"
+        },
+        {
+          "resource": "repo://spike_w3/04_m5_acceptance.py#L333-L348",
+          "version": "repo-lines-v1:sha256:c86c45d8fd8af414f5fddf9e8b9f768246a4d24f75f36cbeeda8ef778245aa9d:eyJzZWxlY3RlZExpbmVDb3VudCI6MTYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImIzZjExMzVkN2IzMTkxOTVjYmZiOGU0ZTk3ZGEwZGQ0YzdkMjQ2OTlkYjZjYTkwY2FlM2VmMGY2YTE2Y2RlOTgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdiMTY3OGY0MzI0OTY3MzdjNTM5ZmM2NmI0MmQ3OWRmZmYwNTAwY2ZkYWU1ZmE0YzEwY2U5NGI4YTk2MDViMGQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjU3N2U5YjM1MzkxNzc4OTRhZDM2OGQ2NjM3OTY4MzU4ZGM3YTE4NjFhYTBhNjkxMWMzYzE0NWM4YzliYjQ1YWEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjJmOTIyZDc3ZTA3ZWQyOGUyMTRkNzUzM2Y2Y2ZjNWUwYzgyNWRiZjdlOWU5YTRlZTVhZWFmZWJiZjFiZjJlYmMifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_fb8b6be502634e65b30c8e4ea455471b",
+      "statement": "M5 STALE rounds are merged into consecutive spans (a gap > 5min breaks a span; each span's end is extended by one 5min round) and are not gated (ETL SLA 拍板). --snap-dir is repeatable with first-seen-wins on timestamp duplicates, and find_sibling_run_dirs explicitly WARNs about same-prefix -rN run directories that were not passed; the script is read-only with zero DB writes (SELECT only) and writes only local MD/JSON.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/04_m5_acceptance.py#L127-L144",
+          "version": "repo-lines-v1:sha256:3968093ffba6f4564a2ee5aeb0c1ce9f71349c0b7895f24aefb709429efb7bf0:eyJzZWxlY3RlZExpbmVDb3VudCI6MTgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE2ZTZiZTRiZDNkMWRmMWVkNTIwOWM0YzZkNmNmNzNmZGQ5NzA3YjZlYjkwYTc2NmRiNjVmYzE4MWNiNTlmYTciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjM2YTQ2MjMyOGNkOTdiOWVjYzAyYjRhOTllODUzMzhkMDg2NDc3NWQ1MzEzZTVlMGY1YTZlMTUxNmQ5YmQ5N2IiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijg3ZTVhMWY2YmNhZDBmNWMwOWE4YTI1MzRkOTIxMzQyMTJkMDFhNjY2YWZkZWQ3ODYwYjNjMWYzYjMwNzRkY2YiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjU2MjU4MTBhZGM5NmEzOGRkYWExNGU5YjQyYjc2NmQwMGYxYTY0ZDE2NGY2NjI2Y2QyZGQzOWRlN2Q1NjY5ZTYifQ"
+        },
+        {
+          "resource": "repo://spike_w3/04_m5_acceptance.py#L24-L24",
+          "version": "repo-lines-v1:sha256:cbab8c3da590dfa0f949a77e0629a34513e8bfe9928a6255e50f42d4f5bdde1d:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiY2JhYjhjM2RhNTkwZGZhMGY5NDlhNzdlMDYyOWEzNDUxM2U4YmZlOTkyOGE2MjU1ZTUwZjQyZDRmNWJkZGUxZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiY2JhYjhjM2RhNTkwZGZhMGY5NDlhNzdlMDYyOWEzNDUxM2U4YmZlOTkyOGE2MjU1ZTUwZjQyZDRmNWJkZGUxZCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNzAyOTM1ZDFkODE5ZTcwM2U5MWZhYzM3MDg2NjM3OGNjMTBiNzU2ODY3MDk4YmEyODM1NjBlMDdmNTk2OGNjNiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMTcyMTkyOGNhZGU1YmFlNDBkMzBjYTNkODc0ZmI3YjliOTlhZTRlMDM0MTEzMzg5ZjJmNWQyOWVkY2EzYTU3YyJ9"
+        },
+        {
+          "resource": "repo://spike_w3/04_m5_acceptance.py#L259-L286",
+          "version": "repo-lines-v1:sha256:9db8d9e9a2dfc4027f23fc2f00e8add2e3cb147494d329d2024e27669bbe2619:eyJzZWxlY3RlZExpbmVDb3VudCI6MjgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijc5YzZjYWNhNWMyOTBiODY5MWRjNTU3ZDQ0YmE4YzM3ZTE3YzgxZTY0M2UyNDVlMjcyNGU4NGQ1OTMyODA0YTciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQwMzRjNWE3YjRhOWY5ZDIyNTk2OGJlYzEzNmE5ZmVjNzBiYzBjNWE0NGNjMGNiNGYyYmUxOTBmOWRmZWY3M2IiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjU3OTI2ZjdlNmZjMjZjZTk0YjNmOTJjZDdlNTE2YTE4NmRjNjM2M2NjMWE1NDQ5MGFkMDM0NzlmNDdlMzA0NGYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjE0NGE4Yjk2ZGJmZGZlNDY3ZjQ2NDRiN2U1MTk3MmMyYTdmYzEwMTZmMDY0OWU4MzdhNDAwOThjYjdjZDIwYmUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_47bb78d042fe478bbdcf146d0b0b3831",
+      "statement": "The gate discipline is gate-pure-function-first TDD: each gate (M9 gates(), M10 gate_g0..g6, M5 assess/anchor_for/pick_anchor/stale_stats/alert_ledger) is unit-tested on synthetic/offline data before the replay wiring exists. For example tests/test_w3_m9.py drives gates() on 14 synthetic shifts (off/on branch plus per-criterion flip cases) with no DB.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/02_shadow_replay.py#L4-L6",
+          "version": "repo-lines-v1:sha256:7783e08063d667de1d5cac52c22d01373f8dc24174c539aac78219590c322c5e:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNDQ3OWEwODZlYWY2ZTI4ZDNhMTU3M2U2YTg3NDYxMjE5YTViOGUzYTc3MzE2MjZjYjc3ZDgyNmY1NTliNDE4NyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZDc2ODZjYTVhNzkyZTgwMTFjMDhhMmQ3MTRhMzhkNjdhYWRlZmJhMzVlY2QzZjlkNGUxYzJiMjhmYTQ3YWZmMyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMzBkNjZhNzRlYzRhZjdkOTY5N2Q4YTJiZDY3MTNiNTA3MzA4YmUzNzI4Yjg2OTQxZWVjMDk5ODQxMzAxMGE3MSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYzNlMGI2NmJhZDVjYTkzMTAwNTE1ZGNmNTU5M2YyMGQwZjJkMjk2NmM1NWU1OGZkZTUwMzgzYjI3MTAxOTQwOCJ9"
+        },
+        {
+          "resource": "repo://spike_w3/03_alert_backtest.py#L73-L73",
+          "version": "repo-lines-v1:sha256:224238963ec399047a832e5e22b9a654114a31e053648619244234394c6e12f1:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMjI0MjM4OTYzZWMzOTkwNDdhODMyZTVlMjJiOWE2NTQxMTRhMzFlMDUzNjQ4NjE5MjQ0MjM0Mzk0YzZlMTJmMSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMjI0MjM4OTYzZWMzOTkwNDdhODMyZTVlMjJiOWE2NTQxMTRhMzFlMDUzNjQ4NjE5MjQ0MjM0Mzk0YzZlMTJmMSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMjFlNDcyOGQ2ZjQ2YjYxZGVkN2RiNDdmZWU5Y2RhMDEzMmJmOWQwMjM0MTZhZDQ4Y2FhZTZjNGU5MDVlMWExOSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNTRiOTVhOWQyZTA0MDRkNzU2MjVlMGY5OTMxMTEwOTM5NGU1OWQ2ZTk1ODE4ZTUxYzZiMzQ4OTVjOGE0MjBmZiJ9"
+        },
+        {
+          "resource": "repo://tests/test_w3_m9.py#L46-L52",
+          "version": "repo-lines-v1:sha256:8f488311881839228afbb10dbec892bf6508d8c5385850d3dfe14c64c0a3f90a:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZGY3MmNlOTFhZDhmOTU0YmE0MmU5MDM4MWFhNTIxOTBkMDFiMzBkMTE4NmUwNDQwMmM0YzdmZmEzZGNhOTVkNyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDJhMDQxNTQwMTQzMDM4NmMwY2E5ZGIxYWEwNDQ1ZTQ2NDQ1OGJjODNhYzdjZmMyYjg5MmE0YjRiZGEwYTJiYiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZjg1NGVjNjdlMmU3YjQ1NzIyNTZiYzUyZmQwZmE4YzJjMDA4OGQzN2Y2MWI1NDhlMmQ0OWQwNWYxMTdiOGFlNyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiN2ZkOGMxZjUyODExN2RmNDA5ZjAzYWRiNDk3NmM5MWQ4YWE5Y2YzNjc3NTk0NTRmNzBiN2U2Nzk4Njc4ODEyNSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_13071b5c809a4d3097f0558e8726daaf",
+      "statement": "A failed gate is a legitimate measured result requiring attribution before any revision: the W1/W2 failure path requires locating the error source from the report's per-bucket diagnostics before a gate revision is proposed. Softening (e.g. the G4 soft disposition, or keeping DSS_SHIFT_TIER_DELAY=0 after the W4.4h experiment failed to improve G2) is only ever decided with data, back to the decision owner, and recorded; conversely a passed gate can still be closed with a historical FAIL number left on the record (不软化不删门).",
+      "evidence": [
+        {
+          "resource": "repo://CHANGELOG.md#L11-L11",
+          "version": "repo-lines-v1:sha256:44169c6178f0de66c4adb34c477e05bf58c70470bf5cf9fd0bb57dfcdb828bd6:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNDQxNjljNjE3OGYwZGU2NmM0YWRiMzRjNDc3ZTA1YmY1OGM3MDQ3MGJmNWNmOWZkMGJiNTdkZmNkYjgyOGJkNiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNDQxNjljNjE3OGYwZGU2NmM0YWRiMzRjNDc3ZTA1YmY1OGM3MDQ3MGJmNWNmOWZkMGJiNTdkZmNkYjgyOGJkNiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiODdkYzI4M2M0ODA3NzIyZmZkNWI5NGFlNjNhMzFkNzllMmU3NWE5MTZiOWEyOTQ3M2E2Mjc1ZGRkMDdiODMwYSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZWFmZjdmY2U3MjkyNzI1NWE0ZjJkYWUxMjc1ODI4NWUwNDhhYWYzODViZDk0YjA1N2UxOGY4ZTcwOWEwOTFkMyJ9"
+        },
+        {
+          "resource": "repo://CHANGELOG.md#L18-L18",
+          "version": "repo-lines-v1:sha256:ac0122f65ae9716ce32ee881c1e341e0c71f3ab13ebc67d2b42c0e3b909c25c4:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYWMwMTIyZjY1YWU5NzE2Y2UzMmVlODgxYzFlMzQxZTBjNzFmM2FiMTNlYmM2N2QyYjQyYzBlM2I5MDljMjVjNCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYWMwMTIyZjY1YWU5NzE2Y2UzMmVlODgxYzFlMzQxZTBjNzFmM2FiMTNlYmM2N2QyYjQyYzBlM2I5MDljMjVjNCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiY2M3YTlkODZhZWFkMzBhZGE3ODlhZGE3ZTk3MDkyMTdiNjVhODA2YTg1ZmNlOGFkNzgwMzRhZGY3OTZkMDZmZCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMGVmNTIyMGM4NjRkZGE3N2ZlYmYwYzNlYjVlNWZhMmFkNzIwZjVlNmY5MTg3NzA4OGQyOThmYTEzMzBhMzkzNSJ9"
+        },
+        {
+          "resource": "repo://spike_w1/02_replay_eta.py#L248-L248",
+          "version": "repo-lines-v1:sha256:8d75cf98b773b61ab2ddd0f1e1370218113e411f5c0bbabbd4afa140a2d09445:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOGQ3NWNmOThiNzczYjYxYWIyZGRkMGYxZTEzNzAyMTgxMTNlNDExZjVjMGJiYWJiZDRhZmExNDBhMmQwOTQ0NSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOGQ3NWNmOThiNzczYjYxYWIyZGRkMGYxZTEzNzAyMTgxMTNlNDExZjVjMGJiYWJiZDRhZmExNDBhMmQwOTQ0NSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMjU3NTJmMTMyMzYwOThlMGMwZThjNmFjZjk1NWZmMmQ0NDRiYTVhYTYyMzUzM2YzNjYwYzQ3MjdiMGVkZWUzOCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYWUwZGViMDEyYjI0YmY1MTliZmNlN2Y2NTM3ODEzN2M3OTkxOTNhMDRlMzMzNTczOWQ2MjliODgxM2E3MmZjNyJ9"
+        },
+        {
+          "resource": "repo://spike_w2/02_replay_shift.py#L564-L566",
+          "version": "repo-lines-v1:sha256:aebd29b7242d140ab2ead0189ff139f4081985d958024a2a4ba38675aa384a74:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNjViZDFkYjVlZDNiMzYxNjZiMjJhM2U2ZGI0OTAzYjMyZTZlMzk5YzZkODZlNDVhMzdkMjNlZTBjNzU0NDRhMiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNjYzYjc2Y2U4OWU2N2JlNzBiYTkxYWMzMDBjNGUyNDExY2E1ZjViNDExMjc1MDMxOGJjNTAxZmJlYTRjY2JhMiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZDc5NTc1MGJmZWZjNDFlODRlZjNjNTFhOTI3OTAxYzNlMDhmZTc0MWZlOTQyNWI3NDYxMWRiYTEzYzQ5NjUwMSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMzFiNWYzMjYxMzI1ZTNlMWFiNzMzZTg2NjgzMjJjMGY5MmVmZTZjNjMyMjU3YmRlMTUzY2NkZTE3OGVjODVkYiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_423f3e4d919647f1b71b127675d3be23",
+      "statement": "The widely cited acceptance numbers — 14.16% (W2 v3 re-anchored plant-wide 5h median, window 08-16→09-19), 12.30% (W2.1 full-window 35-day baseline), 8.08% (good-week plant-wide with the shift calendar), and 11.26% (KW37 rolling off G2) — are historical baselines sourced from CHANGELOG.md/docs; the evidence details live in the output/ report filenames referenced by those entries (e.g. output/w2_replay_gate_*.json, output/w4-KW37-影子回放.md), whose contents are not reproduced in the wiki.",
+      "evidence": [
+        {
+          "resource": "repo://CHANGELOG.md#L101-L101",
+          "version": "repo-lines-v1:sha256:effc17adeb33bd0f234ab5149c4ce99a920f933c4c317576d163c78e5ae6950b:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZWZmYzE3YWRlYjMzYmQwZjIzNGFiNTE0OWM0Y2U5OWE5MjBmOTMzYzRjMzE3NTc2ZDE2M2M3OGU1YWU2OTUwYiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZWZmYzE3YWRlYjMzYmQwZjIzNGFiNTE0OWM0Y2U5OWE5MjBmOTMzYzRjMzE3NTc2ZDE2M2M3OGU1YWU2OTUwYiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOTFiOGVkOWJjNDFlM2UwYzY0N2JiZGZkN2EzZDJlNzAwNjIxNDBmOTdlMWRjOTcyZDZlYmRlNWQ0N2I1ZDJjNyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiOTg3NTM4ZDRjZWI1NTQ4ZmM5ZGE0MmE3YTk0NTAwZTZmZDQ0MGZmOTQ4NmU2MjNmZTAwYTRjNDFmNmVmNWVkOCJ9"
+        },
+        {
+          "resource": "repo://CHANGELOG.md#L104-L104",
+          "version": "repo-lines-v1:sha256:c4f96ebb43997996307116c294e60b9436ab4f4778336899baedfa7d21745030:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYzRmOTZlYmI0Mzk5Nzk5NjMwNzExNmMyOTRlNjBiOTQzNmFiNGY0Nzc4MzM2ODk5YmFlZGZhN2QyMTc0NTAzMCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYzRmOTZlYmI0Mzk5Nzk5NjMwNzExNmMyOTRlNjBiOTQzNmFiNGY0Nzc4MzM2ODk5YmFlZGZhN2QyMTc0NTAzMCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZmM1OWIyMWYyOTQ4ZGU5NmY3NzBmOGVlMTQxMjhkMjg2NGJkYTU5ZjE0ZTZhMjg2YmZjYzEzYzQwMDdmYTE5MiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMTMyYjU0MmNlMGRiNjVjYzk4ZWNmM2Q5MmFhMmE3NDZjNTdhY2VjZjU0OTU3MWE5MTQ0NjQ1Y2ZmZmM3MGQ3NCJ9"
+        },
+        {
+          "resource": "repo://CHANGELOG.md#L116-L116",
+          "version": "repo-lines-v1:sha256:85333bf6661eeff98042c611366d1c7153c6f2b5f578e7506a112ebd44c7347e:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiODUzMzNiZjY2NjFlZWZmOTgwNDJjNjExMzY2ZDFjNzE1M2M2ZjJiNWY1NzhlNzUwNmExMTJlYmQ0NGM3MzQ3ZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiODUzMzNiZjY2NjFlZWZmOTgwNDJjNjExMzY2ZDFjNzE1M2M2ZjJiNWY1NzhlNzUwNmExMTJlYmQ0NGM3MzQ3ZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZmJlNGM3NDNmNDBhMDI0YzdlZDgwN2Y4NTRiMzI2Y2I4ZTBkZGRhODFhMWRjYzA4NzNiOTY0YjExMzgxNWU3MSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiODljZWQ4YjMyOTk4MTM0ZGYwM2FiZGE3MjhkYzdlMTdjYmQ0YTJhYzFhYjQ4OGY4N2VjNWQzYjA5NzUyOGQ2YSJ9"
+        },
+        {
+          "resource": "repo://CHANGELOG.md#L19-L19",
+          "version": "repo-lines-v1:sha256:7738fe498755298537bb6b654185b9b71de35d265c98b66abd2d9554ea3dd617:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNzczOGZlNDk4NzU1Mjk4NTM3YmI2YjY1NDE4NWI5YjcxZGUzNWQyNjVjOThiNjZhYmQyZDk1NTRlYTNkZDYxNyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNzczOGZlNDk4NzU1Mjk4NTM3YmI2YjY1NDE4NWI5YjcxZGUzNWQyNjVjOThiNjZhYmQyZDk1NTRlYTNkZDYxNyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMWMzMmMwNWVmMzI0OTE1NjVlYWMxZDI1MTIxZDI3MDk4OGNmYWQ3OGQyNWUzMzhkZDk0MWQzNWZiNjgzMTU1MSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMjIyYmViOTk4M2JjMWIxMDA4ZDJhMmI0NTY3ODRjNWU4ZTRjMWJmNzA1ZTVmZDhmNjIyZDJhNzk1YjA5NTIxYSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_516f5e5972664f69b22c3f1c96ebb236",
+      "statement": "M9 and M10 share the replay window from DSS_M9_START / DSS_M9_END (defaults 2026-09-05T00:00 / 2026-09-13T23:59:59, Asia/Shanghai) and both read plan_inbox/week_plan_*.csv schedules with strict discipline — a missing in-window date raises KeyError (缺排班不得静默丢班) and conflicting rows across files raise ValueError. All shift geometry (work starts, attribution windows, MID_END_TIMES, the {3,4,5,6}h anchors and the 5h gate anchor) comes from the single source of truth spike_w2/shifts.py, which W3 code must not duplicate.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w2/shifts.py#L84-L112",
+          "version": "repo-lines-v1:sha256:d12e84c1def711673787edba9266c6573e290f237a7df14c0f3579f677a8c2e5:eyJzZWxlY3RlZExpbmVDb3VudCI6MjksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg0Y2NlMDIzNWNlYWJiNmM5MzQyZjUyNWIyYzQ1ZDM4MWIzOWU4NWJhNTliMzBjYzE5ZTc5M2U1ZTA5YTBjYTgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI5OTFkNGZjNDQ5MWExNThjMWJkM2U1MTBiZWUzNmFjOGIxYTc2OWMwNjc3NjhhMDg1OTZjNmE5MDI5MGVkOWMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjMyZTA2MzAyMTQ4ZWNiODU5MzU4NzEzOWZjMjZkOTM1YTc1YWM3NDkyOTJlNjIzZTg4NjVjMGY3MmJmMGM3OTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijg3ODQ4YThhMWI3ZWY0OWE3OGZmNTkxOGI5YzMyOTFmYTY5ZjJmNWRhOTdiMGNiMjBkN2E5NjJjODBiMmQxNmYifQ"
+        },
+        {
+          "resource": "repo://spike_w3/02_shadow_replay.py#L170-L188",
+          "version": "repo-lines-v1:sha256:0141a60620aae04a706316630d8c3176567acd523a4d791dc4417c6622daea5c:eyJzZWxlY3RlZExpbmVDb3VudCI6MTksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRhODBkNmEyN2RlOTY3NDlhOTVhM2ZjY2MyYzM5YjZkMzYxYzk3MTIzYjVmODVmY2UwZjAxYzYxMGU3OTk0ZjkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU5MjYzMTFjY2RkZWIxYWFjYjY0NzI5Y2Y0ODMwY2ZlY2ZlYTMwZjAxNTRlZmY4NGU5MzYyZWQ4YjUwYjRlYWEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjcxNmZkMTkzOTk4MjM2M2E0N2VhZjdjMzRhN2Y1YTUxNzIyOWNjYjkyMjNkNGZhYThiMmNjMjMyNWNkOTJjZTkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImEyZDkwNjI2MjI4OTdmOWEwMGJlNzdjZTc3ZmUyYjQ1ODY2Y2FhZDdmZGNhZWI5ZGZhMjUxYzZjMmYxNThhYmUifQ"
+        },
+        {
+          "resource": "repo://spike_w3/02_shadow_replay.py#L49-L50",
+          "version": "repo-lines-v1:sha256:71695fa2675f9c11d9fdadffc5fcdb02f90e66b251c3dedd2615bfc79f79c15f:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZDU2OTUwOTk5YjQxOTk2NGIzZTIzNDA5YWRmYjBkZWIyMDQ3MGUwZjU2OTMxNTE4OTk5NTc4OTA0NDQ0ZWZjYiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOGI5M2Q0MTBmN2YzNWZhMjM5MGJlZDg1NGRhMjk1YjFmNjY3ZGQ3YTgxMGQxZTdiNDFiMDdjYTBiMjNmNzY0ZiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYTQ5N2FiYzg5ZmUxNzIwYWZiMmE4YmU2ODdlOWE0NmU1MGQ0YjI0YTY5MDkzMTdkZmRjNDg4ZjJmNGViMzRlNCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNWNkNDQ1NDNkMDI2YTA1NTFmM2U0YjI1ZTFiYTZlYTkwMTA5MDU2NGM3OThiZWQ2ZDc2Y2M2NTEyMzdkYjc3YiJ9"
+        },
+        {
+          "resource": "repo://spike_w3/common.py#L54-L67",
+          "version": "repo-lines-v1:sha256:ae1e78d458255b479870891072268bc7b3d185f935e557e9968dd20db83133c6:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQzNmIyYWI1MWY1ZTMwODM1OGUwYWYzMzVmZjY3Y2FjMGZiMThhNGExMDFmZjM1NGM4MmNkMTEyYjdiYmU5MjUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjczOTgwMWVjYzYwZDcwZjU0ZjljZTZiN2QxY2IzMjJjODhlMTk3MzdmYjEwYTg0YWIxMzVjMmRmYTc0MzQzZDgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijc5MDRlMjQwZjIyYjVhMzUxNmI4Njg1MWRiOTE0Njc3MmYzZWJkYjY3OWY3NWQ2ZjFkOTgwYjM1MTIzODZiZGEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjE3YzZmYTBmMmU5NDhmZDI2ZjNmZjE4NDhlMmYwM2I5ZGI5NzhjMGQ4OGY5OTE5OTI2NzEwMGViYmU3MjliMmEifQ"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.7.0",
+    "at": "2026-10-08T13:05:24.547Z"
+  }
+}

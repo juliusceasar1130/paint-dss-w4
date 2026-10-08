@@ -1,0 +1,456 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:31fac88047efdbe658e0c55f39ea82046f50111134db1075015736f39d97b70e",
+  "claims": [
+    {
+      "id": "claim_7fdd0fe098a14456b455b33f42f187b7",
+      "statement": "spike_w3/predictor.py implements the T3 rolling predictor as module-level pure functions (rem_of, a_of, predict, obs_window, build_takt_baseline) plus the AlphaTracker class, with no hidden prediction state; the W2 module 02_replay_shift is referenced read-only via importlib because its numeric filename cannot be imported normally.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/predictor.py#L1-L22",
+          "version": "repo-lines-v1:sha256:6dda210e03d12174245f4ecd1af31df0d7679326caba1248c216cdf68d1f4eb2:eyJzZWxlY3RlZExpbmVDb3VudCI6MjIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk1NTJmODU0ZmNmNzczODkxNjBhMDhjZmI0YmUyZWI5MDJjZDlhMGMwYWY3NmFiNTdkZjAyY2JmOTEyNWQzNjkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdlYjcwMjU3NTkzZGEwNmY2ODJhM2RkZGE1NGE5ZDI2MGQ0ZmM1MTRmNjQ1MjM3ZjVjYTc0YjA4ZjhkYTYxYTYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjAzY2RhNWUwYTM0MDYxNWZmYzEwOTk3MDk2N2JlOWU4NDBlNjYzNjlhMDg1ODcwMGM0M2IzYzI0OWIyNzY1OWMifQ"
+        },
+        {
+          "resource": "repo://spike_w3/predictor.py#L149-L160",
+          "version": "repo-lines-v1:sha256:cf15d421a7237ab0b5f93fbf2bebb6cc68ca55a9b8bdd3fd3ca74d9693acedb6:eyJzZWxlY3RlZExpbmVDb3VudCI6MTIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjVjMjJhODc2Y2QxMGU3OWJjMjc5MTFmMTk5YzkzYzAyMjY3OTNlMjg0ZWRjZDE1NjRkZTNiZDc0NjZmZmJhMTkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjkyOWFmODQyNDQ4Mzg2MzdhNzg5YzA5ZjBlNDM4Yzg4ZDAyZTY4NjhlNWE5OWQ2ODQ5YjdjNjA1NWRjZGZiODEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjQxYjBlODU1YTRlM2QxOTU1NjExZGE4NGFjNjc4YTBhOWM3YTEwMWNhMmNkN2I5MWQ3ZWMxZjQwZjBmMWQ2NjIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjM3Y2FlMDZmMGU2ODNkNjA5MmE3NzI0Y2Y5YmEwMGFkMGI1ZGU4Y2UxZWQzNzZlNDI4MjgwMTU4NDNhNzI3ODMifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_36e276160109423696c3cec035075af4",
+      "statement": "predictor.rem_of computes a vehicle's remaining seconds as ETA − last_event_ts and dispatches across three estimator generations by env gates: DSS_DUAL_RING=1 → eta_v2.estimate_event_unified (mode='shift', with passed_oven/loop_exited/entry_shift), DSS_DUAL_RING=0 + DSS_USE_NET_DELAY=1 → estimate_event_net_delay, otherwise estimate_event; an unresolvable distribution returns None (the no-ETA bucket, counted but never predicted), and the week label is the ISO week of the anchor date t.date().",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/predictor.py#L29-L66",
+          "version": "repo-lines-v1:sha256:085e03141e6e796244cfa9d551bc469138c433cb95e24b3d6ebe52eb6242f28d:eyJzZWxlY3RlZExpbmVDb3VudCI6MzgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjllOWIxNTAzZjJkMDZjZDE5ZjRkNWQwN2M1YjY5Y2Y0ZWEwMDJiZTQwMDYyYmI4ZDE1N2Y1OTMxMDM4NjNjNWIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjllNGJlMDRhY2E5MjE1Mzc4NDA4ODhhZmI4NDI1ZDQ5MjhkOTc2MWQwNjExM2Y3YWZlMmVhODU5ZTAwZmI3MWUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijg4NTkyZWU0OTg0MzM4OTQ1OGNkOGU3Mjk4MmU0MzVhYTY4YmU0YzI1YmNmZDk3YWFhZDk1N2Y3NmU2ZDUxYWMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjljNTI0MzUyNTAyYzkzMzMwMzAxNjhlOTU3NzM1NGRmYWU5MTVlMWJlMmE5NjdlYzJiMDFiMzBlMDU4OTkwMDYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_378a840757144e6a91966462f4caac48",
+      "statement": "The rem returned by rem_of is full-caliber (base + delay, including net delay) and alpha is applied exactly once at the predict() consumption point as rem/alpha (single scaling point); it is never re-scaled inside the estimator, and predict never scales A(t) because A is an already-occurred fact.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/predictor.py#L39-L40",
+          "version": "repo-lines-v1:sha256:c383286309e587f9d9e54ea9bdffd7dbb595b0da62dc93a086efe2eda52c60fb:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMzU5Mzg2YzU0N2NhMjdiNzkzZDE3ZjliYzIzYWY0ZTM0NzE2OGY0MjcwZmJhYTdjMGZiYWU0MzI2ODAzYTE2NSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZjUwMzcyYmJkODZjZmMyMmUzYmU0YjVlOGIzNTIwOWFiZTFjYzMyYTVmYjc1MWMyNTkwMTYwOTA2OTk2NGUyYyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZGE4YTRjOWJiYmI5M2Q5YTBiOWI0YzJkZDdhZGM3MDJhNjc3ODQxYTMwZmJiOTRiZGYxM2NkOWQ2ZGJkNTlmNCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZmFiZGMxZTY2OGI3ZmZiNDk2ZDNkZWM2MjViNTE5NjQ5YjlhOGNlYzEzNGM3NDU1OTFjYzg3YTlhZmRkYjFhZSJ9"
+        },
+        {
+          "resource": "repo://spike_w3/predictor.py#L96-L105",
+          "version": "repo-lines-v1:sha256:f01571d1c99ef54bb72e1e75789c1d695c78ca26a2cf722bae46d5eccc4255b1:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQzZmU1YzFlOTc5YmJmNzRiZWMyYjhhNjA2ZjgzNzhkMzkzMTdkMTkxNzE3Nzc5YjU0MDM0NTViYzBlMjBlNzQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjlmODczZThlZDA1N2RiZmM5ZGJkZTA3NWI1ZTQ3MmU5NWE3MjMzZmJjODBiYzY4NDI3OTJhMmQyMWJiZmNmZmEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjZlNDM5NDYwOWVjMGRmNDVmNmNhOThhYjg2MTBhNzcyYTU4YjI0NTljOTZmZDRkOWQxN2MyNzg2NDUyYzk0YTEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjViM2Y5ZTRiZDQ2YjI1MGQ3NWIyYTJhNGFhZmYwYWNlMmE3MzVmMzdiZDk5NGUwMTRkMzQ0Mjg0MTIyYmQxNzMifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_dc8e2ca4422f49ceb595a145c60bf2a0",
+      "statement": "predictor.a_of counts A(t) = distinct product bodies (BODY_ID LIKE '78202%') with an exit event at any of the 4 EXIT_STATIONS in the closed interval [shift.attr_start, t] via COUNT(DISTINCT BODY_ID); the closed interval means an exit at exactly 16:30:00 counts to both the day shift (t=end inclusive) and the mid shift (attr_start inclusive), matching the W2 static exit_arr source constructively. It intentionally does not use the pool (which removes cars at exit, R3, with no exit timestamp), and the window is bounded (≤ ~12h, ~12ms per real query).",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/predictor.py#L69-L90",
+          "version": "repo-lines-v1:sha256:0ca859a86d59ca056a8c9a35739c7d8472cf3fb61a4b53fb1ace2d0161ca424b:eyJzZWxlY3RlZExpbmVDb3VudCI6MjIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImNjMzNjZmE3YTJmMTg2NjAzMjNlNWI1M2U4YTc1MDJmOWM1NDVmODJiZDliMzM3NGYyNzE0YjIzMDc5NTIyOWYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI1MTU0OTQxODlmYmUwODhjNjU3Y2JkNjMyODgzYjYwNDVjNDliMDA0Y2Q0M2ZjZTM0ZWE0NDQ2NTRhM2U3YTMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjZkZDFlZWRiNDkxY2JkMTAwMGYzNDE0MGUyZjZkN2ZmZmI5MjY2Y2Y1NzU5ODkzZWUxZTY1NTA3Yzg2NDAxNTkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImI3ZDNkMWE3ODcwYjVjMWJiZmEyODlhNTk3Nzk4MTllYTExOGUxYjc4NjVjZGViMjM2NjNkNzQzYjkzZGUxMzAifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_93b17961177d475084b075bd8d6c6bd3",
+      "statement": "predictor.predict computes pred(t) = A(t) + count of in-process cars v with t + rem_v/alpha <= shift.end; the in-process set is pool.snapshot() intersect product cars (body_id starting with '78202'), non-product sentinel cars are excluded from the count and the by_vehicle detail, no-ETA cars are excluded from pred but visible, and stale cars ((t − last_event_ts) > eta_stale_hours) are flagged in the detail but still counted in pred to preserve alpha=off consistency with the static replay (which has no stale exclusion). It returns {shift_id, t, A, inproc, pred, no_eta, stale, by_vehicle} and raises ValueError when t < shift.attr_start.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/predictor.py#L96-L141",
+          "version": "repo-lines-v1:sha256:e7f08f2b3bc83464812c267fb7bacf6d5899ddadd8a93091168d0be44c2ddb32:eyJzZWxlY3RlZExpbmVDb3VudCI6NDYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQzZmU1YzFlOTc5YmJmNzRiZWMyYjhhNjA2ZjgzNzhkMzkzMTdkMTkxNzE3Nzc5YjU0MDM0NTViYzBlMjBlNzQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE0MTlhNmRjYzA0ZTIxM2EzYzdhNzdhNDU2YjAxZTc2ZDFlZjc4Y2QwMGJiZWMxZDhmODE0NThmZTkzZWRjNTYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjZlNDM5NDYwOWVjMGRmNDVmNmNhOThhYjg2MTBhNzcyYTU4YjI0NTljOTZmZDRkOWQxN2MyNzg2NDUyYzk0YTEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjBkOGRhNTQ4ZGUxNTk4OGY1YzFjYmIwZGM5YTFmNjU1MTE2YzFhOGQ1YjRlM2I3MDc0NGUyYTllNDQ4YjIwODYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_9e7bebaa0c5e423e9c2479bb9b2b9b05",
+      "statement": "predictor.obs_window returns the alpha observation window [max(t−window, attr_start), min(t, end−30min)] with its length in hours; it returns None when t >= shift.end or t < attr_start or the clipped length is < 1h. The end−30min pin removes the pre-closing 30-minute tail (B5) so alpha never reacts to the final-moment stop; the production Phase-1 line-stop exclusion set is an empty reserved slot.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/predictor.py#L241-L259",
+          "version": "repo-lines-v1:sha256:969e2dd254518c4d060a920f36891286a223585cb4a5d7c11f058791df9cadb6:eyJzZWxlY3RlZExpbmVDb3VudCI6MTksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjY3ZDhmMmNkNGU1OGFiMjVjZTUwNmEyZGZhNDg0MjBhMzFmYTg3YTEzMzI0NTJmMDk0ZGU4MDI4YTM2OGY0NjYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImJlZTU3OGM3ZGRmY2FhMjZkMWRmZDViMWI5YzEwYjdlN2NkNWU0NDU5ZWVkYmNlMWIwNGViNzliNmVhYzcwOTYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImI0NzdiY2NmODQ3ODM1NmE4YjMzY2RjMTFiYTM4N2E2NzE1NmI0OTcxMWVjN2QwZDE1NWYxZGVhZTM2NjlmYmYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjIzYThmYzFhZDgwNTgzMmY3NTJmNGUyM2M4OGNjNTJlMDAyNmIzZWY2NzlhODBjZjQxYjMzNGU0MzRhN2VhY2QifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_241c620519514e1b877f62a29266b0f0",
+      "statement": "predictor.build_takt_baseline computes, at boot via a single SQL aggregate with no new table, the per-(shift-kind, shift-type) P50 hourly product-car exit rate as the alpha denominator: per-day types come from detect_day_type/detect_mid_type applied to a pure historical window (no future leakage), exit events are attributed by hour bucket (05:00–15:59 → same-day day type; ≥16h → same-day mid; ≤4h → previous-day mid), type-None days are dropped, and n_hours < min_samples triggers a fallback to the nearest work-hour shift type (same kind); if still insufficient the type has no baseline and alpha stays 1.0 with a no_baseline flag. It returns {(kind, type): (p50_rate, n_hours, source)} with source 'direct' or 'fallback_<other>'.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/predictor.py#L177-L238",
+          "version": "repo-lines-v1:sha256:4c65b89943ee0c00dadb9523b78739d448f739f5b15d94cc0fa25f5df30fdbeb:eyJzZWxlY3RlZExpbmVDb3VudCI6NjIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ1MGQ1YzNlOTY0MGIwZTBjNjczOTZiYzc1ZDQ5YjUwOWU5NTI0MWI4NDljNGY3ZGQ2NDBmNDRiNTllNjJkMDgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFiY2MxZDEwMGEwMGZiN2Q4MjhmYzllOTgzOTMyNGZkMmExNTNhNjYzYzg5MTQyZGEwMGUwNDBiYWMwNDhiYmYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImVlNjBmNmU4ZjBiZTlhYzRlYjFiODUwNjdjOTIxMGVmZmZjYzU2YmJhNzk3MDFkZGYwYzUwOTRjMWJlZWY1ZmEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQyNTc2YWFmZGIwZTQ1YTZkYzUxNDdkYjMwOTkwOGY1YzVkMjJmMzUxYzg1ZjNhYTM3MjQzODRlZDZhNjgzMDMifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_06fb6779653646ad9e8318f8b8f24d07",
+      "statement": "AlphaTracker is a pure (no-DB) EMA state machine with window_hours=3.0, ema_beta=0.3, and clamp [0.6, 1.5]; each update computes raw = (exits_in_window/window_hours)/p50_rate, clamps raw immediately to [0.6,1.5], then ema = beta*raw + (1-beta)*ema_prev, and committed advances to ema only when (ema − committed) keeps the same sign with |Δ| >= 0.05 for 2 consecutive cycles (a +0.06/−0.06 oscillation never commits). on_shift resets committed=1.0, ema=None, and clears hysteresis counters while binding the (kind,type) baseline; a missing baseline type leaves alpha permanently 1.0. The hysteresis threshold 0.05 and 2 cycles are code-level constants (HYST_THRESHOLD/HYST_CYCLES), deliberately not env-configured.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/predictor.py#L262-L327",
+          "version": "repo-lines-v1:sha256:a00cc554741caebce0ed4967432afdcc1fcfbbf31a15cb87beccfb7b4725da5b:eyJzZWxlY3RlZExpbmVDb3VudCI6NjYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImY2MmZmZWQ4MTU3NmRmNTI2NzA5NmI3ZWMyZmUxY2RiMzFkOGUyMDVlMzAxMGVmMGFkMDQ4NTdiZWQ1NTdlN2MiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijc3OGRmYTMzZjY1MDhkMmQ2YTNiMjIxNDk0Y2EyZGZjOGQ1MzFkNjNmNWNmNjQzOGE1YTQyZjY0YTBhMGE2YjkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjUwOGY3Mjc5YjA0NzU0ZWUxOWVmMjI1ZTNjNDA5NTIwMzIzOGJlOTg1MzUzMDY5MjYwZDU5YzU5ZGNmNTMwMTAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_aa005035486c48989b6a5dba5e7ea456",
+      "statement": "The production default is DSS_ALPHA_MODE=off, fixed by the 2026-09-25 decision and recorded in docs/04 (alpha gate baseline; G2 judged on the alpha=off median, G3 true and G4 softened because alpha is not enabled) and in .env.example; DSSConfig.alpha_mode defaults to 'off' with DSS_ALPHA_MODE the only on/off gate. With off, alpha is fixed at 1.0 across predict and the alert engine and the tracker is not advanced into the prediction path.",
+      "evidence": [
+        {
+          "resource": "repo://.env.example#L46-L49",
+          "version": "repo-lines-v1:sha256:6aead60fa3061be4e14f5f7f2afb161e7239fdd7e224b54b6a7b497f8f6dc51c:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYjAxYzg5MDRkMDhhMDdhM2QzNjljMjUzNWNiMDQ2NmUwMjZmNDhlNDk1NmJjNDY4OTAwOWE4MTYxOTI4ZmQ4MSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZTAwNzI1YTY1NTdmNTViYmRhYjE5OTk4NDVhZmM4NjQwMjdjNDAzZGVlMTE5NTFhMmMyNjFiYmZlMTQ4OGE2NiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNGQ2YjFlNjdiODRiMzg3NTgzNDhiNWNjZGM2OGFiYTRmYTZlZDA3ZDczM2I3NTJlOWJkMTNiYjYwYzE3ZTM1YyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiOGZjNjVlZDFkNjE0MWVmNWYwNzVhMmViNjEyMGUxMmZhYjgxOWNiODk0YTNkNmIxYTkzODE1MDg5Yzg2MWRjMSJ9"
+        },
+        {
+          "resource": "repo://docs/04-T3%E8%AF%A6%E7%BB%86%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92.md#L266-L292",
+          "version": "repo-lines-v1:sha256:a59c69a5ab43d8515cc07d9c3ba7a15494dc13137aa872612efb781fa353ee5f:eyJzZWxlY3RlZExpbmVDb3VudCI6MjcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE3MTc4YTM5OGQ2NmYxZTRiODc2YTAxYjNhMjViMDllMTY1NDAyNTJkYzQxYzMzYTcxMWM1OWNhYzljMmFmNzQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk5Y2RkZGM0Nzg2OGQzMTZmN2ZjNGNjNmZiODM0YTQxZjI3NWU4ZDI1YjZhNDhlZjRhMDc4MDMyNjc2ZmM0MzAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjJhNjc5OGYzYmJjZGU4OWJmMGViODI3M2ZiODdhYjEyNjY0NTA1MzdkZTBlYjA1ZTk5ZDdhZTRkMzEwNjUwMzQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjFiN2M1YmExZGZmZGE5Y2ZkMGMyNTBkMDBjZGM4NTFjNWM2ZjU3YzA2YTkzZmMyMGMzMzNhM2Q1M2M5MjVlOGIifQ"
+        },
+        {
+          "resource": "repo://spike_w3/02_shadow_replay.py#L106-L147",
+          "version": "repo-lines-v1:sha256:d07135a1d137b96f350b288160a45a7136d11002f460489bca3491c905b13d9e:eyJzZWxlY3RlZExpbmVDb3VudCI6NDIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjEyZWEzNjAyMWRkM2ExYmY5MWUzNGU0ZDA4ZDFmMmI0ODdhZGNlMGY3MWMzZWVlOThhN2E1YmRlZjEwNGU4MzAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjEzYWJhZTA2YWE4Mjc3NzU0Y2U4MjZiN2U2MDE0NzY5OWZlYWQ2MzJlMWUwMTQyOGUzYjcxY2RkYmZkZTc3NzkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjA4NDI5MDRhYjQxM2QwNTRjYjcyZTRhYTU3NmM2YTMzM2VhYTgyNTEzZWU5YTkwMTM4YzNiMWQyNzYxOTg4NDMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzMzU1OWNkNmRiOTdjNzcyMmFiMDM5YTgwYjM0Y2U1OWRlZjE4N2JmYjhlYjQ0NGFmMGRlOTMwODNkNzI1YjEifQ"
+        },
+        {
+          "resource": "repo://spike_w3/common.py#L118-L118",
+          "version": "repo-lines-v1:sha256:deec50471c46b5831a5c02e6afdd20befa52965ab494c09785ba125384719cb9:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZGVlYzUwNDcxYzQ2YjU4MzFhNWMwMmU2YWZkZDIwYmVmYTUyOTY1YWI0OTRjMDk3ODViYTEyNTM4NDcxOWNiOSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZGVlYzUwNDcxYzQ2YjU4MzFhNWMwMmU2YWZkZDIwYmVmYTUyOTY1YWI0OTRjMDk3ODViYTEyNTM4NDcxOWNiOSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiY2MzNDlhZTc0ZmZhNDJkOWUwNDY0MWUyZmZkYTMyZjU5OGVmZGQ1MWIzZTAzZjc5NTVhODg0OGY0YTg1NjdjMyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMWUyYzJmNTMzNjgzNDcwNTc1MjI0NDE0MDlhOTcyMDQxMDZkMWFhYjY5MWJlM2YwYmEzMTBiNDNlODlhNWM4NSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_766419d4b80f46188dd4a36afe4f14ff",
+      "statement": "alert_engine.split_target implements the M2 hour-ratio formula: day share = H_day/(H_day+H_mid) with largest-remainder rounding so the day+mid targets sum exactly to total (day takes floor, mid takes the remainder); a rest/0/missing side contributes 0 work-hours (single-side rest → the other side gets all of total), and both sides empty or total=0 yields (0,0). plan_loader.WeeklyPlan.plan_target delegates to this same function, making it the single target source shared by the dashboard, the alert engine, and the M9/M10 gates.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/alert_engine.py#L360-L373",
+          "version": "repo-lines-v1:sha256:cde97f62349991a7a4f037fdf59c1901985450113f040eb24c631b29b3399893:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBjMTc5OTFlYjI0Yjg1OTUyNWVmYzIzNTg5ZjBlNmNiNGU5MDg4YzAxMWFkZmY1YzU3ZGZkOWEzZDYzOTA2Y2YiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjVkMjk0MjY4NzE5NTMyMTE1NWZiMDJjM2I4OWFkZjAwM2ZkNTRmYTJkYTA0ZWUxZGI0YzI4NGNjYjZjMmE0NWEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjkxMzhjMWEwM2QzYzQ3ZDNmMmFhMjc0NDk1MmQ4MWMzMmY1MGFmNWE3MmQ3MmJhMTVlZjU1Zjk0MTE0NThmMmQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImVjMjRlMDdmZDFjN2RjZDRiMDk5YjM4NjNlZGFmM2FiNmQwYmI4YTVjYzk5ZmE3OThjZDI1OWZlODY3MTNiZmYifQ"
+        },
+        {
+          "resource": "repo://spike_w3/plan_loader.py#L71-L77",
+          "version": "repo-lines-v1:sha256:637da51d32877b879bc322b48657c0faaff48a678a811e0e8cf12827e1ccfa0e:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNmM4NTQzNDExMjY0NDNkNTk5Yjc1MDA1NWQxMThkNzA2ZGI5ZmIzNWFiNzAxMzI3YWU5Y2Q3YmU1YzM3MTI4MyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZGFkN2Q3YTExZWY0NTUyOTEyNGE4YWY2MDk3MDg2MjI2ZWM3OTNiZjdmMDA1MTVmM2M5NmI4Y2Q1NWI3NTdmYyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMzNkZWU5ZGUxMzFiYTE1YjUxMWU4ODk4MzdhNmVlM2E0NTgyMzQwNjYxMmQzNTYwNDQ4N2U2YjVlN2ZiMzAwOCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMzk3YzA1OTRjZGE5OGZjYTViMjVjNjc4NzlkYjVmYmZjNzNhZDgwODRjODZiZDYyODZiN2NiM2NlN2VjNTQ5OSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_f1234024d2bf4b8f82cfdbf1774bc61b",
+      "statement": "grade(delta, cfg) maps Δ = (pred−target)/target to 'red' when Δ <= cfg.alert_red, 'yellow' when alert_red < Δ <= alert_yellow, and 'green' otherwise (boundaries inclusive). The thresholds are the 2026-09-23 user decision preserved in .env.example: DSS_ALERT_RED=-0.10 (red at Δ ≤ −10%), DSS_ALERT_YELLOW=-0.05 (yellow at −10% < Δ ≤ −5%), and DSS_ALERT_DEBOUNCE_MIN=10; DSSConfig defaults mirror them (-0.10/-0.05/10).",
+      "evidence": [
+        {
+          "resource": "repo://.env.example#L71-L79",
+          "version": "repo-lines-v1:sha256:547bcf73e999b6964cf83241ad8de41b03afe2abd83979a407c9d3648d5d77f1:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYTgxYWJmNzZkMjU1ZGMzMWU1ZTQ2M2RkMTE1ZTE5NWFiMTdkOTY1MDFkOWNhOTk1NjM3NmE4OTAwZDI5MTVjNyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNmU5MjliM2FhNTYyNDVmMDYwYWQzNzgzZTYwN2MxNTVlOWNjNmUzYTk2YmU2NjlmNjkzNWE5ZWYxNmQ0NTk0MSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYmY2MjhhNjhmZDkwNzQ2Mzg4ZWYyMzJiZDY3NDgzMDM0YjNmOThhM2Y1M2MwYjAxMDE2ZjVjNTZmM2E2NTBlYyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNWEyYjUzMDMyN2U1Yzc2OTQyNDE3OGU1MzFhYmI1ZDJiNTMwMTk5NTc2NDg0YTk5ZDY2NDJjMWIzY2JjYjdlMiJ9"
+        },
+        {
+          "resource": "repo://spike_w3/alert_engine.py#L376-L382",
+          "version": "repo-lines-v1:sha256:609a0f6938eb5e410df578f947932c84898cf608012ffb97afe90f67f0dc1cbf:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOWEwZWQ2NjI3MDg4YmM2MzBkN2MxNDY2Nzk4ZjkxMDA3M2VjOGY2ZWRmNDhhOWQ5ZGFmZDIyNDU1MWE1ODNiNCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMzEyODVkZWNiZDRiMTVlNWQ4ZjE4YjZiMjc4MzcyZjVjOGE0NGQwYTA5OTdlYzA1MDBhZTdlMjcxMzhjMTVmZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNWFhOTA4NDlhOGJmMGRlNDAxOTFiNDNkMmRhZjBhMGQ4NGRiNTgwOGJlYjhhZTNlMjE2ZDg0YTYwZTc5NDc3YiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMGRkOGMzN2QwMzkwYWE5ZGUwMzg0NmIyNjY3YmNhZmRmYTQ2YjhiYjJhZjA4OWQ2MTc1NDEzYTYyOWNhMDI0MyJ9"
+        },
+        {
+          "resource": "repo://spike_w3/common.py#L128-L131",
+          "version": "repo-lines-v1:sha256:197ba0bf3b81d30af679ac99fa0df1e6fe1230c62905bf191e2c3914f14b980a:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiY2IwNGE4ZGU3YjlmNTlkM2IzYzBlZWEwNDRlNDJiYTYwZGNlYzhhNTM4NmRjYzMwNGEwMmMzNjZjZjRhZDQ0OCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiY2M4MDRjM2UwZjc0YTUyYmQ0MmY0OTY5ZjQzMDRkODE2MzE2ZGQyNmU5NmFkYmJhYjI5MjVlYTQwOWU2ZTM1MCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTI3YTMyY2IxYWFlMWFiYzZkMGUyZWUyYTQzYzRmOTIzOTVjZWY5MDJlYmFmNTgyNjc5NjA5YWY2Yjc4NDZkNSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZDRlMTRhOTMzMmZiNmNjZGQ4YWM4OGY3OGZiZTNjMTg1Y2UxNGNmN2ZmZWE0NmJiYjdhZjlhOGEzZjEwOTNlYSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_dba2fb4797214cbfbc42755edc15761c",
+      "statement": "Debouncer confirms a level transition only after it persists for debounce_min (default 10) physical minutes, judged by (t − pending_since) >= timedelta(minutes=debounce_min) on aware timestamps: the first level (initial state) confirms immediately as a prev_level=None baseline record; same-level or flash-back-to-current clears the pending state; a third level restarts the timer; and after a confirmation the same level does not re-fire. At a 5-minute step this is detect at step 0, pending at 5min, confirm at 10min (3 samples).",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/alert_engine.py#L385-L424",
+          "version": "repo-lines-v1:sha256:d3ed9d2f4b3f6328a746aafd1a0564966103459ee02669deb0359d35df6bac9b:eyJzZWxlY3RlZExpbmVDb3VudCI6NDAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjMyMDc3YjQ5NzQ0YTc0Zjc2MjYzMThiZjE2MDBiMDMxYjhjODI3N2JlZjIyZDg4NDY5OWRkYmQ4NDc3NTQ0MWIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjllYzk0OTUwZmIwY2E3NTVhYTdiOWNlZDg2OGZhMzdkZmEyMzNiNzk5OTcyMzM0NjhkNjY0ZjYzZDYxOTA5OWIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImJmY2Y3MjEyYmQyYzQ2OTY3YWM2MTdiY2UwOWI3ZWY1OThiNDZmMzYwNzE2MGQ4NDgxNzIyYzhmYTAxMzlkMTYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjIxZTQ3MjhkNmY0NmI2MWRlZDdkYjQ3ZmVlOWNkYTAxMzJiZjlkMDIzNDE2YWQ0OGNhYWU2YzRlOTA1ZTFhMTkifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_d19534324e3d467185f24a89326f3635",
+      "statement": "AlertEngine.evaluate evaluates two scopes per 5-minute step: (1) the shift scope for each active shift (attr_start <= t < end) with a plan entry of total>0, targeting the split_target share for that side, pred = a_fn + hit from _split_pool(by_vehicle, t, shift.end, alpha); and (2) the day_total scope, the whole-day main view, evaluated ONLY while a mid shift is active ([16:30, next-day 04:00), the F10 activation decision) using A_all = a_fn from the done day shift (attribution window [04:45, t] ⊇ mid window, union counted once) and the later end-of-day (max of the day's shift ends) as scope_end, targeting the full-day total. No scope is produced for rest/stop/missing-plan days or target<=0 (no Δ, guarding division by zero).",
+      "evidence": [
+        {
+          "resource": "repo://docs/05-T4%E8%AF%A6%E7%BB%86%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92.md#L148-L156",
+          "version": "repo-lines-v1:sha256:d57fd6fbb549b2c4247caa4d784395f45600166b086968368db6fd3d9a891a5c:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZTA2NTM5MGNmNTE0OTMzMGMxOThjMDEzYTg5NmJkYjU3YTZjOWI2MTY4MDVmNWM2ZjIyOGJkMmEyZDI3NzljZiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiM2NjYzYyMDc2ZDEwZTg5MzMyOTM4OTlmM2JkOTQ4NDIyY2MxZjBhOWE3ZmE1NTI0ODRhMjJiNzE5YTRlZmVmOCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiODNlMGRlZjg3NTUwMGE0Y2RkMmZmMTlmZjg3MThlZjcyMGUxZjdiMTQ5YTE0NGI2YmIxZDdkMjQxNmJmZTM4NyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiODNlMGRlZjg3NTUwMGE0Y2RkMmZmMTlmZjg3MThlZjcyMGUxZjdiMTQ5YTE0NGI2YmIxZDdkMjQxNmJmZTM4NyJ9"
+        },
+        {
+          "resource": "repo://spike_w3/alert_engine.py#L190-L250",
+          "version": "repo-lines-v1:sha256:9d0d604458630437237e06c3975bc77998ad7df8cb0cca5504bcbb1b2c4ea7d7:eyJzZWxlY3RlZExpbmVDb3VudCI6NjEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjMwMTUyOWI2YTYwZjlhODY4MzIxNmE1ODEyZjBlMzBlMzY5Y2IyNDEwZWY2ZDZmOGM5OTY5YTgwM2IzOTA4ZDkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImZkMjliNzY3Yzk3ZGNhMjBjODlhMmY4ZWQxOGUzYjFhZjgyMjU2NGYwOGM1ZmM4MDljOWEzOTk4YTc1NjZmOGEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjhmOGE2MDQzNTc1MjBkZGQ4ZmUwYjc2YWUxOTUyYWFiZTZjODQ2MTM5NDFkMDMyNmE3OGM3ZjY4NWExZmVlOGMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjIxZTQ3MjhkNmY0NmI2MWRlZDdkYjQ3ZmVlOWNkYTAxMzJiZjlkMDIzNDE2YWQ0OGNhYWU2YzRlOTA1ZTFhMTkifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_d9245054c52241e9a8c4236598beb15a",
+      "statement": "The alert engine self-computes pred from pred_fn's by_vehicle only and deliberately does not trust the predictor's scalar A/pred fields, so an erroneous predictor scalar cannot propagate into alerts (M9 error-isolation, F9); consuming the shared by_vehicle also means zero new pool queries per step. pred_fn returns the M9 predict() shape and a_fn returns A(t) (prefetched/bisect in the backtest).",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/03_alert_backtest.py#L166-L176",
+          "version": "repo-lines-v1:sha256:f5ae832a256dc365e8ddd488e309d6c0194c24f395d1d9428df8fbda8d62af9e:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjZjZGU3ODI1ZTVkZjVjMWU4MTgxYTk3MGI2ZmE1YzM3ZDMxNjMzNDU3ZjU2YzIzN2RiMjcxN2ZmMDk0YmI5ZDMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdiNzY0YTc3ZmMwMzBhNWE3YTZhMWUwZjMzMDQyNjFjYjE3NzQxYzQxZDlhNTlmYjEyMDUwMDBiODNkZTU3YzUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImQ1MmEwZjYwMjk5N2I4ZjllYTliMDA3YmM4MDEyMjQyMzRmOTkyNzE2ODc2MmNjOTVjMjEwMjUyYWUwYmMwOGIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijg3MTE4MzYzOGNkODU1NTU3OWM4NWQzMDc4ZjU0MDFlM2FmZmNmYjQxZTI0NDJhMjA1N2ViZDAxNDZhNzYyM2YifQ"
+        },
+        {
+          "resource": "repo://spike_w3/alert_engine.py#L190-L196",
+          "version": "repo-lines-v1:sha256:b6e51213bb575fba7c812d5ffa95be2f5beda842a496f92e8fa3ec62acbcaabf:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMzAxNTI5YjZhNjBmOWE4NjgzMjE2YTU4MTJmMGUzMGUzNjljYjI0MTBlZjZkNmY4Yzk5NjlhODAzYjM5MDhkOSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYjFlOTZiNDYyYjc5NWMzNjdjYWFjYzA4ZjRiY2Y2NWY3ZTI1OTJjYTU4NmMxNTA4ZTJhMmZiMGE1NDQwNzExMSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOGY4YTYwNDM1NzUyMGRkZDhmZTBiNzZhZTE5NTJhYWJlNmM4NDYxMzk0MWQwMzI2YTc4YzdmNjg1YTFmZWU4YyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiODMzODllNWJhYzhlNjJlZjIyZDI3ZGJiYWVjNjdjNzBjNzgwNjlmNTU1NzgyMjlmOTg5MjNkZDFhYTQ1NDBhYiJ9"
+        },
+        {
+          "resource": "repo://spike_w3/alert_engine.py#L96-L105",
+          "version": "repo-lines-v1:sha256:9069966a1b17663bc0e99774c63c9431befc570aa042bc820b06322424c44abb:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg2MDc1Zjg2ODQ1NTdlZjY2Mzc0MjFkZGVjZWI2NWNkMzhmZmNkY2RlMDhlZDJkMWRmOTk2MDk5NmU4NGUzZjQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjlmODczZThlZDA1N2RiZmM5ZGJkZTA3NWI1ZTQ3MmU5NWE3MjMzZmJjODBiYzY4NDI3OTJhMmQyMWJiZmNmZmEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImRmODQ5ZWQ3NGNmOTM0NzVhN2M2NDg2ODNkMGE5MzlmMmQ1YzM5NjdmY2JlM2QwMWZlOWI4OTBlMmM0MGQwNDciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImExOTdmMzRmMjExZDQxNGMzNTg5N2U0NzVjNTdjNTM0N2U3NjZlZTliOTkxZmZlYmZhMjIyZjZjZWM4ZTFmYTMifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_9bcfd9b039494787b98ab5c2e2585c05",
+      "statement": "_split_pool partitions every in-process car into exactly one of in-process (t + rem/α <= scope_end), bottleneck (t + rem/α > scope_end), or no-ETA (rem is None), so the self-consistency identity pool_product_cars = inproc + bottleneck + no-ETA holds exactly by construction (F4; already-exited cars in A are out of the pool); the M10 G5 gate re-derives it independently from the backtest JSON, and the dashboard reuses the same static _split_pool as the single source of the pool three-way split.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/03_alert_backtest.py#L146-L152",
+          "version": "repo-lines-v1:sha256:1966baff2fa4ad766dfc62d476d8e5db9f206c621384a37effb280b757427e4d:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYzAxNGE0NzA0NTgxYWM2NTJjODc3MWVmNjk4Y2MwNjc4MmQ2ZjkwYzYwMjkxZjU3ZDhmNzdhZTBlOGQwMzJkMCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNmEwMzhhYTlmYmNjN2VhNTY2NDllOTEzNmIzMTMxMDk3ZGUwNGYyM2Y0Zjg2OGRjYjFhMDc5ZmM2MGI4ZTQyMiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYjU3YzgwM2E5ZThmMjAwMmQyY2M3NGNjOWJkZDdmZTFjNDMyYmQwMDM1MDFlZTEwZDg4OWZjN2IyNjUxYmIwYiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiM2VjZTc2NTk5MTU3MDI3NTg3Mjk1OTAyZDY0YmFjNmZhNTM1Mjk3M2Y5ZTM2MjljN2JmYTM3MDNiMzUzMzJhNiJ9"
+        },
+        {
+          "resource": "repo://spike_w3/alert_engine.py#L160-L172",
+          "version": "repo-lines-v1:sha256:eda33233d09448d7812d4d5f13c3fa61f56c020726101b4cef133470a44bb278:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjYzY2M0NzNlOWExOTE3NTYyZmM0NmIwYjA5MTU0M2QwYzA3YjZjNGY2NjViOWYyNmQ2MWJhOTliNTg0ODJiYzQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE3MDlkNjE3Zjk0YWEwN2JhYzE3ZjFlODExNDI0NzYxMTk2OTQwYTMwNGM5NzlmYTMwNWIyMWEzM2Y5YjllMmYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjhmZDQ5NDU0ZTUzNjJlNThhMGRhYzQ1NzI1M2NlZjczMjZkNjBmNzhjY2IyNjkwYmRlNzg3MmMzNWI5MWE0YmYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImFmZWZlMzY0YzFmZDI1YjcwMjJhNWM1NzljNTA4NGU1NTJmZjRlMzM4YmY4MjhmMWY4MDdkNzc1Y2FjMzAwZDYifQ"
+        },
+        {
+          "resource": "repo://spike_w3/dashboard.py#L132-L139",
+          "version": "repo-lines-v1:sha256:9c9cd6d1ef7477505f247ac11004d33c7ab3f0864a99194d15684d8c1f1cf9f2:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNGJkYzI0ZmIzZWNmZDM5ZTExOWY0OGRmNTc5ZTdmZGYwMzZmZDc1ZmMzNjg1NTEzMTM2MGY4MTk0MWQ3MjZhMCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNjY5NzY4NjEzNWI5ZDdiOWQ2MzMyMjUzMWU5NzJmMzhhMDM1ZDJkZTM3ZTM1YzIxZTQ0ODcyYTg3OTM5MjdhMiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiODk2YjI2ZWUwZGQzNTUxMzZhNjJlMDc2MjNlZWYwYjIxMTM0M2ZjZTVkZTkyZWRkMjE4M2E4YWZhNTRjMjQzNSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZThhOWY1YzhkNDgzMWM2MmRjZTgxNmNjMTQ1ZjlhYTMxOTdmZmM3ZTIxMzkwOWNjNWVhOTAyMzU1MTExMTA3YiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_5fff896b84d64e919087e64f2c321394",
+      "statement": "When the injected guard.status() is not 'FRESH' (STALE stream break), AlertEngine.evaluate returns an empty list and does not advance any Debouncer (STALE freeze, docs/02): no new alerts and no new confirmed level, while the existing level is held for the banner; the production adapter EngineGuardAdapter maps the attribute-style FreshnessGuard (status string) to the engine's .status() protocol (STALE → 'STALE', NORMAL/RECOVERY → 'FRESH').",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/alert_engine.py#L199-L200",
+          "version": "repo-lines-v1:sha256:106933f102e8d0b78bba5d57c938e911d7c527985da20a5a6df96131c7957f0c:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOTNiZTE0NThjNmEwNGY2YThmMGEyNjg0Yjc2MTNhNzhmNzJkZTJiNmEzNmJlZTJmYzlmYzAzMzc4ZmNlMmY3NiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMmI1YTExOWNlZDQyY2Y5OWEyM2Q1MWExYTcwY2I4ZDhkOTFkMmFlZmFmYzJhZTIwZjFjZjIzZTU1NzE4ZmZiYSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNTYyMDAxYjRhMTc5NzI0M2YzMzM3YWNiYmE3YWFmOWIyYTAzNTIxNTJkNWRiYjA0MGY0YWM5MjAwOWViNGQzNyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYjZmN2JkZjk0MTM5ODIzOTA2ZGFjOWY0MTQ5ZmZkNDdhMDEyNzQyMDJmYzZkYTIzOTNlZWNjMWY5MWJkYWUxMSJ9"
+        },
+        {
+          "resource": "repo://spike_w3/dashboard.py#L474-L483",
+          "version": "repo-lines-v1:sha256:31080e757b49d57ded5f306267770daa9ecdf170e11a1e18355ccb8e4be4290e:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQ1ZmUwYTljNTQ3NTU3MDA0MTU2MmY2YTAzZGQxOWIxMTY2NzdmNTgwNGNhN2VhMzVhYjdlZjA0YzUxNmZiOGEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI0MGE1ZjQyY2ZlNWRhNjFhNGNiNzA5ZWMzZDZmOTE0MWE3ZGQ4NzZhZTU1MDczMDA0MmUxNGVjZGM5YmQ4MmMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijg0OTM2NTkzN2FjNjkyNmVjODZkYWNjMTk2MjNmYjRlOGUxMDk1OTA2MTk2M2Y4NDIwMjNmY2FjYjAwMTlmNGYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjJmNTEwMDRlY2JiYjA4YzE4YzljNGE2MjYzNDA4NGMyMWRkNDVkNTcxZGIzOTRiOGIzMjBlY2EwMDVhMmEzYTcifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_f7bdc662c5b944ebb0584c1be42e859a",
+      "statement": "Each confirmed transition (including the prev_level=None baseline) produces an Alert carrying scope ('day_total'|'shift'), sid ('YYYY-MM-DD' or 'YYYY-MM-DD_day|mid'), t, prev_level, level, delta, gap_n = max(0, target − pred), bottleneck_n, rework_n (bottleneck flag=1 quality rework), blacktop_n (bottleneck flag=2 black-top two-tone, a normal process not quality rework), and sections = the per-section histogram of all bottleneck cars via section_map (missing station → '待确认'); the DDL for dss.work_shift_alert is idempotent and records every confirmed transition without dedup UNIQUE (re-entry after a downgrade appends a new timeline row).",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/alert_engine.py#L174-L186",
+          "version": "repo-lines-v1:sha256:9719580825072be1c990ffc876de9de0369cee2fb1362d42d8d5286f4446b14e:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImIxMTQxOTM3YTEwZGIzOWVmN2RhNzIzNDU0MGJhNDgzNmZkMTI5ZWFjYjkyMjc1YTYxYzRmNzQ0YTZhMGY1NWMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijc3ZjMxMGUyMjFlZmEzNDBmOTE2MjM4Y2UzZWU0YzNlM2FkMDhmODJhN2FkZDNlYThkMDA4NGNkMTZmZWZmMzQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUwOWU0MTg4ZGYwMjE3Y2I5YWU3YjZiNmJhYTU5MTc1NTM3OWE3ZTgwMWIzNzJiY2E0YzJiMjU5YjFmNWNiOTQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjhmOGE2MDQzNTc1MjBkZGQ4ZmUwYjc2YWUxOTUyYWFiZTZjODQ2MTM5NDFkMDMyNmE3OGM3ZjY4NWExZmVlOGMifQ"
+        },
+        {
+          "resource": "repo://spike_w3/alert_engine.py#L26-L43",
+          "version": "repo-lines-v1:sha256:b2f1eb9fa59f54082caad4ff9d553597fe83c13bdf629c0b31d248205fca3a8f:eyJzZWxlY3RlZExpbmVDb3VudCI6MTgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRiZWFiMzEyNzQ3YzAxNTcxZWYxYzA3Y2VjZGZjOTM1MzNkYWIwMzg4ZWVkZTJmOGUxYmI0Y2Q1ODZmNDJlYTAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjliMzllMDIyZTBkODU0MTIwMDAzZDc5MGMyOGI3NTk2MmVkZDMwMzc1NmQ1MTMzM2RmNzQ1Y2ZiODZlYTExY2UiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjIyMmQyZjNmNTY1NGVmNTVhMDhmODIxYjlhOWZkMjM0YzE2YjRjOGUzYjUwZWJlMTg3MDM0MjU4NzFlYmFkOTYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjFlZmY1YzgwMjY5NmU3NTk5MTk2ZjdhZWVjYzgxMjUyMzc4YjcxYmE5ZTFlMTdmNTg0ZTAzYzA5ZGMxNTBhNjQifQ"
+        },
+        {
+          "resource": "repo://spike_w3/alert_engine.py#L79-L93",
+          "version": "repo-lines-v1:sha256:e6ce3ffca0310545230ec7a0f56c838feb3ef7287acd81ec089cd4e9eef87c37:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImVkNzBiNmYxNjkzY2RiMzU5YmUzNDg4MTA1ZGZhOGI2ZmU1NmRlOTcyY2U1NDZjNGY3MWFhMzg1NGZlMTI1YTgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjkyMGY4YWM4MGIwZmQyZTU3Y2NkOWMyMjY0MDEyNTM0ZjBiNzY1MzVmMzhjZTc1YWU4MzBlOTAyNGRmNTU4YmQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijc2MGUyMDU0OTI0YTdkYmFiM2M4YjczMzM5ZTExYTRhMmFlNTFhZWM0YWNjMmNjMmU4NTk1YTA0ZTk0Y2QzMDkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijg0YjhjYzY4OGI0NzAzOGZkOTQ5NjhjYTA4MzUwYTE1ZmZhMzIwZjUzZTMxNmNjNmRlOWUyZDUxMGU1OWYxMTkifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_e8bf444b37404dbb848013ef87f803e6",
+      "statement": "build_station_section bootstraps the full 259-station two-tier station→section map (docs/02 eight-section vocabulary): tier 1 is a prefix code (first 2 chars via PREFIX_MAP, 26 evidence-backed prefixes covering ~163/259 stations), tier 2 is the modal current_process_area per carbody_last_rw_station from dim.dim_vehicle_profile (non-NULL pairs, n >= min_n_profile=3) mapped through the keyword rule kw_section, with tier 2 taking precedence (correcting the prefix); both tiers without evidence yield section='待确认' for user fill-in. The result upserts into dss.dim_station_section with status 'auto'/'confirmed' after user confirmation; backtests never write the dss tables (alerts go only to JSON/MD per the 2026-09-25 decision).",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/alert_engine.py#L257-L353",
+          "version": "repo-lines-v1:sha256:c4046d02e3b26b88d09445b66cad34277ba286f65c94e9657322770373778938:eyJzZWxlY3RlZExpbmVDb3VudCI6OTcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjA3MDU3NGYxZWY3MjVlNGVkOWM5YWY0MmE2NjA4MDQwNjc0NWMyNDRiNjEyMTFkNmE0MmMwYmMxNWQyN2I2OWIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjgxMDk2NmU2YjE5NWUzOGM3MzUxZDA2ODcyY2E4OTI5YjZhYmIzYjcwZTg2YWIzZTk1MzY5ZGMxYjFjN2RmYzQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImQ0YjdjZjAzMTVmZGYzNTdmZTA4OTBlY2I3YTk5ZTc2MzE0YTNiMmY1MTZkODUyMWI3MDYxMWQ5YWJkZGE5ZGQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjIxZTQ3MjhkNmY0NmI2MWRlZDdkYjQ3ZmVlOWNkYTAxMzJiZjlkMDIzNDE2YWQ0OGNhYWU2YzRlOTA1ZTFhMTkifQ"
+        },
+        {
+          "resource": "repo://spike_w3/alert_engine.py#L45-L67",
+          "version": "repo-lines-v1:sha256:b4eba5c2671c43ec805ecbe31044aee65fc847eac23af69ca5e7ff115c7ade31:eyJzZWxlY3RlZExpbmVDb3VudCI6MjMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBhNTdhZjdjODZkOWU4NWU4MWNmM2ZjMmM5MWZmZWY4YWY5MDI5OGY5NDcwMTgzNWQ2ZjVlM2M0MGFhN2FiM2MiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjFlMjMwMWE3YmNiNTU1NTk2ZWUxNjRiNDVmMWIxMDhiODU2ZTI5NzAwNzYwMTQ4NmFkMjg3N2FjZGRjZjg3MGEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjEwZGY0MmQzZDgxMzkwNDI1YTUyZGQzM2I5YjUxODI0NWFlYjBhYzA4YjJiYzJkNzE0ZmIzYjJmMjhlN2NkNTYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijc4NGQ4Mjg1OGNlZjZmM2Y0MmYzZTUxZGEyOGFlMjE2ZmE4Y2EwNGYyZmNhZmQ0NTE1N2YwOWMyNzQ3MDcyOGEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_074c41310e3241ccbfb6bd7bc2868d1c",
+      "statement": "render_alert_line renders one alert line (e.g. '09-12_mid Δ −11.7% red | 缺口 56 台 | 瓶颈 636 台（返修 109 / 黑顶 107 / 主线 …）: 顶涂 210 · 打磨 180 · 前处理 90 …') where mainline = bottleneck_n − rework_n − blacktop_n (constructively consistent), sections are shown Top-3 by count descending, and a shift-scope red alert whose day_total main view is green gets the appended dual-track note '[拆分目标偏置（全天主视图绿，见 F8）]' flagging a possible split-target bias rather than a real gap (day_total red gets no note).",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/alert_engine.py#L431-L450",
+          "version": "repo-lines-v1:sha256:f938f68f2341cb87afe60f88991a439a561cc8779cb0dc7ad88f378e486b8d4e:eyJzZWxlY3RlZExpbmVDb3VudCI6MjAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImYyNmRmOWY1MjE1MWRlNDE4NmI2YWU3NzhhYjFiMzI0ODFkOTM5NjRlZTkyNDY2ZWQ3ZDAwZmJkYWRmYzNjMTAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU0MzA2YzcxYTY2ZmVkZmNmMjVmZWFiNTk3MzFjOTU3ODliOTlhY2I3MDBkOGQ2NTgwN2NmMGEyNDQ5ODE4NjEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImY1ZGUyODg1ZmY2MTY3NjVhZjlkMDc1MTc3MGU1ZDZkOTdkMTA2NTBhMTg0OTkyMmNlMzk4NDQyYjNkOGFiYzkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_8f5ff30e64fb4aac882be600a16f3dcc",
+      "statement": "dashboard.active_shifts_at resolves active shifts at t by filtering plan.shift_windows for today AND yesterday with attr_start <= t < end; the previous-day union is what makes cross-day mid shifts resolve correctly (a mid shift with attr 16:30 and end next-day 04:00 still belongs to the previous calendar day, so 09-10 00:00–03:59 matches the 09-09 mid shift). This is the round-1 F-BLK-02 fix: the static _shifts_for_window/is_complete filter is deliberately not used on the online path because it drops a cross-day mid shift inside a 24h dry-run window; a missing plan day yields an empty list without guessing.",
+      "evidence": [
+        {
+          "resource": "repo://docs/07-T6-lite%E8%AF%A6%E7%BB%86%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92.md#L96-L106",
+          "version": "repo-lines-v1:sha256:483d3142dcb94324d4adc21556a4794df5be87e42eb9dfac2f3f08d16906d2a8:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQyMGFhN2QwOWMxM2Q0MTQ2MTViODgzZDY1ZTFmZjE1MGFlYmUwMTE0MmQwOWU0M2Q4ZDBjYjBiOGZjMmQ1OTMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImMxMGE1NzJmZmYxNjY0NjVjNTBiOTk2YjlkYzQzNDhhZDYwYWFjY2U0MTQ3OWUyZDQwMzFhMWQ0YzVkZmJjYTciLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjI1YjM5NjE2MmExZGQ5NGYyMTYxZjIwYTQwNmU4ZTliOGUxZmE5MzQyYzYxMTRhOWQ4ZDU4MWU2MTU4YmVhMGIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjZjYTEwZGIyMGU4YTQxYjVkZTAxZjBmYzI0MWVhNjk1Y2E1NjE2MWE1NjE2YWI5MDJhMzVmYmEzMDhjNmZiZTIifQ"
+        },
+        {
+          "resource": "repo://spike_w3/dashboard.py#L35-L54",
+          "version": "repo-lines-v1:sha256:6c9970adb8246a046721b09a0eec6a662345b09582de2db3e986fc5cc75f6b7b:eyJzZWxlY3RlZExpbmVDb3VudCI6MjAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjY4NDg5YzJmM2I0OGQ2NWQyYzJmZmQxOWY5MmFhZjRlYzEyZmY3OWE3Y2U2ZDNjZTc5MWVjMjgxZmNlOGY2NTYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjgxMDk2NmU2YjE5NWUzOGM3MzUxZDA2ODcyY2E4OTI5YjZhYmIzYjcwZTg2YWIzZTk1MzY5ZGMxYjFjN2RmYzQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjBjZTY2ODY0NmEzMzljMmVhOWUzODU5ZTNlNjQ1OTc3YTljY2U4MWYzOWVmYzAyZDNmNDcyOWRkNjY3ZTJmZDQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjFjZTRhMGMwNGYyNWE1MTNkMDU3ZDE3NDQ1Y2UwNjg5MTc0MTUwZDExY2MwNmE5OGEzODJjNDlhYjI2YzJhZTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_4c4bba0582114f4c9a864f6599ef3688",
+      "statement": "build_frame_ctx assembles the per-frame context (isomorphic to the snapshot schema): pool flag distribution over product cars, the three-way pool split via AlertEngine._split_pool with scope_end = active shift end (else next shift end, else all rem-cars are bottleneck), the pred.shift track (A + hit, target from plan_target, grade null before the first anchor work_start+3h), and the pred.day_total track filled only during an active mid shift (A_all over the day-shift window [04:45, t], target = full-day total). render_frame prefixes every frame's first line with '[DSS] ' (the G1 mechanical 288-frame criterion); pre-anchor Δ is displayed as observation progress with the grade suppressed, and replay mode shows 'ETL 诊断不适用·时间穿透' with diagnose null while wall mode shows the real guard.diagnose (F-MED-04/F-MED-05).",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/dashboard.py#L793-L862",
+          "version": "repo-lines-v1:sha256:a42ba63b66b3660197f879ae04efcc5e0d1ca2a059a74634569601880ec9a758:eyJzZWxlY3RlZExpbmVDb3VudCI6NzAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQyZjkxODgzZDQ4NDVmYzE4YjM4N2UwNGM0ZjRhODkyY2ZkMTUwYTA3ZDc4MjQxY2I1YjQ4ZmEyNDk1ZTFhYzkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImIxYTdlYWY3M2ExMzExYmZkODQwYzU2ZTQ5NzY2NDIzNDI4NWIzYzhkYzI1ZTJjMjczN2U1Nzg5MjI3NmVmZDIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjA1MzQzMjQxMTc0NmY3MjNmZDEzOTRlM2EwMGU3ZWRlMjU2ZThhZjgxYTJkYzQyZTMwOTk4Y2IwZWE4ZWU2M2EiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImU5ZjdmN2FhMTYzMDU2N2MxYjVlNjY0NGUyMWNiZWM4M2E0MzkzM2RjNWIwZGEwZDkwY2Q1M2JhNDhlOTEwZDIifQ"
+        },
+        {
+          "resource": "repo://spike_w3/dashboard.py#L91-L220",
+          "version": "repo-lines-v1:sha256:b94c509374c3d9416ebe4fddc692ee7641791b8444ce906f23d029b77e8607b2:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMwLCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiIzNjE0NTY0OTdjNWI4OTViNzExMGUwMDgxNGUyNTJkMmJjNzM5YjEyMWJlODE4YzUzMjQ2MGU2ZTI4ZTI4MWRlIiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiIxNDE5YTZkY2MwNGUyMTNhM2M3YTc3YTQ1NmIwMWU3NmQxZWY3OGNkMDBiYmVjMWQ4ZjgxNDU4ZmU5M2VkYzU2IiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MywicHJlY2VkaW5nQ29udGV4dEhhc2giOiI4ZWRmOTIyNDg4MWQ1YmEyYzVlODdkZDc0ZmM5MjQwM2Y2NjFiOTEzZTU2MGUxNGFjY2QxZmZjYzI3YjMwYjc5IiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MywiZm9sbG93aW5nQ29udGV4dEhhc2giOiI5NmQzNGMwYjFmZjVjMDYxMjJiYzQ4N2ZiOTdlM2YyOTdkMDk0YjY3NWYyZTVlMTRjMDkyYjA0ZjFlNzUyZDQ0In0"
+        }
+      ]
+    },
+    {
+      "id": "claim_ac349b3554064c379393a19a20ec86f2",
+      "statement": "write_snapshot writes one JSON per 5-minute round to output/snapshots/{run_tag}/snap_{ts}.json atomically (write a .tmp sibling in the same directory, then os.replace); resolve_run_tag prevents overwriting an existing auto-tag directory by bumping to -r2/-r3 (with a boot-report note) while an explicit DSS_RUN_TAG is treated as an intentional same-directory resume (idempotent append, no -r2). validate_snapshot checks structure only — top-level keys, enums (mode/guard status/levels/anchor_state), nullability, the pool three-way identity (inproc+bottleneck+no_ETA <= size), the exact bottleneck_sections sum, shift.grade null in the pre-anchor state, and replay diagnose null / wall diagnose non-null — with business-value checks left to the post-hoc G2 recomputation gate.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/dashboard.py#L648-L693",
+          "version": "repo-lines-v1:sha256:4bb3d9c8f027b63407dfcb1310f3d717cf333b391815608fad2630dd1f003bb8:eyJzZWxlY3RlZExpbmVDb3VudCI6NDYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRhMGIwMDUyMWE1ZjE3ZjcwYzE1ZDM2MjkwZjM4M2MzZWFiZGM1YjlmMzNjYTg0ZGM4ZWI5ZWI2Mjk0YmVmMWQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU2ZjUwNjRkMTU0ZGZlZWM1MGQ2NWQxNTU5MWU3ZjI2NmFlYWI0MjZkZjhkNWE2ZGY4YmFlZTg5NWE3YmNlMDkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImU1MzNkMDZlZDM5ZmM2M2E4YWQzMTBmYmJiYjQyMzQ5ZmRhNDcyYzgyMjZlNTY0MDJhZDc5Y2JhNGYxOTViMjQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjNlZDk3NTE2ZDc1ZTkxMzI4YjI0YWI1OTc2MzdjOTEzMzZkNmEyNGQ3MjI5NTYwNzgzMTc0OWI3OWI4NmE3YzAifQ"
+        },
+        {
+          "resource": "repo://spike_w3/dashboard.py#L705-L790",
+          "version": "repo-lines-v1:sha256:79323503126e59e96c15d6fe7f96a18e4d77b3045090e5594392c43a25d2cf9e:eyJzZWxlY3RlZExpbmVDb3VudCI6ODYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQyMGFhMWY1ZjI2ZDRlMzlkZDM4YmRjNTA3MzM0NGZjZTdkODFlZjYxNGQ0YjFlMGQ4MGU0MDcxMTJiN2RmOTkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdkYzY3NTkwMmE5ZTRlN2U0NzZlMWUxOGYzMzc3NWRhYjdiNzRhMDAxYmEyYjQ4OTkyNGZlMmVjY2NiOTc5ZDgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjJiNDlmNmJlMTQxYjMxMjljZTI5NTFkZTVhNGNlNjBiM2NmZGIwYWI2MzI0YzI2NTMwNmI1YmM2M2Q0Y2ExYzkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImNiNmE2NDY4NzhmYWJjM2E5Zjk5OWI4OTg4OGQ0N2U1NDQ1NzVkMTg5MGRmOTk2ZjczM2ZmYTUwZWNjYWU5MDIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_e6b16699a35e461bbe03b4b8406f4a33",
+      "statement": "AlertEngine.deb_state(now) is a pure read of the per-scope Debouncer state returning {scope_key: {current_level, pending_level, pending_min}}; it is the only permitted micro-change to the frozen alert_engine.py (docs/07 decision ⑥) and its unit tests pin that it mutates no _deb field (deep-equal before/after) and never calls feed — it exists so the T6 snapshot's alert_state block can record debouncer state even on rounds where alerts is empty.",
+      "evidence": [
+        {
+          "resource": "repo://docs/07-T6-lite%E8%AF%A6%E7%BB%86%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92.md#L110-L115",
+          "version": "repo-lines-v1:sha256:6e896394bfc4e61d36c3626db899aaf81f5a421a402e2b9bd4a456c634b0de2a:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYTkxODE1NDdkNTNhYTlkMzUxMzY5YTQ3MzU4MTFjZDU5MjlmYmI3NzVkZjUyMzE1MDc5OWFmNzBhMTIxMDQ0OSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDA3Njg5YWVlOTQ1MDgyNGUxM2JlMDNlYjAxZDYxYTllMmJmYWE4ODExN2ZhZmZhNGFhMTM3MzdlZjk0YTZkOSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNmNhMTBkYjIwZThhNDFiNWRlMDFmMGZjMjQxZWE2OTVjYTU2MTYxYTU2MTZhYjkwMmEzNWZiYTMwOGM2ZmJlMiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNzA3ZDg1ODJhNTFjZmY3NzhhOWQxZjA3NDAzNzBiNmE3N2E0MTE5ZDJkZjZiOTQxYjhiM2MzOWUyYjc5ZjcyMiJ9"
+        },
+        {
+          "resource": "repo://spike_w3/alert_engine.py#L129-L146",
+          "version": "repo-lines-v1:sha256:d82745ed26c6afc6526cfe12ef26a7034021fe4bb782a29c69c0d932021f156c:eyJzZWxlY3RlZExpbmVDb3VudCI6MTgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFlMzFmZDBlOTEwNGU0OGI3NzI2MmM1NTQ5YTg0NTgwNDMwMDlkNzUxYjNiNjE4NjY0MDA3ZjE5ZDgwOTMzYzMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjMwNDljNGQ5ZmY4NTI3YjQwOTQzNDQwNjRlOWUzYTBhNmEzZjU3MTJmMDNlYzcyZGFjYzM3OGY0ZWVkODY2NDYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjZhN2VlODFmODY4YmQwOGFiZjZkZWIyYmRkYWEyNmUwZjk5MDM3NDE0ZjNiZmQxMzJlNTU5YTg1NjU0NmNhZjEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImNkNWRkOGUxMDk0OGE2YjI1NjZjNDk5NjI0Y2RiNjBkNDFmZWU1MjMwMmQyY2VjNWM3ZGFjNDJjNjVkMThhZmQifQ"
+        },
+        {
+          "resource": "repo://spike_w3/dashboard.py#L546-L547",
+          "version": "repo-lines-v1:sha256:c5a35ff80d3a107085dd38e312b058af4ba1a97e1f510e92461f6cfafdc2a854:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYzNmZTJiN2ExNTljYTM1YjZlYmQ4OTY4ZDQ0OTNlNjYyYzkxNTUxOTljYzFmMzdhOWY2NjM2YTk0NTI4ZjRlOSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZjk5YmMwZTM0Y2M2NDM0ZDRmOTkxZmFjNzNhZTZjODE1NGQxYTE4YzdhZmNlOGYzY2JjMjcyYmZkYzQyM2RmNyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZmM3Y2IxZDg3NzRjNmZhYWEwYWJjYjE0MjE5N2IwMzdiMTQ3ZTVkNDVhYmJlMjhkOWNlZjA1OTBhNTgyMDM3MiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMzQzMTBiNjJhOWU3ZTE5ZWQ4ZDM2YjViNTY3Y2I1MWM1YjZlMDQ2MDE3OTcyOTE3ZjliMGUzOTM5YzE0M2E0ZiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_37f40f40eab34cb7af13e0b25b4a2e31",
+      "statement": "compute_eta is an independent read-only DB tool (CLI: python -m spike_w3.dashboard --eta <BODY_ID> <TARGET> [--as-of ISO]) that does not read the in-memory pool or depend on the main-loop process; it resolves the latest event (DATE_EVT <= as_of, tie-broken by higher ID) for the current station/flag, returns status='exited' when that event is at an exit station OR a POST_EXIT_STATIONS continuation station (F-R2-01: 76% of exited cars' latest event is at a continuation station), resolves remaining time with the n≥30 discipline (body-type row preferred, else ALL, else an explicit no-estimate error), annotates rework/loop cars (flag 1/2) with a dim_loop_remaining reference, errors explicitly for targets not among the 4 exit stations ('intermediate-station ETA v1 not open, Phase 3 takt-graph shortest path' — never guesses), and routes to the unified engine under DSS_DUAL_RING=1.",
+      "evidence": [
+        {
+          "resource": "repo://docs/07-T6-lite%E8%AF%A6%E7%BB%86%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92.md#L77-L94",
+          "version": "repo-lines-v1:sha256:95d53d60279885c8874d44a6b00601461b6804d298d367655429f6126a71a0cb:eyJzZWxlY3RlZExpbmVDb3VudCI6MTgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjUzZmE2NDNhMmRkM2MzMWEzOGNiY2U2MTZkZjRhYzhhZTdhODA5MzAwOGM1MTIyNjQ1MTM4YzEwZWIzOGEyMGEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImMwZDU4OWNkNDhjM2I1ODk4M2UyZjNmNmQxNWY0ODBlYmEzYjhkMjFlNGY2YWI1NzJiZWRlNWUzMTliMzg4YjQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjM2ZWU2NmU2MDBjZDk1ODE4OTgyZjFiNjdiYTAxOTE3Y2M4ZGRiZTAwMjRmNGE4NGVmMTg2OTU0OGY4NTY4MzciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImVjNzhlZTlhNTVmMDUyMTg1NGZmYjQ1NjRlNjJmMTI0NmM3ZWZiMTkyZTJmYjg2MjIyOGVlNGMxNDQzN2E1YjUifQ"
+        },
+        {
+          "resource": "repo://spike_w3/dashboard.py#L331-L417",
+          "version": "repo-lines-v1:sha256:5372cc281f81e3a25fb45b0b53c21cf0d61836aa82fb8e785a03e4029431161a:eyJzZWxlY3RlZExpbmVDb3VudCI6ODcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI3Nzg2NDAyMTg2NzA4OWJmZjE5Y2ZiMzVkNDE5ZmE4NjViNTVkMmY5MjhiYzMxYzExMjA1OTM5MGE3ZjkxOTEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImZhOGEzNDA0OTZkODBkYjU4MWVmYWNiYWQ0MzA3OTFmYmI0ZDNlZTQ0ZDlhZWI5OGQ0MmU2ZmU0MWQ2NmIxNzQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjczODI2MTY2YWQyY2FlM2I2ZjgxYTNiNjRkZGE2MzcxMTliOTUzNGQ0ZTYxNWQxYjY2NjJlNDU5ZGFlMTEyODEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjVmYTBkNzAwMjExNTdjZDc3MGIwNGZkZDZmNmY0NDMyMTlmNDRlYTc4MTY1ZWJiNDliMmU5MDliMTdlZTVkOWEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_38dd1106f8b64a82ac364c1ee1d9da6a",
+      "statement": "make_t6_hook returns the per-round hook closure installed as round_hook on the 01_boot_online main loop (after each run_one_round): it resolves the active shift via active_shifts_at, computes the shared pool view once, advances the AlphaTracker only in on mode (update then read committed), calls engine.evaluate (STALE → []), assembles build_frame_ctx, writes the snapshot, and renders the frame via the sink. build_t6_components assembles the production components (tables/comp_excl/section_map/engine, tracker only when alpha_mode=on) and resolves the run tag; 01_boot_online.main wires the hook when DSS_CONSOLE is on (default), and a failed console assembly prints a warning without blocking the main loop; DSS_CONSOLE=0 (hook None) leaves the loop byte-identical to the frozen T2.6 behavior.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/01_boot_online.py#L336-L367",
+          "version": "repo-lines-v1:sha256:4ef82dcaf9f3f737679efc62d1723b3c3a4b4d3d448e7c1341c1949c25cbe5f7:eyJzZWxlY3RlZExpbmVDb3VudCI6MzIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBjODFiNTEzMWVhYzFhNWEyOGFiM2FmYWYyMzk0NjgyZDNiZWUwZGFmNDgyZjRhOGQzOWExMGNjY2Q2YmQxZjYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImMwZWFkMzU3ODgxZTg5Mzg0NjFmYTdmZTBiZWE3NDRmZmZlYTk1MDg1ODRjM2FlMTVkNmExNGM5NzM4MDdkMTQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjdiYmUzZmJmNmE2YjExYzUyOTVmZGE2NjM4YWJlYjhhNDkzODJiN2MyNWE3NzAzMjY5MTUyY2YxZDc4MjY3NDQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijg5NmRjMmJmYmJkOTk1NDFlOGJlYTViZjVlNWNhZTQ3NGU4NGM4ZGVkMjU5Yjk0MjcyYTM4MjdkMWYxMTEzOTIifQ"
+        },
+        {
+          "resource": "repo://spike_w3/dashboard.py#L486-L556",
+          "version": "repo-lines-v1:sha256:8bac1942589982d8a2dc2d02590d2c199ae877a60b8b3b9c5319fbbbdc5e052e:eyJzZWxlY3RlZExpbmVDb3VudCI6NzEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNlZWM3ODJiZDlmNzhmYmZhMDFkYzlkY2EwYzI4NDA2YzMwMmExMmE3MGNiYjA0NGI1NjY1Y2RjYmRhNTEzNjMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjZlYmFiN2ExMWE5YjQ4NjBmODFjODNiMThhNTgwNTE3M2JkYmUxOTBlMDJiZWMxNTRiMTE1NTM4NWRlOGFmODEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImVkOTkyNTQyMzMyMDhjZmQ4M2JjOGY3NjJmMTAxNjY0OGI2NDZlZmE0ODQ3NjI0NjI3NGViM2MxZGZjMmRiZTkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQ0YjQ2Yzk4MGNhMjdiNmYxODRkZWIwOWMwYTE1YWVlM2JkMzNhYzBhZDIxNzA4NzI1ZGMxNTJmMDMwNTkzZmMifQ"
+        },
+        {
+          "resource": "repo://spike_w3/dashboard.py#L559-L623",
+          "version": "repo-lines-v1:sha256:eebf42d455dab8967bf2d37de1a119c139e83c2c7f6158d3b038aa8f02db99ee:eyJzZWxlY3RlZExpbmVDb3VudCI6NjUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFlZmRlNDEzZjMyMjk0NDRkNGViYmM5ZTlkODM4MzMxNmRiZDkzODQ2MjcyZmZjYWMyNmQ5MTc3OWEzYWU4NGEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImY1ZWRiODBjMWU0OTIxYjI2N2EyMDgwYTgxODRiMDNhZGE4MGU3ZTU4YmRhMzE0NjRmZGI0N2VkYmViNGU1YTYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjdjNjIzNGQzMzVhOGIxM2ZmMmQ5NjNlOGE2MzQzN2EwNzQzYTJkYWFkODI5M2VhYWI2M2MyZjRmYTViMzRiOTMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjIwZjU4OTE4OTBhM2Q4YTkxNDk0YjA3ZTNiMjBlMWQ4YzkwZDYzM2Y1NmJmNjNlNjdiYmY5MjkxMWE3YmMyNTgifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_dde57bd95d92433a81355904c9c7c647",
+      "statement": "02_shadow_replay.run_rolling accepts an alert_hook parameter that defaults to None (zero production impact: M9 behavior byte-for-byte unchanged); when supplied it is invoked every 5-minute step with (cur, pool, conn, tables, comp_excl, cfg_m9, [active_shift] or []) and its returned serialized alerts accumulate into the run_rolling result. The M10 driver 03_alert_backtest.make_hook builds exactly such a hook reusing run_rolling + _pool_view, and its gates are G0 unit tests, G1 day-total accuracy (21:30 anchor, median ≤5pp + zero red), G1b engine pred == M9 pred_off@5h, G2 level == grade(Δ), G3 advance ≥2h, G4 no confirmed transition in the [anchor−10min, anchor) window (transition count demoted to the observation item G4_obs per the 2026-09-26 decision B), G5 pool identity, G6 full 21-scope-day coverage.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/02_shadow_replay.py#L390-L402",
+          "version": "repo-lines-v1:sha256:6aab46b37d1bf0811349a583ddd8594c6f1c332da34834dfdd131e4c63d8e73e:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjljYmJkNDExZmY3NDA0MDcyNzI0NDhjNDcwODIyNDQyYjJmZTNlNzYyNmJmYTdhYWEyYzE4MjY3NDFmODJmNDMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjEyODY0OTYxYjQxNDQ1NGRkNzNkYzZjY2E1ZjliYTNlOTQ4Njc2ZTdkZGVkMTRkMzJiY2U4YTg3Y2YwMGNmNTUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjA3NmMwNjVhZWMzMjYzMTE5NWNkYjNiMmMwZGY2OGQ5YjNhMjI1N2JhMTg5Y2M5MzQ3MmU4MjVmOTQ1NTE5ZjYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImE2ZmZhZTcwMDQ4Y2E4ZjBlY2FkNzFkMWY1MDIyMWI2NDFmYWI2YzEwYTg0OTRjMjhlMjBjNzNlMTMxMTZkNDYifQ"
+        },
+        {
+          "resource": "repo://spike_w3/02_shadow_replay.py#L493-L504",
+          "version": "repo-lines-v1:sha256:45e89d14268e9e01f4d3d4d34f0b179adb9929b92d7343049e8595e79bb1ff2d:eyJzZWxlY3RlZExpbmVDb3VudCI6MTIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjZmNmIyODE4OWI3OWU3MTdjOGM0YTk3NTViMDIzZWUzMDg3ZmRkNGMzYTMxNmIyM2QxYzhlZWRhN2FlYmRjNDQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjZmOWEwNjkzZDhmNWM0Y2Y5MDUzYWQ1NWI1MjAxOWQyNjE4YzA1NGRkOTNhOTM4NWMwMDFkYjIwMWFiMjRkNjAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImZjNmY3Y2JmMTFkOTU5MDE3ZTZmYjI3MDMyNTViYzAzYTlkZjU4YzFmN2E1MGFiNjdlZTM4ZTIwZjNhNzk2NzYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjIxZTQ3MjhkNmY0NmI2MWRlZDdkYjQ3ZmVlOWNkYTAxMzJiZjlkMDIzNDE2YWQ0OGNhYWU2YzRlOTA1ZTFhMTkifQ"
+        },
+        {
+          "resource": "repo://spike_w3/03_alert_backtest.py#L185-L266",
+          "version": "repo-lines-v1:sha256:2007cbcd334193583de042ebe21dc95dd75531a7ef3a767dfa5b0fd73405e4fb:eyJzZWxlY3RlZExpbmVDb3VudCI6ODIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE2MGU3ZjdhODhlOGM1YjBhNGU2NTc3YjQzZGExNWIwMTEyMDhmM2JmNGY2YjM4Y2EyYzYyMjUyYjk4NTg3NDkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjYwMWQ2NDhkZDlmMmNhM2ZkODIzMDVjY2FkMzcxZTg5NzE3ZDI0YzU2OWM0YTFlZGYxNWIwY2Y4YzIyZGZmNWUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjI5ZmM2Yjc2ZjViYjFmYTBlYjM3OGZjMzhjNTA4MGYyNDQ5N2QyMDI1ZWVmNGEwNjNiZmRkNWFjMWViYzM1MzQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjIxZTQ3MjhkNmY0NmI2MWRlZDdkYjQ3ZmVlOWNkYTAxMzJiZjlkMDIzNDE2YWQ0OGNhYWU2YzRlOTA1ZTFhMTkifQ"
+        },
+        {
+          "resource": "repo://spike_w3/03_alert_backtest.py#L408-L409",
+          "version": "repo-lines-v1:sha256:4fba761ec76e33578c321c32587844c3300a1a56d37bd56e13ebf389e71d2842:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZjMwZTBlZmU2NzRhNjgzYjVjZjcxMTMxNTI5MjEwMDg5YTg0YzJkNGJkY2Y0NmJkNzA4OTgzNWZkZDY1MDQzMyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiODM2MDQ5YTBkMWQ1ZTJjMzQ2YTc4NGFkNDM5ZmUwYTBhYjQyOTRjYjhmOTM5OTUwNGRlNTM1N2RiZWRlZDRjZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOWRiYTMxNjBhYjY0MTY0ZTY4MDg2ZmE3MWFjNzAxOTA2MDVkNzJhNjI5MDE3Zjc5M2NlOTJiODVlNmM3OThlZCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZGI1ZjZiNjYzZTE4MDY2NjcwYzBlYTBjNjlmNTQ5M2EzMjlkMDk0MzM0MGYyMWRiZWUwODdmMGQ3NTkxMjU3NCJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_67eb0ef3f17347118d689fa8f8e04c94",
+      "statement": "The M9 gates() pure function judges acceptance per alpha_mode: G1 (alpha=off engine consistency, both modes) = per-shift |roll−static| ≤ min(p3_inproc, 25)+2 with the p3_inproc ≤ 25 hard cap AND full-factory and mid-shift 5h relative medians within 0.5pp of the static reference (relative gate, not a hardcoded absolute baseline); in off mode (production default) G2 = off-median ≤ 10% absolute line, G3 = True (α not enabled), G4 = False with main-side soft handling (not blocking when G1–G3 pass and DSS_G4_HARD is unset); in on mode G2/G3/G4 use the α=on medians (on ≤ off, mid on < off strictly).",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/02_shadow_replay.py#L106-L147",
+          "version": "repo-lines-v1:sha256:d07135a1d137b96f350b288160a45a7136d11002f460489bca3491c905b13d9e:eyJzZWxlY3RlZExpbmVDb3VudCI6NDIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjEyZWEzNjAyMWRkM2ExYmY5MWUzNGU0ZDA4ZDFmMmI0ODdhZGNlMGY3MWMzZWVlOThhN2E1YmRlZjEwNGU4MzAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjEzYWJhZTA2YWE4Mjc3NzU0Y2U4MjZiN2U2MDE0NzY5OWZlYWQ2MzJlMWUwMTQyOGUzYjcxY2RkYmZkZTc3NzkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjA4NDI5MDRhYjQxM2QwNTRjYjcyZTRhYTU3NmM2YTMzM2VhYTgyNTEzZWU5YTkwMTM4YzNiMWQyNzYxOTg4NDMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzMzU1OWNkNmRiOTdjNzcyMmFiMDM5YTgwYjM0Y2U1OWRlZjE4N2JmYjhlYjQ0NGFmMGRlOTMwODNkNzI1YjEifQ"
+        },
+        {
+          "resource": "repo://spike_w3/02_shadow_replay.py#L737-L740",
+          "version": "repo-lines-v1:sha256:4446b8c05a52a1cd44e304aef05e258a05f5abf283d7dd7a9491a6c9ad9596f1:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNzAyOGVlMzBlZDc2MTg2NGQ4ZGVkNzI2ODJhNzk4OTMzMmFjNDEwNjQyMjIxMTJiMWE5NWVlMWI2OWU2OWE2ZiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOWY5NDZhM2IyNTQ5NGVkNDlkMWIwMzQzYzlhNDAyNmI3ODkzZDRhNTI2NjkwMWY0ZDJlNDE0ODUwYTIwZWVmOSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMjJlODkxOTM2ZWQwYTY1OTZhN2U3NGI5MDFjM2IwODNhNDIyNTMyMDZjYTZmOTQ1ZjNkZDAxZDdlYTk2ZDJlZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNzdjZTMxNWRkY2RjMDNlMjk3YWE0NWI3MDBkYTM4ODc5Njk1ZTRhMjdkZDE5ZDI4MjJiOTcwYjgyNmMyMjRhOCJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_c95e50a9154b4116abc62797618f42ee",
+      "statement": "The focused test surface is fully synthetic (offline): tests/test_w3_predictor.py pins rem_of/a_of/predict (alpha=1 vs alpha=1.2, stale-still-counted, non-product exclusion, tz TypeError) under DSS_DUAL_RING=0 + DSS_USE_NET_DELAY=0 (unified-engine rem_of semantics live in tests/test_w4_engine_wiring.py); tests/test_w3_alpha.py covers build_takt_baseline P50/fallback and the full AlphaTracker lifecycle; tests/test_w3_m9.py covers the gates() pure function with each gate flipped independently; tests/test_w3_alert.py covers split_target/grade/Debouncer, the dual-scope engine (union double-count regression, F10 window, STALE freeze, flag layering, identity, deb_state pure-read); tests/test_w3_dashboard.py / test_w3_snapshot.py / test_w3_eta_menu.py cover frame rendering (five states, pre/post-anchor grade gating, replay banner), snapshot schema/atomic write/tag anti-overwrite, and the seven-branch compute_eta; tests/test_w3_t64_hook.py covers the T6.4 hook (call order, STALE round, deb_state regression).",
+      "evidence": [
+        {
+          "resource": "repo://tests/test_w3_alert.py",
+          "version": "repo-file-v1:sha256:e551bdb2c106a61e0a59121243e851ff958f91839edd3b48145367c2733f28bf"
+        },
+        {
+          "resource": "repo://tests/test_w3_alpha.py",
+          "version": "repo-file-v1:sha256:5f4cd7fce0d5c7498a2098a19c4b1adfc5c7a52410808bec05f7f24547a2027e"
+        },
+        {
+          "resource": "repo://tests/test_w3_dashboard.py",
+          "version": "repo-file-v1:sha256:b5124af9bb4f182ed883b43dae68f06002d353081e96c5ce8b5bbcc0abc81571"
+        },
+        {
+          "resource": "repo://tests/test_w3_eta_menu.py",
+          "version": "repo-file-v1:sha256:06453bb7c5c31c37e51fb720518520f33b369e6f1cf9fc35e2b9d9c464dc74c6"
+        },
+        {
+          "resource": "repo://tests/test_w3_m9.py",
+          "version": "repo-file-v1:sha256:95494434682d68dfd615485ce6f27cb81a0cd3cb637a2185e30438a88cc1910d"
+        },
+        {
+          "resource": "repo://tests/test_w3_predictor.py#L1-L77",
+          "version": "repo-lines-v1:sha256:3fd5e0ef609de2d7fd3e47c00236eef268a5a01d35ca14867bb5b7207252d3df:eyJzZWxlY3RlZExpbmVDb3VudCI6NzcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk1NTJmODU0ZmNmNzczODkxNjBhMDhjZmI0YmUyZWI5MDJjZDlhMGMwYWY3NmFiNTdkZjAyY2JmOTEyNWQzNjkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjZlOGQ3NmU2NmJiNzhhZmIzYTE2NTZlN2ZhZjE0NTU2YWM5M2RkYmExOGQ3NzVjNDNmYmI4NzEzOTFlOTJiYjQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjI2Nzk4YjE0NGI1YjQ0ZjA0M2UzNWRmM2Q4YzAzYzU3ZDc3MjdlZTNmN2IzZDAxZTdkZWY2ZDc4M2FkZDU0YWYifQ"
+        },
+        {
+          "resource": "repo://tests/test_w3_snapshot.py",
+          "version": "repo-file-v1:sha256:ceffe788128cf675d6d907c58029ce0988b7d59ab240955e5606451818f2976b"
+        },
+        {
+          "resource": "repo://tests/test_w3_t64_hook.py",
+          "version": "repo-file-v1:sha256:ab464cb0e231922846dbd8ee8d1ba5301a8c5c324e353f72d66aa11d3bf4554f"
+        }
+      ]
+    },
+    {
+      "id": "claim_eafde62f131e48b7a470b02ac60a0986",
+      "statement": "Every entry point in the T3/T4/T6 chain enforces the shared timezone discipline: naive datetimes raise TypeError at rem_of/a_of/predict/obs_window/AlphaTracker.update/AlertEngine.evaluate/Debouncer.feed/active_shifts_at/build_frame_ctx/write_snapshot/compute_eta, on the Asia/Shanghai baseline (single DSN with SET TIME ZONE 'Asia/Shanghai'), machine-enforced rather than documented-only; the W2/W1/T2 upstream files remain zero-change (predictor/alert_engine reference them read-only via importlib).",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/alert_engine.py#L197-L198",
+          "version": "repo-lines-v1:sha256:cd8c0118d9489d332752919c8dfbb418a4b9b736a2b8bab7cec0ad372fb438a4:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMzRkNjU1NGJkNzY4YjAzMWM3ZTI2ZWQwMWFlMTJkYWI2ZmYyY2M4OGQ4ZTk1YTNhMjQ5NzU0MGUyOGVhNDQwNyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNWQ0OTZjMTY0NWJlZTAxNGFhYzA5YjE1MmYyMzg1ZWVlNzgxMTQ0ZjI5MzY0N2VhM2ZmNmQwMjhkN2Y2NjFhMSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMjBmOTVmNjMzMWE1N2M5NWQ0NzE3ODA4YjI3NzdjMDRhN2EyNTAxODQ0NzBlOTkyZjIxZTQ5ZmU4ZmVhNjc3OCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZjczOTlkOWI5YjVjNzg3NWFkN2FhNDI5ODM0MzhjNTE4NDI4NmQ4NmE4NTQ1MjYyNDMzNTBmMDhkZmQ3MTlhMyJ9"
+        },
+        {
+          "resource": "repo://spike_w3/dashboard.py#L30-L32",
+          "version": "repo-lines-v1:sha256:fb71f69fbdc84cecbd0455538afc97c3dede93b98a4e0fa63835a5fb48e7d514:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOTI1YjU5MjcxNzhmZWJkNDQxY2MyYTkwYTQwM2UwOWNhYTQwYzFiNDYyZGJkMDg3MWExNTk1MTY0MTA5YzFkNiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMmRjMTVlNDMzMGUzNGFmNjBjMTIzMzJhMDU2MDE5YTYzNTJlZTM3ZGRiNDY2MzY4MzZjZmFiNzA4YzFlZjY4MSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYzdhNmYzMWZmYzZlMDkyYTYzMzc4ODQ3ZThlZDk3ZmNlZmQ4ZWFjMWM4MDBiNjM0Y2VhODEwODdhMDBmODE0MCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZDk2YTY3NTA5YjMzNDgzZDU2NWEyZTc1MTM3ZWQ3MjNjZDAwMzkwMGEzZGNjMzc1NzExMTRiZGUxZGE1MzQwYiJ9"
+        },
+        {
+          "resource": "repo://spike_w3/predictor.py#L1-L8",
+          "version": "repo-lines-v1:sha256:26fa4c25a16b65fa7b958de49183d94a5c0e581bfa42d1ec463b763b0da528bb:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOTU1MmY4NTRmY2Y3NzM4OTE2MGEwOGNmYjRiZTJlYjkwMmNkOWEwYzBhZjc2YWI1N2RmMDJjYmY5MTI1ZDM2OSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNDc1ZDQ1ODllOTFjYzhjYjk3NDg4OWRhYjAxZGUxNWRiMTU3NGNhMTBlZWM3MjkwYTEwOWJmNTg4Yzk0ZTAxYiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjAsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZGYxYmExZTZhYzlkZjA3MTFkMTYzNmZlOTNjZjFiMTExODA1MmY0MGQzMjkxZTI2NGFjMjY2MDRiOTJjODZjNyJ9"
+        },
+        {
+          "resource": "repo://spike_w3/predictor.py#L24-L26",
+          "version": "repo-lines-v1:sha256:16e96702bb33cc70f0fd22158f6a63d2a1347d30e5223f9130b0b51e7a90eb6c:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMThiM2E4ODQzMjYxNGU4MGJjN2E3YzhlODNmYWYwZGRhYzJkNzNkY2Q0NDcwODdjNDIxODU1MGRkOGRjMjE2MiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiY2FhNzNkMTllMTkwZTFmZjM1NjUwMzE0YjAxNDMwMTQ1NjNmZDY5YTc4OWY3MjY3ODBiMWIyOGU1MGVlM2UzNiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYzBiOGVkYWE5ZjI5ZGFlZmFlNGEyMjI1MmUyYjcxYTVhNGYxYTg0NDRmMTZiYWYyYWJhYTc2MTJmNTVmMzdkZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiOTYwZGJkYmVlNjRkZDM0MGIxMmVmMWYxNjY4OWQ2ZGQyOGNjMGVlOWIwNGIxNTRjZDg0NWRlMzdiOTE2YWQyNiJ9"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.7.0",
+    "at": "2026-10-08T13:05:24.547Z"
+  }
+}

@@ -1,0 +1,444 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:7697d0eb16784c64d24552c0d8b6c6b0c52edb62e45c03682705841d161c2773",
+  "claims": [
+    {
+      "id": "claim_aa5bdfbbe30a42209ad8cd243beaa9f6",
+      "statement": "M5 is the final W3 acceptance: the DSS runs continuously online for 5 calendar days in the intranet production environment, with the main gate of 5h-anchor prediction accuracy at ±10%, plus alert behavior and stream-cut breaker checks; the acceptance code baseline is branch w4-dual-ring @ 0544fff (W4 dual-ring closeout + W4.4h), and the unmerged main branch does not affect deployment because the intranet only sees code content and versions are recorded by commit hash.",
+      "evidence": [
+        {
+          "resource": "repo://CHANGELOG.md#L15-L19",
+          "version": "repo-lines-v1:sha256:ef480ec6ce39a8f9b2006bdf84964132c12b72591620dade2f35c023db93e9ed:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiY2I3YTZlYTMyNTc2Yzg0ODQ2NDU3ZGQ0ZGViZDMzMzZiN2NlYTAzMTk0NjUzMzAzMDg3ZTE2ODUyNGYwMGQ2YSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNzczOGZlNDk4NzU1Mjk4NTM3YmI2YjY1NDE4NWI5YjcxZGUzNWQyNjVjOThiNjZhYmQyZDk1NTRlYTNkZDYxNyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZWFmZjdmY2U3MjkyNzI1NWE0ZjJkYWUxMjc1ODI4NWUwNDhhYWYzODViZDk0YjA1N2UxOGY4ZTcwOWEwOTFkMyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMjIyYmViOTk4M2JjMWIxMDA4ZDJhMmI0NTY3ODRjNWU4ZTRjMWJmNzA1ZTVmZDhmNjIyZDJhNzk1YjA5NTIxYSJ9"
+        },
+        {
+          "resource": "repo://docs/09-M5%E5%86%85%E7%BD%91%E5%9C%A8%E7%BA%BF%E9%AA%8C%E6%94%B6%E8%BF%90%E8%A1%8C%E6%89%8B%E5%86%8C.md#L3-L4",
+          "version": "repo-lines-v1:sha256:e72af43a2622d961251f399b2ceb401a2109e823460f3a609474c7a567aaebc1:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZjY2NDQ1N2E4MTVmMmFiYjljNDkxMWVmM2YxNDcyMzVlODMxNzRhOTEzOTY4ODcxZGUwNGE2NWE5NGJmZjA4NyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYmM4OTMxNGY1NDQ5ZGQ3NThiYWRjMjM5YmIzYzc2NjRhZWE3YzgyZWZiNDA0OTAyNzhmMzhhYmQ4ZDgwZTgzYiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjIsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZmFjYTllODI3OGFkYmUwNjg0NTc5ODVmOTc5NDg2MTYxNDRmZjk0NTJiNmM5OTFhNTQ2YTI1YzU3MmI2Y2ExZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMGFhYmZhMTU0MjEzMmJlOTk4NmIzNjY3YjI2NGRiMmY0ZTQzMTA3MTVmODYyOTE2MzhhMTlkNTk5NDYyNzRhMSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_c9d0f24f09bc4a079f3c278b3261ab47",
+      "statement": "The intranet environment has no agent, so all M5 operations are performed manually against the runbook docs/09-M5内网在线验收运行手册.md (v1.0, 2026-09-29); the only automated deliverables are the acceptance scoring script spike_w3/04_m5_acceptance.py (14 unit tests + real-DB smoke verified 2026-09-29, end-to-end re-verified 2026-10-07 after the W4 change) and the d0_check.py pre-flight script.",
+      "evidence": [
+        {
+          "resource": "repo://d0_check.py#L1-L9",
+          "version": "repo-lines-v1:sha256:5e03ee505bc47704fe72301b76cfd7c30b68fb60960a591299d75abcf6c90108:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNjU0MThmYWE4MGE0MzNkYjkwMmJiMjQxMDY4N2RhZjE5ZjgzOTg0NmQzMTQ2ZDUyZDU2OGM4N2FhYzlkMzFmZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNDc1ZDQ1ODllOTFjYzhjYjk3NDg4OWRhYjAxZGUxNWRiMTU3NGNhMTBlZWM3MjkwYTEwOWJmNTg4Yzk0ZTAxYiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjAsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTFjOGJlOTA5ZWYzNjQwMTAyNzMzOTk5NWFiNDBlNmNhY2RlNWY1NTVlNWZkNzRkOWFkMTkzMDY3MDA2MTg5NyJ9"
+        },
+        {
+          "resource": "repo://docs/09-M5%E5%86%85%E7%BD%91%E5%9C%A8%E7%BA%BF%E9%AA%8C%E6%94%B6%E8%BF%90%E8%A1%8C%E6%89%8B%E5%86%8C.md#L3-L5",
+          "version": "repo-lines-v1:sha256:526012f3d49d3e5a9b7c67fa020292f6b6cd954474f2838a0a4554ea7494b775:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZjY2NDQ1N2E4MTVmMmFiYjljNDkxMWVmM2YxNDcyMzVlODMxNzRhOTEzOTY4ODcxZGUwNGE2NWE5NGJmZjA4NyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMmI0ZjQzMDVmMWM4ZTk2ZTI4NmM5NzZhOGI1NzEzOTVkOGQ3NjgyNGJiMzhmNmQ4MDJjMTU1NjZlNWIyNjc1OCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjIsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZmFjYTllODI3OGFkYmUwNjg0NTc5ODVmOTc5NDg2MTYxNDRmZjk0NTJiNmM5OTFhNTQ2YTI1YzU3MmI2Y2ExZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiODNlMGRlZjg3NTUwMGE0Y2RkMmZmMTlmZjg3MThlZjcyMGUxZjdiMTQ5YTE0NGI2YmIxZDdkMjQxNmJmZTM4NyJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_7eec6220223e45d78021c0e2e80878f4",
+      "statement": "The M5 run path has 5 stages: Stage 0 public-network preparation (half day: archive code by commit, prepare a real forward-looking week plan CSV, pick 5 days avoiding line-stop/maintenance/rest weeks), D0 intranet deployment (half day), D1–D5 continuous online run with one startup (≈10 min manual checks per day), and one-hour closeout scoring; planned rest days are automatically excluded from the acceptance scope.",
+      "evidence": [
+        {
+          "resource": "repo://docs/09-M5%E5%86%85%E7%BD%91%E5%9C%A8%E7%BA%BF%E9%AA%8C%E6%94%B6%E8%BF%90%E8%A1%8C%E6%89%8B%E5%86%8C.md#L11-L16",
+          "version": "repo-lines-v1:sha256:d0540797ca3e1694a6d2a8997264608e8c7382855fb7e15955bf99b99cf87623:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZTJhYzI2ZGJjOWZjYjNkOTgzNTg0MjgxMWExYzIzM2ZhM2QyNTQyNmQ0ZTllNmM4MDg3NmEzOTJjN2JhZjU3ZiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNjZmNzZhN2ZkNjIyMDBkMjA4NDRiZWVmMjQyMjk2NDAzYWYzN2JhNDEwZGU2NjJlZjY0N2FjMTNiNzc3NGRiYiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTM5OTdlNjI2ZmJjYWZhNWNiMGI5OTZmMDI5MzEwMzljNWNjYjVkMTY1MzUxYzY0OTQ3MjEyODUyNzg5MjhlZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZjVkZWYxZjg3MTUyN2E4Yzg4OWNjOTQ3NGUzZWYzNTA4MjRmYmRmZDc0MTFmMWMzYTczMzZhYWRlNzA4MmYwYyJ9"
+        },
+        {
+          "resource": "repo://docs/09-M5%E5%86%85%E7%BD%91%E5%9C%A8%E7%BA%BF%E9%AA%8C%E6%94%B6%E8%BF%90%E8%A1%8C%E6%89%8B%E5%86%8C.md#L22-L29",
+          "version": "repo-lines-v1:sha256:28b1203935de2f95d93dfbd24ac676ff6a417558b74136fc089ec89816051e90:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNzdjYmU2ODBiNWJmNWFkMjM1MThkYTAxMDBiNTY2MmE0ZDc3ODU2NjM5NzUxYzQzMDhlZWRmZmNkY2Q0Y2QzNCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMmI4MTQ2MWE5YThhODE2OGM5MzliMmFhZDI4YWM2Nzk0ZDBlZGNhM2VlODY0MWVkNTRiMDViMzk2Y2VhZDBiZiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiODNlMGRlZjg3NTUwMGE0Y2RkMmZmMTlmZjg3MThlZjcyMGUxZjdiMTQ5YTE0NGI2YmIxZDdkMjQxNmJmZTM4NyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiODNlMGRlZjg3NTUwMGE0Y2RkMmZmMTlmZjg3MThlZjcyMGUxZjdiMTQ5YTE0NGI2YmIxZDdkMjQxNmJmZTM4NyJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_32b89835c39e4ceb81e23581db5a6289",
+      "statement": "Standing red lines for the whole M5 run: read-only access to the ods/dim/fct/mart/meta layers with products written only to the dss layer; no DSS_* parameter may be changed during the 5 days (any change voids the acceptance); a stream cut must not kill the process (wait for RTO ≤1h recovery and record the span); and output/snapshots/m5/ must not be deleted because it is the audit trail.",
+      "evidence": [
+        {
+          "resource": "repo://docs/09-M5%E5%86%85%E7%BD%91%E5%9C%A8%E7%BA%BF%E9%AA%8C%E6%94%B6%E8%BF%90%E8%A1%8C%E6%89%8B%E5%86%8C.md#L18-L18",
+          "version": "repo-lines-v1:sha256:5b299b6a19c237cecc9b6c0d053738e5c72f58bdbe5c2e361b323fd862cad296:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNWIyOTliNmExOWMyMzdjZWNjOWI2YzBkMDUzNzM4ZTVjNzJmNThiZGJlNWMyZTM2MWIzMjNmZDg2MmNhZDI5NiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNWIyOTliNmExOWMyMzdjZWNjOWI2YzBkMDUzNzM4ZTVjNzJmNThiZGJlNWMyZTM2MWIzMjNmZDg2MmNhZDI5NiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZWM0MWY0NjRiZjVlZDViYmUxNjk3ZmE1MjVjYWRjNmZhYjU3NWFkN2E0OTQ0Yzc2ZjYzYzVlMDQ5ZjlhYTk4ZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiODNlMGRlZjg3NTUwMGE0Y2RkMmZmMTlmZjg3MThlZjcyMGUxZjdiMTQ5YTE0NGI2YmIxZDdkMjQxNmJmZTM4NyJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_6cbf881958c2424a942bf8483ae1307c",
+      "statement": "d0_check.py (run as D:\\dss\\env\\python.exe d0_check.py on the intranet deployment machine, session set to Asia/Shanghai) performs two checks: (1) DB connectivity + ETL liveness computed as now minus MAX(\"DATE_EVT\") of ods.carbody_history, with the original interpretation threshold <5min = normal / >30min = do not start, contact the intranet data owner; (2) a dss schema table inventory, where after the learning-table build the 13 mandatory tables should all be present.",
+      "evidence": [
+        {
+          "resource": "repo://d0_check.py#L17-L30",
+          "version": "repo-lines-v1:sha256:6fa7cb3e452850abe193dae69130ac767803b5c1763a78661609fc94a95bd216:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU4YjkxOWFmMTViMGRhOTVmMTFmY2U2YTBlNzY2MzdhMmRlOGI5Mjk3N2EwYjc3Y2M5MmU1Y2IyOWM4NDliOTEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBkZDUyODllYmRjZjZkNTBhNzRiOGMyZDkwNTRhN2NkZTdmNjVkYjIxMDU4ZjA4NTA5YzYzMGU1NTU4NDFjYTQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImNiYzQ3NmIyYWVmMjZlZGM3MDNlNTExMDM0YjdhYmY3YjVjMTc0NDQ5YzVjN2YyNTE1OTA0MTk3MTAyNDY0OGIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjoxLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImI3NmNkYTc0OTE2OGQzMzgyZjA3ZTZkYjRjYmE0N2ZiMGM1ZmJmZTIxNmUzMzU3MDYyNmNjZjI1MTVkY2E1ODgifQ"
+        },
+        {
+          "resource": "repo://d0_check.py#L6-L9",
+          "version": "repo-lines-v1:sha256:826bc5afb68b8cc0640d5400fed4eee711c6e8f31325faf50080922f38692843:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOGJhN2Q3MWYzZWVhZGEzODMwZjcxMTk0MDkxYmRiOTI1YjM5NDFlYTI5NWM0NzZhZmNlZWM1ODcyZWRjOGYyMyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNDc1ZDQ1ODllOTFjYzhjYjk3NDg4OWRhYjAxZGUxNWRiMTU3NGNhMTBlZWM3MjkwYTEwOWJmNTg4Yzk0ZTAxYiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMzNmZTIzMjNkMGMxYzQwMzVkYTQ5YzhmYTViYzdlZjZlZTFmNzA2NGViNGFjYzA1NGM5ODE0OTA0MDk5Yjk4MSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTFjOGJlOTA5ZWYzNjQwMTAyNzMzOTk5NWFiNDBlNmNhY2RlNWY1NTVlNWZkNzRkOWFkMTkzMDY3MDA2MTg5NyJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_fe5fc66df8534946ac60932507687516",
+      "statement": "The D0 .env is copied from .env.example and only 4 places may be edited: the DSS_DB_HOST/PORT/NAME/USER/PASSWORD block (the intranet production DB, requiring CREATE on the dss schema plus SELECT on the ods layer), DSS_PLAN_FOLDER (the acceptance-week plan CSV directory), DSS_RUN_TAG=m5 (all 5-day snapshots land in the same output/snapshots/m5/ directory), and optionally DSS_SNAPSHOT_DIR (kept at default). The agy blocking fix F1 (2026-09-29) made DSS_DB_* actually honored by the connection layer: spike_w1/common.py::_dsn() resolves DSS_DB_* over the 127.0.0.1 development defaults and connect() re-resolves it on every call.",
+      "evidence": [
+        {
+          "resource": "repo://docs/09-M5%E5%86%85%E7%BD%91%E5%9C%A8%E7%BA%BF%E9%AA%8C%E6%94%B6%E8%BF%90%E8%A1%8C%E6%89%8B%E5%86%8C.md#L43-L52",
+          "version": "repo-lines-v1:sha256:35584e4c32aaaba6b27e575c58110201bb1302bc50bc6a42248aa222ad1a8cfd:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjM1NTRiYTY3ZGIyODlkM2NjY2EzZjczODcxMGQ4OThmYzliZWI0YzEwYjFhZmM3OTg2MjYzNjc2ZWQxM2ZiZTgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBhMGMwYmI1MDYxNTk2NmEzNTNiZGI2OTZhYWRkYTEyNzk3NDE1ZTBlNWE4ZGZkNzQ4NmM3NWVmMGQ1NmMzZTIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImU5M2JjN2ZmZmI5YzY1NDM4Y2VmNWVkYmM4MTM0NThmMzRhYjliMDJkYmNmM2RhYjJlZjMwNzhjNzFiYmMzMzUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjM3ZTMxMmUzOTYzMGRiM2FhNWQ4NTJhNmM4NTQ2Y2QyZjg4YTQ2NTVjOWMyNWJhNTFmYjVhMTNiN2ViM2VmM2EifQ"
+        },
+        {
+          "resource": "repo://spike_w1/common.py#L1-L46",
+          "version": "repo-lines-v1:sha256:6d1c2b6d483dea6b772bbcebc26eb81b0e829a08ff7f721aee38fa5e0d6a7eac:eyJzZWxlY3RlZExpbmVDb3VudCI6NDYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk1NTJmODU0ZmNmNzczODkxNjBhMDhjZmI0YmUyZWI5MDJjZDlhMGMwYWY3NmFiNTdkZjAyY2JmOTEyNWQzNjkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFlZjI3NmFlNzY4YWVlZmYyYjYyNTczZjVlZDBkOTAxMmRkNDVkODNhNWU3MWQ5OWQ4ZDZjZTA2ZGIzOTVjOTIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_36dc7f60063c4c83915616f469782418",
+      "statement": "All other .env values are production defaults that must stay untouched during M5 (changing any = acceptance void), including DSS_CLOCK_MODE=wall_clock, DSS_POLL_INTERVAL_SEC=300, DSS_STALE_MIN=30, DSS_ALPHA_MODE=off, DSS_ALERT_RED=-0.10, DSS_ALERT_YELLOW=-0.05, DSS_ALERT_DEBOUNCE_MIN=10, the 2026-04-14→08-15 learning window, DSS_DUAL_RING=1, DSS_USE_NET_DELAY=1 and DSS_SHIFT_TIER_DELAY=0.",
+      "evidence": [
+        {
+          "resource": "repo://.env.example#L20-L29",
+          "version": "repo-lines-v1:sha256:48b8b58fe449793a6f7392b42028a4535fe023979aa9b25bcc86357e7bb34ac0:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImZiZGE0YjU4ZjViMWVhNTAxMGY0ZTNjYWE1ODk4MTVkYjRiNDNmMGE5MjlmZTg5MjNlMjU5MWVjZDE1NDU2YzgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImZkYjZjMTcxODEyNTVjNjY4YmE1ZTAzZTE1NGFiMjAxNjRlZmFiY2E5NDUyYjc0MzIwOWRkOWU5YTVkZDRiY2UiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjU2YTg3NGVhYmNlZGU4ZmEzNDA3OGY3YTJiNzcxMDE1Nzg4ODNkZmExMzg3MTgxY2YyYTUxYTYzMzVlY2RlOTMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImViMzgxMjNmYWQ4ZGE4ODkzYzNmODFhNzg1ZWFlNjQ0Nzg2NDMwOTMxMDIyMThjMDk4NmJiMjQ4MmEzZmFkN2QifQ"
+        },
+        {
+          "resource": "repo://.env.example#L88-L100",
+          "version": "repo-lines-v1:sha256:4a1686b098c7d5a837b0602482537b4f6d0335ccdbfacf23efe67b62a5e7598a:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE1NGRhNDJlMDgxMGRmYTRkNTFjZDAxMmQ3YmFjNjg1NThlODBjMmM4OTZhOWJlMmY4Y2UxOTkwNzZjYTQ4NDUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjgyNmUzYjRhMWJlMTdlNTQzYjllZjA3YjEzN2I3YWUwY2IyNzYzY2M3MWE1MmJjMDNmYmFiNGNkNDZhMjRhNGYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImQ5ZjYyYjM1NWU3NzQ3MWU0NTRmYmZhYmQzOGQ5ODA5ODJkNTUzNThjMDVjYjMyMDg3MWY0NGE5YmJlMGUxN2EiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUyZTNmMjA5YmJhNjgyMmMzY2JmYTgxMTVkNGViMmQxN2ZkODkwOWU5OGFjMTZkZmY3NzdjZDM0M2Q1NzAwZjMifQ"
+        },
+        {
+          "resource": "repo://docs/09-M5%E5%86%85%E7%BD%91%E5%9C%A8%E7%BA%BF%E9%AA%8C%E6%94%B6%E8%BF%90%E8%A1%8C%E6%89%8B%E5%86%8C.md#L52-L52",
+          "version": "repo-lines-v1:sha256:0a0c0bb50615966a353bdb696aadda12797415e0e5a8dfd7486c75ef0d56c3e2:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMGEwYzBiYjUwNjE1OTY2YTM1M2JkYjY5NmFhZGRhMTI3OTc0MTVlMGU1YThkZmQ3NDg2Yzc1ZWYwZDU2YzNlMiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMGEwYzBiYjUwNjE1OTY2YTM1M2JkYjY5NmFhZGRhMTI3OTc0MTVlMGU1YThkZmQ3NDg2Yzc1ZWYwZDU2YzNlMiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMDZmMzdjMzMxMTIzZWJiNTJhOWQ1ZDEyYWZiMDA1OWVkYjg0ZTc4YmM2NzY5ZDcwMzY1Zjg0NTMxNjMwY2I0NCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMzdlMzEyZTM5NjMwZGIzYWE1ZDg1MmE2Yzg1NDZjZDJmODhhNDY1NWM5YzI1YmE1MWZiNWExM2I3ZWIzZWYzYSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_0995e4eac2654dfbb5871ec22bd9e10e",
+      "statement": "The production dss layer starts empty, so D0[3] must rebuild the learning tables via spike_w1/01_learn_takt.py and spike_w2/01_learn_v2.py, producing 14 tables (6 W1 dim_*, 6 W2 v2_*, the mandatory W4.2c dim_expected_delay, and the optional W4.4h dim_expected_delay_shift whose absence does not block startup and falls back to shared rows); dim_weekly_plan is the 15th table and is auto-created by 01 boot plus loaded from DSS_PLAN_FOLDER. The startup existence checklist DSS_DIM_TABLES in spike_w3/01_boot_online.py lists the 14 mandatory tables and deliberately excludes dim_expected_delay_shift.",
+      "evidence": [
+        {
+          "resource": "repo://docs/09-M5%E5%86%85%E7%BD%91%E5%9C%A8%E7%BA%BF%E9%AA%8C%E6%94%B6%E8%BF%90%E8%A1%8C%E6%89%8B%E5%86%8C.md#L55-L61",
+          "version": "repo-lines-v1:sha256:a2e57f8eb3a89e17ab9b5385e3d05036c03c5940a851dc25798a67d2954857cb:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNjYxM2UzNTkxNGRkNTRhODUwNTE4MDAwZDRjNWNlMzJhZjFkMGYzYzg2Zjg1MzA2M2EzODBiYmE0ZjUwYjdmMiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDMxN2NlNDBlMDJhNGQwYjgzODBiMDkxNjhiMDc0ZmEzMjc5MWNmZjBlOTg2NmYyNDY1MTc3ODQxODM4YzRkMyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNzUxYjBjOTc3ZWM1OWRjMzk4YmU4YjE1Mzg0M2EyNzJhZjRiMWJiODhhOTA0YjA0MzFkNjhjZGZhNDVjZjZiYSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYjk4NzkwMTQ5NDg1MmNiYzczNjdiZTBjZDE1YzcyZWIwZjYyMzUwNTcyYjE0MDEwYzAzOWU1NmViYWZmZTFmNCJ9"
+        },
+        {
+          "resource": "repo://spike_w3/01_boot_online.py#L34-L44",
+          "version": "repo-lines-v1:sha256:91b3ab78fa786ed78b9bd8fd2d2aac5ad008e2f2779ec9608511fac66bf68d1d:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI4NDUyNmU5NWJjMDU5ZGQ4MzRjZDA1OWZiZjQ2ZDE0NTI1OGZkM2UxNTY4NzQzZDAxOTkxZGQwYTFlYTEyODYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjliMzllMDIyZTBkODU0MTIwMDAzZDc5MGMyOGI3NTk2MmVkZDMwMzc1NmQ1MTMzM2RmNzQ1Y2ZiODZlYTExY2UiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImQ3OTYyYTM1YWI5OTUyNmYwMWFjM2JkMzA1MmEyY2ViOTQ5MTBiMDIwYjJkZjMyMzQ2ZTZlMzBlNzVkNGQxODAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjZmN2ZjZmRhMjcyNzE3MmFiNmQwMDc3NjMxYmIyNmQxY2E0ZTgwOTQ4MzBkMWFjMzk2ZjY4N2QzZGVkM2MzNGYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_aa2edcf901904ad68e93cb523881ca36",
+      "statement": "The D0[5] trial run of 01_boot_online must pass six checks before D1: all 14 dss tables present (shift table flagged but non-blocking), week plan loaded with every acceptance week day present, 120h bootstrap complete with cross_check ≤ 1%, guard = FRESH (not STALE), first console frame output, and output/snapshots/m5/ starting to receive snapshots; the trial is then stopped with Ctrl+C and the real run waits for D1.",
+      "evidence": [
+        {
+          "resource": "repo://docs/09-M5%E5%86%85%E7%BD%91%E5%9C%A8%E7%BA%BF%E9%AA%8C%E6%94%B6%E8%BF%90%E8%A1%8C%E6%89%8B%E5%86%8C.md#L69-L83",
+          "version": "repo-lines-v1:sha256:a8c0b8b1f9d0cb9c02832babdf824a5ed4576d869f7c30eedf462491fec38135:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk4MzdmZDNkMDU5YWRmMzhlYTA5ZjgxOWUwNjQ0YmEyODFjNTU1M2JjMzIyM2NlOTJjMWE0MWUyM2I3YmY4MDAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjEwMjBlYzBkODBkMWZmYmQzYTgzODEzMTY3YTgxZTFmZDA3NzM1YmI5YTk5M2NkNzc1MjRjZTZhN2FjMmE2NDkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjdiNDFiNzZkMzZkOWZjMzlmNjJkNzM4Y2ZjMmVlZjcwNTU5NTIxMGU3ODBjMDVkM2NmZmI5ZWU0ZWIyZDZkODEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjgzZTBkZWY4NzU1MDBhNGNkZDJmZjE5ZmY4NzE4ZWY3MjBlMWY3YjE0OWExNDRiNmJiMWQ3ZDI0MTZiZmUzODcifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_244fa36863414fe096743ddc35246247",
+      "statement": "D1–D5 run 01_boot_online.py once inside a PowerShell auto-restart loop that relaunches the process 30 seconds after a crash (state is rebuilt by the 120h bootstrap), logging per day as m5\\log_YYYYMMDD.log; two encoding pitfalls measured intranet 2026-10-08 require PYTHONIOENCODING=utf-8 (GBK redirection of ✓/✗/⚠ crashes with UnicodeEncodeError) and cmd '>' redirection instead of PowerShell's '*>' (PS5.1 decodes subprocess UTF-8 as GBK and bakes mojibake into the log).",
+      "evidence": [
+        {
+          "resource": "repo://docs/09-M5%E5%86%85%E7%BD%91%E5%9C%A8%E7%BA%BF%E9%AA%8C%E6%94%B6%E8%BF%90%E8%A1%8C%E6%89%8B%E5%86%8C.md#L89-L104",
+          "version": "repo-lines-v1:sha256:895b3be063870e45e4141adeb7172ed8b752c28444339b11274a02a185e2e95a:eyJzZWxlY3RlZExpbmVDb3VudCI6MTYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjFhNzFiOWM3ZjZjYzc0NDE3MjVkYWZiMGMyYTFiYTJlNzc1OTg1MmNkOTU0MTdhYjIyM2Y2NWI5NjAxYjY5OGIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU4MzkzZGI4N2UyMWRhNzU1ZjQ4NjU2YTkzN2U3YTc0ZGNkOThkZTljMjdmYWZiZjE2YWRkODIxYTYwZmIzYjEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImYzNTNlMmFmOTQ4MDhlZjhjZjU5Yjg5NjdmMzAxODA3Y2U2NWExZjJlMWQ2OTU3NGZiZTI4M2EzYzBmMzQ1Y2IiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijc5ZjFmYmY0MTM2NzY4NzRjNTRhZTM2NTY2MmNjNGM0YjI2Y2QzODE3MDZkNzg4YTdmYTNmNDQwZTA0YjJjNzQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_0dabe7f6e5ae4a83bd504750d174333f",
+      "statement": "Wall-clock mode is 5-minute grid-aligned with drift compensation: 01_boot_online.next_grid_wait() is a pure function that sleeps to the next epoch 5-minute grid point (floor 1.0s) instead of a bare sleep(poll), so snapshot frame ts minutes always land on :00/:05/.../:55 and the M5 anchor frames can be matched with the ±3min tolerance; only the first frame (startup moment) may be unaligned, with later frames auto-aligned. One day yields 288 snapshots (one per 5-min round).",
+      "evidence": [
+        {
+          "resource": "repo://docs/09-M5%E5%86%85%E7%BD%91%E5%9C%A8%E7%BA%BF%E9%AA%8C%E6%94%B6%E8%BF%90%E8%A1%8C%E6%89%8B%E5%86%8C.md#L109-L109",
+          "version": "repo-lines-v1:sha256:bbb92048846ea21449deaf2088ae93b18bb691d27ded9da1173c609bad70f007:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYmJiOTIwNDg4NDZlYTIxNDQ5ZGVhZjIwODhhZTkzYjE4YmI2OTFkMjdkZWQ5ZGExMTczYzYwOWJhZDcwZjAwNyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYmJiOTIwNDg4NDZlYTIxNDQ5ZGVhZjIwODhhZTkzYjE4YmI2OTFkMjdkZWQ5ZGExMTczYzYwOWJhZDcwZjAwNyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMDJkNzc1ZWNhYzkxNGEyMTRjZDViZWYxNDRmYmMwZDA2ZGE5ZmUwZTk1YzM3MWE4Nzk3NTdlYjg1YWFmNWIwZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNDY2OTJhM2ViZjAzNzY5MzNlMzc0ODk2NjJjODNlMWIxYmRkNDIwMGFiZGI2NmYyNzlmMDkzYTc3MTg5Y2FkMSJ9"
+        },
+        {
+          "resource": "repo://spike_w3/01_boot_online.py#L293-L301",
+          "version": "repo-lines-v1:sha256:a0074f2dc1bb238141cbb5b19152afded0fd42689066bff8da5f33d7ac8f3d26:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNzU3MzQyOTU5NzA0MTJjODk2NTdiOThkNzkzNTNmYjRmOTc1NDMwZjg0ZWM5NDdlNTA3MzQ5NTZiY2I2YmRhYiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZGNlMjg3NDM1YTJlYzc0MGVhYmZiZjdmYmM2YTJiMjc1ODYwYWJiNWY4YjkxOWNkZDA2YzYyMGUyZDg4ODY5MiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMDJjYWJkMTFkMGI4N2Y4NTMxMzIyYWQ5NTgyMDA0YzIxODc1YmVlZWU4MDE3YjllZThkOGQxYmE4Y2EyOTc2MCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiM2QxNmJkZWEyNzBkNWE0ZTQzMjQ3ODMxMjljOTI3MjExNzAwOWUzNWFhY2VkZTQwMTE2NmRjY2QxZTJmMjM5ZiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_934a1f90e4ab4677a1ed71541406287e",
+      "statement": "The daily ~10-minute checklist during D1–D5 records four things into three templates: process alive (before 04:45, from fresh status lines in the log), the two anchor frames (day-shift anchor follows the shift type 11h→10:00 / 10h→11:00 / 8h→13:00, mid fixed 21:30 — A/pred/target/Δ/lamp color hand-copied as double insurance), confirmed red/yellow alerts (time + shift + gap count into the alert ledger), and STALE spans (start = first STALE status line, recovery = back to FRESH, into the outage record without killing the process or touching ETL); the next morning the day's snapshot count must equal 288.",
+      "evidence": [
+        {
+          "resource": "repo://docs/09-M5%E5%86%85%E7%BD%91%E5%9C%A8%E7%BA%BF%E9%AA%8C%E6%94%B6%E8%BF%90%E8%A1%8C%E6%89%8B%E5%86%8C.md#L111-L138",
+          "version": "repo-lines-v1:sha256:7ea3e672932e2428bd705539929c43177644d861afb872a0bb2a490c8854e0be:eyJzZWxlY3RlZExpbmVDb3VudCI6MjgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjcyMDNjNjdlMTE3MTFjYTZkNGE0ZDFiY2RjNWFiODc0Nzc5ZjUzZGE0YTc1ZjgzNGE4NWI1NmMxOWRmYTE2NzUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjYwNWQyYmYwZjgyZDllM2VkZTQwNzhhODkwYWQ4NWU4OTc3NTE5YzA5YjM4ZmNlZDcxMWZiOWUzNzk3ZGI0NGQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImQ1NTA1YTQzM2Y2ZmE0Y2MxYmFlM2IxMDNjNGE5YWQwNjRmODllYzM1N2NhM2M2M2FkZmZmMmUwOTQxMjY4MzMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjgzZTBkZWY4NzU1MDBhNGNkZDJmZjE5ZmY4NzE4ZWY3MjBlMWY3YjE0OWExNDRiNmJiMWQ3ZDI0MTZiZmUzODcifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_261fa11ffa6c4e93978748a8200c3cd4",
+      "statement": "The two-stage ETL SLA (拍板 2026-09-23): development phase (public network) uses user-synced snapshots with on-demand syncing and no RTO, with offline (shadow replay) acceptance done on the public network; production phase (intranet live connection) has link failures handled by the intranet data owner role with RTO ≤ 1h, and stream-cut windows' predictions/warnings are tallied separately and excluded from the acceptance gate. Runtime behavior during the blind (stale-frozen) window is backstopped by the B3 freshness breaker (STALE freeze alert + banner).",
+      "evidence": [
+        {
+          "resource": "repo://.env.example#L26-L32",
+          "version": "repo-lines-v1:sha256:f250d06ce012b5b866039ee49aa185cc0a8af216b77da02dd0842de2480eb897:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMzM4YzNjMmJiZWE1NWE3MTRmOWE2ZDVmMDVmMGJmZjdjNTU5MmMxNjQzODkzYmQ0NzQ3NTc1ZGQ1MzQ1Mzg2YSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiODM4NjgwYTlmYjZlZDQ4MjVlMWFlNWZmZWRiZDNlYzY2ZWYyNDQ2YmYzZDIyYmE1NGJjMTJlZDVhZjJlZDEzNiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMmM4MGZkMzdkYmQxYjQxZDIzNzA5MjRkMWUzMTFiMTU0NGU1YzM4MzJmYTM3ZWNkYTkzZDhkOTNhNDA0MWUwNSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZmRiOGM1ZmQ0YTNjZjFlYzQ5ZDdkNTRjMTNiYmZkN2JhNTNiYzkzZjFjMjc2MWZhN2UxY2IzNWZmN2JmOTJkZSJ9"
+        },
+        {
+          "resource": "repo://AGENTS.md#L57-L57",
+          "version": "repo-lines-v1:sha256:795902661f4acfb1cdda836664ee92b72f69850dbae8f9f77637782a06a761e5:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNzk1OTAyNjYxZjRhY2ZiMWNkZGE4MzY2NjRlZTkyYjcyZjY5ODUwZGJhZThmOWY3NzYzNzc4MmEwNmE3NjFlNSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNzk1OTAyNjYxZjRhY2ZiMWNkZGE4MzY2NjRlZTkyYjcyZjY5ODUwZGJhZThmOWY3NzYzNzc4MmEwNmE3NjFlNSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiY2RiNDBjMTZjODc5NTY4Mzc0ZWY0OTExMzlhZGY3YWI2MDg4Y2M1ZjM0NTVlNzI0NTJiNmYwMmQ3OTQ0NjgwMSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNzdkMTU2MDc0NWNiNGI2YzlhM2U5ZTA3NTY3MmU5YTQ2MDNlY2E2MWZiMzgzZTM5N2U4MWZlZGEzZjYyNGIzMyJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_9ee84fd346734c87ad6ea07d76735946",
+      "statement": "M5 closeout is one command: conda run --no-capture-output -n paint-dss python spike_w3\\04_m5_acceptance.py with --snap-dir output\\snapshots\\m5 and comma-separated --dates, producing output/w3-M5-验收报告.md (main table + outage stats + alert ledger + final verdict) and output/w3-M5-验收.json (machine-readable); the script is read-only with zero DB writes (SELECT only) and writes only local MD/JSON.",
+      "evidence": [
+        {
+          "resource": "repo://docs/09-M5%E5%86%85%E7%BD%91%E5%9C%A8%E7%BA%BF%E9%AA%8C%E6%94%B6%E8%BF%90%E8%A1%8C%E6%89%8B%E5%86%8C.md#L142-L148",
+          "version": "repo-lines-v1:sha256:a3d8fa1eb39e4a785b118973866d3d930a238303370778c681fce967917a527b:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYzYyN2U5ZjdlNWEzNzhlOThlMjU1OTEyNDBiYjU0NmE3NTc5YjY4NzcwYzM4YzVhNGQ3MmYzZmRmOTQzZGIyNiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDY3NjJjYjg4MTM5Y2FkMGYxOTgwYzA1NDU4YTgxOTE4NzlkN2E5NTk0ODc3NjY3MjllYzljZjRmOGIwZjEzZCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiODNlMGRlZjg3NTUwMGE0Y2RkMmZmMTlmZjg3MThlZjcyMGUxZjdiMTQ5YTE0NGI2YmIxZDdkMjQxNmJmZTM4NyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYmM1MTRmYTNiNjcxMGZlYzM1YWIxZDNlYTE5ZGMzM2UyMTNmNGFiNGRlOGNjZjQ2NjZkZmU2NTJmNjNmZmZhMyJ9"
+        },
+        {
+          "resource": "repo://spike_w3/04_m5_acceptance.py#L1-L25",
+          "version": "repo-lines-v1:sha256:46203e5bd564b197bc883111a655d2b9b9c9f09ab24bd994d848b8b063b82a93:eyJzZWxlY3RlZExpbmVDb3VudCI6MjUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk1NTJmODU0ZmNmNzczODkxNjBhMDhjZmI0YmUyZWI5MDJjZDlhMGMwYWY3NmFiNTdkZjAyY2JmOTEyNWQzNjkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ3NWQ0NTg5ZTkxY2M4Y2I5NzQ4ODlkYWIwMWRlMTVkYjE1NzRjYTEwZWVjNzI5MGExMDliZjU4OGM5NGUwMWIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjNkOTZkODJkNmQwYzMyMDY5NTZmYzA1MzkxMTkwMDgyNGE0NDVjMTZlMTFiN2QyYzk3YThhYWNiYTE3MzljNzUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_60ff244b8d40401a9827c2696e5bbb4d",
+      "statement": "The M5 main gate is per workday per shift: |Δactual| ≤ 10% (--tol default 0.10) at the 5h anchor, where Δactual = (pred − actual final)/actual final and the actual final is a closed-interval count of product cars (BODY_ID LIKE '78202%') at the 4 exit stations K3IS140/1J440RB/K2IS075/K1IS135: day shift [D 04:45, D 16:30], mid shift [D 16:30, D+1 MID_END_TIMES[type]] (11h→04:00 / 10h→03:00 / 8h→01:00), same source as a_of '<=end'.",
+      "evidence": [
+        {
+          "resource": "repo://docs/09-M5%E5%86%85%E7%BD%91%E5%9C%A8%E7%BA%BF%E9%AA%8C%E6%94%B6%E8%BF%90%E8%A1%8C%E6%89%8B%E5%86%8C.md#L150-L150",
+          "version": "repo-lines-v1:sha256:d44627a0ee9d085d9f17975f4e2132dcf37a57c962abe55d45f9f39a1930ed9f:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZDQ0NjI3YTBlZTlkMDg1ZDlmMTc5NzVmNGUyMTMyZGNmMzdhNTdjOTYyYWJlNTVkNDVmOWYzOWExOTMwZWQ5ZiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZDQ0NjI3YTBlZTlkMDg1ZDlmMTc5NzVmNGUyMTMyZGNmMzdhNTdjOTYyYWJlNTVkNDVmOWYzOWExOTMwZWQ5ZiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYjhkY2M2MjhhMTMwZGNmMTY4NTFiN2YyMzE4YmU5MzZkNjA2ZDY3NzM1MDI2MjM4Y2ExYjNjNDc5NDE0NmI3OSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNTVlNzkyOGE3YjhiNTA4MDgyMWFhODAxYzIyMjhmOGU2MjQ5MTQyMmJhMTViNmE4ZWM4MjdlYWFmNzM0NThhOSJ9"
+        },
+        {
+          "resource": "repo://spike_w3/04_m5_acceptance.py#L10-L17",
+          "version": "repo-lines-v1:sha256:ffca651675619c086a699d5ec332fd8266283998f4e9ed980f25ea1c8b66669e:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMDU3MzM2NmZlMjg0MWNhYTczMzdkZDJhOGI0YmFmNzEwYjNjNmEwNzVlZTlmMmMzYjg0ODIyODdiZmRlNGQ4MiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOTQzMTAzMGQyMmI4OTA4MmI5NjI1ZDEyNzU2MGE5NjJhOTNmMTQxYzBhZjAyZWQ4OGY3OGFlZTllZTAxNDY2MCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYmEwNDI5Nzc0OWFjMGE1OWQ5NGI0NTI1YTdlNDYyM2E5MmQwYTc0ZmMwZjhiNzU5NDFjNjMwZjMwYTAwNTQxNyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNzYwMTVjOTg5OTJhNjMyZmViMmE1MDdiMmMxZWZjOWIyZTNlNjc3NzcwYTRiOWYyOTNmMzkxMjI5ZTliZTg1MyJ9"
+        },
+        {
+          "resource": "repo://spike_w3/04_m5_acceptance.py#L91-L174",
+          "version": "repo-lines-v1:sha256:e186d610c9c064b5898a0d4ca63e8114a1317af5ce75dfdd95aa4c1b128a7b67:eyJzZWxlY3RlZExpbmVDb3VudCI6ODQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjVjMjZjZWIxN2ZlMTMzOGE0OWViNzRjOTJhZWIwMWViYTFhMzAyMThlNTA5MDNkNmQ3MjhiZjYzNTZlM2ZjMDAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImM3ZmQxODNlZGM4MzExYjEyYWNkNTVmYmU2NGQ5YjE2YWU3NDEwNDUxOWI3ZWUzY2I1MTFmNDJmYzk1OTM0MzAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImJmOTQzMzg0N2I0Nzg2NzI1Y2M3Mjc1Y2NkZDIzOGM5ZmIxNDU0ZTIyZDc3ZWI0ZDMzNmMwMThhOTFhNjFiMTQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjgxZGI4NzMzNDZmODU0N2I5MTNiYjk0YWJhMzQ3N2ZmZTg3OTE2MGE1ZjZmN2VlNjgwMjliZjcwZjQxNGFmZDEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_e8a764de300c4c959ea9406537097ef6",
+      "statement": "The 5h anchor frame is work_start+5h and follows the day-shift type (agy blocking fix F5: 11h→05:00 start→anchor 10:00 / 10h→06:00→11:00 / 8h→08:00→13:00; mid fixed 16:30 start→anchor 21:30); pick_anchor selects among that day's same-kind candidate frames the one closest to the anchor moment within ±3min (ANCHOR_TOL_SEC = 180), and a candidate beyond tolerance is treated as an anchor frame miss rather than a mismatched pick.",
+      "evidence": [
+        {
+          "resource": "repo://docs/09-M5%E5%86%85%E7%BD%91%E5%9C%A8%E7%BA%BF%E9%AA%8C%E6%94%B6%E8%BF%90%E8%A1%8C%E6%89%8B%E5%86%8C.md#L198-L198",
+          "version": "repo-lines-v1:sha256:86fd60db08d5d14f8499d66f62477a1928803853ef75a859ddaa79f219f2dac6:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiODZmZDYwZGIwOGQ1ZDE0Zjg0OTlkNjZmNjI0NzdhMTkyODgwMzg1M2VmNzVhODU5ZGRhYTc5ZjIxOWYyZGFjNiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiODZmZDYwZGIwOGQ1ZDE0Zjg0OTlkNjZmNjI0NzdhMTkyODgwMzg1M2VmNzVhODU5ZGRhYTc5ZjIxOWYyZGFjNiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMDRiNTVkMDJjY2QwNTkzMDE5YmY5OWUzZGJlM2MyYmRjY2RhOGZmNTJmOGIyMTMxZGJiYThkOGQ4NGFjOTYxNCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjEsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZWFhZmJmYTRhYWU0YTRmNjVmMTAyNjQ3OGQxMzEyYTdkOGFiODBjMDMzOGY1ZTE5YTc3ZjhmNzkzZmEwMTM5OSJ9"
+        },
+        {
+          "resource": "repo://spike_w3/04_m5_acceptance.py#L44-L44",
+          "version": "repo-lines-v1:sha256:6b769ae8f547b9f09a0ea9f2693e6ec699a147ad5ecef2f78d94842b7198bf57:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNmI3NjlhZThmNTQ3YjlmMDlhMGVhOWYyNjkzZTZlYzY5OWExNDdhZDVlY2VmMmY3OGQ5NDg0MmI3MTk4YmY1NyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNmI3NjlhZThmNTQ3YjlmMDlhMGVhOWYyNjkzZTZlYzY5OWExNDdhZDVlY2VmMmY3OGQ5NDg0MmI3MTk4YmY1NyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTc0ODRhZGQ5MjU4NjQ1ZTNlNmQyY2JhYWE0ZDM0YmJmOWI5OGJmOTdmMTZkNjViYWUyY2ZlYzliODc5NGFmZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiOTBmZjRkNzRhZmUwMzc3N2JjZGZlNjY4NTc4M2EwMTNhMTVlNTBlYzE2MzZjNmUxZGMyOGFiNjM1ODIyOWQ2MyJ9"
+        },
+        {
+          "resource": "repo://spike_w3/04_m5_acceptance.py#L54-L88",
+          "version": "repo-lines-v1:sha256:132e866bc1a16fa5e9ab7e694b0aa245d4ee2fcf2b395a54b7fd5d32d438e794:eyJzZWxlY3RlZExpbmVDb3VudCI6MzUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjgxNTYzNjE3ZjZmMzA0YmI1OGQ0NzE2OTEyMmYwOGZjODEyMWM0YmM0MGM3YmY3NjQ2MDYyNjdjMGQzNTQ3Y2IiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFhOTcxYTc2OGNjMDEwZmZmMzJiNDI4MGIxOWE5NGQxMTc1YmU3NzE3Y2I0MDI3NGEwZWFmZjc0ZjQ1N2ZlNjgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjBmNTk2MjIzMmE2MDQ2Mzg1NWRiYjVkYjQ4NmUxMzZjMDI5M2YzMTYzZTdmZjgzNzMyY2MxOTRiZTMzYzg5ZGEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImE2YmJmNTEyYjUxOTRmNmRkNGFmNDdjY2IwNjU2ZTFiZjdmODRhOTU3ZDUxMTI0ZTI3MGE0MDkzZjFiOGJlZTQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_f7f2da4eb9674f12a2ee51057df75fb6",
+      "statement": "Every acceptance row falls into exactly one of four mutually exclusive reason buckets counted separately in the report (buckets sum + gated rows = total rows): gated (counted in the gate), actual_zero (actual final = 0, rest/line-stop/no events, not gated), stale (anchor frame guard.status=STALE stream-cut freeze, not gated and taking priority over gated/actual_zero), and anchor_missing (process offline / missing frame / drift beyond tolerance, an explicit trace row, never silently skipped); rest days (day-shift anchor frame has no shift / planned rest) are excluded from the gate and listed in a note.",
+      "evidence": [
+        {
+          "resource": "repo://docs/09-M5%E5%86%85%E7%BD%91%E5%9C%A8%E7%BA%BF%E9%AA%8C%E6%94%B6%E8%BF%90%E8%A1%8C%E6%89%8B%E5%86%8C.md#L151-L151",
+          "version": "repo-lines-v1:sha256:830819fbb85b461aa7c2bc091a7687f428181aad68da7cb6860c69310500a4da:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiODMwODE5ZmJiODViNDYxYWE3YzJiYzA5MWE3Njg3ZjQyODE4MWFhZDY4ZGE3Y2I2ODYwYzY5MzEwNTAwYTRkYSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiODMwODE5ZmJiODViNDYxYWE3YzJiYzA5MWE3Njg3ZjQyODE4MWFhZDY4ZGE3Y2I2ODYwYzY5MzEwNTAwYTRkYSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMmIyYzY4MWFjNmY5MGEwOWJjYzg5M2Q4NGRhOWQ0YWRmNjEwMmNmNDcxNGU0OTc1OTQ0NTUzNGFhYTIzYWYwZCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNzliMzYzMjRiNDJlNjA3MjAyYjYyNGYwNzk3ZWFmMWI4NTUyOGYwMWZlMmY2OWQ0ZDljZjAxYWVjNDE0ZDk4YiJ9"
+        },
+        {
+          "resource": "repo://spike_w3/04_m5_acceptance.py#L106-L124",
+          "version": "repo-lines-v1:sha256:dc3216e23f2ce5f5bdaafda3404251bc8e8254bd97cc44a926cdd18959fef4a6:eyJzZWxlY3RlZExpbmVDb3VudCI6MTksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBmNmExY2NlZDA3MTJmZDg1YzYzNzgzYTE3MGNlZWUyYTYxODYzMzA0OTZiMjc2ZjBmNDJjMzcyZmZiODc5ZGIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjgxMDk2NmU2YjE5NWUzOGM3MzUxZDA2ODcyY2E4OTI5YjZhYmIzYjcwZTg2YWIzZTk1MzY5ZGMxYjFjN2RmYzQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImIwMzJlY2VhMjExOGFjNDRlZGVjYzgwNTM1NzU0ZGZjNzAzNTJkMWZiMDMzYTVjMTc5ZDA1ZmY2OWJkODA5Y2QiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjI1MzY2MzRiZTE0OWEwMmRmODA2OTlkMGY4OWQ2NmM0MDg3YzY5ZjM5MDQzYTE1MzZjOWFhNTk1YzcxYTAwYzMifQ"
+        },
+        {
+          "resource": "repo://spike_w3/04_m5_acceptance.py#L237-L254",
+          "version": "repo-lines-v1:sha256:2be7d28ee172ce001a01f464198745796dfb56b2904ed8d5f6795f1c365be00b:eyJzZWxlY3RlZExpbmVDb3VudCI6MTgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg3ZWE5Njc4MWFjYWIwN2Y5ZWM1MzEzODNkOGVlZjZiYmM5YzVjMWZhNTJkMjJmN2I0ZmI4YzgwMjJmNjkxZGMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg4YzBjZmRhMTIyZTdhMDEwYTYwOGYxMGM3NzJhZjBiYzg3MmUyMGM5ZWExOTc4ZTkxNTQzZjM5ZTgwMjQxZmUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImE2ZDgyYTM5NGJjMDRkYzhjMWIyOGY0MTk1NGJiMzEyNGQyNmFjOTk4NDFlM2JhNzMyNWY4ZmFkOWY1MGJhYWIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImIxNThlMzhlMDM2Y2E3NmYxYzMyNjE3Mjg0Nzc2Y2YwYmQxY2NjNGY0MzdiNmZkZDYwZmFiNDI1ODhkOTRmOTUifQ"
+        },
+        {
+          "resource": "repo://spike_w3/04_m5_acceptance.py#L319-L349",
+          "version": "repo-lines-v1:sha256:a3e03254cba6b83a5077b7f86ba51e4c56081d0d2149d66cf6ed4cc9bc2b1363:eyJzZWxlY3RlZExpbmVDb3VudCI6MzEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImY2MGEwMDVmNjAyMzUxNjAwNjk5NTQwNDdlMjU0MjJkODQ5NWU2ZjVkN2QyMGVkYzZjMGYzY2NmMjJiOGViMWIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjY3ZGI0MGZlMDUzNzQ4ZDVkNzFhODljNzBhYzAxMGI1ZDFlODNiZDRlMzYyZjgzMzBhMDdlM2YyY2U1OTllZTkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjBjYjQ2MWQ3NTQ3ZWVkMjFlOWYzODMyMGM4MWFhZjI3YWY3OTRmZDI4OWVhZDExYzFmMzM0MjJhYjAyMDFhODEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijg5NmRjMmJmYmJkOTk1NDFlOGJlYTViZjVlNWNhZTQ3NGU4NGM4ZGVkMjU5Yjk0MjcyYTM4MjdkMWYxMTEzOTIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_b31b77364cd54378bfa61ba477c2f651",
+      "statement": "M5 closeout supports multi-directory snapshot merging: --snap-dir can be repeated (e.g. m5 plus a legacy m5-r2) with duplicate same-ts frames resolved first-writer-wins plus a duplicate count in the report header; unlisted sibling -rN snapshot directories sharing the prefix are explicitly WARNING-named by find_sibling_run_dirs to prevent silent under-collection. With an explicit DSS_RUN_TAG, dashboard.resolve_run_tag idempotently appends to the same directory on restart (agy blocking fix F3, filenames carry timestamps so no collision), so -rN splits only occur with legacy auto-tag runs.",
+      "evidence": [
+        {
+          "resource": "repo://docs/09-M5%E5%86%85%E7%BD%91%E5%9C%A8%E7%BA%BF%E9%AA%8C%E6%94%B6%E8%BF%90%E8%A1%8C%E6%89%8B%E5%86%8C.md#L149-L149",
+          "version": "repo-lines-v1:sha256:f4d6ede2b61408eab349dbe1b5bb976676b8bef3de559ac5566dbeb6cc5e291a:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZjRkNmVkZTJiNjE0MDhlYWIzNDlkYmUxYjViYjk3NjY3NmI4YmVmM2RlNTU5YWM1NTY2ZGJlYjZjYzVlMjkxYSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZjRkNmVkZTJiNjE0MDhlYWIzNDlkYmUxYjViYjk3NjY3NmI4YmVmM2RlNTU5YWM1NTY2ZGJlYjZjYzVlMjkxYSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZjkwNzkwYjY1OTM1MWVkMmFlMjk0NjAwNjVjMzZjZmE1YjU4NjU1YzIyNDZkYjNlNGQwZWE0YTUzZjc0MWQ5MiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNWVkOTJjNjNlOTAxMjg5MWNjYTFiNWU5YzdhZGY4M2E2ZjU0NGZjNDdjYWI5M2Q3M2ZhYWNjYzMwM2ZiN2M4YiJ9"
+        },
+        {
+          "resource": "repo://spike_w3/04_m5_acceptance.py#L259-L286",
+          "version": "repo-lines-v1:sha256:9db8d9e9a2dfc4027f23fc2f00e8add2e3cb147494d329d2024e27669bbe2619:eyJzZWxlY3RlZExpbmVDb3VudCI6MjgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijc5YzZjYWNhNWMyOTBiODY5MWRjNTU3ZDQ0YmE4YzM3ZTE3YzgxZTY0M2UyNDVlMjcyNGU4NGQ1OTMyODA0YTciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQwMzRjNWE3YjRhOWY5ZDIyNTk2OGJlYzEzNmE5ZmVjNzBiYzBjNWE0NGNjMGNiNGYyYmUxOTBmOWRmZWY3M2IiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjU3OTI2ZjdlNmZjMjZjZTk0YjNmOTJjZDdlNTE2YTE4NmRjNjM2M2NjMWE1NDQ5MGFkMDM0NzlmNDdlMzA0NGYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjE0NGE4Yjk2ZGJmZGZlNDY3ZjQ2NDRiN2U1MTk3MmMyYTdmYzEwMTZmMDY0OWU4MzdhNDAwOThjYjdjZDIwYmUifQ"
+        },
+        {
+          "resource": "repo://spike_w3/04_m5_acceptance.py#L305-L311",
+          "version": "repo-lines-v1:sha256:193cb3bfd6f2ee95733c160287ba31485bea73dfa5cc254c8fce8281f03aa173:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiODJhMDEzZWIzZjEzZmJmYTAwZmNmZGY3MTY1N2JiZGE3MDYxNDFhYWMxZDdiNTNmNzMyNjE0MjZjMzA2MWJiOSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOWQxOGI3NjY0MmUwYTcyZWY2ZWY0ZmNlOWU0MmU4OWM4ZjQ1MGMwOTMzMGY5YTZlZjUyMjY0NTFiMjVkYzk4NCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMDNmNDRmMTRmYWQ3ODZiMjMzMWFkZjhmYjIwNWExNmVjZWVkM2RjZDg4NDg5NTcyZGVmYmEzMzZmYTMxN2E4NSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYjkyMWY1NzA4ZWZhMDQ0MDYxNmNjYzU3MTI0ZDhkN2NiOGU4MmZhNzRmMmI4YzEyOWM2Yjk4OWIyZDZjMGUxNiJ9"
+        },
+        {
+          "resource": "repo://spike_w3/dashboard.py#L648-L664",
+          "version": "repo-lines-v1:sha256:2be4b52045aaaf625d205bdf433bab71bd1b52d96b6cc64aad2d6f175d0badad:eyJzZWxlY3RlZExpbmVDb3VudCI6MTcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRhMGIwMDUyMWE1ZjE3ZjcwYzE1ZDM2MjkwZjM4M2MzZWFiZGM1YjlmMzNjYTg0ZGM4ZWI5ZWI2Mjk0YmVmMWQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImRiNDdkZjEwNTQ5OTUyZTg2MzE5MjgxYjFkMzJmNzlkOWE4MzgzZDQ2YTM5OTNkODViNGFkYmM3ODk4YzAyYzIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImU1MzNkMDZlZDM5ZmM2M2E4YWQzMTBmYmJiYjQyMzQ5ZmRhNDcyYzgyMjZlNTY0MDJhZDc5Y2JhNGYxOTViMjQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjBkYjE0MzRhNmUzMTBmNGQ4YmZkN2I0YjhmNjAwZDEzMzEyZTZkNzVhNTk3NmJmNTU5OGUzMTI3NTQ4MmQzZDEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_93fde03feae04bc29b6ad56869ece551",
+      "statement": "Stream-cut windows (guard.status=STALE rounds) are tallied separately in the M5 report — round count, total minutes (5min/round), and merged contiguous spans extended to the next round after the last STALE round — and are excluded from the acceptance gate per the 2026-09-23 ETL SLA decision; the final verdict PASS requires every gated shift row to satisfy |Δactual| ≤ 10%.",
+      "evidence": [
+        {
+          "resource": "repo://docs/09-M5%E5%86%85%E7%BD%91%E5%9C%A8%E7%BA%BF%E9%AA%8C%E6%94%B6%E8%BF%90%E8%A1%8C%E6%89%8B%E5%86%8C.md#L152-L152",
+          "version": "repo-lines-v1:sha256:0512d6a8ca552f0beb3680e4b60368165e0864f2c858885dce00a5bd4b48d219:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMDUxMmQ2YThjYTU1MmYwYmViMzY4MGU0YjYwMzY4MTY1ZTA4NjRmMmM4NTg4ODVkY2UwMGE1YmQ0YjQ4ZDIxOSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDUxMmQ2YThjYTU1MmYwYmViMzY4MGU0YjYwMzY4MTY1ZTA4NjRmMmM4NTg4ODVkY2UwMGE1YmQ0YjQ4ZDIxOSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYmM1MTRmYTNiNjcxMGZlYzM1YWIxZDNlYTE5ZGMzM2UyMTNmNGFiNGRlOGNjZjQ2NjZkZmU2NTJmNjNmZmZhMyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYWQ4NzQzMjBhYjY0NTgwYjY3ODhlYmI2M2Q4NzAyNWJkNTg0ZDc1MGE2YWE2Zjk3MDg5MjkwZDcwMjQxMGIxMiJ9"
+        },
+        {
+          "resource": "repo://spike_w3/04_m5_acceptance.py#L127-L144",
+          "version": "repo-lines-v1:sha256:3968093ffba6f4564a2ee5aeb0c1ce9f71349c0b7895f24aefb709429efb7bf0:eyJzZWxlY3RlZExpbmVDb3VudCI6MTgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE2ZTZiZTRiZDNkMWRmMWVkNTIwOWM0YzZkNmNmNzNmZGQ5NzA3YjZlYjkwYTc2NmRiNjVmYzE4MWNiNTlmYTciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjM2YTQ2MjMyOGNkOTdiOWVjYzAyYjRhOTllODUzMzhkMDg2NDc3NWQ1MzEzZTVlMGY1YTZlMTUxNmQ5YmQ5N2IiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijg3ZTVhMWY2YmNhZDBmNWMwOWE4YTI1MzRkOTIxMzQyMTJkMDFhNjY2YWZkZWQ3ODYwYjNjMWYzYjMwNzRkY2YiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjU2MjU4MTBhZGM5NmEzOGRkYWExNGU5YjQyYjc2NmQwMGYxYTY0ZDE2NGY2NjI2Y2QyZGQzOWRlN2Q1NjY5ZTYifQ"
+        },
+        {
+          "resource": "repo://spike_w3/04_m5_acceptance.py#L213-L221",
+          "version": "repo-lines-v1:sha256:f3573946008110d3734d1dab4692cbc82c99aa6166066fc3511e9924e5993245:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiN2ViNzAyNTc1OTNkYTA2ZjY4MmEzZGRkYTU0YTlkMjYwZDRmYzUxNGY2NDUyMzdmNWNhNzRiMDhmOGRhNjFhNiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMTA2ZGZlN2U2MDg5YjVjM2QzNzE1MWU1MDQ1MzlhM2JiYzg2MjkzYzU3ODU5ZDI3MDc4MDgwNDk0ZTk3OGM2YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNWQxOGU2MzhmZTU4YmI5YjJlYWFiOWE5NzA3ODgxMmJhMWU5MjkxN2MyYWY3MGI5ZWE0MzJlNGIxNWJlNDYzNiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYzRjNzVjNzNhZjU1YTllNjBmZjEzZWFkOWNlMTgwOGIyYmU0ZDVjN2MzMGVjYjhiZTBhNzVjZDFhMjQ4MDkwMCJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_c999750fdef24810ace18b230192d58b",
+      "statement": "Three manual cross-checks lie outside the 04 script: (1) fill the post-hoc verification column of the alert ledger (gap truly occurred = valid alert, did not occur = false alarm; only confirmed transitions with the 10-minute debounce enter the ledger, same source as 03/M10), (2) outage spans must match the data owner's ETL fault records, and (3) daily snapshot count must equal 288 (a missing frame means the process was down; check the corresponding log).",
+      "evidence": [
+        {
+          "resource": "repo://docs/09-M5%E5%86%85%E7%BD%91%E5%9C%A8%E7%BA%BF%E9%AA%8C%E6%94%B6%E8%BF%90%E8%A1%8C%E6%89%8B%E5%86%8C.md#L154-L157",
+          "version": "repo-lines-v1:sha256:0bb0a02efac467c01ea4b7a063f80f321771018d6b3139bcf351c57edc154a65:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNzBkMDYxNmVlZTljNmQ3YWU2NmM5OTlhZWM0ZTlhNGQ4MTg0YTAwOGYwMWFiZDU1Mjg3NWViNTcwYjg5ODM5NiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNjBiYWQwYmFkZWI3YjliNzRhZjI3OTk2ZWY5MzJjZDQ2NWVhY2U0YWI5ZTk4ZDZmOTcyY2I0M2E1N2Y1NTI0MSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNTVlNzkyOGE3YjhiNTA4MDgyMWFhODAxYzIyMjhmOGU2MjQ5MTQyMmJhMTViNmE4ZWM4MjdlYWFmNzM0NThhOSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYmQ1MmI3NTMzZGI4YzJmYzkyNjA2NTI3YTY1ZjYwZDhjOGJlYTY2NTM3OGY0ZGM3YjVlNDYxYTUzYTJjMzYyYiJ9"
+        },
+        {
+          "resource": "repo://docs/09-M5%E5%86%85%E7%BD%91%E5%9C%A8%E7%BA%BF%E9%AA%8C%E6%94%B6%E8%BF%90%E8%A1%8C%E6%89%8B%E5%86%8C.md#L199-L199",
+          "version": "repo-lines-v1:sha256:eaafbfa4aae4a4f65f1026478d1312a7d8ab80c0338f5e19a77f8f793fa01399:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZWFhZmJmYTRhYWU0YTRmNjVmMTAyNjQ3OGQxMzEyYTdkOGFiODBjMDMzOGY1ZTE5YTc3ZjhmNzkzZmEwMTM5OSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZWFhZmJmYTRhYWU0YTRmNjVmMTAyNjQ3OGQxMzEyYTdkOGFiODBjMDMzOGY1ZTE5YTc3ZjhmNzkzZmEwMTM5OSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiM2NiOWU3NjZmZGIxNzQwNTRjYjFmNTRiMWY0NmIxYzE0YzdjNmI5YzBmMDU2OTBmNGQ0NGM5NDkzYzIyOTlkNiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjAsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSJ9"
+        },
+        {
+          "resource": "repo://spike_w3/04_m5_acceptance.py#L147-L155",
+          "version": "repo-lines-v1:sha256:8746afe16f5c07c26c6f36775a8b47c4933f5d81ec39f90ec474d223ec368e75:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiY2I2MzRmOWNiYmE0M2VlMDZlNjY1MWM2ZmFlZjkwNTJlNWZlNDQ4NjdlNjk2NDYxMjczZjBmNzI2MmI1YjNkYyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiODEwOTY2ZTZiMTk1ZTM4YzczNTFkMDY4NzJjYTg5MjliNmFiYjNiNzBlODZhYjNlOTUzNjlkYzFiMWM3ZGZjNCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMDhkNjgxOWZhNzgwYzFkNGNjMGIxMjE4N2QyYzMyOGRkOGE0Njg0ODc4NWEyNDllNWM0ZmEyNWYxNzQ4NDgwOCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNjQwMjYyNjM1ZDgyODQzZWI2NzI4NWIzZWQwZWRlMzc2NzNiZDQ3NGZmZTZlZTgwNzNmZmNhYTYyNDE3NDQwYiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_280fa939cfae4058b7a401fe158554e3",
+      "statement": "Oven-channel storage dead vehicles are a known false-positive class excluded from the acceptance gate and counted separately (decision 2026-10-05 D8 option (a), no code or red-line parameter change): when the oven is closed in heating-off state, 16IS/18IS channels act as temporary storage so cars can linger; full-history measurement (16,815 vehicle-times) shows 47 above the 120h dead-vehicle threshold (0.28%) with a maximum of 190.4h. The 04 scoring consumes only the 5h anchor Δactual so dead-vehicle entries do not enter the verdict, and the mechanism is safe because the linger occurs before oven exit (the first_oven anchor and passed_oven state are unaffected).",
+      "evidence": [
+        {
+          "resource": "repo://CHANGELOG.md#L18-L18",
+          "version": "repo-lines-v1:sha256:ac0122f65ae9716ce32ee881c1e341e0c71f3ab13ebc67d2b42c0e3b909c25c4:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYWMwMTIyZjY1YWU5NzE2Y2UzMmVlODgxYzFlMzQxZTBjNzFmM2FiMTNlYmM2N2QyYjQyYzBlM2I5MDljMjVjNCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYWMwMTIyZjY1YWU5NzE2Y2UzMmVlODgxYzFlMzQxZTBjNzFmM2FiMTNlYmM2N2QyYjQyYzBlM2I5MDljMjVjNCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiY2M3YTlkODZhZWFkMzBhZGE3ODlhZGE3ZTk3MDkyMTdiNjVhODA2YTg1ZmNlOGFkNzgwMzRhZGY3OTZkMDZmZCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMGVmNTIyMGM4NjRkZGE3N2ZlYmYwYzNlYjVlNWZhMmFkNzIwZjVlNmY5MTg3NzA4OGQyOThmYTEzMzBhMzkzNSJ9"
+        },
+        {
+          "resource": "repo://docs/09-M5%E5%86%85%E7%BD%91%E5%9C%A8%E7%BA%BF%E9%AA%8C%E6%94%B6%E8%BF%90%E8%A1%8C%E6%89%8B%E5%86%8C.md#L161-L174",
+          "version": "repo-lines-v1:sha256:2279c6cc975eb4550e3d176b8d33835c2c6648776df1ad434f202ed78a1886f1:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImUzOTk4MmJkZmNmNTc0MmI1ZWZmODg4MzBiMjhiNTJhMWZmNTVhNTc2ZDFiNzQzZDY4MmI4MTE4YTJlYmY1NmMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjFkMGYzZjM1YzE5OWJiNWE1NmJiYmU1YTNiOGIyNDlhM2U4OWQzMDA1YmQwNTU0M2IxOWQ3YTIxYzgzMTgyMTUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImJkNTJiNzUzM2RiOGMyZmM5MjYwNjUyN2E2NWY2MGQ4YzhiZWE2NjUzNzhmNGRjN2I1ZTQ2MWE1M2EyYzM2MmIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjgzZTBkZWY4NzU1MDBhNGNkZDJmZjE5ZmY4NzE4ZWY3MjBlMWY3YjE0OWExNDRiNmJiMWQ3ZDI0MTZiZmUzODcifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_05e1467a358b481b8849373778e5d6a7",
+      "statement": "tests/test_w3_m5_acceptance.py holds 21 unit tests covering the 04 scoring logic: type-following day anchors (F5), ±180s anchor tolerance (F2), the mutually exclusive four-bucket reasons (F4), type-dependent actual-final closed intervals, stale span merging and multi-directory merging / -rN warnings; the agy first-round blocking fixes F1–F5 (DSN env override, grid alignment, explicit-tag idempotency, structured reasons, type-based anchors) all landed in 04 and the online path with 297/297 tests green (2026-09-29).",
+      "evidence": [
+        {
+          "resource": "repo://CHANGELOG.md#L24-L29",
+          "version": "repo-lines-v1:sha256:44ed818b1efba2dd14125ccec917dd9bb63ccb46c3446c8631d5cc8c782447e1:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNTdkM2Y3Mjc4ZTg3ZDU3Yzc0MzM5ZTY2NDk4NTc5NGNmMmE0NDVlNDkyMTM3Y2E1OGZhMTc5MGIyNjc2OWExNyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZDIxZWQzZGIyNjk1ZWI4NWRhOGQ1ZGM0OGY1ZjhmMzM3MGUyMDZmZDQyMTNiN2U2YjNjMGIyNDUwNjE5YTVhZiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMzY3NDI5OWQ3N2U3NzNiYTg4Yjk2MmYyYzY2NzgyZWI1OTNkOTk2YmUxN2RlYTIzMDRkYjgyNDFjNzhjMzQ1MiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYmEzYmVlOGY1MDY2ZGEyZDAwZmJhNTU1ZDBkNTYyNjNhMzA0ZmViMjU0ZjU1MzEzOTQ4NDBmZmZjODAyYTU3ZiJ9"
+        },
+        {
+          "resource": "repo://tests/test_w3_m5_acceptance.py",
+          "version": "repo-file-v1:sha256:fb6ae2be0ae2858af6164c952d9a2057fb31324a4af6b12e351b135647af651a"
+        }
+      ]
+    },
+    {
+      "id": "claim_6a9e98a1670b4f6db9eedda38ed31315",
+      "statement": "DSS_DUAL_RING is a strict 1/0 gate (invalid values raise at startup) that selects the engine: default 1 = the W4 Doc14 unified dual-ring state-machine engine (production default, W4.3d / D6 decision) and 0 = the legacy estimate_event path (W1/W2 original semantics), i.e. a 30-second rollback. The consumption point spike_w2/eta_v2.py::dual_ring_enabled() re-reads the environment variable on every call; the DSSConfig.dual_ring field is only a mirror for the startup-report echo.",
+      "evidence": [
+        {
+          "resource": "repo://.env.example#L88-L95",
+          "version": "repo-lines-v1:sha256:dfea5717854aa8b999efd4f379e2c812fe14803e34830f4a1e6d9b9b2fdc7679:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMTU0ZGE0MmUwODEwZGZhNGQ1MWNkMDEyZDdiYWM2ODU1OGU4MGMyYzg5NmE5YmUyZjhjZTE5OTA3NmNhNDg0NSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZTBlYjkyODU3ZjFlYmU1Nzk4OGJhNzZlMzE0ZDMxNTM1NGIxZDk1ZGM0Y2U3NTk3M2IyNThmZjA4NzMwNjBiZiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZDlmNjJiMzU1ZTc3NDcxZTQ1NGZiZmFiZDM4ZDk4MDk4MmQ1NTM1OGMwNWNiMzIwODcxZjQ0YTliYmUwZTE3YSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNjk5MTY1NDZmYjNkMzM0YTNiOTQ3ZjA5MmM2YTYxZmI3ZThiMzk0NDcxOWQ2YzMzOWQ0MWFmODRiOWZjYWRjYyJ9"
+        },
+        {
+          "resource": "repo://docs/09-M5%E5%86%85%E7%BD%91%E5%9C%A8%E7%BA%BF%E9%AA%8C%E6%94%B6%E8%BF%90%E8%A1%8C%E6%89%8B%E5%86%8C.md#L52-L52",
+          "version": "repo-lines-v1:sha256:0a0c0bb50615966a353bdb696aadda12797415e0e5a8dfd7486c75ef0d56c3e2:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMGEwYzBiYjUwNjE1OTY2YTM1M2JkYjY5NmFhZGRhMTI3OTc0MTVlMGU1YThkZmQ3NDg2Yzc1ZWYwZDU2YzNlMiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMGEwYzBiYjUwNjE1OTY2YTM1M2JkYjY5NmFhZGRhMTI3OTc0MTVlMGU1YThkZmQ3NDg2Yzc1ZWYwZDU2YzNlMiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMDZmMzdjMzMxMTIzZWJiNTJhOWQ1ZDEyYWZiMDA1OWVkYjg0ZTc4YmM2NzY5ZDcwMzY1Zjg0NTMxNjMwY2I0NCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMzdlMzEyZTM5NjMwZGIzYWE1ZDg1MmE2Yzg1NDZjZDJmODhhNDY1NWM5YzI1YmE1MWZiNWExM2I3ZWIzZWYzYSJ9"
+        },
+        {
+          "resource": "repo://spike_w2/eta_v2.py#L391-L401",
+          "version": "repo-lines-v1:sha256:2558a8f523b1edc4cab769277b0f424469dd4548169e119b43048e5041e4697b:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjA1ZDhiMTljZWRkYjViNDI1NTVmZTI0ZTViYjAyMDc0NTBjOTAwMThjN2ZhMmRmOWM5MWI3YzlkNzRlMTJmNDMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImNhNDJiZmJhZDg2NjQxNTRiMDkzYTAxNTI2ZDY0ZjUyNzQ1OWQwMTkyMDMxMzE0YTgwZDgzYmNlYzRiNmUwMGUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImFlMjA5YzdjYTk4MTcxYWRkOTY0OGVhOTZiM2U0NGU3NTA1ZGZmOGViNmMxZjIwMDIxNTcwYjg0NzM1NDIyYTQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjczOGUwMGFiYmU4NDAyNjFhYWNlYWRmMmJlMDhiNjNiNjczODgyOTBjNjQyZWQzNjZjMmRmNjc5YzQxZjJiYmMifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_1cbd2cb05f7f42a5bacb613eb9fbe15c",
+      "statement": "True rollback of the old engine stack is DSS_DUAL_RING=0 AND DSS_USE_NET_DELAY=0; the combination DUAL_RING=0 AND ND=1 is a half-migration degraded state (measured 2026-10-07 in W4.4f: W2 sc3 11.00% / W3 M9 α=off 11.99%, both failing against baselines) and must not be used as a rollback.",
+      "evidence": [
+        {
+          "resource": "repo://.env.example#L93-L95",
+          "version": "repo-lines-v1:sha256:a088005881a38cd02ba03ab16ba98c25d34ccaedfbeee339166082269c9f9bd5:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOGFiM2Q1ZWViZjZmMjAyOTA3ODViNGNkMzdhZTMzNWY0YWFhYjEzMDkyNzNkNTU3ZjUzNDI3MzRlMWE5ZThmOSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZTBlYjkyODU3ZjFlYmU1Nzk4OGJhNzZlMzE0ZDMxNTM1NGIxZDk1ZGM0Y2U3NTk3M2IyNThmZjA4NzMwNjBiZiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNjNiNjA3OWVkYThhMDkxZTAwN2JhN2E4N2NmMGY2ZWU4MzBkYzNmZjM0NDhmMTQxOWE1M2NkNzY0YTcxMzE5YyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNjk5MTY1NDZmYjNkMzM0YTNiOTQ3ZjA5MmM2YTYxZmI3ZThiMzk0NDcxOWQ2YzMzOWQ0MWFmODRiOWZjYWRjYyJ9"
+        },
+        {
+          "resource": "repo://CHANGELOG.md#L19-L19",
+          "version": "repo-lines-v1:sha256:7738fe498755298537bb6b654185b9b71de35d265c98b66abd2d9554ea3dd617:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNzczOGZlNDk4NzU1Mjk4NTM3YmI2YjY1NDE4NWI5YjcxZGUzNWQyNjVjOThiNjZhYmQyZDk1NTRlYTNkZDYxNyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNzczOGZlNDk4NzU1Mjk4NTM3YmI2YjY1NDE4NWI5YjcxZGUzNWQyNjVjOThiNjZhYmQyZDk1NTRlYTNkZDYxNyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMWMzMmMwNWVmMzI0OTE1NjVlYWMxZDI1MTIxZDI3MDk4OGNmYWQ3OGQyNWUzMzhkZDk0MWQzNWZiNjgzMTU1MSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMjIyYmViOTk4M2JjMWIxMDA4ZDJhMmI0NTY3ODRjNWU4ZTRjMWJmNzA1ZTVmZDhmNjIyZDJhNzk1YjA5NTIxYSJ9"
+        },
+        {
+          "resource": "repo://docs/09-M5%E5%86%85%E7%BD%91%E5%9C%A8%E7%BA%BF%E9%AA%8C%E6%94%B6%E8%BF%90%E8%A1%8C%E6%89%8B%E5%86%8C.md#L52-L52",
+          "version": "repo-lines-v1:sha256:0a0c0bb50615966a353bdb696aadda12797415e0e5a8dfd7486c75ef0d56c3e2:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMGEwYzBiYjUwNjE1OTY2YTM1M2JkYjY5NmFhZGRhMTI3OTc0MTVlMGU1YThkZmQ3NDg2Yzc1ZWYwZDU2YzNlMiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMGEwYzBiYjUwNjE1OTY2YTM1M2JkYjY5NmFhZGRhMTI3OTc0MTVlMGU1YThkZmQ3NDg2Yzc1ZWYwZDU2YzNlMiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMDZmMzdjMzMxMTIzZWJiNTJhOWQ1ZDEyYWZiMDA1OWVkYjg0ZTc4YmM2NzY5ZDcwMzY1Zjg0NTMxNjMwY2I0NCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMzdlMzEyZTM5NjMwZGIzYWE1ZDg1MmE2Yzg1NDZjZDJmODhhNDY1NWM5YzI1YmE1MWZiNWExM2I3ZWIzZWYzYSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_9f8ad6614b8041bb93f85cb2bb4171bd",
+      "statement": "The rollback precedent verified at the W4 closeout (2026-10-07): switching DSS_DUAL_RING=0 produced 288/288 zero diff — a full 24h/288-step status-line sequence byte-identical to the baseline — and this rollback semantics is reference-only for troubleshooting and forbidden during the acceptance window (changing any DSS_* parameter voids M5).",
+      "evidence": [
+        {
+          "resource": "repo://CHANGELOG.md#L19-L19",
+          "version": "repo-lines-v1:sha256:7738fe498755298537bb6b654185b9b71de35d265c98b66abd2d9554ea3dd617:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNzczOGZlNDk4NzU1Mjk4NTM3YmI2YjY1NDE4NWI5YjcxZGUzNWQyNjVjOThiNjZhYmQyZDk1NTRlYTNkZDYxNyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNzczOGZlNDk4NzU1Mjk4NTM3YmI2YjY1NDE4NWI5YjcxZGUzNWQyNjVjOThiNjZhYmQyZDk1NTRlYTNkZDYxNyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMWMzMmMwNWVmMzI0OTE1NjVlYWMxZDI1MTIxZDI3MDk4OGNmYWQ3OGQyNWUzMzhkZDk0MWQzNWZiNjgzMTU1MSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMjIyYmViOTk4M2JjMWIxMDA4ZDJhMmI0NTY3ODRjNWU4ZTRjMWJmNzA1ZTVmZDhmNjIyZDJhNzk1YjA5NTIxYSJ9"
+        },
+        {
+          "resource": "repo://docs/09-M5%E5%86%85%E7%BD%91%E5%9C%A8%E7%BA%BF%E9%AA%8C%E6%94%B6%E8%BF%90%E8%A1%8C%E6%89%8B%E5%86%8C.md#L18-L18",
+          "version": "repo-lines-v1:sha256:5b299b6a19c237cecc9b6c0d053738e5c72f58bdbe5c2e361b323fd862cad296:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNWIyOTliNmExOWMyMzdjZWNjOWI2YzBkMDUzNzM4ZTVjNzJmNThiZGJlNWMyZTM2MWIzMjNmZDg2MmNhZDI5NiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNWIyOTliNmExOWMyMzdjZWNjOWI2YzBkMDUzNzM4ZTVjNzJmNThiZGJlNWMyZTM2MWIzMjNmZDg2MmNhZDI5NiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZWM0MWY0NjRiZjVlZDViYmUxNjk3ZmE1MjVjYWRjNmZhYjU3NWFkN2E0OTQ0Yzc2ZjYzYzVlMDQ5ZjlhYTk4ZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiODNlMGRlZjg3NTUwMGE0Y2RkMmZmMTlmZjg3MThlZjcyMGUxZjdiMTQ5YTE0NGI2YmIxZDdkMjQxNmJmZTM4NyJ9"
+        },
+        {
+          "resource": "repo://docs/09-M5%E5%86%85%E7%BD%91%E5%9C%A8%E7%BA%BF%E9%AA%8C%E6%94%B6%E8%BF%90%E8%A1%8C%E6%89%8B%E5%86%8C.md#L52-L52",
+          "version": "repo-lines-v1:sha256:0a0c0bb50615966a353bdb696aadda12797415e0e5a8dfd7486c75ef0d56c3e2:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMGEwYzBiYjUwNjE1OTY2YTM1M2JkYjY5NmFhZGRhMTI3OTc0MTVlMGU1YThkZmQ3NDg2Yzc1ZWYwZDU2YzNlMiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMGEwYzBiYjUwNjE1OTY2YTM1M2JkYjY5NmFhZGRhMTI3OTc0MTVlMGU1YThkZmQ3NDg2Yzc1ZWYwZDU2YzNlMiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMDZmMzdjMzMxMTIzZWJiNTJhOWQ1ZDEyYWZiMDA1OWVkYjg0ZTc4YmM2NzY5ZDcwMzY1Zjg0NTMxNjMwY2I0NCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMzdlMzEyZTM5NjMwZGIzYWE1ZDg1MmE2Yzg1NDZjZDJmODhhNDY1NWM5YzI1YmE1MWZiNWExM2I3ZWIzZWYzYSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_c14c50dc588349ee9f9ec2771b203e25",
+      "statement": "Per the user decision of 2026-09-20, agents never execute git commit: all commits are performed by the user, and an agent only reports the changed-file list plus a suggested commit message when a task or wave completes, for the user to verify and commit.",
+      "evidence": [
+        {
+          "resource": "repo://AGENTS.md#L62-L62",
+          "version": "repo-lines-v1:sha256:6dc84a7d5f64f0f9990bbfa4bf650317e5b034cdcdffe12d46bf355833183b69:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNmRjODRhN2Q1ZjY0ZjBmOTk5MGJiZmE0YmY2NTAzMTdlNWIwMzRjZGNkZmZlMTJkNDZiZjM1NTgzMzE4M2I2OSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNmRjODRhN2Q1ZjY0ZjBmOTk5MGJiZmE0YmY2NTAzMTdlNWIwMzRjZGNkZmZlMTJkNDZiZjM1NTgzMzE4M2I2OSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTk3ZWU3ODEzNDFmOWIzNWRkODcxODAwY2NjMjgxNTMwZTYwMTdmYWJlM2NjZTA0OWVmMWNhYjY1YjUyMjM4NiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiODAwMTUzOTJlOWJhZGY4ZGYyOTJiMTlmZmRiYWY3NjZkZDI0ZDUwN2I1NGRhNjEwNGJlMWYwZTljOGJiOWE4ZCJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_f72afa04b7a24cbc919bbce5b04adf3c",
+      "statement": "The wave closeout flow is: user commits the code → the BM thread note is appended with this wave's decisions/measured results → CHANGELOG.md (wave-level granularity, written at closeout rather than per commit; design decisions/wording/pitfalls go to the BM note) → Pi initiates openwiki update → the file list and suggested commit message are reported → user commits.",
+      "evidence": [
+        {
+          "resource": "repo://AGENTS.md#L47-L47",
+          "version": "repo-lines-v1:sha256:8da53faafa74e0230bd654b091f5724349cf887834feab44e425d3d074141363:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOGRhNTNmYWFmYTc0ZTAyMzBiZDY1NGIwOTFmNTcyNDM0OWNmODg3ODM0ZmVhYjQ0ZTQyNWQzZDA3NDE0MTM2MyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOGRhNTNmYWFmYTc0ZTAyMzBiZDY1NGIwOTFmNTcyNDM0OWNmODg3ODM0ZmVhYjQ0ZTQyNWQzZDA3NDE0MTM2MyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNDY3NDExODg5M2I3ZjE0MjdhYWQ5NTdlN2QxYWQ4OTQ0NWFhYTk2YjQ1YjA0NTNmNjNmMjBhZWVlOGIzNjk2ZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZjE1YmFlZDIzMTUxMWQ2NjEyYzQxNTY2ZDk2ZTY0NWQ4OTRjYzRmMTU4MmQxNjQ0ODA2NzQ3ODljNGRjNmVkNiJ9"
+        },
+        {
+          "resource": "repo://AGENTS.md#L63-L63",
+          "version": "repo-lines-v1:sha256:3d8f297ba12da0a2e39a11bd60ce7bfb999cdc03664d355a808935e0d1aa9216:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiM2Q4ZjI5N2JhMTJkYTBhMmUzOWExMWJkNjBjZTdiZmI5OTljZGMwMzY2NGQzNTVhODA4OTM1ZTBkMWFhOTIxNiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiM2Q4ZjI5N2JhMTJkYTBhMmUzOWExMWJkNjBjZTdiZmI5OTljZGMwMzY2NGQzNTVhODA4OTM1ZTBkMWFhOTIxNiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMDJjOGNjZmQyZjM2ZDg5NzczZTdlMjc2OTQ2YmUzZDVmNTkyYmY5YTFkMjQ4ZDk4Njc5YmU3MTMxMzkxYjkzNCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZmZjNjEzMjgwM2MzMGU5ZmZiNWRlNjFlNjE5ODZiNjRiOTk1ZDk2YWRiMTk4MzM1OWNhZGJhNjg2NDc2ODc2OCJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_a4012fdd10c4462fa9763cda73b729a3",
+      "statement": "The docs/09 troubleshooting quick table has 7 items: missing-table startup error (re-run 01_learn_takt / 01_learn_v2), week-plan missing days (fix the CSV against plan_inbox/README.md and re-run 01 with idempotent upsert), persistent STALE (ETL cut, not a DSS fault — record the span, contact the data owner, auto-thaws on recovery, not gated meanwhile), cross_check > 1% (inspect the boot report details; if the bootstrap data itself is bad, contact the data owner), repeated process restarts (check the tail stack of m5\\log_*.log; usually a dropped DB connection that the restart loop self-heals), missing snapshot frames (process was offline at that time; the span appears as anchor-missing rows in the closeout report), and '段=待确认' in frames (85 un-mapped station sections, M3 open item — non-blocking).",
+      "evidence": [
+        {
+          "resource": "repo://docs/09-M5%E5%86%85%E7%BD%91%E5%9C%A8%E7%BA%BF%E9%AA%8C%E6%94%B6%E8%BF%90%E8%A1%8C%E6%89%8B%E5%86%8C.md#L178-L188",
+          "version": "repo-lines-v1:sha256:27a5a6d1448c354575bd2f8f728f3d1c339350ff4bd86821a4a45c38db8f923d:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU5MTIzNDVlMjBlOGZjODIxZmJiZDRmOGRkOGNkYjAwNjU3YWYwNGI3ZDA3MmQyYTgxNTBiYTkyZTE2YjFkMWYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijc3MDM1YWY5MmU4YzdmMjIyYzhiNmVmZGU5Y2MxMjdhYTBmODNkM2MzYmEyOGEwM2UxOWI4NzJiOTU1NTRiNmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjgzZTBkZWY4NzU1MDBhNGNkZDJmZjE5ZmY4NzE4ZWY3MjBlMWY3YjE0OWExNDRiNmJiMWQ3ZDI0MTZiZmUzODciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjgzZTBkZWY4NzU1MDBhNGNkZDJmZjE5ZmY4NzE4ZWY3MjBlMWY3YjE0OWExNDRiNmJiMWQ3ZDI0MTZiZmUzODcifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_4a920bce38b946d582a55db50a5580bb",
+      "statement": "The 04 acceptance script is deliberately aligned with the existing calibration and must not be changed: 4 exit stations via spike_w3/common.EXIT_STATIONS (K3IS140/1J440RB/K2IS075/K1IS135), product cars BODY_ID LIKE '78202%', SET TIME ZONE 'Asia/Shanghai' on every query, mid-shift end by type via spike_w2/shifts.MID_END_TIMES, the 5h anchor via spike_w2/shifts.DAY_TYPES/MID_START, and the alert ledger limited to confirmed (10-minute debounced) transitions, same source as 03/M10.",
+      "evidence": [
+        {
+          "resource": "repo://docs/09-M5%E5%86%85%E7%BD%91%E5%9C%A8%E7%BA%BF%E9%AA%8C%E6%94%B6%E8%BF%90%E8%A1%8C%E6%89%8B%E5%86%8C.md#L192-L199",
+          "version": "repo-lines-v1:sha256:e707821bf231ac2a9391189d76f2ec73b1afb1bae0062e1836c7d205205c8273:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiN2Q4NGU5Y2VjZjY1M2VhMTFkMGEyOTk0ODEzYWExMGJmOTU5ZjI2OGNkYzFjNGU5ZDQ5NjZhNWJjMWQzZDc4YSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZWFhZmJmYTRhYWU0YTRmNjVmMTAyNjQ3OGQxMzEyYTdkOGFiODBjMDMzOGY1ZTE5YTc3ZjhmNzkzZmEwMTM5OSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiODNlMGRlZjg3NTUwMGE0Y2RkMmZmMTlmZjg3MThlZjcyMGUxZjdiMTQ5YTE0NGI2YmIxZDdkMjQxNmJmZTM4NyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjAsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSJ9"
+        },
+        {
+          "resource": "repo://spike_w3/04_m5_acceptance.py#L160-L174",
+          "version": "repo-lines-v1:sha256:cd0f4694ff2916b20d351a273330145653e48dbee7bd3b780efdc80c5ccb60cc:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg1NjkwOTliNThlMmYxYTJhYjY2ZDU2NzJhNmIzNjVhYTE4Mjk3NTI1YTJhYzg4ZjlhZDAyODIzYjhmNjA3ZDkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImM3ZmQxODNlZGM4MzExYjEyYWNkNTVmYmU2NGQ5YjE2YWU3NDEwNDUxOWI3ZWUzY2I1MTFmNDJmYzk1OTM0MzAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjAyNmZlYzNiOTZiZmI0YjRlNmIyNDBmZTNjOWNkOGQ0OGQ1NmFmMmRmZGJhM2QyODgyYmZiYzFiZTc0NDNhZDUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjgxZGI4NzMzNDZmODU0N2I5MTNiYjk0YWJhMzQ3N2ZmZTg3OTE2MGE1ZjZmN2VlNjgwMjliZjcwZjQxNGFmZDEifQ"
+        },
+        {
+          "resource": "repo://spike_w3/04_m5_acceptance.py#L38-L42",
+          "version": "repo-lines-v1:sha256:39d9c19306dae2acf6fc89baf6d2a72561774dc4d27a184ae0b2975a39b648a8:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZThmODM1OTViN2I0YmEyYjE3Y2ZhNWY5NjE3M2ZlMDA1ZjEyZTY2N2JhNWI3NjU1ZDYzYjA5ZmIzNzJkNDU4OCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMjk1NTA5ZjQyM2IxMTM1YjA3ZTNkMzg0ZDNhZmE0M2EwZGNmNDk4YWY2Mjg5OWE3YzMwMDM3Y2I0ZjZiNzk4MiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNTE3MzUwYTAwZmJjNjkyNWRjOGI0ODFmMWJhZmVlYzE3MzA5YTQ3MTM4YTlhZDRjOTczZWZmMWQ0OGU4NjY4YSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMDI4ZWZlNTc2MWYyNDIwMTM3ZDhjNTljZDFjMDI2ODBmZmRhNTE5ZTNjYjJhNTU3YzMxOGE4ZjIzYjMxYWFiNSJ9"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.7.0",
+    "at": "2026-10-08T13:05:24.547Z"
+  }
+}

@@ -1,0 +1,396 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:03003b3ff7a3870fc5af34a0ab9b78d9f68500c31e6cfe754db7f96344eb5f8b",
+  "claims": [
+    {
+      "id": "claim_f2552c50b8d14013a9bf42c558268be3",
+      "statement": "The shift window equals formal shift start plus working hours plus a fixed 30-min handover tail (交班尾): day-shift ends are uniformly 16:30 (11h 05:00–16:30, 10h 06:00–16:30, 8h 08:00–16:30) and the mid shift starts 16:30 with window ends 04:00/03:00/01:00 next day for 11h/10h/8h. The window end is the sole computation caliber for counting, target splitting and display, while the point where working hours are finished (03:30/02:30/00:30) is only a physical off-duty annotation; the 2026-09-23 decision rests on the measurement that 0 vehicles exit during the 30-min tail (08-24~09-22) and that the window-end cut is drift-resistant. Caliber sources: BM note 2026-09-19, README 关键口径 班次窗口与窗末 row, docs/08 §二·1.",
+      "evidence": [
+        {
+          "resource": "repo://README.md#L29-L29",
+          "version": "repo-lines-v1:sha256:0914db35e7b4c433478e559de016787388b0dccd61af282101a9fc0c918f5b04:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMDkxNGRiMzVlN2I0YzQzMzQ3OGU1NTlkZTAxNjc4NzM4OGIwZGNjZDYxYWYyODIxMDFhOWZjMGM5MThmNWIwNCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDkxNGRiMzVlN2I0YzQzMzQ3OGU1NTlkZTAxNjc4NzM4OGIwZGNjZDYxYWYyODIxMDFhOWZjMGM5MThmNWIwNCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMzVkYzA3NmExMDJlODIyYWZmMTNmZDkzMjExMTJiMWVjZTEwYjNhMmQyYjAzMDA0MTkwMjg1NTdiOThkNjczYyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNTc2MzI1ZDE1MmY5OTcxNjZmN2JiZmM4NTY4YmNhYTc2ZTRiZjQwMGFkMDJjNmIxNjA2Zjg1ODY1MTZhMGIwZSJ9"
+        },
+        {
+          "resource": "repo://docs/08-%E5%91%A8%E8%AE%A1%E5%88%92%E4%B8%8E%E6%8E%92%E7%8F%AD%E8%BE%93%E5%85%A5%E6%95%B0%E6%8D%AE%E8%A7%84%E8%8C%83.md#L28-L36",
+          "version": "repo-lines-v1:sha256:14bb9d560a18d71515c8d58422ca96f161cd0a590777a4096e5313a9490df719:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZmEwMzJiYzBmMGI4YzA2N2ZmZGRmNTRjZTJjNTViODkyNTA3MTdiNDQ3YWM2OGQzMjUxODMxZTFiNTM0MGYxNSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMGYzOTRiYWVjZTc1NDE3ZWU0NjIzNWQyODBkODI3Yzg4Yzk3NjJhMjcyM2IzMDQ1OWVhZjZlNDQ2MjgzNzc4NiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOTVkNzZkYzdhOGMyNGIzZjQ2MzgwODFlNmJmYzI5OTg5MTY0Mjc1Y2VjNDMwY2I2NWYwZTUxNjBmZDZlNzEwMCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZDAyOTk2MGJkYTU5N2NhMGIzYTQxNjJjMTk2NTg5MTgxYjMzOGI5NGE4YTk3ZjRlMzAyYjBiYmJmYWY5MGZhNiJ9"
+        },
+        {
+          "resource": "repo://spike_w2/shifts.py#L25-L29",
+          "version": "repo-lines-v1:sha256:3980715079b4dfba0a7fbe576d37a2f863980770cc65525a99050e137a918469:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZmEyODQ3ZjUzOTE1YzljMjBlMDdhZTg5NjMxZDNlNDkxYWUxNzA5NThlNmJjMGRkZGQ3ZDQyOWEzZDk1YzMzMSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNWIzYmE1OTlhYTEwNDk3Yzk5ODk1NjgwNDZkOGNiOWM0NmI0NzYzY2NlZDE2Y2Q5MmM2OWVmOGRmZWE2YWQ3YSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMDJkMTI4NzEwMWQyMGZlNjc0NWIwZGExODg3ZjI1ZmI2MjUzMWY0NDk1Njg2ZDk0NjZkODkwNzVjY2NlZGFlMiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMDg4ZDM3NmJkOTNjNGQ1MWYxYjI1ZmYzMmI2ZDE3YmEzYTU3ZGQyMDJhMWMzYjEzMjIyNzkxODM4N2I4ZWFjMCJ9"
+        },
+        {
+          "resource": "repo://spike_w2/shifts.py#L4-L8",
+          "version": "repo-lines-v1:sha256:4a0b4c17b69afd5a7c324ce10f351b0cda21b86bdd019b14766886ee3825a3e0:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYTcwNzAwYmU0OGNlZjNiZGJhNjhhMDM5MmFlNGEzMTM2YTJmZGY1NDMzNjUzNmY4YmEwZDNlNTFjMGE0MjJhNiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMzQyNDY2YWFiYTNjYWY5Y2E5ZWFmNWNlMGQxMDhiYzMzYzZhYmYwNWJlOTIzNTc0ZGRlYzczMTMzMTVkNmRjYSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMDlmNjFiZDg1YmU4MjVjOTQ2MmY2YWNiMWMxNjViMTNmNmVlNzZmNjY4ZGExOTc3YzJjYzJlZTE1NWI4NGVlNiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNGNiMmZjOGM5NmIyZWI0MTlmZmIxZThjMGQ2MjVlYWI1NWVlYzU1MmQ4M2JjYWE2NWFiYmMxNmI0Y2I1MzVlYSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_f7f723cee3f149cab796aab38d8b297e",
+      "statement": "Attribution windows differ from working windows: the day-shift attribution window is [04:45, 16:30] — early work 04:45–formal start counts as the day shift — while the mid-shift attribution window is [16:30, window end] (attr_start = 16:30 exactly), and the gap (mid window end, 04:45) has no attribution (a low-trough micro-gap). Consumers apply attr_start <= t < end semantics (dashboard active_shifts_at over current + previous day, so a midnight hour belongs to the previous day's mid shift), and causal history builders drop exit events in 04:45–16:30 for the same reason.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w2/shifts.py#L27-L29",
+          "version": "repo-lines-v1:sha256:2459a7d4fc399e4d16eb8529139079631e6292ee6e413df39fc0e668c7f1a6e9:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiM2Q4NWJkNjRiNTY2MTc3NzlmNjAwMDFmZjk4NWIzZTEwNDM0ZGJiMzQ1ZDcyMGFkZjE5MWI4MDQ5YjI0NTFmNCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNWIzYmE1OTlhYTEwNDk3Yzk5ODk1NjgwNDZkOGNiOWM0NmI0NzYzY2NlZDE2Y2Q5MmM2OWVmOGRmZWE2YWQ3YSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiY2FlNWMxYjFiMDlkYjNiNDlmM2IzYzFkZjI3MzY0NGU1NGYwYTJiZGM3NTRlYWRjZGMwZTM0NjUxMjY3N2FkYSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMDg4ZDM3NmJkOTNjNGQ1MWYxYjI1ZmYzMmI2ZDE3YmEzYTU3ZGQyMDJhMWMzYjEzMjIyNzkxODM4N2I4ZWFjMCJ9"
+        },
+        {
+          "resource": "repo://spike_w2/shifts.py#L7-L8",
+          "version": "repo-lines-v1:sha256:6a2e70bf8dfe4769673793586b164c42eeba78c7238a85dcc2f140421f6b1c53:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMWI5YmRiZDQ4NzQ1MTJjYjczM2NmYzNmZDMyM2ZmMjUxNDhhOTUzN2VlOTJkYzI0MTI4OTcxNTA5YmEwOGViZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMzQyNDY2YWFiYTNjYWY5Y2E5ZWFmNWNlMGQxMDhiYzMzYzZhYmYwNWJlOTIzNTc0ZGRlYzczMTMzMTVkNmRjYSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOWQzMjg4NWNkNWNkMDNmODIwY2NkOGVlZTg4OWJjOGI1YjdlN2ZmYThkMThjOTMzNzE2N2ZjMzQ1Y2E4NDRmOSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNGNiMmZjOGM5NmIyZWI0MTlmZmIxZThjMGQ2MjVlYWI1NWVlYzU1MmQ4M2JjYWE2NWFiYmMxNmI0Y2I1MzVlYSJ9"
+        },
+        {
+          "resource": "repo://spike_w3/dashboard.py#L35-L54",
+          "version": "repo-lines-v1:sha256:6c9970adb8246a046721b09a0eec6a662345b09582de2db3e986fc5cc75f6b7b:eyJzZWxlY3RlZExpbmVDb3VudCI6MjAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjY4NDg5YzJmM2I0OGQ2NWQyYzJmZmQxOWY5MmFhZjRlYzEyZmY3OWE3Y2U2ZDNjZTc5MWVjMjgxZmNlOGY2NTYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjgxMDk2NmU2YjE5NWUzOGM3MzUxZDA2ODcyY2E4OTI5YjZhYmIzYjcwZTg2YWIzZTk1MzY5ZGMxYjFjN2RmYzQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjBjZTY2ODY0NmEzMzljMmVhOWUzODU5ZTNlNjQ1OTc3YTljY2U4MWYzOWVmYzAyZDNmNDcyOWRkNjY3ZTJmZDQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjFjZTRhMGMwNGYyNWE1MTNkMDU3ZDE3NDQ1Y2UwNjg5MTc0MTUwZDExY2MwNmE5OGEzODJjNDlhYjI2YzJhZTUifQ"
+        },
+        {
+          "resource": "repo://spike_w3/plan_loader.py#L477-L483",
+          "version": "repo-lines-v1:sha256:701102fced4cd30b9d668cb2bc54b7c4344f31e7a6ed8cde30433868cd8858f5:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOTI3NGI0YWRkNzYzZWRjZDUxOTU5OTU3ZDdhMGI4ZGYyNzgwMTdiYjhjZjllNGJkNDg1ZTEyOGVjOWNjOTcwNSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMzVhOWIwNTJkOGIyN2M1YzQwMzg5NzliNTkzYmRkNzVjMGY2ZTY2NjBiMjg5ZDg5NzljZDZkY2FhOGRlZTU0ZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOTM3MDZjOGViZWY5MzUyOTY0ZTZiMjhiOTYwZTQyOGY4ZjExYjRlNWI1MzY3MDZkZjg5ODU0MjcwODlmYWNlMyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYjk5ZTFiNmFjN2Y5ZGM0MWE0YmU3ZmNhMWM4YjcyMTBlYTYwZjM2NGYyZDc4ZjZiMTA1OTljNjZkZDE2OGYxMSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_da7e7bee7ffd4cbc83814f0bcc686a11",
+      "statement": "shifts.Shift is a frozen dataclass carrying kind ('day'|'mid'), nominal day (mid shift's day = opening day), work_start (anchor origin), attr_start (exit-counting origin), end (the window end used by the 't + remaining ≤ shift end' completion rule), and type. shift_windows(day, day_type, mid_type, schedule) returns [day?, mid?] with None types producing no shift (both None → []), and when a schedule dict is passed and contains the day, the schedule entry (values routed through normalize_shift_type, so 11/'10'/'休' all work) takes precedence over the positional day_type/mid_type arguments, yielding [] on rest days.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w2/shifts.py#L37-L108",
+          "version": "repo-lines-v1:sha256:58e743655bfd77ff2a5fe90b0b8f4f2ce01158b69a19293299e1958c66192bbe:eyJzZWxlY3RlZExpbmVDb3VudCI6NzIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU4ZDhiN2VjZGYyZjU1NmNjNzVlYzBkNjE0NjZlZjZhYzI2NTRkMDRhNTcxMjkyNmJhMTFlODVjY2M4YmQ5MGQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjgxMDk2NmU2YjE5NWUzOGM3MzUxZDA2ODcyY2E4OTI5YjZhYmIzYjcwZTg2YWIzZTk1MzY5ZGMxYjFjN2RmYzQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjEwYmI5ODc1OTdlNjMxYTZhNWFkNDk1ODI3OWQ3YzBiZGRkNDMyZWRlOTZiN2M5ZTgxOGE5OTk1MjdlYzgzNDkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjU3NDY2MWNlZjExMDM4NDdjZWM1ODQ3ZWIyZWVhZjQzODJlMWZkMTBlYTUwYWUzNDdkY2I2ZjAyNTUwOTY0ZjkifQ"
+        },
+        {
+          "resource": "repo://tests/test_shifts.py#L133-L149",
+          "version": "repo-lines-v1:sha256:ccd6ea75a4b727766ab01fc4b28da1a85b5d73999e3ea3f5b55de93e2b209a79:eyJzZWxlY3RlZExpbmVDb3VudCI6MTcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg0YWZhMmE4M2JjOGQ5YTE4Zjc1M2M1YWQzY2ZmNzY4YjYyMWIyMzEwYTdlMTMxOWE4YzljY2Y0YTI0NGU0NGMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI0NjcyNTcwNjdmYTQ1MzM4ZjQ3OTBhYWM5NDQ4NWI3NTdjZTg0MGNhNGZhMWU1ZDM3ODc1YjIyMWQ1ZjEyODQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImJiZjRmZjM2NzA0YjZlM2RkMjVkMWQ5ZDc1NGQxYzg1NmE3ZjNjMWYzNjUwNGYwNGU3MzgxZTY1NGE1NTkxNTEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjoxLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjdlYjcwMjU3NTkzZGEwNmY2ODJhM2RkZGE1NGE5ZDI2MGQ0ZmM1MTRmNjQ1MjM3ZjVjYTc0YjA4ZjhkYTYxYTYifQ"
+        },
+        {
+          "resource": "repo://tests/test_shifts.py#L52-L71",
+          "version": "repo-lines-v1:sha256:4ff95452a059042843d17b69e2803eaed89f161ebe06e7c20cb8512cdf596337:eyJzZWxlY3RlZExpbmVDb3VudCI6MjAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijc2YmRjNDljYmRhNTdlNjM5YTFjOWFhMmYxZTk5YmQzMWE0MTdkYTg2MzRlMjkxMjk2YmI2YzlmZDIwNWMyZjEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk3MmI0NjFhMjNmNWMxNjVkM2JiZDM2ODJlYThjNjJmOWI1YTZhODY0ZWM4NzU1MDIzOGQ3NDk4YzJlNWExODYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUxM2QxMzUwMjgzYjgyNGIxZTY3NTQxM2Q0MTJiMmU2ZGM3ZGE0YTdlMDg0NzZmYTc3ZmFmNzNlZGQ4YWYyNTQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjYxZDViNTQ5MWFhNjhiZDYzOGZmYjM5ZTdmYzA3ZjgzNjRkNWQ0YTEwZTM1MTI3YjczZWE1YTkwM2FmZjc2MzcifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_6cff928e15804582b075b5046b463071",
+      "statement": "Each shift exposes a multi-anchor set work_start+{3,4,5,6}h (anchors/ANCHOR_HOURS) and a gate anchor at work_start+5h (gate_anchor, GATE_ANCHOR_H=5): day 11h→10:00, day 10h→11:00, day 8h→13:00, and the mid-shift gate anchor is always 21:30 regardless of 8/10/11h. Replay consumers (spike_w2/02_replay_shift, spike_w3/02_shadow_replay) iterate shift_windows + anchors per shift, and the W3 5-minute frame context (dashboard.build_frame_ctx) uses the same work_start+{3,4,5,6}h anchor set.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w2/shifts.py#L111-L116",
+          "version": "repo-lines-v1:sha256:8da9b1dd0282262007a4b67f3f77920750758e95339d0d7ea46dcbe25ed50b13:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNDk5ZjUwNWI3MjQyZmYxNTY3NzQ3MDRmNDliYTJkMmJlNzdjMDIwYjBmM2IyNjc2OWQzOTk0ODM3NTU5NThhOSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNDUzYjZjM2E1NzYzMzBmMzlhNGQ5YmFjYzQ3ZTc1Yzc0N2Y2ZjJkZDFmN2VjZDU3MDU3MjM1MzBjMjg4NTk4OCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiODdlNWExZjZiY2FkMGY1YzA5YThhMjUzNGQ5MjEzNDIxMmQwMWE2NjZhZmRlZDc4NjBiM2MxZjNiMzA3NGRjZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiN2RmYzI3YjFhODNiNGRhMGY2M2M2YTE2ZmZlZWI5ZWIwOTE5NDNhZjgzYTBiZDE2YzM1NzA4OWVlY2YxZjcxMSJ9"
+        },
+        {
+          "resource": "repo://spike_w2/shifts.py#L30-L31",
+          "version": "repo-lines-v1:sha256:4dae9ac1c7fd46f348d5b8f32b7b6b33c38b3594b389b7ae024a9363ac2e0852:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMzE1YTdlZjJjZmEwYjg1NDc1MmVlMDA2MDM5Y2Y4ZjkyM2M5MjI0NGY4NmJmNjViZGY3Y2YwZTBmOGRmZWZhYyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOTk3NDFmN2I3ODQ1NDZiM2NiNWE3ZWY4YTgxNjQ1NzMzNDlkZDdkZTA2ZmE2NDYzY2ZhMTAyMTNhMTI5MDM0YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMjQ1OWE3ZDRmYzM5OWU0ZDE2ZWI4NTI5MTM5MDc5NjMxZTYyOTJlZTZlNDEzZGYzOWZjMGU2NjhjN2YxYTZlOSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiY2Q5ZjhhM2JlMDg4YzFlZGYxOWM2ZDU4MTI0OWMwYzFiM2FkM2E4NDZmY2Q2ZDBiYjBhYWQ2ZDBiNTY2MzFjZiJ9"
+        },
+        {
+          "resource": "repo://spike_w3/dashboard.py#L107-L112",
+          "version": "repo-lines-v1:sha256:eead8e4a3418ccd95a991eb2e1c9aabd5e9000607b950bb4c5a9e4977ce9e071:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNjQ2NmU2MWIwMTlhYTMyNzcxMWE4YjUwZDkwZDk3OTYyMzU3NTQ1ZDM0MjcyYTg1MjQ4NjNiMmU1NGQ2NzBjMyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOWY4NzNlOGVkMDU3ZGJmYzlkYmRlMDc1YjVlNDcyZTk1YTcyMzNmYmM4MGJjNjg0Mjc5MmEyZDIxYmJmY2ZmYSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNTI5MDczMzhjYTg1YWJjZTI0MjNiOWNjZTYxYTUxZDQ0NTI1MTEwMDM1ZTMwY2Y2YWQ2NmZiZDU4ZTE2NDQ4MSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMTQ2MjE4ZDY3YTQ5MjUyODU3ZWYzYWRkZWNkY2JiMTg2OTc3Y2JkYWVkM2UzODBjMDE0NGE0MWIzMWI0Y2QxZiJ9"
+        },
+        {
+          "resource": "repo://tests/test_shifts.py#L76-L87",
+          "version": "repo-lines-v1:sha256:6d8f18a216c4372a93453c468cfcd3cb8c2506bd84d8236b87e6a793b8c72efd:eyJzZWxlY3RlZExpbmVDb3VudCI6MTIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ2MWQyNjJmYjA4ZTVjYTZkN2I4NGMyNTZkOTJhYjRmYjdmNTFhZDc5ZmY5ODYzMzNmNTkwZjM2NTg3ZGE0M2UiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg1NjhjZjk3NmMwMGViYTJlMTEyNzIwN2E0Y2Q2YWJlMzQ3ZDU2OGM5ODBjNzRjODc5MTMwNGMzYzJhMDU2MzEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjI1NmNlYmI4ZGJhZDdhNmZlMzliYzYyOGUxMzU5ODE3ZjNlNjkxZjc5NWQxNjk0ODhmZWRiNDllN2FhNWFhMjgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjEzMzgwNTA4ZmUxYTU0NmViZTA1OTRkZmNmN2QzODc5Yjc5Njc3YTYyZjVkZTM5OTMxYWZiNGM4MTZmNmJlZTMifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_09210b331c8b41208ed3bb2b45e14b08",
+      "statement": "detect_day_type self-learns the day-shift type from 15-minute event buckets at 05:00/06:00/08:00: it returns None when the day has fewer than MIN_DAY_EVENTS=500 events (shutdown day); otherwise the earliest bucket with count ≥ SURGE_MIN_15MIN=30 determines the type (05:00→11h, 06:00→10h, 08:00→8h) — the threshold 30 sits between the measured low-trough floor (~12% of peak ≈ 7–8 events/15min) and full takt (~40–60) — and if no bucket reaches the threshold (gradual ramp) it falls back to the most common type '10h', recorded in the replay audit table.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w2/shifts.py#L32-L33",
+          "version": "repo-lines-v1:sha256:546a6e4d49df9f7f8c68cb491e4845c4ebe8f50217408e7461622972febdf411:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNGI2OTBhNTYxNjAxNTk3NmEwYTFlOTljMWU0OGRhNzIzNWQxYTcwNTc1ZjA4MjJmZTYyZjFhY2YxODU1NTgxMSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZTBlYjU5MDQyNGJmZTM4ZTJlYzIwY2JiNWIwMjIwNWVkMzk3YzY0NjZiNmI3Yjg3ODYzMjk5NzBlMzQwNTNkOSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiY2M2YzU5NTI2MmRmMjVmMDYwYjMzMDc3ZmI3ZDgxMTUyYmU5M2VmMmFjNjdkM2JmMWRmZjJkN2FlNTNjMDYwMSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMTBiYjk4NzU5N2U2MzFhNmE1YWQ0OTU4Mjc5ZDdjMGJkZGQ0MzJlZGU5NmI3YzllODE4YTk5OTUyN2VjODM0OSJ9"
+        },
+        {
+          "resource": "repo://spike_w2/shifts.py#L47-L55",
+          "version": "repo-lines-v1:sha256:abb65dbffb5730de9cb17b29dc490f35d0a94039588511a3d76ea8314ce89c36:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMWEyM2UyYzU5OWVhMmZhMDFiYWJmMDU3NTE5OWMwMWRhZDQzMWFkMTRhNTk0NjhiNjY3ZjhkNDRkYzE1Yzc4YiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMzllY2ExMGNkMzExNzJmMDIwMTUyNGJmZjUxMWI1NzYxZTNhNjQ4YTllZDM0ODg4OTE5OGFhYmZjNGVkNjA3ZiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNDUzY2Y4YjA2OGQzN2YwYTI2NTgwOWYwODQ1Y2NhMGJkN2FiYWU3MDY0OGRjYmEzOTAyZmI5N2Y1ZTUwMThhMSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYTUxMGZmZmMxYzUxODU3YTAyMTFjMWM3ZGQ2YmYyOWNhMDMyY2VjNWY0MDdiZWI0OGRjYjA1YTBmMDhiZjhkNiJ9"
+        },
+        {
+          "resource": "repo://tests/test_shifts.py#L13-L31",
+          "version": "repo-lines-v1:sha256:c8cd8561ea5b526325fe932fc214a8ecd542c75f61d66a57611943eee3b32a46:eyJzZWxlY3RlZExpbmVDb3VudCI6MTksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQ0Njg4YTA4MjEyYmQ3NTgxZDEwMzNjNDM4Njk4NTg4YWQzMTg0NDhiZWFlZDI4NjA1NDc2NmVjNzA4MWJiZDIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI4OGU3YzNhNDE1NTMyOTFlOTM5MDY5Yjk2MzA3NGUzZGViZWZmMTdhYTlmZjczYTIyMDZmMWZlNTYyYzBkN2UiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImNkZmIyZDZlMTRjNTVkMDRiZTJkZWExZGRlNTBjMzc0ZjRjZjY0Y2I3MTBmNTAwOTFiNTA4Nzg2ZWY1ZWQ3ZjIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjU2M2QxYzE2YzYzYzM2MjdkNWM0MmQ4ZTljNjk1ZTg4Y2ZhMmRlNjI5MTBjZWNkNjY1NDc0YTIwMGUxZTNmY2EifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_d975ae9e760249448a17f74d957702ca",
+      "statement": "detect_mid_type self-learns the mid-shift type from the minutes (last_min) between D 16:30 and the last product-vehicle exit event in the mid segment [D 16:30, D+1 04:45): None (no events) or < MID_MIN_FLOOR=300 (real 8h mid ends ≈480–540min, so <300min signals data truncation) → None; ≥630 → 11h; ≥510 → 10h; otherwise 8h. A 10h type whose furnace-side tail trails past 03:00 can be misjudged as 11h, which is why the raw value is preserved in the audit table.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w2/shifts.py#L34-L34",
+          "version": "repo-lines-v1:sha256:87e39b824570ba7a2bd5a380931fc9ef769100fa499758437ad9bdc4df0cc415:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiODdlMzliODI0NTcwYmE3YTJiZDVhMzgwOTMxZmM5ZWY3NjkxMDBmYTQ5OTc1ODQzN2FkOWJkYzRkZjBjYzQxNSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiODdlMzliODI0NTcwYmE3YTJiZDVhMzgwOTMxZmM5ZWY3NjkxMDBmYTQ5OTc1ODQzN2FkOWJkYzRkZjBjYzQxNSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNjQ5MTE3OTkxZTQ1ZjlkMzI5NWRmZTE5MjcyOWExMDQzZDY0ODU1YzliMTM1OTE3Y2Q3ZmVhN2QzYTdmN2Y3YiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiN2RhZmY3NGExZjE1YmY1MmQ2MWFiMzU0MmZiMzJjMzRlOWNkOTg0ODE2YjBkN2ZhMWI5MTI5YjljZmRkNDgyOCJ9"
+        },
+        {
+          "resource": "repo://spike_w2/shifts.py#L58-L66",
+          "version": "repo-lines-v1:sha256:f4bb3ef32a6fa780e31cc55d1cb6fbac91d606881cff064e7d97723f9415e904:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiY2QxM2NlMjZlYTg4MGQ2NGY3NDg4NTUyYzI4NWU5ZTk5ZGM5NDU3OGFmYzMxZWYwYzY0NjQxYTg3ZjdmMGIxMCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiY2E1MWU4NzBjZDgxYzkzYzk1MjRhZjc3ZWY4N2FmMGU4Mjg5ZTNhZTlhZDY1ZDNlZWI4NzFhMjk3MmM0MjJkYSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNDg5YjNiZGU3NmNjZWMxOWVjZTUwMDI1YWFjNWYzYmZiZDUwNGZmYmJiNWViZWU1NDBjZmJkZWQ5ZDkzZWE5OCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZDgwYzYzMzI2OGFiODQ1ZTdkNDY3M2QxMDFjZDczMTk1YzQ1NDlkMDJjNTQxNjIyZGEyMTQ5MDQ5ZjM1YTdkOCJ9"
+        },
+        {
+          "resource": "repo://tests/test_shifts.py#L36-L47",
+          "version": "repo-lines-v1:sha256:9c1d3b8db063f71128f70e740011bc6fb42bb541cee8a0cdac8178424fd96eec:eyJzZWxlY3RlZExpbmVDb3VudCI6MTIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjM3MTQ3YWNiMjAzNjg1YTNjZmRjYTVmNjBjMWI1YmRlNjc3NjZkMGZmMTI2ODFhNDgzMDJkN2IyNGQ2NDUyY2MiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQyOWU4OTk4N2YzY2E4MjQzYzJkZjA2ZTM3YTc0ZjY2OWEyMmE4M2QxMjU4ZjBjNDAzMzU3N2Q5YzdjODIyOGEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjBhODQ1NGRlMWY2NzBjMGI5ZjNjZTNlMDNmZmFkMzkwNGFiZGJiNDI2YzkyZDU2Y2Y5Yjk1OWUxNTVmYjdmOTgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImZkYTIyYjI3NzE3MjQxMWFiYjUyN2Y5ZDJlM2I4ZDA0NmUxOGE4OTFmNTVjNWVmMjBhN2E5ZjRlMTQ1OTEwOTIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_21eb62545c5e4a01a3ffe29bf7052f1e",
+      "statement": "Type self-learning (detect_day_type/detect_mid_type) uses full-day events including post-anchor events and is explicitly replay-hindsight caliber: the shifts.py header marks it 【回放专用】 and states production (W3) must not reuse it directly. The online causal path in spike_w3/plan_loader.py is a separate re-implementation banned from importing detect_*, enforced by a source-discipline test; meanwhile the historical-learning consumer spike_w3/predictor.build_takt_baseline legitimately applies the W2 detectors over pure past windows (rolling 8-week range, no future leakage).",
+      "evidence": [
+        {
+          "resource": "repo://spike_w2/shifts.py#L11-L17",
+          "version": "repo-lines-v1:sha256:e9ed6b0842cd37cec7c60be3e87adb9c3c64de6afdedb20cca96513f5f6ff17d:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNzY1YWJlYjM3MTA2MjdhMzU2YmI4ZGNiY2ZmOGExNGY4NTQxMTQyZDkxNWE5ZjQ4OWVjZTk5NDRkZTMyZmMxNyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDhlNTlhNDcyMTcwZTEyMzZmYzllOTAzNGYyYWQzYTIzNDE0MWI4NGQwZjk2Yjk0NDIzMjBkYmJjYTg4NjRhOSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiM2UwYzNkNTdlZTc1MTU1MWY0YmEyZDg3ZThkOGMyOTIzODc3YTRkOGJlOGY5ZTQwYjU5M2RlZjRmNWMxYjcyNyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNzhkZGE2ZjY4ZjJhYTRkOGZhNjExNzlmMmQ3OWJmOTM2MzNmNWUyM2MzYTUwMTA0ODM2YjM3YTIxZjNkNTUxYiJ9"
+        },
+        {
+          "resource": "repo://spike_w3/plan_loader.py#L379-L384",
+          "version": "repo-lines-v1:sha256:5c4b3050ccdf4444b30ed883dc37b648be969bea2384f8be43d9431f56514051:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNGEzNzdmMGMzZDgyMmMzYTY0Y2ZjZGFkNTM0ZWZhNmViYzUyZGM4YTg0YThiOGQ2ZDM3ZTlhN2RmMmZlOTIzYiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNWQ2MGE4MTJkMTYxMTU4MTdkMDlmMTg3NDNjYjU5MDFkZmY3YjIzMzA3NjEyNjk1Y2U4ODAzMzI5ODhjNDIxNSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZjUzZmQ2YzE5M2RjMDNiNmU5NmU0NzA1MjJkMzIwZmZjZDhlZjhjZTFlMjBlNmE5MDViNzQyMTk0MWVlOTcwZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNGY4MGIxM2RhNTc0NTdlMzc1MjA3MmY5YzU5ZTQ0MjU3ZDU5ZGU3ODhhZjAzYTY2ZDEwMDdkZWZkMzkwYWQ4NCJ9"
+        },
+        {
+          "resource": "repo://spike_w3/predictor.py#L177-L183",
+          "version": "repo-lines-v1:sha256:f2e769d4f2a72140d5adb86fe096a93d60ec796b6336bce651cd546cab3bb842:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNDUwZDVjM2U5NjQwYjBlMGM2NzM5NmJjNzVkNDliNTA5ZTk1MjQxYjg0OWM0ZjdkZDY0MGY0NGI1OWU2MmQwOCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZjc0ZWFmY2JjZmIyMDM2MGYwM2Q3Y2MxZjNhMTZjZGRkYWZlMWRlZDQwZmM1OTY2NTI1ZTEwODBjZGI4NGE3NCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZWU2MGY2ZThmMGJlOWFjNGViMWI4NTA2N2M5MjEwZWZmZmNjNTZiYmE3OTcwMWRkZjBjNTA5NGMxYmVlZjVmYSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiN2VmNzhkODA2Nzk1YzEyNzFlYjYyOWI0NTVlZTVjNWU2N2Q0OWZmNWRhZDczNTQwMGY4MzA4YmM2ZWE0ODc1OSJ9"
+        },
+        {
+          "resource": "repo://tests/test_w3_plan.py#L461-L467",
+          "version": "repo-lines-v1:sha256:61d0896253700f250f13766577a050ec2395bddaa263b4ea45c5970f51101d7e:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNGEyM2NiYmMyMDQwYjNlNTM4MjE1YmViYjM2NzY1YWZiNWM1NzlhNDc2NTA1M2Q3MTRhODM4M2ExNzgwMzY1MSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYWU0MDNkNGM1NmE1NzE3OWUzODU2MWQ2N2NhNmRhMzQwNzAyN2UyNjYwNTcyZDQxYjg2MDEyMTQ0M2JmYjMwNSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNDE4NzVjMTRmOGU5MzdlZDM2ODg2MjNhZTAxZGQ5MzU2ZWUwMGM5ZDExMmY0ZWExYzczYzEzYTY3MjRjNzE4NyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiOGI3NmFlMGViMjViNWZhYmM0MjgyODUzODZmNjY3YTE1M2M2NDFlOGM0YTBiM2M2MmZhZjUwNWQ0NGMyOTU5MiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_171d5e2b2474429c9e88e479346ce838",
+      "statement": "normalize_shift_type implements the minimal business input vocabulary for the shift-calendar interface: it maps 11/10/8, '11', '10h', '8h' to '11h'/'10h'/'8h' and 休/休息/0/blank/None to None (rest/shutdown). Per the README 排班日历接口 row (W2.1 极简设计), business staff only enter 8/10/11/休 and the system maps hours to physical windows automatically; the plan table is used only during prediction/alert phases, with 0% dependency in the training phase.",
+      "evidence": [
+        {
+          "resource": "repo://README.md#L30-L30",
+          "version": "repo-lines-v1:sha256:0e5099c9052d374f650aada5624fc6e745315023014caa99539debe485e0f223:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMGU1MDk5YzkwNTJkMzc0ZjY1MGFhZGE1NjI0ZmM2ZTc0NTMxNTAyMzAxNGNhYTk5NTM5ZGViZTQ4NWUwZjIyMyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMGU1MDk5YzkwNTJkMzc0ZjY1MGFhZGE1NjI0ZmM2ZTc0NTMxNTAyMzAxNGNhYTk5NTM5ZGViZTQ4NWUwZjIyMyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMTdkYWE0NzMxMTUxZjIxYWY3NWMxM2NiY2ZmOGQ3Y2EyYjUzOWJjYmZiNzYyNGIzNTQ3YWMyNDEzYjFmNWYwNCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYzBjYjJhOWU3YWQzZWViNjdiZjI4NjFlMmM5MjkxYTZkODRlMmQ2MDczMWI3OTY5MWVjMzZmMTQ1NDAzODdlOSJ9"
+        },
+        {
+          "resource": "repo://docs/08-%E5%91%A8%E8%AE%A1%E5%88%92%E4%B8%8E%E6%8E%92%E7%8F%AD%E8%BE%93%E5%85%A5%E6%95%B0%E6%8D%AE%E8%A7%84%E8%8C%83.md#L16-L17",
+          "version": "repo-lines-v1:sha256:d7ede9e6085dba79d628af62b1494c64f7eab2091e81b8958feed3cb2f8312b8:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiY2RiNDFiMzQxNDllOTMzZTliZjYzMzc3MjAzZTc2NGYxMzlkMDE5NTFiZWE5NTEwNTE1MTkxNWI0ZmIxYTc0MCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMjE5MWZhNTIxZjI3MGU5N2MzODYzOWI0ZDRjNDJjODcxZTVjMTA1ZTVhMTQ0NWE2MTEzZDRiMGU2ZjM2NjEwYiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiODdjZGFkMzY1MzVlNzFjNzBlYTViZDY4MTgwM2I4MGE3ZjZhYTA4ZjZkMjBiYjFmNTg3ZDBlMDQ4NDI4NjY2OCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNDRmMDk2ZThmODY0YjJhNTI0MzA3ZDNhMWU1ZjMyOWNkNjFkZjNjYWQ2YTUyYWZlZThkNTJkODNkZDczNmRlMSJ9"
+        },
+        {
+          "resource": "repo://spike_w2/shifts.py#L69-L81",
+          "version": "repo-lines-v1:sha256:daf15fe9a6f978cc4577a8aba970f9d08909cec117fc0a78dc6dcd8037c5f262:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjEzN2Y0MzlkOGI2N2I3NGYzNTk3ZTVhMjcwNDUwOTk4MmY2NzFiYzQ4NDFkMDQ3ZGI0M2YzNTYxZTI1YTI0ZjAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjExMzA2ODlmNjk1ZTA1MjhmNzRkNmIyYjZkNjE5NTY2M2U2MDg0OWViM2Q3MGVjYTEzMjU3Zjk4NmNjZGNmOWIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImZhZjZjMWFjNmQ4MzkxNzUxY2I2ZDE0MDBlMjI2ODU4ZWZkNWYxYjdkMDhjYmUyMmM4ZDhiMDIxZTFhZjMxMzIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjUzNmY4MjA2ZGIxMWUxMzhhZTY1ZjNlMTA0YTg4NjMxNDliOWM3Mjk1OTc2YTJkMTViYjI0ZWVkZjViYWRhMTYifQ"
+        },
+        {
+          "resource": "repo://tests/test_shifts.py#L124-L131",
+          "version": "repo-lines-v1:sha256:38960f765ea18a164bab2d22e8cbc621186a88902929d597b88482f4b7f90f44:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZGIwMTgzM2E0MDViNDEwYmZiMWNhMTgwZTlmNDZhYmFkZWViNTgzNzc4ZmRhOTRiN2VjNmJlMTc2YjA3ZTI3MyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiN2ViNzAyNTc1OTNkYTA2ZjY4MmEzZGRkYTU0YTlkMjYwZDRmYzUxNGY2NDUyMzdmNWNhNzRiMDhmOGRhNjFhNiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZDQ0MWU3ZTQzOGIwMjg0MDEzNzk3NzE3NzUzZTgxN2EwODlhMDlkMDc0YjViMTNjMzIzZDIyZmQxZTRkMmE3ZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZWJkMWRjYzVkNTk5ZWQwNGZhMTJiZDM1YzllNWQzMGI0ODczYzI2ZWVmYjJhNmRjNDg5MmU2NGVhMTRhYWE4YyJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_39f19cac055c4987ae8baa462c39dbef",
+      "statement": "resolve_shift(d, plan, history) is the frozen-contract (docs/02) production type orchestrator: a plan row for d yields (day_h, mid_h, 'plan'); a missing day falls through to infer_shift_causal(history, d.weekday()) yielding source 'inferred'. WeeklyPlan.shift_windows(d) is a static-plan convenience that must not be looped directly on the online path because a missing day and a both-sides-rest day both return [], and a raw loop would silently bypass the fallback.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/plan_loader.py#L492-L497",
+          "version": "repo-lines-v1:sha256:82acec3a8d52e70a5c3c771b5546d3cdc0e9481c518e97757a64403631ff7067:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYzg2NjZkMmI2YjAyNzRhODRjZGM1YzAwMTQxZGNkZTJiYWQ5MWE1ZTBlOWJlYTBmNWExNDEzMTI5MDM4ZGQxZiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOTJlOTNiYzNmMjMyODZjZWUwZjU0MTUwYzkxNmE3Y2RlMjQyZTZlMGYwNDk3MzMzMDI3YzFlOTYyOGE2NmEwMSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiODdlNWExZjZiY2FkMGY1YzA5YThhMjUzNGQ5MjEzNDIxMmQwMWE2NjZhZmRlZDc4NjBiM2MxZjNiMzA3NGRjZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjAsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSJ9"
+        },
+        {
+          "resource": "repo://spike_w3/plan_loader.py#L57-L69",
+          "version": "repo-lines-v1:sha256:43f0960baa92a1400655fd07bcb899a65bb1082e3c6418c401d1d0681e2e5b2e:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImJjZjhhOWQ1NWJlNzRhMjkzYjhkMDY1NjgyMDNmNzFhNzUwZTA2YjdhZDM3Y2E0MzJjNjk2YTQyMjVhNDJhM2MiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjJhOWY4YzJiYzdhMTQxYTAyMmFmM2ZlYjhhYjUwMDhlYzI1NzU3ZWYyNGFjZDA0OWY1MDg5YTc0YjdjOWFlODEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImVmMWQ0ZTYwMmZkZmE4ZWQxMDBiZDFlNTcyYzQ4MzQ0ZDAxMGVjYjdlZmUxMzA4MjlkY2FiOGI2ZDkxNjRlYWUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjE5MzJmZTYwMjdkOGNiMDY4Nzg4MjUwZmRkZDEyYTVjYTJlNjUxZjk4YTcwOWM2MzQwNWFkYTM4ODgyNmIwYmMifQ"
+        },
+        {
+          "resource": "repo://tests/test_w3_plan.py#L563-L569",
+          "version": "repo-lines-v1:sha256:b1cb86e027ba16a8653bb35317305efd0f1987be256630204179b35ad0a70ebc:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiODIyYTkwMDY5YzI0ZDkzYjJkZTg0NDk2NWM2NjY3MDE0ZTNjYjlmNjQ0Y2I1YWNhZmVmZGNmZDY3ZjM5ZDJjMCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiODBmYThlMWJiMDhkYzY3YWIzOGE4OWVkZWQ1ZGU5YjgzNTljZjIwYzNiNTBkMjRkZGQ5YzgyYjJkNzllMzMxZiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMmY5OGFhY2E2OWYyODRjOTMxNTMwYzAwODczM2I3YTQ1NTVjZDExMGZiNDBiNDNlZmFkZTMxNDA2MDc4NzFiOCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMmViYzZkY2Y4ZGUyNTZhM2ExN2IzMGUyYTQyYjhjOTAwNGE5MzY0YTU3YWU4OTRhMGNlOTBiNTNkMGZkZjc1NSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_99f1764825b6444c87af5113b2236d89",
+      "statement": "infer_shift_causal(history, weekday) is a pure function (no DB) for the no-plan fallback: it filters history to the same weekday and takes the per-side mode, where rest (None) does not enter side voting, ties resolve to the newer day's value, missing samples default to (11, 11, 'inferred'), a side with no non-rest samples defaults to 11h, and samples that are all-rest on both sides yield (None, None, 'inferred').",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/plan_loader.py#L417-L443",
+          "version": "repo-lines-v1:sha256:afb21067816e43c2b4da7289aa5e1893f841bb1db9fa92263d8d48a42e0d7db7:eyJzZWxlY3RlZExpbmVDb3VudCI6MjcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImVkMmZiODM5YmNmZGVhYzRkZGRkZDE3NWZmN2MyZmQzZTk1ZTRkNTc5OTZiY2Q3NDM5ZDhhNmI3ZWEwNGJkYzUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjVmM2ViMzkxOWEzMTYxYzFlMzViOTNlYmFlMzllNGQ2YTIwMjBhZjIzYmU0OGZhYTMzOTdjYWEzMTIwOTZjNjciLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjJjZWFiZDljZjUyMjZhNTFmM2UzNTliNTQyOTVkZDRkM2I3MDNkNjRlMDEzMTAxMzVkMGZlYTcyYTUzNTg0MzciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjEzZmYyMjE5MGFmYzc3ZjEzZjQ2ZDQ1OTdmOTNlY2Q0ZDkwYzZiMTIwYzg1MmRkYWFiNWQ2MjlmNjhhN2UyODgifQ"
+        },
+        {
+          "resource": "repo://tests/test_w3_plan.py#L430-L458",
+          "version": "repo-lines-v1:sha256:1a21c03d56ba7fbf5565e300642fc6020784c95f2a442b5e782f0ed2e8478ce4:eyJzZWxlY3RlZExpbmVDb3VudCI6MjksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBiZjNjZTRjYTM5NjFmODBmNjU3NDc5OTMwY2M2NDU2ZGRkNmFlMGQ5ZjgwM2JjMWYxNWFjMzY5MDNhM2RiY2IiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAyMjFhZTlkYTdlODU1MjFlZjQ1NmEzZWY1ZGFiYzIyNzdhMTdmNmViMDI3ODQzZWU4YjhlYTlkNTVkNzJiOWUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjE1OGJiZmFmYjFkNjQ5ZTc5ZDFmZDMwYzdhYmE1NTNjODlhNDIyOTQ1OWQ1ZGZiNTMzNDY1OTJmYWM5MzY2ODAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjIyZTAyZjNlZGZjMWNjNzFmOTFiZTA0OWNkNGM1NTQ5NTc1NThmZmEwNWMxOGZjYzE5YTc0MmQ4M2FiMjhjNzgifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_c603fbdd94e649b08c28f62ab551c2b8",
+      "statement": "recent_shift_history(conn, now, weeks=2) builds the causal 14-day sample of completed days [(date, day_h|None, mid_h|None)]: it sets SET TIME ZONE 'Asia/Shanghai', clamps the sample upper bound to min(now.date()-1, max DATE_EVT date) so the current (unclosed) day and days beyond observed data are excluded rather than treated as rest, reads only events with DATE_EVT < now (causal red line) for product vehicles (BODY_ID LIKE '78202%') and the 4 exit stations, and attributes exit events < 04:45 to the previous day's mid segment.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/plan_loader.py#L446-L489",
+          "version": "repo-lines-v1:sha256:163d8aeaff551426dd250bbbc06dcf73ff14135fcfbb28138c5f5064e51ee8b7:eyJzZWxlY3RlZExpbmVDb3VudCI6NDQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImIwYWE1YTIzM2Y2OWVkM2Q1NDgwYjYzMWIzODQxYjc2YWJmYmYzNGJmYjAzODc4YjhiODdiZGQzM2FkNDY1MjMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjgxMDk2NmU2YjE5NWUzOGM3MzUxZDA2ODcyY2E4OTI5YjZhYmIzYjcwZTg2YWIzZTk1MzY5ZGMxYjFjN2RmYzQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImQ0Y2I2MTViZTk4ZGZkZWJkYzc4YTdjZjEwZDM1MzI3MjQwZTU2YzZkYjFlNzY0M2EzYmI3MDcwNGJlNjkxZjgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjE5ZWJjYmM3YjU2N2Q4MGRhOWJlNTIxNzUxNTRiMDcxZjY3Yzk1YmQ3M2YyMzEyMGVhYmY2MWE2NmUwMzU1MzcifQ"
+        },
+        {
+          "resource": "repo://tests/test_w3_plan.py#L470-L502",
+          "version": "repo-lines-v1:sha256:584f0506aa8bd9d45a8dc4b0ddc08255670cd581d5c8db32720eb3862a838d24:eyJzZWxlY3RlZExpbmVDb3VudCI6MzMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI1MjQ0ZjdhMjdkOTMyMjViNGFmZTRkYTA4OGQ3ZTA3NGNiMGNmNTljNmYyZmI4MjJmMWYzNmZhMmEzMTEzNTIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImUxYzU4MzZlMGRmZWFkY2EzZTViZGZiMjUzMjMxNWQ4YTBkM2QyMmM2ZmE3Y2Q4Y2MwNzk5ZDZkMjMxOGM3MjEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImJlZmE1NmNlMjUzYmFiNmMzNDU4ZDVkOGY3NGY5ZTJjNDYyMjc3OTM0N2EyNjVmYTYzZjE0YTFiMTBhOTk1OWUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImY0YTYzNTE4ZWNmOGQ2NGNlYzQ4MDNmZDI3OTg3N2Y3MmY2ZDZkMTdiY2ZkMGY3NWIyYWFiMmQ4MWJmZDE1NTIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_31e79003a5b2450b834d7881400aa32e",
+      "statement": "classify_completed_day(day_evts, mid_exit_evts) re-implements the W2 heuristics inline for completed days only: day type via the same 15-min bucket test (reusing shifts.SURGE_MIN_15MIN/MIN_DAY_EVENTS constants, no-hit ramp → 10h) and mid type via the last exit's minutes-from-16:30 with the same ≥630→11, ≥510→10, else 8 thresholds and < MID_MIN_FLOOR(300) → None (truncation); zero exits and zero events on both sides mean a rest day (None, None). It deliberately does not import the W2 detect_* functions (replay-hindsight semantics).",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/plan_loader.py#L387-L414",
+          "version": "repo-lines-v1:sha256:cbab736b24993f0e6edafc6ed45cce5f71a3c6a4a3ba8c169274f7f50763898f:eyJzZWxlY3RlZExpbmVDb3VudCI6MjgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImUxNmIxMjFhOGJhNmQ5MGJmZmIwNzAyMzJhMDhhNGUyZDFkYTVlYjBhNjU0MjJiMTRkYTFkNWViNzIzMWViNTkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjVlYjlhMDVlZmQ3YWI2MGEyODM5NTgxMTM0ZTM2MWVhY2UwODJjNzQ0YjU3OWExZGQ0N2FiNzBmYjc1ZGFmOWUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjQ5M2JkYWQ1MmQxZWJiNzQ0ODlmYjdmMDI5OWIxNWFmNGJiMjQzYTRiMGMyMzE5OWQ3N2RmZDIzNzI3MGYwMDkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijk2ZjY4NzQ5MWRkOTUzZmJkYTliYzExNGU5NzJlNTQxN2E2ZTFjZGZlZDU1NjczYzlmOTM5M2MyYTY1NjU3MGIifQ"
+        },
+        {
+          "resource": "repo://tests/test_w3_plan.py#L505-L523",
+          "version": "repo-lines-v1:sha256:180f9b1d47226c29cf991a1cd85abcc09ffdf8e881ff7b13e8d7656d16e34cde:eyJzZWxlY3RlZExpbmVDb3VudCI6MTksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjVkZmRhNDA2YzFmZWI2ODcwMzM0NThkM2IyNmNmMmQ3YmExYjQ3ZDRkNzQ0M2IyZmM5NmE2NjU4Y2IyYWI3MWMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImVhNGI5MWQwMzQ0N2Q0YWRiZjdhYTRiMWNjZTRhNWVjNzMyNTMyMjQ1MDZhZGEzODMzZmRkOTc0M2VlMWVkZWYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImVhODZjNWJkMGIyM2YyOWY3ZGQyMzRkZGMxZjQ5YjU3ZDUxYWU2MWJlYjk2MzM1OGMzYzk3MzE1YThhM2I1YTQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjczOGJhZDkwODdhYzIxYjkxZTI3ZGQwZWRiZDUwYjIyYzNlYjY1MDgwYzZkZmQ3Y2E4MTFiZTU4NjU5OTYwNTIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_50193af5ca36458ab2317d21ff794514",
+      "statement": "Weekly plan input follows a fixed spec (docs/08, finalized 2026-09-22): 6 columns 日期,日班工时,中班工时,出车计划,进车计划,备注 with the first 4 required (missing core header → table-level failure); dates accept YYYY-MM-DD or M/D; hours accept 8/10/11 with 休/0/blank meaning rest; 出车计划 is the all-day exit target (0 on rest days) and 进车计划/备注 are optional. Files go into the watch folder plan_inbox/ (dev default, overridable via the .env key DSS_PLAN_FOLDER / DSSConfig.plan_folder) named week_plan_<year>KW<ISO-week>*, with extensions .csv/.xlsx/.xls matching the name regex.",
+      "evidence": [
+        {
+          "resource": "repo://docs/08-%E5%91%A8%E8%AE%A1%E5%88%92%E4%B8%8E%E6%8E%92%E7%8F%AD%E8%BE%93%E5%85%A5%E6%95%B0%E6%8D%AE%E8%A7%84%E8%8C%83.md#L11-L20",
+          "version": "repo-lines-v1:sha256:eaca9063497d97b11778638c43d38a33cead08e07a427eb775b26bb15e6078c3:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg2ZTEzNDY4MmMzMjhkYzIwMjRiYjZjYzUwOGYwNTVhODNiODE4MzZjZTJmZGZiZTA2ZjI5MWY5NDAxMDIxMTEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjllNTIzYTdjZDQ3NDJiODMzYmZjNzdjMTBhM2ZhNThiNThhYmNkMzI4Y2FkNzhjNTExMTMyMzEzNzczYWE0MDIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImU4MGQ1NzZkMTJiMzEzZDM1OGRiZGVhNTE4ODEzY2Y3MWNhMzRmOTBkMDFhNDMyMWI2MTMxZTc3MDkwM2IxZjgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjgzZTBkZWY4NzU1MDBhNGNkZDJmZjE5ZmY4NzE4ZWY3MjBlMWY3YjE0OWExNDRiNmJiMWQ3ZDI0MTZiZmUzODcifQ"
+        },
+        {
+          "resource": "repo://docs/08-%E5%91%A8%E8%AE%A1%E5%88%92%E4%B8%8E%E6%8E%92%E7%8F%AD%E8%BE%93%E5%85%A5%E6%95%B0%E6%8D%AE%E8%A7%84%E8%8C%83.md#L52-L54",
+          "version": "repo-lines-v1:sha256:a8c4c7b5958aae95e7c6fcde29e5f03110c9d5a71722862647217f298837dac6:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOWZmMWNmODdlZjliZmFiZDkzYjk3YTY0ZDhlODFlZWQ0YjUxMTMzODVmNDUwNTkxNzRhZDg1YzA5ZDQ4MGExZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMzIwMzhlNjI0ZTY5MDkwMDE1NzkwMGVmNTcxMDYwYzliM2I1ODBiZTcwOTE3M2IwYTc3MGY3OTQ4M2NkMjE2MyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiY2RjZWM1ZDI5MzFiMDEwZDFhMTZmZjcxZTQ3N2Y0M2IxOTNhODkzMDY4MTMyNjFhMTRjZTU3NTIxMzVkNDk3ZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYmNkMmZiMTM3MDk0N2RhNmQxNmFlMzAyZGJhMzE2ZjQxNzJjZTk1Nzk4MDRkYTNkNzEyYzAyNDE1Y2YwY2YwMSJ9"
+        },
+        {
+          "resource": "repo://plan_inbox/README.md#L1-L16",
+          "version": "repo-lines-v1:sha256:69628cc4b443d229f3fb937ca02f24e74696e15589551efec8faaf8fa41e36f0:eyJzZWxlY3RlZExpbmVDb3VudCI6MTYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE1YWNhYjJmZmU4NTkyN2Q3ODE5MjFiMjY4NjE4YjIwOWM3ZTRkNGNjMjg2MjE4ZGJiMDBkN2M2YzZlYmYzOWYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImRjMjg3YzFmYzdhMTFjZWVlZmQ0MjYyY2E1Njg1MzY3ZjU5MzQ5MWVhN2JkMDNiNjJhY2ZkMTRhZDk5NWIxNTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImI4ZWZmOTI4ZDMzOTQ3NjNlZTI0MmZiNTkwNTMwM2Y1YzM4NWZiNDFhOTU0OTQzN2FkZjczNmZkMTdjZWE1OTMifQ"
+        },
+        {
+          "resource": "repo://spike_w3/common.py#L116-L116",
+          "version": "repo-lines-v1:sha256:6b743c9ab11b8c9a8cb0546edb19af5613ee2f59924f474873856eec128f9327:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNmI3NDNjOWFiMTFiOGM5YThjYjA1NDZlZGIxOWFmNTYxM2VlMmY1OTkyNGY0NzQ4NzM4NTZlZWMxMjhmOTMyNyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNmI3NDNjOWFiMTFiOGM5YThjYjA1NDZlZGIxOWFmNTYxM2VlMmY1OTkyNGY0NzQ4NzM4NTZlZWMxMjhmOTMyNyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMTY1NjAwYzRhYmNkYzA4Y2M3ODUwOTAzZTA5NDc1ZTQ3N2Q0YzRjZjJjNGM5NzhlYmQ1YmQwMTY5MGFjNmM2NiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiOGVkZDZhNTQ2Y2ZjMTY3MTFjMzZjZDI1YjAzMmFjZTZmNDhmYjhjMjgyYzA1NmU1MjQ1NGJhZWI1NjBkZmI1YyJ9"
+        },
+        {
+          "resource": "repo://spike_w3/common.py#L180-L180",
+          "version": "repo-lines-v1:sha256:214720eaf031c2b375190f1db77aaec05b14bef835e6c79d31f879c37aef877d:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMjE0NzIwZWFmMDMxYzJiMzc1MTkwZjFkYjc3YWFlYzA1YjE0YmVmODM1ZTZjNzlkMzFmODc5YzM3YWVmODc3ZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMjE0NzIwZWFmMDMxYzJiMzc1MTkwZjFkYjc3YWFlYzA1YjE0YmVmODM1ZTZjNzlkMzFmODc5YzM3YWVmODc3ZCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNmM1NzhiOTQzMWEzNmZiZDZkY2E1MWY5Zjc4N2M0ODlkOWEzOWQ4Y2ZmMzk3ZGI3ZDJhOTlmYzU0MDliZjhiMCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMWU0ZTg2ZTFhZTdhN2Y0NDQ2YjdjOWMyZjU2ZjY4N2JlNzY5MGYwN2ZlZWQ0MTJlOTg1Y2I3OTBjOTAzNzJkYyJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_1b7281d5062c4e2eaa263dbc3a93ba28",
+      "statement": "The parser (parse_csv/parse_excel sharing _rows_from_grid) is row-tolerant: CSV is decoded as utf-8-sig (BOM optional), Excel reads the first sheet with openpyxl data_only, header cells are stripped before matching, and bad rows (unparseable dates, illegal hours like 12, non-integer totals like 920.5 while integral floats 920.0 are accepted) are skipped and recorded in bad_rows without crashing or defaulting; duplicate dates within a file → last row wins plus a trace; empty files produce one trace entry. M/D dates are resolved by trying candidate years file_year ± 1 and picking the one whose ISO (year, week) matches the filename (year, KW) — no match or a date outside the file's ISO week makes the row a true bad row.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/plan_loader.py#L185-L236",
+          "version": "repo-lines-v1:sha256:913a93dcd409d897ae11fcdafbc9d3f5c8d7e704e6b347d326b668ef4155fe98:eyJzZWxlY3RlZExpbmVDb3VudCI6NTIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImMzZDU5NmMyNGU2ODlmN2YwNjc4MGZhMWU1MjQ3NGJlMGQzZGNjZmM4YWExMzYyMmQyYTZlYmQ1ZjMzZDMyMDkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBhZTFjMTQ1ZWI3ZDE1NWFhMjEzOGUyNjIyZTdlNGFjMGZlMWU2M2QwNDBiNDBiZmNiNjhhNmE3NDAzZjA0OWEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjI5ZmM2Yjc2ZjViYjFmYTBlYjM3OGZjMzhjNTA4MGYyNDQ5N2QyMDI1ZWVmNGEwNjNiZmRkNWFjMWViYzM1MzQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImM3ZDA2MzBiZjIyODMxMjBlMjUxMDZjYzJhMzFhNWIwNDQ1ZDU3NTlmMWZhMWVlZGUzNmE5ODRjMGU5YWM1ZWEifQ"
+        },
+        {
+          "resource": "repo://spike_w3/plan_loader.py#L96-L155",
+          "version": "repo-lines-v1:sha256:7d3c4434f77ea0990be8885124fad71f3c2ee047df7bde0a587ad958c8bd3a75:eyJzZWxlY3RlZExpbmVDb3VudCI6NjAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFiYTFhMDNiMTdmMDA2YTg3N2I5Mjc2NWYzYmU1OGJhZTdhMTY5NDNlYWY0ZTI2YTk0NDY3NmMwMTk1OWRhZDUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjExMzA2ODlmNjk1ZTA1MjhmNzRkNmIyYjZkNjE5NTY2M2U2MDg0OWViM2Q3MGVjYTEzMjU3Zjk4NmNjZGNmOWIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjNlNzM0MGRhZjQ2MmIyZWM0NzBhMzk1M2Q5NDQ1MzM4ODk3ZTM4YmUzOGRlZjZlODE4M2UzZTU4ZDUwYTA5NWUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImQyNTYxNjZkYTQ4MWY0NGEyMTU3MzRmMzdmNTI3Yjk3ZTYxMWM3Mjc5MzE4OWE2MmM2NzE4NWUyMmE3ZTcxNzAifQ"
+        },
+        {
+          "resource": "repo://tests/test_w3_plan.py#L198-L236",
+          "version": "repo-lines-v1:sha256:eb4f58080d676dca57ec0916a44cade88d79f940ada1f8e91f4d2ecfeb8fa344:eyJzZWxlY3RlZExpbmVDb3VudCI6MzksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjIxYzYzN2RmZmU4Y2ZjODRhZDE3MmY3ZTdkZGY3NDgyOTg4ZTI1YzJhYzYwNzcwN2JjYjQyMjljMjkyNGQzNmQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdlYjcwMjU3NTkzZGEwNmY2ODJhM2RkZGE1NGE5ZDI2MGQ0ZmM1MTRmNjQ1MjM3ZjVjYTc0YjA4ZjhkYTYxYTYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjkwYjdlOWEzMmMyMGM1MTAxNmE3YjlhMDUyN2U1NGNiYTBiOTBlZTZiYzUyZmVkNjg1M2M4YzZlZmE2MGY3NmMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImFlMDg3NzUwZjQ0NWUwZmI5MmYwNDdlYjVjMTM1ZjE0MDY0ZDY2OWRiYWNlZDU1MTViMjFiYjIwY2ViMGUzZmMifQ"
+        },
+        {
+          "resource": "repo://tests/test_w3_plan.py#L46-L111",
+          "version": "repo-lines-v1:sha256:20ec2a1b311ded6f7f59d9b37a79037459856faab28a01d96621cceb628131d7:eyJzZWxlY3RlZExpbmVDb3VudCI6NjYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImRmNGEzODA3YmMzNDFkNzNiODgxM2FiNDZhNzVjZjU3YmVlMTQ4Mjk2YTFmMzY1NjBlMzYyYTMzOWI4ZWE0ZGIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjY2ZmJjNzM1OTVkYWVjODkzMTk5YjdjMDRiZjFiOWYzZmMzNzhkM2MwODdkOWQ3M2FkYjA1ZTZhNzZkZThhNDYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjRhYTA3Y2Q0NmQzMmU2OTQ4NmJmMjY4YmNhNzU2NTdkYjU0Zjk2ZTUxZjEwYWMzMWVjNDZlOWQ1NDM1ZjY1YzEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjAyZmJiNzI2MTllMjdkMGExNGFlNTYxYmRlOGYzMzQ4ZDU4N2Q2MjRkZDkxN2Q5YjYxYmZmOTc3NjU2NzMzNGYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_fc8a19e119454b0f961a7989e45921e0",
+      "statement": "load_plan(folder) scans the directory (files not matching the week_plan name regex are silently ignored), records a sha256 hash for every recognized file, and merges rows across files: same date with identical (day_h, mid_h, total, entry) values merges (later file in lexicographic order owns source_file) while different values raise ValueError pre-insertion. Table-level ParseError, corrupted files, and unsupported .xls (recognized but recorded, re-save as .xlsx/CSV) are all traced without crashing — startup robustness requires that any bad file in plan_inbox must not drag down the online main loop.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/plan_loader.py#L258-L299",
+          "version": "repo-lines-v1:sha256:f746154c867f90b6afb7d1e307a8ebec197338346b836373d7b1e1d299114420:eyJzZWxlY3RlZExpbmVDb3VudCI6NDIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImJhY2FjM2U2YjNlOGMxZjhjODcyNTBlNzQ1MTM4MDczMmNiZDA1NThlMTJjMGUxNDY2N2Y1MjExM2M0ODAwMzkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdjODMwMjk4NGY5NmZlNmY0NDU1NTE2Yjk2ZDQ5YWE5Mzg0YTg1MGIwYjBjNzEyZDRkZDVmODBiYTY4MGY0MDciLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImI4Y2FiNmNhYjUwMjZiMGNkMmJiMjk4M2NmNTZjYTRhNjkxMTZhZmI2Y2M5Zjg2ZWI2NGNjNDQ1MjM3Yzk0MTIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImFiMTU2ZTQ4YzIzYTAwYjE0ZjlkNDUzYjVhYWVhZWE4MGEzYjA0NWU1N2Y4NTg4ZjVmOGFhNTQ0MWFhYTlkMzgifQ"
+        },
+        {
+          "resource": "repo://tests/test_w3_plan.py#L114-L123",
+          "version": "repo-lines-v1:sha256:426910d3c0d0b03f01c3e080032b33e9173fd744f1331e79497387c24f15f39f:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFhNGViMGIyZWI4NjQ0ZDllNWQ1ZGM5MzU3MTlkZTZiZjc2M2RmNGZlMGU5ZjhlMmFlODc5YzE3NjcyZjJhNDAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjZmNjI0NzUwMDEwNTE4ZjIwMDA1ZmJlMTg5MWNmMDQ4Y2ZlM2MyN2Q2ZGVjYmU1OWNkNTZmNWNhYzFlZmY0NGIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjI2ZTc4MDVjOGUwNDQ0YjQ4MDk1MjYwODc5Y2M0NDA4YTMwYTg0NTc1Mjc3NTBhOGM5YjcyMWM3ZjdlYWZjZjEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjA1ZTJiZjgwOGMxOWE3MDVlNmExYjZlYTkxNWEyODFkOWVlYTQ0ZTgyMWVjYjFhYjMyMjZmOTU4NzRmYzkxOGUifQ"
+        },
+        {
+          "resource": "repo://tests/test_w3_plan.py#L238-L248",
+          "version": "repo-lines-v1:sha256:eb79c0af51d7be463f08f06d91e80654e9cf83a5238b539ec75cac22dfb99122:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImVhM2ZlNDZkZDczYWFjNmFmNWRjZGU5ZGQ3ZWExOTgzMjEyNzFkMjZhYTdjMmQ0Yjk5NDgxYWExZmY1MWE1NTgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjYwYTVkYzI4ZjhjZjAwYzI3OWVmZTY3ZTg0MDk4YjAyMTJkNDgxOTBhZjQ2ZWI1OGNlZTkzNjY0ZjQ1YThlODIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjJjNmNiNmU0YjliOWQ5NmQ4NWNiNTk1N2NmYzdkNTJjNTUyOGE4YjU1MTE5MzJmZjJkOGZhNDUwYTI0YmUzOGIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjczOGJhZDkwODdhYzIxYjkxZTI3ZGQwZWRiZDUwYjIyYzNlYjY1MDgwYzZkZmQ3Y2E4MTFiZTU4NjU5OTYwNTIifQ"
+        },
+        {
+          "resource": "repo://tests/test_w3_plan.py#L298-L316",
+          "version": "repo-lines-v1:sha256:321480a8f2f7632892173dfa3406ebb6645c5ce313de51232f326c5d9a1781aa:eyJzZWxlY3RlZExpbmVDb3VudCI6MTksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImM2ODE1NjFiNDRhNjE1NWNiMGY3ZTdjZGI4ZDM5NTE0MDIwMDc0ZmJiODU4ZTJmZmQzYjhiZGE4OTZhMTllYmUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImY0ZDE1NTVhN2IyZmRkYWUyYTJhOWJiZjhkZTAzNzU2MGNkZTU0YjEyZTQ5MDQ2YTMwZmRkMjQ3NTI2OWNhOTUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijg1OGQ4MGFlZGRiNjI3ZGUzZTE4MzNjM2UxMGU4NjVkY2ZkNTllZjQ1MmMzYmY2YTEwZGRkYzY1NThlZWVjZjMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImU3NTQ2OTk1MGEwYmU4ZjRmODA4MjZkNjBmOGZhMzg4NDk3YmJjZTVhYmUyMWVmMjQxNmZlNzE1ZTYxYzZlM2MifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_4328b5db78af447ba662b4aba832e438",
+      "statement": "WeeklyPlan accessors: plan_target(d) returns (day_target, mid_target) via alert_engine.split_target (single source of truth, F10) using the docs/08 formula day share = H_day/(H_day+H_mid) with largest-remainder rounding (11+11 → 50:50, 11+10 → ~52.4:47.6), and a missing row or None total returns (None, None) — plan targets are never guessed (2026-09-27 user decision ③). rest_days() yields days with both shifts rest (B3 expected-silence), and missing(d0, d1) lists uncovered dates in a closed interval for coverage checks.",
+      "evidence": [
+        {
+          "resource": "repo://docs/08-%E5%91%A8%E8%AE%A1%E5%88%92%E4%B8%8E%E6%8E%92%E7%8F%AD%E8%BE%93%E5%85%A5%E6%95%B0%E6%8D%AE%E8%A7%84%E8%8C%83.md#L37-L43",
+          "version": "repo-lines-v1:sha256:d1a482e465f5c129f2178281cd6fc440a446efe9c785fb3dde70699edc3438e4:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiM2Q0NDVhYjMxNGFkZWM3NDQ5Y2M0ZTgwNDY4MjcyMTU1YjNjZWQ5NWFmOGU2ZGRjZDdhMGU1NDJkOWY3MjdlMCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZGI1MmE2NDMwOTVkY2NkYjFlNDBiNDVhZjYxYWMyNDJmOGMyN2ZlZGI2MDFhNDFkYzUxYTdiODdmNTU3NTE0YyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNThkZTExZDIzYmY5Yzg5NzlhNGViODEwNTY5NjViNzg5MDZhMGFmMWUxMWZmZDU4ZDNiNzI1M2YwZDRjNjVmZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZGVjNmJhYzRhOGNjM2ZjMTljYTRiZGNlNTljZDMyZTkzN2UzMzNkNDUyNzM2ZDE0ZDU4YzBiZDUwYWVjMmI2NCJ9"
+        },
+        {
+          "resource": "repo://spike_w3/alert_engine.py#L360-L373",
+          "version": "repo-lines-v1:sha256:cde97f62349991a7a4f037fdf59c1901985450113f040eb24c631b29b3399893:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBjMTc5OTFlYjI0Yjg1OTUyNWVmYzIzNTg5ZjBlNmNiNGU5MDg4YzAxMWFkZmY1YzU3ZGZkOWEzZDYzOTA2Y2YiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjVkMjk0MjY4NzE5NTMyMTE1NWZiMDJjM2I4OWFkZjAwM2ZkNTRmYTJkYTA0ZWUxZGI0YzI4NGNjYjZjMmE0NWEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjkxMzhjMWEwM2QzYzQ3ZDNmMmFhMjc0NDk1MmQ4MWMzMmY1MGFmNWE3MmQ3MmJhMTVlZjU1Zjk0MTE0NThmMmQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImVjMjRlMDdmZDFjN2RjZDRiMDk5YjM4NjNlZGFmM2FiNmQwYmI4YTVjYzk5ZmE3OThjZDI1OWZlODY3MTNiZmYifQ"
+        },
+        {
+          "resource": "repo://spike_w3/plan_loader.py#L71-L90",
+          "version": "repo-lines-v1:sha256:bad4a23b6042cc9619b825858737caf8100f8160a9675b479755aa50271e5747:eyJzZWxlY3RlZExpbmVDb3VudCI6MjAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjZjODU0MzQxMTI2NDQzZDU5OWI3NTAwNTVkMTE4ZDcwNmRiOWZiMzVhYjcwMTMyN2FlOWNkN2JlNWMzNzEyODMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjMwNDljNGQ5ZmY4NTI3YjQwOTQzNDQwNjRlOWUzYTBhNmEzZjU3MTJmMDNlYzcyZGFjYzM3OGY0ZWVkODY2NDYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjMzZGVlOWRlMTMxYmExNWI1MTFlODg5ODM3YTZlZTNhNDU4MjM0MDY2MTJkMzU2MDQ0ODdlNmI1ZTdmYjMwMDgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImFiMTU2ZTQ4YzIzYTAwYjE0ZjlkNDUzYjVhYWVhZWE4MGEzYjA0NWU1N2Y4NTg4ZjVmOGFhNTQ0MWFhYTlkMzgifQ"
+        },
+        {
+          "resource": "repo://tests/test_w3_plan.py#L167-L195",
+          "version": "repo-lines-v1:sha256:91d3df8485fd641bd09885a0d35b11607f279a102d8339f79da1ea5ffa1a1541:eyJzZWxlY3RlZExpbmVDb3VudCI6MjksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjEyMDE0YmMzOWI4ZmFlNDYxZmJkZjYxMmMwNjZmYmEyOTQwODFkMTJmNjAyMWM4YzdlMzQ3ZTc5M2EzYmFjNjQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImNkZTBlMDNlZWE2YzU4MjkzNjA5MzI2YTY3MjMzOTFkMzg1ZTI5ZmRkM2U4ZGJmZTRmNWM5NDg3MmRkMjg0ODIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjkwMDY1ZTlkNTI4Y2U4YmFiMzNhZWJhNGNmMDQzNDVjNjFlY2MyMjIxOGVmOGNiNjhiOTEzOTEwODcxYTQ1N2IiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjMzY2RjODQ0ODRhOTgwZTNhOGEyYjcyOWYwMTcyNWQwNWZhZWUxM2YwNTJjMDJmZjVkNzE3ODYxMmU3M2I3MDYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_b727c0c791ff4deaa42dadf7657f5469",
+      "statement": "persist_plan(conn, plan) upserts into dss.dim_weekly_plan (PK plan_date, ON CONFLICT DO UPDATE) and dss.work_plan_file_meta (PK file_name + sha256) idempotently: per file it first compares the stored sha256 — identical content skips all writes, changed or new files upsert only their own rows, renamed files overwrite the rows they previously wrote, and no DELETE is ever issued; all writes run in one transaction, and failure rolls back preserving old data (shadow discipline). ensure_weekly_plan_tables lazily creates both tables and must run before check_dim_tables in boot_sequence (L3).",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/plan_loader.py#L305-L376",
+          "version": "repo-lines-v1:sha256:927f1d7126ac3aaf4051edbd511eea24cd3599d2fa9ea9b8aebfe53bfbb41158:eyJzZWxlY3RlZExpbmVDb3VudCI6NzIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImJiMGZkYmI2NDkyNDU4Mzk0OGRkZTU0MjI0ZTdhZmFhODMzMzE0MGU5ZDE2N2IxZTFjNTBhNWZkNDM1ZmQ3YjgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImIxZGJlNzFkYjA1OTkyNjE3N2M2YjU1OTcyZThjZjY3NGNkZmQwZmI0NDE5NGFhYjhlYjMyNDBhMTZiOTZiMTQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijg0OWVlMThjMjcxYzVhY2Q5MTg1OWEyMmE2NDcxOGQ5M2Q3MzUwNWExODQ5NDAyZTMzMjU5MjQ2MDI2MGVhYjgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImFiMTU2ZTQ4YzIzYTAwYjE0ZjlkNDUzYjVhYWVhZWE4MGEzYjA0NWU1N2Y4NTg4ZjVmOGFhNTQ0MWFhYTlkMzgifQ"
+        },
+        {
+          "resource": "repo://tests/test_w3_plan.py#L319-L403",
+          "version": "repo-lines-v1:sha256:43670d5530e894396727bf2e6a9f51f8ddb2e95437ea744e190429391416a54b:eyJzZWxlY3RlZExpbmVDb3VudCI6ODUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjZhMzYxYTNiNDdjODA2OGMwNzJmNTMyOWQwZjQ3NzljYjlkOGJiMjI1YzY5ODNiOWJiNTI1MGExZjZlZmRkZDUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE4ZjdjZDZkZDZjNDIyY2VhNzZkNmEzYzU1YmVmZjk3ZmM4M2RmMzJiMzllODc4N2Y2NjYzZTZlMTFhNGY5NWIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjYxMTYzNjAzNjU0Yjk5YTVlY2QyYzIwNzI2OGE2NDBjMGZjMzYzZTAxNDFmNjE2ZmUxZmU4OWY1ZmE1NDQ0NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjE4ZDAxMGE2MzU3MjZjNDJkNDJmYTZkOTQ0YWJlOGI5MDE0ZWU4YThjMDliZjRiYmQ1NTlkMDkzOGI4OWNkNTgifQ"
+        },
+        {
+          "resource": "repo://tests/test_w3_plan.py#L617-L634",
+          "version": "repo-lines-v1:sha256:e86dbbfcc5220138510880fb53e9c980990aa1ea1eeb4c4528e600ff2cd45ba0:eyJzZWxlY3RlZExpbmVDb3VudCI6MTgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImZjNzZmNzY0YWUwOGVjMTIzY2E4OWM5YmY3MGE3ODQwNmJjZGE2ODliZjhjMGE0NDUyZjI4ZGE2NTFkZDNmMWMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjA2ZDQxNGYwNGQ1NGVhODg5NzY5Njk3ZjE3ZWM4OWYxYmIxMDg0MjU5MTZiMmQwYzA3MjQ0MWZhOWI2ODkzNzgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjZmMGIxODE4MDU4ZTQ1M2IwZGI4OWUyOTE0YWMzOTdjMzhiOTZmOWZhNjYyNzYzMGVlNDE1NzRhOTA2MmMzZmIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijc2ZjQzYTZmZWY5YWUwZTk1MTlhYzYyZTc3ZTlkNDdmYmVlMjVjYWQ2MzNjOTA1YjIyZmM0ODg5Yjk3OGZhOWIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_b1b3d09a722c454e91e58f0fdfe40ef0",
+      "statement": "01_boot_online.load_week_plan is the boot entrypoint: DSS_PLAN_CSV env selects single-file mode (replay dry-run override, legacy behavior); otherwise load_plan(cfg.plan_folder) runs, with ValueError (cross-file conflict) or no/empty files returning None. None triggers the fallback self-learn mode ('兜底自学模式：班制推断、无目标') per docs/08 容错安全网 — the service never stops because of a missing plan, shift types come from causal inference and plan targets simply do not exist; plan_note_text renders the three states (fallback / loaded n days m files / missing-day + bad-row annotations), replay_rest_days reuses the same load for the B3 expected-silence set, and boot_sequence persists the plan with failure reported as a warning without aborting.",
+      "evidence": [
+        {
+          "resource": "repo://docs/08-%E5%91%A8%E8%AE%A1%E5%88%92%E4%B8%8E%E6%8E%92%E7%8F%AD%E8%BE%93%E5%85%A5%E6%95%B0%E6%8D%AE%E8%A7%84%E8%8C%83.md#L44-L46",
+          "version": "repo-lines-v1:sha256:dec6bac4a8cc3fc19ca4bdce59cd32e937e333d452736d14d58c0bd50aec2b64:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiN2RjOTk3NjhhZDU0MTE2NzY0NTc3MGI2Y2JjYmVmMGQ3NjY3ZDZkNjI2NzE0ZTNjYmJiNmUxNjc5OTVlNzVmZiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYjFiZmRhMTI5MDJhOTQwMTUwYmVmMWNjNDg3Mzc2OGMxMjBkNTc3MzEwNGQyZWFhM2ViNzM3OGE2MDYyY2I5ZiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYzkxMDI3NmYyYzRlYTE4Yzk4MjNkZGI0M2RkYzZhMjgzZTRhZWU3YWM5MTQ2YjQwY2FlOTE5MWVmOGQzZjEwNyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiODNlMGRlZjg3NTUwMGE0Y2RkMmZmMTlmZjg3MThlZjcyMGUxZjdiMTQ5YTE0NGI2YmIxZDdkMjQxNmJmZTM4NyJ9"
+        },
+        {
+          "resource": "repo://plan_inbox/README.md#L28-L33",
+          "version": "repo-lines-v1:sha256:4af6db8391872cb97f74b01fce4ea67ba853b4d46529b80b8eea8373e2841415:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZmE1OTJmODgwNDQxYTRjY2UzNWRiNjQ3ZGE0OGJiMmVmMTM4YWNlZDBiYjc1MGJmMDg5MDYwMTY4YzFiZGUxNyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiN2Y1MDk4Y2ZhMDc1MWQyMmM2YmY5ZTE5ZDgwODgyMTgxMzRiOWM1Y2MzOWEyODA0ZGY3OGU0MjUxOWJmM2NhNiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMzU0NDY3M2E1MDMyZmNmYWM5M2YyOGQxZjY3MzZhZWI3YzNiMzhlNTM0MWE3NmVjYTFlOTliZTAwYzEzNTllYSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZGY3MzdjNThlZWNjY2MyOTRkYzQ0NTkwNDJmNjhlNzNiMmQ3NTEyZjM2ZTQ2Y2ZhNzJkYjQzM2E5ZThlNTViZiJ9"
+        },
+        {
+          "resource": "repo://spike_w3/01_boot_online.py#L100-L136",
+          "version": "repo-lines-v1:sha256:4e994f9b7a4da20133991bb96b41dd08c5beebb77c2b4a6381bbe14227ac768d:eyJzZWxlY3RlZExpbmVDb3VudCI6MzcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE2Njc5YzExOTg1NDMwYjUzZTgzMDY3NGNjNWZlMDgzYTM0ODFhYTc2YmM3Y2Q2Mjg5ZWU3Njc5NDNiMTIxZjQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFkZDM5MzJiZmI4ZDNhNDU4NDZhMGJjMDFiNjEwZGIwZWNlMjgzNTdiZDVjYTE2NDFjYzIzZWJmYmRjNmQxNGIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjhiODBiYTgyNjc3MmI5ZmQ4ZjQ3NTJkNDg3MmFhNDRiY2Y5M2JjOTJiMGY3NTBjMTBlMDgwODMxOGYzYjY0MjIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImRkNTgxZGVhZDQ4NmJkM2VmNWVkMWE5NjJkODhiNDYyN2MxNTcxNGI4ZmY2ZTc3ZTM4ZWJjY2ExMjQ0ZTYyNTIifQ"
+        },
+        {
+          "resource": "repo://spike_w3/01_boot_online.py#L62-L97",
+          "version": "repo-lines-v1:sha256:b9e57c7cececdade00b70232692096c5272f4b562c8b536dd6ab24b01ad61707:eyJzZWxlY3RlZExpbmVDb3VudCI6MzYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNiY2RjMDc2ZjJiMDMyMTg0NzRjZjEzMTFiOWFmMzUxNzhiMGEwODNhNGIxODY3Nzk0YmMxZTk4Y2EyZWNkNDEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAyYWRhMThjNDQyNDk5ODAyNDE5YjBiMTRlZDdiZTRkZTJkYzRmYzJmNjdmMzM3MGVkNTVmYTcwNjdkZWJmMmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjY4NTk1NDBmZTUxY2UyZTVlOGVjNTcyNThlMjQ4YTA3NzdkNmQ4MGFjMTdkZWZiNWMxMDBiYjMzMTFmODRjNjYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjgxZTA1ZGE5OTU0N2JjNGYyNzIzMmQwZjVhY2JmMjMwOGY2NmI2Njk5OThkYzI1MzI3YmYyMmQ4YmVkM2UzNjIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_619dff7a07be454b80a5052a569bbc30",
+      "statement": "Shift-window constants exist only in spike_w2/shifts.py: spike_w3/common.py re-exports the whole shifts module (CST, DAY_TYPES, MID_END_TIMES, Shift, shift_windows, anchors, gate_anchor, is_complete, …) and copying window constants into W3 is a forbidden global constraint (B1); tests assert window values against the shifts constants to prevent copied-value drift. is_complete(shift, replay_start, replay_end) = attribution window ⊆ replay window (rule C2), excluding incomplete shifts from the door-judgment list and acting as a safety net in replay since the day loop starts at the first replay day. All shift/time logic is Asia/Shanghai-based (CST = ZoneInfo('Asia/Shanghai'); factory time = UTC+8, session default UTC).",
+      "evidence": [
+        {
+          "resource": "repo://README.md#L10-L10",
+          "version": "repo-lines-v1:sha256:e141b1a131ccafdb0d8d13976223c676fcd549e5ce8204d871b4c252e7f04550:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZTE0MWIxYTEzMWNjYWZkYjBkOGQxMzk3NjIyM2M2NzZmY2Q1NDllNWNlODIwNGQ4NzFiNGMyNTJlN2YwNDU1MCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZTE0MWIxYTEzMWNjYWZkYjBkOGQxMzk3NjIyM2M2NzZmY2Q1NDllNWNlODIwNGQ4NzFiNGMyNTJlN2YwNDU1MCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNWY5Zjk3MGQyMTQxZmEwNzk2OGEwNDAxMWU4MDhjZDFiYjIwYjQxOTJiOTliNDgzZmNmOGNkNTU0YzgwZjRjMyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNzdiOTA2ZDkyN2I3ZTIyNzczN2VlOGRkYTYzNzRiNTE1N2ExZTc2YWZkNGNiZDcwYTRjOTVmMmE2NjUzY2Y1MSJ9"
+        },
+        {
+          "resource": "repo://spike_w2/shifts.py#L119-L121",
+          "version": "repo-lines-v1:sha256:d939ac9ba6dc7fb9f17a515760de9a31c53ae5ff6aadd3bdf562ee305ce69e93:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZDRjOGMwOTRiNWI4MzVhNjNiNWNjNTM5ZDIwNTc1NDE5NTFjNThiODk2YWVhMTQxYjgzODEzMWU4MzkzMTNmNiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYjdiM2VjODg3ZDQyYmY5NGQ2OGQxZTVjYmVhN2QzOWQwZDMwNjc2NDQ1NmJiMDhlNjhjYzg3NDQ0OGE2ZTA2YyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNWE5YWQzYzBmMzkwOGQ4OTk3YjVhZjAxMzQxZWJjN2JmNTY0MjUyOTcyYTNmYjlkYzc3ZGQ0N2NlMmIwODU4ZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMzAyNGE2Mjk5ZGUwZTg1N2M2YTkzODg1ZWJlZjNkODVhZWI2YWE0ZmY0ZmEwYjY4YzI5YzIzOGI3ZWRhMGQ5NiJ9"
+        },
+        {
+          "resource": "repo://spike_w3/common.py#L4-L11",
+          "version": "repo-lines-v1:sha256:d05a568de873e00ec0005d2e2361db351e76e4e07d2aa66711c3a8c5e8eae869:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYTE0YmFlOTg2NDZkMTUyYWEzMDQ3ZWE3YjhlOGEzZjRlNjVhNjdlNmQwOGIxZTgyZDdiMjNmNmI2NmMyOWNhMyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNTQxM2I5YTEyMjc5ZTcwNTgyNzIwZWEzMGQ4MjIwM2NkM2IzNWNhNTk3Zjc1MTIyMzEzODBiZDFmMDFlM2NkNiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZGNlZWU0ZGI5N2U4M2Y1ZmUxYTFjOTIyMjIxNjg4YTUzMjZjNTZkNTlmYTFlNjVlOGQwNzhmYTI0NGFiODUyNyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMTcyMTkyOGNhZGU1YmFlNDBkMzBjYTNkODc0ZmI3YjliOTlhZTRlMDM0MTEzMzg5ZjJmNWQyOWVkY2EzYTU3YyJ9"
+        },
+        {
+          "resource": "repo://spike_w3/common.py#L54-L67",
+          "version": "repo-lines-v1:sha256:ae1e78d458255b479870891072268bc7b3d185f935e557e9968dd20db83133c6:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQzNmIyYWI1MWY1ZTMwODM1OGUwYWYzMzVmZjY3Y2FjMGZiMThhNGExMDFmZjM1NGM4MmNkMTEyYjdiYmU5MjUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjczOTgwMWVjYzYwZDcwZjU0ZjljZTZiN2QxY2IzMjJjODhlMTk3MzdmYjEwYTg0YWIxMzVjMmRmYTc0MzQzZDgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijc5MDRlMjQwZjIyYjVhMzUxNmI4Njg1MWRiOTE0Njc3MmYzZWJkYjY3OWY3NWQ2ZjFkOTgwYjM1MTIzODZiZGEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjE3YzZmYTBmMmU5NDhmZDI2ZjNmZjE4NDhlMmYwM2I5ZGI5NzhjMGQ4OGY5OTE5OTI2NzEwMGViYmU3MjliMmEifQ"
+        },
+        {
+          "resource": "repo://tests/test_shifts.py#L90-L105",
+          "version": "repo-lines-v1:sha256:004aaf936ea0c4f30a08317a63c43082fcc312bfe8e97f5c1bf1b6a669d7bcc6:eyJzZWxlY3RlZExpbmVDb3VudCI6MTYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBjYjhhYWU0M2YzMTM4ZTU4N2E3NGU2MzljMzc5NTFhNGE4ODE3NzAwNWQ5ZTUyOGUzY2I4OWE3ZTdjOWU1NzkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImZiZWY2ZTRiZDI0M2MyMjliMzYxNjg0MzdiYThmNzAyNTdkODcwYWQxMTIxYWZiY2QwMzFiMTljN2UzNjBkNjEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjFkMjNiZGUwZTljNzMxMzFlNmQzYjM4ZmUxMzY0MGI3ZmJlY2YzOTdjMWY2OTQ5OTk1NGJkOTVlZTUyMDRiYjgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjdiNTFiZjZhZmNmN2RkNDE5NDVjOGQ4ZDY1OTI4NDk0NWY1OTZhNTUxZmJhYTYzM2QyNDNmMjE3MzY5MjJhZjIifQ"
+        },
+        {
+          "resource": "repo://tests/test_w3_plan.py#L140-L164",
+          "version": "repo-lines-v1:sha256:a4485c16b6129c86c0e1be08bd2312a017430fb340ba86c43ce16cc38eb696e3:eyJzZWxlY3RlZExpbmVDb3VudCI6MjUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBiZWQ5YWM3ZDZmNWZlZjk4NTQ0MmJmYjlkNmU4ZGJkYWU0ODQyYjUxYTJlZmUxZDY2MjQ4YTRjOGI0MzZiMWUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQxNGE5NmJmN2RkN2IzMWUwMmQwMmM0ZmVhMjkyMGFmNzQxZTQxZjE4NmRjZjE2Nzc3NjdmNjk2NTliYTE5NGQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjcxOTY0NDkwZDdjZmZlZWM4ZGFlYjFmMmI4MTBjY2Q2YTVkMWZiNzY2OTE1MjNmNDcyYjE5Y2IwMTlkN2M4ZDAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjRkNTVlYjQwMTEwOWEwNTE2YWU5YzNhMzJhZjY3OGY1OTU1NjBmYzA4MGQ1YWYzNzIyYzViYTBmY2U1MWUzMzIifQ"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.7.0",
+    "at": "2026-10-08T13:05:24.547Z"
+  }
+}

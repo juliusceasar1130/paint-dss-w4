@@ -1,0 +1,346 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:21e91ca7dbbc71ab37c4ec0aec9e0bf6352fbe5f674b893cd2abdb468285fb00",
+  "claims": [
+    {
+      "id": "claim_d2f36681c91a4e9f9518762e45374e43",
+      "statement": "All DSS tunables are configured via DSS_-prefixed environment variables loaded through python-dotenv from the project-root .env; the root .env is git-ignored (only .env.example, the committed template, is tracked), and a missing .env is tolerated (load_config and spike_w1/common load_dotenv calls are no-ops, with spike_w1 falling back to plain os.environ if dotenv is absent).",
+      "evidence": [
+        {
+          "resource": "repo://.env.example#L1-L5",
+          "version": "repo-lines-v1:sha256:85f5b146391a90d1428a5166980f42115f2d2db3de14b7eae569fdec0048d4d1:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZTllMWExODVjM2E3MmRlZWQyYjBiNmJmYTMyZmZjNTczMDk5ZTZkOWM2ZDg1Njc4OGJmYzI0YTBhMzZmODA0YyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiN2ViNzAyNTc1OTNkYTA2ZjY4MmEzZGRkYTU0YTlkMjYwZDRmYzUxNGY2NDUyMzdmNWNhNzRiMDhmOGRhNjFhNiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjAsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMGEzOWFkNTc3YjdlMGZlMDI3ZjZhMmVkYjdlN2Y5Zjk0Y2QxMzY3YmU3MmQxYzA4MGQwY2FmMDU2OGI1NDc2NCJ9"
+        },
+        {
+          "resource": "repo://.gitignore#L20-L23",
+          "version": "repo-lines-v1:sha256:1f071461f7b77be8638abbaf91eddb119867b6978992078bd73012f193c2e512:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYTE0YmRjZTYzM2E3NzM0M2FjNzRmMjdmOTk1YmZiMTNhMGEyOGE4MTdiNjNlZDE2NWFhNmNiMDM2YWQ0Mjg4NSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDAyM2Q2NWMwZjFmYmVjYzM1NzdmOGQzMWM1MjhhODE5NjdhNzU5NDE1MjA4Y2Q1MzNhOGNlYzRmYmRmNGM2YSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZjc4NmZjNjc0ZjYwMDBkZTczYmNkODA2YjJjZWM4ZWJmMjVkNWU1NDJhZWYzZDMwNDk2OGVlYTA5ZTE0ZDVmMiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjEsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYTJiMmY5ZDM5MDI2NWI5ZjkxYWI4NWQyNmUzN2FkYmVmNmVhNTdkNjE1Njg3OTVhNDNmYmNhZDliZTNjNTQ1ZiJ9"
+        },
+        {
+          "resource": "repo://spike_w1/common.py#L11-L15",
+          "version": "repo-lines-v1:sha256:48d9c9429042ac632748069814d3cef57377308eea66e7bf3dc2a0bc6502f34b:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMzU0N2QxMDJmMGNjYzhjODk0M2MwMzVmNWI1OTE0YjBmYTRjOWYzNTFiM2E0ODU4MTJiMTRiY2EyMzRhMGJmYiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiODM2OGI1OTEzNDVlM2Y3Y2I0MmRhMzMzMjUxMzEwYWE0NWFkYTI1OTBkYTRhN2RmZDNhMGFkOTAwOTg2N2JjOCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNTM0NDI1MTJlMDVkYWUwZTY3ZmYwYjkwZGY3Mjk0MzBjNzc0ODZjMjRmYTkwZGY0ZjkyM2IzNzA5NTVjMTk2YiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZGFhMjJkNmY1YWViM2Q2YWY4ZWNiM2Y2ZjMwNjM2ODQ1OWRiODI2YmZlZWZjNDEzYWFiNzJkYjE4ZGY0ZDgyZCJ9"
+        },
+        {
+          "resource": "repo://spike_w3/common.py#L161-L166",
+          "version": "repo-lines-v1:sha256:31100edb07a318eb1335461baa0376c9becbaec5b0c982768049f0127029b462:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYWQ4NDhjNDU5NmY3NGM4ZjI4NDMzMWEyMjRmYjgzNDg0ZWRmMDk4NTU5MDJjMjI5YmM3NzVlOGZhN2Q3NDM4NSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYTk2ODU4YWEzNGQ2NTY1ZDQzNjc1MWUyMjNlZTk3MmNlYzBiNmYzODQxNjFmY2NiNmE0YzQwZGQwMzA0ODdhMSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMmUzYmMxNTcwNmNkNDM4ODNhNjMyODEwMzkwM2Q5ZWVmNWY1ZDM3MTE3MGFkMzE3ODc3YTYwNjFlZGRlM2FiNyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNDFiZjk2ZmFlODUxMTZhM2EwNjVhYjJhOTI2MzBjZjg4NjRiNzYzYjY3NTZhN2IxNmYwZGEwMzBjNDJhMmI2YyJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_d2bfb5cabe64444d8cae8c414e14873f",
+      "statement": "DSSConfig is a frozen dataclass in spike_w3/common.py holding the complete parameter surface (28 fields: driver mode/poll, B3 guardrails, dead vehicle/bootstrap/rebuild, plan folder, alpha family, alert lines, line-stop, dual-ring gates, console/run_tag/snapshot_dir); load_config() builds it from os.environ after load_dotenv, with production defaults for every field.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/common.py#L102-L141",
+          "version": "repo-lines-v1:sha256:79174357009f96aa62ec68c519ea528af95c3c4065a3dbb012406617d407e340:eyJzZWxlY3RlZExpbmVDb3VudCI6NDAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU4ZDhiN2VjZGYyZjU1NmNjNzVlYzBkNjE0NjZlZjZhYzI2NTRkMDRhNTcxMjkyNmJhMTFlODVjY2M4YmQ5MGQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjgyN2QwODMxODQ0MDNhOTM5MTAwNzhkMjI3OWNhMmY4NWU4NDBmMGZiYzljZTM0MWJjM2ViYzkwZTMyNDgxMDIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImFlMjA5YzdjYTk4MTcxYWRkOTY0OGVhOTZiM2U0NGU3NTA1ZGZmOGViNmMxZjIwMDIxNTcwYjg0NzM1NDIyYTQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjI0NWNlYWJmN2M0MmEyZWQ4MmU4OGEzMmM0NDQwZGQ1MGVhNzc4YTUxYmRjOWQ1N2UyMzIwMWZmZWFiN2YyZTQifQ"
+        },
+        {
+          "resource": "repo://spike_w3/common.py#L161-L200",
+          "version": "repo-lines-v1:sha256:d9a19c9573dc2454565d40b1068ea860fc2faa3584935694190ef9d4a7d8aa3d:eyJzZWxlY3RlZExpbmVDb3VudCI6NDAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFkODQ4YzQ1OTZmNzRjOGYyODQzMzFhMjI0ZmI4MzQ4NGVkZjA5ODU1OTAyYzIyOWJjNzc1ZThmYTdkNzQzODUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImM5MjIwNGM2NWY1MDJkYzE2NDU0YjYyNDA4NTZhOWFiN2FkZTAwM2E4ZTlmODYzMzNlYzBiN2M5ZTQwOTQ5MWQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjJlM2JjMTU3MDZjZDQzODgzYTYzMjgxMDM5MDNkOWVlZjVmNWQzNzExNzBhZDMxNzg3N2E2MDYxZWRkZTNhYjciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_00291b324b3d4e49b16bf62549fadce8",
+      "statement": "The strict 1/0 gate discipline (_env_strict01 in spike_w3/common.py and the identical _strict01 in spike_w2/eta_v2.py) returns the default for unset/blank values but raises ValueError naming the variable for any value other than '0' or '1' (e.g. 2, true, on, 1.0, x) — no silent fallback — and tests pin this behavior for load_config, dual_ring_enabled and use_net_delay_enabled.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w2/eta_v2.py#L380-L401",
+          "version": "repo-lines-v1:sha256:446c6701301ca82f20012b76aa5b5eb4df78d2fb4a1fea1bd18975a0d8e0febf:eyJzZWxlY3RlZExpbmVDb3VudCI6MjIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImUyZGZiNTc5MWRhZWViNmNkZTg5NTE4NWM3MWUxZTIyMWExNWIwMjc5ZjJhNjMzNTdkYzFjYWJkY2MyYzUwYzAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImNhNDJiZmJhZDg2NjQxNTRiMDkzYTAxNTI2ZDY0ZjUyNzQ1OWQwMTkyMDMxMzE0YTgwZDgzYmNlYzRiNmUwMGUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjY3OWQ2NTJhYjgyODJhOTg0OTY4NzBkY2ZlOGVjYjE2OTBkODRiNzY3NDhhZTlkZmJiMmU3ZjA0MzNmNTdjNzkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjczOGUwMGFiYmU4NDAyNjFhYWNlYWRmMmJlMDhiNjNiNjczODgyOTBjNjQyZWQzNjZjMmRmNjc5YzQxZjJiYmMifQ"
+        },
+        {
+          "resource": "repo://spike_w3/common.py#L91-L99",
+          "version": "repo-lines-v1:sha256:ae43b179fa5f79b105501306b5ac4ad0ac95f59b4dc3ca180a20e333bebac9ae:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMTQxNGVhZTk2OGJmMGVhNTMzMmY2ZmE4Y2M5MTMzMjNkNmRmMDVmY2U3ZDZjZGEyY2E5Y2QzNDY5OTA5NjA2MCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNTU4YTlhMTViNzVhMmY1NDU0Y2VlMGY4YzY5MWQzYzlmOGM5YTE4Y2U5Nzg3MTIwMWEwOWM2NDM4NGYxNjExMyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOGRhZWU3M2FjMjg3ZjUwYjM0MDE5ZWUzMjBlZGI2ZGY5MDNhODc5ZTU5ODcwYjI3NmNlMmU0MWNlYjFjZTAyZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiN2RhZmY3NGExZjE1YmY1MmQ2MWFiMzU0MmZiMzJjMzRlOWNkOTg0ODE2YjBkN2ZhMWI5MTI5YjljZmRkNDgyOCJ9"
+        },
+        {
+          "resource": "repo://tests/test_w4_engine_wiring.py#L47-L88",
+          "version": "repo-lines-v1:sha256:47eafab38c257b00ed31bd8bb8101aecc087e9508bc3761d6f14a172e8f3c41c:eyJzZWxlY3RlZExpbmVDb3VudCI6NDIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU2NTFiMmI4MDA0YjUzNWM4ZmM5YTA3OGMzZDc5MGMxZWNhYTJiMWFiNTY5NzRiZGRiNWFmZmM3NTRlMGJlZTQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImUzNTVhY2M0NTA2YmI4NGZiY2ZlMWU5N2ViNzRkZDFmZTc4MGVjNGU2MWVmMTIxOTFmYzY0MWIxMjVlM2QyMTIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjE3YWJmMDYwNzdhMmI2MjQ1YjkwYWFmN2FiZGVlMzBlYzQ0NDRlNDYzYmVmYjlhOTkzNmFhYzFiZjZlYmMzMTEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImNkNzJjMjIzNDFiM2E0OWU4MmVjYzQzYzEwODg5OWQ3OThmYTUyYjQyY2IyZTg3OWQ3NWZmNjA4ZThlNDVlNWIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_fdd40f54552a4654b54310390e489041",
+      "statement": "DSS_DUAL_RING (strict 1/0, default 1) selects the engine: 1 = Doc14 unified engine (137/139 dual-bit + oven trajectory + expected_delay), the production default; 0 = full rollback to the legacy estimate_event path. The gate is read from the environment per call by the live consumption points (predictor.rem_of, dashboard) via dual_ring_enabled(), so it operates independently of the DSSConfig.dual_ring mirror field; DSS_SHIFT_TIER_DELAY has no DSSConfig field at all and is read only via eta_v2.shift_tier_delay_enabled().",
+      "evidence": [
+        {
+          "resource": "repo://spike_w2/eta_v2.py#L391-L401",
+          "version": "repo-lines-v1:sha256:2558a8f523b1edc4cab769277b0f424469dd4548169e119b43048e5041e4697b:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjA1ZDhiMTljZWRkYjViNDI1NTVmZTI0ZTViYjAyMDc0NTBjOTAwMThjN2ZhMmRmOWM5MWI3YzlkNzRlMTJmNDMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImNhNDJiZmJhZDg2NjQxNTRiMDkzYTAxNTI2ZDY0ZjUyNzQ1OWQwMTkyMDMxMzE0YTgwZDgzYmNlYzRiNmUwMGUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImFlMjA5YzdjYTk4MTcxYWRkOTY0OGVhOTZiM2U0NGU3NTA1ZGZmOGViNmMxZjIwMDIxNTcwYjg0NzM1NDIyYTQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjczOGUwMGFiYmU4NDAyNjFhYWNlYWRmMmJlMDhiNjNiNjczODgyOTBjNjQyZWQzNjZjMmRmNjc5YzQxZjJiYmMifQ"
+        },
+        {
+          "resource": "repo://spike_w3/common.py#L136-L139",
+          "version": "repo-lines-v1:sha256:ffbe6d01f845cfe5f2e803f5e7f1807017e5c9975b264955f4d4718661d85f28:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZGEyMmUyYTViYTAzZDViMzRlZDgzZWJlYWNkM2M2NzRmYzllODJkNjA3Y2QxNmU1YmMyODIxYzY3ZTVhN2QyMSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZWUyMmNiMmFmZWI3ZWNkODAyNWFjMjA1NWY3YzkxMDEzZTk4ZjM1ZGJmNGQyZjZmMDU4YTRjMjEwMzJmNjk5NiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMzNiMGIxOWVkNTllOGQ0YjMyYmNlY2U1YzQ2N2Q1MWYzN2JmNTlkYWZmODk1OWRjODUxNTkwM2Q2ZmQyNzdiZCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiM2IyNzYwNThlM2UxYThjM2I0NDAzMjVkZjM0ZDY5NDcxMDk3NDQ3MTc3MDhjMWFhNGU4MDJmNTFkMzFkMjk2MSJ9"
+        },
+        {
+          "resource": "repo://spike_w3/predictor.py#L44-L63",
+          "version": "repo-lines-v1:sha256:3aac635714de2c171398adb3b474fc85bfd6b08df19e766ff3988fa474fabf52:eyJzZWxlY3RlZExpbmVDb3VudCI6MjAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImUzNTkyZmJiMWYyZTVhYmRlYTEzYmJlYTQ4NmEzY2I3MmJiYmQzMTUyOTMzY2I0NDQ5NTQwNzE3YTJjM2IyNmMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjJhOWY4YzJiYzdhMTQxYTAyMmFmM2ZlYjhhYjUwMDhlYzI1NzU3ZWYyNGFjZDA0OWY1MDg5YTc0YjdjOWFlODEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImZhYmRjMWU2NjhiN2ZmYjQ5NmQzZGVjNjI1YjUxOTY0OWI5YThjZWMxMzRjNzQ1NTkxY2M4N2E5YWZkZGIxYWUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjkyM2NiYzI4MjljMjk5ZWFlNmIwNTc0N2E3MjI3YmM0NzJiMWJhZTk2MGRlMmM0ZWRmNDhhZjEwMWZmYzU4NjEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_cef34b1771c54421bce671875b052989",
+      "statement": "DSS_USE_NET_DELAY (strict 1/0, default 1) is effective only when DSS_DUAL_RING=0, where 1 makes the old engine consume expected_delay in place of p×L (doc10 retrofit, estimate_event_net_delay); under DSS_DUAL_RING=1 the unified engine always consumes expected_delay and the parameter is ignored (dual-review B11). The shared replay dispatch estimate_for_replay routes: DUAL_RING=1 → estimate_event_unified, else ND=1 → estimate_event_net_delay, else legacy estimate_event.",
+      "evidence": [
+        {
+          "resource": "repo://docs/15-W4%E5%8F%8C%E7%8E%AF%E9%87%8D%E6%9E%84%E6%AD%A5%E7%BA%A7%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92.md#L181-L186",
+          "version": "repo-lines-v1:sha256:057dd7d1f5e9952e0d35f7a29f9a74a2b5e20ec34162c5513ee48f9602f9a57f:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNDU5NTE5ZTcxOGQxYzUwOWJiMzNmMzYyMDM0NDE4NTZjYjIwYTkwODZhMzg2NzE1Y2EyYTk4ZDE2OTdjNjM3NSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNGUxZWU3ZDY4ZjU5NWM3Mzk1ZGY3MWJkMjBlNjU1MmU1NTM0NmVmMzdlM2IxYmZhOTU1YWZhZTA3MWFmYzUxOSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZDFkYTZiYTRkYzQ2NDI1NmMxM2MyNzBmMzNkMjhjNDYzNWRhNGRmODhmZGJjMDcwNTBkZTk0NTRlMTlkMTQyMiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiODNlMGRlZjg3NTUwMGE0Y2RkMmZmMTlmZjg3MThlZjcyMGUxZjdiMTQ5YTE0NGI2YmIxZDdkMjQxNmJmZTM4NyJ9"
+        },
+        {
+          "resource": "repo://spike_w2/eta_v2.py#L404-L462",
+          "version": "repo-lines-v1:sha256:c0be87924946a3cdb60034820607539b86ef484684e137f01fcf4576de403f1e:eyJzZWxlY3RlZExpbmVDb3VudCI6NTksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjEwMmQwODgxODc4ODQyNTY0MDdlZjM3ZGJjMjNlMDM1NDI4YzBiMTRhYTNjNzg2MzA4YjQ3YjIwMTFiZWNmZDUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE4NGVjNTQyMWFjMDQwZDA1MTkzODBkMmY0ZGQ0OGI1ZDJkNjhjZmVlMzQxYjNmMzljN2MzYWJiNzMzZDdkOGMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjgzYWMxMTNhZDJiYjlkNGE1MDcxNTQ3NGIwMjE4OWE5YjY0M2YwOGQxOTQyMzc5YWQ1NTBmNDg1MjBkZDc2NWQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_3cb7a41b5e2e4caebb493fdcf35102a1",
+      "statement": "Rollback semantics per the M5 runbook: true old-stack rollback is DSS_DUAL_RING=0 AND DSS_USE_NET_DELAY=0; the combination DUAL_RING=0 AND USE_NET_DELAY=1 is a half-migrated degraded state (W4.4f measured 11.00%/11.99%, failed) and must not be used as a rollback.",
+      "evidence": [
+        {
+          "resource": "repo://docs/09-M5%E5%86%85%E7%BD%91%E5%9C%A8%E7%BA%BF%E9%AA%8C%E6%94%B6%E8%BF%90%E8%A1%8C%E6%89%8B%E5%86%8C.md#L52-L52",
+          "version": "repo-lines-v1:sha256:0a0c0bb50615966a353bdb696aadda12797415e0e5a8dfd7486c75ef0d56c3e2:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMGEwYzBiYjUwNjE1OTY2YTM1M2JkYjY5NmFhZGRhMTI3OTc0MTVlMGU1YThkZmQ3NDg2Yzc1ZWYwZDU2YzNlMiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMGEwYzBiYjUwNjE1OTY2YTM1M2JkYjY5NmFhZGRhMTI3OTc0MTVlMGU1YThkZmQ3NDg2Yzc1ZWYwZDU2YzNlMiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMDZmMzdjMzMxMTIzZWJiNTJhOWQ1ZDEyYWZiMDA1OWVkYjg0ZTc4YmM2NzY5ZDcwMzY1Zjg0NTMxNjMwY2I0NCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMzdlMzEyZTM5NjMwZGIzYWE1ZDg1MmE2Yzg1NDZjZDJmODhhNDY1NWM5YzI1YmE1MWZiNWExM2I3ZWIzZWYzYSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_8bfbd696d95a48c38d98ae73b8b02b69",
+      "statement": "DSS_SHIFT_TIER_DELAY (strict 1/0, default 0, W4.4h 2026-10-07 decision) only affects the DUAL_RING=1 path: =1 makes the unified engine's delay lookup prefer shift-tier rows of dss.dim_expected_delay_shift with sample attribution from the entry-event shift (fixed bands DAY [04:45,16:30) / MID [16:30,04:45) via entry_shift_of); missing rows/thresholds/missing table fall back to shared rows so default 0 and the fallback path are bit-identical (zero drift). The shift-tier table is optional and deliberately excluded from the required startup table list.",
+      "evidence": [
+        {
+          "resource": "repo://.env.example#L97-L100",
+          "version": "repo-lines-v1:sha256:3cf0cbe3c61277a038b96c35a6bfe2893e5789a6dbf62987f65925568ef4689e:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZjUzYWUxNmY4MThhMzM5ZDliZjc1MmUzZjNiNmQ2YzcxMmZjYjFlODY4MGJhM2I1M2Q2ODQxMWVhZDQ1NjJjMiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiODI2ZTNiNGExYmUxN2U1NDNiOWVmMDdiMTM3YjdhZTBjYjI3NjNjYzcxYTUyYmMwM2ZiYWI0Y2Q0NmEyNGE0ZiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYzdiNjgyNjU4ZWQxNDc1OGMzZmEwMWNjOGI3ZWJlYWY0NmViYzg5MmVkYmMyZGFmYTVjNDE5MzdhNGEwZmYzOCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTJlM2YyMDliYmE2ODIyYzNjYmZhODExNWQ0ZWIyZDE3ZmQ4OTA5ZTk4YWMxNmRmZjc3N2NkMzQzZDU3MDBmMyJ9"
+        },
+        {
+          "resource": "repo://spike_w2/eta_v2.py#L277-L307",
+          "version": "repo-lines-v1:sha256:d666297d6211fb69959f5603091c677f6a7aefa1e008fbe09328d09b6ba1d2a4:eyJzZWxlY3RlZExpbmVDb3VudCI6MzEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImNlMzJjZGYwZTg1MjAwN2VjNzAzZTNhOTE0Mzc5NjlhZjM2MjU0ZTAxNGNlZmNiMGMxMzYyOGZkODJkYjcxY2UiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjcxMzQzNWE5OTFjMWE0ZDBhODJiYzU0MjRkN2Q2NGQ1ODU1MGQ4NzY3NmQ1MjI4ODVmMDZjZGMxZWQzZTIxZTAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjMyZTA2MzAyMTQ4ZWNiODU5MzU4NzEzOWZjMjZkOTM1YTc1YWM3NDkyOTJlNjIzZTg4NjVjMGY3MmJmMGM3OTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjE2YWYwYzZlYjcxY2RhZDg0NTA3OTAzNGVhODUyOTFkYWI0MGI4MDM4MmE1NDM4NWM1ZWE4MThlYjZiZTYzNDIifQ"
+        },
+        {
+          "resource": "repo://spike_w2/eta_v2.py#L366-L377",
+          "version": "repo-lines-v1:sha256:ddfade0122a95fb26de2f62b745a8d87470628755bfb0488f7945bc9d3224707:eyJzZWxlY3RlZExpbmVDb3VudCI6MTIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjMyNThkN2FiZWVkY2Q4OGE3NzA5OWY0YzRjMTczZDBiMGE2MzEzZDhmNzNkZDIwM2U4YmIxMzMwZGM2ZDQ2OTIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImIwOWFiNTEyZTIzZTkwYzBhMDU3OWY2NzAzY2UwZWY2YTU0ZTVlMTlhMmM3ZTY5N2E2ODgxMGMzMzQzZTQ0ZGMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijk3ZjE2ZTgwYjc5OGMyMTg5NWUwMDI3NjNlNWFlZTlmY2I0NjJlYzVmYTdkMjdiZmMxNzUzZWFkOTJhY2IzMmIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjhmNTc3YWM3MDIyNzM4NGI0MDY1NzdjYzM3YjUyOTdkNzA4ZWQyMzdhMjU5Y2I1NDA0YWVhMmM4MmFmNmYzOTAifQ"
+        },
+        {
+          "resource": "repo://spike_w3/01_boot_online.py#L35-L44",
+          "version": "repo-lines-v1:sha256:ce0be6f17c59e097d26e4365b9ea5a9451e44a506418c34c1a560df621b7e4e6:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNiNzBjNzVhZjA1ZjM5ZjAzMDc4MTY4NDExMzY2MjE2OTIwMzAyYmY5ZjBkZGQ3YzA0Zjk0Mjc3ZDBhNGFjOTMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjliMzllMDIyZTBkODU0MTIwMDAzZDc5MGMyOGI3NTk2MmVkZDMwMzc1NmQ1MTMzM2RmNzQ1Y2ZiODZlYTExY2UiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImMxNGFmZTJkMWUzYmY0ZGExODA5ZjEwYjY0NTQ5NTNmN2YzM2YxYTI1OWMzNTNkODU2ZjcyMWI2NjhjN2IwN2UiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjZmN2ZjZmRhMjcyNzE3MmFiNmQwMDc3NjMxYmIyNmQxY2E0ZTgwOTQ4MzBkMWFjMzk2ZjY4N2QzZGVkM2MzNGYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_585df79225c748e4a11a6747ecae38f2",
+      "statement": "Two-value binding (B4 point 7): when DSS_BOOTSTRAP_HOURS is not explicitly set, bootstrap_hours takes the resolved DSS_DEAD_VEHICLE_HOURS value (detected via _env_float_opt), while an explicit DSS_BOOTSTRAP_HOURS always wins; defaults are 120h for both.",
+      "evidence": [
+        {
+          "resource": "repo://.env.example#L34-L38",
+          "version": "repo-lines-v1:sha256:66dcff8c155d98f42247384fc99341c183c331dac3971e8cb774c6b636bd4a50:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiODg3ZDE3MWVmYjgwY2U0ZmE3NjI3ZTJmZDk4YmQxMTgwNGJlMDU2ODVjZDk5NjA5ODkzNTI4YTkwNjUyYjVlMyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYTllYTU5YjMwZjQ2MDc2MmMzMDk5Y2M5MjYzODgyMWRlYjliYzg5MjRkY2MxZDc4ZGZmZDIzMDAxNzJhZWU1YyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTAxZjY2M2ExMDQyMDAxMDE2MGUzZTQ1OGExNDI5Y2QzZDI4MjBiMjc0YzFjMGY4YWJlNzQ1N2Y2YWI2NWQ1YyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMGNiMzY0NjY1YTMwMjNkNjQ3ZjJiNTUyZWVjZWY3Yjk1ZTY1ODU0YzI3N2Y2YWU1MGM4MDRkMjg1Mzg5MzU2MiJ9"
+        },
+        {
+          "resource": "repo://spike_w3/common.py#L161-L178",
+          "version": "repo-lines-v1:sha256:9be9d9e17f6360bd23b2f3af0887384de50b6948f0708e15f2bc9a648838546d:eyJzZWxlY3RlZExpbmVDb3VudCI6MTgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFkODQ4YzQ1OTZmNzRjOGYyODQzMzFhMjI0ZmI4MzQ4NGVkZjA5ODU1OTAyYzIyOWJjNzc1ZThmYTdkNzQzODUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImIxOGE4NmFiMmJiZGM0ZWRjMWU3ZTZhNWU0NmM4ZWVlYjFlZWUyZjI4MjcwMWNmMGQ5NDRlZDc2N2M2OWQ4NGMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjJlM2JjMTU3MDZjZDQzODgzYTYzMjgxMDM5MDNkOWVlZjVmNWQzNzExNzBhZDMxNzg3N2E2MDYxZWRkZTNhYjciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImI0M2YxMmQzNTMxMjQyYzU0MjUwNTEzZDJmYTIwNmE3Y2RlMmRkMjBiYjJiMWJjYjE5NjZlOWE0MGFlZWY3YTQifQ"
+        },
+        {
+          "resource": "repo://tests/test_w3_common.py#L28-L36",
+          "version": "repo-lines-v1:sha256:316d04920e9ed50899ea6d21bf8550c86ec0f1f0aa7b9fd66f29694b9db293fa:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMTdkOGI0Nzg3MDAxYTBmMTIzMDljNTE2ZDI5NGNiMTQzMWIwYmVjYTBkNjNmNmQ1NDkyNjA0MGQ1NTE0YmU2NSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZGUwYmRjMjNjMjgyYzc1MGI0ZGUzNTJiMWNmYTMzMTM0YTcxZGZjNTg0YjFiNmZiMDYyYmFjMTg5NWQzYWQwYSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNWZlODg5NTI0ZDJjYmY1M2Q2ZDZhYWMwYjZiNGNkYjZkZjU2YmQ3NGQxYWQ2OTllN2IxN2I3YzZiNTJiMWI4MyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMzk2YmE2ODk1YmM1NDQwMDEyNWM5NjBjZWZlYmJkMzZlZWRkZTQyMDRjMTg4YzQzNTViNGMzZjc4MjYzNDI3MSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_ec78e11356ce4b6f9274b4816951d4eb",
+      "statement": "B3/M4 guardrail and self-healing thresholds: DSS_STALE_MIN=30 (no events >30min → data-cut circuit breaker; ETL SLA 2026-09-23: intranet owner, RTO ≤1h, outage periods excluded from the acceptance gate), DSS_LAG_MIN=15 (lag observation state), DSS_SKEW_WINDOW_MIN=15 (out-of-order tolerance), DSS_DEAD_VEHICLE_HOURS=120 (dead vehicle), DSS_REBUILD_HOURS=24 (periodic full rebuild = F-1 dropped-row/watermark-poisoning self-healing ceiling).",
+      "evidence": [
+        {
+          "resource": "repo://.env.example#L25-L44",
+          "version": "repo-lines-v1:sha256:5561c7e0594b0617a76c87bb98e949c1753f6c3946d2e110bf7f475072552b28:eyJzZWxlY3RlZExpbmVDb3VudCI6MjAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE0N2FjMzJmYjg1OGZiMGNiMWU0MDRjM2I3ZmQzY2RjMzcyOWEzM2M1OWI0OTBjNTVlZjY2MzQzNWIzN2NjMDkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNlZTU3MzI0Y2VhMTBkMTg4ZTY5OGI4MGY5NzAzMmM4ODAwN2Q3YzM2Y2MyNzdmODkzMTBjMTZkYzNlYjkxYWQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjdhMzJlNjAzYzMxMTMyZDE4ZTc5YTQxN2ZhM2JlZDQ5MTg0MWNjNTA4MDI2MjcxZmVlNTIyZGNiZjZmZDRkN2YiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImU2MzhkZWMwZjA2Y2ZkN2YzMTNmMGYyOTM0YjJiMzk5NzBkYjM0ZGFiYTgxNjVlYTVkZDhjNTU2ZDljYWQ5NDgifQ"
+        },
+        {
+          "resource": "repo://docs/09-M5%E5%86%85%E7%BD%91%E5%9C%A8%E7%BA%BF%E9%AA%8C%E6%94%B6%E8%BF%90%E8%A1%8C%E6%89%8B%E5%86%8C.md#L52-L52",
+          "version": "repo-lines-v1:sha256:0a0c0bb50615966a353bdb696aadda12797415e0e5a8dfd7486c75ef0d56c3e2:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMGEwYzBiYjUwNjE1OTY2YTM1M2JkYjY5NmFhZGRhMTI3OTc0MTVlMGU1YThkZmQ3NDg2Yzc1ZWYwZDU2YzNlMiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMGEwYzBiYjUwNjE1OTY2YTM1M2JkYjY5NmFhZGRhMTI3OTc0MTVlMGU1YThkZmQ3NDg2Yzc1ZWYwZDU2YzNlMiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMDZmMzdjMzMxMTIzZWJiNTJhOWQ1ZDEyYWZiMDA1OWVkYjg0ZTc4YmM2NzY5ZDcwMzY1Zjg0NTMxNjMwY2I0NCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMzdlMzEyZTM5NjMwZGIzYWE1ZDg1MmE2Yzg1NDZjZDJmODhhNDY1NWM5YzI1YmE1MWZiNWExM2I3ZWIzZWYzYSJ9"
+        },
+        {
+          "resource": "repo://spike_w3/common.py#L108-L114",
+          "version": "repo-lines-v1:sha256:f0647a2549960332074e93a9c9d167c531d65072b737898aed900dc738783034:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMmJkMTMxMGU1ZDdiNjYxYTZhY2YyYzlmMzQ0Nzg3YTcyYWY3Mzg5ZWE1MjkzM2QxNmVhMDIwMDMwMTVhNTM0ZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYTkxM2E4ZGQyNWQxOTM5NWZhN2ZhMWFhODdiOWE3YjVlYmFlZDQzZDRjODhmZTkzOGM0NjMzNGQ1N2NmZTU4MyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiN2E3ZDUxYjYzMzgxNzFkYjYyOWU4MjhlMjFmZGYzNTM3YzNiZGViOTg1YmU0OGM3OTExZGE4NjVhYjU0NDU5ZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiY2MzNDlhZTc0ZmZhNDJkOWUwNDY0MWUyZmZkYTMyZjU5OGVmZGQ1MWIzZTAzZjc5NTVhODg0OGY0YTg1NjdjMyJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_800e81e4fb4546d482fd15a97da13523",
+      "statement": "DSS_PLAN_FOLDER (default plan_inbox) is the weekly-plan input folder per the 2026-09-23 user decision (in-repo plan_inbox/ is the development default; production overrides only the path, the week_plan_YYYYKWww*.csv naming convention unchanged); no files, all-parse-fail, or cross-file conflict degrades to fallback self-learn mode (shift inferred, no targets).",
+      "evidence": [
+        {
+          "resource": "repo://.env.example#L13-L15",
+          "version": "repo-lines-v1:sha256:13eccf79c400c57186379969621e505344336e697d311d4f1fdd6754e84ffab9:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZDQ0YmViZDk2ZGQ1ODE1OGJkMWFiZTE4MDJkOWExOTA2MGE0ZWQwMTcwZTdmZjIzYWJmZTk3ZGM2ZGY1ZmRiOSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYTEwZDMxMTc3YTUyMmQ5MWM2ZjYwNTU2NjVkYzJmNjU2YjM2ZmFiYjE5YzZkZmQyMTdiMzNiNjgyOTMzZGQ4OSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNWVlYjczMDE1ODc0YTNjMjRmZDFjODEyZmI1N2NiYTY1OGIyZTM4NjE5N2U5OWY0ODVlNDVmMzRhMjZiODIwYSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZDA3ZTBkN2U5Mzg4ZjE5NDk4YTE2ZWM4MTY0NmQ5M2VmYTE3NWY0Zjc0ZTQ1YjRmYzQ1NWFiODM5ZjMxMGQ3NyJ9"
+        },
+        {
+          "resource": "repo://spike_w3/01_boot_online.py#L62-L81",
+          "version": "repo-lines-v1:sha256:2e1277ecf93a6bb8e1d86005049f71e2b691ec5c29fe4219c2fa278627be1930:eyJzZWxlY3RlZExpbmVDb3VudCI6MjAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNiY2RjMDc2ZjJiMDMyMTg0NzRjZjEzMTFiOWFmMzUxNzhiMGEwODNhNGIxODY3Nzk0YmMxZTk4Y2EyZWNkNDEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU1MTBlMmI4OTRiYjIwNGY1NDc4MGExYTkyMTZhNWU1MDE1NzIwMjQ5ODMyNjZjNDAzNTk4MWUxMmVkODUxY2EiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjY4NTk1NDBmZTUxY2UyZTVlOGVjNTcyNThlMjQ4YTA3NzdkNmQ4MGFjMTdkZWZiNWMxMDBiYjMzMTFmODRjNjYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjgxYTlhMjY1NzgwOTU3NDY2OWMwY2U3ZjhlNmZhMWY1Zjc5ZDU4N2FmNmRiNjU4ZDU1YWI3MTg0ZGI1OTFmNzAifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_93385970727b4e81a5ddc7f046d663ff",
+      "statement": "The α family defaults are DSS_ALPHA_MODE=off (user decision 2026-09-25: production default off, M9 gate judged at α=off), DSS_ALPHA_WINDOW_HOURS=3, DSS_ALPHA_MIN_SAMPLES=30, DSS_ALPHA_EMA_BETA=0.3, DSS_ALPHA_CLAMP_MIN=0.6, DSS_ALPHA_CLAMP_MAX=1.5, DSS_ETA_STALE_HOURS=6 (L4 stale: marked only, still counts toward prediction), DSS_LEARN_WIN_START=2026-04-14 / DSS_LEARN_WIN_END=2026-08-15 (W1 learning window, no future leakage); DSS_ALPHA_MODE accepts on/off case-insensitively and raises ValueError otherwise, and the α hysteresis (0.05 / 2 cycles) is a code-level constant deliberately not exposed as env.",
+      "evidence": [
+        {
+          "resource": "repo://.env.example#L46-L69",
+          "version": "repo-lines-v1:sha256:7e50c6eb4db5ca35f2dd4892a759afbd2d5d6dc016230e25fd5be04f7880c62c:eyJzZWxlY3RlZExpbmVDb3VudCI6MjQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImIwMWM4OTA0ZDA4YTA3YTNkMzY5YzI1MzVjYjA0NjZlMDI2ZjQ4ZTQ5NTZiYzQ2ODkwMDlhODE2MTkyOGZkODEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjM5Mzk2NWQzYWRmODBhYjA5MTljOTcxNjgzYjA3ZDgwZjljOWEyMDY2YWM4OWQzZWM5ZGVkNWY0Yzg3OWExOGMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjRkNmIxZTY3Yjg0YjM4NzU4MzQ4YjVjY2RjNjhhYmE0ZmE2ZWQwN2Q3MzNiNzUyZTliZDEzYmI2MGMxN2UzNWMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImZiZTdkYmU5ZDYwY2M0OWM4NTU2ZjMwOWU0Yzc3NmI2ZWNlZmViZjliYTJiMzE0ZTIyNzU4ZTEwODZmMDkyNzYifQ"
+        },
+        {
+          "resource": "repo://spike_w3/common.py#L117-L127",
+          "version": "repo-lines-v1:sha256:8b42eae19e73c22a4624462edd0d14e91e3fd74a843d8ed7de95b019ff943377:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImZlN2E5Mzk4NDY0ZDkzZjc5YmYyMmQ4YmUwNTBiMmM5MzhiOTNkZTI3ZGVmMmYyMGQzYzM4MWZlNjM3MjYwMzgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjFlNjUzMmFiNDM5ZjMwODAzMmNlYjFjNjQ4YjMzYWIyYzE5NmI4YTFhNjhkYjQ2NmRmNmNkNTRhNDJjMzQ1MGIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjAzMTFhYzU0Y2Y3NjU5YTZhOTliYzAyZjRiZTYzNDU5Njk4MDg0Y2FlZmYzMzlhNTQ2Y2UzOTcwODk2YjUxMGYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijg2ZmU3NzQ3Nzc3YTUwZGQ3MTdlNDQ2ZjJlOWQ0MGFjZDJkYWM4MjY5MTM4OTFiMTU2ODE1YzM4OWJmODE0YWUifQ"
+        },
+        {
+          "resource": "repo://spike_w3/common.py#L144-L148",
+          "version": "repo-lines-v1:sha256:ddc338435c28f73792e02c8e2889b2696c00b263a2aa11a25ad91f7c212c92a4:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMDU1OWEwMzM0ZjI1ZWJiYjE3OGFlNDU2ZDg3OWI3MzdhMzllODE1MzBkYTQ0NjQ5Mjk2OWUzNDQyNTIxN2U4OSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMjY5Y2M3Y2IwMDhjZGI0ZDhkOTMwYzUwMTFhOTBiODQ0YTYzZTVkOWJjNmFjNmQ1ZWQwMGJlY2VkY2RkYzI0NSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMTdmOTE3ODc3YTc5NTAzMTVjNmRjMGU5MGM1ZjQ1MWU0OWU5ZjEwNjQ5MGU0YmZiNWYyYmFiMzQ3NzBlMWQyMiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMjNkY2U0YTNjMDQzNTVjMjc4ODU1NWFmOWU0NjY4MzlhN2UwOTMzYTIzYWRkZjQ5MGJhNDM0MzM4OTBkNmMxMCJ9"
+        },
+        {
+          "resource": "repo://tests/test_w3_common.py#L64-L75",
+          "version": "repo-lines-v1:sha256:f204b122eed2b94a2a7c914ea182816771e6336e09651b13515451137f40a18a:eyJzZWxlY3RlZExpbmVDb3VudCI6MTIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijc1MWI4OGIzZWNmZWFlNjYxYTcxZjBmN2VmNGU3NjYwNzBlZGYwYzhjYzUyNjFlMjg4ZTMyMDU3MjE4ZDVlMTgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjZlOGQ3NmU2NmJiNzhhZmIzYTE2NTZlN2ZhZjE0NTU2YWM5M2RkYmExOGQ3NzVjNDNmYmI4NzEzOTFlOTJiYjQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjA5NGU2NzZmYjc1OTJmZWFlMDBkNDhiYjA2N2FhNGM0Y2U2NmVjODc2NjczOGYzNjA4YzdhN2Q1ZjQ2N2Y2OWMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImNhOGU2NDg0NzY4MzllNGIzODdlMTQxYzdhZDk2MTk5MmJjODEzMjU4MmVmYzQ4MDQzYWFiYzY4ZjBlMmYzZjIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_b76e4bed6904452e9dd96eb8b772eda4",
+      "statement": "Gap-alert thresholds (Task 4, user decision 2026-09-23 — lines went live as-is with a 5-day shadow period observing false-positive rate): DSS_ALERT_RED=-0.10 (gap exceeds 10% vs target), DSS_ALERT_YELLOW=-0.05, DSS_ALERT_DEBOUNCE_MIN=10 (alert fires only after persisting at that level for 10 minutes).",
+      "evidence": [
+        {
+          "resource": "repo://.env.example#L71-L79",
+          "version": "repo-lines-v1:sha256:547bcf73e999b6964cf83241ad8de41b03afe2abd83979a407c9d3648d5d77f1:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYTgxYWJmNzZkMjU1ZGMzMWU1ZTQ2M2RkMTE1ZTE5NWFiMTdkOTY1MDFkOWNhOTk1NjM3NmE4OTAwZDI5MTVjNyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNmU5MjliM2FhNTYyNDVmMDYwYWQzNzgzZTYwN2MxNTVlOWNjNmUzYTk2YmU2NjlmNjkzNWE5ZWYxNmQ0NTk0MSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYmY2MjhhNjhmZDkwNzQ2Mzg4ZWYyMzJiZDY3NDgzMDM0YjNmOThhM2Y1M2MwYjAxMDE2ZjVjNTZmM2E2NTBlYyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNWEyYjUzMDMyN2U1Yzc2OTQyNDE3OGU1MzFhYmI1ZDJiNTMwMTk5NTc2NDg0YTk5ZDY2NDJjMWIzY2JjYjdlMiJ9"
+        },
+        {
+          "resource": "repo://spike_w3/common.py#L128-L131",
+          "version": "repo-lines-v1:sha256:197ba0bf3b81d30af679ac99fa0df1e6fe1230c62905bf191e2c3914f14b980a:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiY2IwNGE4ZGU3YjlmNTlkM2IzYzBlZWEwNDRlNDJiYTYwZGNlYzhhNTM4NmRjYzMwNGEwMmMzNjZjZjRhZDQ0OCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiY2M4MDRjM2UwZjc0YTUyYmQ0MmY0OTY5ZjQzMDRkODE2MzE2ZGQyNmU5NmFkYmJhYjI5MjVlYTQwOWU2ZTM1MCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTI3YTMyY2IxYWFlMWFiYzZkMGUyZWUyYTQzYzRmOTIzOTVjZWY5MDJlYmFmNTgyNjc5NjA5YWY2Yjc4NDZkNSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZDRlMTRhOTMzMmZiNmNjZGQ4YWM4OGY3OGZiZTNjMTg1Y2UxNGNmN2ZmZWE0NmJiYjdhZjlhOGEzZjEwOTNlYSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_d7334d26bdff4cdcad214a45b7e78b12",
+      "statement": "Line-stop detection (Task 5, mode A) thresholds: DSS_LINE_STOP_MIN=30 (backbone key-station no-event trigger) and DSS_OBSERVE_MIN=15 (observation state — pre-attention marking without a line-stop alarm).",
+      "evidence": [
+        {
+          "resource": "repo://.env.example#L81-L86",
+          "version": "repo-lines-v1:sha256:c09fcc44c9a6dcee4d8f358c706813624cffdb1280e44b3d29c2e266d50124b3:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYmI4ZTNhNTM0MWY5NjYwNzA5YzE3NDY0YjE3ZGE0ZDYwNDE2ZjVkNWY5MGE3MWRkZGJlZTE2ZWU4ZDYzODZjZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYzc3MDNmNjFkYmJmYTYyYmU0ZWQ0MzViYmQ1NmMwY2VlNmU4ZWU3MzUxNGMzZDM0N2Y0ZTQwNGM3NjAyY2NmMyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZGVjODZiNzRiOTZiMGE4MzViZTRmNjA0OTYzOWQwMzc3MTJhZmMxNTM3NzE5MzNlNTA0ZDg1MzRjZDJlNmM5MiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYTljOGUxOWE2MDI4NTBkNTY1ZWYwYTJjZDIwMjU2M2M3NzkzNzI2NDczODE0ZmVmN2IwYWVlMDE1NTIwYzIxNSJ9"
+        },
+        {
+          "resource": "repo://spike_w3/common.py#L132-L134",
+          "version": "repo-lines-v1:sha256:d4e14a9332fb6ccdd8ac88f78fbe3c185ce14cf7ffea46bbb7af9a8a3f1093ea:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOTJhNWNiM2JmNWZkZjFiM2VmZjM4NGQwMjI5YzRkMTUxODY1MTEzMTcyMWFlMWFlYWM5Mjk3ZjIwYzI0MTY0YiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNmE5NjMyZDJmODE3N2RhMmEyMGZiZGRlZWU0NzVlNWNjZTZjNDUzYTMzZjU4NWQ3ZGEzZGI1ZmM1MTY0OGMwMiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTY1NTU4YjA2NmJjYTI4Y2NhZWM0ZmIzYzNjNGE1NjE5ODQxZGU5MTQ5MGNjNGYwMTdlNjM1ZTA3ODMzNDdjOSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiY2JlYWZlMzMyNmQ0ZmY4MWFmN2Y1YWIxZjlhNmJhODJjOTdhNzUwNWFjZThkNmI0YzcxNDQ4NmRlNWM4OGM4YiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_6fde8d0ab33c402e8c9b5bb07c060b45",
+      "statement": "DSS_CONSOLE (default 1, T6) uses lenient parsing — 1/true/on and 0/false/off case-insensitively — which is wider than the strict 1/0 contract but still raises ValueError on other values (documented as different from _env_strict01); 0 disables the 5-minute console frame and snapshot writing (regression baseline), and console assembly failure never blocks the main loop (it is an accessory; a [T6] WARNING is printed and the loop continues).",
+      "evidence": [
+        {
+          "resource": "repo://docs/07-T6-lite%E8%AF%A6%E7%BB%86%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92.md#L18-L21",
+          "version": "repo-lines-v1:sha256:8e74aefab03b0e16dbd6f456ac4ae6b137bcaa5fabf4e36e9111bbfab2b7efda:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiN2I1MDE1NTMzM2UwMjcyMDVlZWIzZjJhNDcyNTJhMGM3NWQwYjUzYjVjNmQ5Yjc3OWE1ODlmZDQ2NmU5ZDg1OCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYzc1MWExNDY1MmYxOWI1NjQ5MGVhZTMyOTAwYjMzNDNkZDdlYWQ2ZmE0N2JlNDk5OWE4Y2E3ZWQ4MzQxYzg2ZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYmYzM2NjOGZmNzhjOWFkNzNmY2Y5NWMzNTcwZWFjZDkwM2MwNmFkOThmNjUwYWFiZGNkY2NjZWZjZTE3MjA1YyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMTM3YzQyZmY2YTk5OGRjNTAzZTZmNmQ2OTU1YTMwMjdkMDNiMDRhNTU2ZTYxNGQ1NGJhYmQxOTkwMTY2NjFkOSJ9"
+        },
+        {
+          "resource": "repo://spike_w3/01_boot_online.py#L336-L354",
+          "version": "repo-lines-v1:sha256:ad356eccd92d5669636da350799f1e1d3a97e09ed5bd9f58ce676a8353b199e0:eyJzZWxlY3RlZExpbmVDb3VudCI6MTksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBjODFiNTEzMWVhYzFhNWEyOGFiM2FmYWYyMzk0NjgyZDNiZWUwZGFmNDgyZjRhOGQzOWExMGNjY2Q2YmQxZjYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI5ODFhZGY3ZWQ3NWMzYjlmYjc0N2Y1NjQ0MDk4ODgxYmMxZDBlNzU3ODEwODQ2NDAzYTBhMzE5ZGE4MzRjYzciLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjdiYmUzZmJmNmE2YjExYzUyOTVmZGE2NjM4YWJlYjhhNDkzODJiN2MyNWE3NzAzMjY5MTUyY2YxZDc4MjY3NDQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjZlMzc0Njk1MTY4NDIwNzVkOWU5ZDhlYTVlYWE5MzVmN2YzNmMxYjhkMmI5ODQ3NmFhODkzZWUxZGM4MTQ3MTEifQ"
+        },
+        {
+          "resource": "repo://spike_w3/common.py#L151-L158",
+          "version": "repo-lines-v1:sha256:1bb31e6073f4435b00607dfdd5a6e288b24ec1a58961dafda5b6c79a1cbc609b:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMDliNmYyOWNiYzIwOTg1MTgxZmU5MzgyYjIwM2ZiZDNlMDExNmRlZGJkNGZmYTg0M2U2OGE2MjIwZTE4YmU1NyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMGVjZTE1OWM0YWUzNzU1YjMxMThmMGM3NTk5ZmVlZDQxZDJiMWRiNmRhZDE5NDQ0YjE5OTkwYzE4NzUyNmMxZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTA2MjcxNWRkNGIwMmE3MTViMTE3YmUzNGVkZTlmYzc3MDY0MzhjNmZjMjVhMDk5OTc1ZWU1MDFkMjAwOTBkZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTNmYzA0ZmQ4MTQyNWVkYjA4ZjVlZDUzOWYzOGJmMTYyYTQwZWU0YWM0ZmNhZjc1MWI5YmQyMmZhODI2ZWMyZiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_22c1b1ad769d448f875e99225653692c",
+      "statement": "DSS_RUN_TAG (default empty) controls the snapshot run tag: empty → auto-generated YYYYMMDD-HHMMSS, with auto tags bumped -r2/-r3 when the directory already holds snap_* files (overwrite protection); an explicit tag is an idempotent append into the same directory across restarts (M5 prep agy block F3). DSS_SNAPSHOT_DIR defaults to output/snapshots, which is git-ignored for high-frequency snapshot留痕.",
+      "evidence": [
+        {
+          "resource": "repo://.gitignore#L9-L10",
+          "version": "repo-lines-v1:sha256:ef94c0902f2931079ad6b5f5a22a6f4dad60a6a821c3262a96104e08a4f3c0ce:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMjUzMmE5NzIwMDAxYmQyMmE0ZTZhMjc1NjRiM2QyMTc5MGJjMTBjMzNkZGVhNjZiODExZThiYWVkYTFmZTc3ZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMTU5Y2U0YjkzYzdkM2Y4ZTEzNjEzZjE2OWFiMDg2YzgyNGM5YmFjNjNhOGU0MjNiOWVjM2RmMDEyNjI1Yzg3ZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiN2RkY2RjZWY3Y2U5YzY2YzY0NGJhNjMwMzZmMzhkNzcwNGE5ZjU0NzQ3MjcxMTYzYzE3YTc2Y2U4OGJjNzQ4ZCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMmM0MmI3NGRkYmU3MTU2ZjYxNWM1NDFjMzAyNWIxMjU5N2RiM2Y4ZWY1OWEzNzk3MGZmY2RmNzEyOTY0YzU5MSJ9"
+        },
+        {
+          "resource": "repo://spike_w3/common.py#L139-L141",
+          "version": "repo-lines-v1:sha256:02def7cac89e1cc9f70e68c5557e90ac6a48bf97007a4d12c4f72ad091de7045:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZWUyMmNiMmFmZWI3ZWNkODAyNWFjMjA1NWY3YzkxMDEzZTk4ZjM1ZGJmNGQyZjZmMDU4YTRjMjEwMzJmNjk5NiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiODI3ZDA4MzE4NDQwM2E5MzkxMDA3OGQyMjc5Y2EyZjg1ZTg0MGYwZmJjOWNlMzQxYmMzZWJjOTBlMzI0ODEwMiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNGQwZWM1ZmI0MjUzYjc0YTljZWVhNjZjZDViYWZiYzMxYjliMDFiNTBhOWY5N2VkYWVlNTgxMzg1OWU3Y2YzZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMjQ1Y2VhYmY3YzQyYTJlZDgyZTg4YTMyYzQ0NDBkZDUwZWE3NzhhNTFiZGM5ZDU3ZTIzMjAxZmZlYWI3ZjJlNCJ9"
+        },
+        {
+          "resource": "repo://spike_w3/dashboard.py#L648-L664",
+          "version": "repo-lines-v1:sha256:2be4b52045aaaf625d205bdf433bab71bd1b52d96b6cc64aad2d6f175d0badad:eyJzZWxlY3RlZExpbmVDb3VudCI6MTcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRhMGIwMDUyMWE1ZjE3ZjcwYzE1ZDM2MjkwZjM4M2MzZWFiZGM1YjlmMzNjYTg0ZGM4ZWI5ZWI2Mjk0YmVmMWQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImRiNDdkZjEwNTQ5OTUyZTg2MzE5MjgxYjFkMzJmNzlkOWE4MzgzZDQ2YTM5OTNkODViNGFkYmM3ODk4YzAyYzIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImU1MzNkMDZlZDM5ZmM2M2E4YWQzMTBmYmJiYjQyMzQ5ZmRhNDcyYzgyMjZlNTY0MDJhZDc5Y2JhNGYxOTViMjQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjBkYjE0MzRhNmUzMTBmNGQ4YmZkN2I0YjhmNjAwZDEzMzEyZTZkNzVhNTk3NmJmNTU5OGUzMTI3NTQ4MmQzZDEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_c357c0a6969b43ee9b876aedc32a0e69",
+      "statement": "The DSN override mechanism: _dsn() in spike_w1/common.py is a pure function mapping DSS_DB_HOST/PORT/NAME/USER/PASSWORD to psycopg2 kwargs with development-DB defaults (port cast to int) when unset; connect() re-parses _dsn() fresh on every call so DSS_DB_* changes take effect at runtime rather than being frozen at module import (fix for M5 prep agy block F1), and sets autocommit plus session TIME ZONE 'Asia/Shanghai'. spike_w3 re-exports connect from spike_w1/common.py (loaded as the w1_common module alias to avoid the common.py name clash), and credential values stay in the local untracked .env only.",
+      "evidence": [
+        {
+          "resource": "repo://docs/09-M5%E5%86%85%E7%BD%91%E5%9C%A8%E7%BA%BF%E9%AA%8C%E6%94%B6%E8%BF%90%E8%A1%8C%E6%89%8B%E5%86%8C.md#L39-L52",
+          "version": "repo-lines-v1:sha256:ec974a712d1057ec0c555baf1e565478563cbbca5dacc26d8b1056db6dd3d379:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI1YzJlMDIwMTUzMzRhOWU0OWM1NjViM2JhODMwNTQ3Y2Y1YzViYjA0MzgwZDExZTBjYWEzNDBjNTY0MjliYWUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBhMGMwYmI1MDYxNTk2NmEzNTNiZGI2OTZhYWRkYTEyNzk3NDE1ZTBlNWE4ZGZkNzQ4NmM3NWVmMGQ1NmMzZTIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjMzYWEwNmIyODg4ODBmNmM5OGY5MjQ4ZjNhN2I4MzRlN2Q4YmIxZTYxOTkyY2VjMzQwMWU2MzcxZjE3OGQ3MWMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjM3ZTMxMmUzOTYzMGRiM2FhNWQ4NTJhNmM4NTQ2Y2QyZjg4YTQ2NTVjOWMyNWJhNTFmYjVhMTNiN2ViM2VmM2EifQ"
+        },
+        {
+          "resource": "repo://spike_w1/common.py#L18-L46",
+          "version": "repo-lines-v1:sha256:d60f1750f2882509faab35aadf8140ce779c4fdfc64332b4481a8ed870bdcb80:eyJzZWxlY3RlZExpbmVDb3VudCI6MjksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjJiYzY1MDVmNTRmYjhiYjMzNWRjYjI2ZTYyMjZhODU5NWIyNjI3MjRmMzg1ZThjZGNkYmM0ODU4ZjZiZGY4N2EiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFlZjI3NmFlNzY4YWVlZmYyYjYyNTczZjVlZDBkOTAxMmRkNDVkODNhNWU3MWQ5OWQ4ZDZjZTA2ZGIzOTVjOTIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjQwZGM3NTRjODRhYzE2ZGMxZDM1OWMzZDE1ZmM5ZGViN2U3N2Y3ZDNiMjAzYmRiZWZiMDNkNjRlYmM0OGM3YTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        },
+        {
+          "resource": "repo://spike_w3/common.py#L26-L41",
+          "version": "repo-lines-v1:sha256:dce553d916874dc128619cc22770cbdeae15af51b336a69e77c07e70bb103cc3:eyJzZWxlY3RlZExpbmVDb3VudCI6MTYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQxMGNhY2M5ZGQ1NDBkM2Q3OGYxZjg1MGMzY2EwMTU2NDQwNTVlNDQxNGExYzBkM2NhZWFlODg4ZTFkMGJlODkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAwYjljM2ZhYzZkZTcxMjhmMGNmMWZkNjNkYTdjMGNmYzA2OGU1MmQyM2Y4YzM5OGVjMTc3M2E5NTcxMmQ3N2EiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjExMDY1YjFkOTQyZmIyYjMzMTE1NDFmYWQyZWI5ZmVjMDJiNTkzOTlkNjFjOGYyNTYyNzMyZWY0M2RjZTc0ZGMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImU0MDZjNzRhYTQ5ZjZjMGQ3MGFlNmY5NzdlMTBiZDA4MWJjYmU5MzQ3YzhmZjc3ZmViMWU4NWFlZjhkZDNmNmUifQ"
+        },
+        {
+          "resource": "repo://tests/test_w1_dsn_env.py#L14-L58",
+          "version": "repo-lines-v1:sha256:7fad3b2b9f24e2ca7f3f3bcd7ef2ba797e72e90b758acaf9380f173e894f2699:eyJzZWxlY3RlZExpbmVDb3VudCI6NDUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjcwYzBhOTc4MjY3ZDIzYmJjZjQ5ZWI5OWIwMTNkNjNkZjFmNjdiOTk1OTU1ZDY3OGFmYzFlOWNiZTc3Y2EwOTAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRiYzdjMjNlZTE4YzNkMDEzOTZlM2QyNjM3ZDNhZGY1YmYxMWQzYjU3ZGI3NjkwNzcyOTYzNDQ2NTVmZjFkZmQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImZhYjE1NzBiNDk4Y2UwYTI1NGE5YWQ2OTk2MmY3Y2ZlMWNmZGQwODI0YzJhZTc2ZjVmN2I3ZGU4MjRiYzQwODEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_cb0c77f3c61446a5ab7c336e011d6032",
+      "statement": "M9 shadow-replay debug switches consumed directly by 02_shadow_replay (off = production semantics): DSS_M9_START/DSS_M9_END default to 2026-09-05T00:00 / 2026-09-13T23:59:59 (KW36/37, ISO, CST); DSS_SELF_CHECK_BAND='lo,hi' overrides the Step-A self-check fixed band (code default [0.1089, 0.1339], D5(a) re-anchor 2026-10-06) with strict validation (0<lo<hi<1, else ValueError at startup); DSS_M9_CROSS_MACHINE/DSS_M9_CROSS_DIR point the cross-check machine at scratch/02_replay_kw37.py and output/tmp_kw37_review by default.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/02_shadow_replay.py#L49-L93",
+          "version": "repo-lines-v1:sha256:98758f2331a05d47f14aed4102e0d799a293e72facfb9c023e9ee1fa1ce703c0:eyJzZWxlY3RlZExpbmVDb3VudCI6NDUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQ1Njk1MDk5OWI0MTk5NjRiM2UyMzQwOWFkZmIwZGViMjA0NzBlMGY1NjkzMTUxODk5OTU3ODkwNDQ0NGVmY2IiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImUwMmQwMDQ0MjMyMzAwMTE1NmI5YjNlNjhiMDk4OWZiMjAxN2JkMjI4MzUxMGFjZmJkN2I0MGQ0MjY3M2MxYjgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImE0OTdhYmM4OWZlMTcyMGFmYjJhOGJlNjg3ZTlhNDZlNTBkNGIyNGE2OTA5MzE3ZGZkYzQ4OGYyZjRlYjM0ZTQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImMzMDI5ZjRjNTFhZDdmMjlmMGQzOTg4MjliMzk1ZDIxNjdmZjI2MjQ3Y2MwZTE4YTc3NDU5MzhiZjE0NDg4OWMifQ"
+        },
+        {
+          "resource": "repo://tests/test_w4_m9_config.py#L35-L72",
+          "version": "repo-lines-v1:sha256:da57680ed828a946847535eb57e2330c79b475e8cd2fececc826e707e5d2bfe5:eyJzZWxlY3RlZExpbmVDb3VudCI6MzgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImY4MzA4YjU3YTkyZGRkNzA5YzNjMzlmYTdmMzQwZTliZmY2YjBlMWU3NTdjYWZiMGVjMTcwNjUwNDEwZTRhMjEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjJmNzFkMjBmYzQ5YzU2ODBhOWY4YWJmMGNhMmE0NWQyMmE3M2YzYjZkNTI4ZWQ2OWQ4OGI1MDhjYjRhNWMxYzIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImZiMjMzN2I4ODZmOTlkNjdkMWZjYzg4N2E2NTIwYjJjMTI2YmJkMGNkYWE2MTcwZjc1YmM4NDk0Y2MzY2QzNjAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjNkZDYwOTAzNGNlY2MxMmZiZGE3Y2FjZTNlN2U3OTA2ZTA2NjA5ZDY5MzViYTc5YmE1ZDc2OTI4MTdkZmVjYTkifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_08f0cfa86ab149298956d1fb98119011",
+      "statement": "replay_cursor mode requires DSS_REPLAY_START/DSS_REPLAY_END (ISO), otherwise main() raises SystemExit; the replay bootstrap anchors to the replay start (not wall clock) so the watermark is the replay window's max row ID and the incremental stream does not run dry; DSS_PLAN_CSV switches plan loading to single-file mode (replay dry-run override) instead of directory merge; DSS_G4_HARD=1 restores the M9 G4 hard gate (softened by default; only meaningful with DSS_ALPHA_MODE=on).",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/01_boot_online.py#L100-L107",
+          "version": "repo-lines-v1:sha256:1632d796e7130dc6493ee06288175169aafe505bdd70a318e201c94b36171696:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYTY2NzljMTE5ODU0MzBiNTNlODMwNjc0Y2M1ZmUwODNhMzQ4MWFhNzZiYzdjZDYyODllZTc2Nzk0M2IxMjFmNCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMmNhYTRlNWNlMDg3NDdjNjc3YWE5ODhlNzMyYzkyNDVmMTI4MDcwMjMwNDBhOTQ1NjgwMzQyZmMwOGRmZjUyYSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOGI4MGJhODI2NzcyYjlmZDhmNDc1MmQ0ODcyYWE0NGJjZjkzYmM5MmIwZjc1MGMxMGUwODA4MzE4ZjNiNjQyMiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYmU2MzRiM2FjMjU3N2IyZWJkZGRhNzg0YmY1ZGY1OGRmNjBmNzc0NTI5YWE4NzUzMGRjODIxZDhmZDJiMDA2MiJ9"
+        },
+        {
+          "resource": "repo://spike_w3/01_boot_online.py#L311-L367",
+          "version": "repo-lines-v1:sha256:a7602883b2a70ce7cb813a6f70e7a5833123b5c81c026e69800535ee32a40b7d:eyJzZWxlY3RlZExpbmVDb3VudCI6NTcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImNjNWI5NDg0N2MxMDUzYTZmMGRkYjIwMDc2N2ZhMDA2NDJhZWRlMTRmMWUwZjBhNDIyZjJmYWM4NGM2ZDI2ZjEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImMwZWFkMzU3ODgxZTg5Mzg0NjFmYTdmZTBiZWE3NDRmZmZlYTk1MDg1ODRjM2FlMTVkNmExNGM5NzM4MDdkMTQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjhlYjRlMzE4NGM5MjI2NDg3MmYxZmE2YzMxNTQ5ZmQyZGEzYzExOGZkMzljNTNkN2IwNTMwYjM3NTI2Y2YwMzgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijg5NmRjMmJmYmJkOTk1NDFlOGJlYTViZjVlNWNhZTQ3NGU4NGM4ZGVkMjU5Yjk0MjcyYTM4MjdkMWYxMTEzOTIifQ"
+        },
+        {
+          "resource": "repo://spike_w3/02_shadow_replay.py#L738-L746",
+          "version": "repo-lines-v1:sha256:8f1ea8d94885fe8cee7c9cd42afbdcc37196e7c6e5ca8532e19ab3e0171b6bad:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMjg3YWM3YmFhNGZkOWI1ZjIyZGRhYjMxNzk2NWEzYzljNjRiZjA1MTE0MWFmMTVlZGU0NjNhYzcwYmIzMzMwYyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZTNjNTQ1OTE0ZjQxMWVlZmJjZDU2NzI4YTczYTllNzRmZDE5OGFkNDg3YmZhYzZkYjNiMmE0MjgxNGJmMGRjOSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMDIwYWQ1NDU2NmQ3Yjc1NWJlZjBhOTY4YWMxYjlmNGM4YjdhMzJmNzJjNTg0ZDdjMDRiNzUyNjRlMDIyMTY5ZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZWUzZDM2YmRiNDdhYTJjZTkxZWYxYTZlMTRlZTZkYzRkNDlmNTc5NjczYTUyODljYzJhNDIwOTg1MDgxZTA4OCJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_05f94b5ad42046b896dcb7cf1f67a860",
+      "statement": "Polling behavior: the wall_clock main loop sleeps to the next poll grid point via next_grid_wait (drift-compensated epoch-grid alignment, floor 1.0s, so frame timestamps land on the 5-minute grid — M5 anchor-frame matching, agy block F2), while the replay_cursor loop advances its cursor by poll_interval_sec (default 300, debug replay 1–5).",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/01_boot_online.py#L233-L301",
+          "version": "repo-lines-v1:sha256:33a7e8b23e3f3743395cb17d7bb124005e0d7a72baabcd2f6c8463ab9f283e47:eyJzZWxlY3RlZExpbmVDb3VudCI6NjksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk0MzNiM2E2MGFkOTk1ZjFlZGI4NjNhMzA1NDRkYjI3MDA4YWNhODc4NWY2YWQ2MGM2Yzc0OTliMDEyMDA1YmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImRjZTI4NzQzNWEyZWM3NDBlYWJmYmY3ZmJjNmEyYjI3NTg2MGFiYjVmOGI5MTljZGQwNmM2MjBlMmQ4ODg2OTIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjIxMTlkYjE0MGNmNDIyYWJlNmZkNzdkNWU3ZmM1M2U5OWY4NTA2MmJhZTBmODVlYzViMzQxN2NjMTMxZTM0ZWMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjNkMTZiZGVhMjcwZDVhNGU0MzI0NzgzMTI5YzkyNzIxMTcwMDllMzVhYWNlZGU0MDExNjZkY2NkMWUyZjIzOWYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_07d99f782f674baaa5b32d8225d9be8e",
+      "statement": "Startup-report DoD: bootstrap() stores config_echo = dataclasses.asdict(cfg) on BootstrapReport and render_boot_report prints every effective DSSConfig value (sorted k=v line) together with plan, dim-table, pool, watermark, cross-check and freshness status, so an operator always sees the exact parameter set running with no hidden fallbacks.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/01_boot_online.py#L165-L182",
+          "version": "repo-lines-v1:sha256:13ca097ec5382ffcc9c0289182d069494c1e58750d84246b6430554105c566a7:eyJzZWxlY3RlZExpbmVDb3VudCI6MTgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU2M2IxZDIzYTRlMDk4OGM0MTdjMzBlNzhiMTMxYTczZTA0NTY1NmE0YjY5OTQ5OWZhOTUyM2UxODg2ZDM4NWIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAwNjA5ZjE2ZDBiMjkzYjkyYjU4N2ZmZDU2N2MwZDAzMmJhMDczZmM4NDU3NGY5YzVlYWFhMmRiZDhhZjRjNjQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjhiOTc0ZGE0MDg2MzJhNGFhN2UyYWU4MGI4NjAzOTFhM2RjZDgyMTFjNzllY2FkN2NhOGU5NTEyOGIwMDE4MzIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjIxZTQ3MjhkNmY0NmI2MWRlZDdkYjQ3ZmVlOWNkYTAxMzJiZjlkMDIzNDE2YWQ0OGNhYWU2YzRlOTA1ZTFhMTkifQ"
+        },
+        {
+          "resource": "repo://spike_w3/stream_pipeline.py#L746-L799",
+          "version": "repo-lines-v1:sha256:081116cdd12624b1de27498f3b4b79f04c8aefe4fe6929d5c1f34c5b9deb4188:eyJzZWxlY3RlZExpbmVDb3VudCI6NTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI2ZmJhZTBiOTFkNDRmYzBkNDlmNWRlNjkxZGE2ZmM0MzFmMjYwMTM0YmY3MzFlMGUyMWY3NjQ4MDk0MzM0Y2IiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjJiOGIxMzBiMzBhYjkzZGZjMGRmNjMxMzhmZWY5YWQ3ZTVlZDExMGMxNDFkMWFjMTQ1ODgxZjI2OWU4YjI1OTkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImE5OGIwNjNkOWI0N2U2NTM3OTYyNTU3MmNjZTE5NzY2OWQ1NzY3ZTEyYzE4YmUwNzU2NTJiOGNkOTgxY2U4ZDUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijc2NDk0YzNkMDljZDJkMDE5YzdhMmUyZDdhMjY0OGY4MGNmZGQwYjlhNGUxOTc5NDZmNmU0N2E1M2JkODZjNTcifQ"
+        },
+        {
+          "resource": "repo://tests/test_w3_bootstrap.py#L178-L179",
+          "version": "repo-lines-v1:sha256:6c6dd800c6a276721ce6268efed2537021e7e31f98b8bb9142a994baaf4504ef:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNDQ3ZDcyYjVlYWI0MjFlZGQzMzU1OGIzZjEzNzgyNGFiODkzODNlODI2YjhjODQ0YTI0Y2E3YmVkYWEyNmM5MSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiM2NhZmRhZmVmZDVmYjNkNWFiYzU1ZmExMTU1Nzg3Y2FmMDQyODM0YWY2YzY3MGNkODcyNDVjYmZmODllMWEyNyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOWViNTlhZTJmZDY1MTdkMjczOTg5Y2NlYTBjNzI2MTIyODIwNzY5MDkxYjI2YWU5YTE5NTNkYTE2NTFkMDQ4NyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZjMxYTY4MTM5ODE4OWRhZTVjMGUzYjE0YjVkMDM2ZjEzN2IyMGM2MzUzNzkyZGYwYTA1ZGU3OWFlZjRmMjI0NyJ9"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.7.0",
+    "at": "2026-10-08T13:05:24.547Z"
+  }
+}

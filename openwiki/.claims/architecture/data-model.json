@@ -1,0 +1,320 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:1c5aad04c6a121a544b7af7e42b62ac2538c39e1782582ac2d6073cf76848181",
+  "claims": [
+    {
+      "id": "claim_6a51b0bf64df4952a549a04abbe62285",
+      "statement": "ods.carbody_history is the MES pass-through event stream (one row per station pass, appended permanently); the current dataset is ~6.276M rows over 83,493 bodies and 259 stations spanning 2026-04-14 to 09-18. Its columns are stored uppercase and must be double-quoted in SQL; the DSS treats the table strictly as read-only and the upstream ETL job refresh_carbody_ods is its sole writer.",
+      "evidence": [
+        {
+          "resource": "repo://README.md",
+          "version": "repo-file-v1:sha256:b0acefa9fb67f7f59bb08845a66d286d21e07c32d442d0d453a36fe7683c1c8e"
+        },
+        {
+          "resource": "repo://docs/superpowers/plans/2026-09-19-w1-takt-learner-eta-replay.md",
+          "version": "repo-file-v1:sha256:acfe3c05dd50687cd6eca190bedfb27d1f22690f4775184599c161fa5e47a9f8"
+        },
+        {
+          "resource": "repo://spike_w3/stream_pipeline.py#L612-L613",
+          "version": "repo-lines-v1:sha256:6f5db6858b0b5e6be5d288bc4aacab370cbb21fe37c92a0766e35cde7b6bbe82:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYjNhMmFkODJiYmUzMTNkYWY4MWQyOGM1ODc2ODYyMTcyMWQzMDE3YjE5NmNjOWRiZWY5YmU0MTM2NzhhNWI3YyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZTYwYWVmOGViMjNhNDAzNGQ1YThhMmQ4YTlhZjRiZDkxN2VjOWMxYTFjZTdiZDEyY2IwZTNmMGEzN2FjZjhlYSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMzBkMzg5NDA4NDBmNDEyNjE2NGRlMzFkODkyNWNjOTBiNGUxNmFmNWI2MDM0YjM1Mzk5ZWU3OTE4ZTg2OTRkNCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZWU4OWJlZjA5Njk5Y2M1MmZjZDVhOWZhZjk1MDk4YmUyYzIyNzJiNWJkZTBhNzg4YzFiMjhlOWRhNDNkODczMSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_322b382ec24e4060913d3fbdb0a89bb6",
+      "statement": "MDS_DATA is a fixed 237-character MES telegram. Position 139 (SUBSTRING(\"MDS_DATA\" FROM 139 FOR 1)) is the rework/blacktop process-loop flag (0=normal, 1=quality rework, 2=blacktop second spray, -=unfilled, 3=undefined); it behaves as a sticky body state machine — the bit is set only after an in-production decision and is almost never reset (93.49% of flagged rework vehicles are never reset to 0), which is why the purification pipeline derives loop windows instead of trusting the raw bit.",
+      "evidence": [
+        {
+          "resource": "repo://README.md",
+          "version": "repo-file-v1:sha256:b0acefa9fb67f7f59bb08845a66d286d21e07c32d442d0d453a36fe7683c1c8e"
+        },
+        {
+          "resource": "repo://docs/08_message_data_dictionary.md",
+          "version": "repo-file-v1:sha256:3a3a0fbf5daeb436b5d9e2e393d4e7a04019eb3c5707fbd5c85f17a2aebbb08e"
+        },
+        {
+          "resource": "repo://docs/10-%E8%BF%94%E5%B7%A5%E8%A1%A5%E5%81%BF%E6%9C%BA%E5%88%B6%E9%97%AE%E9%A2%98%E8%AF%8A%E6%96%AD%E4%B8%8E%E6%9C%9F%E6%9C%9B%E5%87%80%E5%BB%B6%E8%AF%AF%E9%87%8D%E6%9E%84%E6%96%B9%E6%A1%88.md#L16-L16",
+          "version": "repo-lines-v1:sha256:07c12f0c6747f25bda672e9c6670fac346972509b5c3c3c5676854ad822c3efd:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMDdjMTJmMGM2NzQ3ZjI1YmRhNjcyZTljNjY3MGZhYzM0Njk3MjUwOWI1YzNjM2M1Njc2ODU0YWQ4MjJjM2VmZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDdjMTJmMGM2NzQ3ZjI1YmRhNjcyZTljNjY3MGZhYzM0Njk3MjUwOWI1YzNjM2M1Njc2ODU0YWQ4MjJjM2VmZCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMjQ3Y2RkMzE0MjEwMTBkMDQ1YmE5MmMxZTk3OTI0ZDgzMGJhYzg4OTBmOTVkN2ZmNjJlYTRkMGQ3NjY3MGZjYSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTM2NzM1ZmQyMzRlODMyNzlkZTY4N2I1ZGU0ZGRhMDg2NDFhOTE3ZmFiZjI2MTU2ZGM3NGViOTNhN2EyNzAzYyJ9"
+        },
+        {
+          "resource": "repo://spike_w1/sqlbase.py#L39-L43",
+          "version": "repo-lines-v1:sha256:12529ef4f5b78710f7c09c46515ab63c40080c2a95ab9c7797b95ec99c044517:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOTkxZTY0NTk1NDM2NzZhYTUzZTc2ZjQ0NTFmZjUyMTM1MWY0MTg5ODNiYWE2MzJmMDA5NTA4OTZiMzcyNmE3ZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZWM4Y2UyMGY1OGM2NGVlZjI4YWMzYjQwNWVhMzMxMTQ3YTU5MWU4YTJiNzk3MmVkYjk1MDhlNGRhMzQxNWRiNiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiY2Y2MGYwMDRiYmM0Y2FkMDgwMzg4OGNjY2ZjZWRlY2Q1NDBhNGU4YzA2Y2EzMjEzODY4MmM2ZjU0ODQ5OTczNCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiODk0NTlmMjkwZjUxMTBkOGZhOGZiOTZkNGNjYjcyZDY3M2U2N2VjMDZlOWMyMzUwYzQ5MWZkN2IyOWI5ODg0OSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_29839f9bf2994e9f8864cd22a065e39a",
+      "statement": "MDS_DATA position 137 (SUBSTRING(\"MDS_DATA\" FROM 137 FOR 1)) is the blacktop/two-tone configuration flag, essentially lifetime-invariant, and is a hard precondition for accepting a 139=2 blacktop anchor: it blocks the ~4,941 single-tone vehicles that transiently show 139=2 (false signals).",
+      "evidence": [
+        {
+          "resource": "repo://README.md",
+          "version": "repo-file-v1:sha256:b0acefa9fb67f7f59bb08845a66d286d21e07c32d442d0d453a36fe7683c1c8e"
+        },
+        {
+          "resource": "repo://docs/12_%E9%BB%91%E8%BD%A6%E9%A1%B6%E5%A4%A7%E7%8E%AF%E7%BA%BF%E5%AE%9A%E4%B9%89%E4%B8%8E%E8%AE%AD%E7%BB%83%E6%A0%B7%E6%9C%AC%E9%94%9A%E5%AE%9A%E8%AE%AE%E6%A1%88.md",
+          "version": "repo-file-v1:sha256:02c39e7e94b02718ee4172528ab9a88573e3630a7c5b6c5bc52bb4dbbaf83ec6"
+        },
+        {
+          "resource": "repo://docs/15-W4%E5%8F%8C%E7%8E%AF%E9%87%8D%E6%9E%84%E6%AD%A5%E7%BA%A7%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92.md",
+          "version": "repo-file-v1:sha256:3bcba8c914c955b71896b9bb2b36fa2e8f914407d7ff70666a8ae5782a10dceb"
+        },
+        {
+          "resource": "repo://spike_w1/sqlbase.py#L39-L43",
+          "version": "repo-lines-v1:sha256:12529ef4f5b78710f7c09c46515ab63c40080c2a95ab9c7797b95ec99c044517:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOTkxZTY0NTk1NDM2NzZhYTUzZTc2ZjQ0NTFmZjUyMTM1MWY0MTg5ODNiYWE2MzJmMDA5NTA4OTZiMzcyNmE3ZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZWM4Y2UyMGY1OGM2NGVlZjI4YWMzYjQwNWVhMzMxMTQ3YTU5MWU4YTJiNzk3MmVkYjk1MDhlNGRhMzQxNWRiNiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiY2Y2MGYwMDRiYmM0Y2FkMDgwMzg4OGNjY2ZjZWRlY2Q1NDBhNGU4YzA2Y2EzMjEzODY4MmM2ZjU0ODQ5OTczNCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiODk0NTlmMjkwZjUxMTBkOGZhOGZiOTZkNGNjYjcyZDY3M2U2N2VjMDZlOWMyMzUwYzQ5MWZkN2IyOWI5ODg0OSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_bd65505cb85444fd9812b10511cb77a2",
+      "statement": "Learning samples are restricted to product cars by \"BODY_ID\" LIKE '78202%'. The offline pipeline anchors journeys on fixed station sets: 3 entry points (01IS205 / 1L360RB / 01IS045) and 4 exit points (K3IS140 / 1J440RB / K2IS075 / K1IS135). The 5 post-exit continuation stations (09IS360 / 09IS350 / K3IS230 / K2IS165 / K1IS225) are used only by the W3 online pool to avoid ghost-vehicle adoption and do not participate in offline learning.",
+      "evidence": [
+        {
+          "resource": "repo://README.md",
+          "version": "repo-file-v1:sha256:b0acefa9fb67f7f59bb08845a66d286d21e07c32d442d0d453a36fe7683c1c8e"
+        },
+        {
+          "resource": "repo://spike_w1/common.py#L30-L36",
+          "version": "repo-lines-v1:sha256:efd14bc59cdfc7759a8f2da31d773230428834297c12eec723e9511e7838773a:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMGM3YTI2MWM2OTU5NmYxZjMzZTU4OTA4NmY5ZjBhYmMxMzRmYTY4Mzg3ZDNlNzQ4ZTFmYjQxODY4YTIyMzMwYSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMTk1ZGFkNzE2YzNlNTk1NjYxMzA1OWRiZTAwM2NjYmI2OTE3MGQyMGI5Nzk3OTM5OWJkODdiZjJhOTVhNDY3NCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYjdkNGIyNzY0MzRmZTdhZTg1YTk2NTNkNDQwOTRjMDZlNDQzOWYzM2FhMjZiZGY0NmQ3NDVlMmExYjgxODZmZCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZGZhYTc5NWQzMDExZDQ1NWYzM2U1OThlZGRmMDcwZWI0MGUzZmNjZTQ3MGU4MmU0ZjkwMjU4N2Q4MWI5NTJjZCJ9"
+        },
+        {
+          "resource": "repo://spike_w1/sqlbase.py#L86-L97",
+          "version": "repo-lines-v1:sha256:6ea842bea42c4a541d282921003773426c5bbde30bb195b0fcee7f0edd008346:eyJzZWxlY3RlZExpbmVDb3VudCI6MTIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjJiMTJlNDgxMzg0MmNlOTk0ZWZkZDZmODE5ZWMxYTAxZjVlYWMzZjVhYWMzMzcyMTQ4OGQ2NWEzNjNiMDViMGIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjY5MDI2Y2MwOTFmOGJhZGNiYzM2YWRlOGJkN2EzYTYyMTM3N2MyZjA2YWM3MGFkODVmYjMwNDdkYWUxMzQ5YjgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImFiN2Y4YTI1ZjEwNTQzMmI5NjhkYzM5ODU4OWE3MWVjNzZiOTAwMmVhMzlmZTQ0YTExODUyMjYyY2QxNjljZTQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjNiZWE1MmNlODIwMzc5ZTZjMzA0ZmRiZWExNzAxNDAxOWNjYTUwNmQ3YzcxN2U3NGUwYjEwNDZkNGJhMzIzN2MifQ"
+        },
+        {
+          "resource": "repo://spike_w3/common.py#L43-L49",
+          "version": "repo-lines-v1:sha256:a3743fce9cac5cd273cd68ec90a64d89969172597e85b3d2e971472c0b9f0b3f:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMmIwODdmM2FmZGY5YmRjNDhhZjQ2ZDU3ZDI5YTNlMjUzMTBiNGI4ZGJmZTRhOTM2OGQwZDhkNWRkMGM2MGQ3YyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYWQ1NTZlNTA2MWYxZmI3OWIyN2IzNmEwNTlkZTZiNDUzNjdiODViYTU1OWQyZDAyN2Q3OTYwZTcwNWNkZDUxNyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOWIxNDM0NzhmMzRmN2UxNTI1YmI1MjczOTUwMDhiY2ZmYjcxOGRjZjI3MmFkMTQxM2QzZTM0ZmQ4MjQ1YjU0MSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiODk0OTAxOGFhMGQ4ODJhZDRkNzEzNWQ3YmU3ZmExNzFkYzJhYjBmNjJiMDhmZDY2YmRjMDRlYjQzMjA2OTY5YSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_48e5e48ffd81489a93fce09f7dfe6b65",
+      "statement": "sqlbase.ev_base_sql(win_start, win_end) returns a multi-statement SQL text (two %s placeholders, start then end) that builds three session TEMP tables: tmp_w4_p (one product-car scan in-window, extracting both 137/139 bits), tmp_loop_bounds (per-vehicle dual-loop boundaries: t_rw_start=first 139=1; t_bt_start=first 137=1 AND 139=2 at/after the errata-corrected oven-out set {16IS305,17IS305,18IS345} with 20IS010 removed; t_rw_end/t_bt_end=first pass of the 3-line gateway group 25IS010/25IS110/25IS210; C5 truncation LEAST(gateway, t_bt_start) for rework-first cars; anchored cars only), and tmp_ev_base (entry/exit span, consecutive-same-station LAG dedup, purified flag CASE into {0,1,2}, and a byte-unchanged last_loop_t window expression).",
+      "evidence": [
+        {
+          "resource": "repo://spike_w1/sqlbase.py#L34-L131",
+          "version": "repo-lines-v1:sha256:c1e4c20308b716adad3990fba460470d3dee20edb098e590466869924473f8d1:eyJzZWxlY3RlZExpbmVDb3VudCI6OTgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImUzMDNiODczNDcxOWU2OGVjOWMwZGEwYmQzNmRhMWMyY2Q1YWMyZDJlOGVmOTAxZTU0NDYyNDE1ZmVhOWUzNWUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjlhYmMzNDNlYTMxMTA5MGM1Y2IzNzU5NWRkY2E2YmVhNTkwMjZmMzZhNmJlNWY3ZTI1YmEwNTdkMTdiYWZmZTYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjE3OTliODllYjJhOTUwODhiYmI5ZWRmMGYzOWRkYTE4NzMzMjU0YjQ2NDA2ODcwZTRhZWY1N2ZhMTQ0YzFlZWIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_884107a0f02d4ae5929d036a36de4482",
+      "statement": "The call form cur.execute(sqlbase.ev_base_sql(a, b), (a, b)) is byte-stable and has 6 production call sites across 5 files (01_learn_takt, 02_replay_eta, 01_learn_v2 [full-window + per-week], 02_replay_shift, 02_shadow_replay). The contract is pinned by pure-text, no-DB unit tests in tests/test_w4_sqlbase.py (station sets, errata oven set including an explicit assertion that 20IS010 is absent, C5 LEAST truncation, last_loop_t expression, LAG dedup, contract-table DDL, purified-flag CASE).",
+      "evidence": [
+        {
+          "resource": "repo://spike_w1/sqlbase.py#L24-L27",
+          "version": "repo-lines-v1:sha256:aa380075df714783fe7cd61bb882601c62b585d5a28b0644e2aa3a3a669b012a:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZmFjZmM5ZTA2NjU2N2NhODQ0NTJiNjJlMDY1Njc4Nzc5MjcwMGU5OGU3MzJlYTEyOWQ2NGQzMzRmMjZhYzgwMCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYjNmZTI5NGRiY2U0OGMzNjkwM2YwNjVlMzJlOTYyYzM4MDZhNjdmODA2M2JmODQwZGZiZDMwMDQ3ZmYxMTRlOSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYTYyNzczZGNkYTgxMTQyZDFjZGVmOTA2YTU1ODgxZWM1OWQ0MDYyMWJlZDQ1NzAyOTJhZTg1NDA0OWY5YmI0MSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZDBjMzE0MGM4YzM1MzA4OTlkMTNiNmM1ZjkxNmY4NzA4YmE2ZmRjODZmMGJlNzFiYmU4MGQ1ZjJkODRhODUwNyJ9"
+        },
+        {
+          "resource": "repo://tests/test_w4_sqlbase.py",
+          "version": "repo-file-v1:sha256:8b40b5382d5347d7224dd135989bb7a668fce4377db542601777b277046402fc"
+        }
+      ]
+    },
+    {
+      "id": "claim_894a92e74d954550bfdb569e793462fb",
+      "statement": "The TEMP tables from ev_base_sql are session-scoped, so every downstream learner/replay query must run on the same connection that built them; the W2 weekly loop re-executes ev_base_sql to rebuild tmp_ev_base before each per-week statement.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w1/sqlbase.py#L125-L131",
+          "version": "repo-lines-v1:sha256:15300fd247eb0e8e968e166521d10ac5c0654da574ad3c86c6bad2305691dc82:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNTEyZDZhMDYxMDJlNmViOWVhNzY3MTEyODAwNWM0OWQ0ZTk2MTNmMTRhNzE5ZmUyOTAyYTdlODU2OTNmYWRhNiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOWFiYzM0M2VhMzExMDkwYzVjYjM3NTk1ZGRjYTZiZWE1OTAyNmYzNmE2YmU1ZjdlMjViYTA1N2QxN2JhZmZlNiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMzhhZTYwYTA5YTc4NGI0N2VhMDg1MzE2YmZmOTJjNjgwMTFkZDY3MGQ4OWYyOGRhZjVkYTliYjZhZTQxYmM0MiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjAsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSJ9"
+        },
+        {
+          "resource": "repo://spike_w2/01_learn_v2.py#L553-L562",
+          "version": "repo-lines-v1:sha256:7062f17fb434b562620f3bdc0b64bc56a989f72cdee7697d3e68940d503de031:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU5OGU2YmRmMTM5NDNmZWZiZDliZjZjNjU4YTM0MWEwZTQxZTg3OTIxZGJhZWU3MjE1NzY1NWFkZDhiMmRiOTkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI4OWYzY2FjNzY4MTA2ZTdmMWJlNDA3NjM0ZGM3YWIwZDY2Yzc1ZGNkZWY0ZjU2Y2I4YjkyMzJhOThmMTA1MWEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImNmNGMzODBlMDU3Mzg3YmQ1NzlkY2Y1YWQ5OWFhNzhmMDg3OTc4NDBlZTU2YzU3MTAxMzk2MzgxOWU5MDYwNTYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjI2MDQ1YTJjZWFhNWFlOGY4MWEwZmIwMTRlN2VlOTZlY2MwOTk5YTQ1ZWNhNTA0NDE2YTRhNTJhNzFjY2UyNmIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_139469cac9e94067aae468d0ace135cf",
+      "statement": "The W1 learner (spike_w1/01_learn_takt.py) rebuilds six dss tables by DROP+CREATE each run and populates them with three-tier rows: dim_remaining_time (clean-suffix main distribution), dim_loop_remaining (flag 1/2 loop distribution), dim_station_takt (per-segment takt with per-bucket Q3+3*IQR outlier cleaning), dim_future_flag (pre-decision p1/p2), dim_loop_duration (per-vehicle loop length L from tmp_loop_bounds; end NULL falls back to exit_t joined from tmp_ev_base; l is P50 as a compatibility name), and dim_learner_meta (run metadata).",
+      "evidence": [
+        {
+          "resource": "repo://spike_w1/01_learn_takt.py#L21-L52",
+          "version": "repo-lines-v1:sha256:17cc86f3c370da6b476f18c9bb94b03393679ee247f32b952fba22be49d17af0:eyJzZWxlY3RlZExpbmVDb3VudCI6MzIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU0MzM5Yjc1MDRlMzc0ZmYxOWM5MzFkODg1OTA1YTRhZTkzZjM3NmM3YTdlYmRiN2NmY2Y3MWQ2YWRhZmFjODEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ3NWQ0NTg5ZTkxY2M4Y2I5NzQ4ODlkYWIwMWRlMTVkYjE1NzRjYTEwZWVjNzI5MGExMDliZjU4OGM5NGUwMWIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjAyZDEyODcxMDFkMjBmZTY3NDViMGRhMTg4N2YyNWZiNjI1MzFmNDQ5NTY4NmQ5NDY2ZDg5MDc1Y2NjZWRhZTIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjAwZTcxNjlkY2ViNjQ5ZmM3ZWE0NDNmODExNTNjZTEyYWU5ODMyOGNlMTg3MTdjNmMxYTI3OGRjYWZkMDQxYzUifQ"
+        },
+        {
+          "resource": "repo://spike_w1/01_learn_takt.py#L61-L340",
+          "version": "repo-lines-v1:sha256:770b70567003562bb37d8d5151f0632c22115c1929b0e1bdbd7e5cf6b2d01c49:eyJzZWxlY3RlZExpbmVDb3VudCI6MjgwLCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiIyYjMyNGM4NGU3M2UwYmMyMmQ4ZTdjM2QyN2IwOTU0OGEwMGM3MjU3ZDBlMjA1Yjk5ODczYzg1YTg2MDk3ZDk0IiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiJjOTIyMDRjNjVmNTAyZGMxNjQ1NGI2MjQwODU2YTlhYjdhZGUwMDNhOGU5Zjg2MzMzZWMwYjdjOWU0MDk0OTFkIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MywicHJlY2VkaW5nQ29udGV4dEhhc2giOiJkOWNjYzdkYjFkMGI4ZmRkYTIwZjZkMzU4NmJiMTJhMGQ3NjE2MTVjMzNhYTA5OTcxN2Y0NzY4YWFmMWNlNmQ4IiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MywiZm9sbG93aW5nQ29udGV4dEhhc2giOiI3OTc3ZWY3NzI3ZDJhZWUzYzMwNDNjMjY2YzgxYWQzOWMwNzdhM2JlZTFjM2YzMGJmYTc1ZjdiYzY1OGQ0MjYyIn0"
+        }
+      ]
+    },
+    {
+      "id": "claim_aeebbe74e4a2464b825f18f5f164db11",
+      "statement": "W1 platform-prefix rows are generated at runtime, not hardcoded: prefixes are the distinct LEFT(bt,2) values with >=30 vehicles in the learn window (C10), and the whitelist is validated against ^[A-Z0-9]{2}$ to prevent SQL injection; if no prefix qualifies only model + 'ALL' rows are written. The learner exits 0 only when sanity gates S1-S6 all pass.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w1/01_learn_takt.py#L279-L295",
+          "version": "repo-lines-v1:sha256:fd652e7ad8c930d5f4091cfc81b2987008433310e4f1f1126325f34c883c9c34:eyJzZWxlY3RlZExpbmVDb3VudCI6MTcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjkxZWEyODUwNmU1ZjU0Mjc2MTE1MmM1NzJiOGMzNzkxZTg0YWEwMTgyMWQ3YWJlOTkwNDk2YjZmMmNkOTRkMTIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjA2MzdlMTJlZTM0YWJjMWY3NDkwODI2NTVjYjY0NmM2NTk0ZTM4M2QwMWU1ZmY4YjY1YTc2MzViNWNlMmQ4NWUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImY4YzE1N2QyY2MyYzZjODk4M2Y2ZTBjYmY1MjRkNzA3OWVhMDQxMWQwMWU0YTNiZGYzN2U4ODU0ODlhYWFkOWMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjU3MTI3OTEyOWFlODM3NjNkYWYxNDc3MjViZDEzZmE3Mjc3ZjBhNWJhY2FkY2JlOTBjNDAwMDIwYzM5Nzk5YjgifQ"
+        },
+        {
+          "resource": "repo://spike_w1/01_learn_takt.py#L538-L638",
+          "version": "repo-lines-v1:sha256:3e3a10a8ccaa92e6e06472879a230d636fc7db258bb805dfbb1eb9614148979c:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAxLCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiIwZGFhYWNmMmE2ZmVmOWU1YTliZTY5NGE3Mjg5YTdlYWUzMTNlNTEwMjMwNzJhZjIxMGFiZGZhYjEyYTM1ZjMwIiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiIzMzU2M2JhM2VmYzMxYmE0N2ZjMjAxOTI1ODI5NjE3ZmJlYTk3ZWZhMGVkNjFmMWMxYjFlNTYyYjE3OGJjMDdmIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MywicHJlY2VkaW5nQ29udGV4dEhhc2giOiJkM2VkNTU4MjBhMjAyYjBhNWM1YTM5YjdiNmFjOGJlMDZkNTUwOGI3MDUzYzZkZDI3ODJhMjJmNGNiMjcyMDA4IiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MywiZm9sbG93aW5nQ29udGV4dEhhc2giOiIyYzY0NThiNTUzMTVkYzViOTZkYTQyMzBiZGRjNTFhNTllM2U3ZWVjZTJhOTkwNTQ2N2IzOTcxYTdiNDFmOGZkIn0"
+        }
+      ]
+    },
+    {
+      "id": "claim_b7a52aa4db694e26bafe408b8466b2cc",
+      "statement": "The W2 learner (spike_w2/01_learn_v2.py) writes only dss.v2_* tables plus the two W4 net-delay tables; the W1 six dss.dim_* tables are read-only inputs (regression guardrail), and the W1 learner must run first with the same window because dim_expected_delay reads W1 dim_remaining_time as its same-source baseline.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w2/01_learn_v2.py#L1-L67",
+          "version": "repo-lines-v1:sha256:ec4a12441b398bbf94f182a2359c1e9779fd140c5728a72e02c70903c8992b5f:eyJzZWxlY3RlZExpbmVDb3VudCI6NjcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk1NTJmODU0ZmNmNzczODkxNjBhMDhjZmI0YmUyZWI5MDJjZDlhMGMwYWY3NmFiNTdkZjAyY2JmOTEyNWQzNjkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ3NWQ0NTg5ZTkxY2M4Y2I5NzQ4ODlkYWIwMWRlMTVkYjE1NzRjYTEwZWVjNzI5MGExMDliZjU4OGM5NGUwMWIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImU5NTcyYTIyYmEyYzJhMTU0ZWE1NTg0NGEyMzZmZWVmZjU1ZDQxNDBmMzU0ODBiNjY3YTVlODkzZTkyOTczN2EifQ"
+        },
+        {
+          "resource": "repo://spike_w2/01_learn_v2.py#L175-L213",
+          "version": "repo-lines-v1:sha256:544d00af1685f1745dbf0b4cac305324b1cfe7b8633577702202025e822ae9a4:eyJzZWxlY3RlZExpbmVDb3VudCI6MzksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg2YjljYWI0OTZmYzIyNjY4YzE5ZDgzMjFhNzQ0YTcxMTVmYTNjNTcxZjY1M2JmNTE4Njc5OTQ0MThmNWRlMTgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQzYzM1MjBkMjU1ZmE0ZWQ2ZjJlMjVjYzc0ZjA5ZWNkNGNmMmJiMjQ5YzEyNjBiZmU3NmRiOGRmYmFkZmU2MzciLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjIwOTQyODk2YWI5ZjgyYjQ3NTA3M2U3ZGQ0MjRlMzk1YTM5NmI5OWQ1M2IwNzIzYzA5ZTU0YTM3MjU2MTY3NzYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjIwN2UwMzQ3YzI0YzBkMjBiMWI2NzZmZjVkNzkxMmFjM2ViZTVhNzk4MmY2MjYwZGI3ZWY0MGMzOTU1NzAwZDEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_34af2aa3997e46d380aefd1f7b1b0626",
+      "statement": "The W2 v2_* tables are: v2_future_flag (weekly p on a rolling 8-week window plus week='ALL', learned on the 6a pre-loop population flag=0 before the body's first flag=1/2), v2_cohort_remaining (08IS/09IS line-cohort remaining on shared stations, cohort from tmp_ev_base), v2_line_prob (probability a car took the 08IS line), v2_station_quality (per model x station mark low_n/mixed/both/ok), v2_comp_excl (the both-marked compensation-exemption set), and v2_learner_meta. Sanity gates W2-S1 through S5 gate the exit code.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w2/01_learn_v2.py#L35-L165",
+          "version": "repo-lines-v1:sha256:4eebe378418868814809c1f240622db3e870be77b8f23c301151aeb36cbc7ddb:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMxLCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiI1ZmE4ZmM2Y2Y0MjI4ZTg2ZTM0Mzk0NjZiZjkyOTI1NjAzMDljNzVkZWZmNzNhNjhkODRkZDdmNmQyY2I0ZWVhIiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiI0NzVkNDU4OWU5MWNjOGNiOTc0ODg5ZGFiMDFkZTE1ZGIxNTc0Y2ExMGVlYzcyOTBhMTA5YmY1ODhjOTRlMDFiIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MywicHJlY2VkaW5nQ29udGV4dEhhc2giOiJlZmIwODg1OTk5OTUyMDBlOWE0ZTRlYTYzYTZhMDViN2QxNmM5ODRkZWIwNGU0M2JkNDQ1M2VlMDJjYjlhYWExIiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MywiZm9sbG93aW5nQ29udGV4dEhhc2giOiJlZDQwY2UzNjJhM2NhMTZiYWI1NWFhODFjNGNjMjI4MTI5NGE2N2U4YzIxZjBlYWIwZGUwZWIxMGJlZTQwNzNkIn0"
+        },
+        {
+          "resource": "repo://spike_w2/01_learn_v2.py#L380-L462",
+          "version": "repo-lines-v1:sha256:ab6558ff73305919bf40f5bebf2b80e46069ee219b1b0d469eaa13d90e741364:eyJzZWxlY3RlZExpbmVDb3VudCI6ODMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImUzMWFmMWI2OWI0YjYxOTFjMThhYmU0MjliNjg2NmJkNmZmNDQ5NzUyMzUzZWRjNzRkYjdjYWJjMmZlMTExYTkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjMzNTYzYmEzZWZjMzFiYTQ3ZmMyMDE5MjU4Mjk2MTdmYmVhOTdlZmEwZWQ2MWYxYzFiMWU1NjJiMTc4YmMwN2YiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijg3ZTVhMWY2YmNhZDBmNWMwOWE4YTI1MzRkOTIxMzQyMTJkMDFhNjY2YWZkZWQ3ODYwYjNjMWYzYjMwNzRkY2YiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjhkZWU5OThiNDc3YTE0NjJlNTZlOWVkOTU3YTU0ZDUyM2ExYzM4NzM3ZWJjZmNhZDM5NjVhMWU2NmNiYWZlNmQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_916501d46acc4645bd1c4f375eb78af2",
+      "statement": "The W4 net-delay tables dim_expected_delay and dim_expected_delay_shift (doc10) store dual-column expected net rework delay (delay_mean_s, delay_p50_s) learned on the pre-loop population, with the same-source baseline from the model->prefix->ALL hierarchy of dim_remaining_time, a dual-population gate (both n_fut and n_clean >= 30), and a final-value-only max(0,. ) truncation. dim_expected_delay_shift adds a shift dimension attributed by the entry-event shift (fixed bands DAY [04:45,16:30), MID [16:30,04:45)) and is optional (absent table -> empty dict -> resolver fallback to the shared row, consumed only when DSS_SHIFT_TIER_DELAY=1).",
+      "evidence": [
+        {
+          "resource": "repo://spike_w2/01_learn_v2.py#L168-L341",
+          "version": "repo-lines-v1:sha256:beaafb42df9b14556fcd2722fc9ec48a5135ba9f1afb77527e768d06ba2c1d04:eyJzZWxlY3RlZExpbmVDb3VudCI6MTc0LCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiI1MDk1Y2M2ZDcxNGZiN2ZjNWU3YzQwOGI0MmQ0YzIwOGYzZTEyOGUyZmM0YTU2MzkwMGQ4ZDBkZjE3MjQzYmFmIiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiI0NzVkNDU4OWU5MWNjOGNiOTc0ODg5ZGFiMDFkZTE1ZGIxNTc0Y2ExMGVlYzcyOTBhMTA5YmY1ODhjOTRlMDFiIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MywicHJlY2VkaW5nQ29udGV4dEhhc2giOiI0NDg0MTlmYzNjYzkxYWNiMGExYWIwNTEyMjA5OTlmZDlkODI3Y2MwNWEwNDM4NTc3OTZmMmViZDA2OTcwNDZlIiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MywiZm9sbG93aW5nQ29udGV4dEhhc2giOiIxZTkwZmJkZmQ1MmM5OWZhZjY0OGUzMTk0ZjI1YTViN2Q3ZjZhMDdiNzI1NTU2Mzk3MzYwMzY0ZDZkMWY2YWQ1In0"
+        },
+        {
+          "resource": "repo://spike_w2/01_learn_v2.py#L55-L66",
+          "version": "repo-lines-v1:sha256:9d1b2bad039a42ecc653e1f9c56ce3bf6813dd832d36b028802c15afd59de28d:eyJzZWxlY3RlZExpbmVDb3VudCI6MTIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImZmMzQ2YjFlMzYwNTcyNzZjYjkxNmM0OTdiODE4ZjcxNjk3MTYxYzcwZTVlZjcyN2U2NDkxZjNmZTE0OGM2MzIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjgwN2U4ZDFjMzY1OGEyM2EyNTAyZGVlMDVmMGFlMzBjMzRhYWU1YzAzNGNiMmIwNjhlMjI0YWIxYzk3ZmU1ZTAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijg3YWZkMTNmNGQ4MGY1OGIyOTQyZjNiYjM5M2NkNDFmOTRjZWM3NjU4OTg3NDNjNjU2N2Q4NDVmZjJmN2ZiMzEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQ1ZTg3MDFiNzA0YTVhZjk5NDNiYTRhN2M1N2M3NzZhMGU5ZjEwOGRjNTU0YjgzYWViYTY1OGFlZjVkOTBmMDEifQ"
+        },
+        {
+          "resource": "repo://spike_w2/eta_v2.py#L277-L299",
+          "version": "repo-lines-v1:sha256:6ebb7d10cdad9326134dc3baa5b65145139233e60019ea2360a843d7ced3d7b7:eyJzZWxlY3RlZExpbmVDb3VudCI6MjMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImNlMzJjZGYwZTg1MjAwN2VjNzAzZTNhOTE0Mzc5NjlhZjM2MjU0ZTAxNGNlZmNiMGMxMzYyOGZkODJkYjcxY2UiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE5ZDI0MTVkZWE2ZDc5ZTdmYWZlOGQ1ZDg1NGU4Y2RlNjNkYzQ2N2VjZjIxMDJiOTk3ODg5NjQ1ZmMyMmNiZjIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjMyZTA2MzAyMTQ4ZWNiODU5MzU4NzEzOWZjMjZkOTM1YTc1YWM3NDkyOTJlNjIzZTg4NjVjMGY3MmJmMGM3OTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjFkNDIyNmRkOTZjODEzOTAxMGVkYWE1YWRmNjQzYzIzZGQ3ODUyZTljMmQxN2UwZWE1N2ZhYzM3N2U2ZmM4NDYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_851cf926c70441b2b9397972666585f1",
+      "statement": "Both delay tables store mean before p50 (column order is the reverse of the rem/loop_rem/loop_dur family). All three consumption sites (unified engine, predictor, dashboard) must go through resolve_expected_delay / resolve_expected_delay_shift in spike_w2/eta_v2.py, which read row[1]=delay_p50_s for both tiers (the shift tier previously used the mean column; G2 threshold-count measurements falsified that because delay distributions are right-skewed with mean >> p50) and enforce the dual-population gate (row[2]/row[3] >= 30 else degrade a tier).",
+      "evidence": [
+        {
+          "resource": "repo://spike_w2/02_replay_shift.py#L100-L158",
+          "version": "repo-lines-v1:sha256:2754a9e0a32db50dbb19fa59c3e60d5a9cbd9dcdbf36fb323d026a7de9728f2b:eyJzZWxlY3RlZExpbmVDb3VudCI6NTksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjUxZDNmOTllOTE2YWRiYjA1OGRkN2U2Yzg5ZWExZDE1MmVhOGVhNTY5ZGY0OGVkZDY5YzMzMjFhNWE4MmY3ZjEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE0MTlhNmRjYzA0ZTIxM2EzYzdhNzdhNDU2YjAxZTc2ZDFlZjc4Y2QwMGJiZWMxZDhmODE0NThmZTkzZWRjNTYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjcyOGYxNWQxYTgxYTJkNjY0MzI0NjcwNGYxODdlZWMwYWU2NTQwZTUxYzRkYWMzYTBmMDE2YTY1NzMzMjRlNjkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImJkNGVjNjcxNWZiNmFlZjRkNGYzNWYwOTU1OTEwYzA5ZjM2NWQxZmI2MmNlYTRlNmZjNzIzMWMwYWRlNTI4NjIifQ"
+        },
+        {
+          "resource": "repo://spike_w2/eta_v2.py#L19-L27",
+          "version": "repo-lines-v1:sha256:f9bfe24a0f1c382a7f3e47c322989b95786ddf5762bdcbe204e452e0b9d648d1:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZjc4ZjFmMzczOWE3MGQ0YTk3YjJlOWI3Yjg0ODE3MmFmYTlkZjhiODljYTgzN2I0ZjcwYTAyYzhmMjViMGJmMCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiM2FhNGE4Zjk5MzBlZjFjNDUyYWFkMWIwYzYyNTdlOTUzZjJmOGUxNjY4ZmY0YTQ5NzIwOGQ5OTcxYWU1MzhhMiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYzNkOGYyYWRhNGZkZjVhMTRkN2VlYWYzODM1MGEyYzljZGE1NDk2NTkwNmYxZjU4NTczOTBiZGE5ZTM0ZGJlYiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNDMzMGQ1MTg2YjM0ZjMwMTFiOTkzNzM4YWMzYWFiMjMyYzJiYmJjZTA0M2QxNWYyMjA4OGE0OTc0M2Q1YmI0YiJ9"
+        },
+        {
+          "resource": "repo://spike_w2/eta_v2.py#L259-L289",
+          "version": "repo-lines-v1:sha256:236136d71477e498a30962a9af944ab23c3a9311aaa13e5d7fae52b73b338dc5:eyJzZWxlY3RlZExpbmVDb3VudCI6MzEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNiM2U0YjkyYmRlMmVmYzFhZDY1ZmE0YWNhMDI2NjY1OTBlNmNlMjUxNjk2ZjFmYTQ0N2QxOTFlMGE1ZDBkOGQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjExMzA2ODlmNjk1ZTA1MjhmNzRkNmIyYjZkNjE5NTY2M2U2MDg0OWViM2Q3MGVjYTEzMjU3Zjk4NmNjZGNmOWIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjMyZTA2MzAyMTQ4ZWNiODU5MzU4NzEzOWZjMjZkOTM1YTc1YWM3NDkyOTJlNjIzZTg4NjVjMGY3MmJmMGM3OTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImMyZjg1Yzc2MDcyYWY1YmM4MWU2OTEyOWFkY2JkNGViODMxNmJiMjU2ZmEyYjNlOGMxOGYxNTljY2MxMGZkNzgifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_db881be57d084103b40db67685d0ec98",
+      "statement": "The T1 weekly plan tables (dss.dim_weekly_plan keyed by plan_date and dss.work_plan_file_meta keyed by file_name) are created with CREATE TABLE IF NOT EXISTS and upserted, never deleted. persist_plan is hash-idempotent (skips files whose sha256 is unchanged, upserts changed/new files in one transaction with rollback on failure); cross-file value conflicts raise ValueError and the boot degrades to self-learning fallback. The online causal fallback re-implements (does not reuse) the W2 hindsight detect_* functions and uses only completed days and events strictly before now.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/plan_loader.py#L302-L376",
+          "version": "repo-lines-v1:sha256:8c42b165b584f8505f34735076c4334b6456e7b5f8ad8ee6265cb5e2e53ec10e:eyJzZWxlY3RlZExpbmVDb3VudCI6NzUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRhMzc3ZjBjM2Q4MjJjM2E2NGNmY2RhZDUzNGVmYTZlYmM1MmRjOGE4NGE4YjhkNmQzN2U5YTdkZjJmZTkyM2IiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImIxZGJlNzFkYjA1OTkyNjE3N2M2YjU1OTcyZThjZjY3NGNkZmQwZmI0NDE5NGFhYjhlYjMyNDBhMTZiOTZiMTQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjFhZGRlYTY0Njg0Y2Q0NGE2NDFkNDJhZDU1NGI3Nzk1NTdkOGZhOWM0N2Q1YWU3OWQ5MzUzYzdkYzdmOTA0NzkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImFiMTU2ZTQ4YzIzYTAwYjE0ZjlkNDUzYjVhYWVhZWE4MGEzYjA0NWU1N2Y4NTg4ZjVmOGFhNTQ0MWFhYTlkMzgifQ"
+        },
+        {
+          "resource": "repo://spike_w3/plan_loader.py#L379-L400",
+          "version": "repo-lines-v1:sha256:c84fd91a455d8ee64dfe5d16bc4b022bae4ec49dbcd6e078646890cd82c7a9e2:eyJzZWxlY3RlZExpbmVDb3VudCI6MjIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRhMzc3ZjBjM2Q4MjJjM2E2NGNmY2RhZDUzNGVmYTZlYmM1MmRjOGE4NGE4YjhkNmQzN2U5YTdkZjJmZTkyM2IiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjZiZGZhMGRmNTQ5YmUwYmJiY2QyZjE3MjMxMDY4MmE4NWY0ZjY2ZGYxY2M4NmFhZWFiYjNiYmZlNDAwN2MwNmUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImY1M2ZkNmMxOTNkYzAzYjZlOTZlNDcwNTIyZDMyMGZmY2Q4ZWY4Y2UxZTIwZTZhOTA1Yjc0MjE5NDFlZTk3MGYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjIwNDU5ZTVhNzBhODE0ZjUwMzY1MDdkNTEwNmUzMDQxMDJlZGJhYzkyYWU0MDJlMzBlMmNjOGFiM2Q3MWZkZTQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_2a1aa29c41a446008ef39e3ad5aa0486",
+      "statement": "The W3 work tables are created lazily with idempotent CREATE TABLE IF NOT EXISTS: dss.work_alert_log (append-only dead-vehicle audit, type literal 'dead_car', written by record_dead_audit), dss.work_shift_alert (gap alerts with scope day_total/shift, level, debounced confirmation, and a sections JSONB histogram), and dss.dim_station_section (station->process-section map, status auto/confirmed, built by build_station_section).",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/alert_engine.py#L26-L67",
+          "version": "repo-lines-v1:sha256:12656069b7ed3da8b9cabdb2df5d0c649805524c5144fed8aa29ddcc0d54c288:eyJzZWxlY3RlZExpbmVDb3VudCI6NDIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRiZWFiMzEyNzQ3YzAxNTcxZWYxYzA3Y2VjZGZjOTM1MzNkYWIwMzg4ZWVkZTJmOGUxYmI0Y2Q1ODZmNDJlYTAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjFlMjMwMWE3YmNiNTU1NTk2ZWUxNjRiNDVmMWIxMDhiODU2ZTI5NzAwNzYwMTQ4NmFkMjg3N2FjZGRjZjg3MGEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjIyMmQyZjNmNTY1NGVmNTVhMDhmODIxYjlhOWZkMjM0YzE2YjRjOGUzYjUwZWJlMTg3MDM0MjU4NzFlYmFkOTYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijc4NGQ4Mjg1OGNlZjZmM2Y0MmYzZTUxZGEyOGFlMjE2ZmE4Y2EwNGYyZmNhZmQ0NTE1N2YwOWMyNzQ3MDcyOGEifQ"
+        },
+        {
+          "resource": "repo://spike_w3/alert_engine.py#L318-L318",
+          "version": "repo-lines-v1:sha256:2dca818d6e6e1a9354475f0435a8024d22cd5fe2222da785e456ab57319b671d:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMmRjYTgxOGQ2ZTZlMWE5MzU0NDc1ZjA0MzVhODAyNGQyMmNkNWZlMjIyMmRhNzg1ZTQ1NmFiNTczMTliNjcxZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMmRjYTgxOGQ2ZTZlMWE5MzU0NDc1ZjA0MzVhODAyNGQyMmNkNWZlMjIyMmRhNzg1ZTQ1NmFiNTczMTliNjcxZCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOGU2Y2QyNGYyZWMxZWY0YmQzOGJjMGRmMDFiOGQ1OGMyMTZkYjYwNjM5OWFlM2QwYmE0NDg0OTM0ZDQxMTZjMiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYTkxY2M2ZjY3MjM1ZDE1MjA3OGM5YzE3ZDZiM2RjM2FhZDE5NzhlOTlmMjMxOWYzY2QwYTQ3NmJlYmI3ZTlkNCJ9"
+        },
+        {
+          "resource": "repo://spike_w3/stream_pipeline.py#L270-L310",
+          "version": "repo-lines-v1:sha256:acd0a568867d41470a42c79879fe6c12d63f1f67cb1342ea397ca5566fd964be:eyJzZWxlY3RlZExpbmVDb3VudCI6NDEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ2Y2FlZTQxMzRlYWIwMGM3Y2FlYWQ2OTdiZDNiMjk2Y2Y0NWY3MjA0Njk1NWMwY2JiOGRlMTlkMGIzNzMwMmEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjEyZGEzNmRhNGQ5ZDI0NmU1NTk5NTI5ZDIxNmNhZjM2YThjMmY4YmNiM2YwMGRmMmNiMDUxMmFiYTU0M2RhNDEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjhjYzRhN2QxY2M3OTZhYmEzZTQ2NzIzMzI3ZjUxN2U5ZjgxMTk4MmQyNTBmMDcwMjk4NmU0YjU3NjRhZDk1ODkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjUxMDQ0M2FiZDQ4NDYyMjk0M2Q4MThjZDA5ZmE5NzFhNGM3M2Q5NDA4ZDhiOTA4ZmZkY2ZlOTZmNjIwZTdiMjgifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_2f383351f89148a89d2231472d6b7b5f",
+      "statement": "The W1 five distribution tables, dim_expected_delay(_shift), and v2_cohort_remaining carry a body_type dimension with three tiers of rows (model, platform-prefix LEFT(body_type,2), 'ALL'); the consumer fallback chain is model -> LEFT(model,2) -> 'ALL' implemented in _model_tiers and the resolve_* functions, each tier usable only when its row's n meets the gate. The invariant that n is always the last column holds across all rows, so resolvers test row[-1] >= min_n and read statistics by explicit index; the delay tables deliberately invert mean/p50 order and must not be indexed positionally by the generic resolvers.",
+      "evidence": [
+        {
+          "resource": "repo://docs/superpowers/plans/2026-09-19-w1-takt-learner-eta-replay.md#L393-L398",
+          "version": "repo-lines-v1:sha256:b16f5c0ef012b3ef8acc9aa3d8b4d9efba3a78b9dcd2936ec7cfdc46c8cb9b9b:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOTRlMTc3OGZkN2M3ZTkzOTc3MDI1NzM0OTZjMDFjY2I4MTIxYTQ0ZDM5YjExMmVhN2I5NDEzNjFkODNlNjllZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiY2M5OWM4ZjM5ZjBjODJjMTYxMjFjYzI4MmM2NjFiNjJmNGJjNWQ4YmNjYWFmOGYyNTFkNWIzOTliMjg0M2UyOCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiN2U4NGIzN2VhZTcwNDkyYmEwZTRiNmQzZDdlYTYyNDQ4ZmQ5ZTQxMzkyY2Q4YjhkYWY2NzUzMmFmZWRjNjc1NiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYjk1NGZmMWYzZTViZmYwNTZhMTRiOTdjMzBmNDVjNDZhMzRhZTE2ZjQ2ZGM5NGE3MjcxMzllZDY1MWU3NTBjMiJ9"
+        },
+        {
+          "resource": "repo://spike_w1/eta.py#L10-L16",
+          "version": "repo-lines-v1:sha256:76b04ec4f7453b3682006f44723b02a73afc50cceb2b5832aa8f6235aa03fe5b:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOTRlMTc3OGZkN2M3ZTkzOTc3MDI1NzM0OTZjMDFjY2I4MTIxYTQ0ZDM5YjExMmVhN2I5NDEzNjFkODNlNjllZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNDc1ZDQ1ODllOTFjYzhjYjk3NDg4OWRhYjAxZGUxNWRiMTU3NGNhMTBlZWM3MjkwYTEwOWJmNTg4Yzk0ZTAxYiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiN2U4NGIzN2VhZTcwNDkyYmEwZTRiNmQzZDdlYTYyNDQ4ZmQ5ZTQxMzkyY2Q4YjhkYWY2NzUzMmFmZWRjNjc1NiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYzFhM2NlYzdmYmYzODZhYTc1ODRiYWU1YWNhOGExNTI3ZDJiOGM4MTcwMDMxMDFiMGRlMTI4ZDA4ZGEyZTkwOSJ9"
+        },
+        {
+          "resource": "repo://spike_w2/eta_v2.py#L203-L256",
+          "version": "repo-lines-v1:sha256:4a529a67ad5cf1a6d5e95148cfae210a47d42998acbe0a046546475922d3cc4e:eyJzZWxlY3RlZExpbmVDb3VudCI6NTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjUyNzMxMmExMjgyMmRmNDNjYjVmOWQwMjEwNDZhZDg5MDRkN2U5ZGIwMmNmODNkMDgwNjllNzY0NTdhOTQwZWIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjExMzA2ODlmNjk1ZTA1MjhmNzRkNmIyYjZkNjE5NTY2M2U2MDg0OWViM2Q3MGVjYTEzMjU3Zjk4NmNjZGNmOWIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjQ0ZThlZGI4N2M3NWJlZmZmZDJiZGY0ZTVhOTk2NGY4NmIyYzZmZDg3Yzk5ZmFjZmRkMzBkZDc4YzVjM2M5NTQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjkyZjc5NTRhNWNlY2M1OTE3NzIwN2M3NjYxMmI1OGEyODk1NjNhOWM5NTZiYTVmY2ZhMGJhMWMyZjM0Mzg3NzEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_7de8491da3a44a958d42d2c7a27e237a",
+      "statement": "The DSS writes only to the dss schema; the ods, dim, fct, mart, and meta schemas are read-only inputs owned by the ETL layer. This boundary is enforced by test: tests/test_w3_dead.py asserts the dead-vehicle audit INSERT targets dss.work_alert_log and contains none of the read-only schema prefixes.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/stream_pipeline.py#L270-L299",
+          "version": "repo-lines-v1:sha256:393af9a3f39c73278f3415174742fc423150bc11219938c65c77050adf7edb0a:eyJzZWxlY3RlZExpbmVDb3VudCI6MzAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ2Y2FlZTQxMzRlYWIwMGM3Y2FlYWQ2OTdiZDNiMjk2Y2Y0NWY3MjA0Njk1NWMwY2JiOGRlMTlkMGIzNzMwMmEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjEwYjQ1ZDcxMmY0NGI0YjUzM2RkODQ5Y2I5ZDgxYjA3NGYwYjA4OGQ3OWQwMjMyZTZiMzJlNTA4OWE0NzYwZDAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjhjYzRhN2QxY2M3OTZhYmEzZTQ2NzIzMzI3ZjUxN2U5ZjgxMTk4MmQyNTBmMDcwMjk4NmU0YjU3NjRhZDk1ODkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijg0NDViNDIxOTc3NjUxZTY1YTZiMDNkZDhmMTlmY2QxMjcxZTk3ZjM0NzQwZmM1MGIyZGQwNzFkMDIwYjI4NTMifQ"
+        },
+        {
+          "resource": "repo://tests/test_w3_dead.py#L146-L158",
+          "version": "repo-lines-v1:sha256:8c2f4ee279570942e25255a7fc03f7647a0999ed48b4112eac2df7fb4e568be8:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjIxYjY4YjkyMWM5ZDhlOTE0ZTA3N2Y4NWFmMzUyZTQ4YTdiYjJhYTNkNGU1ODFjZjY1ZDJkYjg1NTgyN2E4YWQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU4ZjllYWRiYTM4OWRkYTBjNjhjZTJhNDg5OTFjZTM3ZDFkOWE5NDVmOTE4MDJmNGQyYjk4NGVkMTI3YTg2MjQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjJiYzA3ZWRhYzYxZjMxNzc0M2VkMWFmNDc3Yjc2ODg1ZDBiYTc0MDNiOGI0OTBiODU3MmUxZTZjMzNmYzM4NWUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjVhZGQ4MzRkY2RlYzM5M2JlZjNlMWI1ZDc0MjA0YWViODBhOGM2MTM1ODEwNjMxMzUyY2JhN2Y1NGFkYjg4NjAifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_8243c7789df442168280c21ad5f65aca",
+      "statement": "The connection DSN is built from DSS_DB_HOST / DSS_DB_PORT / DSS_DB_NAME / DSS_DB_USER / DSS_DB_PASSWORD environment variables (loaded via python-dotenv from the project-root .env), each falling back to local development-database defaults when unset, with the template in .env.example. Every connection sets autocommit and SET TIME ZONE 'Asia/Shanghai' (factory time = UTC+8); the session default is UTC so this is mandatory for all time queries.",
+      "evidence": [
+        {
+          "resource": "repo://.env.example",
+          "version": "repo-file-v1:sha256:f4ec2376ff23b520d797dc94408dc2119be8a86975bfd41d1fd11f67870f3986"
+        },
+        {
+          "resource": "repo://README.md",
+          "version": "repo-file-v1:sha256:b0acefa9fb67f7f59bb08845a66d286d21e07c32d442d0d453a36fe7683c1c8e"
+        },
+        {
+          "resource": "repo://spike_w1/common.py#L18-L46",
+          "version": "repo-lines-v1:sha256:d60f1750f2882509faab35aadf8140ce779c4fdfc64332b4481a8ed870bdcb80:eyJzZWxlY3RlZExpbmVDb3VudCI6MjksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjJiYzY1MDVmNTRmYjhiYjMzNWRjYjI2ZTYyMjZhODU5NWIyNjI3MjRmMzg1ZThjZGNkYmM0ODU4ZjZiZGY4N2EiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFlZjI3NmFlNzY4YWVlZmYyYjYyNTczZjVlZDBkOTAxMmRkNDVkODNhNWU3MWQ5OWQ4ZDZjZTA2ZGIzOTVjOTIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjQwZGM3NTRjODRhYzE2ZGMxZDM1OWMzZDE1ZmM5ZGViN2U3N2Y3ZDNiMjAzYmRiZWZiMDNkNjRlYmM0OGM3YTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_c2709867804d47b5a70a24e97e49ad26",
+      "statement": "spike_w3/01_boot_online.py treats the learning tables as existence-checked inputs: DSS_DIM_TABLES lists the W1 six tables, the W2 six v2_* tables, dim_expected_delay, and dim_weekly_plan (14 items). dim_expected_delay_shift is deliberately not in the required list so a missing optional table loads an empty dict and the resolver falls back to the shared row, letting the online service start cleanly without it.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/01_boot_online.py#L110-L116",
+          "version": "repo-lines-v1:sha256:f4d37d95917d725b90f28dcd9a3ef12a755b3ac93856c1c672fd0be39a398d04:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZjkwZTgwMTM5ZmMzMmY2Y2U3OTEwN2EyNjUzYzYwOGU1NTM0NmEwN2ZlMWM3NThhNWZkNjYxMDIzNjRiOGFiNSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOGM3OGNhZDYzODA2NzQxNTY0MWUxZmJhZTg0YzEzMjRiYjM1NjgwMDNhN2NjYjViYTJhZTk1NzMwMGFmODVmNCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiM2RiY2Q0ZGM3ZWViNjRmY2MwMjQxNWQxOGM0OGI4NWRjNGJjY2IyMTFhOGJmYjAwM2YzM2M2ODU5ZjYxMDNhYSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMTlkZWYzNGZjNTQ2YjJjM2QwZDM1Y2M1Njg0OThmOWYxOTUzOGEyZjUzYWVjYjIyZDkzY2YzNWRiYzQzMDcxZiJ9"
+        },
+        {
+          "resource": "repo://spike_w3/01_boot_online.py#L34-L44",
+          "version": "repo-lines-v1:sha256:91b3ab78fa786ed78b9bd8fd2d2aac5ad008e2f2779ec9608511fac66bf68d1d:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI4NDUyNmU5NWJjMDU5ZGQ4MzRjZDA1OWZiZjQ2ZDE0NTI1OGZkM2UxNTY4NzQzZDAxOTkxZGQwYTFlYTEyODYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjliMzllMDIyZTBkODU0MTIwMDAzZDc5MGMyOGI3NTk2MmVkZDMwMzc1NmQ1MTMzM2RmNzQ1Y2ZiODZlYTExY2UiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImQ3OTYyYTM1YWI5OTUyNmYwMWFjM2JkMzA1MmEyY2ViOTQ5MTBiMDIwYjJkZjMyMzQ2ZTZlMzBlNzVkNGQxODAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjZmN2ZjZmRhMjcyNzE3MmFiNmQwMDc3NjMxYmIyNmQxY2E0ZTgwOTQ4MzBkMWFjMzk2ZjY4N2QzZGVkM2MzNGYifQ"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.7.0",
+    "at": "2026-10-08T13:05:24.547Z"
+  }
+}

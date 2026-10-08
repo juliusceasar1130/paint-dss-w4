@@ -1,0 +1,294 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:bb187ad953fd9776d3d7107e90db9e01e9ca0f39740d4c5f137bff75355d4366",
+  "claims": [
+    {
+      "id": "claim_e09b2b7a98194505a24f608b41683b6a",
+      "statement": "DSN 与 DB 连接的单一事实源是 spike_w1/common.py：_dsn() 以 DSS_DB_HOST/PORT/NAME/USER/PASSWORD 环境变量覆盖开发库默认（127.0.0.1:5432/analytics_db/root/root），connect() 每次调用现解析 _dsn()（运行时 env 生效、不冻结在导入时）、开启 autocommit 并执行 SET TIME ZONE 'Asia/Shanghai'；spike_w2/common.py 经 from spike_w1.common import 再导出，spike_w3/common.py 经 w1_common 别名再导出 connect，d0_check.py 经 sys.path 插入 spike_w1 后 from common import connect 复用同一 DSN——下游不得另开连接逻辑（L3）。",
+      "evidence": [
+        {
+          "resource": "repo://d0_check.py#L14-L19",
+          "version": "repo-lines-v1:sha256:c75f0857191f36f83d30381da769b1bb8587ba0b6e0abd8840e58bfe6ce87906:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNjY1Nzk0MTQ1Mzg1NmNlNDJhYzY4MGVmYTBlYzIzYWIxNDBmMTgxOWQzYWI5YzVhNWFmYjI2NWNkY2Q5ZTFiOSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNTc5NWUyZjMxNTc0ZjI1MTQxMjAxNDkyNTZiM2I0Nzc5NmNjMTQ4MjVhYjI1YjAxZTdiNmU4YzRiZTI1YjlhMyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNzBjMmU2YTQwZWZiYWZkOTJjZDMyYjMwYzYyNjAyMmUzOGZhZjU2YWZlYjlhODE3YTk0YmM3MDc1NjUxMzViZCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTY5ZmRhNzU5MTIzYTRjNzNhMWJjOTIyOWJkNjJkZDJhZjZlYmJkY2VhNjIyODVjYjkxMjZmYTY4MzVjNjZjNCJ9"
+        },
+        {
+          "resource": "repo://spike_w1/common.py#L18-L46",
+          "version": "repo-lines-v1:sha256:d60f1750f2882509faab35aadf8140ce779c4fdfc64332b4481a8ed870bdcb80:eyJzZWxlY3RlZExpbmVDb3VudCI6MjksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjJiYzY1MDVmNTRmYjhiYjMzNWRjYjI2ZTYyMjZhODU5NWIyNjI3MjRmMzg1ZThjZGNkYmM0ODU4ZjZiZGY4N2EiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFlZjI3NmFlNzY4YWVlZmYyYjYyNTczZjVlZDBkOTAxMmRkNDVkODNhNWU3MWQ5OWQ4ZDZjZTA2ZGIzOTVjOTIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjQwZGM3NTRjODRhYzE2ZGMxZDM1OWMzZDE1ZmM5ZGViN2U3N2Y3ZDNiMjAzYmRiZWZiMDNkNjRlYmM0OGM3YTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        },
+        {
+          "resource": "repo://spike_w2/common.py#L12-L13",
+          "version": "repo-lines-v1:sha256:32d66f599da9e4a8d058fef725e13c84ccc9ff4932345da122768b27fce6e552:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiODY1YmRkMWJlNjc0YTQ2MzYwNGFkYTUzMWIwMTU4NzBkYjdiODBiOTY4NDM1MDcwMzZlYzk2ZjRlZTE2NDY5YSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYjEzMGFlNTA1YWI5MjUyMWE1Y2FiMDg3NTFhZjU3ZGMxYTJjM2QxMWJkM2MxYWI0NThjZjJjMmVhMzkyYjgxZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMGEwNDczNGJlODBlZTg0MGQ3OWFjOWU1ZjllMzM0OTY5NmE3OTA4NTUxNzI3ZWY2YTc4ZTdlNTUxMjE5YmJiZCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjAsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSJ9"
+        },
+        {
+          "resource": "repo://spike_w3/common.py#L38-L41",
+          "version": "repo-lines-v1:sha256:9df23cec095897d644bd5c065e98bee8c9f0b76dbe2cd253a0cde25680e3265d:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiY2E5NjFmMzY0MjgxY2E3N2NhMTAxYzM0NTc5ZGIzYzE4M2M2ZTQ3NDk2M2U4NWE4ZTFjODBlNjhiYTI5ZDM2YSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDBiOWMzZmFjNmRlNzEyOGYwY2YxZmQ2M2RhN2MwY2ZjMDY4ZTUyZDIzZjhjMzk4ZWMxNzczYTk1NzEyZDc3YSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNzQ2NmE2MDRkNzlhZTBhNzMzZmY5Njc4ZjUzMjIyYTdjMDNlMDgxNGY3N2I0NTYwMDQxNzMwNjQxODYyNGQzNSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTQwNmM3NGFhNDlmNmMwZDcwYWU2Zjk3N2UxMGJkMDgxYmNiZTkzNDdjOGZmNzdmZWIxZTg1YWVmOGRkM2Y2ZSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_cf6f1681bc424a7fbed38c238e2eb52e",
+      "statement": "上下线点与 flag 常量的单一事实源是 spike_w1/common.py：ENTRY_STATIONS 为 3 个上线点（01IS205 / 1L360RB / 01IS045）、EXIT_STATIONS 为 4 个下线点（K3IS140 / 1J440RB / K2IS075 / K1IS135）、FLAG_NORMAL/FLAG_REWORK/FLAG_BLACKTOP = \"0\"/\"1\"/\"2\"（MDS_DATA 第 139 位）；spike_w2/common.py 与 spike_w3/common.py（经 w1_common 别名）只再导出这些值，tests/test_common_w2.py 与 tests/test_w3_common.py 钉死再导出的值正确性。",
+      "evidence": [
+        {
+          "resource": "repo://spike_w1/common.py#L30-L36",
+          "version": "repo-lines-v1:sha256:efd14bc59cdfc7759a8f2da31d773230428834297c12eec723e9511e7838773a:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMGM3YTI2MWM2OTU5NmYxZjMzZTU4OTA4NmY5ZjBhYmMxMzRmYTY4Mzg3ZDNlNzQ4ZTFmYjQxODY4YTIyMzMwYSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMTk1ZGFkNzE2YzNlNTk1NjYxMzA1OWRiZTAwM2NjYmI2OTE3MGQyMGI5Nzk3OTM5OWJkODdiZjJhOTVhNDY3NCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYjdkNGIyNzY0MzRmZTdhZTg1YTk2NTNkNDQwOTRjMDZlNDQzOWYzM2FhMjZiZGY0NmQ3NDVlMmExYjgxODZmZCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZGZhYTc5NWQzMDExZDQ1NWYzM2U1OThlZGRmMDcwZWI0MGUzZmNjZTQ3MGU4MmU0ZjkwMjU4N2Q4MWI5NTJjZCJ9"
+        },
+        {
+          "resource": "repo://spike_w2/common.py#L12-L13",
+          "version": "repo-lines-v1:sha256:32d66f599da9e4a8d058fef725e13c84ccc9ff4932345da122768b27fce6e552:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiODY1YmRkMWJlNjc0YTQ2MzYwNGFkYTUzMWIwMTU4NzBkYjdiODBiOTY4NDM1MDcwMzZlYzk2ZjRlZTE2NDY5YSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYjEzMGFlNTA1YWI5MjUyMWE1Y2FiMDg3NTFhZjU3ZGMxYTJjM2QxMWJkM2MxYWI0NThjZjJjMmVhMzkyYjgxZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMGEwNDczNGJlODBlZTg0MGQ3OWFjOWU1ZjllMzM0OTY5NmE3OTA4NTUxNzI3ZWY2YTc4ZTdlNTUxMjE5YmJiZCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjAsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSJ9"
+        },
+        {
+          "resource": "repo://spike_w3/common.py#L38-L52",
+          "version": "repo-lines-v1:sha256:a4663b53f9ed5bf1eb16f3e15c26c2e261caf51c7315c6525a0ce459b7a1dd68:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImNhOTYxZjM2NDI4MWNhNzdjYTEwMWMzNDU3OWRiM2MxODNjNmU0NzQ5NjNlODVhOGUxYzgwZTY4YmEyOWQzNmEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjliMzllMDIyZTBkODU0MTIwMDAzZDc5MGMyOGI3NTk2MmVkZDMwMzc1NmQ1MTMzM2RmNzQ1Y2ZiODZlYTExY2UiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijc0NjZhNjA0ZDc5YWUwYTczM2ZmOTY3OGY1MzIyMmE3YzAzZTA4MTRmNzdiNDU2MDA0MTczMDY0MTg2MjRkMzUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImM5MGVkNjQ0NzVlZThkODU4OWQ4OTNlOTBhOTNhNzA5OThlYmZiYWZhYTQxNWVlZTllMGQ4MWI2YTc1MjgwNDAifQ"
+        },
+        {
+          "resource": "repo://tests/test_common_w2.py#L8-L13",
+          "version": "repo-lines-v1:sha256:16b5c8a4d26c75bd11d9d3c240144dcae060b09723a5cfd92ae48cc2cd5359f0:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNzhmNDVmOTBkNTk3NGRjNWVhZDhlNTI3MDViYWY5MzFhNDcxOWFjYWM0YWJlNGY1YzRlMDQ0ZWM3YjU2NjZlNSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiN2ViNzAyNTc1OTNkYTA2ZjY4MmEzZGRkYTU0YTlkMjYwZDRmYzUxNGY2NDUyMzdmNWNhNzRiMDhmOGRhNjFhNiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNGI1YzgyMTg3NDFlNzk3YTY3NjIxZjU2NDg1YzdiY2VhNjE0MDI1OGU2MGQyNzFmMzUwMjA0YjdlZTliNmE4OCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiY2NmNDMzZTY4ZjMzYThkNDUxZjZiNWY2NjNkNmUzZWNmYTNkYmJiNTk5OTI0NDYxODMyOTg1M2QwNGRmMzNhMSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_4f7961be2f1642b3899ca33fff41877a",
+      "statement": "班次窗口常量只存在于 spike_w2/shifts.py（全局约束 1，B1 拍板）：CST（Asia/Shanghai）、DAY_TYPES（11h→05:00 / 10h→06:00 / 8h→08:00）、MID_END_TIMES（11h→04:00 / 10h→03:00 / 8h→01:00）、ATTR_DAY_START 04:45、TANK_DAY_END/MID_START 16:30、ANCHOR_HOURS (3,4,5,6)、GATE_ANCHOR_H 5、SURGE_MIN_15MIN 30、MIN_DAY_EVENTS 500、MID_MIN_FLOOR 300 及 Shift/shift_windows/anchors/gate_anchor/detect_day_type/detect_mid_type/normalize_shift_type/is_complete/iso_week_label/week_start 纯函数；spike_w3/common.py 经 w2_shifts 别名全套再导出且 W3 代码禁止复制窗口常量，spike_w3 的 02/03/04 编号脚本与 plan_loader.py 经 from spike_w2 import shifts 直接消费。",
+      "evidence": [
+        {
+          "resource": "repo://spike_w2/shifts.py#L23-L34",
+          "version": "repo-lines-v1:sha256:c91833c5fcfbc2e605aaacd21181df2f1f2e7c9e1d939a888fdbd572387f72c2:eyJzZWxlY3RlZExpbmVDb3VudCI6MTIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk3M2MzMDUwODY3OWExMWU4ZWEzZWI3NTUyM2U4YWNjZDczNWY5MTNjZGY4OGNmZDc4Y2U5OWViZjMxNDA5YzUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg3ZTM5YjgyNDU3MGJhN2EyYmQ1YTM4MDkzMWZjOWVmNzY5MTAwZmE0OTk3NTg0MzdhZDliZGM0ZGYwY2M0MTUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImMzNjNlNWQxMTcwNTY2MDE3Y2ZkM2FkNGI0MTRkMmZjMmQ3YjhhMzUxYzQ4N2JlNDUxNjRkMTcxZGU0ZTgwNTAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjdkYWZmNzRhMWYxNWJmNTJkNjFhYjM1NDJmYjMyYzM0ZTljZDk4NDgxNmIwZDdmYTFiOTEyOWI5Y2ZkZDQ4MjgifQ"
+        },
+        {
+          "resource": "repo://spike_w3/common.py#L26-L36",
+          "version": "repo-lines-v1:sha256:650f869e9239ead197b4c502e965e4c59dac9a02f8b0ed586e9190d31cff9cc6:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQxMGNhY2M5ZGQ1NDBkM2Q3OGYxZjg1MGMzY2EwMTU2NDQwNTVlNDQxNGExYzBkM2NhZWFlODg4ZTFkMGJlODkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjhiOWJlYzA2N2VjOWMzMzlmZjhiZGEzMDcyYjk0ZDgyMGNjMTg4ZTJhNDRiYmQ5ZGE3N2I4Y2U5YTRkZGQwNTMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjExMDY1YjFkOTQyZmIyYjMzMTE1NDFmYWQyZWI5ZmVjMDJiNTkzOTlkNjFjOGYyNTYyNzMyZWY0M2RjZTc0ZGMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImZmOWVjNzdiZTJiNmY0ZDlhZjVhMzRjNWQ1ZDI5MTM1MjI2NjhiMWZiMjQxMGU0ZGNhNWY4ZGY1YjU5ZmE0MTAifQ"
+        },
+        {
+          "resource": "repo://spike_w3/common.py#L54-L67",
+          "version": "repo-lines-v1:sha256:ae1e78d458255b479870891072268bc7b3d185f935e557e9968dd20db83133c6:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQzNmIyYWI1MWY1ZTMwODM1OGUwYWYzMzVmZjY3Y2FjMGZiMThhNGExMDFmZjM1NGM4MmNkMTEyYjdiYmU5MjUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjczOTgwMWVjYzYwZDcwZjU0ZjljZTZiN2QxY2IzMjJjODhlMTk3MzdmYjEwYTg0YWIxMzVjMmRmYTc0MzQzZDgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijc5MDRlMjQwZjIyYjVhMzUxNmI4Njg1MWRiOTE0Njc3MmYzZWJkYjY3OWY3NWQ2ZjFkOTgwYjM1MTIzODZiZGEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjE3YzZmYTBmMmU5NDhmZDI2ZjNmZjE4NDhlMmYwM2I5ZGI5NzhjMGQ4OGY5OTE5OTI2NzEwMGViYmU3MjliMmEifQ"
+        },
+        {
+          "resource": "repo://spike_w3/plan_loader.py#L21-L21",
+          "version": "repo-lines-v1:sha256:e4b900979cf090a7aa7bba1570a68147f2385bf7191a22cff363359b64038d66:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZTRiOTAwOTc5Y2YwOTBhN2FhN2JiYTE1NzBhNjgxNDdmMjM4NWJmNzE5MWEyMmNmZjM2MzM1OWI2NDAzOGQ2NiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZTRiOTAwOTc5Y2YwOTBhN2FhN2JiYTE1NzBhNjgxNDdmMjM4NWJmNzE5MWEyMmNmZjM2MzM1OWI2NDAzOGQ2NiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOTc2YTZjMjZlYWU3MGM0MGZiODkyMDE4ZDI1MGUwNjNjNDZjYjgxYTE4ZmRmMDIxM2IwNGFjZjYwZTcxYTUyZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNTcyOTYyNjQ3ZWZhNWYyZTkwMWU1MjkyOTk1MjcxNzY5NTI1YjVjM2VkZmM2NzYyMjA1YzExNWQ4MGQ1ZDc0OCJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_f67af4aa04f44fafa3200827ccb63965",
+      "statement": "物理站集常量的单一事实源是 spike_w2/eta_v2.py（头注「单一事实源 = 本模块，W3 import；值与 Doc14 §5 逐字一致」）：UNIVERSAL_EXIT_STATIONS（37 站）、BLACKTOP_ONLINE_WHITELIST（10 站）、SPRAY_QUEUE_BLACKLIST（14IS260/13IS260）、OVEN_OUT_STATIONS（16IS305/17IS305/18IS345）、LOOP_EXIT_GATEWAYS（25IS010/110/210，出环守卫站）均为 frozenset；spike_w3/stream_pipeline.py 经 from spike_w2 import eta_v2 用 OVEN_OUT_STATIONS 与 LOOP_EXIT_GATEWAYS 派生 passed_oven / loop_exited 状态，predictor.py、dashboard.py、02_shadow_replay.py 同样 import 消费。",
+      "evidence": [
+        {
+          "resource": "repo://spike_w2/eta_v2.py#L44-L79",
+          "version": "repo-lines-v1:sha256:bbaf561eb2b24c1fe1642ecc5efbe8d2044a6e034f6ea59f95cc4acebac51243:eyJzZWxlY3RlZExpbmVDb3VudCI6MzYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjY1ODY1MjRmZTEyN2M0NGZmYWViMTRkY2Q2YjYzNGFkYzZlMTkzY2E2MjYzY2NhYjU3MTk0YTdkZmNmYjllMTIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRmZTg4NjQyY2UxMDg3MzE2MjkyNDU5MjEwZTI0NWRjNGYxY2FjYzA3YzkwNmI5M2JlNzM0MGI3MDZkMjc1ZjQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjVjYjE1MzdiMjBhNzBmZDI1ZTRiNDBlODIwOGVlYzI0ZjcxNmNmMjY3YmUyODRiZDAyZjdiMWYwMGU4YzI4ZGQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjhjN2E3ZjlhY2Q5ZTU1MmNmM2ExODFjNjJjOWQzY2MyNjFkMGM1OTZkZjg3ZGU0NzNlY2U2YzgzZThiMWI5ZWUifQ"
+        },
+        {
+          "resource": "repo://spike_w3/predictor.py#L18-L18",
+          "version": "repo-lines-v1:sha256:ffefe22d0bf6fef54012bc506adf305f6e3a521fc992166fc042fe6bf013fc42:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZmZlZmUyMmQwYmY2ZmVmNTQwMTJiYzUwNmFkZjMwNWY2ZTNhNTIxZmM5OTIxNjZmYzA0MmZlNmJmMDEzZmM0MiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZmZlZmUyMmQwYmY2ZmVmNTQwMTJiYzUwNmFkZjMwNWY2ZTNhNTIxZmM5OTIxNjZmYzA0MmZlNmJmMDEzZmM0MiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOTc2YTZjMjZlYWU3MGM0MGZiODkyMDE4ZDI1MGUwNjNjNDZjYjgxYTE4ZmRmMDIxM2IwNGFjZjYwZTcxYTUyZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNzg3MmY2MDA3ZDQyMDRlNzEwMTQ1NWQ3ZmFiN2U3YTkzMzQyOTFmZDcxZjJkM2QzNTA0MDA2ZjQxYWU2ODI3YyJ9"
+        },
+        {
+          "resource": "repo://spike_w3/stream_pipeline.py#L33-L33",
+          "version": "repo-lines-v1:sha256:ab1cc05561a9b4578d21d9014e4ac0ba90149a401d3ffbf3afd1226e9646842e:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYWIxY2MwNTU2MWE5YjQ1NzhkMjFkOTAxNGU0YWMwYmE5MDE0OWE0MDFkM2ZmYmYzYWZkMTIyNmU5NjQ2ODQyZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYWIxY2MwNTU2MWE5YjQ1NzhkMjFkOTAxNGU0YWMwYmE5MDE0OWE0MDFkM2ZmYmYzYWZkMTIyNmU5NjQ2ODQyZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMWZiOTcxZDAzZWEzYmRhY2UxMzI2NTVmNmVkYzU1M2RhOGYwZjViYzU5YmM3OTdjYzU2NzM4MTJiNTFiMDZhNiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYmRjOTE5NDMzY2JlYTk1ZTgxYzVmMTg3YjgzNWFiNThlZmMzYjljZTM3YWY1ZDA4YzYwZTExNmQyNzEwYTVhMCJ9"
+        },
+        {
+          "resource": "repo://spike_w3/stream_pipeline.py#L394-L397",
+          "version": "repo-lines-v1:sha256:59d72cd0c719b070a6ef2e5cc1fbd67e3b059dec11e45fdeb4e7bfa33cafbddc:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMzEzMjc5MjkyMGM3OTBlYjdiMWFlZmZjOGRjZTRjOGQ2MmY2OTFiODYyZTVlM2U3ZDBmNDRhMDA1M2UxOTQ3ZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYjVhMjkwNmNjOGNiNjMxYjMyYWE3YzQyODllNzhhYWNiODQ2MDZkMzI4MWYzNWNmMzU2Yzk4ZDIyZDVhZjRjZCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYWZmMGIzNjY1OThmZTE2Zjg5MmEzOWEwMjcxMWYyNmUyOGNhZWIxMWZhMmMzODJlMWQ2M2E3NGVlZDlhZTIxMSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMTBiZmQ1YWVkMjdmZGZlMjg4ZjA1MmRmNDY4ZTAxZTBkNTNkYjAwODM2YWQwYWI0MjVjY2I3YzY4YmRiM2UyYyJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_7fc5ccc08c564e32837933630c98bd8a",
+      "statement": "spike_w3/common.py 是 W3 跨包地基（T2.0：env 加载 + 跨包再导出，无副作用）：_load_module 用 importlib.util.spec_from_file_location 按路径加载 spike_w1/common.py 与 spike_w2/shifts.py 并改名别名（w1_common / w2_shifts）——因两包 common.py 裸 import 会撞名——且必须在 exec_module 前注册 sys.modules[alias]（spec_from_file_location 不自动注册，缺注册会在按类名反查/序列化时炸）；tests/test_w3_common.py 断言 connect.__module__ == \"w1_common\" 证明再导出而非新写，站点常量断言值相等而非身份相同（独立模块对象）。",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/common.py#L26-L41",
+          "version": "repo-lines-v1:sha256:dce553d916874dc128619cc22770cbdeae15af51b336a69e77c07e70bb103cc3:eyJzZWxlY3RlZExpbmVDb3VudCI6MTYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQxMGNhY2M5ZGQ1NDBkM2Q3OGYxZjg1MGMzY2EwMTU2NDQwNTVlNDQxNGExYzBkM2NhZWFlODg4ZTFkMGJlODkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAwYjljM2ZhYzZkZTcxMjhmMGNmMWZkNjNkYTdjMGNmYzA2OGU1MmQyM2Y4YzM5OGVjMTc3M2E5NTcxMmQ3N2EiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjExMDY1YjFkOTQyZmIyYjMzMTE1NDFmYWQyZWI5ZmVjMDJiNTkzOTlkNjFjOGYyNTYyNzMyZWY0M2RjZTc0ZGMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImU0MDZjNzRhYTQ5ZjZjMGQ3MGFlNmY5NzdlMTBiZDA4MWJjYmU5MzQ3YzhmZjc3ZmViMWU4NWFlZjhkZDNmNmUifQ"
+        },
+        {
+          "resource": "repo://spike_w3/common.py#L4-L11",
+          "version": "repo-lines-v1:sha256:d05a568de873e00ec0005d2e2361db351e76e4e07d2aa66711c3a8c5e8eae869:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYTE0YmFlOTg2NDZkMTUyYWEzMDQ3ZWE3YjhlOGEzZjRlNjVhNjdlNmQwOGIxZTgyZDdiMjNmNmI2NmMyOWNhMyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNTQxM2I5YTEyMjc5ZTcwNTgyNzIwZWEzMGQ4MjIwM2NkM2IzNWNhNTk3Zjc1MTIyMzEzODBiZDFmMDFlM2NkNiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZGNlZWU0ZGI5N2U4M2Y1ZmUxYTFjOTIyMjIxNjg4YTUzMjZjNTZkNTlmYTFlNjVlOGQwNzhmYTI0NGFiODUyNyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMTcyMTkyOGNhZGU1YmFlNDBkMzBjYTNkODc0ZmI3YjliOTlhZTRlMDM0MTEzMzg5ZjJmNWQyOWVkY2EzYTU3YyJ9"
+        },
+        {
+          "resource": "repo://tests/test_w3_common.py#L78-L96",
+          "version": "repo-lines-v1:sha256:79e053e8f4095a12a295ace3b654a0d05bc6e642d95774ce0dae12d4995950df:eyJzZWxlY3RlZExpbmVDb3VudCI6MTksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQxOTA0NWQwNDIyYmExMzEzNTVmNjJlZWJhNTZhNjk3OWQxMTIyMTZlZmVmNDgyOTgxMTQ3MzI0NzMzM2UxNDgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjY5YzQ2Y2JjOTI3NmVlNzQyNWFkNzgwMjQwODFhNmI0YjJmYzExYTI5YjhlYjZhYTZkMzJmY2JkNTc4MGE3NDAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijg1OGQ4MGFlZGRiNjI3ZGUzZTE4MzNjM2UxMGU4NjVkY2ZkNTllZjQ1MmMzYmY2YTEwZGRkYzY1NThlZWVjZjMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_39991858ee6041289e246143dfe063a4",
+      "statement": "W3 专有的 POST_EXIT_STATIONS（5 个出站延续站 09IS360 / 09IS350 / K3IS230 / K2IS165 / K1IS225，2026-09-24 幽灵车踩坑后定义）只能由 spike_w3/common.py 定义——W1 底表已 SQL 截断、无出站延续站概念，不得从 W1 复制；在线池以 EXIT_STATIONS ∪ POST_EXIT_STATIONS 判定已出站防幽灵车收养，启动时 stream_pipeline.derive_postexit_stations 数据驱动重推与常量比对，不一致只进启动报告 + warning、不自动改常量。",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/01_boot_online.py#L138-L156",
+          "version": "repo-lines-v1:sha256:4535a9fd3fb5476ce301dd02fddd0a477e1be784c236ece36848d21d462f702b:eyJzZWxlY3RlZExpbmVDb3VudCI6MTksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU4ODBiYTBiNmZiYThkNGRhNWE4NjQ0NzlhYjVkNGVjMzliMmQ5NjkyMzEzM2Q2Yjk2N2E4MGI3ZWE0MzBjMWIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ0MDg5OWJhOTVlYWQwZWNiMjdiYmYyNDcwOGJiYTkzNjgwOWJiOTUzYjVkNjZmYWQ1Nzg1NzRjNDdkNTBmYmEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImE2NzgxNzA4MjU0ZDlhNTE2ODIzNDc4NmQ2YjgyMGE4NTdjNGUwYzM2NDdlZjgyMWYzMDhkMjRmZjgzOTZkOWUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjM1ZWI4MzdhZTQzNTVhNzYxOGE0NzNhN2Q5NWFhZDgyOGRjYTM5MWY3OGI1M2ZiNTZmZmEzODA3ZmQ4NTY5NzUifQ"
+        },
+        {
+          "resource": "repo://spike_w3/common.py#L43-L49",
+          "version": "repo-lines-v1:sha256:a3743fce9cac5cd273cd68ec90a64d89969172597e85b3d2e971472c0b9f0b3f:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMmIwODdmM2FmZGY5YmRjNDhhZjQ2ZDU3ZDI5YTNlMjUzMTBiNGI4ZGJmZTRhOTM2OGQwZDhkNWRkMGM2MGQ3YyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYWQ1NTZlNTA2MWYxZmI3OWIyN2IzNmEwNTlkZTZiNDUzNjdiODViYTU1OWQyZDAyN2Q3OTYwZTcwNWNkZDUxNyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOWIxNDM0NzhmMzRmN2UxNTI1YmI1MjczOTUwMDhiY2ZmYjcxOGRjZjI3MmFkMTQxM2QzZTM0ZmQ4MjQ1YjU0MSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiODk0OTAxOGFhMGQ4ODJhZDRkNzEzNWQ3YmU3ZmExNzFkYzJhYjBmNjJiMDhmZDY2YmRjMDRlYjQzMjA2OTY5YSJ9"
+        },
+        {
+          "resource": "repo://spike_w3/stream_pipeline.py#L512-L546",
+          "version": "repo-lines-v1:sha256:706ae1e3dc0d87eedef07e49d2a19d795fbde1274762a50187e5a76963e94f2a:eyJzZWxlY3RlZExpbmVDb3VudCI6MzUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFkMGM1OTVhMmNjNGYwODFmMjIyNzc4NDRkYzdmZjJjM2JhOGQyZWJmZWVlOGUwZGY5ZGM0YTNmMjQyNThiZjAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNlOGUwYjVmOWQzYjIzYzAzNTUzYjdhZThlNTliNWE3ZmZiMGY0OWQ4YTkzZjNiMDQ2NDljYjNlNDk3ZjNiZWUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjA3ZmQyNTkyMjlmMWZhY2NhYmQ2MzcwMmU1NjQzZWFlNDc4MDg1OTg4YmUxYzNiZWQzMTM5NDI1NzgyNzM1NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImMzMzJkYWYwZjI5Njc2N2VmNTQ4ODFhN2E5NmIyYTRlNWEwMjk4NTYwNjU4NzdlMGM3OWM5ODE2ZDA1ODAyNmIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_07ca94e5878449a3929ebdc07f9eaf08",
+      "statement": "编号脚本约定：W1/W2/W3 的 01_*/02_*/03_*/04_* 脚本（W3 = 01_boot_online / 02_shadow_replay / 03_alert_backtest / 04_m5_acceptance）以数字开头、直接可执行但不可被 import 语句导入；W1/W2 脚本内用 try: from . import ... / except: import ... 双形态（包导入与脚本直跑），spike_w3/stream_pipeline.py 同样 try: from .common import ... / except ImportError: from common import ... 兜底直跑；tests/ 与 W3 内部引用编号脚本一律走 importlib 路径加载 + sys.modules 注册（别名 w3_boot / w3_boot_t1 / w3_shadow_replay / w3_alert_engine，且 sys.modules 首查以便单测注入 stub），spike_w3/__init__.py 为空包标识使 W3 可被测试按包 import。",
+      "evidence": [
+        {
+          "resource": "repo://spike_w1/01_learn_takt.py#L15-L17",
+          "version": "repo-lines-v1:sha256:0243a8b82bab5bc8782fad7db2c1bb3cd53be5769f65ae3b02eb757f5a24a7f9:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYmQ3M2ZjNzk4NDRkNTEwYzJlOTllOTUyNjg5OGUzZmE5Nzk3NDFlMjU3YzJmNjg4ZTE2OWM3NmVhOTNkZGFiNSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMjBkYjBmYzEwODFiNTUzMjgxMzI3YjIwNTQxZTQzN2ZiY2ZhYjQyZGRjYzkyOTFmNzJhZDQ2NWQwNjhmYTg4YyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZjE1NGYxN2Q2OTc5YmZkMTM5YTUwM2IxYTgxYWJjMzdmY2Q1OGMyNjFkNmM3ZDYyOTEwN2UzMzBkNTU0NzIzMyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMDJkMTI4NzEwMWQyMGZlNjc0NWIwZGExODg3ZjI1ZmI2MjUzMWY0NDk1Njg2ZDk0NjZkODkwNzVjY2NlZGFlMiJ9"
+        },
+        {
+          "resource": "repo://spike_w3/01_boot_online.py#L11-L12",
+          "version": "repo-lines-v1:sha256:f9f6a1be30a244d228d9ab1b4dca7a308f81ca8d52e2ad8fb48d65408e3c9b3e:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYWUyMWJmOTFkNWIzYzI1OGFhYzI1YjYzMTFiYTA2NmRjYjFjZTg0MTk2ZTI0NTc2YzBhNTY5ODY0YzExOTI2YyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOTk3YjRmZTlmMDc1NDUwNmE1NTlkZmNiZjg4YTU2ZDU5OTdjZjNiYjZiNmNjNDNjOTc3MWY2ZGU0MzgzNjU5YyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZGFmNzg2ZjNkZmUzM2ZjMzZmNWQ1NWE3Yzg3NmI3YzllYmE4MWQ2ZmFiMTQyYjgwZDRiZmE5YmFkNTc1YjhjZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMTcyMTkyOGNhZGU1YmFlNDBkMzBjYTNkODc0ZmI3YjliOTlhZTRlMDM0MTEzMzg5ZjJmNWQyOWVkY2EzYTU3YyJ9"
+        },
+        {
+          "resource": "repo://spike_w3/02_shadow_replay.py#L352-L361",
+          "version": "repo-lines-v1:sha256:e8a06ffb3406ab0dfe56e79288284e848deafb7270b6822106bd9a0fc692e809:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRjN2ZjZjkzZGFjYTY3ZmNhOWY0OWJhNDllNjlmN2U5ZThiOWE1NjA3MWQ5ODlmMGU3NWE4MWQ1OTMxNjdjODEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjkyOWFmODQyNDQ4Mzg2MzdhNzg5YzA5ZjBlNDM4Yzg4ZDAyZTY4NjhlNWE5OWQ2ODQ5YjdjNjA1NWRjZGZiODEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjQwZTY2OTFhZmQwZWRjZmJhODA0ODA1YmQzMjcwZGQ0ZTY3MTg2MjI5YzZlNTMwZjQyYzZhNDEzYTU4NzNhZDciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjBhODAxNWQ2YmE2N2NiNDFlMDdiMTZkYzM2YTVkMzFlNTAwNzVkMjAyMGM0YTUyYWM0NTg4OWUyOTI1ZGM4OWUifQ"
+        },
+        {
+          "resource": "repo://spike_w3/__init__.py#L1-L1",
+          "version": "repo-lines-v1:sha256:510ed0bdf0f11e29d8d18ceef6505ead631ca2e0d3296dc04e0e7579513b785d:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNTEwZWQwYmRmMGYxMWUyOWQ4ZDE4Y2VlZjY1MDVlYWQ2MzFjYTJlMGQzMjk2ZGMwNGUwZTc1Nzk1MTNiNzg1ZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNTEwZWQwYmRmMGYxMWUyOWQ4ZDE4Y2VlZjY1MDVlYWQ2MzFjYTJlMGQzMjk2ZGMwNGUwZTc1Nzk1MTNiNzg1ZCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjAsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjAsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSJ9"
+        },
+        {
+          "resource": "repo://spike_w3/predictor.py#L149-L160",
+          "version": "repo-lines-v1:sha256:cf15d421a7237ab0b5f93fbf2bebb6cc68ca55a9b8bdd3fd3ca74d9693acedb6:eyJzZWxlY3RlZExpbmVDb3VudCI6MTIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjVjMjJhODc2Y2QxMGU3OWJjMjc5MTFmMTk5YzkzYzAyMjY3OTNlMjg0ZWRjZDE1NjRkZTNiZDc0NjZmZmJhMTkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjkyOWFmODQyNDQ4Mzg2MzdhNzg5YzA5ZjBlNDM4Yzg4ZDAyZTY4NjhlNWE5OWQ2ODQ5YjdjNjA1NWRjZGZiODEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjQxYjBlODU1YTRlM2QxOTU1NjExZGE4NGFjNjc4YTBhOWM3YTEwMWNhMmNkN2I5MWQ3ZWMxZjQwZjBmMWQ2NjIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjM3Y2FlMDZmMGU2ODNkNjA5MmE3NzI0Y2Y5YmEwMGFkMGI1ZGU4Y2UxZWQzNzZlNDI4MjgwMTU4NDNhNzI3ODMifQ"
+        },
+        {
+          "resource": "repo://spike_w3/stream_pipeline.py#L28-L31",
+          "version": "repo-lines-v1:sha256:c7fbd5193f760dd2fe1739447692cf99ce551451628ccea1c97fcb978e467c0b:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMGQ5MzczYjczNWFlYjk5YWJmMjY3OGQwZWI4MzNjYmYxN2QzODEyMDY2MmE3Y2I3OWU0ZWNjZjgyNTYyYjVkNiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDgxYWY5ZjIzMjBmODYyYzVlMWI3YWUxODljYWE3NjZhNmQzYjRkZmNjMzJmNWQ3N2UxMjRlZmUwMmZjY2ZhOCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNzAyMWE5OTZjZGE3YjI4ZDZhOTgxYjMyZjQ4M2E0ZGFkN2IwNTE4YmRlY2M4NjAwZDk5MjQ2MzE0YzhiZmIzOCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMmYyMjQ2MDExMzA4MGM0ZTczNTAzOGI5YTMwYmRhMjQwZDM2Y2ZmNTgzZmE1NTgxM2I1ZWI0YmI3M2I0M2ZjMiJ9"
+        },
+        {
+          "resource": "repo://tests/test_w3_bootstrap.py#L191-L193",
+          "version": "repo-lines-v1:sha256:e5478a565318986d3b554d12cc6e0e5ebd1a8fd4ae7aa1cc3726e288547c363b:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOWFkNTZmY2RhMmZlYjhhMmI0MTcwNTM2MTczNmRkNTk4MmNlNzU1NDM3YzRhNTliNjUwNWJmZDYzMjE5Mjk0MyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZjU3MTc4ZWQzOGE5NDA5NDJjYmRlZTI1YWQ4NGNhMzQ4ZDg5NzQ0ZTZhMWIzNWY4OTBmYjJmMmM5ODQyOTUzMiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiM2MzODUyMzBiM2IyMmE5NjBiNjA1NzRkMDExODQ0ZjA3Y2NjNzNhODBkZTFlYThhNzM0MDk3NDI2NTk0MGE3ZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNGJlMmE4MmY2Y2E0ZDMyNmU5ZDNhZTg0NGI5ZTZlNDgyYTFjM2M3ZTQ5MjM2MTYzZDY4YTRiZTkwYzcyMDM4MCJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_17a5b66621344b84b155fa531751a3c9",
+      "statement": "01_boot_online.boot_sequence 启动序列（T2.4/T2.6 顺序定版）：load_week_plan（DSS_PLAN_CSV 单文件模式保留旧行为；否则 plan_loader.load_plan 目录扫描 + 跨文件合并；无文件/全失败/跨文件同日期值冲突 → None 兜底自学模式，服务不中断）→ ensure_weekly_plan_tables DDL 先行（全新库首启即在 13 项检查前建 dss.dim_weekly_plan / dss.work_plan_file_meta）→ persist_plan 幂等 upsert（入库失败只进 warning「旧数据保留，只报告不中止」）→ check_dim_tables 13 必填表存在性（dim_expected_delay_shift 为可选表：缺表回退共享行，仅 DSS_SHIFT_TIER_DELAY=1 生效、默认 0 零漂移，不进必填清单）→ 出站延续站 derive 闸门 → bootstrap（120h 回放同一状态机 + cross_check）。",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/01_boot_online.py#L119-L162",
+          "version": "repo-lines-v1:sha256:2af4df5e9b5f5d41c139492afd938da89920796bdb7ada161947267db2238ce5:eyJzZWxlY3RlZExpbmVDb3VudCI6NDQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdlMTg0YzIxOTZjNmIzZjRjMGViMTUwMmQwN2Y3NDVmNGYwOWRjOTg3M2I1MjcxZmZmMzI1M2IzNjY0NWVlMzUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImM5MjIwNGM2NWY1MDJkYzE2NDU0YjYyNDA4NTZhOWFiN2FkZTAwM2E4ZTlmODYzMzNlYzBiN2M5ZTQwOTQ5MWQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImE5ZGE3ZTAxYjAxMjIwNmE2YzEzM2IyYjFiY2FmMjk5ZmMzMTZhYzQ2ZDUzNzhiZDM1NjAzODI1MDBhNmU5ODciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjNkMDFiMGZjNzQzNjFiNzk2OTk4Y2RhM2NjNmQ3ODBlNDg1YjlhYjE0NmFmOWFlMDQ1MGE5YmJlYmQyYjAwZGYifQ"
+        },
+        {
+          "resource": "repo://spike_w3/01_boot_online.py#L34-L44",
+          "version": "repo-lines-v1:sha256:91b3ab78fa786ed78b9bd8fd2d2aac5ad008e2f2779ec9608511fac66bf68d1d:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI4NDUyNmU5NWJjMDU5ZGQ4MzRjZDA1OWZiZjQ2ZDE0NTI1OGZkM2UxNTY4NzQzZDAxOTkxZGQwYTFlYTEyODYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjliMzllMDIyZTBkODU0MTIwMDAzZDc5MGMyOGI3NTk2MmVkZDMwMzc1NmQ1MTMzM2RmNzQ1Y2ZiODZlYTExY2UiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImQ3OTYyYTM1YWI5OTUyNmYwMWFjM2JkMzA1MmEyY2ViOTQ5MTBiMDIwYjJkZjMyMzQ2ZTZlMzBlNzVkNGQxODAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjZmN2ZjZmRhMjcyNzE3MmFiNmQwMDc3NjMxYmIyNmQxY2E0ZTgwOTQ4MzBkMWFjMzk2ZjY4N2QzZGVkM2MzNGYifQ"
+        },
+        {
+          "resource": "repo://spike_w3/01_boot_online.py#L62-L81",
+          "version": "repo-lines-v1:sha256:2e1277ecf93a6bb8e1d86005049f71e2b691ec5c29fe4219c2fa278627be1930:eyJzZWxlY3RlZExpbmVDb3VudCI6MjAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNiY2RjMDc2ZjJiMDMyMTg0NzRjZjEzMTFiOWFmMzUxNzhiMGEwODNhNGIxODY3Nzk0YmMxZTk4Y2EyZWNkNDEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU1MTBlMmI4OTRiYjIwNGY1NDc4MGExYTkyMTZhNWU1MDE1NzIwMjQ5ODMyNjZjNDAzNTk4MWUxMmVkODUxY2EiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjY4NTk1NDBmZTUxY2UyZTVlOGVjNTcyNThlMjQ4YTA3NzdkNmQ4MGFjMTdkZWZiNWMxMDBiYjMzMTFmODRjNjYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjgxYTlhMjY1NzgwOTU3NDY2OWMwY2U3ZjhlNmZhMWY1Zjc5ZDU4N2FmNmRiNjU4ZDU1YWI3MTg0ZGI1OTFmNzAifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_d31eb3710d224775971e7d99202310c8",
+      "statement": "F8 水位不变量：bootstrap 回放窗 watermark == 0（窗内无数据）时 boot_sequence 抛 RuntimeError 中止启动——增量流 EventStream 必须从 bootstrap.watermark 起步、front = data_max_ts，不得从 0 重拉；replay_cursor 模式 bootstrap 必须锚定回放起点 DSS_REPLAY_START（锚墙钟会使水位置顶全库当前最大 ID、回放消费全程空转）；主循环周期重建 _rebuild 的水位也只升不降。",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/01_boot_online.py#L148-L149",
+          "version": "repo-lines-v1:sha256:151a176aec203430c99c92479b83b1ca24c659b2d127667b5b14800f4dd61fb8:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYjc2MGMxNGJmM2ExYzZmN2EzMDZiYThjMDBjOWZmYTA2MzZhNDhmMmRiMTZiYmZkMTFjYjE3YjYzNTlmNGEyZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMmRjYTQ5Zjg4YmNkMjM3NmJhN2I1MjBiMzcyNTk1ODViNTRjMGJhYmZiYzQ4NjRiNjA0NzA3MzFkMDhkZjQyZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYmFkOGFlNDI1NGYyNDc2YjlmOTJjODU0NDE3YmZkOGUzNzBhZjIxYWM2NWE5ZjUzNGQ5MTk3MTcyZmZhOTRiNyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYTFmNWJkZGJjYTM4ZGYwMzQ3OGFkNGY1YWUzMzM1MzkxZWYyMmZkYzkxOTUxNjgzYTU4ZmNlNWM1OGRiMmU3NSJ9"
+        },
+        {
+          "resource": "repo://spike_w3/01_boot_online.py#L218-L230",
+          "version": "repo-lines-v1:sha256:2a27ed69bb80244d4c4e96cc100899ad8f441583641b5aa51a8efdd9cb5b8289:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImEwNjhmOGQ3YWZmZGJmYThiMzI2NThmYWQ0YmNhMTdhYzFlNmM3NzE0NWFmYjk5MGJhZDQzYmQ1ZjE4NGRjZDciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE5ODA4NWIzMTg4NWJkYmRhNGQwZGIyZWMwMTA1N2M4OTk3YjVkM2YyZGZjOTg0NjQ2MTBmYTM2ZDY1M2QxZDYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImFhMGRjNjU5NmQ2ZjdkZjIxZGFmNGM3MDk0ZTA2YTAzYzQ2ODZkZjk4MWI1YzVmY2Y0MTJiMTFlODg3OWQwYzAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjY4NjI4ODM4ZDk4ODk3MzQ1MzY0ZWY1NzA3M2I1YzY1NTQ2NzljMDc0MDkxZjVlZWU2ZTEzYWFjNjhmNTQxYmMifQ"
+        },
+        {
+          "resource": "repo://spike_w3/01_boot_online.py#L324-L334",
+          "version": "repo-lines-v1:sha256:7b60a1a1d6273b1bc72cdecfdc614f172fe600ea5aaf83d503abfa2f7bc6f94c:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjIzYzk2ODliNjk1ZDdlZDMyOWU2NGU2Mzg0Yjg2YzYwMjM2ODY2N2YzNTVjNjRkY2Y3YmE0MmI1MmY2MmZiM2QiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI1MWIwYzM3Yzc4YTU2YzFmNTMzM2NmYjU3NWViYzI3NjJjZTE3NTY5MTcwZjQwYTg5N2VkYzU4Yjk5MDRmY2QiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjE4NTBkNWVlYTAzMmJlZTZiYzNiNmQ1ZWIzN2M1ZDU5NTVmMDlkMzgzMGY2ZmU1NmI1MjNjMWNjZGVkMmE4YjkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQxYjVjODVkNjQ5OTg2YWJmMDljODY5ZjE1OWNmMjVmNzVmZWM4MjkwZjA5MjAxNGQ2MDRmZTcyMjRlYjVhY2EifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_78b8590cdc5340398cf45a1d93705752",
+      "statement": "W3 主循环唯一轮逻辑 run_one_round 顺序定版：consume(now) → frozen = guard.check(...)（每轮唯一调用点，不得二次调用）→ pool.dead_sweep(now, frozen)（恒调用，冻结语义在 sweep 内部消化）→ 有死车则 record_dead_audit + commit；wall_clock 生产形态 5min 轮询且 next_grid_wait 按 epoch 网格对齐下一 5min 边界 + 漂移补偿（下限 1.0s 防忙循环，保证帧 ts 分钟落在 5min 网格供 M5 锚点帧匹配）；replay_cursor 回放干跑按 DSS_REPLAY_START/END 游标步进（R7 纪律 _require_aware 强制 aware 时区）并返回状态行列表。",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/01_boot_online.py#L189-L215",
+          "version": "repo-lines-v1:sha256:1b4da784bca99b220b06d4a60cff08526054505bc87e1a4f58d261821c98da1e:eyJzZWxlY3RlZExpbmVDb3VudCI6MjcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNkOTM4Y2Q1YzUyMjdlZGI1MTAxMjdjZjdmYmI5ZmNkYWUwOGYyNjVmMTQ2MDIwNTEzNGMzN2I3YTUyMzkzOGMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImY1OGYwZDVlNzE0ZmJiNzc2ZjNhNjRhMTkwMTFjZDc2MzU2MDJkZjEzODhkY2I4MmNmMzUwODFkNDM3MjhkOGUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjQzMTZlNTFjOGQ3MzYwMDk4YTJiNDg5NjQxYzM3MzRkMTFiMjQ0ZGMxODkxYWNjOWU2MjljZDljYzlmOWE0YTEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImEwMGQyNjg3YWM0OGZkN2MyOTczZjQ5Mzk1ZjE5Y2U1YTMzYjcxNWE4MzhlNzVmMTI3YmQyODAzMmU2NzM1OTIifQ"
+        },
+        {
+          "resource": "repo://spike_w3/01_boot_online.py#L233-L269",
+          "version": "repo-lines-v1:sha256:5c4c774b04ce06159ff1171e1de37704645c9e823f25f2823b31d3ab6af60f07:eyJzZWxlY3RlZExpbmVDb3VudCI6MzcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk0MzNiM2E2MGFkOTk1ZjFlZGI4NjNhMzA1NDRkYjI3MDA4YWNhODc4NWY2YWQ2MGM2Yzc0OTliMDEyMDA1YmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImIyNzkyMzJlMjRhYmY4YTZhZmVlMDc1Njk3NjYwMmUxNGUwYzhmODQ1YzMzNjlkNmU4YjQ3NjZjZThlMjkwZGEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjIxMTlkYjE0MGNmNDIyYWJlNmZkNzdkNWU3ZmM1M2U5OWY4NTA2MmJhZTBmODVlYzViMzQxN2NjMTMxZTM0ZWMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjdiNTgzNWZjY2VkNDBmNjFhYTRkNDhjNzU0Yjc1NzU3ZGQ4ZjlmMWNlM2QzMzFjMmRmMzE0ODcwZmU2YTJiNzAifQ"
+        },
+        {
+          "resource": "repo://spike_w3/01_boot_online.py#L272-L301",
+          "version": "repo-lines-v1:sha256:d838421f5b997828bf8e44198fb2432daf3e9d5d70f148a6ad6a4f3b13f3989a:eyJzZWxlY3RlZExpbmVDb3VudCI6MzAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRhZmE5MDUwMGMyNmRjNTkwNWY2NjAyYmI3NWE0YjI3MDQ5OWFmYThjZDQ1OGE2YzliYTVjNDQ2Mzc0ZTgwYjciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImRjZTI4NzQzNWEyZWM3NDBlYWJmYmY3ZmJjNmEyYjI3NTg2MGFiYjVmOGI5MTljZGQwNmM2MjBlMmQ4ODg2OTIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImEwYjg3MGQ3MmU2NmJlMDViN2UwODk1ODk2MWU1YzllNDY0ZTkyYThkMmMxZmI1ZmY1MzgzMzg5Njg1NTQwMzEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjNkMTZiZGVhMjcwZDVhNGU0MzI0NzgzMTI5YzkyNzIxMTcwMDllMzVhYWNlZGU0MDExNjZkY2NkMWUyZjIzOWYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_042375c95ef04c8facf832edb52d8ea9",
+      "statement": "W3 周期自愈与附属件纪律：每 rebuild_hours（默认 24h，DSS_REBUILD_HOURS）做一次 120h 全量重建 _rebuild——先建影子池（bootstrap 中途失败 → 保留旧池并抛异常，不留空池）再原子置换池状态 + 水位只升不降；回放模式在终点再重建一次（回放终态 = 终点纯 bootstrap 真值，验收锚点）；T6-lite 控制台/快照经 dashboard.build_t6_components 作为 round_hook 挂接每轮之后，装配失败不阻断主循环（console 是附属件），DSS_CONSOLE=0 关闭用于回归基准两跑 diff；load_rest_days 是供 02/03 冻结回放器调用的向后兼容垫片，T1 接线后禁止删除。",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/01_boot_online.py#L218-L230",
+          "version": "repo-lines-v1:sha256:2a27ed69bb80244d4c4e96cc100899ad8f441583641b5aa51a8efdd9cb5b8289:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImEwNjhmOGQ3YWZmZGJmYThiMzI2NThmYWQ0YmNhMTdhYzFlNmM3NzE0NWFmYjk5MGJhZDQzYmQ1ZjE4NGRjZDciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE5ODA4NWIzMTg4NWJkYmRhNGQwZGIyZWMwMTA1N2M4OTk3YjVkM2YyZGZjOTg0NjQ2MTBmYTM2ZDY1M2QxZDYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImFhMGRjNjU5NmQ2ZjdkZjIxZGFmNGM3MDk0ZTA2YTAzYzQ2ODZkZjk4MWI1YzVmY2Y0MTJiMTFlODg3OWQwYzAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjY4NjI4ODM4ZDk4ODk3MzQ1MzY0ZWY1NzA3M2I1YzY1NTQ2NzljMDc0MDkxZjVlZWU2ZTEzYWFjNjhmNTQxYmMifQ"
+        },
+        {
+          "resource": "repo://spike_w3/01_boot_online.py#L267-L268",
+          "version": "repo-lines-v1:sha256:3609d0b6eae6dd276a34c1f27c25358324a134da13b35002853752c55aa8ccd5:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNjcwNGM2ZjVlMzVhY2JmODdiYmIzY2Q2N2Q3Y2ZhNDQ4NTc1OTA3N2JkYjE1YWE1NGQxOTUyN2ZmYzkyMmY0ZiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiODc2MTFjMmY4Njc4NWY4N2YxZjFkMTFkMzg5ZmY0NmVmNTk1YTk0ZGUwNTRmNmRiMTdiYWMwNjFjZmNhYmM4ZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTM5Mjg1YWU2MDdmZjAxNjRkZTMwYzU4OTlhMGY5MmZhMWRiYzQyZWJmN2VhYmUyZmEwYjM0MGMyYzVkOWVhNiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYTBiODcwZDcyZTY2YmUwNWI3ZTA4OTU4OTYxZTVjOWU0NjRlOTJhOGQyYzFmYjVmZjUzODMzODk2ODU1NDAzMSJ9"
+        },
+        {
+          "resource": "repo://spike_w3/01_boot_online.py#L304-L308",
+          "version": "repo-lines-v1:sha256:bdf81fdd1325eeab62ec7faa457c1d8ec9ff2f1af095c985156b409f7ca32203:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNTliNmE1NzA4YzJlYTdhZWY0ZWM0ZTk3ZjA4N2M4MjNjODljYzI2YWQxYjdhYTgyYjdjOGVjMmY2OThmMjYyMCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNjg1MzZiNTJmYmE1NzljZjMwNzMwMGNjNDE5MDg3OTNkNmQ1MDQyMDkxZjQzMzViZjg2YzIxZjAzMjhmMzM4NyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYWFkZGJhN2Y3NzJjNTliMGI0MWIzYjEzMmZiODM3ZDA4MTc3ZjljYzM1Y2E1NWMwZDkxMmYzN2Q0MTQ4ZDcwNCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMzNlNjQ0NzVhM2YyOWIxYmY0YzExZTU0NzUzODZhZmZmZmU0MzY4NTZjZWVlN2QzMjExMGRlZTg3YmQ3ZjNhMiJ9"
+        },
+        {
+          "resource": "repo://spike_w3/01_boot_online.py#L336-L354",
+          "version": "repo-lines-v1:sha256:ad356eccd92d5669636da350799f1e1d3a97e09ed5bd9f58ce676a8353b199e0:eyJzZWxlY3RlZExpbmVDb3VudCI6MTksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBjODFiNTEzMWVhYzFhNWEyOGFiM2FmYWYyMzk0NjgyZDNiZWUwZGFmNDgyZjRhOGQzOWExMGNjY2Q2YmQxZjYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI5ODFhZGY3ZWQ3NWMzYjlmYjc0N2Y1NjQ0MDk4ODgxYmMxZDBlNzU3ODEwODQ2NDAzYTBhMzE5ZGE4MzRjYzciLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjdiYmUzZmJmNmE2YjExYzUyOTVmZGE2NjM4YWJlYjhhNDkzODJiN2MyNWE3NzAzMjY5MTUyY2YxZDc4MjY3NDQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjZlMzc0Njk1MTY4NDIwNzVkOWU5ZDhlYTVlYWE5MzVmN2YzNmMxYjhkMmI5ODQ3NmFhODkzZWUxZGM4MTQ3MTEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_fdb4fa8e706a40e392cf68d103c9f490",
+      "statement": "plan_inbox/ 是周计划输入监听文件夹（拍板 2026-09-23：开发默认路径 = 项目内本目录，生产用 .env 的 DSS_PLAN_FOLDER 覆盖、目录约定不变）；文件命名 week_plan_<年份>KW<ISO周号>*.csv（解析器 PLAN_NAME_RE 认命名与列结构、不认 _sample 后缀；.xls 不支持、留痕提示另存），6 列规范（日期,日班工时,中班工时,出车计划,进车计划,备注；工时 8/10/11/休，日期 YYYY-MM-DD 或 M/D）；plan_loader.load_plan 的健壮性契约：非命名文件忽略不报错、同日期多文件值一致则合并、同日期值不同抛 ValueError（跨文件冲突入库前拦截，load_week_plan 捕获后兜底自学）、坏行/表级失败/文件损坏留痕不崩溃——plan_inbox 里任何坏文件不得拖垮在线主循环；监听规则（M3 生效）：新文件/mtime 变化 → 解析入库 dss.dim_weekly_plan，解析失败不阻塞，某周无计划 → fallback 事件流自学模式，历史文件保留不删。",
+      "evidence": [
+        {
+          "resource": "repo://plan_inbox/README.md#L1-L38",
+          "version": "repo-lines-v1:sha256:50652b5e4484b4414c1cc1d96ee984ab9835b28311be60860aac7f8eff057359:eyJzZWxlY3RlZExpbmVDb3VudCI6MzgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE1YWNhYjJmZmU4NTkyN2Q3ODE5MjFiMjY4NjE4YjIwOWM3ZTRkNGNjMjg2MjE4ZGJiMDBkN2M2YzZlYmYzOWYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImM2Y2U2OGFhNWVhYmIyYWNhZDFlYmNjMWQ4YTVhM2NhZDk4NGM2NGZlOWNlYTUwOTQ3YTIxZjMzMjQxNDcyMWMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        },
+        {
+          "resource": "repo://spike_w3/01_boot_online.py#L62-L81",
+          "version": "repo-lines-v1:sha256:2e1277ecf93a6bb8e1d86005049f71e2b691ec5c29fe4219c2fa278627be1930:eyJzZWxlY3RlZExpbmVDb3VudCI6MjAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNiY2RjMDc2ZjJiMDMyMTg0NzRjZjEzMTFiOWFmMzUxNzhiMGEwODNhNGIxODY3Nzk0YmMxZTk4Y2EyZWNkNDEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU1MTBlMmI4OTRiYjIwNGY1NDc4MGExYTkyMTZhNWU1MDE1NzIwMjQ5ODMyNjZjNDAzNTk4MWUxMmVkODUxY2EiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjY4NTk1NDBmZTUxY2UyZTVlOGVjNTcyNThlMjQ4YTA3NzdkNmQ4MGFjMTdkZWZiNWMxMDBiYjMzMTFmODRjNjYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjgxYTlhMjY1NzgwOTU3NDY2OWMwY2U3ZjhlNmZhMWY1Zjc5ZDU4N2FmNmRiNjU4ZDU1YWI3MTg0ZGI1OTFmNzAifQ"
+        },
+        {
+          "resource": "repo://spike_w3/plan_loader.py#L25-L30",
+          "version": "repo-lines-v1:sha256:0d3140bbe042fe8653474c7ff86c9256730450afcdd68c0f3ab546ac1f1a5494:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOTA4YjhkOTBhYTY4ZGNiM2RkMDIzMjUwMWY3ZTY1ZDk0MzBkODc3ZTRhOTQzM2FkYTZjZmVjMGY2MjRiNGNjNSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMjExYWY0ODUxZjllNWU0NzRhZTdkNzRlNzAwMmY3YmI4OGU5ODAwNzA3YTIzYzIzYzI3N2VmZmFkNjRkZGRjOSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNTcyOTYyNjQ3ZWZhNWYyZTkwMWU1MjkyOTk1MjcxNzY5NTI1YjVjM2VkZmM2NzYyMjA1YzExNWQ4MGQ1ZDc0OCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiM2VmMTYyMjkzM2M3YWI1YzM4NzA1NzBlZTdhYzBlMTU3YzkyY2IwNWQzYmRlNDU0NTRkYTNiZTlkNDVjOGYwYyJ9"
+        },
+        {
+          "resource": "repo://spike_w3/plan_loader.py#L258-L299",
+          "version": "repo-lines-v1:sha256:f746154c867f90b6afb7d1e307a8ebec197338346b836373d7b1e1d299114420:eyJzZWxlY3RlZExpbmVDb3VudCI6NDIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImJhY2FjM2U2YjNlOGMxZjhjODcyNTBlNzQ1MTM4MDczMmNiZDA1NThlMTJjMGUxNDY2N2Y1MjExM2M0ODAwMzkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdjODMwMjk4NGY5NmZlNmY0NDU1NTE2Yjk2ZDQ5YWE5Mzg0YTg1MGIwYjBjNzEyZDRkZDVmODBiYTY4MGY0MDciLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImI4Y2FiNmNhYjUwMjZiMGNkMmJiMjk4M2NmNTZjYTRhNjkxMTZhZmI2Y2M5Zjg2ZWI2NGNjNDQ1MjM3Yzk0MTIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImFiMTU2ZTQ4YzIzYTAwYjE0ZjlkNDUzYjVhYWVhZWE4MGEzYjA0NWU1N2Y4NTg4ZjVmOGFhNTQ0MWFhYTlkMzgifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_a276834c19c34c9daceb74b67dc44ead",
+      "statement": "topology/ 是辅助数据资产（站点目录与车间拓扑图），不被任何 spike 模块 import——运行期站集一律来自单一事实源模块 + derive_postexit_stations 重推：stations_catalog.json 为全车间读写站目录（station_id/name/section/stage/status/事件与车数统计），shop_topology.json / shop_topology.graphml 为 NetworkX DiGraph 标准产物（184 站、306 条数据驱动转移边），raw_transitions.csv / major_transitions.csv 为原始与稳定转移边，paint_shop_graph.py 等为其构建脚本；d0_check.py 是内网部署机一次性快查（sys.path 插入 spike_w1 后复用 W1 connect）：查 ods.carbody_history 的 MAX(\"DATE_EVT\") 判 ETL 活性（时差 <5min 正常 / >30min 别开跑）并盘点 dss 表（学完表后 13 必填表应全在）。",
+      "evidence": [
+        {
+          "resource": "repo://d0_check.py#L1-L30",
+          "version": "repo-lines-v1:sha256:bf084f2b956cb2755e0ed993ad8f25181a17d12473375c655177d7cae34f0e53:eyJzZWxlY3RlZExpbmVDb3VudCI6MzAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjY1NDE4ZmFhODBhNDMzZGI5MDJiYjI0MTA2ODdkYWYxOWY4Mzk4NDZkMzE0NmQ1MmQ1NjhjODdhYWM5ZDMxZmQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBkZDUyODllYmRjZjZkNTBhNzRiOGMyZDkwNTRhN2NkZTdmNjVkYjIxMDU4ZjA4NTA5YzYzMGU1NTU4NDFjYTQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjoxLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImI3NmNkYTc0OTE2OGQzMzgyZjA3ZTZkYjRjYmE0N2ZiMGM1ZmJmZTIxNmUzMzU3MDYyNmNjZjI1MTVkY2E1ODgifQ"
+        },
+        {
+          "resource": "repo://topology/graph_analysis_report.md#L1-L21",
+          "version": "repo-lines-v1:sha256:5f2ebe781fa97360cb16454d58b19124d09db22ae304a6e8166f6de0d5c457ef:eyJzZWxlY3RlZExpbmVDb3VudCI6MjEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdmYjY1MGE5MDBmN2UzZDQ4OTllNTBmZjliYjZmMjA4NjAyZjA3NzgyNjI0NWY3NmQxYTY3NTczOTZjMTI2YzYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdlYjcwMjU3NTkzZGEwNmY2ODJhM2RkZGE1NGE5ZDI2MGQ0ZmM1MTRmNjQ1MjM3ZjVjYTc0YjA4ZjhkYTYxYTYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjdjMTRkOTA5YTkxMmZjMDAxNzRlZjJhOTk4MTk4ZGI4OTI0NjZmNzdmOTg5M2U1ODkwNmUwYzZlNTQxZjI3MGYifQ"
+        },
+        {
+          "resource": "repo://topology/stations_catalog.json#L1-L23",
+          "version": "repo-lines-v1:sha256:28ca515337eaa705d869457ccde8bbcda67b7aa67ca131313db6c45ccdcfe496:eyJzZWxlY3RlZExpbmVDb3VudCI6MjMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImM4MGVkYTc5ZjI2M2JhYmU1YzAzMWRjNmExZjg3ZDg5ODgyNjhlMWZiMjMyMWIwODg1NzU1MmUyZTlmMWVmYTciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImIwYzk0OTg1NTI2YzFjNTdlZjAwYzAwZDNmNGRjOTA2MTU2NzdhMGEzNmE4Yjc5NWRmZjlhZmZkNTBmZTlmNTgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImYxODMzNzI1MTRlODIwMDVhOTZiYjI1Y2YyZjdiYzc5NzQwNTc5ZDIwMjMwODEyZmQ2MTQ1ZTNiMmZiYWNjNzYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_2eed274e6d9644c5aa9ad1cc549ae0cb",
+      "statement": "pytest.ini 是测试基线配置（双审建议 4，2026-10-05）：addopts = --basetemp=scratch/.pytest-tmp，因为 Windows 默认临时树 C:\\Users\\<user>\\AppData\\Local\\Temp\\pytest-of-* 存在旧目录权限残留，不指定 basetemp 时全套件 teardown 报 38 个 PermissionError（环境问题、非代码回归）；scratch/ 整目录已被 .gitignore 覆盖。",
+      "evidence": [
+        {
+          "resource": "repo://pytest.ini#L1-L6",
+          "version": "repo-lines-v1:sha256:e12a891c3fc04e2a613a133830744ae46a2c8bac2697494eff83afb07fe09e17:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMTk4NTQ5ZWNjZTdiODZlYmMzOWY4ZDk1ODJjNmMwOTBhMTVlMTQ4Mjg2MjI2YTMzYzBjYmZjMmQ4Zjk2YTYyZiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOWI5NmU5NzRhOGEyYWI0OWI4OWQ4NTIyYzU3MjllODdhOGFlNTFmNDg5MjEyZmUwNDAwOWI2ZWI5YWQxODI1MSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjAsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjAsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSJ9"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.7.0",
+    "at": "2026-10-08T13:05:24.547Z"
+  }
+}

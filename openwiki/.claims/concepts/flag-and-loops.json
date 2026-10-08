@@ -1,0 +1,382 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:1a42308ee3db5d8913ac4b79b9bcf0d76b128a0aad2d74a28be4cc3098815908",
+  "claims": [
+    {
+      "id": "claim_3f7874cec30c4100a49325055b39eb00",
+      "statement": "MDS_DATA position 139 (SUBSTRING(\"MDS_DATA\" FROM 139 FOR 1), 1-based) is the process-loop flag: 0=normal mainline, 1=quality rework, 2=blacktop second spray, -=unfilled (value 3 occurs in only 4 anomalous rows); it operates as a body real-time state machine (decision made mid-production, bit flips only after), so the latest event's flag equals the current state and flag=0 covers both 'never reworked' and 'rework completed, back on mainline'.",
+      "evidence": [
+        {
+          "resource": "repo://README.md#L21-L24",
+          "version": "repo-lines-v1:sha256:a88a0bb14ad3f580e32752e76d88344a02b889702ad22c36becb1cb2bd71fd3d:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNzRiMjA0ZmEwMDUwOWI4NWZmY2Y5NjMyMWE1NzhjZGRjNTExNjZiZDFiMTY4YjY4YzE4NDI2NzkxNTllMDgyYiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMTUzZDdhODc1M2IzYWVkN2EwYzBjMzE1MGFkM2QzMmI2ZjlmZTEyZjYxYmZiNzVjMjgyMGRlNWIwNjhkNGMxYyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNTEzNWM4YjMwNjc0ZjdlYWI4YmNhOGQ3YjkyMDA5MDc1MzVkZGU4NDRhYTQ4YjIzMzI0NTExYTk5Njc2ODM1ZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNGJjMDk5ZDc4MjYyNTc0NTY2YmFlNTcwYjJlN2ExNzMwNzE2ZGI0NmUzMGIwODNkNWRlMzQ1MTkxNTEyNjI2MSJ9"
+        },
+        {
+          "resource": "repo://docs/08_message_data_dictionary.md#L141-L144",
+          "version": "repo-lines-v1:sha256:d0cd86d667bce21bb7362540aab6b0125246d292f558ea42338393ab057f6619:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMmQ4MWQ2YmNmMDM2NzU0ZGRjZTg1MTE1YWY3YjhmYjFkNjhmNTRmZTM5MWFjOTU1NmJhY2ZmNjBkN2IyNDkzNCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZjA1MTNjN2QxM2M1ZTEzZDI1ZmE5YzQzYjRiZGZkNWFiMjk5ZjkyNmUxNGJjZDNlMjFmYmM3NjdlYjg1NmJkMyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZDJmNjkyNDRmNjQ2M2I1OGIwNzFjM2U2NTkzNGYwOGY1ZTBmODFkNzBlNmUxNjg1NDVjNDNmZjBlYzNlOWRlNyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiOWUxMzM2YjY2M2RmNTlmMDkxOWZlMjA5Yzc3ZmI3NTcwYzdhZjg5ODM0Njg4N2U1YzJhNTg4YTBlMjgyZGU2ZCJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_73f7f74dcb134299953f3dc164547651",
+      "statement": "MDS_DATA position 137 (SUBSTRING(\"MDS_DATA\" FROM 137 FOR 1)) is the black-roof (two-tone) configuration flag, essentially lifetime-invariant (real changes observed on only 4 vehicles), and it is a hard precondition for accepting any 139=2 blacktop anchor (docs/15 C3).",
+      "evidence": [
+        {
+          "resource": "repo://README.md#L26-L26",
+          "version": "repo-lines-v1:sha256:d4fc9546ff483c3a04fc06792ebcea54bf2743e13aebf96e624698593f76ec9e:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZDRmYzk1NDZmZjQ4M2MzYTA0ZmMwNjc5MmViY2VhNTRiZjI3NDNlMTNhZWJmOTZlNjI0Njk4NTkzZjc2ZWM5ZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZDRmYzk1NDZmZjQ4M2MzYTA0ZmMwNjc5MmViY2VhNTRiZjI3NDNlMTNhZWJmOTZlNjI0Njk4NTkzZjc2ZWM5ZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZGQ4M2QzM2M3ODIxMWJmOTA5N2E3NmJjMzI1MjA4NTU5YWVhMWU0NjFiMmFiZDYyOWIxNjViZjhkNzcyZGM0MyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMTdkYWE0NzMxMTUxZjIxYWY3NWMxM2NiY2ZmOGQ3Y2EyYjUzOWJjYmZiNzYyNGIzNTQ3YWMyNDEzYjFmNWYwNCJ9"
+        },
+        {
+          "resource": "repo://docs/08_message_data_dictionary.md#L141-L141",
+          "version": "repo-lines-v1:sha256:2d81d6bcf036754ddce85115af7b8fb1d68f54fe391ac9556bacff60d7b24934:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMmQ4MWQ2YmNmMDM2NzU0ZGRjZTg1MTE1YWY3YjhmYjFkNjhmNTRmZTM5MWFjOTU1NmJhY2ZmNjBkN2IyNDkzNCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMmQ4MWQ2YmNmMDM2NzU0ZGRjZTg1MTE1YWY3YjhmYjFkNjhmNTRmZTM5MWFjOTU1NmJhY2ZmNjBkN2IyNDkzNCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZDJmNjkyNDRmNjQ2M2I1OGIwNzFjM2U2NTkzNGYwOGY1ZTBmODFkNzBlNmUxNjg1NDVjNDNmZjBlYzNlOWRlNyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiOTE0MWI1ZGIwNzZhOGZjMmFiZWU4ZDA3Njg0NDdlNTcyOGViOGEwYjhhOTgzYzEwNTYwNDQ3ODU3YWVkNmU0YiJ9"
+        },
+        {
+          "resource": "repo://docs/15-W4%E5%8F%8C%E7%8E%AF%E9%87%8D%E6%9E%84%E6%AD%A5%E7%BA%A7%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92.md#L25-L25",
+          "version": "repo-lines-v1:sha256:5151c23c8e6d2abd26ee432d0c4fbda1132a5265193aff672b910f104441f383:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNTE1MWMyM2M4ZTZkMmFiZDI2ZWU0MzJkMGM0ZmJkYTExMzJhNTI2NTE5M2FmZjY3MmI5MTBmMTA0NDQxZjM4MyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNTE1MWMyM2M4ZTZkMmFiZDI2ZWU0MzJkMGM0ZmJkYTExMzJhNTI2NTE5M2FmZjY3MmI5MTBmMTA0NDQxZjM4MyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZjQxYzgxMzhmYmNjM2UwMzEyNWI3MjRhODM2YzViODUxZTkxMDJhYTBiYTk0YzlhMTQ3ZTdkYjNmYTk1NTVmMCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMzVlODk2ZDkwOThjNzEyZjc2M2E0NWI3YWM1ZDE3MTgzYjYyZmY2MzAzMDcwZjgzMDJiMDQzYjgzZjM4OTY1ZiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_5d14dd50146d4b9abc5a6161af508766",
+      "statement": "The raw 139 bit is sticky after loop exit: 86.62% of the 14,078 exited rework vehicles (docs/13 §2.3) still carried 139=1 at the final telegram at the 4 exit read stations, and the full-window measurement behind docs/14 v1.4 found the raw bit uncleared for 96% of rework cars and 45% of blacktop cars after loop exit; therefore 139='0' must not be used as the loop-exit criterion, which motivates both the offline purification windows and the online loop-exit guard (R3'/R2.4).",
+      "evidence": [
+        {
+          "resource": "repo://docs/13_%E8%B4%A8%E9%87%8F%E8%BF%94%E5%B7%A5%E5%A4%A7%E5%9B%9E%E8%B7%AF%E5%AE%9A%E4%B9%89%E4%B8%8E%E8%AE%AD%E7%BB%83%E6%A0%B7%E6%9C%AC%E9%94%9A%E5%AE%9A%E8%AE%AE%E6%A1%88.md#L72-L82",
+          "version": "repo-lines-v1:sha256:8b4ec33322e6b1f784988eda118c49646492d0ba3a76166ce293e4a7dac45ed5:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjJlZTdjMzk1MGNhOTczMzRkMWFjNmI2NmQzMDM1MmFjYTE2ZTU5ODEzMTBiYWYxMDFhM2ViNzI0NmY3N2QxZTEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdlYjcwMjU3NTkzZGEwNmY2ODJhM2RkZGE1NGE5ZDI2MGQ0ZmM1MTRmNjQ1MjM3ZjVjYTc0YjA4ZjhkYTYxYTYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjgzZTBkZWY4NzU1MDBhNGNkZDJmZjE5ZmY4NzE4ZWY3MjBlMWY3YjE0OWExNDRiNmJiMWQ3ZDI0MTZiZmUzODciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjI5ZmVlODhlYjg4ZDc3YjZkNGJmZDYzMDU4MWE1MDg0NGQxMDRkYzJlZDkwMmM5MGEzZjUwYWY4MjQxZjQyMDIifQ"
+        },
+        {
+          "resource": "repo://docs/14_%E6%B6%82%E8%A3%85%E8%BD%A6%E9%97%B4%E7%89%A9%E7%90%86%E5%8F%8C%E7%8E%AF%E7%BB%9F%E4%B8%80%E7%8A%B6%E6%80%81%E6%9C%BA%E4%B8%8E%E6%A0%B7%E6%9C%AC%E9%94%9A%E5%AE%9A%E6%96%B9%E6%A1%88.md#L5-L5",
+          "version": "repo-lines-v1:sha256:018f085887381b8aab292307e0cd838dd5456734ab92772a9aa4b17385f0426e:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMDE4ZjA4NTg4NzM4MWI4YWFiMjkyMzA3ZTBjZDgzOGRkNTQ1NjczNGFiOTI3NzJhOWFhNGIxNzM4NWYwNDI2ZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDE4ZjA4NTg4NzM4MWI4YWFiMjkyMzA3ZTBjZDgzOGRkNTQ1NjczNGFiOTI3NzJhOWFhNGIxNzM4NWYwNDI2ZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMGI4YzRkZjAzMzYxZmZkYjc2NjhjZDU0Mjk0ZTZiYjEyNjdlN2QwZDkzMmRhYWRjOWNlOTA3NzA2ZTBlZGUzMyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMWU5NjJjMjIxZmQwYWVlNzU1YzI4OTU3YjdjMzI1MTYxOWQ2MzU5YWRhMzNhYjU5NTY3NTkxNzY0YjQzNjczNSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_e1e39741086d4aa78abe9a5c35bb392d",
+      "statement": "97.17% of the first 139=1 events of the 14,354 rework vehicles concentrate at the three sanding-prep stations 15IS065 (47.81%) / 13IS065 (27.64%) / 14IS065 (21.72%); before these stations (pre-treatment, electrocoat, sealing, pre-spray sanding) the bit is 100% '0', making them the physical Loop-1 inbound anchors.",
+      "evidence": [
+        {
+          "resource": "repo://README.md#L27-L27",
+          "version": "repo-lines-v1:sha256:f81300fc6be8b2eefa2a7979bf2eb4cef42c59de2b8c371d863faae96a31e43e:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZjgxMzAwZmM2YmU4YjJlZWZhMmE3OTc5YmYyZWI0Y2VmNDJjNTlkZTJiOGMzNzFkODYzZmFhZTk2YTMxZTQzZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZjgxMzAwZmM2YmU4YjJlZWZhMmE3OTc5YmYyZWI0Y2VmNDJjNTlkZTJiOGMzNzFkODYzZmFhZTk2YTMxZTQzZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMmFiMTczOGRiOTU0ZmU4NTI2ZTc4NWQ4MWNkZmM1NTY0NmQ1M2I0NDk5ZTA0MjYwM2I5ZGM1M2YzZDQ2MDJiMiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZWI5Y2E4NjliNGMzOGViOWRkMmE0MmUwNzRjZDg2NjYxYTdlNzJkOWUyY2YyOTViYTY3NGQ0MTA5MmQ2ZjFhMiJ9"
+        },
+        {
+          "resource": "repo://docs/13_%E8%B4%A8%E9%87%8F%E8%BF%94%E5%B7%A5%E5%A4%A7%E5%9B%9E%E8%B7%AF%E5%AE%9A%E4%B9%89%E4%B8%8E%E8%AE%AD%E7%BB%83%E6%A0%B7%E6%9C%AC%E9%94%9A%E5%AE%9A%E8%AE%AE%E6%A1%88.md#L55-L68",
+          "version": "repo-lines-v1:sha256:d83796cec911eab6ba8cd797337b0a8772079142b588f3c95a17395f83a1b27f:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjZlMDVjZGVlNGVlZWIxMWRlZjhiZmNmMTFmMzU1MDQzM2M5Mzg3YzRmNDNmMWFiY2I2NzMzY2RkYWY1ODAzYzQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBhMzlmMWZkNzJiOTkwYTA5MjkwYWM0ZDcyYjRlOTYxYTkyYTFmZTA3ZTQwZDA2MTRlNTk1NjhlOGY1MWM3ZjIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjgzZTBkZWY4NzU1MDBhNGNkZDJmZjE5ZmY4NzE4ZWY3MjBlMWY3YjE0OWExNDRiNmJiMWQ3ZDI0MTZiZmUzODciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjgzZTBkZWY4NzU1MDBhNGNkZDJmZjE5ZmY4NzE4ZWY3MjBlMWY3YjE0OWExNDRiNmJiMWQ3ZDI0MTZiZmUzODcifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_9fcba1b1d10d4122a2fb31c2ffa5e54b",
+      "statement": "The physical rework loop-exit anchor is the three-line handover gateway group {25IS010, 25IS110, 25IS210} (first pass after tagging): coverage 98.17% (14,092 cars) per docs/13 §2.4 and the unified full-history caliber 97.99% (14,065 cars) per docs/14; the previous single-25IS110 anchor silently dropped 1,889 rework cars (13.13%), 1,870 of them finished cars exiting via line 1 / alternative routes, biasing training samples toward lines 2/3.",
+      "evidence": [
+        {
+          "resource": "repo://README.md#L27-L27",
+          "version": "repo-lines-v1:sha256:f81300fc6be8b2eefa2a7979bf2eb4cef42c59de2b8c371d863faae96a31e43e:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZjgxMzAwZmM2YmU4YjJlZWZhMmE3OTc5YmYyZWI0Y2VmNDJjNTlkZTJiOGMzNzFkODYzZmFhZTk2YTMxZTQzZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZjgxMzAwZmM2YmU4YjJlZWZhMmE3OTc5YmYyZWI0Y2VmNDJjNTlkZTJiOGMzNzFkODYzZmFhZTk2YTMxZTQzZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMmFiMTczOGRiOTU0ZmU4NTI2ZTc4NWQ4MWNkZmM1NTY0NmQ1M2I0NDk5ZTA0MjYwM2I5ZGM1M2YzZDQ2MDJiMiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZWI5Y2E4NjliNGMzOGViOWRkMmE0MmUwNzRjZDg2NjYxYTdlNzJkOWUyY2YyOTViYTY3NGQ0MTA5MmQ2ZjFhMiJ9"
+        },
+        {
+          "resource": "repo://docs/13_%E8%B4%A8%E9%87%8F%E8%BF%94%E5%B7%A5%E5%A4%A7%E5%9B%9E%E8%B7%AF%E5%AE%9A%E4%B9%89%E4%B8%8E%E8%AE%AD%E7%BB%83%E6%A0%B7%E6%9C%AC%E9%94%9A%E5%AE%9A%E8%AE%AE%E6%A1%88.md#L96-L101",
+          "version": "repo-lines-v1:sha256:4a2ff2eb123a674343c522483101fb0a1ceab274f826063451133b0e857226e0:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNzk1MmUyMjg1ODg5NDAwMDdiN2NiMWU4OTM3YWE0YWQzZjE4N2ExMjlkYWIzNjA3ZDFlNTc3Zjc5MjEyODZlYiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiN2ViNzAyNTc1OTNkYTA2ZjY4MmEzZGRkYTU0YTlkMjYwZDRmYzUxNGY2NDUyMzdmNWNhNzRiMDhmOGRhNjFhNiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTE1NTE2MzU0ZGU2MDIyYzJhOGE5ZWZlNmNkNzAyY2NlYmNlZTdiZDU5MzBmM2E2ZWJiMWJmODFmYmUyYTY0YiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMzk5ZTkwZWZiMGE1YTY3NWQ3MGE2MGIyNzI5MTZhYjJlYWNiMmI5ZTg5OTNiZWNhNDg5ZDE4Mjg0NTU5NWRiZCJ9"
+        },
+        {
+          "resource": "repo://docs/14_%E6%B6%82%E8%A3%85%E8%BD%A6%E9%97%B4%E7%89%A9%E7%90%86%E5%8F%8C%E7%8E%AF%E7%BB%9F%E4%B8%80%E7%8A%B6%E6%80%81%E6%9C%BA%E4%B8%8E%E6%A0%B7%E6%9C%AC%E9%94%9A%E5%AE%9A%E6%96%B9%E6%A1%88.md#L83-L83",
+          "version": "repo-lines-v1:sha256:1fdafdae54dcae7e18237e4e3e89c698f3b966bd0ddf18260e08a107e17ad19b:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMWZkYWZkYWU1NGRjYWU3ZTE4MjM3ZTRlM2U4OWM2OThmM2I5NjZiZDBkZGYxODI2MGUwOGExMDdlMTdhZDE5YiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMWZkYWZkYWU1NGRjYWU3ZTE4MjM3ZTRlM2U4OWM2OThmM2I5NjZiZDBkZGYxODI2MGUwOGExMDdlMTdhZDE5YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNTk3MzYyYmE1NTNmMDcxYzk3NDIxOTAyYzI3NmU2OTU3N2NkYzAzODA2NTdlNzgzZTdkYzI0Y2YwYTQyMDhmOCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZjRiYjUxM2Q4YTE3YThmYTcyZTBjMWM2NmFiZDg3NGY3ZDVkZjFiOGEwZDIzZTExNDljNDZjZTE5OGRiMTMzMyJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_90dcf72eac84431e8c57d3b7a0a4906b",
+      "statement": "At the line-2 main gateway 25IS110 the median remaining time to the final exit point for flag=0 cars (P50 1.95h, 67,260 cars) and flag=1 cars (P50 1.98h, 11,638 cars) differs by only 2.1 minutes, proving that crossing the gateway fully exits the rework loop and downstream behavior is physically equivalent to normal cars (line-1 25IS010 shows 2.42h vs 3.50h with ~1h lateral queue confirmation at 25IS365; line-3 25IS210 3.28h).",
+      "evidence": [
+        {
+          "resource": "repo://docs/13_%E8%B4%A8%E9%87%8F%E8%BF%94%E5%B7%A5%E5%A4%A7%E5%9B%9E%E8%B7%AF%E5%AE%9A%E4%B9%89%E4%B8%8E%E8%AE%AD%E7%BB%83%E6%A0%B7%E6%9C%AC%E9%94%9A%E5%AE%9A%E8%AE%AE%E6%A1%88.md#L102-L114",
+          "version": "repo-lines-v1:sha256:ac3b5690673539eb675282951b87a3b02e2c183d08e4ab409dd71896863b51ae:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFkODY5MTM1ZDIwYjA0MDFjMmE2NjJkYmQwMzVmZGVhOWE0Y2U5N2IyNzZmZmYzZjNmMDRlMGYyN2I1OTlmMTYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdlYjcwMjU3NTkzZGEwNmY2ODJhM2RkZGE1NGE5ZDI2MGQ0ZmM1MTRmNjQ1MjM3ZjVjYTc0YjA4ZjhkYTYxYTYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjBkN2FjM2Q2MzFmMGViNzk5YzlkMzY1MjhlMjBmMmM3YjVhYTMwZmY2ZmVmZDA3N2FjMWYzNjA1MTM2NTFmZjEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjM2NTQ5OTk1MTczYTlhZjU5OGQ3ODc2NzI3YjY5NDg4MTRhNzcyOGQyYjlhNDIwYTE3MmFlOWU3YzhkYzJmYWIifQ"
+        },
+        {
+          "resource": "repo://docs/14_%E6%B6%82%E8%A3%85%E8%BD%A6%E9%97%B4%E7%89%A9%E7%90%86%E5%8F%8C%E7%8E%AF%E7%BB%9F%E4%B8%80%E7%8A%B6%E6%80%81%E6%9C%BA%E4%B8%8E%E6%A0%B7%E6%9C%AC%E9%94%9A%E5%AE%9A%E6%96%B9%E6%A1%88.md#L32-L32",
+          "version": "repo-lines-v1:sha256:04a06d67a8de55171daddcceae1b15f8bf58c3b9a3f06089c0d9b49c2453f6a8:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMDRhMDZkNjdhOGRlNTUxNzFkYWRkY2NlYWUxYjE1ZjhiZjU4YzNiOWEzZjA2MDg5YzBkOWI0OWMyNDUzZjZhOCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDRhMDZkNjdhOGRlNTUxNzFkYWRkY2NlYWUxYjE1ZjhiZjU4YzNiOWEzZjA2MDg5YzBkOWI0OWMyNDUzZjZhOCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMGEwNjQyNGM4MjhlNDVmYWFiM2FmMzJlODZlMTE3OGQ5MDVjNmNjMGE3NzgwODBhNWZlNTgwYzE5ZmQ4MDJlYiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiN2Y3YWYyMzI0YzRhMjU1NzYyZjFjMjk1OTM2NjE0OWU4N2QxNDZkMmE5ZjYyNTIwYTNiNjRkNmIzNWJmMzVhYiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_3141d241b4cd4b928a5bb516609f4546",
+      "statement": "The naive span MAX(t)-MIN(t) WHERE flag=1 (P50 17.99h / mean 38.99h) counts the post-loop waxing corridor and exit waiting into the loop; the true physical span (first sanding tag to first gateway-group pass) is P50 13.60h / mean 28.23h, a systematic inflation of +4.39h (+32.3%) at P50 and +10.77h (+38.2%) at the mean removed by the dual-anchor closure.",
+      "evidence": [
+        {
+          "resource": "repo://docs/13_%E8%B4%A8%E9%87%8F%E8%BF%94%E5%B7%A5%E5%A4%A7%E5%9B%9E%E8%B7%AF%E5%AE%9A%E4%B9%89%E4%B8%8E%E8%AE%AD%E7%BB%83%E6%A0%B7%E6%9C%AC%E9%94%9A%E5%AE%9A%E8%AE%AE%E6%A1%88.md#L117-L124",
+          "version": "repo-lines-v1:sha256:c560eb1ac1007c2fa350e796e2563054bf613fe11ad4190b2f49b726493ccb7c:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMDBiNzM0NjZmZTk2MWQ2YTRhOTk1YzNiNWMzOGI3MGUyMTBhMGYyMjJjZjcyMThiMzQ0NWUzZDM3NTBiOTU5MSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMzNlOGVkNzZmZTQxYTczOWU3ZTg1N2I1YzEyYmQ0ZjBkOTRiNmQ3NDBlNmNhN2FkMzU5NDhmYTIzNjFkNmNmOSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiODNlMGRlZjg3NTUwMGE0Y2RkMmZmMTlmZjg3MThlZjcyMGUxZjdiMTQ5YTE0NGI2YmIxZDdkMjQxNmJmZTM4NyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiODNlMGRlZjg3NTUwMGE0Y2RkMmZmMTlmZjg3MThlZjcyMGUxZjdiMTQ5YTE0NGI2YmIxZDdkMjQxNmJmZTM4NyJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_003ce0bd4ca24b169a25280fbb743bf6",
+      "statement": "The three parallel topcoat bake-oven exit stations 16IS305 (line 1) / 17IS305 (line 2) / 18IS345 (line 3) are the hard physical threshold for blacktop second-spray anchoring: the base coat must cross-link and cool at an oven exit before masking and black roof re-spray is physically possible, so any 139=2 before the first oven-exit pass is a false signal (28 victim-group cars as exception); strict post-oven-exit anchoring compresses residual bias to under 0.5%.",
+      "evidence": [
+        {
+          "resource": "repo://docs/12_%E9%BB%91%E8%BD%A6%E9%A1%B6%E5%A4%A7%E7%8E%AF%E7%BA%BF%E5%AE%9A%E4%B9%89%E4%B8%8E%E8%AE%AD%E7%BB%83%E6%A0%B7%E6%9C%AC%E9%94%9A%E5%AE%9A%E8%AE%AE%E6%A1%88.md#L46-L58",
+          "version": "repo-lines-v1:sha256:5bc15caa8901f068acd7a94d479462d36889e28fa99582e0704770f7fb28f54b:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjYwNzJiZmYxOGU3MGEyY2ZmNjVjNzg1OWNjZDVkMjlhM2NkYmI2NzllYmUwYTBhMzcxMTcwMGExMDk2MGU5OWUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImY2ZjI5YjZhNjNkNjRlYjY0YjJkYjMwYTFjNTUxNDRiOGVjNjJlZTY4MDllODA3OWI5ZmUwNmFkODlhZWY3YWIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjgzZTBkZWY4NzU1MDBhNGNkZDJmZjE5ZmY4NzE4ZWY3MjBlMWY3YjE0OWExNDRiNmJiMWQ3ZDI0MTZiZmUzODciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjgzZTBkZWY4NzU1MDBhNGNkZDJmZjE5ZmY4NzE4ZWY3MjBlMWY3YjE0OWExNDRiNmJiMWQ3ZDI0MTZiZmUzODcifQ"
+        },
+        {
+          "resource": "repo://docs/14_%E6%B6%82%E8%A3%85%E8%BD%A6%E9%97%B4%E7%89%A9%E7%90%86%E5%8F%8C%E7%8E%AF%E7%BB%9F%E4%B8%80%E7%8A%B6%E6%80%81%E6%9C%BA%E4%B8%8E%E6%A0%B7%E6%9C%AC%E9%94%9A%E5%AE%9A%E6%96%B9%E6%A1%88.md#L84-L84",
+          "version": "repo-lines-v1:sha256:19696f22e8b2b84a1bad1743dfa5cceb6c2bd9f5d668bbd3b3510bfe7c82aa2b:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMTk2OTZmMjJlOGIyYjg0YTFiYWQxNzQzZGZhNWNjZWI2YzJiZDlmNWQ2NjhiYmQzYjM1MTBiZmU3YzgyYWEyYiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMTk2OTZmMjJlOGIyYjg0YTFiYWQxNzQzZGZhNWNjZWI2YzJiZDlmNWQ2NjhiYmQzYjM1MTBiZmU3YzgyYWEyYiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOGIwOWM2OTRhNWI5YmRjY2Y4OTYyZmZiY2JmZjFkMjNkNzAxNjIwOWE4NTAyYWIzMmRkMWFmNmMzMmFlZDgwMSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiODNlMGRlZjg3NTUwMGE0Y2RkMmZmMTlmZjg3MThlZjcyMGUxZjdiMTQ5YTE0NGI2YmIxZDdkMjQxNmJmZTM4NyJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_6c2d2460a8d74bab8c62d7ce6806d201",
+      "statement": "4,941 single-tone cars (137=0, G0) show a transient 139=2 scheduling signal while queuing at the first-spray entry 14IS260/13IS260 (median duration 4.8 min, 100% reset within the spray-queue segment, at most 2 events per car); the naive MIN-based extraction produced a physically meaningless P50=4.9h phantom peak in the ALL flag2 row of dss.dim_loop_duration, so every blacktop anchor must require SUBSTRING(\"MDS_DATA\" FROM 137 FOR 1) = '1'.",
+      "evidence": [
+        {
+          "resource": "repo://docs/12_%E9%BB%91%E8%BD%A6%E9%A1%B6%E5%A4%A7%E7%8E%AF%E7%BA%BF%E5%AE%9A%E4%B9%89%E4%B8%8E%E8%AE%AD%E7%BB%83%E6%A0%B7%E6%9C%AC%E9%94%9A%E5%AE%9A%E8%AE%AE%E6%A1%88.md#L138-L141",
+          "version": "repo-lines-v1:sha256:92e94f87038e02362b49cae29a7039e639d993a15e975f6c59ce03b315c91975:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYWFmNjM3NmM1OGJjNGZjYzhhM2MzZmRlMzFkYTBmYjI0NTRkOGEwYjJlMDVhOGQ4YWI5OTI2YmE3NmFhZTM5MCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYWJhZmViYTE4ODc2YTBkYzM1ZDBjOTBhN2YxYjg1NjZiMzY2NzQ3Zjc0ODcxYWMzMmQxMjRjODYwMWVjNWMzYSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYzAyZGI1ZDE2N2ViNTIxNTUwNDE3MjkxZTAxNDY0OGM5NzhjMTU4ZWFkNGI4OTEzYTZiODhjNjAxYTIwZDY1NyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiOWUyYjIxZmFiNmI2OGExYzFhMTlhNGMzOTYzN2EyODY3MmY0MDg2MWIxZmM5M2Q4MzhiZGI5YTY2MGViZGNhNiJ9"
+        },
+        {
+          "resource": "repo://docs/12_%E9%BB%91%E8%BD%A6%E9%A1%B6%E5%A4%A7%E7%8E%AF%E7%BA%BF%E5%AE%9A%E4%B9%89%E4%B8%8E%E8%AE%AD%E7%BB%83%E6%A0%B7%E6%9C%AC%E9%94%9A%E5%AE%9A%E8%AE%AE%E6%A1%88.md#L22-L22",
+          "version": "repo-lines-v1:sha256:cd25d41ed4b44b3c49c1a10d3bf21efcb021aa1272c7d44406af4c0f897d18dc:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiY2QyNWQ0MWVkNGI0NGIzYzQ5YzFhMTBkM2JmMjFlZmNiMDIxYWExMjcyYzdkNDQ0MDZhZjRjMGY4OTdkMThkYyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiY2QyNWQ0MWVkNGI0NGIzYzQ5YzFhMTBkM2JmMjFlZmNiMDIxYWExMjcyYzdkNDQ0MDZhZjRjMGY4OTdkMThkYyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZWFiZmM0ZDQ2OTQ5N2I0MDUwYjU3YzUzNTg3M2I5MWE1MTQ5MDE1Y2M2MjE3MzFjMWU0NzA1ZDRiMWY4N2FmMCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYzQ0ZDllNjEwZDgyOTZmZTUyYWY5OWJjZDU0NjgwOGM3NjJmOGI2ZDU1NzE4NzViMzFjZGQwYWUwMzkyZjQ2MCJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_cfa118de1ac04eb99f6a79351aab0268",
+      "statement": "536 blacktop cars (9.1% of the 5,877-car G1 group; plus 45 on 13IS260, 581 total) have their first 139=2 on the 14IS260 spray queue (two-phase flash 3.7 min, reset 0, then formal second-spray tag); naive loop-start treatment inflated the victim group by +3.38h median / +9.28h mean (long tail to 203.8h); under the corrected 137=1 and post-oven-exit anchor first tags converge to the report-entry cluster (88.1%) plus sanding-rework lines (10.8%), 99.0% physical placement, 98.9% coverage (5,813/5,877), eliminating all 488 truly contaminated cars.",
+      "evidence": [
+        {
+          "resource": "repo://docs/12_%E9%BB%91%E8%BD%A6%E9%A1%B6%E5%A4%A7%E7%8E%AF%E7%BA%BF%E5%AE%9A%E4%B9%89%E4%B8%8E%E8%AE%AD%E7%BB%83%E6%A0%B7%E6%9C%AC%E9%94%9A%E5%AE%9A%E8%AE%AE%E6%A1%88.md#L126-L132",
+          "version": "repo-lines-v1:sha256:4ee4a3de16fab7a3f84dd5da7ea9278dd99cd2a49dd4ce0a25201ea8dd5857a4:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMDQwZjUzY2YxMGFmZDI3MWVjOGMxNDY3NGQ2NDJjZjcyZTFhOWRmNTIzNjE5ZGFjNGNiNDY4M2Y1NDA5NjM2YiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiN2FhYmMyYmM5NTZhYWQwMTZkODBlYmJlOTk0ZjliNGZhNDlhOTUzZjRmYmY2YzZhMWQ0MWE1NTA2MDA1MzVjOCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOGQ3N2JkYjEwOTJhZWQ0MDJhZGQ2NzUxMWJiOWM2MzhkNTYxMmI1OTIyMzY2ZTkxMTA4YjllMDViOTFlYTBjNyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiODNlMGRlZjg3NTUwMGE0Y2RkMmZmMTlmZjg3MThlZjcyMGUxZjdiMTQ5YTE0NGI2YmIxZDdkMjQxNmJmZTM4NyJ9"
+        },
+        {
+          "resource": "repo://docs/12_%E9%BB%91%E8%BD%A6%E9%A1%B6%E5%A4%A7%E7%8E%AF%E7%BA%BF%E5%AE%9A%E4%B9%89%E4%B8%8E%E8%AE%AD%E7%BB%83%E6%A0%B7%E6%9C%AC%E9%94%9A%E5%AE%9A%E8%AE%AE%E6%A1%88.md#L23-L23",
+          "version": "repo-lines-v1:sha256:d6ce66539f16ad7b346a4a8be4dcf0acc5e4190a041c94e0eae158b4e0a50396:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZDZjZTY2NTM5ZjE2YWQ3YjM0NmE0YThiZTRkY2YwYWNjNWU0MTkwYTA0MWM5NGUwZWFlMTU4YjRlMGE1MDM5NiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZDZjZTY2NTM5ZjE2YWQ3YjM0NmE0YThiZTRkY2YwYWNjNWU0MTkwYTA0MWM5NGUwZWFlMTU4YjRlMGE1MDM5NiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMmM4MTdlMzI2N2I4ZjNmZjBlZDY3Y2FiZGEyM2RiZDVkNTg1OTVhMmVjODIyMmZkNzllYWVlNzUwMGIzNjJjOSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTM0YjMxYmI5MzQwMDZjOGViYWFjMjBkMmM3MzdhODcwYWM4NjM0YWU2YzRhYWU0ZGMzNzNmNGRkYTFjNzQyZSJ9"
+        },
+        {
+          "resource": "repo://docs/12_%E9%BB%91%E8%BD%A6%E9%A1%B6%E5%A4%A7%E7%8E%AF%E7%BA%BF%E5%AE%9A%E4%B9%89%E4%B8%8E%E8%AE%AD%E7%BB%83%E6%A0%B7%E6%9C%AC%E9%94%9A%E5%AE%9A%E8%AE%AE%E6%A1%88.md#L65-L65",
+          "version": "repo-lines-v1:sha256:781c399889d81eab36ec7ad32c95f377bdcdc6b466146880f6d1a2c1a049df66:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNzgxYzM5OTg4OWQ4MWVhYjM2ZWM3YWQzMmM5NWYzNzdiZGNkYzZiNDY2MTQ2ODgwZjZkMWEyYzFhMDQ5ZGY2NiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNzgxYzM5OTg4OWQ4MWVhYjM2ZWM3YWQzMmM5NWYzNzdiZGNkYzZiNDY2MTQ2ODgwZjZkMWEyYzFhMDQ5ZGY2NiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYjJlYmM2OGQwZGI3NWIwY2UzY2VkYWFjMDdhODA3MzZhNTNhZGExN2QwZWEyMjU4MWY0NTQ2MGYwMmRmNTQwMiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiOTBjMjg4MWZlNGUwNGIwYmE1OGVkOGI3NTFlNTRhN2JjNTZmN2E5YjNjNDg0NWM0ZTM1ZTkyYTg5MWQ5ODkwNyJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_92901b5c7a39448793ca2cb4d9d67e97",
+      "statement": "The clean-suffix backward method (Plan B) has a 5.3% structural failure: 112 cars (1.9%) read a 0 reset at post-exit 09IS360 with no events after the last non-2 (NULL anchors) and 199 cars (3.4%) took 139=1 rework inside the loop, breaking the trailing 2 and causing systematic 16.16h underestimation; it is demoted from training main anchor to fallback for the 8 cars without oven events plus an offline cross-check.",
+      "evidence": [
+        {
+          "resource": "repo://docs/12_%E9%BB%91%E8%BD%A6%E9%A1%B6%E5%A4%A7%E7%8E%AF%E7%BA%BF%E5%AE%9A%E4%B9%89%E4%B8%8E%E8%AE%AD%E7%BB%83%E6%A0%B7%E6%9C%AC%E9%94%9A%E5%AE%9A%E8%AE%AE%E6%A1%88.md#L99-L103",
+          "version": "repo-lines-v1:sha256:e69d473753ff58d7204bc1747feba7a2325a8343054ce7d1b80455116b4c4038:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMzU0MmFhNGI5NzJmODJiNWIyZmYzYjEzNmQxYTQyZDgzOTY5OTZiNTBmZTgwZTUwNzVkMmZiYjRjYWJlNGJkNiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZTc1ZDNkNGZjOTZmMDc0MTliOGU0YTAwNzVjNDA3MTdiZWU3Y2ZlYTQ1MmRiMDU5MzBlOTI0YTUyNzMzNzhkNyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiODNlMGRlZjg3NTUwMGE0Y2RkMmZmMTlmZjg3MThlZjcyMGUxZjdiMTQ5YTE0NGI2YmIxZDdkMjQxNmJmZTM4NyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiODNlMGRlZjg3NTUwMGE0Y2RkMmZmMTlmZjg3MThlZjcyMGUxZjdiMTQ5YTE0NGI2YmIxZDdkMjQxNmJmZTM4NyJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_a897b77d36224292b2dbbb4864fdb712",
+      "statement": "spike_w1/sqlbase.py::ev_base_sql derives per-vehicle dual-loop windows in tmp_loop_bounds: t_rw_start = first raw 139=1; t_bt_start = first event with flag_137='1' AND raw 139=2 at or after the first oven-out over the errata 3-station set {16IS305,17IS305,18IS345}; t_rw_end/t_bt_end = first pass of {25IS010,25IS110,25IS210} after tagging (NULL = no gateway); tmp_ev_base.flag is purified to '1' inside [t_rw_start,t_rw_end] (priority), '2' inside [t_bt_start,t_bt_end], and '0' for everything else (post-gateway, pre-oven false signals, -/3 invalid values), with last_loop_t = max(t) FILTER (WHERE flag IN ('1','2')) OVER (PARTITION BY body) byte-for-byte unchanged, preserving the clean-suffix exclusion.",
+      "evidence": [
+        {
+          "resource": "repo://docs/14_%E6%B6%82%E8%A3%85%E8%BD%A6%E9%97%B4%E7%89%A9%E7%90%86%E5%8F%8C%E7%8E%AF%E7%BB%9F%E4%B8%80%E7%8A%B6%E6%80%81%E6%9C%BA%E4%B8%8E%E6%A0%B7%E6%9C%AC%E9%94%9A%E5%AE%9A%E6%96%B9%E6%A1%88.md#L141-L199",
+          "version": "repo-lines-v1:sha256:c69c9b277c2d874b63fa65147928fd39bbca5ec12690a6d94d2fd2af0873bacf:eyJzZWxlY3RlZExpbmVDb3VudCI6NTksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU1MWUxMGI0ZGIyYzFjZTk0MjNhZDJhMzJlZDJmYTY2YzE3NWM1NDY3M2RhMmMwNjUwNmFiODFiZDNkMWI0YTUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdlYzU2OGVhZGRjYzQ4NDAyNmYxZTMyYWYyMmM3NWYzODUzNjJjZjJjNWMxZGQ5NjhjMDU5MmY1NzE5NTgzMzAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjlkZThkODc1ZDY0NmE5NTgyOTcxY2ZkNzA5NTAyY2YyYzlmMGNkZDg3OWQ2ZTFlMjAwOGZlY2QxNjIzYTk4NWMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjUyZmNjN2M1Yjg4MWQzZjBmYWEzZWE2NGJkZjJhNDViMWIyNzU2OGZiMjU0YjFkYzczNjg5YjFkNmVlODg4NjYifQ"
+        },
+        {
+          "resource": "repo://spike_w1/sqlbase.py#L48-L121",
+          "version": "repo-lines-v1:sha256:2b1dda2a3b4d3cf3e27d8915ed32355ab27f5300fe9a516fab33ab6ed74c9f04:eyJzZWxlY3RlZExpbmVDb3VudCI6NzQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQxMDQyYzU5NzFmM2NlMTM4OWNmZThlN2E3NGZkMWU5MTAwZDc1ZTExOGMxOTkzYTMyODRkNDBhNTZhNzE3MTciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImVhMmE3YzM5YTY2OTExOTgxMjcwZThiZDM1YjE3NzgyMTE4YzZlZDU0YmY4ZjA1NzE3ZDU1NDNkOWY1YmNlNWIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImY2YTgyMTU2M2U1ODYyYjA5OGUxYzE5ODQxODA1YzdmNTMzMzVhZmQyOTlkMWUyMjkyZDhkMmFmMjhkMTcxNzgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjM4YWU2MGEwOWE3ODRiNDdlYTA4NTMxNmJmZjkyYzY4MDExZGQ2NzBkODlmMjhkYWY1ZGE5YmI2YWU0MWJjNDIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_5b8fa8c9332943c299409614ce066098",
+      "statement": "C5 dual-window truncation (docs/14 v1.3 D14-1; docs/15 C5): for rework-first handover cars (t_bt_start > t_rw_start) the rework window upper bound is LEAST(first gateway, t_bt_start); without it the blacktop segment [bt_start, gateway] (17,457 events, 5.66% of all '1'-flagged events, P50 6.35h / mean 15.00h) would be mislabeled '1' and inflate rework L1 by +8.46h (P50); after truncation the rework segment recovers to true P50 3.74h / mean 11.88h and the blacktop segment falls into the '2' branch; the 158 blacktop-first handover cars are unaffected and the 864 false-signal cars are purified to '0'.",
+      "evidence": [
+        {
+          "resource": "repo://docs/14_%E6%B6%82%E8%A3%85%E8%BD%A6%E9%97%B4%E7%89%A9%E7%90%86%E5%8F%8C%E7%8E%AF%E7%BB%9F%E4%B8%80%E7%8A%B6%E6%80%81%E6%9C%BA%E4%B8%8E%E6%A0%B7%E6%9C%AC%E9%94%9A%E5%AE%9A%E6%96%B9%E6%A1%88.md#L201-L206",
+          "version": "repo-lines-v1:sha256:5ff44247dc0b8058855c7f767af7c98e25631a887fd0b8b47248872bb8f2bdc6:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZjNiNjkxY2ZmMDMyNTBjNWJkMjM5ZDdjMjUwZTczZmE1OTlkZmRlZmZiMzdkZWNlMWQyMTNjNDVkNjRjYTYyYiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDIwYzA1OGI5YWIzY2U2ZDU1ZmU0NDY1MTBmMjMyYTMyYzkzM2UyY2M5OWZmZDkyNzczOWFmNmIxYWViYWY3NSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYmUwNWZmNDc3NzBhNmZhOTM5MzEwMWMzMzY5YTkyZmY1OTAyYjFmOTQyNjA5OGY1MzViYjA5OTMxMjU0NTA4YiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYmViZTJiYmUyODA2ZGY3NTVjODUxYTVlNmE3Yjk3NzUwYTZmYWUxOGNlZjE5MjFiOWRkMWFjNTRhMzM0ZWM1MSJ9"
+        },
+        {
+          "resource": "repo://docs/15-W4%E5%8F%8C%E7%8E%AF%E9%87%8D%E6%9E%84%E6%AD%A5%E7%BA%A7%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92.md#L27-L27",
+          "version": "repo-lines-v1:sha256:8de2bd4f61852c3c5df5cf483c6090135dff40d9c402b4489ee63610dd1a0d87:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOGRlMmJkNGY2MTg1MmMzYzVkZjVjZjQ4M2M2MDkwMTM1ZGZmNDBkOWM0MDJiNDQ4OWVlNjM2MTBkZDFhMGQ4NyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOGRlMmJkNGY2MTg1MmMzYzVkZjVjZjQ4M2M2MDkwMTM1ZGZmNDBkOWM0MDJiNDQ4OWVlNjM2MTBkZDFhMGQ4NyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOWZlYmM2MWJiOWVmYmI1MDYxOTcyMTVmN2EzM2RhYzk1ODhjM2IxZTIxZWQxZGRmNzYxYzI5NjhiM2E4Mjg5YyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNzZhNzg2ZTBhODc2ZmVmMjUxMmQzNGQ4MTNmNmFlNTc0ZDZmYjM2NTQ1MmYxMjI4MjdjZTVmYjhjZTgyMGJiNyJ9"
+        },
+        {
+          "resource": "repo://spike_w1/sqlbase.py#L66-L79",
+          "version": "repo-lines-v1:sha256:c7916317dc3d2b911221351a306631301840c974d3e2116f5879c2be28beab96:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjA2Zjg3MjBhNmNjY2RiZTY4MTAzYmRlYWY5ZDFkYjMxMmRlMDllYmUxNWE2ZWQ1MDM3MDU2OGYxMzRkNDdiNzAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBiM2MxYjc1MGY4NmQ2YmEzMGEzMTc0YjQ0NTQ1OWI1Y2FmNTcyYmM3MTQ1N2ViMGM2YWQzMWE1YzAwMmY2MzYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImU3YzVkZTRkODgwYWVmODZiNDhkYjFmZmU1ZWFlMzA4NDRmNmE0OGJhZTczNWVlODNlYzkxYzI1NDc4MzQ0N2MiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjMyNjY5ZjMxN2EwM2M1MDcwYzMxZDNiZDViNGQ0YWUxZjE2NmEwNjVhNjlmZWZjMzUxZWMwYmZlZTlkZDVkYTEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_a809b4b685f14df8942b4c168cb7fcb9",
+      "statement": "The oven-out station set was erratum-corrected from 4 stations to 3: 20IS010 is the line-2 bake-oven storage-line entry (median 46s after 17IS305), not an oven exit, and measured zero car-passes at 20IS010 earlier than the three exits; shipped code (spike_w1/sqlbase.py first_oven, spike_w2/eta_v2.py OVEN_OUT_STATIONS) uses the corrected 3-station set {16IS305,17IS305,18IS345}, while docs/12 §3/§5.1 and the README 黑车顶大环线锚定 row still list the stale 4-station set — per the single-source-of-truth order the docs/15 erratum and shipped code prevail (以 BM 笔记为准).",
+      "evidence": [
+        {
+          "resource": "repo://README.md#L26-L26",
+          "version": "repo-lines-v1:sha256:d4fc9546ff483c3a04fc06792ebcea54bf2743e13aebf96e624698593f76ec9e:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZDRmYzk1NDZmZjQ4M2MzYTA0ZmMwNjc5MmViY2VhNTRiZjI3NDNlMTNhZWJmOTZlNjI0Njk4NTkzZjc2ZWM5ZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZDRmYzk1NDZmZjQ4M2MzYTA0ZmMwNjc5MmViY2VhNTRiZjI3NDNlMTNhZWJmOTZlNjI0Njk4NTkzZjc2ZWM5ZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZGQ4M2QzM2M3ODIxMWJmOTA5N2E3NmJjMzI1MjA4NTU5YWVhMWU0NjFiMmFiZDYyOWIxNjViZjhkNzcyZGM0MyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMTdkYWE0NzMxMTUxZjIxYWY3NWMxM2NiY2ZmOGQ3Y2EyYjUzOWJjYmZiNzYyNGIzNTQ3YWMyNDEzYjFmNWYwNCJ9"
+        },
+        {
+          "resource": "repo://docs/15-W4%E5%8F%8C%E7%8E%AF%E9%87%8D%E6%9E%84%E6%AD%A5%E7%BA%A7%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92.md#L13-L13",
+          "version": "repo-lines-v1:sha256:121ee13bb2c1121a253a53408dc512da0c59e32d0904c9e421bf239e7c8ef501:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMTIxZWUxM2JiMmMxMTIxYTI1M2E1MzQwOGRjNTEyZGEwYzU5ZTMyZDA5MDRjOWU0MjFiZjIzOWU3YzhlZjUwMSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMTIxZWUxM2JiMmMxMTIxYTI1M2E1MzQwOGRjNTEyZGEwYzU5ZTMyZDA5MDRjOWU0MjFiZjIzOWU3YzhlZjUwMSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMmQ3MDZkYmU0ZGEzMDI0YzlkNzNkMGFlMjkxOTgwYjcxZmZmNjNiYThlMzI2ZTM3M2EwYmViM2VkZWM0ODM2YiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYTJhMWFlMzZiY2ZiOTU4Nzg3MjYzZGMwMjlkNmRmOTA4NzBhZWM2ZDA2OTRlN2RlYThmZDg3ZjZhNmYxNmVkYiJ9"
+        },
+        {
+          "resource": "repo://spike_w1/sqlbase.py#L50-L54",
+          "version": "repo-lines-v1:sha256:15edd1158ebbee49551e202883e5e30cd6fc1815fa07845f98ed8ff3deabab09:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZDUxNDA1NjE4MDkwMDcyMjRmZjI5Mzc3OGYzMzc2N2I5N2RjN2IwYTI2MWEzMWVhZTNiYWQ5NjBmZjQzMDNhZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiODU5NzBiOTQ1YjAyZDRkYTU0YmM0NWYwMTk5YjYwMTM1YzI3MTQ4NjVjNWZlYzBkNDJhOTg4NTNlM2Y5YzY2NSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMTY5ZWQ5OGIyNmZmNjY3NWZhYjAwMzgzNTgxMDk2ZDkyY2NiMGU1ZmQxYzQ0YmEwOTlmN2Y2ZWY0NmYxMmQyZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNDJmNGRkYjZhZTYyMWYxMmE2YmU3ZTk0N2YzNWZmYzJlY2RlMDg3MDliOTg0N2I2NjcyODhmZjFjYTVhZGZjZSJ9"
+        },
+        {
+          "resource": "repo://spike_w2/eta_v2.py#L71-L73",
+          "version": "repo-lines-v1:sha256:197d9c139e37a682396384ba814641a8972086797b757ff97079b32c09ad5f6c:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMDJmN2U4ZWMxYTNlNzMzODY0YmIxMGVjMTQxNTg4NTEzMTczZDRmNmNmYjhlMDcwNmQwNTVkOTIwMWZmMjI3MSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYzViYWUzYTFjZTcxYTZjYmE1NzVkYjFmMGZhZmMzMmE4MTIyZDkwOTJhOTUwZWNjYTI5MmY3ZTE1MzdjZjVkYiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNTQ4ODJlYzg1N2ZhNzI2NzY5OTA4NDI1ZDdiZmU0NzA2YTlkNDIwNzhiYzFlNTMzYmRkMmZlZWQzYWM4OWE0MCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNmFjYjM3MjE2MWJiYjMzYWM2YTliNmVjMGRmZjE1M2MzMzIzYTY5MWMwZjNkMDUxYjY5ZmQ2ZDNjNTNhZGE1NiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_533afd92922543679ec3febc8823a4f0",
+      "statement": "resolve_effective_flag rule R1: if the current station is in UNIVERSAL_EXIT_STATIONS (37 stations: gateway trio, direct transfer, waxing/assembly corridor, exit corridor) the engine forces the effective flag to '0' with highest priority, ignoring resident telegram bits; after unfreezing, prediction must converge to the body-type-specific clean mainline baseline row with tiered fallback (e.g. IE14.- ~16.5h after the gateway), and a plant-wide pooled ~2h scalar is strictly forbidden (docs/15 C7).",
+      "evidence": [
+        {
+          "resource": "repo://docs/15-W4%E5%8F%8C%E7%8E%AF%E9%87%8D%E6%9E%84%E6%AD%A5%E7%BA%A7%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92.md#L29-L29",
+          "version": "repo-lines-v1:sha256:41faabde4eae103005ce412444f764365636f3089a37a15a436daa268d423ac8:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNDFmYWFiZGU0ZWFlMTAzMDA1Y2U0MTI0NDRmNzY0MzY1NjM2ZjMwODlhMzdhMTVhNDM2ZGFhMjY4ZDQyM2FjOCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNDFmYWFiZGU0ZWFlMTAzMDA1Y2U0MTI0NDRmNzY0MzY1NjM2ZjMwODlhMzdhMTVhNDM2ZGFhMjY4ZDQyM2FjOCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMzVlODk2ZDkwOThjNzEyZjc2M2E0NWI3YWM1ZDE3MTgzYjYyZmY2MzAzMDcwZjgzMDJiMDQzYjgzZjM4OTY1ZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMGI4ZDM3MzVlYzQ0ODg0MWIyYjkyNjUyOGYzNWU1MjkwNmJmNTY4OWRhNTBhNzZmNWVhZGI2MTE2Y2ZhZTk0ZSJ9"
+        },
+        {
+          "resource": "repo://spike_w2/eta_v2.py#L231-L232",
+          "version": "repo-lines-v1:sha256:73cdeba71fb6412e14c45fabdb9e5a1f748e5a6080e8e0d064927118138f9bcf:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMzI1OGQ3YWJlZWRjZDg4YTc3MDk5ZjRjNGMxNzNkMGIwYTYzMTNkOGY3M2RkMjAzZThiYjEzMzBkYzZkNDY5MiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNzZkOGY3OTE2ZjgwZWY3N2NlM2ZlNjZkNTRkOGVlOWM4Yjc3OWY0NWI3Mzg1NWJmOGNjYTA3YjA2MWY1NjEzNSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMzdmMTcxYzE5YTViOTVjZDFhOWU5OGYwZWI2YzE2YmQzOTEzMzAyZjBlYmQ4YjE2MzY0ZmZmNDc0OTgzMjVkNCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMmI0Y2YxMmU4NjNlODIwNDNmMzNjMTNiNGY5ODFiNWU2NTA5ODlhZjRiMzcyMGFkMDczMDY0NzU0NjBlZmMwZiJ9"
+        },
+        {
+          "resource": "repo://spike_w2/eta_v2.py#L47-L60",
+          "version": "repo-lines-v1:sha256:1bc06129c8faab73040a13c65e129de75b967cd1e5aff2b7fcabadb8cc86b2d6:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjUzZWQyODllMjc0ZWFmZmZkMWI2NTEwY2Y0MWJhZGQ1NTU0NzA4YjYzNGM2ZGY3OGY1YjBlZmM3OTA2MjBlMGUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjEwYThmNjBmZTNjNTBiMGNmNTM0NzIyMTEzZmU5MGQ3MzQxNDM4N2NlOTJlNTk3OGM4MmNiZDgwMWNjMDUwMGQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjIyNjhlZjg5MjU4YWExMGIwYzUyMzk1YmI4ZDk1YjVmNTEyMjIwNWM3NzU4NTFhMWE4M2ZkN2U2ODNiYjEwZDMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjA0YTBkZWUzNGUwYjZlNGM4ZDJkOTUwMzA2ODY2OTYwMDE1NWMxNDRhODk0ZGZlMmU0NjMxN2YxYjU4MGU1NTAifQ"
+        },
+        {
+          "resource": "repo://tests/test_w4_loop_exit_guard.py#L82-L85",
+          "version": "repo-lines-v1:sha256:39378b6da1e1a107942450acb2cc6fa87f27c553e14993121dc6fdccbfb5e4bc:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYjczMDAzMDhlZTcxZTdkM2VkYTJhYmNmOTJiMzViMjMyYjJjYzBhZTRiODMxZTIyMDUwMWY3NmRlNWU1ZjgxMyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNWFkNDYzNTg1MDU0MDYwZTQ2MTVjNTE4MzY0ODgyZTcwMmExOTZkZDFjYWMxNWI1MTRjZGIzYzVhMmUwNDQ5ZiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNTcwNTJmYjkzMzVmMzYzMmM5NDNmOTE4ZDkxMTk2YjhjYTZiODJmMzgyOThkYTFjMWE4YzE4MzkzY2UyMmQzYSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMWM3M2FlYjEyY2QzYjYwMjA0ZGZkNWIxMzBmNTIwNGIzMGFiMzc5Y2EwMTNkZGU2NTg0ZWNmOGVjMTQzNDQ5ZCJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_90cd5f9dffd042a3a899ed8659d1252c",
+      "statement": "Rule R2 for raw 139=2 applies four-fold protection: 2.1 137 != '1' (including missing '-') -> '0' (blocks the 4,941 G0 flash cars); 2.2 station in SPRAY_QUEUE_BLACKLIST (14IS260/13IS260) and passed_oven=False -> '0'; 2.3 passed_oven=False and station not in BLACKTOP_ONLINE_WHITELIST -> '0'; 2.4 (v1.4) loop_exited=True -> '0' (a past-gateway car has by construction already been oven-out, so the oven/whitelist defenses are pierced and the measured 45% residual '2' bit is frozen); otherwise the effective flag is '2'.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w2/eta_v2.py#L233-L242",
+          "version": "repo-lines-v1:sha256:5bea0e471ab85e5b2fde756678a478db85156ff99deaa63995b086731a4fa741:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQzMDUzYWYyOWVkYjg2YWFlODZjYjNlMmViNTNjYzgyN2E5NzFjZGI0MzBiZjljMmFkNWYwY2VjZmEwYzZlNDciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjFkYTAyZTU3ZWJkYmMwM2Q5MTNkOWRlYTY5ZmFiMmJlMGRjYzU0NTkyNjc4OTkzNTFiZTJiYzRkZWExZjc4OTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImFjYzQwM2MwYzM3MmNhZDM4ZDdlZGE0NzNjMDMxOTMzMmU3MGMyMWI1ZWUwYWJjZjNhNWU2MmNhNTcyMmU5MjgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijg5ZTE4ZWE2ZDNmYjQ4MTQ1YTBlM2Y4NjlmNmEzOTkwOTcxNmQ0YTlkYzhhNDk4M2U1YTU1NzI4NzYxYjlmNGYifQ"
+        },
+        {
+          "resource": "repo://tests/test_w4_eta_unified.py#L84-L123",
+          "version": "repo-lines-v1:sha256:eba3958d9a54cf58a6710fcdb2f841041ab395a9e145d9b9e83fda794cd29a06:eyJzZWxlY3RlZExpbmVDb3VudCI6NDAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk1M2E3OTBhMTU1ZmM2MTg5MDI3YjdlZGI3OTNmN2E4ZDIxOTQ4ZDc3YzFiMTk1NDcxZjg0OGM0NDA2YmI1ZjMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjgyOTFmMmM0MGViMWIzMTE1ZTg2OWY1ZGFiNjdiNDMxZTdlODQxYTEzMWRlN2QyYzYzMTY3Yjc5MzIzZDQ2YzgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImFjODRlMTA0M2FiMTM4ZDk2NjMwYjQyOTUzZjQ4YTI3MTAxMzU5YTMxMTRlZTk1OTE1ZGQyNWYxNTJlZGI1ZjQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjIyM2RmMGRjMDU3MTQ4NTQyZWQ0MTYyMzY0Y2UxYzA4NDU2OTgwNDU2Y2VkMDkyNzk2N2E2Y2MzY2YxZDVlOTQifQ"
+        },
+        {
+          "resource": "repo://tests/test_w4_loop_exit_guard.py#L69-L79",
+          "version": "repo-lines-v1:sha256:3935567aa955c2ef1250af6fb914596cd01961eb51a105a740edb3f238a5ae49:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjFkZmU2MGMwOWY0ZjJlNjk3MjY2N2NkNTk3MGRhMGU5MjVmNDc2YTQ3YmY4ZDRiN2I5M2UyNjQ4OGM1Y2UwYjkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk4ZWU2ZThhZmI2ZTJlODQxMGExM2EyOGI0YjU2Nzc3ZGQ4YjJhNWFmNGU5NzRiM2E1NjliMTA2ZmZmNWRkMGMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImIwZjE4NzZkZWMxNTk0ZTRjNjMxMjZmZDY3NDI0ZDMwZGYyOWM2MDI5MmQ2NDFkNmRkYjc5NWNiNTEzZjc4NzUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImM3OGFmMzc5ZDBkMzQzMjA3NTY1YzdmZjIxMzdmNjExN2YwOWE1ZmIyODBjYzZkYzUwZTU3OGZiZTZlYjg5ZmEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_23cb246447694c61b3561cb653c1e5a8",
+      "statement": "Rule R3': raw 139=1 resolves to '1' only when loop_exited=False (first-tag concentration at the sanding stations 97.17% per docs/13; the Doc14/code comment rounds it to 97.12%); when loop_exited=True the residual bit is frozen to '0', mirroring the offline purified-window semantics [first raw-1, 25IS exit] online; loop_exited defaults to False = old semantics, so the DSS_DUAL_RING=0 rollback path, the static effective_flag passthrough path, and existing unit tests are unaffected.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w2/eta_v2.py#L215-L245",
+          "version": "repo-lines-v1:sha256:cce79209e6810440e69d17fcb29d65b424dce697c2cbe5667269a6b9e1f8c217:eyJzZWxlY3RlZExpbmVDb3VudCI6MzEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU0OTAzYmNlMmE5MGIyNGRiZGEzNmRmYmVhZDgwYTQ5OTcxNjQyMjkxMzFkMDU1ZTJmNzFhMzJjMWE4ZjM0MTAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFiMzNkYTY1NzdmMTY4YzEzNzljZTZkZmJjNGViOGViZTQ3N2Y0Njk2MDhhNDQyZjdlZWNiOGZjZTFlYjJhZWMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjUzNmM1ODUyM2QyNmZlM2M4NDEyODQ0ZjdhYmJiMDdhNDllODU1MDFlMGI3ZjhhMzFiZjQxMmQyNmY5ODU2NDAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImRmOTFiYTk2YmI2ZWVkYWNiMmMyOTA5YjM3YWJkNjczYTU1YmRiYjQwMjRiMmIwOTUzMDA2Mjg3NmE1MmRhZjMifQ"
+        },
+        {
+          "resource": "repo://tests/test_w4_loop_exit_guard.py#L56-L66",
+          "version": "repo-lines-v1:sha256:dfd8a7ae21d67a03eb950a07741d7a2cf960945cf3e5f8f548c5ab1ee80d6665:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBiYWQzN2U4OTQwMDM1YzczOTExMjc2NWU1ZGM1YmE1ZWFjNzczM2MwYmQzZmVkM2U5NTAyZjdlODUxODU3NGEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjM1Njg1MmMxZDI5N2NkYzA1NjNmMmNkYmFmMDNmYzViOWVjYTk4YTJlYzY3ZWY1Mjg1NjFhNGNlYTlmZDcxODgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImZiMjM0NGE5YzcyM2EwNjQ0MTA1MjdjZTg5ZTNlYjJiZTQ2Y2RiYjk3ZTJhYmRjZmNjOTY2Y2RlMTk5ODBhNDAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImQyNmNkYmVmMDVlYjRkNzFiNjQzODk4NzVhNzU3YzRkYjliMTE0ZTAwOTYxYThlY2U0Mjg5ODI4N2I1ODU4ZmYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_0585e1ac86894686994d8bded660c6f5",
+      "statement": "The W3 pool maintains two per-car signals: O1 passed_oven is monotone set-once (pre-seeded True if adoption happens at an oven-exit station; set True, never reset, when a pool event passes an OVEN_OUT_STATIONS station; slice-replay merge is monotone OR); O2 flag_137 follows the car as the latest event's 137-bit value, normalized with '-' treated as '0' and no cross-car contamination.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/stream_pipeline.py#L385-L420",
+          "version": "repo-lines-v1:sha256:2ac777623a8638ee27cefc220a56938ba87887dc9ae45a1977cd0707969cba16:eyJzZWxlY3RlZExpbmVDb3VudCI6MzYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBhMTc1ZGI5MTQzYWEyY2NhMzI0NTU1M2E5ZWZjNGI5OTI1MjFmODQ2NmY4MjIzYjI3ZGVlNzk4ODhhODgyN2UiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImZjMmQ5Y2EyOTNjZmNhNjA4ZmM4ZWM0N2U0YjE2OTljYTYyMGRiOGUzYzE4M2UzNTI1NjU4MmI0MzM3MDc4NGUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjIzNWJlMzM4YTRhODEzMDM2NDUyZDVmOTlhMTVmMDUyNTE3MGFkMjI1Y2RkMjA3Y2Q4NDI3ZDEwZmNkMTIzOWUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImRmNjcxYjIwOTU4ODUyZTNkMWM2Y2Q2OWEyOWUxYWY0MjJhYTI3YjczNjUwYzFmYzQ1MDU3ODdjMTIzN2QzYWQifQ"
+        },
+        {
+          "resource": "repo://spike_w3/stream_pipeline.py#L493-L495",
+          "version": "repo-lines-v1:sha256:14bd6bc685287e9448dc37fc75658dc13521e1e0a18e0ca8803fc5a8a3f533a1:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYjI1ZmViZGQ1ODlmYzNkMjRiY2NhZjMyMTNlOGMxNGNmZTUyMGJjMThiZTJmODllZTQxNjE0MmFlYTc3NWVlYyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOWE0ZGRlYTJhMjIzYWU1YzNjNjZmYjI2YmVmNzU1MWZkMDJjYjM0MzI0NzU4NDUwYzVlNGY4NDRiN2MzMGZjMCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMmYzNjMzM2QwZTU4YTQ2YWI2NWM2OWMzNzc1ZTVmYjYyZmQ5MjYwZDcyOWE4MDA5NmQzNTc1MjVhYjE2OGI2YyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMzQ4MzE4MTc3MDhlOGE3ZDBiODY1OTllYThkYWQzNmVkYzc3MzBkMjllN2ZiM2ExMGRiYzc2MTc5Yjk3Mjg2NiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_66cff625c7624cb582b5d436444347ff",
+      "statement": "The pool's loop_exited (W4.4c (α), Doc14 v1.4): pre-seeded True if adoption happens at a LOOP_EXIT_GATEWAYS station {25IS010,25IS110,25IS210}; set True when a pool event is at any gateway station (mainline residual-bit events do not reset it — the bit not being cleared is a data fact); reset to False only on the new-cycle signal: an in-pool car passing an entry station again, which also resets entry_ts and loop_count; slice-replay merges 25IS-exit events to True and entry-station events to False (same walk order as _ingest_core), leaving the stored value untouched when the slice has no signal; invalid raw flags (3/-) inherit the last valid flag and never reset it to 0.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/stream_pipeline.py#L389-L441",
+          "version": "repo-lines-v1:sha256:113568e911290401faf6bb66fced4c99e52860b7a4be50470fdb1ca7e7d48a3d:eyJzZWxlY3RlZExpbmVDb3VudCI6NTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjliNmFmOTkxNTI1YWIwMjhhMzQ0YzI2NzIwZmVjODgzZWZkZDJkOWQxN2I0MTQwODg3Yzk5YjE5NDk2MmFjNmQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjVlN2JjZDM2ZWY1M2I0NDUyM2U2NWU5OGQxOTQ0OTkzZTBmZjE3NDZmNTUzNmMxYTUxMTc0NmYzZTAxZTc1NmYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjRjYmViYmI3ZGY0MmVkYmM3OTRjYWRhOTQ1MDBkNGYwODc2ZmMyYjNhZDdkMjA4ZmIxOThiZjBkN2M2ZTI5NmQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjJkYTkwZmNlMzcyODllMjAzOTM2YmRlMDU5MDg3NWU2MTljN2FlMTgxNWM3ODQ2MDY5OWI3NjEzMmNlNzA5MWYifQ"
+        },
+        {
+          "resource": "repo://tests/test_w4_loop_exit_guard.py#L125-L247",
+          "version": "repo-lines-v1:sha256:38a475230a6e7e1c162ac84350946428024a41ed6ce0394eca21aa7df9f09cc9:eyJzZWxlY3RlZExpbmVDb3VudCI6MTIzLCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiIyZDZhNTlkYjAwMjM0NGIxYWEzODZkOWZhYjY4YWFlNDkxNTljZTUwNGNiZGRkMWEyNjdiNzA0ODdhZGU3OWY3IiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiIwMWJhNDcxOWM4MGI2ZmU5MTFiMDkxYTdjMDUxMjRiNjRlZWVjZTk2NGUwOWMwNThlZjhmOTgwNWRhY2E1NDZiIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MywicHJlY2VkaW5nQ29udGV4dEhhc2giOiJlZmNlOTAxZmNiYzQ5YzZkOGExM2MyOTgxNjczNmQzMTI0YzBjNjJlYWRlYjM4MmU2Y2YzNTllN2M0YjBiZGY5IiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MywiZm9sbG93aW5nQ29udGV4dEhhc2giOiIxOWIzMDkwNTlmYzhlYWI1ZWJjZWU5OWQyY2UxZmVkZTQwYzY4NGYwYzQ0NmMxOGIzNmYxYzhkNzBiZDNmY2IzIn0"
+        }
+      ]
+    },
+    {
+      "id": "claim_7bbc45b1089d4ffd98133e4809e24a59",
+      "statement": "The dashboard single-car CLI mirrors loop_exited and passed_oven as stateless single SQL count queries (did this car reach the 25IS gateway exits / oven exits at or before as_of); the known simplification misjudges the rare 'second rework after loop exit' car as mainline (0 cars measured in the KW36/37 window), while the online rolling-pool path carries the full state.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w3/dashboard.py#L247-L293",
+          "version": "repo-lines-v1:sha256:90a9f24ee5435b26e7d539a855cc427ce800c775d42c3cbf58f1cff135f4b0ec:eyJzZWxlY3RlZExpbmVDb3VudCI6NDcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE5NDVlYWZiMWIzZDYwYzdhNWQzZDc2NDBiNDAzMzkzMTVlZjE1NDRmMTYwZDk5NGE3MzFmZDg4YTcwNzQ2NWEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU1MzQ3MjgwYjZhYWRjNTNjOGE3ZmQwZjI1YzUzZTdiYjhmODc2MmQzZTM1MzEwZThmM2ZhZjNlNmNmMTg4NzIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjY5Yjc0ZGQ4NTMwODBjNDljNTljNWVkZmE1NGY4YWNkM2UyZjY3ZDc2MzViODU3MzFlZWYwMjZkYjgzNWNiNzQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImYwZGE0NzQ4NzIwYmU0MTFkNDMyOGE2N2FmYzZhZWY0ZWVmYzhmMjA2NGEwYThiZDBkOWVjMDg4ZGYxYTk0ODcifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_46b00c0df2e34d1f8a4bcb5e8c0b9d28",
+      "statement": "estimate_event_unified branches on the effective flag: branch A (eff in {'1','2'}) takes rem from dss.dim_loop_remaining via three-tier hierarchical resolve (model, platform prefix LEFT(model,2), 'ALL', row n>=30), falls back to dss.dim_loop_duration L, returns (None, False) if all missing, and computes eta = t + round(rem) with no additive term (docs/15 C8: loop tables' training target is station-to-exit full journey); branch B (eff='0') takes the mainline base from line-cohort mixing or the rem table and adds the expected net delay from resolve_expected_delay (delay forced 0 when the station is in UNIVERSAL_EXIT_STATIONS); mode='shift' consumes mean columns and mode='vehicle' P50 (docs/15 C9), with alpha applied once at the consumption point, never inside the estimator.",
+      "evidence": [
+        {
+          "resource": "repo://docs/15-W4%E5%8F%8C%E7%8E%AF%E9%87%8D%E6%9E%84%E6%AD%A5%E7%BA%A7%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92.md#L30-L31",
+          "version": "repo-lines-v1:sha256:80ea8c79762212cbb19128b9b5d1657589e0536c58e6eab5f8c87b004c646f9d:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiN2EwMDU5MjE2N2M2ZjU1ZmIwODNhMWNhYzIxODFkYzc3MTJiMDE4NWM2MTg0YzQ1YTIyNzBkYzFlZTFiNjlhNiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMTMwOWU0ZDQxMjYzMzg0MjNiOTk0NDIwMzhlMTcxNGIwNDFkYmFkMTMyNTdjODM4ZTBlOTU3Nzc4Nzc5MGZkZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZWU2NThhMmZiOWUyMDg5YmUyYzdlZDU1NWIzNzllNDg4M2MxMWU2NTc5MmRlZmVkMTMzZjg2Y2JjMWNmZjYzOCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZGYyMzY3OGVjZmZlNzYwMjRiNDdjZmViMTg2Zjc5N2ViNTdiYmJkZjIyODRhN2FjNjRkMzVjZmRmZTMzMTUzMiJ9"
+        },
+        {
+          "resource": "repo://spike_w2/eta_v2.py#L345-L377",
+          "version": "repo-lines-v1:sha256:a0d65def074a2f501e0240e871e35389c48805da404672c2e49aea726165883d:eyJzZWxlY3RlZExpbmVDb3VudCI6MzMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjllNmYwMWViNzk0Y2IxZGY3MmM1YTU5MzIwOTE0MzQ2ODI5NzY0MzZkMDQ0YzNkNjFmMjI0ZjU4YTlkOTRhMWEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImIwOWFiNTEyZTIzZTkwYzBhMDU3OWY2NzAzY2UwZWY2YTU0ZTVlMTlhMmM3ZTY5N2E2ODgxMGMzMzQzZTQ0ZGMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImJhMjc2N2E2ZjhiOTBjNjVkODFlMTkyYjc1ZDhlNWJiMmQ2YWQ1MmNjMDMzN2Q1MGIyZmY2YWVmM2U1OGU3MzEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjhmNTc3YWM3MDIyNzM4NGI0MDY1NzdjYzM3YjUyOTdkNzA4ZWQyMzdhMjU5Y2I1NDA0YWVhMmM4MmFmNmYzOTAifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_fb1e633c83cc4afebe0cfe11aa36c303",
+      "statement": "The effective_flag passthrough channel (docs/15 blocking item 3) lets replay sides pass the already-purified tmp_ev_base flag directly, skipping the online state machine (offline purification is ground truth and the state machine is its stateless mirror); replay must not instead pass raw 137/139 + passed_oven, because a missing 137 bit would mis-kill all pure blacktop cars back to '0'; the online side (predictor.rem_of) always passes effective_flag=None and runs the full state machine with the pool's flag_137, passed_oven, and loop_exited.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w2/eta_v2.py#L326-L334",
+          "version": "repo-lines-v1:sha256:5bf68791ee4539bc5d116e139f68f4d17df9ed8a63985c8d15a5f57198269ae7:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOWU2ZjAxZWI3OTRjYjFkZjcyYzVhNTkzMjA5MTQzNDY4Mjk3NjQzNmQwNDRjM2Q2MWYyMjRmNThhOWQ5NGExYSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMWFlZWRkODZhYmIyYWU3ODFkZjg2MWRiOWRlMWY4YmRhYTA1NTY2YjI3NjBiZDkyZTE3MDcwZWRlZWY4ZTg3OSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNjcyMTczNmM2YmIwMmFmYWU2NTAxYjk2ZjZmMjI0ZjMwZTdhZjgwMzBkZmExOGUxYzk1YTNjYmFlYTg5YmNmYiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiN2NhOTU4N2RkNjAzOTAzYTAzNjRjNzcxY2NhYmFmNGY0ZmExOTU0MGM3ZWNmN2Y0OGY4N2MxNTJlYzIwZTMzOSJ9"
+        },
+        {
+          "resource": "repo://spike_w2/eta_v2.py#L438-L458",
+          "version": "repo-lines-v1:sha256:f3f7936d479c62ba32709808d1b58a6e5c10f2eba4719ccf78e92f5a803f4a12:eyJzZWxlY3RlZExpbmVDb3VudCI6MjEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQxM2QzODQ4NGM2ZWNjYzNlNjJmZjllYjAzNzlmYTg3YjJhZDExNGQxMmE0Nzc2ZWVmOTgyMTk2ZDcyYTMwMzIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjEyNDQ4MzIxZDE0MDkwMzRlNTI2N2IyNTM0N2QxYzcxNzgxY2I3MTJjYTNjZDNkODJlNmFkZTE0MzFlMTU2MmEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImY2YWVhYzI3MTgyNjg0MTQ5N2MyODU5NDVlZGI2OGE5ZWIzMTNjMThhY2ExMjM0ODA4MWQ3MGM3YTZlMDM5OTkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjUzMGRmNzlmNzg1NTYyOWMwYjliOGY3NmJkYzVmNGVlOWExODIzNDcwOTQ0YzE3MWI3MjFlNmExYzYyMDhhYmUifQ"
+        },
+        {
+          "resource": "repo://spike_w3/predictor.py#L29-L53",
+          "version": "repo-lines-v1:sha256:0578385469b2f5cfcafecc03668e70e9e5e1e27b23a17459339387b4638f2bd0:eyJzZWxlY3RlZExpbmVDb3VudCI6MjUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjllOWIxNTAzZjJkMDZjZDE5ZjRkNWQwN2M1YjY5Y2Y0ZWEwMDJiZTQwMDYyYmI4ZDE1N2Y1OTMxMDM4NjNjNWIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjJhOWY4YzJiYzdhMTQxYTAyMmFmM2ZlYjhhYjUwMDhlYzI1NzU3ZWYyNGFjZDA0OWY1MDg5YTc0YjdjOWFlODEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijg4NTkyZWU0OTg0MzM4OTQ1OGNkOGU3Mjk4MmU0MzVhYTY4YmU0YzI1YmNmZDk3YWFhZDk1N2Y3NmU2ZDUxYWMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjY0N2VlZGYwMTRkOWNlZTM0OTlmNzhkYmFjYmFiODdlNTJkNTM5Y2Y1ZTk3MTU2OGI4MTcxNjdlYTI1MDk0YzkifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_84b9b35514124120b4999db41e9053c9",
+      "statement": "Engine gates: DSS_DUAL_RING defaults to 1 (unified engine production default; 0 = legacy-path rollback; strict 1/0 parsing that raises on invalid values); DSS_USE_NET_DELAY is effective only under DUAL_RING=0 (doc10 retrofit replacing p*L compensation with expected_delay); DSS_SHIFT_TIER_DELAY=1 makes the unified delay prefer shift-tier rows (entry_shift DAY/MID) with fallback to shared rows, and 0 = zero drift; the legacy estimate_event path is retained unchanged for the rollback path and existing test anchors.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w2/eta_v2.py#L1-L7",
+          "version": "repo-lines-v1:sha256:5eb6e5ef14509d6ecb5bde63312cb0bb00f1b0da5ffd34f90247eb07157bda9b:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOTU1MmY4NTRmY2Y3NzM4OTE2MGEwOGNmYjRiZTJlYjkwMmNkOWEwYzBhZjc2YWI1N2RmMDJjYmY5MTI1ZDM2OSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiN2ViNzAyNTc1OTNkYTA2ZjY4MmEzZGRkYTU0YTlkMjYwZDRmYzUxNGY2NDUyMzdmNWNhNzRiMDhmOGRhNjFhNiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjAsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYzZkMzUyY2VlMjU0MmQ0NWVlNTcxN2QwZjhkZjI0YWI3ZDk0MGQ3ZDc3MjZjZTg1MDYyODA5ZDZmNzM3YTZhYSJ9"
+        },
+        {
+          "resource": "repo://spike_w2/eta_v2.py#L380-L407",
+          "version": "repo-lines-v1:sha256:32f4b824c674aadf04c7e75779ec15ccc594a203e3edc1ebeadc19752bf6bafe:eyJzZWxlY3RlZExpbmVDb3VudCI6MjgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImUyZGZiNTc5MWRhZWViNmNkZTg5NTE4NWM3MWUxZTIyMWExNWIwMjc5ZjJhNjMzNTdkYzFjYWJkY2MyYzUwYzAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjhiMTdkOGFhMjdiMTVkMWE5YzVjNjBmYTg4MDJhOTk5MDc4Mzc1MjkxNWQwMTc0MDBkZjM5YTg0NWQwMDljZDYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjY3OWQ2NTJhYjgyODJhOTg0OTY4NzBkY2ZlOGVjYjE2OTBkODRiNzY3NDhhZTlkZmJiMmU3ZjA0MzNmNTdjNzkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijg0ZjZhMzNkODhkZjMyNmZkMGM4Njc4MjAxYjAwNzA2ODlmNGMwY2UxYjAwY2JiYzliZGVmNDVlOWJlODE4MTIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_7465277e8d7a4440a6d2f01b0c4b4114",
+      "statement": "The dual-ring caliber is pinned by DB-free tests: tests/test_w4_eta_unified.py (physical constant sets verbatim + resolve_effective_flag case matrix incl. R1 priority and R2.4/R3' guards), tests/test_w4_loop_exit_guard.py (R3'/R2.4 suppression, unified branch-selection lock for exited vs default cars, pool loop_exited transitions incl. adoption pre-seed and slice merge, dashboard mainline behavior), tests/test_w4_sqlbase.py (SQL text: '78202%%' predicate, both 137/139 SUBSTRING extractions, errata 3-station oven set with explicit assertion that 20IS010 is absent, 3-station gateway set, C5 LEAST truncation, purified-flag CASE, unchanged last_loop_t and LAG dedup), and tests/test_w4_pipeline_flag137.py (O1/O2 pool contract).",
+      "evidence": [
+        {
+          "resource": "repo://tests/test_w4_eta_unified.py#L75-L123",
+          "version": "repo-lines-v1:sha256:1bca8b71dcfea43e1cd9e26aef742866c0c860cad4450c33c4d6132e95d7dfbd:eyJzZWxlY3RlZExpbmVDb3VudCI6NDksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijc5OGE4MzEzNDkwN2M1NTI2YjE1YmRkYzE4NjJmN2E1Y2E1MzA1ZjQ1ZWQzNzk2MTlmMTgwOGQ5MzliZDk1MjkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjgyOTFmMmM0MGViMWIzMTE1ZTg2OWY1ZGFiNjdiNDMxZTdlODQxYTEzMWRlN2QyYzYzMTY3Yjc5MzIzZDQ2YzgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjdkMzkxZDNlOTM1YzE2NjYyYzNkNmUxMmExYmQyODMwYjQ5YjlhNzgyYWRjYmJhMmU3YjE3ODg5YmYxNmIxYjgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjIyM2RmMGRjMDU3MTQ4NTQyZWQ0MTYyMzY0Y2UxYzA4NDU2OTgwNDU2Y2VkMDkyNzk2N2E2Y2MzY2YxZDVlOTQifQ"
+        },
+        {
+          "resource": "repo://tests/test_w4_loop_exit_guard.py#L1-L15",
+          "version": "repo-lines-v1:sha256:f9008800651f995c5339a7b9702d441b5e00b805cd1773eb6903d55440f08b7b:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjhiMDg0YTlmMzc4MTI0YjJiMWE1MTU2M2JmM2MyMjQ0NGViN2ZmMzM2OTIwMTdkYTI4YjIxMzZhZTU2OTg3ZWQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImEzMDNlY2RkNGE0ZDEwZjE5YzczZmQ0MmZkMTI0MzdmZDMzNTRhODI2ODE2MDVkYTUyNTVhOTdhMzkwNjhkYmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjkyZmU5N2FhNWM0NmI3NjliZjg5NmY4OWJjMGY1ZGQ5MzEwN2M0ZDg2ZTcxYzQ1YzdiYjQzOTU0NzhiZDhiYWYifQ"
+        },
+        {
+          "resource": "repo://tests/test_w4_pipeline_flag137.py#L170-L175",
+          "version": "repo-lines-v1:sha256:d08f38cd5e0cf6d62d340ec5ca1d50b4c4976f11857150557df05bb6fe94e4cd:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZTMzZWI0ODk0NGRkYzc5MWJkMjE0YmM0MmJmYzAzNmMxMjViODRlZDEwNjdjMzBhMWRiY2JlNDQxODlhNzVjZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiN2IxYmU5MWE2OWIzYzk5MDM1YTBiOGUyOGVjYTZiYzJlNWJiNTFjMzVkYTYxYzMxYmEzNTE5MDJmNTk4YjM0NSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYjY5NmRkYmQ4YmY4YzY0OTk2OWRhOWJkZGYwODJkN2E2OGVmYzhjZTc4MzM1NDVjY2I1MTZjZjM0ZWRlMTcwYyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiOTk4NmM5MDVkMmFhOTNiOTc4MDM5OWUzNTRlZjE4MjVkNTllMzQxMzVhMGMyODI1M2RmZTRmOWRjM2IyYWY5NSJ9"
+        },
+        {
+          "resource": "repo://tests/test_w4_sqlbase.py#L27-L79",
+          "version": "repo-lines-v1:sha256:bedd2148597c7668f3f77f94239ca5a7e9d375190ca672f04670e15ae03f1861:eyJzZWxlY3RlZExpbmVDb3VudCI6NTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRiODcxNWMzYTllNGYxNjkzNzE3ODcwYzIxOTg5ZjM0ZjY1ODk2MDQ0ZmJmYmNhZDRiYmFjMWEyZWMxMDhlYTIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNkMTk0MGJlOTI1ZDY1NjkzMDIxZGRkNTY3YjY4MmM4YjkxNjY2OTUwM2UyZDQ0YmViZmUzMzNiNWNmODI2OGMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjFlNjQ5NGI5NzBmOGQ0M2M3ZTI5ODZkNWIxOTQ5YTcxZTQ2YTg0N2RjYWZkZmE2YmE5NmQxOTM1NjZmZjRmNzEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.7.0",
+    "at": "2026-10-08T13:05:24.547Z"
+  }
+}

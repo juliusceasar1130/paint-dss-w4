@@ -1,0 +1,352 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:ce5c914db9a075075d413c8a3248afc1089e8564f277477f477ac6e9491a3d0b",
+  "claims": [
+    {
+      "id": "claim_730bf73884bf4979b2a79f27f55b548a",
+      "statement": "The W1 direct estimator (spike_w1/eta.py::estimate_vehicle) branches per event flag: flag in {1,2} takes the loop distribution P50 from dim_loop_remaining with no additive term (the car is already in a loop), flag=0 takes the mainline P50 from dim_remaining_time plus the pre-decision compensation p1·L1 + p2·L2 (dim_future_flag probabilities times dim_loop_duration); its resolve() falls back model→'ALL' and treats rows with n<30 as unavailable. Re-enters concentrate in the polishing stations 13/14/15IS065 upstream of the mainline, which is the rationale for the compensation.",
+      "evidence": [
+        {
+          "resource": "repo://docs/15-W4%E5%8F%8C%E7%8E%AF%E9%87%8D%E6%9E%84%E6%AD%A5%E7%BA%A7%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92.md#L26-L26",
+          "version": "repo-lines-v1:sha256:13dc81bcce1a1cc1f84f98c7d29e4dfce7691b70a5514069783c5b1ff03793fd:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMTNkYzgxYmNjZTFhMWNjMWY4NGY5OGM3ZDI5ZTRkZmNlNzY5MWI3MGE1NTE0MDY5NzgzYzViMWZmMDM3OTNmZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMTNkYzgxYmNjZTFhMWNjMWY4NGY5OGM3ZDI5ZTRkZmNlNzY5MWI3MGE1NTE0MDY5NzgzYzViMWZmMDM3OTNmZCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNWUwN2E4YTIwM2YxYjAzMjRiYzJkZTZlN2ZjMTQ2MTgxNjFiMGE3YzM0MWZhMjMzNjQzOGM2MTIyNjcyMjBhNCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZWU2NThhMmZiOWUyMDg5YmUyYzdlZDU1NWIzNzllNDg4M2MxMWU2NTc5MmRlZmVkMTMzZjg2Y2JjMWNmZjYzOCJ9"
+        },
+        {
+          "resource": "repo://spike_w1/eta.py#L4-L15",
+          "version": "repo-lines-v1:sha256:d0dcbe782a877755bed3d7529389e628af9f51853ab96ec4814aa8b5bec3f0e2:eyJzZWxlY3RlZExpbmVDb3VudCI6MTIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk5ZjBmMGVlMDk3NDJkOTdhMjNmYjdhY2Y5NzMxMjYwNDUzMmY5ZGNlOWY5N2ZmYzU0MGUxY2U0NjAzZTQ5YjMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImNjOTljOGYzOWYwYzgyYzE2MTIxY2MyODJjNjYxYjYyZjRiYzVkOGJjY2FhZjhmMjUxZDViMzk5YjI4NDNlMjgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImNhOTEyZGI0ZjM5MzYyMzc3ZTY2MjU1ODRiZmVkMDViNzJhNjQyMzU2MGRkYTU5MGViY2M0ZTMwOWZlNzJlN2QiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImI5NTRmZjFmM2U1YmZmMDU2YTE0Yjk3YzMwZjQ1YzQ2YTM0YWUxNmY0NmRjOTRhNzI3MTM5ZWQ2NTFlNzUwYzIifQ"
+        },
+        {
+          "resource": "repo://spike_w1/eta.py#L41-L48",
+          "version": "repo-lines-v1:sha256:68a402ab1c10849daa8f24e17d762c4dfdf978b0f87c167b43b829391fa24cb5:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOTdlNGRiMjNhMzEwNTM2MmQyMTBmMmU3NGQyNzYwNWJhZjI2MTk0ZjVjZjgxYjhjYjAwZTEyYTU1MjJmNGM2ZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMTEzMDY4OWY2OTVlMDUyOGY3NGQ2YjJiNmQ2MTk1NjYzZTYwODQ5ZWIzZDcwZWNhMTMyNTdmOTg2Y2NkY2Y5YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYzIwMDFiYzVlNTI2MGE3ZjYzNGU3YmM1ZjllYmZlYjA5NGE1MDBmYmEyMWEwYTk2ZTU0Y2VjYTZjNDM0MWIxMiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYTRhMTNjNjMzNmZjMjk1NjA4NmY5NGVmNmExZGYzZGRjNGM3OGM4ODYzZjRlZGM1OWE1MmRhMmNmOWFkMDE2NSJ9"
+        },
+        {
+          "resource": "repo://spike_w1/eta.py#L81-L101",
+          "version": "repo-lines-v1:sha256:a66863c423574d5237f6f25dc051ab1f546a9d3487d857b706d5ce6f5c0e912d:eyJzZWxlY3RlZExpbmVDb3VudCI6MjEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjExZjI4M2U2OTUwMjJmMDg0YTVmYmI2MjFiODI3OWExNDQ2MjVmNjYyMDU4MGQ1NTVlMDg1NWEyNGJkMjA1YjkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjIzNjc2ZTIxMDBiNTYzNjJlYzhmZWY3MTVmNDc3MjFmNDcxZjU1M2E3ZGJiMzM4NzA3ZTViMTE2ODdkNWY2Y2YiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjE5ZjUxMzMxNjhhNDMwNzBjZGFjMGQ5MGViOTJlZTE1NjJmN2Q2NzM5NGMwMWRjZjhlY2ZkYmI0MDJhZjBmMzUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjoxLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjgxMDk2NmU2YjE5NWUzOGM3MzUxZDA2ODcyY2E4OTI5YjZhYmIzYjcwZTg2YWIzZTk1MzY5ZGMxYjFjN2RmYzQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_747764be381d4186bfec92b6e16de9a4",
+      "statement": "The W2 v2 estimator (spike_w2/eta_v2.py::estimate_event) keeps the W1 ring branch verbatim (loop_rem P50, model→ALL, n>=30, no compensation) and upgrades the flag=0 branch with three mechanisms: line cohort mixing P50 = w08·P50_08 + w09·P50_09 (cohort rows n>=30, line-prob rows n>=100, missing falls back to the W1 rem table), rolling 8-week weekly p (weekly row n>=50 else full-window fut_all n>=30 else (0,0)), and comp exemption where (model,station) in comp_excl zeroes the p×L compensation.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w2/eta_v2.py#L149-L193",
+          "version": "repo-lines-v1:sha256:ff1c2c3a65631df92cacfeecfe775c50475bd58b7927124caebea3f454b4bdc0:eyJzZWxlY3RlZExpbmVDb3VudCI6NDUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg4N2FlOWMwOTViOTNiMTYzYWQ0MWQ3NzY5N2ZkY2QzNjQ0YTFiMDdjZjQ2YmMwMzFhN2U3MjY4MTgwODk0MTgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImIwOWFiNTEyZTIzZTkwYzBhMDU3OWY2NzAzY2UwZWY2YTU0ZTVlMTlhMmM3ZTY5N2E2ODgxMGMzMzQzZTQ0ZGMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjQ4MDlkZDcyZjRiN2ExMjJmYTIxODI4NWQ2M2JjYjgzNTgwMmZjNWEzYzc0NjRmZjU4ZTA2MjEyOGI3ZTM2NTIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQ2ZjhjNDExZDJjMDA2OTgwZThhZDM3YjY0M2U1MDM0N2Y0MjYzNjA4YzIyMDgyYjIxOWY0ZDA2ZDYwNjRkZWIifQ"
+        },
+        {
+          "resource": "repo://spike_w2/eta_v2.py#L98-L146",
+          "version": "repo-lines-v1:sha256:79e832a7758e7d91119dff77409a1a2b609520cd215f1af43b94e4759d25fd34:eyJzZWxlY3RlZExpbmVDb3VudCI6NDksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFjODQ3ZmUzNjgwNGNkZGY0ODE4MDQ1YzI3NDZlNGIwM2ViMmI0ZTk4Zjg4YTNiMzU0YjYyZGUyYmQzMzY5M2MiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijc0NmQwMzQyNDIzYzg1ZTEwNWE5N2I1MDI1ZmQyNDhjZDJhZTVjYzZmZmFmOWRmNWMzMTY1OGFhYmE0MDBkNTMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjMyZTA2MzAyMTQ4ZWNiODU5MzU4NzEzOWZjMjZkOTM1YTc1YWM3NDkyOTJlNjIzZTg4NjVjMGY3MmJmMGM3OTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjljYTk3Y2U4ZjM3NjJkNDhkZTY1ZTQ3NzkxM2Y4Y2U5YjU4YzgzMTU0MzJkNjViYTE0YTk2ZGE1ODkwMDA0ZTMifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_02e5c697e0f44afea0f7e5ebe2b31854",
+      "statement": "The 'rolling 8-week' p and line probability are learned per replay week over the 8 ISO weeks strictly before that week ([Monday-8w, Monday-1d], no future leakage) by shifts.week_learning_range; 01_learn_v2 re-runs the ev_base + future-flag/lineprob SQL for each replay week over that range.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w2/01_learn_v2.py#L553-L562",
+          "version": "repo-lines-v1:sha256:7062f17fb434b562620f3bdc0b64bc56a989f72cdee7697d3e68940d503de031:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU5OGU2YmRmMTM5NDNmZWZiZDliZjZjNjU4YTM0MWEwZTQxZTg3OTIxZGJhZWU3MjE1NzY1NWFkZDhiMmRiOTkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI4OWYzY2FjNzY4MTA2ZTdmMWJlNDA3NjM0ZGM3YWIwZDY2Yzc1ZGNkZWY0ZjU2Y2I4YjkyMzJhOThmMTA1MWEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImNmNGMzODBlMDU3Mzg3YmQ1NzlkY2Y1YWQ5OWFhNzhmMDg3OTc4NDBlZTU2YzU3MTAxMzk2MzgxOWU5MDYwNTYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjI2MDQ1YTJjZWFhNWFlOGY4MWEwZmIwMTRlN2VlOTZlY2MwOTk5YTQ1ZWNhNTA0NDE2YTRhNTJhNzFjY2UyNmIifQ"
+        },
+        {
+          "resource": "repo://spike_w2/shifts.py#L133-L137",
+          "version": "repo-lines-v1:sha256:d7ffe0cafaefc6882f2364c0e5a574ba53427b9891e45448d84c6b75f6a1d504:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMDE2YmIzNWQxNDRlMmRhOGFjNDAxOThmYTk1YzhiYTBlMGUzNDBlYzY0YTkwYmRhODNlZTNmOTcwYmY1YjUxNyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYWIyYjcyMmQxNGY1NGRlMmM1ZGY3NzhhNWE0ZDhjNTVjNTMyZGVkNjNiNzYyODc2OTY5NzRjY2JlZGI0NjE2ZCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZWIyNTdhOTcxNWY2MDcyODNjNGNlZDQ0MGMxMzhjZTYxMDBkZTBjMWYxMGM1MGVhODliYmU5NGE2YjM0ZjgxMSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjAsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_39c075a29a2647ea82ac52037a8ae3c2",
+      "statement": "resolve_effective_flag (spike_w2/eta_v2.py) implements the docs/14 §5 v1.4 online dual-ring state machine as a pure function: R1 station in the 37-station UNIVERSAL_EXIT_STATIONS forces '0' (highest priority thaw); 139='2' passes only after a quadruple guard (137 bit must be '1'; spray-queue blacklist blocked before oven-out; pre-oven non-whitelist blocked; loop_exited guard); 139='1' maps to '1' only while not loop_exited (raw bits persist after exit, measured 96% of rework cars / 45% of blacktop cars), else '0'; everything else '0'. loop_exited defaults to False, reproducing pre-v1.4 semantics for the rollback path and replay tests.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w2/eta_v2.py#L215-L245",
+          "version": "repo-lines-v1:sha256:cce79209e6810440e69d17fcb29d65b424dce697c2cbe5667269a6b9e1f8c217:eyJzZWxlY3RlZExpbmVDb3VudCI6MzEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU0OTAzYmNlMmE5MGIyNGRiZGEzNmRmYmVhZDgwYTQ5OTcxNjQyMjkxMzFkMDU1ZTJmNzFhMzJjMWE4ZjM0MTAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFiMzNkYTY1NzdmMTY4YzEzNzljZTZkZmJjNGViOGViZTQ3N2Y0Njk2MDhhNDQyZjdlZWNiOGZjZTFlYjJhZWMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjUzNmM1ODUyM2QyNmZlM2M4NDEyODQ0ZjdhYmJiMDdhNDllODU1MDFlMGI3ZjhhMzFiZjQxMmQyNmY5ODU2NDAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImRmOTFiYTk2YmI2ZWVkYWNiMmMyOTA5YjM3YWJkNjczYTU1YmRiYjQwMjRiMmIwOTUzMDA2Mjg3NmE1MmRhZjMifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_d03baa4057c347368b198e32e5c9ac08",
+      "statement": "The physical station sets are single-sourced in spike_w2/eta_v2.py and imported by W3: UNIVERSAL_EXIT_STATIONS (37 stations), BLACKTOP_ONLINE_WHITELIST (10 stations: report-entry cluster 6 + polishing line 4 incl. 14IS120), SPRAY_QUEUE_BLACKLIST (14IS260/13IS260), OVEN_OUT_STATIONS (16IS305/17IS305/18IS345 — the 2026-10-05 docs/14 erratum removed 20IS010 as a 2-line storage-line entry), and LOOP_EXIT_GATEWAYS (25IS010/25IS110/25IS210, the Doc14 v1.4 R3' loop-exit signal set).",
+      "evidence": [
+        {
+          "resource": "repo://docs/15-W4%E5%8F%8C%E7%8E%AF%E9%87%8D%E6%9E%84%E6%AD%A5%E7%BA%A7%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92.md#L13-L13",
+          "version": "repo-lines-v1:sha256:121ee13bb2c1121a253a53408dc512da0c59e32d0904c9e421bf239e7c8ef501:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMTIxZWUxM2JiMmMxMTIxYTI1M2E1MzQwOGRjNTEyZGEwYzU5ZTMyZDA5MDRjOWU0MjFiZjIzOWU3YzhlZjUwMSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMTIxZWUxM2JiMmMxMTIxYTI1M2E1MzQwOGRjNTEyZGEwYzU5ZTMyZDA5MDRjOWU0MjFiZjIzOWU3YzhlZjUwMSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMmQ3MDZkYmU0ZGEzMDI0YzlkNzNkMGFlMjkxOTgwYjcxZmZmNjNiYThlMzI2ZTM3M2EwYmViM2VkZWM0ODM2YiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYTJhMWFlMzZiY2ZiOTU4Nzg3MjYzZGMwMjlkNmRmOTA4NzBhZWM2ZDA2OTRlN2RlYThmZDg3ZjZhNmYxNmVkYiJ9"
+        },
+        {
+          "resource": "repo://spike_w2/eta_v2.py#L44-L79",
+          "version": "repo-lines-v1:sha256:bbaf561eb2b24c1fe1642ecc5efbe8d2044a6e034f6ea59f95cc4acebac51243:eyJzZWxlY3RlZExpbmVDb3VudCI6MzYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjY1ODY1MjRmZTEyN2M0NGZmYWViMTRkY2Q2YjYzNGFkYzZlMTkzY2E2MjYzY2NhYjU3MTk0YTdkZmNmYjllMTIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRmZTg4NjQyY2UxMDg3MzE2MjkyNDU5MjEwZTI0NWRjNGYxY2FjYzA3YzkwNmI5M2JlNzM0MGI3MDZkMjc1ZjQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjVjYjE1MzdiMjBhNzBmZDI1ZTRiNDBlODIwOGVlYzI0ZjcxNmNmMjY3YmUyODRiZDAyZjdiMWYwMGU4YzI4ZGQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjhjN2E3ZjlhY2Q5ZTU1MmNmM2ExODFjNjJjOWQzY2MyNjFkMGM1OTZkZjg3ZGU0NzNlY2U2YzgzZThiMWI5ZWUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_126747f0fb854f3e8d15594ce3bea1f4",
+      "statement": "estimate_event_unified (W4 unified engine) routes on the effective flag: branch A (eff in {1,2}) resolves loop_rem (station,eff) through the three-tier model fallback with loop_dur L as fallback, returns (None,False) if both miss, and sets eta = t + round(rem) with no additive term (constraint C8: loop_rem/loop_dur training targets are the full station-to-exit journey); branch B (eff='0') resolves the mainline base (cohort mix else rem), sets delay = 0 for the 37 post-gateway stations, otherwise resolves expected_delay (shift-tier table preferred when DSS_SHIFT_TIER_DELAY=1) with missing row falling back to 0, and returns eta = t + round(base + delay); comp_excl is not consumed by this function.",
+      "evidence": [
+        {
+          "resource": "repo://docs/15-W4%E5%8F%8C%E7%8E%AF%E9%87%8D%E6%9E%84%E6%AD%A5%E7%BA%A7%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92.md#L123-L134",
+          "version": "repo-lines-v1:sha256:4eb3dfd6f737b26d536aff5e4a56a7230c657369695effa37bd035c7cc74efbf:eyJzZWxlY3RlZExpbmVDb3VudCI6MTIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImVmN2ExZTRlNzg1NmNhNDM4MjU5MDVhNjkxOWEyYmJlOGY2ODY2OTEwZjBlZjU2NWViNzg3NTlmZGMzMWM4YWQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjIxYzk4NWIyZmQ1NTIyZDhmMzNlYjcwYjZhOWQ5MDhmNzYyNmQ1YmIwNjUxMjVlODRjZjZkNGZkNTgwZjYxYmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjFjNjA5ZWZkODYzNTRkMmJiYmM5MGI2MjhiZjFiYzgwNjhhMjA3YjYyMzczZGMyNGIzZmE3NGY4ZGMwOTcyODAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjdlYjM1OWU1ODBmOTA5MjczZDc2MGVlZGMzNWJkYTIyZDI3MjU4YjNjNTk0NGE1ZTkzNTgyNzJjYWM3NDg2YTYifQ"
+        },
+        {
+          "resource": "repo://spike_w2/eta_v2.py#L345-L377",
+          "version": "repo-lines-v1:sha256:a0d65def074a2f501e0240e871e35389c48805da404672c2e49aea726165883d:eyJzZWxlY3RlZExpbmVDb3VudCI6MzMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjllNmYwMWViNzk0Y2IxZGY3MmM1YTU5MzIwOTE0MzQ2ODI5NzY0MzZkMDQ0YzNkNjFmMjI0ZjU4YTlkOTRhMWEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImIwOWFiNTEyZTIzZTkwYzBhMDU3OWY2NzAzY2UwZWY2YTU0ZTVlMTlhMmM3ZTY5N2E2ODgxMGMzMzQzZTQ0ZGMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImJhMjc2N2E2ZjhiOTBjNjVkODFlMTkyYjc1ZDhlNWJiMmQ2YWQ1MmNjMDMzN2Q1MGIyZmY2YWVmM2U1OGU3MzEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjhmNTc3YWM3MDIyNzM4NGI0MDY1NzdjYzM3YjUyOTdkNzA4ZWQyMzdhMjU5Y2I1NDA0YWVhMmM4MmFmNmYzOTAifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_91a037cdd470468e9054e3e67b86ef14",
+      "statement": "estimate_event_unified's effective_flag parameter is the offline purified-flag passthrough channel: when not None it skips the online state machine entirely. The replay side (02_replay_shift / 02_shadow_replay / unit tests) passes the purified flag from tmp_ev_base because offline purification is ground truth and the online machine is its stateless mirror; passing raw 137/139 bits there would kill all purified blacktop cars (fl='2') back to '0' and distort the G2 gate. The online predictor always passes None and runs the full state machine (agy blocker-3 fix).",
+      "evidence": [
+        {
+          "resource": "repo://docs/15-W4%E5%8F%8C%E7%8E%AF%E9%87%8D%E6%9E%84%E6%AD%A5%E7%BA%A7%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92.md#L117-L122",
+          "version": "repo-lines-v1:sha256:133c856f86ea43c683d85245999bda15054cc9cc7ca3c8a31203f93c14ef2ee0:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiODg0YmRiMjhiZjE0YjU4ODk5YzdhNDZiZDBiYjJkZTMzODAxYzI2ZTRiM2VhM2FmNTA3MmFhMDI4MTI2MWM2OCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNWU0NTNjMDQ5MjMzMGMzY2QzY2M3YTUwYThkYTY3MjRmYjk1MmQ1YTk3Yzg1MDQzN2MzZmYzZDRiMjNiMmUwZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiODU4MDU5NWE3MDAzMjUxNzJjMWI0OTEyNzAzNjk5NWY5NDA2MzgzNzFlY2VmYzZiNGRkNDk5MzIwYmU1MDgyYSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNjMwYWExMzRlN2U2ZGZmZmVlYjdlODRkMmEzMTVhZTQxYjQxMzE2YTc5OGQ0MGQyNjA2YWI1Njc5OTg1MjhiMyJ9"
+        },
+        {
+          "resource": "repo://spike_w2/eta_v2.py#L326-L334",
+          "version": "repo-lines-v1:sha256:5bf68791ee4539bc5d116e139f68f4d17df9ed8a63985c8d15a5f57198269ae7:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOWU2ZjAxZWI3OTRjYjFkZjcyYzVhNTkzMjA5MTQzNDY4Mjk3NjQzNmQwNDRjM2Q2MWYyMjRmNThhOWQ5NGExYSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMWFlZWRkODZhYmIyYWU3ODFkZjg2MWRiOWRlMWY4YmRhYTA1NTY2YjI3NjBiZDkyZTE3MDcwZWRlZWY4ZTg3OSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNjcyMTczNmM2YmIwMmFmYWU2NTAxYjk2ZjZmMjI0ZjMwZTdhZjgwMzBkZmExOGUxYzk1YTNjYmFlYTg5YmNmYiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiN2NhOTU4N2RkNjAzOTAzYTAzNjRjNzcxY2NhYmFmNGY0ZmExOTU0MGM3ZWNmN2Y0OGY4N2MxNTJlYzIwZTMzOSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_0419955456ba4b87813fac7133b44b24",
+      "statement": "resolve_hierarchical implements the three-tier model fallback model → LEFT(model,2) platform prefix → 'ALL' (empty/'ALL' model skips straight to ALL), accepting the first row with trailing n>=30; the mode parameter selects the consumed column: mode='shift' takes row[1] (mean/l_mean) and every other mode deliberately takes row[0] (P50/l) to prevent misuse. Learning-side tables generate exactly these three row tiers; the platform prefix list is measured from data and stored in learner meta (platform_prefixes), not hardcoded.",
+      "evidence": [
+        {
+          "resource": "repo://docs/15-W4%E5%8F%8C%E7%8E%AF%E9%87%8D%E6%9E%84%E6%AD%A5%E7%BA%A7%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92.md#L32-L32",
+          "version": "repo-lines-v1:sha256:97b52fcf5d87c4c27354f036f9777027f211cecea747ab15c6d65592213a53dd:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOTdiNTJmY2Y1ZDg3YzRjMjczNTRmMDM2Zjk3NzcwMjdmMjExY2VjZWE3NDdhYjE1YzZkNjU1OTIyMTNhNTNkZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOTdiNTJmY2Y1ZDg3YzRjMjczNTRmMDM2Zjk3NzcwMjdmMjExY2VjZWE3NDdhYjE1YzZkNjU1OTIyMTNhNTNkZCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiY2FhYmE4MzI5NDhlYjI5NjNmNDg1YjA5MzE4YmFlY2FkNjgzNmI0M2Y2Yzg4NWU3NGI1NDZkZDYxNTljYTcyMCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiM2MyOTU0NThiNDRiMGZkNDFlNzJlZTVlMzdmNTUzOTEwNzFhMDdlNTZkYmI2YmRkNjA5Zjk3NTdiN2FkNDEzYyJ9"
+        },
+        {
+          "resource": "repo://spike_w2/eta_v2.py#L203-L212",
+          "version": "repo-lines-v1:sha256:cc2ad317221dc2721cfd863ba3da8fa1f9c54f16bc7048290cdb8d7a6a22ddc7:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjUyNzMxMmExMjgyMmRmNDNjYjVmOWQwMjEwNDZhZDg5MDRkN2U5ZGIwMmNmODNkMDgwNjllNzY0NTdhOTQwZWIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjIzZjQ1MjQxMmMwMmFhYTlhYzRiYjI2YmMyNzEyZjhjNzNmYWI3OGEyNTJiMzc2ZDBjOTlhZWMyNjRlZDE4ZTYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjQ0ZThlZGI4N2M3NWJlZmZmZDJiZGY0ZTVhOTk2NGY4NmIyYzZmZDg3Yzk5ZmFjZmRkMzBkZDc4YzVjM2M5NTQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjNhZTFmN2FjY2ZkNzVlOTlkMDM2M2Q0ZWRjNGMxOGU3ODM4NGNkNDE1M2NjN2M4NDM3ODE1MTI0ZGQyNDBiMzQifQ"
+        },
+        {
+          "resource": "repo://spike_w2/eta_v2.py#L248-L256",
+          "version": "repo-lines-v1:sha256:443a740927bcc8e00ce4dd9e4b8132dcc6dde19ebb1c04d77c58490a2d3f6899:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYTkwYWQxY2QzNzJjODdmNWU4NmYyODk2MWYwZGMwMGQyZmFkZTdhMjc5Njk2OWI2OGM2ODkyYWIzZjA0YTBlZiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMTEzMDY4OWY2OTVlMDUyOGY3NGQ2YjJiNmQ2MTk1NjYzZTYwODQ5ZWIzZDcwZWNhMTMyNTdmOTg2Y2NkY2Y5YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMThjZWY1OTUwMGFlNWE4NDZmMTQ3MzdkNWIzZjIwY2MzMGNiOGE2N2E0ZGNmNmE4MzUzNGUzNzNlNTY2NWUxZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiOTJmNzk1NGE1Y2VjYzU5MTc3MjA3Yzc2NjEyYjU4YTI4OTU2M2E5Yzk1NmJhNWZjZmEwYmExYzJmMzQzODc3MSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_d7a487e7ecb442d5a9af8856e70d5236",
+      "statement": "Column semantics (constraint C9, docs/14 §5): mode='shift' consumes the mean column because shift output totals are unbiased, mode='vehicle' consumes P50 because it is robust to per-car long tails. Consumers match: predictor.rem_of runs mode='shift' for shift output prediction and the dashboard single-car CLI runs mode='vehicle'.",
+      "evidence": [
+        {
+          "resource": "repo://docs/15-W4%E5%8F%8C%E7%8E%AF%E9%87%8D%E6%9E%84%E6%AD%A5%E7%BA%A7%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92.md#L31-L31",
+          "version": "repo-lines-v1:sha256:1309e4d4126338423b99442038e1714b041dbad13257c838e0e9577787790fde:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMTMwOWU0ZDQxMjYzMzg0MjNiOTk0NDIwMzhlMTcxNGIwNDFkYmFkMTMyNTdjODM4ZTBlOTU3Nzc4Nzc5MGZkZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMTMwOWU0ZDQxMjYzMzg0MjNiOTk0NDIwMzhlMTcxNGIwNDFkYmFkMTMyNTdjODM4ZTBlOTU3Nzc4Nzc5MGZkZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNzZhNzg2ZTBhODc2ZmVmMjUxMmQzNGQ4MTNmNmFlNTc0ZDZmYjM2NTQ1MmYxMjI4MjdjZTVmYjhjZTgyMGJiNyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZGYyMzY3OGVjZmZlNzYwMjRiNDdjZmViMTg2Zjc5N2ViNTdiYmJkZjIyODRhN2FjNjRkMzVjZmRmZTMzMTUzMiJ9"
+        },
+        {
+          "resource": "repo://spike_w3/dashboard.py#L247-L251",
+          "version": "repo-lines-v1:sha256:177753847ebd5ee31abd34e4c08aeb50104516d46ae0ea20561f741dec2fb534:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYTk0NWVhZmIxYjNkNjBjN2E1ZDNkNzY0MGI0MDMzOTMxNWVmMTU0NGYxNjBkOTk0YTczMWZkODhhNzA3NDY1YSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYWZmNmFhYzAxNzE1ZTIzNmMyZjZhZjJhZTNkM2QyMzU5M2ZkMGE3YmZiZjc0MDg5Njc2YjkwNDk5ZmU3NzliNCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNjliNzRkZDg1MzA4MGM0OWM1OWM1ZWRmYTU0ZjhhY2QzZTJmNjdkNzYzNWI4NTczMWVlZjAyNmRiODM1Y2I3NCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZDAzZDFjMTFhYTMwMzgyNWI1OWU4OWNkOTgwMjU4NmIxM2FiYmMxMDdkN2I0ZjNlNjdmMDk5NGViNjlhMTgxYiJ9"
+        },
+        {
+          "resource": "repo://spike_w3/predictor.py#L44-L53",
+          "version": "repo-lines-v1:sha256:79fade2abd174f3afe61c95848e9b7cddce72592e0e5735decce887e3f3f34bb:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImUzNTkyZmJiMWYyZTVhYmRlYTEzYmJlYTQ4NmEzY2I3MmJiYmQzMTUyOTMzY2I0NDQ5NTQwNzE3YTJjM2IyNmMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjJhOWY4YzJiYzdhMTQxYTAyMmFmM2ZlYjhhYjUwMDhlYzI1NzU3ZWYyNGFjZDA0OWY1MDg5YTc0YjdjOWFlODEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImZhYmRjMWU2NjhiN2ZmYjQ5NmQzZGVjNjI1YjUxOTY0OWI5YThjZWMxMzRjNzQ1NTkxY2M4N2E5YWZkZGIxYWUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjY0N2VlZGYwMTRkOWNlZTM0OTlmNzhkYmFjYmFiODdlNTJkNTM5Y2Y1ZTk3MTU2OGI4MTcxNjdlYTI1MDk0YzkifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_cfd22c7845e346fc831f547d884af8d7",
+      "statement": "The expected_delay row shape (delay_mean_s, delay_p50_s, n_fut, n_clean) has the column order REVERSED relative to the rem/loop_rem/loop_dur family (where P50 comes first); this is a known trap frozen in docs/15 §0.2: all consumers (unified engine, predictor, dashboard) must go through the dedicated resolvers resolve_expected_delay / resolve_expected_delay_shift with explicit indexing, and inline row parsing (generic row[0] take) is forbidden or mean/P50 would silently swap.",
+      "evidence": [
+        {
+          "resource": "repo://docs/15-W4%E5%8F%8C%E7%8E%AF%E9%87%8D%E6%9E%84%E6%AD%A5%E7%BA%A7%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92.md#L144-L150",
+          "version": "repo-lines-v1:sha256:2796449e55d5e90d6b07061b3cc9a31924561ab892eaea4af65934144abf46d6:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMGY4ZDdlZjlmNDhhMGRlYzczNjUxNTQyZjY2NGIyODVmNTNkZGViMmYxODEwNjJkMzMwYTU1MGQ5MzkyNWEzZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMGNlNmZhMjE2YmI1ZGI4NjI0ZGVlMjAzMjUxZDVkMWY3MzYzY2VhMDE3MzYxZTZjNDE5ODFmNGMxMzRhNDlkYiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZjFlMzc5OWJhNWU3MDdiYThkZjUxYWJiMzU2ZGEwZTYzOTEwMmZiYzIwNGE4N2JhZmIyYTUzYzNiNWViZGVkNiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYjM3NzA5N2E5NmZiMmU1M2Q3YzZhMTdkNjQ0YTQwNGRlNDEzNTIzOWFmMTMzMTY3MjM1MGNlMmU5OTU3MjVkNiJ9"
+        },
+        {
+          "resource": "repo://spike_w2/02_replay_shift.py#L101-L105",
+          "version": "repo-lines-v1:sha256:4a612436243ad922a967cdbf81c0bcfb1ef500c1ddc7d6b44d60bffc50b8ef97:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiN2ViNzAyNTc1OTNkYTA2ZjY4MmEzZGRkYTU0YTlkMjYwZDRmYzUxNGY2NDUyMzdmNWNhNzRiMDhmOGRhNjFhNiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNTc3MjIzNjM1NjJhODkzNzQ3MjE2YTQ2NzIxZjMxMzA2OTgzMjA5OWE3NWIzYzQ0ZmRkY2E2MTAxNWNjMTk2MyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOWVhZDNhNjFlNDFkZGMzYzI2MzkzNjNjNTc3YTRmMmUwMDkzZGNkNWE3MTY4MjY3YTE4NmRjMTgxMjc4MWFjZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYjEzOTkyZTQzODMxNDA3MThjMGY2MjA3YjVkYzBiMjE0MWY0ODVmMDRiMDBmNWQwZDE4NTU3NmI3MjA3Y2Y1OCJ9"
+        },
+        {
+          "resource": "repo://spike_w2/eta_v2.py#L19-L27",
+          "version": "repo-lines-v1:sha256:f9bfe24a0f1c382a7f3e47c322989b95786ddf5762bdcbe204e452e0b9d648d1:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZjc4ZjFmMzczOWE3MGQ0YTk3YjJlOWI3Yjg0ODE3MmFmYTlkZjhiODljYTgzN2I0ZjcwYTAyYzhmMjViMGJmMCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiM2FhNGE4Zjk5MzBlZjFjNDUyYWFkMWIwYzYyNTdlOTUzZjJmOGUxNjY4ZmY0YTQ5NzIwOGQ5OTcxYWU1MzhhMiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYzNkOGYyYWRhNGZkZjVhMTRkN2VlYWYzODM1MGEyYzljZGE1NDk2NTkwNmYxZjU4NTczOTBiZGE5ZTM0ZGJlYiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNDMzMGQ1MTg2YjM0ZjMwMTFiOTkzNzM4YWMzYWFiMjMyYzJiYmJjZTA0M2QxNWYyMjA4OGE0OTc0M2Q1YmI0YiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_7a1fb7f9ae3c4a149b9f6dea2158113d",
+      "statement": "Both mode tiers of the net-delay resolvers consume row[1] = delay_p50_s, not the mean column (W4.4b revision, 2026-10-06): the G2 threshold-count measurement falsified the doc10 'shift-level additivity is unbiased' assumption because the delay distribution is fat right-tailed (mean ≫ p50 in 91% of rows) and the mean column pushed ETAs systematically late (mean arm 20.78% / -20.78% undercount vs p50 arm 10.60% / +0.71% ≈ unbiased); delay_mean_s stays in the table for diagnostics only, and the rem/loop_rem columns must not be p50-ized along with it (would worsen, cc 'bp' arm 11.17%).",
+      "evidence": [
+        {
+          "resource": "repo://docs/15-W4%E5%8F%8C%E7%8E%AF%E9%87%8D%E6%9E%84%E6%AD%A5%E7%BA%A7%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92.md#L230-L230",
+          "version": "repo-lines-v1:sha256:7034ea2587fd6d87ae1ae6a60cab95f455bb46aff838a41d29a3fe94370741cf:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNzAzNGVhMjU4N2ZkNmQ4N2FlMWFlNmE2MGNhYjk1ZjQ1NWJiNDZhZmY4MzhhNDFkMjlhM2ZlOTQzNzA3NDFjZiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNzAzNGVhMjU4N2ZkNmQ4N2FlMWFlNmE2MGNhYjk1ZjQ1NWJiNDZhZmY4MzhhNDFkMjlhM2ZlOTQzNzA3NDFjZiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMTdiMWQ0NTQ0NGIyMWI3ZTg1MGJhOGNhNTY2NjUxOTZmZWRiMTRkMjk0ZDRlNDU1MDIwOTNiZDU2NjgyYjRjZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZmQ3NWY4OWZlNjVlOGM2ODcxMzFkZjUxMTVhODE1YTkwNjBjNjI1Nzk5MWQ1MjM0ZWRiYjRmZmExODU5YTBjYyJ9"
+        },
+        {
+          "resource": "repo://docs/15-W4%E5%8F%8C%E7%8E%AF%E9%87%8D%E6%9E%84%E6%AD%A5%E7%BA%A7%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92.md#L246-L246",
+          "version": "repo-lines-v1:sha256:188d5b70c98e47f2e81e051899f96cd1e19077ec60b99192bb7fc2f168545515:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMTg4ZDViNzBjOThlNDdmMmU4MWUwNTE4OTlmOTZjZDFlMTkwNzdlYzYwYjk5MTkyYmI3ZmMyZjE2ODU0NTUxNSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMTg4ZDViNzBjOThlNDdmMmU4MWUwNTE4OTlmOTZjZDFlMTkwNzdlYzYwYjk5MTkyYmI3ZmMyZjE2ODU0NTUxNSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMzk5NTVmM2VkMjcwOGYwNmQ1YTcxZDg5OGRlYTU1N2Y2OTY3MWI5ZmU0M2NmNDFkNzUyMGQ0OTkzNmNiOTY0MiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZDNmYTI0Y2E3ZDc3ZGQ5YzdmYjVhNzNhNWU1ZjdkOTlmNDk5NWExYjBmNzQwZjEyMmM5OTdmMGE1MjhlNzU0NiJ9"
+        },
+        {
+          "resource": "repo://spike_w2/eta_v2.py#L259-L289",
+          "version": "repo-lines-v1:sha256:236136d71477e498a30962a9af944ab23c3a9311aaa13e5d7fae52b73b338dc5:eyJzZWxlY3RlZExpbmVDb3VudCI6MzEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNiM2U0YjkyYmRlMmVmYzFhZDY1ZmE0YWNhMDI2NjY1OTBlNmNlMjUxNjk2ZjFmYTQ0N2QxOTFlMGE1ZDBkOGQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjExMzA2ODlmNjk1ZTA1MjhmNzRkNmIyYjZkNjE5NTY2M2U2MDg0OWViM2Q3MGVjYTEzMjU3Zjk4NmNjZGNmOWIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjMyZTA2MzAyMTQ4ZWNiODU5MzU4NzEzOWZjMjZkOTM1YTc1YWM3NDkyOTJlNjIzZTg4NjVjMGY3MmJmMGM3OTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImMyZjg1Yzc2MDcyYWY1YmM4MWU2OTEyOWFkY2JkNGViODMxNmJiMjU2ZmEyYjNlOGMxOGYxNTljY2MxMGZkNzgifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_4d6737e52fe64c12b457a65c87486080",
+      "statement": "expected_delay rows carry a dual-population dual-threshold gate: a row is usable only when n_fut >= 30 AND n_clean >= 30 (both populations), otherwise the resolver drops to the next tier (model → prefix → ALL → 0); this gate is independent of the generic trailing n>=30 gate used by the rem-family tables. The learner writes rows only where both populations meet the threshold (WHERE clause).",
+      "evidence": [
+        {
+          "resource": "repo://docs/15-W4%E5%8F%8C%E7%8E%AF%E9%87%8D%E6%9E%84%E6%AD%A5%E7%BA%A7%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92.md#L36-L36",
+          "version": "repo-lines-v1:sha256:ee156b87b679355c408f15134a959e83bc25c87ae7c992bd8a058937fa612c39:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZWUxNTZiODdiNjc5MzU1YzQwOGYxNTEzNGE5NTllODNiYzI1Yzg3YWU3Yzk5MmJkOGEwNTg5MzdmYTYxMmMzOSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZWUxNTZiODdiNjc5MzU1YzQwOGYxNTEzNGE5NTllODNiYzI1Yzg3YWU3Yzk5MmJkOGEwNTg5MzdmYTYxMmMzOSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiM2MyOTU0NThiNDRiMGZkNDFlNzJlZTVlMzdmNTUzOTEwNzFhMDdlNTZkYmI2YmRkNjA5Zjk3NTdiN2FkNDEzYyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZjFkZGZmMDg4MmM0YjJjOGQzZDdiODk3ZmE1MDc0YWY2ZjliODA5ZDljMjAyOTBlNzgwYTcwMjRhNWUxNTUzNCJ9"
+        },
+        {
+          "resource": "repo://spike_w2/01_learn_v2.py#L248-L257",
+          "version": "repo-lines-v1:sha256:fcb53a6514322c7e968ced9946ea63a08649d0f51a995bb117c61285b4836455:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjhlZDFmYmMzNGNjOTU4YTJmYzdjYmQ1ZmI5MmE3ZjgzMjRiMGRkYzJlOGExMGIyZjgzMjA3OTYzOWE2YTAwOTQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBmNWE4ZWI0MGVjMGIxYjQ3YWEyYjk5M2QzMTMyNzM0YTA4OWYyZDBkZDA5ZDE3OTcyMzRiNjk0ZDFlOTFlZWUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjNiZGExMWY5MDQ1YmRmMGUwMGE0ODFjYjlkZjFhMWNjYmU0MDg3NzE1MWQwZTFiOTRiOTlkMmYwMDlkNmJiMDEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjAxODhkZThlMDFiMWRkZWM4MDY5ZDQyMTUwNTVjMjNiOWJkZWVhZWVhZjIzNDZhZWZlZDQ4NzYzMjM4MGJkYTQifQ"
+        },
+        {
+          "resource": "repo://spike_w2/eta_v2.py#L259-L274",
+          "version": "repo-lines-v1:sha256:b1df2eeceb281350551a1405d1cf918401d3c2e7f6a31779a3b6de4e2deca2ca:eyJzZWxlY3RlZExpbmVDb3VudCI6MTYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNiM2U0YjkyYmRlMmVmYzFhZDY1ZmE0YWNhMDI2NjY1OTBlNmNlMjUxNjk2ZjFmYTQ0N2QxOTFlMGE1ZDBkOGQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjExMzA2ODlmNjk1ZTA1MjhmNzRkNmIyYjZkNjE5NTY2M2U2MDg0OWViM2Q3MGVjYTEzMjU3Zjk4NmNjZGNmOWIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjMyZTA2MzAyMTQ4ZWNiODU5MzU4NzEzOWZjMjZkOTM1YTc1YWM3NDkyOTJlNjIzZTg4NjVjMGY3MmJmMGM3OTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjMxYTllZDFlMGNjNzI4NzQyMzk2NzA2Yzg1MDc2NTBiYzM0NDVjMDcxM2NlYmViNjcwZmQzNWRhZGY1ODg3ZTgifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_e812b4c0e22d4614839258ed9193c279",
+      "statement": "The adaptive takt factor α is applied exactly once, at the consumption point in predictor.predict's comparison (t + rem/alpha <= shift.end); no estimator embeds or consumes α, and the doc14 §5 pseudocode's tables.get('alpha') was explicitly rejected to avoid double scaling (B10): the rem returned by estimate_event_unified is the full base+delay caliber and α scales that whole rem once.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w2/eta_v2.py#L29-L31",
+          "version": "repo-lines-v1:sha256:7c707b33ec2c7dfdf7379604176bbd5ea6daea0f55b201ffa078d611d526cd9a:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOWQyOTNjMjg2YmQ0YjFjMjJhYTk3YzBjNjk5YjhjNTUxOGU2ZmZkZDlkZjE3MmY3M2U4NzQyZGMyNDE0MmNjMiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYTZkYTMwMDVjZjhlNTJiMWUwYjdlNGQ3ZjA5YTU1M2M0NjJiNGY4MjI2MTIyN2U1MGQ0ZTE3ZjViZjBlY2M3MiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMzQ3MDcwNjNlZDEwMmU2OTRmYTU1MTZkNWJkNWMwNWVjNzA5YWIyNTU2MTcyOGQ4M2NhN2ZhYzUxOGFhM2U3NyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNWZmMWEwYjYzM2ZhY2U5MzFjZTAxNmE4YjA2MmE5OTZkNDUyYmM2M2NhOThmMjllZDFmNjgzNTE2MzZhYWY5YyJ9"
+        },
+        {
+          "resource": "repo://spike_w3/predictor.py#L117-L122",
+          "version": "repo-lines-v1:sha256:7bb741225ba564f060eb1b1f7367322e67ea97e7325be5822c2f4de3fd70bfca:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYTEwNjI5YjZlYWVhYWMxNzRiNmFlOTMyNjIxMzZmNTQwNDA2MDVlOTk1NDQ0YTNmNWFhMGQ2MmFhZDAwYjMyNCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiODQyZWM0ZWE0YjYyODllNmE5MjFkZDk3ODE1NzU3YmY0M2M4NTUxMGI0MzNlMGMyZGZiM2YzNDAxYjYzMGI0NSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYTVhZTllZGY5ZmU0NDJmY2U1YTNjZDZjNTlhNTdkMTQ0Y2E1MDhmYWY1ZWU1MzFhZmI1MDUyZTJkNThkYmFhMSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNjdmYmVlZDM5NmQxZjY4NmM3OTYwZDY5OWRhOGQ2ZWJiMjhmNDg3MmQ4YmVmNmFkNzA3NjY1N2I1YjllNTlhYyJ9"
+        },
+        {
+          "resource": "repo://spike_w3/predictor.py#L39-L40",
+          "version": "repo-lines-v1:sha256:c383286309e587f9d9e54ea9bdffd7dbb595b0da62dc93a086efe2eda52c60fb:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMzU5Mzg2YzU0N2NhMjdiNzkzZDE3ZjliYzIzYWY0ZTM0NzE2OGY0MjcwZmJhYTdjMGZiYWU0MzI2ODAzYTE2NSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZjUwMzcyYmJkODZjZmMyMmUzYmU0YjVlOGIzNTIwOWFiZTFjYzMyYTVmYjc1MWMyNTkwMTYwOTA2OTk2NGUyYyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZGE4YTRjOWJiYmI5M2Q5YTBiOWI0YzJkZDdhZGM3MDJhNjc3ODQxYTMwZmJiOTRiZGYxM2NkOWQ2ZGJkNTlmNCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZmFiZGMxZTY2OGI3ZmZiNDk2ZDNkZWM2MjViNTE5NjQ5YjlhOGNlYzEzNGM3NDU1OTFjYzg3YTlhZmRkYjFhZSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_ec9bc89366464ed28f8623130a00551c",
+      "statement": "Engine gate semantics (docs/15 §0.5, .env.example): DSS_DUAL_RING defaults 1 (1 = W4 unified state machine + unified engine, production default; 0 = legacy estimate_event full path, the 30-second rollback); DSS_USE_NET_DELAY defaults 1 but is effective ONLY when DSS_DUAL_RING=0 (1 = old engine consumes expected_delay instead of p×L, doc10 retrofit; under DUAL_RING=1 the new engine always consumes net delay and the parameter is ignored, B11); DSS_SHIFT_TIER_DELAY defaults 0 (1 = unified engine prefers shift-tier delay rows; only the DUAL_RING=1 path is affected; 0 = shared row, zero drift). All three are strict 1/0: any other value raises ValueError at parse.",
+      "evidence": [
+        {
+          "resource": "repo://.env.example#L88-L100",
+          "version": "repo-lines-v1:sha256:4a1686b098c7d5a837b0602482537b4f6d0335ccdbfacf23efe67b62a5e7598a:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE1NGRhNDJlMDgxMGRmYTRkNTFjZDAxMmQ3YmFjNjg1NThlODBjMmM4OTZhOWJlMmY4Y2UxOTkwNzZjYTQ4NDUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjgyNmUzYjRhMWJlMTdlNTQzYjllZjA3YjEzN2I3YWUwY2IyNzYzY2M3MWE1MmJjMDNmYmFiNGNkNDZhMjRhNGYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImQ5ZjYyYjM1NWU3NzQ3MWU0NTRmYmZhYmQzOGQ5ODA5ODJkNTUzNThjMDVjYjMyMDg3MWY0NGE5YmJlMGUxN2EiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUyZTNmMjA5YmJhNjgyMmMzY2JmYTgxMTVkNGViMmQxN2ZkODkwOWU5OGFjMTZkZmY3NzdjZDM0M2Q1NzAwZjMifQ"
+        },
+        {
+          "resource": "repo://docs/15-W4%E5%8F%8C%E7%8E%AF%E9%87%8D%E6%9E%84%E6%AD%A5%E7%BA%A7%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92.md#L181-L187",
+          "version": "repo-lines-v1:sha256:2713e646e1f7584a4640e1b24f255e83f7497ea2ba691e7d44d234f6245bd364:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNDU5NTE5ZTcxOGQxYzUwOWJiMzNmMzYyMDM0NDE4NTZjYjIwYTkwODZhMzg2NzE1Y2EyYTk4ZDE2OTdjNjM3NSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiN2ViNzAyNTc1OTNkYTA2ZjY4MmEzZGRkYTU0YTlkMjYwZDRmYzUxNGY2NDUyMzdmNWNhNzRiMDhmOGRhNjFhNiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZDFkYTZiYTRkYzQ2NDI1NmMxM2MyNzBmMzNkMjhjNDYzNWRhNGRmODhmZGJjMDcwNTBkZTk0NTRlMTlkMTQyMiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZmU3NDRhZGJkZjg3NzQyM2M1MDY3YmNkN2Q0NTZhZGI5ZGQwMzViZjdiNGFhOTQ1MDZlNmNkNjk3NTc4Mjc5YyJ9"
+        },
+        {
+          "resource": "repo://spike_w2/eta_v2.py#L380-L407",
+          "version": "repo-lines-v1:sha256:32f4b824c674aadf04c7e75779ec15ccc594a203e3edc1ebeadc19752bf6bafe:eyJzZWxlY3RlZExpbmVDb3VudCI6MjgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImUyZGZiNTc5MWRhZWViNmNkZTg5NTE4NWM3MWUxZTIyMWExNWIwMjc5ZjJhNjMzNTdkYzFjYWJkY2MyYzUwYzAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjhiMTdkOGFhMjdiMTVkMWE5YzVjNjBmYTg4MDJhOTk5MDc4Mzc1MjkxNWQwMTc0MDBkZjM5YTg0NWQwMDljZDYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjY3OWQ2NTJhYjgyODJhOTg0OTY4NzBkY2ZlOGVjYjE2OTBkODRiNzY3NDhhZTlkZmJiMmU3ZjA0MzNmNTdjNzkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijg0ZjZhMzNkODhkZjMyNmZkMGM4Njc4MjAxYjAwNzA2ODlmNGMwY2UxYjAwY2JiYzliZGVmNDVlOWJlODE4MTIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_1b473d46d484422c881b496c3c2644de",
+      "statement": "Zero-drift rollback discipline: DSS_DUAL_RING=0 with DSS_USE_NET_DELAY=0 is the bit-identical true rollback to pre-W4 (verified base_win 9.02% / 288-frame zero diff); DSS_DUAL_RING=0 with ND=1 alone is a half-migrated degraded state, not a safe rollback (W4.4f gate reconciliation). The legacy entrypoints (estimate_event, quality_mark, resolve_p) are deliberately kept untouched as the rollback path and existing test anchors.",
+      "evidence": [
+        {
+          "resource": "repo://docs/15-W4%E5%8F%8C%E7%8E%AF%E9%87%8D%E6%9E%84%E6%AD%A5%E7%BA%A7%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92.md#L153-L153",
+          "version": "repo-lines-v1:sha256:204931be2ba8d2c33adb7a08170f116f5b7c9198528b3ade45b189a22a655461:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMjA0OTMxYmUyYmE4ZDJjMzNhZGI3YTA4MTcwZjExNmY1YjdjOTE5ODUyOGIzYWRlNDViMTg5YTIyYTY1NTQ2MSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMjA0OTMxYmUyYmE4ZDJjMzNhZGI3YTA4MTcwZjExNmY1YjdjOTE5ODUyOGIzYWRlNDViMTg5YTIyYTY1NTQ2MSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNzI3MWVmZDgxNTY2MDQ1ZDk1NzBiZmIzZmRlODA4NWJmZDg0YTUwNjM3YjMxZTFlNzhiMWUzZDU0YWY3NzA2MyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNzk3NDkzMmYxNmZjMThmZjE1Y2FhYzY4ZDNhNGViZjY1Y2NkMTdmZjhkMmQxMGYwYjg4ZWQyOGI3Zjk0ZDliZCJ9"
+        },
+        {
+          "resource": "repo://docs/15-W4%E5%8F%8C%E7%8E%AF%E9%87%8D%E6%9E%84%E6%AD%A5%E7%BA%A7%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92.md#L234-L234",
+          "version": "repo-lines-v1:sha256:71a62fe525b19878e11c1b1b1008abf296498d03733f8afc39ebc604f70d1e68:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNzFhNjJmZTUyNWIxOTg3OGUxMWMxYjFiMTAwOGFiZjI5NjQ5OGQwMzczM2Y4YWZjMzllYmM2MDRmNzBkMWU2OCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNzFhNjJmZTUyNWIxOTg3OGUxMWMxYjFiMTAwOGFiZjI5NjQ5OGQwMzczM2Y4YWZjMzllYmM2MDRmNzBkMWU2OCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZmQ3NWY4OWZlNjVlOGM2ODcxMzFkZjUxMTVhODE1YTkwNjBjNjI1Nzk5MWQ1MjM0ZWRiYjRmZmExODU5YTBjYyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNjQzM2JjNTgwNzA2YzYzNDczNDY1NjAyY2E4YzgzZTJhYmMzZTMzNTFlNWQyYTU4OTMxMWIxYzcxMWUxOTIyOCJ9"
+        },
+        {
+          "resource": "repo://spike_w2/eta_v2.py#L404-L407",
+          "version": "repo-lines-v1:sha256:17ec14fff75ab58dad1e78d0df82b33e4d72c0c6a33444d6cc3e4a4e440fac9c:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMTAyZDA4ODE4Nzg4NDI1NjQwN2VmMzdkYmMyM2UwMzU0MjhjMGIxNGFhM2M3ODYzMDhiNDdiMjAxMWJlY2ZkNSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOGIxN2Q4YWEyN2IxNWQxYTljNWM2MGZhODgwMmE5OTkwNzgzNzUyOTE1ZDAxNzQwMGRmMzlhODQ1ZDAwOWNkNiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiODNhYzExM2FkMmJiOWQ0YTUwNzE1NDc0YjAyMTg5YTliNjQzZjA4ZDE5NDIzNzlhZDU1MGY0ODUyMGRkNzY1ZCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiODRmNmEzM2Q4OGRmMzI2ZmQwYzg2NzgyMDFiMDA3MDY4OWY0YzBjZTFiMDBjYmJjOWJkZWY0NWU5YmU4MTgxMiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_3ccc8f59185b4bccb4b7f4c2fb2edd65",
+      "statement": "Entry dispatch across the four consumers: predictor.rem_of (rolling pool) calls estimate_event_unified(mode='shift') with the full state-machine path (v.flag_137, raw 139 flag, passed_oven, loop_exited, entry_shift, effective_flag=None); the dashboard single-car CLI calls estimate_event_unified(mode='vehicle') deriving passed_oven/loop_exited/entry_shift as stateless own-trajectory single queries; 02_replay_shift._eta_pair and 02_shadow_replay's two static-side call sites both go through the shared estimate_for_replay dispatcher, so the rolling and static reference sides run the same engine and the G1 same-engine consistency gate holds (differences only from rolling pool/α state; under DUAL_RING=0 both sides run the old engine).",
+      "evidence": [
+        {
+          "resource": "repo://spike_w2/02_replay_shift.py#L161-L184",
+          "version": "repo-lines-v1:sha256:0524e5add3073d55bf3aacf42c4c151411fcac3a33c229b72775ba82c38016bc:eyJzZWxlY3RlZExpbmVDb3VudCI6MjQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijc0N2NkNjkyZmIzMzFhNDE1MDkwNjQ1MjJmZjg1N2E1MTFhYWE1ZjNiNjEyNjBlY2Q1OTU2YTBiMDlkNjk5MWIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU1ZDFjMmRkNDA1YTZlZjNiZTJhZjhhYWU0ZGRhMWU4MDJiMjE2NWU3ZTE0MjQ1ODJiYjQ4NjlhY2ZjYjJmODYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImU5MzdmYjA3OGMyODFhN2I5NDNhZTNhNzE2YmNjNjNjYjRlZWQ2ZGNiY2E3NTZkNTc2ODNiMWNlMjA4ODUzNjQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImQ1ODJkODNhNmY3MTk2NzdjMTEzMTI4NjI3ZDcxMDQ4NzM3MGE2ZGRhNGNhOTliMzRhNGNmMzk4Y2JlNWY2MTYifQ"
+        },
+        {
+          "resource": "repo://spike_w3/02_shadow_replay.py#L303-L307",
+          "version": "repo-lines-v1:sha256:81b3d448d76f6da14fee281b30ef4550aafcc9004eeda76a80c0a3ec7f730cd2:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOWVmN2U4MmM2MGVjZTVhNTc1OWI5ZjcwMzhlZThlYTYxZWRhNWNkZDZjZjBhMTExY2UwNDY3ZjY2MzliMThlMyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiM2ZiNGZhNWM0MjAyNTYwZTg5MmUxMTllNmQ4MjM2YTNmZTc0Y2NkOGVhMGQ0M2RiZmJjNjI3NWMyNmY1MDk3NSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMDM5ZjA4YzdmMDM3YTcwNjdkMzRkMTgzNDhkZDRjNGE3Y2UzZDQxMWExMDdiZDQ4ZDIyMmZjYzcyNzk3ZTZjNCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZjBiODhmOTQwMjk1YzcwMDI0ZjEwYTFmZmFkMDRlZmFjMjgzMDI3YTFmM2MwYzU3Y2UyZTQ2YmQ3YTY4YTc3MCJ9"
+        },
+        {
+          "resource": "repo://spike_w3/dashboard.py#L247-L292",
+          "version": "repo-lines-v1:sha256:be4b529d47593e70f324ecfd4c8aadcc8327233aa57bd78b50cbb68069f116c4:eyJzZWxlY3RlZExpbmVDb3VudCI6NDYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE5NDVlYWZiMWIzZDYwYzdhNWQzZDc2NDBiNDAzMzkzMTVlZjE1NDRmMTYwZDk5NGE3MzFmZDg4YTcwNzQ2NWEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjZiZGQyOWFlMGEzMjE2MjdhNjZhMWExZjEyMTExYjlmODFiZjY4NTk3ZTYzYzFjMmZjZjIwZDYzZWM5YTUyYjkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjY5Yjc0ZGQ4NTMwODBjNDljNTljNWVkZmE1NGY4YWNkM2UyZjY3ZDc2MzViODU3MzFlZWYwMjZkYjgzNWNiNzQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjY0NGVkMjUyZWZkNTA5OTYwZWY5OGMzNWJkODZjOWJhMTQ5MjQxODA4MWNiYTBhNjk3OGM3N2M0NjUyM2Q5YjkifQ"
+        },
+        {
+          "resource": "repo://spike_w3/predictor.py#L44-L63",
+          "version": "repo-lines-v1:sha256:3aac635714de2c171398adb3b474fc85bfd6b08df19e766ff3988fa474fabf52:eyJzZWxlY3RlZExpbmVDb3VudCI6MjAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImUzNTkyZmJiMWYyZTVhYmRlYTEzYmJlYTQ4NmEzY2I3MmJiYmQzMTUyOTMzY2I0NDQ5NTQwNzE3YTJjM2IyNmMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjJhOWY4YzJiYzdhMTQxYTAyMmFmM2ZlYjhhYjUwMDhlYzI1NzU3ZWYyNGFjZDA0OWY1MDg5YTc0YjdjOWFlODEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImZhYmRjMWU2NjhiN2ZmYjQ5NmQzZGVjNjI1YjUxOTY0OWI5YThjZWMxMzRjNzQ1NTkxY2M4N2E5YWZkZGIxYWUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjkyM2NiYzI4MjljMjk5ZWFlNmIwNTc0N2E3MjI3YmM0NzJiMWJhZTk2MGRlMmM0ZWRmNDhhZjEwMWZmYzU4NjEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_253cc6d71a954243a3498879996b3f12",
+      "statement": "estimate_for_replay is the shared replay/static-reference dispatcher: DUAL_RING=1 → estimate_event_unified(mode='shift', effective_flag=purified flag, skipping the online state machine since replay does not maintain 137/passed_oven trajectory state); DUAL_RING=0 + ND=1 → estimate_event_net_delay (doc10 retrofit, flag=0 p×L replaced by expected_delay, comp_excl honored); DUAL_RING=0 + ND=0 → legacy estimate_event. It accepts an injectable dual_ring override for tests.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w2/eta_v2.py#L410-L435",
+          "version": "repo-lines-v1:sha256:e713b6b395a79366e2a876d0ee9f8e8a2dc5720d3ddc04e76b6c20ab5c38b3ae:eyJzZWxlY3RlZExpbmVDb3VudCI6MjYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjgwMWVlNjZiNGM1NGU2MmNiYTVhNmZhYTRhMDM0NTQyMDM2YzJlYjQzOGI1N2Q2YTQ4ZTNiNWI1MGZjYzk1MGMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImRkMTI1ZmIyMjA5ZDU1M2Y3YjAzZTBmYzRmN2YwYTgxM2M2NzY4ODM4MDBiYzVhY2IxOGE4ZWI5ZjJjZmNmYzkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjUxMWY5ZTQ5ZDI0YWExNWVjYTc5ZDI2ZWI1ZjJhNDZmZDk4MGVmNGYzMmNiNjZiM2NkMjg2MDZjNmQ3NDAxMTMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjhmMGIxODhmMTA5ZmU2NzNhMjhmMzdkYTY0MGVhODBjNWI1NmEyYjljNDZlMzBkMGI5MTJjYjRlYTZhZjMzNzcifQ"
+        },
+        {
+          "resource": "repo://spike_w2/eta_v2.py#L438-L462",
+          "version": "repo-lines-v1:sha256:a1b1f610d848574705779c8bc5d8d7682707dc9f73ca78da395d83a0e0b766a1:eyJzZWxlY3RlZExpbmVDb3VudCI6MjUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQxM2QzODQ4NGM2ZWNjYzNlNjJmZjllYjAzNzlmYTg3YjJhZDExNGQxMmE0Nzc2ZWVmOTgyMTk2ZDcyYTMwMzIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE4NGVjNTQyMWFjMDQwZDA1MTkzODBkMmY0ZGQ0OGI1ZDJkNjhjZmVlMzQxYjNmMzljN2MzYWJiNzMzZDdkOGMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImY2YWVhYzI3MTgyNjg0MTQ5N2MyODU5NDVlZGI2OGE5ZWIzMTNjMThhY2ExMjM0ODA4MWQ3MGM3YTZlMDM5OTkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_1a041fefbd604202a9ac5cfd7709b1c6",
+      "statement": "The online state machine's inputs ride on the pool, not the raw event stream: stream_pipeline.VehicleState carries passed_oven (rule O1: set True when the car hits any OVEN_OUT_STATIONS, monotonic, never reset), flag_137 (rule O2: latest-event value with '-' normalized to '0' on ingest/replay_car/adoptive paths — the 137 bit MUST be pooled, otherwise the online machine would kill all blacktop cars to '0' and paralyze the dual-ring engine, agy blocker-2), and loop_exited (v1.4: set at the three LOOP_EXIT_GATEWAYS, reset only on the new-cycle signal = re-entering an entry station). Invariant: these fields follow the car's own trajectory only (no cross-car contamination).",
+      "evidence": [
+        {
+          "resource": "repo://docs/15-W4%E5%8F%8C%E7%8E%AF%E9%87%8D%E6%9E%84%E6%AD%A5%E7%BA%A7%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92.md#L155-L170",
+          "version": "repo-lines-v1:sha256:e272b96464944c81cafb87755dfbca9f011c5dbe28e8aea3685cd76d8d1ee3a3:eyJzZWxlY3RlZExpbmVDb3VudCI6MTYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFhNDczZWU1NzVhM2E5NDJmZmYxZjA1ODc0NTZkNjg4NGQ4ODU4ZjE5MTRkNmEyMDEzNjFmN2MwZjY0MDdiMTMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdlYzU2OGVhZGRjYzQ4NDAyNmYxZTMyYWYyMmM3NWYzODUzNjJjZjJjNWMxZGQ5NjhjMDU5MmY1NzE5NTgzMzAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijk5NjJiOTdkMzhhYTJlNWRmM2E5YzU0YmI0N2JiZWRlNzk1MDk4MWExMzk1YTMwNTQ4NDA2ZDc2ZjhlNGM5NTYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImZjY2UxOWI1YmIxMDFjYWY1MDE2MzI5MmMzYzZmMzcwOThkMDIzYzYwNzdhYjk1MmVjMDkwZDc2MWVhNTY2YzAifQ"
+        },
+        {
+          "resource": "repo://spike_w3/stream_pipeline.py#L394-L441",
+          "version": "repo-lines-v1:sha256:db6c559678b314e91e432a2a010661d989ed8df641aca731fd5855178e6d7617:eyJzZWxlY3RlZExpbmVDb3VudCI6NDgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjMxMzI3OTI5MjBjNzkwZWI3YjFhZWZmYzhkY2U0YzhkNjJmNjkxYjg2MmU1ZTNlN2QwZjQ0YTAwNTNlMTk0N2UiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjVlN2JjZDM2ZWY1M2I0NDUyM2U2NWU5OGQxOTQ0OTkzZTBmZjE3NDZmNTUzNmMxYTUxMTc0NmYzZTAxZTc1NmYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImFmZjBiMzY2NTk4ZmUxNmY4OTJhMzlhMDI3MTFmMjZlMjhjYWViMTFmYTJjMzgyZTFkNjNhNzRlZWQ5YWUyMTEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjJkYTkwZmNlMzcyODllMjAzOTM2YmRlMDU5MDg3NWU2MTljN2FlMTgxNWM3ODQ2MDY5OWI3NjEzMmNlNzA5MWYifQ"
+        },
+        {
+          "resource": "repo://spike_w3/stream_pipeline.py#L56-L71",
+          "version": "repo-lines-v1:sha256:a37909e29166369d6f531fb91afa82428c6fd1149d2e10559cdcd299385e9f66:eyJzZWxlY3RlZExpbmVDb3VudCI6MTYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI2ZmJhZTBiOTFkNDRmYzBkNDlmNWRlNjkxZGE2ZmM0MzFmMjYwMTM0YmY3MzFlMGUyMWY3NjQ4MDk0MzM0Y2IiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRjNTA5OTM2ZGZiN2YyMjg0ZGUwMWE3NzI5Njc0MzE4N2ZiYzQ3NjgwMmY4NmU5ZTZjOTZiY2Q5NmIzMDM2YzciLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjcyMGIxNmUwZTFiNzI1NzcwOGJjMzE0MzQ3MTcwZGQyOGFmMDMwODE3NzI3OGE4ODJjODUzZmQ4Mzg1NjAyYTkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjZjMWYwMmZkN2VjMWQ0NjJjMGNiODE4Yjk0OGZmZTRmNzE1YjJjMmM0MzI2MzBjMjMyZGZlMzRkNDI3NDNmYTkifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_70972246a3064c5db68b26a106adfc95",
+      "statement": "Under DUAL_RING=1 the replay contrast arm direct_nocomp was redefined as a net-delay-off baseline: the same event computed with both delay tables (expected_delay and expected_delay_shift) cleared to empty, measuring the net effect of the expected_delay table itself — because the unified engine has no p×L compensation and no exemption target, the old 'exempt vs not' contrast is degenerate (eta_d ≡ eta_d0, contrast always flat). Under DUAL_RING=0 the arm keeps the old comp_excl semantics.",
+      "evidence": [
+        {
+          "resource": "repo://docs/15-W4%E5%8F%8C%E7%8E%AF%E9%87%8D%E6%9E%84%E6%AD%A5%E7%BA%A7%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92.md#L223-L223",
+          "version": "repo-lines-v1:sha256:105163697ba124d2a85ee057705c5512fd8dd142e57a4fb1b6ebdfa831a76c25:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMTA1MTYzNjk3YmExMjRkMmE4NWVlMDU3NzA1YzU1MTJmZDhkZDE0MmU1N2E0ZmIxYjZlYmRmYTgzMWE3NmMyNSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMTA1MTYzNjk3YmExMjRkMmE4NWVlMDU3NzA1YzU1MTJmZDhkZDE0MmU1N2E0ZmIxYjZlYmRmYTgzMWE3NmMyNSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZjI2YjY0NThhZmRmNjRmMzMyYzBmMjg2MDgxYWQ4N2Y5NjlkYThlYWY1YWJjYTk4MzhhZDk5Mjc4ODIzOTdiMiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiOWUxMDJhM2EwYWM2OGZiYmQ5OTU0MmIyY2E1NmU5NzJiMGIwNTQ4MDA4YzU3YTlhYmViNjIwZTNhN2I4ZTNiNiJ9"
+        },
+        {
+          "resource": "repo://spike_w2/02_replay_shift.py#L161-L184",
+          "version": "repo-lines-v1:sha256:0524e5add3073d55bf3aacf42c4c151411fcac3a33c229b72775ba82c38016bc:eyJzZWxlY3RlZExpbmVDb3VudCI6MjQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijc0N2NkNjkyZmIzMzFhNDE1MDkwNjQ1MjJmZjg1N2E1MTFhYWE1ZjNiNjEyNjBlY2Q1OTU2YTBiMDlkNjk5MWIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU1ZDFjMmRkNDA1YTZlZjNiZTJhZjhhYWU0ZGRhMWU4MDJiMjE2NWU3ZTE0MjQ1ODJiYjQ4NjlhY2ZjYjJmODYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImU5MzdmYjA3OGMyODFhN2I5NDNhZTNhNzE2YmNjNjNjYjRlZWQ2ZGNiY2E3NTZkNTc2ODNiMWNlMjA4ODUzNjQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImQ1ODJkODNhNmY3MTk2NzdjMTEzMTI4NjI3ZDcxMDQ4NzM3MGE2ZGRhNGNhOTliMzRhNGNmMzk4Y2JlNWY2MTYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_a89d622231bd4e359173c6ccff628e7a",
+      "statement": "The net-delay tables are learned by spike_w2/01_learn_v2.py (writes dss.dim_expected_delay W4.2c and dss.dim_expected_delay_shift W4.4h): population = the ⑥a full-window pre-loop population (flag=0 before the car's first flag 1 and first flag 2 event, same source as v2_future_flag — the clean-suffix population is structurally disjoint from fut=1 and must not be used); formulas delay_mean_s = max(0, P(fut)·mean(rem-base|fut=1) + (mean(rem_clean)-p50(rem_clean))) and delay_p50_s = max(0, P(fut)·p50(rem-base|fut=1)) with the baseline correction entering only the mean column and max(0,·) truncating only the final value; P(fut) reuses v2_future_flag week='ALL' p1 (rolling 8-week p deliberately not mixed, doc10 seasonal bimodality) and the baseline is same-source as the engine (dim_remaining_time p50 via the same three-tier join); three row tiers (body_type / LEFT(bt,2) / 'ALL'); the shift-tier variant adds the entry-event shift dimension (DAY [04:45,16:30) / MID [16:30,04:45)) without shift-conditioning P(fut).",
+      "evidence": [
+        {
+          "resource": "repo://spike_w2/01_learn_v2.py#L168-L258",
+          "version": "repo-lines-v1:sha256:d22afe1523a7f5fb41b67f85b281d6ddba261fc42139f32853eda9cf5abd8544:eyJzZWxlY3RlZExpbmVDb3VudCI6OTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjUwOTVjYzZkNzE0ZmI3ZmM1ZTdjNDA4YjQyZDRjMjA4ZjNlMTI4ZTJmYzRhNTYzOTAwZDhkMGRmMTcyNDNiYWYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ3NWQ0NTg5ZTkxY2M4Y2I5NzQ4ODlkYWIwMWRlMTVkYjE1NzRjYTEwZWVjNzI5MGExMDliZjU4OGM5NGUwMWIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjQ0ODQxOWZjM2NjOTFhY2IwYTFhYjA1MTIyMDk5OWZkOWQ4MjdjYzA1YTA0Mzg1Nzc5NmYyZWJkMDY5NzA0NmUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjAyZjllOTFlZjQ4NWIyMjNkZTYzYjU1MmY4ZjExNWM1ZjMyOGZmZGJjYjc0NmUyZmUzZWRiMTU2NmU3MTAyZmYifQ"
+        },
+        {
+          "resource": "repo://spike_w2/01_learn_v2.py#L260-L340",
+          "version": "repo-lines-v1:sha256:81b8bc41e880cbb9b522ab474420a57403282db572a91af2a2107b83281de94f:eyJzZWxlY3RlZExpbmVDb3VudCI6ODEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBiMjlmYTc1NDE2ZWVjYzlhOTIwYmU4MTFmYjcwZWY5OTg3YzJkMzRlODk1NjM5Nzg3NTM1YWI1MmZjZDNjZDYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBmNWE4ZWI0MGVjMGIxYjQ3YWEyYjk5M2QzMTMyNzM0YTA4OWYyZDBkZDA5ZDE3OTcyMzRiNjk0ZDFlOTFlZWUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImI4Njk2ODIyMzQ0MGVlZjQxMWRmMmZiMTFmOTk4MmZiYjExYmVjZDRkZTI3NmZmODBhY2FjNDQ1M2YzNDZjODAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQ0ODQxOWZjM2NjOTFhY2IwYTFhYjA1MTIyMDk5OWZkOWQ4MjdjYzA1YTA0Mzg1Nzc5NmYyZWJkMDY5NzA0NmUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_88b57ff8cba449cb9f488868ad3b3c84",
+      "statement": "dss.dim_expected_delay is a required table in the 14-entry startup completeness check (spike_w3/01_boot_online.py DSS_DIM_TABLES, added by W4.2c per B8); dss.dim_expected_delay_shift is optional — a missing table loads as an empty dict and the resolvers fall back to the shared row, which is exactly the gate-off behavior (zero drift).",
+      "evidence": [
+        {
+          "resource": "repo://spike_w2/02_replay_shift.py#L114-L157",
+          "version": "repo-lines-v1:sha256:1361e36951bb2ebd52532cdebf49d5c76609056fe58b1e7fe19535af7e2898c8:eyJzZWxlY3RlZExpbmVDb3VudCI6NDQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjljMmQxZjI0NWRkZWM4Mzg0YjFiOWM0YjZhOWJhMjhlZmEwZGQzOTRlNmY5YzMxNmU3NGVkNWYxMzQ2YzE4OGMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ3NjBiNTRhZWI2ZGNhNDI1YTkzYTZlZTVhOWFjZmExZjdkNGUwNDMwZTMyZjVlZDQ3NjJhNDRlMDhkZTFlMmYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjBjNjE0NGEwNDEwNmNjMTBhNzA4YjU1ZGZkNDgwZTY1NjAyNmY1ZDkxMjE3MDhkNjU4ZTFlNjZlYjE1MWVkZTciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImU5MzdmYjA3OGMyODFhN2I5NDNhZTNhNzE2YmNjNjNjYjRlZWQ2ZGNiY2E3NTZkNTc2ODNiMWNlMjA4ODUzNjQifQ"
+        },
+        {
+          "resource": "repo://spike_w3/01_boot_online.py#L34-L44",
+          "version": "repo-lines-v1:sha256:91b3ab78fa786ed78b9bd8fd2d2aac5ad008e2f2779ec9608511fac66bf68d1d:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI4NDUyNmU5NWJjMDU5ZGQ4MzRjZDA1OWZiZjQ2ZDE0NTI1OGZkM2UxNTY4NzQzZDAxOTkxZGQwYTFlYTEyODYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjliMzllMDIyZTBkODU0MTIwMDAzZDc5MGMyOGI3NTk2MmVkZDMwMzc1NmQ1MTMzM2RmNzQ1Y2ZiODZlYTExY2UiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImQ3OTYyYTM1YWI5OTUyNmYwMWFjM2JkMzA1MmEyY2ViOTQ5MTBiMDIwYjJkZjMyMzQ2ZTZlMzBlNzVkNGQxODAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjZmN2ZjZmRhMjcyNzE3MmFiNmQwMDc3NjMxYmIyNmQxY2E0ZTgwOTQ4MzBkMWFjMzk2ZjY4N2QzZGVkM2MzNGYifQ"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.7.0",
+    "at": "2026-10-08T13:05:24.547Z"
+  }
+}

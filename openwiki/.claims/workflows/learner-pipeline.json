@@ -1,0 +1,590 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:6911973c8ed69b37588920e2f9ca7351f139d73536f14a036de0abf27f624f45",
+  "claims": [
+    {
+      "id": "claim_6f70f5c99d6846cba56b2a5d43ffc725",
+      "statement": "Learners use a causal window split: the default learn window is 2026-04-14 → 2026-08-15 (end day padded to 23:59:59) for both learners, and replay windows (defaults 08-16 → 09-18 for W1 replay, 08-16 → 09-19 for W2) are strictly later; no learner learns from, or a replay gate evaluates, events outside its own window (因果切分：回放只用后续窗口).",
+      "evidence": [
+        {
+          "resource": "repo://docs/09-M5%E5%86%85%E7%BD%91%E5%9C%A8%E7%BA%BF%E9%AA%8C%E6%94%B6%E8%BF%90%E8%A1%8C%E6%89%8B%E5%86%8C.md#L52-L52",
+          "version": "repo-lines-v1:sha256:0a0c0bb50615966a353bdb696aadda12797415e0e5a8dfd7486c75ef0d56c3e2:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMGEwYzBiYjUwNjE1OTY2YTM1M2JkYjY5NmFhZGRhMTI3OTc0MTVlMGU1YThkZmQ3NDg2Yzc1ZWYwZDU2YzNlMiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMGEwYzBiYjUwNjE1OTY2YTM1M2JkYjY5NmFhZGRhMTI3OTc0MTVlMGU1YThkZmQ3NDg2Yzc1ZWYwZDU2YzNlMiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMDZmMzdjMzMxMTIzZWJiNTJhOWQ1ZDEyYWZiMDA1OWVkYjg0ZTc4YmM2NzY5ZDcwMzY1Zjg0NTMxNjMwY2I0NCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMzdlMzEyZTM5NjMwZGIzYWE1ZDg1MmE2Yzg1NDZjZDJmODhhNDY1NWM5YzI1YmE1MWZiNWExM2I3ZWIzZWYzYSJ9"
+        },
+        {
+          "resource": "repo://spike_w1/01_learn_takt.py#L688-L695",
+          "version": "repo-lines-v1:sha256:9c6b51de7647d76f11d95172b87f0c42a7b254afafece5f0b8b684f71e3fb121:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZTAzYWMwOGQyNDJhOWQ4MmU5Njg4M2M0NGQ1ZTcwNTMzZDVmYTYyZjI0MmM1MzEzYzVmZjZkOWU2YTBjMDNjYiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDE5Y2UxNzI5N2U0NDc3NDFkNzA0ZTM1NzZlNjhiY2I4MzU4NDg2NTljMThkNmYzOWMwMzNkOTllNzM3ZTFlOCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiY2Q5NGQyZjNmNTU5M2RlNjU5ZmQ0NmMyYzNlZmRiMWUyOTlhYmJmYmQwODk3OWQ0NzBkYzliZTIwYWQzMmM2NCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYjg0MTNiYzkxMzYzOWY3Yjk4MjZkZDY1ZmFmZGVhZDMwMzY5NjE4NzhmMzhjMmQ1MDVlM2I5NzZiZjhhNWQ5NiJ9"
+        },
+        {
+          "resource": "repo://spike_w1/02_replay_eta.py#L1-L7",
+          "version": "repo-lines-v1:sha256:ac24e20e790b94ad598e712e7bf55eb328c34630ed085b04fbb7628a60b0f219:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOTU1MmY4NTRmY2Y3NzM4OTE2MGEwOGNmYjRiZTJlYjkwMmNkOWEwYzBhZjc2YWI1N2RmMDJjYmY5MTI1ZDM2OSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNDc1ZDQ1ODllOTFjYzhjYjk3NDg4OWRhYjAxZGUxNWRiMTU3NGNhMTBlZWM3MjkwYTEwOWJmNTg4Yzk0ZTAxYiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjAsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMzcyOTg4MDVlOTdjMmI2ZjhlZjAzNDAwM2RlNTVkZTZmNzQyMzgwOWI0Y2JmOTJhN2VjZGFhOWY4M2I2ZDQ4ZSJ9"
+        },
+        {
+          "resource": "repo://spike_w2/01_learn_v2.py#L515-L524",
+          "version": "repo-lines-v1:sha256:8fa007a43d5e1de491e367e1c8eac46629a2824e4e22f62dada5f984511294f7:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImRmMWM4MGUzNmMwZDcyYjY1ZGE1M2U5YmQyOGI1ZTZhZDI2YjM4NmE1ZmUzYmZjOGI1OWEzZjU5NTliMmM4MGIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU2MzA4MDI5YTU0NjE1YmFhMTczYThmY2FhMzIwY2YzOGIzNWQ2OGY3NDAyNDMwNmZjMDQ0NjE1NmM2MDhmMTkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjM1YzNmNjBlMjIxMmZlZjc5YTI2ODA4NTUwMjFkMjFjMTdhNWQ0MzQwZTdjZTdiMjZiNWM1MzZjMzc1OWI0M2IiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjViYjk2NzQwMjEzMjU1ODUxY2UyNDdiMjc3MDdmMzk2MmYxOTk0OWZiNjBlNTI1YTNhZTUwNzg3ZjlhYWIzYmYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_ad57b4f2430f411bbff700e498067e4a",
+      "statement": "The learning population is self-contained complete journeys: a car contributes only if both its first entry event (01IS205/1L360RB/01IS045) and first exit event (K3IS140/1J440RB/K2IS075/K1IS135) fall inside the window (exit_t > entry_t); in-progress cars truncated by the window boundary are excluded from the sample.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w1/common.py#L30-L33",
+          "version": "repo-lines-v1:sha256:92c257cca79f13439cc67e9f5a7cdb52633c616c5e31f0de2e6725b9780cd1c3:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMGM3YTI2MWM2OTU5NmYxZjMzZTU4OTA4NmY5ZjBhYmMxMzRmYTY4Mzg3ZDNlNzQ4ZTFmYjQxODY4YTIyMzMwYSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZTNiYmY2ZTc2YTU1MWRkYjE3MjcwZTc5MTUyMDcwZGNkYmQ3ZmE1NzQxNDUxYzRkYzVmNzk0YTA2Nzk5ZTNmMCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYjdkNGIyNzY0MzRmZTdhZTg1YTk2NTNkNDQwOTRjMDZlNDQzOWYzM2FhMjZiZGY0NmQ3NDVlMmExYjgxODZmZCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNTgxZDg5Y2M3OGQ5MTQ2NDY2M2RmMjg5ODhlY2VlMjAzN2I3ZTc4Mzc4ZTg5ZmU0ZDgzMjM5ODdlNjk2OGFmMiJ9"
+        },
+        {
+          "resource": "repo://spike_w1/sqlbase.py#L84-L121",
+          "version": "repo-lines-v1:sha256:90ec642ec7b30ad203816da26081e1ee026aeb5981746d7f77cbf0b7fe0de279:eyJzZWxlY3RlZExpbmVDb3VudCI6MzgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI3Mjk4MGMzNTllNDQ3MDZjZTk0YjJiYmE4ZjliYzA2YmJmMTUwNDdhZmQ0MWQ4N2M4ODU1OTg4YzE3ZTA3MDAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImVhMmE3YzM5YTY2OTExOTgxMjcwZThiZDM1YjE3NzgyMTE4YzZlZDU0YmY4ZjA1NzE3ZDU1NDNkOWY1YmNlNWIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImE4ZTFjOTZhYjhjODExMTk2NGM4YjdlZWUyNWFmN2JjYzgzYjUzY2I0NGQzNjU2OGFlODgyYTgxOGU0ZmZkMGMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjM4YWU2MGEwOWE3ODRiNDdlYTA4NTMxNmJmZjkyYzY4MDExZGQ2NzBkODlmMjhkYWY1ZGE5YmI2YWU0MWJjNDIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_aeda1cfdd9db4f47a1340d53d8fe4f7e",
+      "statement": "sqlbase.ev_base_sql is the single shared extraction caliber for both learners and all replays (DRY): one execute of a multi-statement SQL that builds three session TEMP tables (tmp_w4_p = one scan of product cars BODY_ID LIKE '78202%%' in window with bits 137/139 extracted; tmp_loop_bounds = dual-loop boundaries; tmp_ev_base = purified event base); TEMP tables are session-scoped, so all learning queries must run on the same connection that built them.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w1/sqlbase.py#L1-L28",
+          "version": "repo-lines-v1:sha256:d6fd71b167a9fb597f255c7a8e096d6b29b837ac0e83c70dfff27a960258144f:eyJzZWxlY3RlZExpbmVDb3VudCI6MjgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjhiMDg0YTlmMzc4MTI0YjJiMWE1MTU2M2JmM2MyMjQ0NGViN2ZmMzM2OTIwMTdkYTI4YjIxMzZhZTU2OTg3ZWQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImEzMDNlY2RkNGE0ZDEwZjE5YzczZmQ0MmZkMTI0MzdmZDMzNTRhODI2ODE2MDVkYTUyNTVhOTdhMzkwNjhkYmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjJkZjQ1NDc0ZTNhOGEyNzY3ZjgxODJiMDFlODI5NGQxY2E0MWI3OTA1MzQzMzZmMmUzYjQ5ZTM5NTAwYjA0Y2UifQ"
+        },
+        {
+          "resource": "repo://spike_w1/sqlbase.py#L125-L131",
+          "version": "repo-lines-v1:sha256:15300fd247eb0e8e968e166521d10ac5c0654da574ad3c86c6bad2305691dc82:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNTEyZDZhMDYxMDJlNmViOWVhNzY3MTEyODAwNWM0OWQ0ZTk2MTNmMTRhNzE5ZmUyOTAyYTdlODU2OTNmYWRhNiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOWFiYzM0M2VhMzExMDkwYzVjYjM3NTk1ZGRjYTZiZWE1OTAyNmYzNmE2YmU1ZjdlMjViYTA1N2QxN2JhZmZlNiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMzhhZTYwYTA5YTc4NGI0N2VhMDg1MzE2YmZmOTJjNjgwMTFkZDY3MGQ4OWYyOGRhZjVkYTliYjZhZTQxYmM0MiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjAsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_b2f8cf5048be44c497c2d3e931c37737",
+      "statement": "tmp_ev_base purifies the flag into {'0','1','2'}: events inside the pure rework window [t_rw_start, t_rw_end] become '1' (priority), inside the pure blacktop window [t_bt_start, t_bt_end] become '2' (t_bt_start requires 137=1 AND 139=2 at/after first oven-out of 16IS305/17IS305/18IS345), everything else '0'; loop ends are the first pass of the gateway group 25IS010/25IS110/25IS210 after tagging (NULL = no gateway); last_loop_t keeps the byte-identical max(t) FILTER (flag IN ('1','2')) OVER (PARTITION BY body) expression so clean-suffix exclusion semantics of W1/W2 consumers are unchanged.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w1/sqlbase.py#L48-L122",
+          "version": "repo-lines-v1:sha256:f28ec84b4a4c8701064248fd3aad1fc0993417683f7d917909994f2c8046a304:eyJzZWxlY3RlZExpbmVDb3VudCI6NzUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQxMDQyYzU5NzFmM2NlMTM4OWNmZThlN2E3NGZkMWU5MTAwZDc1ZTExOGMxOTkzYTMyODRkNDBhNTZhNzE3MTciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImEzMDNlY2RkNGE0ZDEwZjE5YzczZmQ0MmZkMTI0MzdmZDMzNTRhODI2ODE2MDVkYTUyNTVhOTdhMzkwNjhkYmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImY2YTgyMTU2M2U1ODYyYjA5OGUxYzE5ODQxODA1YzdmNTMzMzVhZmQyOTlkMWUyMjkyZDhkMmFmMjhkMTcxNzgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjI3NzA4OTg1NzNjYmU1NDBkZDhlOGUxODZiNDA0MzY5NTQwOTEzMTcxZDExYWM2ZWYyMThiOTZiNzMzYTRiOWUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_9cb43c4d23bc407f8bd2882c2d695bf3",
+      "statement": "The W1 learner implements the five-step pipeline 过滤 → 分段 → 清洗 → 聚合 → 自校准 as SQL over the ev_base foundation: main() executes DDL → ev_base build → platform-prefix discovery → four distribution INSERTs → dim_loop_duration → meta → sanity checks S1–S6 → sanity report → exit 0 if all pass else 1.",
+      "evidence": [
+        {
+          "resource": "repo://README.md#L40-L42",
+          "version": "repo-lines-v1:sha256:21091a8453763873eff817717ba84621e3bd70ec786c91805cebb03d1f7561b0:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNzkxYzUyNzBjMjlhNjFkM2FkNzBjM2ZmZmY3NjVmNGY3NTY1NTk0NjI4ZTA1MGEzMzUzNGExN2ExZDY0ZmViNyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNzQ4MmNjNTZhOGRlZTczNmY0ZWQ2MjMzYjQzYWE1MTViYjM5MDAyMWYxY2Y0MDVlMzUzODYwYWQ5ZTFhYWZkMCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZjhkOWE3N2E5NDg3YmVhOTJlMTJkNjA0Zjk0ZTMyOWMyYzJlODFlYjk0NTBmZGY3NTgzOGNmNTI1MjRkODBjMiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTgxMTQzNzcyYzAxYjYyOTZhNWM5MWMwNmRiYTgwZWI5ZjcwNGRkODBjMTAyNDhkOGFhOWIyYTIwZmYxOGRlNSJ9"
+        },
+        {
+          "resource": "repo://spike_w1/01_learn_takt.py#L688-L760",
+          "version": "repo-lines-v1:sha256:d4606e199be1903eb7cc87510df466b87f8cff5306923bc1459e332d1f0ee6ad:eyJzZWxlY3RlZExpbmVDb3VudCI6NzMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImUwM2FjMDhkMjQyYTlkODJlOTY4ODNjNDRkNWU3MDUzM2Q1ZmE2MmYyNDJjNTMxM2M1ZmY2ZDllNmEwYzAzY2IiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU0ZTliMWFmMDhmMTNmMWRjMDUzOTYxNTYzODVjOTk5ZjUzMTYxNjg5ZjBmOGE1OGVlZjU5NzY3MDM0NTFjY2IiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImNkOTRkMmYzZjU1OTNkZTY1OWZkNDZjMmMzZWZkYjFlMjk5YWJiZmJkMDg5NzlkNDcwZGM5YmUyMGFkMzJjNjQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImU5ZjdmN2FhMTYzMDU2N2MxYjVlNjY0NGUyMWNiZWM4M2E0MzkzM2RjNWIwZGEwZDkwY2Q1M2JhNDhlOTEwZDIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_556cbefdd47642299ffa05437dc0ac23",
+      "statement": "Every W1 distribution table carries three tiers of rows (model body_type, platform prefix LEFT(bt,2), 'ALL') and the prefix list is discovered at runtime, never hardcoded: distinct LEFT(bt,2) with at least 30 distinct vehicles in the learn window (SQL_PLATFORM_PREFIXES); prefix_in_list rejects tokens not matching ^[A-Z0-9]{2}$ (injection guard) and an empty list degrades to model + ALL rows only.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w1/01_learn_takt.py#L278-L295",
+          "version": "repo-lines-v1:sha256:cd8493975b43bc5ef7a034e45044e3f73f88684d49e8d0032f6c2bd9204bb51a:eyJzZWxlY3RlZExpbmVDb3VudCI6MTgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNhMzYzYzhlMmEwNmU0ZDNmMjk4MjVjYTI5MzhlYjAzMWNjMTZiZmVkYWMyYmM2NTM5NDIyZjgwYzBmODYxYmEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjA2MzdlMTJlZTM0YWJjMWY3NDkwODI2NTVjYjY0NmM2NTk0ZTM4M2QwMWU1ZmY4YjY1YTc2MzViNWNlMmQ4NWUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjMyNmMyZmU4MDdlOTJlOTMzODc4MmQ5MWY2Y2FkYjA1ODRhYWZmZDQ2Y2EyNjg0MDBlMGQ0ZjM4ODZmY2EzNTIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjU3MTI3OTEyOWFlODM3NjNkYWYxNDc3MjViZDEzZmE3Mjc3ZjBhNWJhY2FkY2JlOTBjNDAwMDIwYzM5Nzk5YjgifQ"
+        },
+        {
+          "resource": "repo://spike_w1/01_learn_takt.py#L706-L709",
+          "version": "repo-lines-v1:sha256:e9fe22157d668edc7f2469b4214539ef1b3e0122e7125b3e3657db5b70b30a4a:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMzQ4MTEyNWQ4MmFlZGFkNDFmYWU5OGRhOTgxYTRhYjVlMTgxYTk0ZmE2YTlhODE3Njg4NDdjODg0NWVlNDg2MiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNTE1ZmJjODllYTY2YTExYjYyMTk3ZjljOTQ1MDRiYzBjN2U4ZWRiMDM3NTcwNWNiMGJkOGQxNzczYTY1OTVlOCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNTA2NzI3NzFhOTRmNWU4NGI1Nzc5ZTliNjU0ZWM2MzBmNzQ5NDg1ODRkMzFhMWQxMzBlNDk0YjA4YzIwZjRhYiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMTliZjg3YjNmZGMwZGNhMWFjMmI1Yzk1YmVhM2NkZmQ4YzBmZGY1OTNhMzk0MGI4MTA4NWNhY2NjNGQwNWU0ZSJ9"
+        },
+        {
+          "resource": "repo://tests/test_w4_learn_takt.py#L70-L86",
+          "version": "repo-lines-v1:sha256:ae1509ece271f0bf085a819a1a1b5346d83b61adf6b55934a388bc43cf37953a:eyJzZWxlY3RlZExpbmVDb3VudCI6MTcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFiZGYwOWFmODgyYzE1NzNhODM2NTllNDJiNGMxNDZhZGU0ZjVkNWY5NGQ2MDZjYTlhNGE3OTBhNDMxNjNiZDIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImM3ZTk5MDQ3YmYyYzc0MWM3OTExMjViOWY2YTUzZjU4ZGRlNTIzMjE5YWI2MmE5YTcwMWE1NDdlMzk5YjE3MGMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImU1ZDZhM2IzNzg5MDBjYjE4NmU2ZjU1ZmI2NzlmOWEwMmFiNTExY2RhNzljNTVkNTk1OTc3MjliMzE0MDcxYTMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjI5ZTdlY2UwMGZiNTE3MzdlZWU0Zjk0YjA1ZTllNTkxYTA3YmEyMzcwNmJkMjM5Y2ZiZDJlNGMxM2I4ZDMyMDAifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_704ab655204543fb8e0d3548f4134b60",
+      "statement": "dim_station_takt cleaning is a per-bucket IQR rule (keep dur <= q3 + 3×(q3−q1)) computed independently per tier (model/prefix/ALL each with its own fences); night-stop (夜停) cross-window gaps have no explicit time-band removal and are absorbed by the in-bucket outlier exclusion; the overall exclusion rate is recorded in meta as takt_iqr_excl_rate.",
+      "evidence": [
+        {
+          "resource": "repo://docs/01-%E5%BC%80%E5%8F%91%E9%98%B6%E6%AE%B5%E8%AE%A1%E5%88%92.md#L29-L29",
+          "version": "repo-lines-v1:sha256:64e0ba876f6e4921d4db644a084f8a796d8d47d369568121be05e330a80b0b61:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNjRlMGJhODc2ZjZlNDkyMWQ0ZGI2NDRhMDg0ZjhhNzk2ZDhkNDdkMzY5NTY4MTIxYmUwNWUzMzBhODBiMGI2MSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNjRlMGJhODc2ZjZlNDkyMWQ0ZGI2NDRhMDg0ZjhhNzk2ZDhkNDdkMzY5NTY4MTIxYmUwNWUzMzBhODBiMGI2MSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMDRlYWFhMzhjMWVjNzc2MjdjZDdjMDg5NjFmODhiMWQwOWNlNWMxOTBjNjc2NWI3NGM0YjM0ZjAwMTYzZjczNiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiOTZjZWE5MTBiOTI0YTNmYWYzM2ZlNmExYTY3ZDAxYTMwMWFjMzcyYWYwZDhkNzRhODA3Nzk5ZDBkMmFjZDljOCJ9"
+        },
+        {
+          "resource": "repo://docs/superpowers/plans/2026-09-19-w1-takt-learner-eta-replay.md#L704-L704",
+          "version": "repo-lines-v1:sha256:d91f788bcd9256d13eac163d8aadf2dd7eea065f2fb644f22c44a9790a3dfd54:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZDkxZjc4OGJjZDkyNTZkMTNlYWMxNjNkOGFhZGYyZGQ3ZWVhMDY1ZjJmYjY0NGYyMmM0NGE5NzkwYTNkZmQ1NCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZDkxZjc4OGJjZDkyNTZkMTNlYWMxNjNkOGFhZGYyZGQ3ZWVhMDY1ZjJmYjY0NGYyMmM0NGE5NzkwYTNkZmQ1NCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZjYzZWY3ZDUyZjc4NWU1YmM1ZjdkNzMzODEzOGQ4YTI0Zjg3ODhjNGFlYmI2ZjMyOTNhN2NiYTI3ZmZiMzg4YyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZDdlZmE4MjY0M2E4OGYwZTk5NTgzZWRkMjZiOGNkN2QzMmZjYzU5YmY3MTM2MDYxM2Q2MDk5Nzk2ZWVlZjRjOSJ9"
+        },
+        {
+          "resource": "repo://spike_w1/01_learn_takt.py#L143-L232",
+          "version": "repo-lines-v1:sha256:777f8f63064bff2c49cce2bef5e1dc80a4eeee0e184e4675cb459ad2dd97852f:eyJzZWxlY3RlZExpbmVDb3VudCI6OTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImIzNDhhNjQxNDZiOGI0YWY5MDExYzJkODZjN2YzMjQ2N2I2NDU5MTJiYWIxNDdhMDI2MjU3MGJjMmYwODcwZTMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg3YWNhNjA3MjA5MTllZWVmZGQ5N2E4N2EzNGI0Y2JiM2RkMGU2ZTUzMDcyMWFiNmJiNjA4YjRmNjk5NjBhODUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjQ0ODQxOWZjM2NjOTFhY2IwYTFhYjA1MTIyMDk5OWZkOWQ4MjdjYzA1YTA0Mzg1Nzc5NmYyZWJkMDY5NzA0NmUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjhkNTlmYmNkYTdlMTdjYzgwMTk1MTA0YmY5NDA2MzJiNTZkNjc4N2RmZDY5YTg4ODYzMThkZTE3YmU2NTJkMjIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_49d4d7c9c73c4829adba1e264a5f9a10",
+      "statement": "dim_remaining_time aggregates the clean-suffix population (flag='0', t < exit_t, last_loop_t IS NULL OR t > last_loop_t) and dim_loop_remaining the loop population (flag IN ('1','2'), t < exit_t); both emit P50 (percentile_cont 0.5), mean, P90 (percentile_cont 0.9) and n per (tier, station) key with n always the last column.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w1/01_learn_takt.py#L61-L140",
+          "version": "repo-lines-v1:sha256:c9c08582ecc3496cb9777b855f0929f914d9222e4ed25f042619c822ccbadc4c:eyJzZWxlY3RlZExpbmVDb3VudCI6ODAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjJiMzI0Yzg0ZTczZTBiYzIyZDhlN2MzZDI3YjA5NTQ4YTAwYzcyNTdkMGUyMDViOTk4NzNjODVhODYwOTdkOTQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ3NWQ0NTg5ZTkxY2M4Y2I5NzQ4ODlkYWIwMWRlMTVkYjE1NzRjYTEwZWVjNzI5MGExMDliZjU4OGM5NGUwMWIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImQ5Y2NjN2RiMWQwYjhmZGRhMjBmNmQzNTg2YmIxMmEwZDc2MTYxNWMzM2FhMDk5NzE3ZjQ3NjhhYWYxY2U2ZDgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQxMjMyNjI0YWZkNGIzZDNiMmRkNTVkMjI3Y2M0NTc3N2I5YWRmNWEzMTRmNzVkNTI1YzFmMDNmNjUxOTYyMjQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_9689335f70754f68a2e62f69175df8b0",
+      "statement": "dim_future_flag p1/p2 are the shares of clean-suffix events (flag='0', t < exit_t) for which the body's first flag=1 / first flag=2 time lies strictly after the event; the join to per-body first-flag times is materialized once in the j CTE because per-branch joins made the planner choose a Nested Loop (outer ff × materialized tmp_ev_base, ~3.68M rows re-scanned, >600 s timeout), while the single-join form took ~6 s via hash join (W4.2b 实测坑, 2026-10-05).",
+      "evidence": [
+        {
+          "resource": "repo://spike_w1/01_learn_takt.py#L234-L276",
+          "version": "repo-lines-v1:sha256:04f4b351f78a50ce5f3d0f47896906be23a32bda644cd396ca24901bf871d2c0:eyJzZWxlY3RlZExpbmVDb3VudCI6NDMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImMwMTgxZmExOWI0MDEwOTdkOGRiOWY2MzA4NjY0NWJlM2QyNWI4YjgxYzVjZGQ5OTVkZjY3YzBjNzY3NWQ0ZDYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ3NWQ0NTg5ZTkxY2M4Y2I5NzQ4ODlkYWIwMWRlMTVkYjE1NzRjYTEwZWVjNzI5MGExMDliZjU4OGM5NGUwMWIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijk0Mzg2YTU2NjViMWY3ZTE1YTg1OThhYTZjNzk3MTc1ZWJmNjk0MDM0Yzg2ZmMxYTQwMjE2MmVkZDNiZmY4MjgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijg2MzRhMWY2ZDY3YTBkMGM1N2JlZGM4NjIyOGE1MzkzZjQxMTNjMDEyOWVhMTg4ZjdjOWQ5MmJhNjg4YmY5YTYifQ"
+        },
+        {
+          "resource": "repo://tests/test_w4_learn_takt.py#L115-L123",
+          "version": "repo-lines-v1:sha256:a54de34cbb03bbcf547e19e431afddabf87003de3b6773529111c17d2bb589ae:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYjY2MGJhOWIyYmU2ZDk3NWU0YjRiYmYzNjRmMzAzYTZmOTcyNGEzYTYxMTUzY2E2NjJjYzc2ODAyMzdhZjBlMyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNTBhNjc5Y2VjYmY1ODhkNTlhNmYwM2Y2ZmIyNTgzMDRiZGRmNWNjYzRiZWU5OTgxM2EzMDU4YzA4Mjc4MjZhOSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiOTE1YjMyMDg5Zjk1YWI4YjA2ZTViZWI5MWYxMDQ5MjFlYjYyOWExMDE4OTllZjhhYjY2OWE3YzJlMmU1NjQ0NiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_28d4bd80e3b34fb1ae39bb2aeaa8f1a1",
+      "statement": "dim_loop_duration follows the W4.2a contract: per-vehicle L is the pure window duration from tmp_loop_bounds (rw: t_rw_end − t_rw_start; bt: t_bt_end − t_bt_start), a NULL end falling back to the car's exit_t (JOINed from tmp_ev_base because the bounds table has no exit column); rows are a 4-tuple (l = P50 compatibility name, l_mean, l_p90, n) so consumers reading row[0]/row[-1] are unchanged, and the legacy max(t) − min(t) suffix method was removed.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w1/01_learn_takt.py#L298-L340",
+          "version": "repo-lines-v1:sha256:3d0d25393b946a0cda256b91b8a5ff0d7b4c048b5d2d2ebf103e67ab2f539623:eyJzZWxlY3RlZExpbmVDb3VudCI6NDMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjkyMGQzMjdjMTkzNTk4YjM5MjllOWRhZjdmMTI0MmNiMWM3NWU3OTMxMWM1YmFkMTBkYTZmNzE3YTAyMjUyMGQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImM5MjIwNGM2NWY1MDJkYzE2NDU0YjYyNDA4NTZhOWFiN2FkZTAwM2E4ZTlmODYzMzNlYzBiN2M5ZTQwOTQ5MWQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjFjZmNiYzFiZjVjODBmOGUzNWFlOTI4NTRhNzZmZjU1ZWQzZjJhOGNjMmQ3MTUwNTkyZDIwOTEzY2JjOWQ0ZTEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijc5NzdlZjc3MjdkMmFlZTNjMzA0M2MyNjZjODFhZDM5YzA3N2EzYmVlMWMzZjMwYmZhNzVmN2JjNjU4ZDQyNjIifQ"
+        },
+        {
+          "resource": "repo://tests/test_w4_learn_takt.py#L1-L15",
+          "version": "repo-lines-v1:sha256:a2d8c911fa074948ab0e9aed16ed692e2eb809be65e05947d6be25fa755f52b4:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjhiMDg0YTlmMzc4MTI0YjJiMWE1MTU2M2JmM2MyMjQ0NGViN2ZmMzM2OTIwMTdkYTI4YjIxMzZhZTU2OTg3ZWQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImEzMDNlY2RkNGE0ZDEwZjE5YzczZmQ0MmZkMTI0MzdmZDMzNTRhODI2ODE2MDVkYTUyNTVhOTdhMzkwNjhkYmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjRjOTkzMDY1NzAyODM0Yjk0YzY0MWM2NmEwZjJkNjY2NDg5N2UzZmQyOWNhMTg0NmE3OGJhYWVmYjg4NWU5ODgifQ"
+        },
+        {
+          "resource": "repo://tests/test_w4_learn_takt.py#L41-L68",
+          "version": "repo-lines-v1:sha256:a1beda731bb1870990804cf01b1dcf09bc460d30262f69093a87bdcef3ded2a6:eyJzZWxlY3RlZExpbmVDb3VudCI6MjgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImEwYTlmNjFkNTdiZTk5Nzg5Mjc1ZmFhODZiNGNkMWYxZjBhYmEyZDU2NjBiYzRlNjEwNTQ5M2ZjYjQzMjBkOTIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjBjZWZiZjI3MDJkOTA5NTMwOTJkNTg5Mjk4ZGU2MzEwY2VkYWYxMDNhNGFmOTQwMjQwYzNjYWUyNTAwNmQzOTkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjVhZGViYjQzODk5NDhiZTJmZWU4Mjk4ZmY4ZGFhNWU0MzExZDA4NzAwMDE3N2I5ZTc2MDk4MWZkZmY4YTlmZDAifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_1c6a7d02b2dc4e4199ecff03528239e7",
+      "statement": "W1 exits 0 only if all sanity gates S1–S6 pass (else 1) and always writes output/w1_learn_sanity_<YYYYMMDD>.md first: S1 entry-station P50 8–30 h + rem ≤ journey P50 + deviation ≤ max(10%, 1.5× W1 closeout baseline) with 01IS045 report-only; S2a first flag=1 in the rework cluster ≥ 80%; S2b blacktop anchor placement rate ≥ 90% on the 10-station whitelist; S2c p1 profile (n ≥ 1000 stations) max ≥ 0.03 and min ≤ 0.01; S3 loop_duration ALL-row n flag1 ≥ 8500 / flag2 ≥ 4000; S4 loop-event counts measured on tmp_ev_base flag1 ≥ 180,000 / flag2 ≥ 80,000; S5 takt IQR exclusion ≤ 0.30; S6 clean-suffix rate ≥ 0.80 under purified semantics.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w1/01_learn_takt.py#L538-L638",
+          "version": "repo-lines-v1:sha256:3e3a10a8ccaa92e6e06472879a230d636fc7db258bb805dfbb1eb9614148979c:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAxLCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiIwZGFhYWNmMmE2ZmVmOWU1YTliZTY5NGE3Mjg5YTdlYWUzMTNlNTEwMjMwNzJhZjIxMGFiZGZhYjEyYTM1ZjMwIiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiIzMzU2M2JhM2VmYzMxYmE0N2ZjMjAxOTI1ODI5NjE3ZmJlYTk3ZWZhMGVkNjFmMWMxYjFlNTYyYjE3OGJjMDdmIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MywicHJlY2VkaW5nQ29udGV4dEhhc2giOiJkM2VkNTU4MjBhMjAyYjBhNWM1YTM5YjdiNmFjOGJlMDZkNTUwOGI3MDUzYzZkZDI3ODJhMjJmNGNiMjcyMDA4IiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MywiZm9sbG93aW5nQ29udGV4dEhhc2giOiIyYzY0NThiNTUzMTVkYzViOTZkYTQyMzBiZGRjNTFhNTllM2U3ZWVjZTJhOTkwNTQ2N2IzOTcxYTdiNDFmOGZkIn0"
+        },
+        {
+          "resource": "repo://spike_w1/01_learn_takt.py#L682-L684",
+          "version": "repo-lines-v1:sha256:799cc3574d246e6746a1272fa5242a4f41e6ff2bbf1f6392f137874760c1c01f:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYTM3MTQ2MzU2MmMzYjgyYzI4OGZlMWNiMzI1NGIxZmI2YWQzMWE5OGYyY2NiNTAxYzBjYTBkNTEyNjk4ZDU4YiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiN2QxNDAzMGIxNWI4YTJmMGQ3ZWQ2NTFkZTNhYjAyNDI4MGI5ZDczOTA2NjI1MGU3YWJlZjYxZmJjNTU0NmRiNyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMjUwZTkzMGI1YmIwZDA2NGMzMzcxNzhiYTE1ZWMyMzYzODM3ZGI3ZTFlNzAyYjI4ZGJkZjBlOWY3YWYwMDQ5OCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiY2Q5NGQyZjNmNTU5M2RlNjU5ZmQ0NmMyYzNlZmRiMWUyOTlhYmJmYmQwODk3OWQ0NzBkYzliZTIwYWQzMmM2NCJ9"
+        },
+        {
+          "resource": "repo://spike_w1/01_learn_takt.py#L753-L760",
+          "version": "repo-lines-v1:sha256:7f4d8d1e50946e1d53bf7bdefca0f2f4e4151a66f1baa69b2a67f1e98ad81c90:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMzllM2NlMjlkNmYyMDQwZDI1N2VmYTkyM2M4ZTNjNmYyZTdmMzg5OTVkOTJhZWY0MmNjMjRiMDI0NDRjOWU1YyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZTRlOWIxYWYwOGYxM2YxZGMwNTM5NjE1NjM4NWM5OTlmNTMxNjE2ODlmMGY4YTU4ZWVmNTk3NjcwMzQ1MWNjYiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMTA2NmE0YjRmOGViMTg5YTZkZGRhZDdiNjQ5NmZiMjY0OWQ5YTdjM2I2OTY4ZTYyZjFiNGM3ZDgwODA2MTk0MCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTlmN2Y3YWExNjMwNTY3YzFiNWU2NjQ0ZTIxY2JlYzgzYTQzOTMzZGM1YjBkYTBkOTBjZDUzYmE0OGU5MTBkMiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_6cdf18e69b484468a4241753254aa2a7",
+      "statement": "S2b was replaced (not recalibrated) at W4.2d: under purification the old rule (first flag=2 concentrated in BLACKTOP_CLUSTER ('14IS260','24IS185') ≥ 60%) must fail because the 14IS260 false blacktop is purified to '0'; the new S2b is the t_bt_start anchor placement rate ≥ 90% on a 10-station whitelist (post-oven report-entry cluster + polishing line, identical to the online BLACKTOP_ONLINE_WHITELIST), with no code residue of the old rule.",
+      "evidence": [
+        {
+          "resource": "repo://docs/15-W4%E5%8F%8C%E7%8E%AF%E9%87%8D%E6%9E%84%E6%AD%A5%E7%BA%A7%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92.md#L212-L212",
+          "version": "repo-lines-v1:sha256:907c4d24890d415e2cfde95ec9ad749e206e001d675fd1333e7dd0abbca92e0d:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOTA3YzRkMjQ4OTBkNDE1ZTJjZmRlOTVlYzlhZDc0OWUyMDZlMDAxZDY3NWZkMTMzM2U3ZGQwYWJiY2E5MmUwZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOTA3YzRkMjQ4OTBkNDE1ZTJjZmRlOTVlYzlhZDc0OWUyMDZlMDAxZDY3NWZkMTMzM2U3ZGQwYWJiY2E5MmUwZCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiODU3MGJhYjM4YjJmZjk4Yjg4NjcyY2M2MDlhYzRlZmI3MzRjNmU2N2I3MTg0M2U2NTFhM2M4MWY5YjA5MmE4OSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMTQ4OTMwNDNmY2M2YzBkNzJjMzY5MTYxOGNiMjYwYTg1MGM5NjMyMmQzYWNjODU2MTMyNDEyMzdmNzA4OGViZCJ9"
+        },
+        {
+          "resource": "repo://spike_w1/01_learn_takt.py#L428-L459",
+          "version": "repo-lines-v1:sha256:55ef52bfbe254a84be78be9444fc80d73ca2ca1ceec9e6e23ade157467bb1d96:eyJzZWxlY3RlZExpbmVDb3VudCI6MzIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjEyOTJiMjQ4ZTAwOWVhZjhlZDZjZGFiNTQ2MjMzYmJmNzE0Y2UwNzJiNjg3OThkZDkyMjFjMDE4ZTEzMTUzNDEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ3NWQ0NTg5ZTkxY2M4Y2I5NzQ4ODlkYWIwMWRlMTVkYjE1NzRjYTEwZWVjNzI5MGExMDliZjU4OGM5NGUwMWIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjdlNzYyM2MwMDExMWNmZTM2OWYxOGMzNTg5YzI4ZjMxMjQ0ZDY3NDRhYzVmZTg5NTA4MGMzYzUyYTc3NTkwYjkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijc2NGYzNmI1ZjJlODRlMjQ0MmNhMmMyNjVmMGZhZTMyYWYwZDg3MzllZTdmYTI1N2M1OTRjOGI4NzEyYzI4MGQifQ"
+        },
+        {
+          "resource": "repo://tests/test_w4_learn_takt.py#L134-L141",
+          "version": "repo-lines-v1:sha256:0b5622ac11b82923b5c8e4ddd2fa7da150bd7a5d6364a4ab0aa25301f3c5c04b:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMDQyYzY5ZWFiNzE5OGJkNTM2NGM3ZmMxYWFmM2JjYWFjMzMxMTVmZmMwZWQxMjBmOGUzZmMwMTY3NDUyNTZjOSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMjhiOWJkYzE2NmI2YjU2YjFlMDFlNTg1YzliZDMzOTMyNWJkMWQ4ZWY5M2IzMDAzYmI4MjY4OTVhYzYyNTBkOCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOGZjOGYyYWRiM2RiZDQzNmQ0NWExZmFhYzdhNTI5ZDkzNjFiNmM4ZGZlYjFhOTRhZGM3OTBjODAwYjg1NDVjNCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNTgxYmNhOWNhMWM0YWYyNjc3YTA0ZDNjNjI5OGI0ZDVkYWZhMGNlZGRiZTIzNDZjNmExNDU2NTczYmY2ZjlkMyJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_7591749651734fca8ac61d400fcd9f57",
+      "statement": "S3/S4 thresholds were recalibrated at W4.2d for the post-purification sample drop (transition baseline = new measured × 92% margin): S3 flag1 ≥ 8,500 ∧ flag2 ≥ 4,000 (measured 9,351 / 4,356 cars), S4 flag1 ≥ 180,000 ∧ flag2 ≥ 80,000 (measured 192,197 / 86,210 events); the old thresholds (S3 9000/7000, S4 250,000/100,000, calibrated on the legacy suffix method) were removed; S4's metric is measured directly from tmp_ev_base because SUM(n) over three-tier table rows double-counts (~2×); S5 is unchanged (population unchanged) and S6 keeps 0.80 with updated semantics.",
+      "evidence": [
+        {
+          "resource": "repo://docs/15-W4%E5%8F%8C%E7%8E%AF%E9%87%8D%E6%9E%84%E6%AD%A5%E7%BA%A7%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92.md#L212-L212",
+          "version": "repo-lines-v1:sha256:907c4d24890d415e2cfde95ec9ad749e206e001d675fd1333e7dd0abbca92e0d:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOTA3YzRkMjQ4OTBkNDE1ZTJjZmRlOTVlYzlhZDc0OWUyMDZlMDAxZDY3NWZkMTMzM2U3ZGQwYWJiY2E5MmUwZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOTA3YzRkMjQ4OTBkNDE1ZTJjZmRlOTVlYzlhZDc0OWUyMDZlMDAxZDY3NWZkMTMzM2U3ZGQwYWJiY2E5MmUwZCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiODU3MGJhYjM4YjJmZjk4Yjg4NjcyY2M2MDlhYzRlZmI3MzRjNmU2N2I3MTg0M2U2NTFhM2M4MWY5YjA5MmE4OSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMTQ4OTMwNDNmY2M2YzBkNzJjMzY5MTYxOGNiMjYwYTg1MGM5NjMyMmQzYWNjODU2MTMyNDEyMzdmNzA4OGViZCJ9"
+        },
+        {
+          "resource": "repo://spike_w1/01_learn_takt.py#L609-L637",
+          "version": "repo-lines-v1:sha256:166bb90f8c3480423defb1b06eb60912b484ca6851d57dc7ac27da7c9f3ee868:eyJzZWxlY3RlZExpbmVDb3VudCI6MjksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg0MjYzZGM2ZWVkNWFhMGRkYWYzYmY1ODBiMGRkZjdhMzU0OGUyZWNmZDVjNWJhNDgyZDhjNmMxODdhZmY3ZTkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ2YWI2YmYzYmIzNmNlOTE4MTBhOWRhYjM2MDQ5ZjkwOTc5ZjdjNTdhYTFkMWQwYTU2NWNhNTg2NWViYmVmMTkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImRlMjFlOGJkNWUzYzEyZmY1MTFjMTlhZjc2M2Y4YWVlZTYxZDEzZTViMzg3NDczMmIwMmI0Y2M3OGViM2Y0MGIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImZlZTg1ODJlZTNiNjdjN2I2ODMzNjE0N2EzOTc5MzUwYjkxMWQxNGMyNjQyMTRmNDk1MjdjNzFhY2Q3YmM1ZjMifQ"
+        },
+        {
+          "resource": "repo://tests/test_w4_learn_takt.py#L144-L161",
+          "version": "repo-lines-v1:sha256:c448f17fca0e01f6d1f7fd090b1280b84f9281143624566d3154ef3b822c6f76:eyJzZWxlY3RlZExpbmVDb3VudCI6MTgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImUwM2JkMGJhOWNjY2Q4MTc5YzRjOThiNDZhNjI2MDVkMGE3YzUzMjIyYjFlODc1YjkyMGMzMzIyOTFhMmVjYjkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImY3ZWZkMmQ1ZjkwMzE1YTIzN2M2N2U4MGYxMTAwOGRiZjNhMWM2YTBmOTQ2Njg2NDY0ZmVjNDAzZTliNjMxZTkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjNlODZmZTliNWQ1Yzk2NjVmOGE5MWVjYmQ0ODc4ZjE2NTVmOWNhYWY5ZjEwMTkwM2EzYmE2MWQzMGZhMjk2YTcifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_877496ed9f824ce0a4ceb457b9ae68e3",
+      "statement": "W1 S1 was calibrated at W4.2e against the W1 closeout baseline (in-code citation of output/w1-验证摘要.md L38): 01IS045 became report-only (small-sample substitute entry station that had FAILed since the W1 closeout) and the consistency band became max(10%, 1.5× closeout measured deviation) (01IS205 11.6% / 1L360RB 30.9%) because the clean-suffix population is structurally lower than the full journey population, making the original 10% threshold unreachable by design; the rem ≤ journey direction check is retained.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w1/01_learn_takt.py#L543-L575",
+          "version": "repo-lines-v1:sha256:ba39f51594ad2b01dc673d2277eb65307447ee356e4bc4af3b5dba3548c3ec0a:eyJzZWxlY3RlZExpbmVDb3VudCI6MzMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjA2NzQwNjdhMTk0Y2FjODY5MGFkYmFhYjJjOWI2OGY4NzFhMThkODZhYmJhNGUzZGYxMzkzMWUzMTMxYTY0NTQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImIwOTVlZjA3ZjZlYjZlMDk4ZTZhODQ5YmU1YzkzODMzOTdmNDExM2U5NWI5ZTcwNzlmZDRlOGJjNTQ3ODAxNTMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImU5YWQ4NjkxOTc0ZWY1NzdhYzUyMjZkZTc3MmQyZjkzOGUyYTdlZGVhZmRhMTI0MDQzMWRlMGMxNjM0MWE2N2QiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImQwOWFjY2I3M2E4YjYyNGRmMGQxNDFiZjdiMDhhNDBlMjY2NTI4ZjM2OTk4Y2NjOTZmMTUxM2Q5MjY0MmMzOTYifQ"
+        },
+        {
+          "resource": "repo://tests/test_w4_learn_takt.py#L163-L169",
+          "version": "repo-lines-v1:sha256:484d0cf81da6ab5a02703fb6d79713a726a93087982271729cbecd97befb803b:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZDNmNjkxYzYzODkzOGZkY2NhNDAxYmVjOWE1ZTIzMmRkZDNlYTZmYzY2NWFmZTM5ZTM3NjAyNmUxN2UyZDQ3NiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiY2IyNzJjMWJjMGUyNzQwNmJlNDkyMDhmNjAwN2RiNDgyYTI2YTJjOGM5MzA5MDBhZGVhYWY5MDk4MDM5M2ZjNSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYTdjNDU1YzY5MmFmMGZhZjgxMjc5MTkxZWY3NWZiNzJkMjBhNTNhY2IyM2E3YjhmMTQ1ZjcyZTFkMTE5ZjAzNiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNWE2ODVjZTczMTA2MDMyYzBhYTliYTgwNmM0ODJhMWMwM2Y5NzIwMDZlOWFlYjdkOTQ3NDY4MmI0YTdjMzQ1YiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_2a068c1c9453429e8d9b9cfa8bfb295d",
+      "statement": "The W2-S2 threshold was lowered from n ≥ 1000 to n ≥ 300 at the W2 closeout (2026-09-21): the 8-week rolling window measured n = 343–810 for the 15IS065 decision cluster, so the old 1000 was a spec residue mismatched with the window scale; after the fix W2-S1–S4 all PASS and the learner exits 0.",
+      "evidence": [
+        {
+          "resource": "repo://CHANGELOG.md#L119-L119",
+          "version": "repo-lines-v1:sha256:50ab24c4038d4546fcbff7f4248372975b6d6ce381fb0718a11a4be740191164:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNTBhYjI0YzQwMzhkNDU0NmZjYmZmN2Y0MjQ4MzcyOTc1YjZkNmNlMzgxZmIwNzE4YTExYTRiZTc0MDE5MTE2NCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNTBhYjI0YzQwMzhkNDU0NmZjYmZmN2Y0MjQ4MzcyOTc1YjZkNmNlMzgxZmIwNzE4YTExYTRiZTc0MDE5MTE2NCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOGUzODdhMjI2ZDZjZGMxZDQ4N2VmZWFiNzM2OTU3ZDI3ODQwYmE1Y2UxYjI1MGJlMGJkM2NiZTVjZjgzMTdjNCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiY2YxZGNkZDQxYzY5OWEzNWUxYmMyMGFmZjYwOGQ3YmQ1MDNhZmE2OGFmYzkxZjQyNTBhZTQ1NTkyMTU2NDdkMiJ9"
+        },
+        {
+          "resource": "repo://docs/superpowers/plans/2026-09-19-w2-shift-level-replay.md#L1851-L1851",
+          "version": "repo-lines-v1:sha256:c40ea25ad00f46512a75594c442b330e8bcc58a74fd092f8321ba9d41dee69b8:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYzQwZWEyNWFkMDBmNDY1MTJhNzU1OTRjNDQyYjMzMGU4YmNjNThhNzRmZDA5MmY4MzIxYmE5ZDQxZGVlNjliOCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYzQwZWEyNWFkMDBmNDY1MTJhNzU1OTRjNDQyYjMzMGU4YmNjNThhNzRmZDA5MmY4MzIxYmE5ZDQxZGVlNjliOCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYjUyYzJhM2JlNWIzOTQzOTdlNmYxYjg5ZDBmYmVjYTE4MWIyZTkyZDUwNDgxYzk3YTFlOWYyMjZiMDg0NDk0NCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMWMxMjk2ZGJjYzNkZmU4M2U4M2JiYTI2MDU3NjhhNTY3MDY4YjY4M2ZlNmRhZmFiY2U3MWY0OGY0MGZhOWVkOCJ9"
+        },
+        {
+          "resource": "repo://spike_w2/01_learn_v2.py#L425-L437",
+          "version": "repo-lines-v1:sha256:18286099f55f96842f7b72d2b2c4c33148c28007a1ced8eba52d6896bca2837a:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjUwMzA5Y2E5ZjBlZWFjZGQ5MmEwOTU0ZTdmYTIzNDAzMTI5MDJlNTRkMjhlMDU2N2NlYTY0NTNlNmFkZmRhZmMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg0MjdjOWVmYzE4ZDI3ZjYxNWQyMTcxMTIyZjcwYjE3ZDU2OGQzNGVjYTkyNmVlNjJmYjYyMWQzMmE2NjI3YjEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImQ1ZDNlMDZjZjcwMmE4MmM4MGYyZWU5OGNkMWMyMDA5Zjg4MzhmODA3NjlmYzMyYjQ2NGVlZmI4Yzg1M2FmMzMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImU5YTIwZDYwZWY5YzRmNzg0NTEyNzVjNjkzYTc5NGJhYzUyODBkZTg2ZTY4MjFkNGUxMTE0NDZkMDIxMWVjYjgifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_abd2886c8f0344d685c70b2547380d54",
+      "statement": "The W2 learner writes only the six dss.v2_* tables plus the two W4 net-delay tables; the six W1 dss.dim_* tables (including meta) are read-only inputs (regression guardrail), and W1 must be re-learned first with the same learn window because dim_expected_delay reads the same-source baseline (p50) from dss.dim_remaining_time.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w2/01_learn_v2.py#L1-L9",
+          "version": "repo-lines-v1:sha256:1be6ed72e61817fa893f6e303637855d546cec25ad886ea2edc6f9bbfdf28fe4:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOTU1MmY4NTRmY2Y3NzM4OTE2MGEwOGNmYjRiZTJlYjkwMmNkOWEwYzBhZjc2YWI1N2RmMDJjYmY5MTI1ZDM2OSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiODAxMzE5ZGJkMTJkZTBkNjAwMGI3MDUzMDU1YmMzMmNjYmFiN2VjYzg1YWUxMGM0MzI3YTM0MjYwMDkyNTc4YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjAsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMjI4ZjVkMGNjZTllMjIwZmVhMTVmNDY5ZGU2MjhlOWNkODFhNDZkYjU0ZWY0ZDVhMmJjZjZhM2VkODU2NTA5MiJ9"
+        },
+        {
+          "resource": "repo://spike_w2/01_learn_v2.py#L168-L185",
+          "version": "repo-lines-v1:sha256:a8d896369a6b42f395089931cb2f436e6f84bdea474310158899ae9cfdf91c9f:eyJzZWxlY3RlZExpbmVDb3VudCI6MTgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjUwOTVjYzZkNzE0ZmI3ZmM1ZTdjNDA4YjQyZDRjMjA4ZjNlMTI4ZTJmYzRhNTYzOTAwZDhkMGRmMTcyNDNiYWYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImYzYjkwZGQ3OWU1MDhjMTM1OTA2MDY1ZWIzMWQzOWI3ZGNjYjQ4YjIyYjIwMmFmZDUxNTU1NzE2NWFlNmNjOTciLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjQ0ODQxOWZjM2NjOTFhY2IwYTFhYjA1MTIyMDk5OWZkOWQ4MjdjYzA1YTA0Mzg1Nzc5NmYyZWJkMDY5NzA0NmUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjcwMTNhZTEwNmIxMGMyMjU0ZjdkODgyMTg2NTgzMzRhN2NkMGI2NWUzNTY4NGZlZDBkOGRjMTFhMmExMDY4OGEifQ"
+        },
+        {
+          "resource": "repo://spike_w2/01_learn_v2.py#L532-L551",
+          "version": "repo-lines-v1:sha256:29e11e805567bcf98d53e09b6948bd817ac2a4226adfd76583572a38118e57fb:eyJzZWxlY3RlZExpbmVDb3VudCI6MjAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI2NGU5OWVlYjZiYmY5ZWVhZjcxZDIwNmViYTc5Zjk1ZmFjNzkzOWVlODExYzFhYzM1ZTRiNzRmNDJjZGM0ZjYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAyNTk3M2U3MGZlYWYyNjE0OGJiMDM5NmE4YTdhZWU1NTRiODg1ZTk5NGQ2MGJkNzUwMDVkNWQwZmI5MzgwMzgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjBlOGRhMWYyZWZkZjI1MDAwZDZkYjg2ZDg2ZjQ2YjQ5YWFkMWNhYzMyNjc2YzVlNjJmZGM1NGRmODAwNDgwYjMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjlhOGM1YmU5ZjVmNjNkNDdlMzMwZWE3YmRlZjY4MDY4NDU1OWI4ZGU5MTExNjY4YTlmNGU3ZDgyOTBhMzI4NDQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_e009a4ed3d15418ca6db914ad55545ba",
+      "statement": "W2 main() order: DDL → full-window ev_base → v2_future_flag/v2_line_prob (week 'ALL') → v2_cohort_remaining → dim_expected_delay → dim_expected_delay_shift (both must run after the full-window ev_base and before the week loop, which rebuilds tmp_ev_base) → per-replay-week loop (ev_base rebuilt on the rolling window, then weekly p and line probability) → build_quality (Python side) → meta → W2-S1–S5 gates (exit 0 only if all pass) + report.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w2/01_learn_v2.py#L513-L588",
+          "version": "repo-lines-v1:sha256:2245880ada603e678c61643cac361a84ce1473efc1250029b03d9fa318caac5c:eyJzZWxlY3RlZExpbmVDb3VudCI6NzYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImUwM2FjMDhkMjQyYTlkODJlOTY4ODNjNDRkNWU3MDUzM2Q1ZmE2MmYyNDJjNTMxM2M1ZmY2ZDllNmEwYzAzY2IiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU0ZTliMWFmMDhmMTNmMWRjMDUzOTYxNTYzODVjOTk5ZjUzMTYxNjg5ZjBmOGE1OGVlZjU5NzY3MDM0NTFjY2IiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImNkOTRkMmYzZjU1OTNkZTY1OWZkNDZjMmMzZWZkYjFlMjk5YWJiZmJkMDg5NzlkNDcwZGM5YmUyMGFkMzJjNjQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImU5ZjdmN2FhMTYzMDU2N2MxYjVlNjY0NGUyMWNiZWM4M2E0MzkzM2RjNWIwZGEwZDkwY2Q1M2JhNDhlOTEwZDIifQ"
+        },
+        {
+          "resource": "repo://tests/test_w4_learn_v2.py#L83-L92",
+          "version": "repo-lines-v1:sha256:0d7825f7a91a9aaa48ae9b93629aff280229e7f8bf16cda2a1a7642fd029a296:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImEyZDQ5ZjU2MmFmNjVmMTJiODllYTFmZDc4YWVmNjliMTE3ZTFmNmQ1MmJhOTZmYWRlMmI1MDFiZTRkZTIwYWEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImRkYTE3YjBmMDE5M2ViNmJkMzAxYTc0ZGZmN2RjMjlhYzQyNzdmZmUxNGUxMjVmYzA4ZmZmN2QyYzhjNzFkZTgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImU5NjgxZmY2ZjUzOGFjMmU4ZTM4YWY5NjE3MzFkN2UyMjg1OTNjZmEyYWM2ODM1NWIwYzg2MDgwMGU1YmZkYjQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjljMjYwOWFkYjI0OTFjY2Y0NjcyNDJjNzUxNWQ3NjY4ODk1YmNlYjdlYTA5MGRlNjE3NzM4OWJhZGIyNDU4ZDMifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_ba5af62385c14b68bae6c0c0f7ff6bae",
+      "statement": "Weekly p (v2_future_flag) is learned on the ⑥a purified pre-loop population — flag=0, t < exit_t, and before the body's first flag=1 and first flag=2 — excluding loop-then-back-to-mainline cars and inter-loop events, so p = P(future loop entry | currently pre-loop); each replay-week row is learned on a rolling 8-week window strictly preceding that week (shifts.week_learning_range = [Monday − 8 weeks, Monday − 1 day], no future leak), plus full-window week='ALL' rows.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w2/01_learn_v2.py#L554-L562",
+          "version": "repo-lines-v1:sha256:1e910c85e1d5d379434d737dadecb06c12968100f059229d7e0c0e0a40a0d018:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiODNmZDc5YzM3NjE1ZmVhYjhlOGIyM2Y4NTMxNGZkNzczNjZiMDcyOGJiN2UxZDBhZDMxN2Q4OGU1OGY5MmY3MCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYjg5ZjNjYWM3NjgxMDZlN2YxYmU0MDc2MzRkYzdhYjBkNjZjNzVkY2RlZjRmNTZjYjhiOTIzMmE5OGYxMDUxYSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNTI1OWEyNWUwMTBkZjMxODFkOTZkZGU3ZTc3OGYyZGI4NGFlOWYzYTNlNGFlMzE3NjczZmRkZTRkMWYyN2Q0MyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMjYwNDVhMmNlYWE1YWU4ZjgxYTBmYjAxNGU3ZWU5NmVjYzA5OTlhNDVlY2E1MDQ0MTZhNGE1MmE3MWNjZTI2YiJ9"
+        },
+        {
+          "resource": "repo://spike_w2/01_learn_v2.py#L69-L102",
+          "version": "repo-lines-v1:sha256:7f21a4a42f29579b8abc89aa83fc07769cd44910599befb597ec5bbf68afcd4b:eyJzZWxlY3RlZExpbmVDb3VudCI6MzQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjZkZDRmMjg1M2IzOWIxZTUxMGE2MGYxODMyZjJkYTFkZDAyMjViNzU1ZTM4OTViNDI4ODI4MWUyY2JiZmE0NDciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ3NWQ0NTg5ZTkxY2M4Y2I5NzQ4ODlkYWIwMWRlMTVkYjE1NzRjYTEwZWVjNzI5MGExMDliZjU4OGM5NGUwMWIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImI1OGQzOTJhYWI4ODEwM2NmYTQ2MDE2ZTJkYTQwZjRkZGY5NjJiZmE4OTVlZWM1YjJhMjgwOGM2YjQzZjgwNGYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjBhYTU5M2IxOGZmMzI2ZTczZjdjZjI3YWEwYzFkNDQ0MzBkOWNkYzkxYmZjNTkyYzA1OWVjODMxMWM5ZDhkMjgifQ"
+        },
+        {
+          "resource": "repo://spike_w2/shifts.py#L133-L137",
+          "version": "repo-lines-v1:sha256:d7ffe0cafaefc6882f2364c0e5a574ba53427b9891e45448d84c6b75f6a1d504:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMDE2YmIzNWQxNDRlMmRhOGFjNDAxOThmYTk1YzhiYTBlMGUzNDBlYzY0YTkwYmRhODNlZTNmOTcwYmY1YjUxNyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYWIyYjcyMmQxNGY1NGRlMmM1ZGY3NzhhNWE0ZDhjNTVjNTMyZGVkNjNiNzYyODc2OTY5NzRjY2JlZGI0NjE2ZCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZWIyNTdhOTcxNWY2MDcyODNjNGNlZDQ0MGMxMzhjZTYxMDBkZTBjMWYxMGM1MGVhODliYmU5NGE2YjM0ZjgxMSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjAsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_998c4d6b3a3849ff9b689bd2003f87c0",
+      "statement": "v2_cohort_remaining covers the 08IS/09IS parallel-line split: shared stations (not 08IS/09IS-prefixed) × the line a car later took, restricted to single-line cars (c08 XOR c09, cohort '08'/'09'); the cohort must be computed on tmp_ev_base, not the raw stream, because post-exit record stations 09IS360/09IS350 would pollute LIKE '09IS%%'; v2_line_prob gives per-model weekly + ALL w08 (08IS share) as the cohort fallback-chain endpoint.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w2/01_learn_v2.py#L104-L165",
+          "version": "repo-lines-v1:sha256:bdb6b56f6a9c47d71a6641f943fa643e901a2270e33ba621e6eef8e8e643b5f1:eyJzZWxlY3RlZExpbmVDb3VudCI6NjIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjIwMDEzOWY1ZGQ4ZGVlN2I2MTZkM2FhYTJiYzczNThjYzRiNmMwZDUwMTY4NGFlMjhjMTRkMjExMzI5OWQ0ZWQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ3NWQ0NTg5ZTkxY2M4Y2I5NzQ4ODlkYWIwMWRlMTVkYjE1NzRjYTEwZWVjNzI5MGExMDliZjU4OGM5NGUwMWIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImVhOWUxZmYyN2M3NTkyOTczZmM1NjU2MzQwM2UwOWM3MGJiZDc5YjdkM2IwNjJkMjNlNjZmMzQyOTI0ODc4YTgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImVkNDBjZTM2MmEzY2ExNmJhYjU1YWE4MWM0Y2MyMjgxMjk0YTY3ZThjMjFmMGVhYjBkZTBlYjEwYmVlNDA3M2QifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_14da2ef932b047ddb7a3bd63313694ff",
+      "statement": "Station quality marks and the compensation exemption set are derived Python-side: v2_station_quality marks model×station cells (2-char prefix rows excluded from marking) as low_n (model row n < 30), mixed (p1 ≥ 0.5), both, or ok, with p1 from v2_future_flag week='ALL' (missing model row falls back to the station ALL row); v2_comp_excl is exactly the 'both' cells (⑥b: mixed low-n stations exempt from compensation); cells with no model row are left unmarked, defaulting to 'ok' in the engine.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w2/01_learn_v2.py#L380-L413",
+          "version": "repo-lines-v1:sha256:479d3db7b8a6efd1c004e2b8004102c9fe7c516293f200f2a5b1d54916ccbb71:eyJzZWxlY3RlZExpbmVDb3VudCI6MzQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImUzMWFmMWI2OWI0YjYxOTFjMThhYmU0MjliNjg2NmJkNmZmNDQ5NzUyMzUzZWRjNzRkYjdjYWJjMmZlMTExYTkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRlYTIyM2FhMGUzMjU5MTg0MWI0YTgyZTczODE3YzQ2OTZkYjg5OGM3OGI3NzU3NGYwNDBlYjNkNTUyOTg2ZjUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijg3ZTVhMWY2YmNhZDBmNWMwOWE4YTI1MzRkOTIxMzQyMTJkMDFhNjY2YWZkZWQ3ODYwYjNjMWYzYjMwNzRkY2YiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjAyZWYxZjM5YWFhOWVkOTIxMzgzYjM2NjhhZDZjNzQ0MGY0NTg0OTFiY2RjYzAyMzhlNTVjODhlYmJkZWM4MTkifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_028284031f404b578a12333e16b9d6d2",
+      "statement": "dim_expected_delay (W4.2c, doc10 §2) is computed on the ⑥a pre-loop population (same population and window as v2_future_flag week='ALL'; the clean-suffix population is structurally disjoint from fut=1 and must not be used): fut=1 = the body's first flag=1 lies after the event; base = COALESCE of model→prefix→ALL p50 from W1 dim_remaining_time with n ≥ 30 gates on all three LEFT JOINs; delay_mean_s = max(0, P(fut)×mean(rem−base | fut=1) + (mean(rem_clean) − p50(rem_clean))) and delay_p50_s = max(0, P(fut)×p50(rem−base | fut=1)) with outer truncation only and the correction term entering only the mean column; a row is written only if both sample_n (fut=1) and sample_n_clean (fut=0) are ≥ 30 (dual population dual gate), else the engine degrades model→prefix→ALL→0; the prefix tier uses all LEFT(bt,2) prefixes without the platform whitelist.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w2/01_learn_v2.py#L168-L258",
+          "version": "repo-lines-v1:sha256:d22afe1523a7f5fb41b67f85b281d6ddba261fc42139f32853eda9cf5abd8544:eyJzZWxlY3RlZExpbmVDb3VudCI6OTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjUwOTVjYzZkNzE0ZmI3ZmM1ZTdjNDA4YjQyZDRjMjA4ZjNlMTI4ZTJmYzRhNTYzOTAwZDhkMGRmMTcyNDNiYWYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ3NWQ0NTg5ZTkxY2M4Y2I5NzQ4ODlkYWIwMWRlMTVkYjE1NzRjYTEwZWVjNzI5MGExMDliZjU4OGM5NGUwMWIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjQ0ODQxOWZjM2NjOTFhY2IwYTFhYjA1MTIyMDk5OWZkOWQ4MjdjYzA1YTA0Mzg1Nzc5NmYyZWJkMDY5NzA0NmUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjAyZjllOTFlZjQ4NWIyMjNkZTYzYjU1MmY4ZjExNWM1ZjMyOGZmZGJjYjc0NmUyZmUzZWRiMTU2NmU3MTAyZmYifQ"
+        },
+        {
+          "resource": "repo://tests/test_w4_learn_v2.py#L30-L53",
+          "version": "repo-lines-v1:sha256:a5db82843c019c9de1686aa6b013dc3bd11e8fdc5f5fa7d18b2e60d45ee35dc0:eyJzZWxlY3RlZExpbmVDb3VudCI6MjQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBjN2ZjNzVmNmVkOGRiYzM5M2RkYjUzNWZmZjhiZjA2YWNhMGZiMTFmMzQ0MzZhMjQ1YjNjN2VkZTFiZGRlNGMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdhYzA2NWFlYmQ4NTI5OGJhNjVjODQ4Y2FlODBhMjEwYzY2Yjg3Mzc0ZDI4YzIyM2VjMTlkODgzZjczZDEwZjAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjE5YjY3MWZlOWFlZmY1NjhlZDUyYjY3OWUwNWNjMmVhZGViNWQ0ZDI0YTFiM2I5YTBjMDdmNWRjMGE0M2MzZDUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjlkOGZhYWJkNjNmNzNiMGJhZmUxZmQ1NzFlNTZmNjIzNmQxODcyODhjZjRjZjc5MDI0NzE0Mjc3OGJlMzNhYTMifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_ed5a05a3989642c28e52c838c797fdc1",
+      "statement": "dim_expected_delay_shift (W4.4h) applies the same discipline with an added shift dimension: sample attribution is the entry-event shift (entry minutes-of-day in [285, 989] i.e. 04:45–16:30 → 'DAY', else 'MID' covering [16:30, 04:45) with the low-activity tail gap folded into MID — the same attribution windows as spike_w2/shifts.py); P(fut) reuses the non-shift-conditioned v2_future_flag; the table is optional — absent rows make the engine resolver fall back to the shared row, and it is consumed only when DSS_SHIFT_TIER_DELAY=1.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w2/01_learn_v2.py#L260-L341",
+          "version": "repo-lines-v1:sha256:8e2a89c060848cb1b10a1467239b551623c6ac44b134b698975afbc2ed80a581:eyJzZWxlY3RlZExpbmVDb3VudCI6ODIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBiMjlmYTc1NDE2ZWVjYzlhOTIwYmU4MTFmYjcwZWY5OTg3YzJkMzRlODk1NjM5Nzg3NTM1YWI1MmZjZDNjZDYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ3NWQ0NTg5ZTkxY2M4Y2I5NzQ4ODlkYWIwMWRlMTVkYjE1NzRjYTEwZWVjNzI5MGExMDliZjU4OGM5NGUwMWIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImI4Njk2ODIyMzQ0MGVlZjQxMWRmMmZiMTFmOTk4MmZiYjExYmVjZDRkZTI3NmZmODBhY2FjNDQ1M2YzNDZjODAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjFlOTBmYmRmZDUyYzk5ZmFmNjQ4ZTMxOTRmMjVhNWI3ZDdmNmEwN2I3MjU1NTYzOTczNjAzNjRkNmQxZjZhZDUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_4e95051588da4bdbb29bf9452e6d66de",
+      "statement": "coverage_gaps(p1_cells, delay_rows, p1_threshold=0.10) is the pure coverage-gap monitor: a (model, station) cell with p1 ≥ 0.10 where none of the model / prefix / ALL tiers has a delay row is a gap (engine falls back to 0 = pure under-estimation risk, which doc10 §2.3 requires monitoring); results are sorted by p1 descending and the learner report lists the top-30 gaps.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w2/01_learn_v2.py#L344-L361",
+          "version": "repo-lines-v1:sha256:223134278527f66a62032e9589fd1fcd2dc7a99e710a2213d2058247fea6f3dc:eyJzZWxlY3RlZExpbmVDb3VudCI6MTgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjUzZGJhMGU0ZWMwN2JkYmI4MDFhNzc4YTRiM2IzMGFiMzg3ZThjZjAyMGE5NDE5MTkxMDUzZDc5OGQ3ZTQ5NjYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImMzODdjYmM5OGJhNDQ0Njg5ZTY5OTNjMDViYjUyMmZiYmNkOWY4ODJlMjkyMzgzNWE2NmE2YWEzZTU0NTVkM2UiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjQ0ODQxOWZjM2NjOTFhY2IwYTFhYjA1MTIyMDk5OWZkOWQ4MjdjYzA1YTA0Mzg1Nzc5NmYyZWJkMDY5NzA0NmUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjczYWE4NmVmYjBkN2FlNDFhYzg3ZTA1MGMxOGM3NTJkMDVkZDlhZGEyNmMxOTdlODQ5ODY0YTZhMDZkYjBlZmIifQ"
+        },
+        {
+          "resource": "repo://spike_w2/01_learn_v2.py#L493-L503",
+          "version": "repo-lines-v1:sha256:7f639aaf1cb8769795ae7aff807c86a605046bd7df915be0aba33fbedb27480a:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjVhMDUxODkxYjM2MjY2NjA4NzMzM2VkNzE3MGQxNWM0MjhlZGY0MzU1NjNjZjRhNWJmMTYwNjM4NzIxNTQwZDIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI0NTc3Yzk0ZGRmZTcyNGEyYzQ3NTY4Nzk4YzQ1YmM3NmE0M2QzYWRmNGM5ZTk1NGIzYTdkMmJlYTE3NmE3ODQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImE4YTdhYTQzMzNmMjc3ZjVmZmIzZmI2ZTkzYmRkMDU0MzI3YWRhNzgzNTZiOTU2NTAzNmY3NDNkZTBjYWMyNTEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjAzZmE2ZGJlOGQyYmYwMmM2YTQyYThhOTVjNGE5MjQ4NzA3N2ExMDEwOGU0NTI4YzhlZDYxN2IxMTkwNDYzOTYifQ"
+        },
+        {
+          "resource": "repo://tests/test_w4_learn_v2.py#L56-L78",
+          "version": "repo-lines-v1:sha256:1f1897070fed9c15383cea87ad71c9fd95bc1c8293d8577b657e16e020b51e35:eyJzZWxlY3RlZExpbmVDb3VudCI6MjMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjY5ZmY4MTJhOTg4Nzg4Njg1MTQxZTM5YzJiMjIxZDYwNDQxODNiNGVlMjhkNDEyY2U3MDI4MzJjMzU1ODVmMTUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjY4ZDU2YWI1ZDViNzc1YTc4NDA5Y2ZkZTZjOGZhZGRkY2ZkZDYwNTZhYTQxNmMyM2NmMGMzMDRjNTQ4M2FkZDgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImFlZGE2NzNlZDhlZjA1OTA0MWJlODE3YTY4ODkzYzQzYTQyODk5NTk1NjQ1MmM3MDA5NDkwZmUwZTgzMjJjNTQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImVhOTdiOTJhMDBmYzNkNWFhMmM4NTg0NTRmNmQ3OWM5N2ExMDdlZjYxNGM4MGZjNDdhMjllYWZhYTU5NTQ4MzYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_fed742da6d4f4db79cbecccdabeb3c4b",
+      "statement": "Learner DDL is DROP TABLE IF EXISTS + CREATE TABLE per table: each run is a full rebuild of the tables owned by that learner, executed inside the dss-only write boundary (ods/dim/fct/mart/meta layers are strictly read-only; the dss schema may be dropped and recreated).",
+      "evidence": [
+        {
+          "resource": "repo://AGENTS.md#L50-L56",
+          "version": "repo-lines-v1:sha256:d6c22967076371fb2c58aea146be6d6531445c83b94bf8035811d6a9c36c67e0:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZGRjZDBiNGNjZWE3YmJlZGY3NTYyZThmNTlmZWJmM2Q3YWJlYzQ5OGZiM2EyMmUxOGRhNDk4ZTUwNmM2ODZmOCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMWIzY2YzOWNkY2UxM2RkZjg1MjE2NWQ2NWU2MjcyMDE1NDEzYjQ0ZTk0OGRiNDEzNjc4YzcwMDgwZDEyMDFkMSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMDMyNjhiMmNhYmVlZTU5N2Q0NGRjM2MwYzUzNGY5MGRjNDBkMjRlYzZiOTdkOWI4MzEzZTY5YTI4YmNkNjhkYiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZjAyMjUwYWU2YmY1M2RhOTU1MzllMjFkYmNiNjA0NDg1Zjc1MDQ1ZjBiMjVmMjA0MzI2MTBjZTdjMDMxZDNjNiJ9"
+        },
+        {
+          "resource": "repo://spike_w1/01_learn_takt.py#L21-L52",
+          "version": "repo-lines-v1:sha256:17cc86f3c370da6b476f18c9bb94b03393679ee247f32b952fba22be49d17af0:eyJzZWxlY3RlZExpbmVDb3VudCI6MzIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU0MzM5Yjc1MDRlMzc0ZmYxOWM5MzFkODg1OTA1YTRhZTkzZjM3NmM3YTdlYmRiN2NmY2Y3MWQ2YWRhZmFjODEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ3NWQ0NTg5ZTkxY2M4Y2I5NzQ4ODlkYWIwMWRlMTVkYjE1NzRjYTEwZWVjNzI5MGExMDliZjU4OGM5NGUwMWIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjAyZDEyODcxMDFkMjBmZTY3NDViMGRhMTg4N2YyNWZiNjI1MzFmNDQ5NTY4NmQ5NDY2ZDg5MDc1Y2NjZWRhZTIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjAwZTcxNjlkY2ViNjQ5ZmM3ZWE0NDNmODExNTNjZTEyYWU5ODMyOGNlMTg3MTdjNmMxYTI3OGRjYWZkMDQxYzUifQ"
+        },
+        {
+          "resource": "repo://spike_w2/01_learn_v2.py#L26-L67",
+          "version": "repo-lines-v1:sha256:375b295aa94a70bc4634241f5484f79b74f6855e31055360d4046f65c7d336b8:eyJzZWxlY3RlZExpbmVDb3VudCI6NDIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU0MzM5Yjc1MDRlMzc0ZmYxOWM5MzFkODg1OTA1YTRhZTkzZjM3NmM3YTdlYmRiN2NmY2Y3MWQ2YWRhZmFjODEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ3NWQ0NTg5ZTkxY2M4Y2I5NzQ4ODlkYWIwMWRlMTVkYjE1NzRjYTEwZWVjNzI5MGExMDliZjU4OGM5NGUwMWIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjAyZDEyODcxMDFkMjBmZTY3NDViMGRhMTg4N2YyNWZiNjI1MzFmNDQ5NTY4NmQ5NDY2ZDg5MDc1Y2NjZWRhZTIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImU5NTcyYTIyYmEyYzJhMTU0ZWE1NTg0NGEyMzZmZWVmZjU1ZDQxNDBmMzU0ODBiNjY3YTVlODkzZTkyOTczN2EifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_bcaa68f5d5c8483faf2a30f1b5de2779",
+      "statement": "DB-connected learner scripts are launched as conda run --no-capture-output -n paint-dss python <script> (Windows discipline): directly invoking the env interpreter crashed at psycopg2.connect with an access violation (exit -1073741819 = 0xC0000005, non-deterministic, DLL/PATH dependent), so that older guidance is void; python -c under conda run is single-line only (multi-line code goes in a script file); the M5 production sequence runs 01_learn_takt.py then 01_learn_v2.py back-to-back to rebuild the 14 learning tables.",
+      "evidence": [
+        {
+          "resource": "repo://AGENTS.md#L65-L67",
+          "version": "repo-lines-v1:sha256:e9f151e452ed971b196ea7386345464e783b5b734d34862114247f8681d771e7:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZGM2MmQzM2QyYTczYmI1NmY4MmZlODU0NjE2YjkzNjU5NDg5NDhiZmVmOTk5MWMxMzRhYTI2ZDczNDIyNDQ1MSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOTU2OTY3ODlkMzM2MTg1YzRiY2ZlYmI1ZDI4MDE4MTk5OTgwZjQzYTkzZWRmNTQ3MmUwN2RiZGNkOTI3M2U5NiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMzI4ZTVkYzYzNWNmNjM2OTk3MzdmMzI0NDg5NGYwOTZiNWE2M2E5YTEwMTk1ZjYzMjM3ODhiNDExZTUwMTk0YyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZDViNDRhYjdjYzA2ODJlOGI3MjNmNzI0MTM1YzZiZGMyMDlmN2Q0Y2UzN2I5NGFjODIzMjQxNTFiNDFhNDU3YiJ9"
+        },
+        {
+          "resource": "repo://docs/09-M5%E5%86%85%E7%BD%91%E5%9C%A8%E7%BA%BF%E9%AA%8C%E6%94%B6%E8%BF%90%E8%A1%8C%E6%89%8B%E5%86%8C.md#L54-L58",
+          "version": "repo-lines-v1:sha256:06fe6ae05af7571f79af268ffcbe9f11ee8d430a346b1ff506bfb694bf323446:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOWZjNjM0ZjRlMGM5OTY0NmU4NGVjY2Q5ZDVlOTA2ZmVhYjEzNDBjZjQyNWNkNTVhNTUzNWY3YmZiYzRiZGE5NSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiN2VjNTY4ZWFkZGNjNDg0MDI2ZjFlMzJhZjIyYzc1ZjM4NTM2MmNmMmM1YzFkZDk2OGMwNTkyZjU3MTk1ODMzMCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTRlZDExNTNmOWViOWMwMjY4ZDYxZDA1MzEwOWU3ZDJmNWU0MWQ3YjM5OTJjYzJhMWZhZTM1OWQ4YmM4NDdmYiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNDU5ZmI1ZjY0MTgxYjlmNTVkOTAzMTk4MWFkMDRkYTA5N2JjNGJhMWQyNTllNzVmNTRkNWI5MjVjYjMxZTBhZiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_98291f55d8c04a02bf336a8e02f88264",
+      "statement": "Exit-code convention: learners exit 1 when any sanity gate fails (exit 0 = all gates PASS; the sanity report is written in both cases), while exit 2 is the reporting convention reserved for replay gate scripts (02_*, exit 0 过 / exit 2 未过); the 'ERROR conda.cli... failed' line conda run prints on a non-zero exit is that reporting artifact, not a crash — judge by the produced artifact.",
+      "evidence": [
+        {
+          "resource": "repo://AGENTS.md#L67-L67",
+          "version": "repo-lines-v1:sha256:95696789d336185c4bcfebb5d28018199980f43a93edf5472e07dbdcd9273e96:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOTU2OTY3ODlkMzM2MTg1YzRiY2ZlYmI1ZDI4MDE4MTk5OTgwZjQzYTkzZWRmNTQ3MmUwN2RiZGNkOTI3M2U5NiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOTU2OTY3ODlkMzM2MTg1YzRiY2ZlYmI1ZDI4MDE4MTk5OTgwZjQzYTkzZWRmNTQ3MmUwN2RiZGNkOTI3M2U5NiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZmZjNjEzMjgwM2MzMGU5ZmZiNWRlNjFlNjE5ODZiNjRiOTk1ZDk2YWRiMTk4MzM1OWNhZGJhNjg2NDc2ODc2OCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZDViNDRhYjdjYzA2ODJlOGI3MjNmNzI0MTM1YzZiZGMyMDlmN2Q0Y2UzN2I5NGFjODIzMjQxNTFiNDFhNDU3YiJ9"
+        },
+        {
+          "resource": "repo://README.md#L55-L55",
+          "version": "repo-lines-v1:sha256:7e86a01692d09e8917489c871f61fcee2777bd376a550280a94108877648b8ee:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiN2U4NmEwMTY5MmQwOWU4OTE3NDg5Yzg3MWY2MWZjZWUyNzc3YmQzNzZhNTUwMjgwYTk0MTA4ODc3NjQ4YjhlZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiN2U4NmEwMTY5MmQwOWU4OTE3NDg5Yzg3MWY2MWZjZWUyNzc3YmQzNzZhNTUwMjgwYTk0MTA4ODc3NjQ4YjhlZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYThkNWE1MDcxODI5MjU2YjMwYjA4ZDgzYmQ0ZjVkMDhjMTRlOWE5MTQ4YWU5MDczNTJhMWYyZGU0MTM2NDA2NCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjEsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiN2VjNTY4ZWFkZGNjNDg0MDI2ZjFlMzJhZjIyYzc1ZjM4NTM2MmNmMmM1YzFkZDk2OGMwNTkyZjU3MTk1ODMzMCJ9"
+        },
+        {
+          "resource": "repo://spike_w1/01_learn_takt.py#L757-L760",
+          "version": "repo-lines-v1:sha256:806c3500c9950842b2db5dfeb7abc6af28fcf9ee39df6a912e8342b61a19eb55:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNjIyZGNiZGRmMGUzZDc0ZmZmMTc1NWE4OTBiMWU1YjA5OTE3YzMwZjdhZjMyNDkyMTE1NTI1YzY4MjNlN2Q1NyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZTRlOWIxYWYwOGYxM2YxZGMwNTM5NjE1NjM4NWM5OTlmNTMxNjE2ODlmMGY4YTU4ZWVmNTk3NjcwMzQ1MWNjYiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMDBkNDlkMDE5Y2YxYmU5OTBkNGJiMDM1ODRkMmU2NGZjYmZhODQwNzkwZDFhZmRhMWMxMTMzN2Q0NWJlZDg1NiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTlmN2Y3YWExNjMwNTY3YzFiNWU2NjQ0ZTIxY2JlYzgzYTQzOTMzZGM1YjBkYTBkOTBjZDUzYmE0OGU5MTBkMiJ9"
+        },
+        {
+          "resource": "repo://spike_w2/01_learn_v2.py#L585-L588",
+          "version": "repo-lines-v1:sha256:806c3500c9950842b2db5dfeb7abc6af28fcf9ee39df6a912e8342b61a19eb55:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNjIyZGNiZGRmMGUzZDc0ZmZmMTc1NWE4OTBiMWU1YjA5OTE3YzMwZjdhZjMyNDkyMTE1NTI1YzY4MjNlN2Q1NyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZTRlOWIxYWYwOGYxM2YxZGMwNTM5NjE1NjM4NWM5OTlmNTMxNjE2ODlmMGY4YTU4ZWVmNTk3NjcwMzQ1MWNjYiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMjNhN2Q1YWVjZmZhZWE1ZTlhOWY0MmFmODI2YzgxMmE1OWNkN2M5NmEzZjU5OGFiMWEzNjM5N2NjMDM0ZTE4ZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTlmN2Y3YWExNjMwNTY3YzFiNWU2NjQ0ZTIxY2JlYzgzYTQzOTMzZGM1YjBkYTBkOTBjZDUzYmE0OGU5MTBkMiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_a1e463e4d03e4ea0ae90eef16f3a8abf",
+      "statement": "Both learners connect through spike_w1/common.py::connect(): psycopg2 with autocommit=True and session SET TIME ZONE 'Asia/Shanghai' (factory time = UTC+8, mandatory), with the DSN resolved fresh at each call so DSS_DB_HOST/PORT/NAME/USER/PASSWORD env overrides take effect at runtime (defaults: dev DB 127.0.0.1/root/root, .env loaded via python-dotenv); the W2 module reuses this W1 connection helper.",
+      "evidence": [
+        {
+          "resource": "repo://spike_w1/common.py#L18-L46",
+          "version": "repo-lines-v1:sha256:d60f1750f2882509faab35aadf8140ce779c4fdfc64332b4481a8ed870bdcb80:eyJzZWxlY3RlZExpbmVDb3VudCI6MjksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjJiYzY1MDVmNTRmYjhiYjMzNWRjYjI2ZTYyMjZhODU5NWIyNjI3MjRmMzg1ZThjZGNkYmM0ODU4ZjZiZGY4N2EiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFlZjI3NmFlNzY4YWVlZmYyYjYyNTczZjVlZDBkOTAxMmRkNDVkODNhNWU3MWQ5OWQ4ZDZjZTA2ZGIzOTVjOTIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjQwZGM3NTRjODRhYzE2ZGMxZDM1OWMzZDE1ZmM5ZGViN2U3N2Y3ZDNiMjAzYmRiZWZiMDNkNjRlYmM0OGM3YTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_e19ab7810dd14d3fa9cc55d4b4787a4f",
+      "statement": "tests/test_w4_learn_takt.py and tests/test_w4_learn_v2.py are pure no-DB contract tests (real-DB re-learning verification is the separate W4.2e step): they load the learner modules via importlib.import_module('spike_w1.01_learn_takt') / importlib.import_module('spike_w2.01_learn_v2') and pin DDL shapes, SQL text contracts (loop-bounds L semantics, per-tier IQR fences, single-join future-flag, three-tier prefix patterns, net-delay formula/dual-gate/truncation counts), sanity source contracts (S2b replacement, S3/S4 recalibration, S1/S6 semantics), the w4_meta_rows pure function, the coverage_gaps pure function, and the ordering that SQL_EXPECTED_DELAY executes after the full-window ev_base and before the week loop.",
+      "evidence": [
+        {
+          "resource": "repo://tests/test_w4_learn_takt.py#L1-L24",
+          "version": "repo-lines-v1:sha256:060f47c16459519b61bbffe46511d5c9c1b8beb7c4683ecdc3b892a30a5f5203:eyJzZWxlY3RlZExpbmVDb3VudCI6MjQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjhiMDg0YTlmMzc4MTI0YjJiMWE1MTU2M2JmM2MyMjQ0NGViN2ZmMzM2OTIwMTdkYTI4YjIxMzZhZTU2OTg3ZWQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImYwMjE4YzE3M2QzMzQ2NDdiMWI4ZWI4YTVmODliOWI1Y2VmMDJjNjZmZmE5MGJmNWIyNGRhMTdjN2JiMzI1YzcifQ"
+        },
+        {
+          "resource": "repo://tests/test_w4_learn_v2.py#L1-L13",
+          "version": "repo-lines-v1:sha256:a151ea98d10ca2908854217ff12ef6a56b9f45560e49466ecaacf3f7513905ff:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjhiMDg0YTlmMzc4MTI0YjJiMWE1MTU2M2JmM2MyMjQ0NGViN2ZmMzM2OTIwMTdkYTI4YjIxMzZhZTU2OTg3ZWQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImY2YzBkZTJlNDUyZTJiNmJmZDg2N2RhMTdlODg3MjhiMWRhNjA0MjA4MTAwNzM3ZGZkYTRhZjYyMzBlYTk1OWEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjIzMDYxMTc4NzVhNDViZWE2MTNlMTZmYzBmZGNmYWU2YzkwYjZjYTQwMDdlZjBiZTI5OWRlNTliYTc3YmQzNjkifQ"
+        },
+        {
+          "resource": "repo://tests/test_w4_learn_v2.py#L83-L97",
+          "version": "repo-lines-v1:sha256:f44471b176ab4840e196ac4d858db52d85f8ad54ad920459f2310b053fe1cfea:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImEyZDQ5ZjU2MmFmNjVmMTJiODllYTFmZDc4YWVmNjliMTE3ZTFmNmQ1MmJhOTZmYWRlMmI1MDFiZTRkZTIwYWEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBmOTA0ZGZhNmYyZGU1OWJhMzM1YjdjZTZmZmFlZjI1Y2YyYjc4MTU4YTZiM2EwNWI4OWNhOGZjODE0NTNmM2MiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImU5NjgxZmY2ZjUzOGFjMmU4ZTM4YWY5NjE3MzFkN2UyMjg1OTNjZmEyYWM2ODM1NWIwYzg2MDgwMGU1YmZkYjQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_6800b6f65903456e84de191b8cb7ab20",
+      "statement": "W1 writes run metadata and W4 keys into dss.dim_learner_meta: window dates, learned_at, vehicle/event counts per flag, clean_suffix_rate, n_dedup_removed, takt IQR statistics, plus base_version='w4-purified', n_rw_vehicles, n_bt_vehicles, bt_anchor_rate (10-station whitelist rate) and platform_prefixes (comma-joined runtime list, empty when no prefix qualifies).",
+      "evidence": [
+        {
+          "resource": "repo://spike_w1/01_learn_takt.py#L343-L351",
+          "version": "repo-lines-v1:sha256:96711ef021c58fdb39f7d4ca0aec6dcce886b9ae52955ecafa6b5173635ec822:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZjU0YzUxODM5YTVlZjU1MmYyZjk2MGM2OWE4NTEzZjg4OGVlMDVhNWRkZDRhMzViN2M5ZGEwZWFkYzQwN2RmYyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMTQxOWE2ZGNjMDRlMjEzYTNjN2E3N2E0NTZiMDFlNzZkMWVmNzhjZDAwYmJlYzFkOGY4MTQ1OGZlOTNlZGM1NiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOGI5NzRkYTQwODYzMmE0YWE3ZTJhZTgwYjg2MDM5MWEzZGNkODIxMWM3OWVjYWQ3Y2E4ZTk1MTI4YjAwMTgzMiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMjhhNTQxNWUwZjRlYmJiODY2NTVmNmQ0ZjViNjY2M2FmYTA0ZjE1Mzg4YTQ0NDRjNDQwZjdjOTBlODQ3OWYzMCJ9"
+        },
+        {
+          "resource": "repo://spike_w1/01_learn_takt.py#L721-L751",
+          "version": "repo-lines-v1:sha256:d9b9c0006ecf41c017af8aed1a30c394ddd0c105685dba0b61d060a3e6705384:eyJzZWxlY3RlZExpbmVDb3VudCI6MzEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQwMTYzNzBiNGRhNGQxYTBiZGM2NjA2NzdlMzNjODIzYjg0MDc4NjhjM2RiNGIwMmRiNDE2MzExMTkzYTFiYjEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQ2NDIxMTY5YTIwZGRlMmI3ZDhhOTA0MDM1NjliOWI0NDlhYTIwYTZlMzgxN2JlN2I3ZjhiYTA0ZGE5MGY2NGEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjhlZmYzNDQzYWQyMGUxYzQ4OWE5MDM5MTIwYWI5ZjdkMjM5MDY3ZTQ5YjU1OTYzMWU5ZmM5YjMzM2E3ZDJkYmEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjIzMzlkNzZmYzAwYmZmM2EyMmM2OWM1MmNlZWI1N2MwZjE2ODRhY2ExYzFlYTRhMzZkZDZjZDE2ZmZjY2U3MDgifQ"
+        },
+        {
+          "resource": "repo://tests/test_w4_learn_takt.py#L174-L186",
+          "version": "repo-lines-v1:sha256:9d37717af6e435258a5c0b020a62cac5f6b573e2e8146263f5a3f549321b40f7:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImMwZWVlZWRlMDQyNmNlOWQ5NzAzMGIyY2IxYTdmZWVjY2JkODg0ZjNlNTFlZjE3NDYyY2JhMWIxZmQ2Nzc0NWEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE1NzJkMWE3YmRiMTQ0NzcwM2JkOGUyMWFiNTYwM2NmMmE3YTA4N2U0NzNkMTc4YTVmZDFjZjE1YTQ5ZWMzMWQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjkyYmI3MDFmOTAyNzU3ZjA5MzhmNjEwZTVlMWFmMjkxMGJmYjlkNWNhNzg5MDEwOTAyYjVjNzc3MTgwNzEyYTIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImI5ZmIwMDU0YmJhMDA0YjE4YTM4YjlkN2I0MTg0NDM4MTg2MWM5NWI1YTdjM2U3NzhhMzkyM2U5ZjYzMWY2YmYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_91f6f47629e2456d8c714dfe9e1db6a8",
+      "statement": "Learners use a causal window split: the default learn window is 2026-04-14 → 2026-08-15 (end day padded to 23:59:59) for both learners, and replay windows (defaults 08-16 → 09-18 for W1 replay, 08-16 → 09-19 for W2) are strictly later; no learner learns from, or a replay gate evaluates, events outside its own window (因果切分：回放只用后续窗口).",
+      "evidence": [
+        {
+          "resource": "repo://docs/09-M5%E5%86%85%E7%BD%91%E5%9C%A8%E7%BA%BF%E9%AA%8C%E6%94%B6%E8%BF%90%E8%A1%8C%E6%89%8B%E5%86%8C.md#L52-L52",
+          "version": "repo-lines-v1:sha256:0a0c0bb50615966a353bdb696aadda12797415e0e5a8dfd7486c75ef0d56c3e2:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMGEwYzBiYjUwNjE1OTY2YTM1M2JkYjY5NmFhZGRhMTI3OTc0MTVlMGU1YThkZmQ3NDg2Yzc1ZWYwZDU2YzNlMiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMGEwYzBiYjUwNjE1OTY2YTM1M2JkYjY5NmFhZGRhMTI3OTc0MTVlMGU1YThkZmQ3NDg2Yzc1ZWYwZDU2YzNlMiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMDZmMzdjMzMxMTIzZWJiNTJhOWQ1ZDEyYWZiMDA1OWVkYjg0ZTc4YmM2NzY5ZDcwMzY1Zjg0NTMxNjMwY2I0NCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMzdlMzEyZTM5NjMwZGIzYWE1ZDg1MmE2Yzg1NDZjZDJmODhhNDY1NWM5YzI1YmE1MWZiNWExM2I3ZWIzZWYzYSJ9"
+        },
+        {
+          "resource": "repo://spike_w1/01_learn_takt.py#L688-L695",
+          "version": "repo-lines-v1:sha256:9c6b51de7647d76f11d95172b87f0c42a7b254afafece5f0b8b684f71e3fb121:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZTAzYWMwOGQyNDJhOWQ4MmU5Njg4M2M0NGQ1ZTcwNTMzZDVmYTYyZjI0MmM1MzEzYzVmZjZkOWU2YTBjMDNjYiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDE5Y2UxNzI5N2U0NDc3NDFkNzA0ZTM1NzZlNjhiY2I4MzU4NDg2NTljMThkNmYzOWMwMzNkOTllNzM3ZTFlOCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiY2Q5NGQyZjNmNTU5M2RlNjU5ZmQ0NmMyYzNlZmRiMWUyOTlhYmJmYmQwODk3OWQ0NzBkYzliZTIwYWQzMmM2NCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYjg0MTNiYzkxMzYzOWY3Yjk4MjZkZDY1ZmFmZGVhZDMwMzY5NjE4NzhmMzhjMmQ1MDVlM2I5NzZiZjhhNWQ5NiJ9"
+        },
+        {
+          "resource": "repo://spike_w1/02_replay_eta.py#L1-L7",
+          "version": "repo-lines-v1:sha256:ac24e20e790b94ad598e712e7bf55eb328c34630ed085b04fbb7628a60b0f219:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOTU1MmY4NTRmY2Y3NzM4OTE2MGEwOGNmYjRiZTJlYjkwMmNkOWEwYzBhZjc2YWI1N2RmMDJjYmY5MTI1ZDM2OSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNDc1ZDQ1ODllOTFjYzhjYjk3NDg4OWRhYjAxZGUxNWRiMTU3NGNhMTBlZWM3MjkwYTEwOWJmNTg4Yzk0ZTAxYiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjAsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMzcyOTg4MDVlOTdjMmI2ZjhlZjAzNDAwM2RlNTVkZTZmNzQyMzgwOWI0Y2JmOTJhN2VjZGFhOWY4M2I2ZDQ4ZSJ9"
+        },
+        {
+          "resource": "repo://spike_w2/01_learn_v2.py#L515-L524",
+          "version": "repo-lines-v1:sha256:8fa007a43d5e1de491e367e1c8eac46629a2824e4e22f62dada5f984511294f7:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImRmMWM4MGUzNmMwZDcyYjY1ZGE1M2U5YmQyOGI1ZTZhZDI2YjM4NmE1ZmUzYmZjOGI1OWEzZjU5NTliMmM4MGIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU2MzA4MDI5YTU0NjE1YmFhMTczYThmY2FhMzIwY2YzOGIzNWQ2OGY3NDAyNDMwNmZjMDQ0NjE1NmM2MDhmMTkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjM1YzNmNjBlMjIxMmZlZjc5YTI2ODA4NTUwMjFkMjFjMTdhNWQ0MzQwZTdjZTdiMjZiNWM1MzZjMzc1OWI0M2IiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjViYjk2NzQwMjEzMjU1ODUxY2UyNDdiMjc3MDdmMzk2MmYxOTk0OWZiNjBlNTI1YTNhZTUwNzg3ZjlhYWIzYmYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_bc8c1510c71e4e77b7de29b97fbe1fbd",
+      "statement": "dim_station_takt cleaning is a per-bucket IQR rule (keep dur <= q3 + 3×(q3−q1)) computed independently per tier (model/prefix/ALL each with its own fences); night-stop (夜停) cross-window gaps have no explicit time-band removal and are absorbed by the in-bucket outlier exclusion; the overall exclusion rate is recorded in meta as takt_iqr_excl_rate.",
+      "evidence": [
+        {
+          "resource": "repo://docs/01-%E5%BC%80%E5%8F%91%E9%98%B6%E6%AE%B5%E8%AE%A1%E5%88%92.md#L29-L29",
+          "version": "repo-lines-v1:sha256:64e0ba876f6e4921d4db644a084f8a796d8d47d369568121be05e330a80b0b61:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNjRlMGJhODc2ZjZlNDkyMWQ0ZGI2NDRhMDg0ZjhhNzk2ZDhkNDdkMzY5NTY4MTIxYmUwNWUzMzBhODBiMGI2MSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNjRlMGJhODc2ZjZlNDkyMWQ0ZGI2NDRhMDg0ZjhhNzk2ZDhkNDdkMzY5NTY4MTIxYmUwNWUzMzBhODBiMGI2MSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMDRlYWFhMzhjMWVjNzc2MjdjZDdjMDg5NjFmODhiMWQwOWNlNWMxOTBjNjc2NWI3NGM0YjM0ZjAwMTYzZjczNiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiOTZjZWE5MTBiOTI0YTNmYWYzM2ZlNmExYTY3ZDAxYTMwMWFjMzcyYWYwZDhkNzRhODA3Nzk5ZDBkMmFjZDljOCJ9"
+        },
+        {
+          "resource": "repo://docs/superpowers/plans/2026-09-19-w1-takt-learner-eta-replay.md#L704-L704",
+          "version": "repo-lines-v1:sha256:d91f788bcd9256d13eac163d8aadf2dd7eea065f2fb644f22c44a9790a3dfd54:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZDkxZjc4OGJjZDkyNTZkMTNlYWMxNjNkOGFhZGYyZGQ3ZWVhMDY1ZjJmYjY0NGYyMmM0NGE5NzkwYTNkZmQ1NCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZDkxZjc4OGJjZDkyNTZkMTNlYWMxNjNkOGFhZGYyZGQ3ZWVhMDY1ZjJmYjY0NGYyMmM0NGE5NzkwYTNkZmQ1NCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZjYzZWY3ZDUyZjc4NWU1YmM1ZjdkNzMzODEzOGQ4YTI0Zjg3ODhjNGFlYmI2ZjMyOTNhN2NiYTI3ZmZiMzg4YyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZDdlZmE4MjY0M2E4OGYwZTk5NTgzZWRkMjZiOGNkN2QzMmZjYzU5YmY3MTM2MDYxM2Q2MDk5Nzk2ZWVlZjRjOSJ9"
+        },
+        {
+          "resource": "repo://spike_w1/01_learn_takt.py#L143-L232",
+          "version": "repo-lines-v1:sha256:777f8f63064bff2c49cce2bef5e1dc80a4eeee0e184e4675cb459ad2dd97852f:eyJzZWxlY3RlZExpbmVDb3VudCI6OTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImIzNDhhNjQxNDZiOGI0YWY5MDExYzJkODZjN2YzMjQ2N2I2NDU5MTJiYWIxNDdhMDI2MjU3MGJjMmYwODcwZTMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg3YWNhNjA3MjA5MTllZWVmZGQ5N2E4N2EzNGI0Y2JiM2RkMGU2ZTUzMDcyMWFiNmJiNjA4YjRmNjk5NjBhODUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjQ0ODQxOWZjM2NjOTFhY2IwYTFhYjA1MTIyMDk5OWZkOWQ4MjdjYzA1YTA0Mzg1Nzc5NmYyZWJkMDY5NzA0NmUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjhkNTlmYmNkYTdlMTdjYzgwMTk1MTA0YmY5NDA2MzJiNTZkNjc4N2RmZDY5YTg4ODYzMThkZTE3YmU2NTJkMjIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_5d2389feca384ab3b620e79390d08d95",
+      "statement": "S2b was replaced (not recalibrated) at W4.2d: under purification the old rule (first flag=2 concentrated in BLACKTOP_CLUSTER ('14IS260','24IS185') ≥ 60%) must fail because the 14IS260 false blacktop is purified to '0'; the new S2b is the t_bt_start anchor placement rate ≥ 90% on a 10-station whitelist (post-oven report-entry cluster + polishing line, identical to the online BLACKTOP_ONLINE_WHITELIST), with no code residue of the old rule.",
+      "evidence": [
+        {
+          "resource": "repo://docs/15-W4%E5%8F%8C%E7%8E%AF%E9%87%8D%E6%9E%84%E6%AD%A5%E7%BA%A7%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92.md#L212-L212",
+          "version": "repo-lines-v1:sha256:907c4d24890d415e2cfde95ec9ad749e206e001d675fd1333e7dd0abbca92e0d:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOTA3YzRkMjQ4OTBkNDE1ZTJjZmRlOTVlYzlhZDc0OWUyMDZlMDAxZDY3NWZkMTMzM2U3ZGQwYWJiY2E5MmUwZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOTA3YzRkMjQ4OTBkNDE1ZTJjZmRlOTVlYzlhZDc0OWUyMDZlMDAxZDY3NWZkMTMzM2U3ZGQwYWJiY2E5MmUwZCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiODU3MGJhYjM4YjJmZjk4Yjg4NjcyY2M2MDlhYzRlZmI3MzRjNmU2N2I3MTg0M2U2NTFhM2M4MWY5YjA5MmE4OSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMTQ4OTMwNDNmY2M2YzBkNzJjMzY5MTYxOGNiMjYwYTg1MGM5NjMyMmQzYWNjODU2MTMyNDEyMzdmNzA4OGViZCJ9"
+        },
+        {
+          "resource": "repo://spike_w1/01_learn_takt.py#L428-L459",
+          "version": "repo-lines-v1:sha256:55ef52bfbe254a84be78be9444fc80d73ca2ca1ceec9e6e23ade157467bb1d96:eyJzZWxlY3RlZExpbmVDb3VudCI6MzIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjEyOTJiMjQ4ZTAwOWVhZjhlZDZjZGFiNTQ2MjMzYmJmNzE0Y2UwNzJiNjg3OThkZDkyMjFjMDE4ZTEzMTUzNDEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ3NWQ0NTg5ZTkxY2M4Y2I5NzQ4ODlkYWIwMWRlMTVkYjE1NzRjYTEwZWVjNzI5MGExMDliZjU4OGM5NGUwMWIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjdlNzYyM2MwMDExMWNmZTM2OWYxOGMzNTg5YzI4ZjMxMjQ0ZDY3NDRhYzVmZTg5NTA4MGMzYzUyYTc3NTkwYjkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijc2NGYzNmI1ZjJlODRlMjQ0MmNhMmMyNjVmMGZhZTMyYWYwZDg3MzllZTdmYTI1N2M1OTRjOGI4NzEyYzI4MGQifQ"
+        },
+        {
+          "resource": "repo://tests/test_w4_learn_takt.py#L134-L141",
+          "version": "repo-lines-v1:sha256:0b5622ac11b82923b5c8e4ddd2fa7da150bd7a5d6364a4ab0aa25301f3c5c04b:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMDQyYzY5ZWFiNzE5OGJkNTM2NGM3ZmMxYWFmM2JjYWFjMzMxMTVmZmMwZWQxMjBmOGUzZmMwMTY3NDUyNTZjOSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMjhiOWJkYzE2NmI2YjU2YjFlMDFlNTg1YzliZDMzOTMyNWJkMWQ4ZWY5M2IzMDAzYmI4MjY4OTVhYzYyNTBkOCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOGZjOGYyYWRiM2RiZDQzNmQ0NWExZmFhYzdhNTI5ZDkzNjFiNmM4ZGZlYjFhOTRhZGM3OTBjODAwYjg1NDVjNCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNTgxYmNhOWNhMWM0YWYyNjc3YTA0ZDNjNjI5OGI0ZDVkYWZhMGNlZGRiZTIzNDZjNmExNDU2NTczYmY2ZjlkMyJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_36fa704fed714d2387e5d6021bc6dcdd",
+      "statement": "S3/S4 thresholds were recalibrated at W4.2d for the post-purification sample drop (transition baseline = new measured × 92% margin): S3 flag1 ≥ 8,500 ∧ flag2 ≥ 4,000 (measured 9,351 / 4,356 cars), S4 flag1 ≥ 180,000 ∧ flag2 ≥ 80,000 (measured 192,197 / 86,210 events); the old thresholds (S3 9000/7000, S4 250,000/100,000, calibrated on the legacy suffix method) were removed; S4's metric is measured directly from tmp_ev_base because SUM(n) over three-tier table rows double-counts (~2×); S5 is unchanged (population unchanged) and S6 keeps 0.80 with updated semantics.",
+      "evidence": [
+        {
+          "resource": "repo://docs/15-W4%E5%8F%8C%E7%8E%AF%E9%87%8D%E6%9E%84%E6%AD%A5%E7%BA%A7%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92.md#L212-L212",
+          "version": "repo-lines-v1:sha256:907c4d24890d415e2cfde95ec9ad749e206e001d675fd1333e7dd0abbca92e0d:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOTA3YzRkMjQ4OTBkNDE1ZTJjZmRlOTVlYzlhZDc0OWUyMDZlMDAxZDY3NWZkMTMzM2U3ZGQwYWJiY2E5MmUwZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOTA3YzRkMjQ4OTBkNDE1ZTJjZmRlOTVlYzlhZDc0OWUyMDZlMDAxZDY3NWZkMTMzM2U3ZGQwYWJiY2E5MmUwZCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiODU3MGJhYjM4YjJmZjk4Yjg4NjcyY2M2MDlhYzRlZmI3MzRjNmU2N2I3MTg0M2U2NTFhM2M4MWY5YjA5MmE4OSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMTQ4OTMwNDNmY2M2YzBkNzJjMzY5MTYxOGNiMjYwYTg1MGM5NjMyMmQzYWNjODU2MTMyNDEyMzdmNzA4OGViZCJ9"
+        },
+        {
+          "resource": "repo://spike_w1/01_learn_takt.py#L609-L637",
+          "version": "repo-lines-v1:sha256:166bb90f8c3480423defb1b06eb60912b484ca6851d57dc7ac27da7c9f3ee868:eyJzZWxlY3RlZExpbmVDb3VudCI6MjksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg0MjYzZGM2ZWVkNWFhMGRkYWYzYmY1ODBiMGRkZjdhMzU0OGUyZWNmZDVjNWJhNDgyZDhjNmMxODdhZmY3ZTkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ2YWI2YmYzYmIzNmNlOTE4MTBhOWRhYjM2MDQ5ZjkwOTc5ZjdjNTdhYTFkMWQwYTU2NWNhNTg2NWViYmVmMTkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImRlMjFlOGJkNWUzYzEyZmY1MTFjMTlhZjc2M2Y4YWVlZTYxZDEzZTViMzg3NDczMmIwMmI0Y2M3OGViM2Y0MGIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImZlZTg1ODJlZTNiNjdjN2I2ODMzNjE0N2EzOTc5MzUwYjkxMWQxNGMyNjQyMTRmNDk1MjdjNzFhY2Q3YmM1ZjMifQ"
+        },
+        {
+          "resource": "repo://tests/test_w4_learn_takt.py#L144-L161",
+          "version": "repo-lines-v1:sha256:c448f17fca0e01f6d1f7fd090b1280b84f9281143624566d3154ef3b822c6f76:eyJzZWxlY3RlZExpbmVDb3VudCI6MTgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImUwM2JkMGJhOWNjY2Q4MTc5YzRjOThiNDZhNjI2MDVkMGE3YzUzMjIyYjFlODc1YjkyMGMzMzIyOTFhMmVjYjkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImY3ZWZkMmQ1ZjkwMzE1YTIzN2M2N2U4MGYxMTAwOGRiZjNhMWM2YTBmOTQ2Njg2NDY0ZmVjNDAzZTliNjMxZTkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjNlODZmZTliNWQ1Yzk2NjVmOGE5MWVjYmQ0ODc4ZjE2NTVmOWNhYWY5ZjEwMTkwM2EzYmE2MWQzMGZhMjk2YTcifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_efb79d6387504a33ab475cbf785d017b",
+      "statement": "The W2-S2 threshold was lowered from n ≥ 1000 to n ≥ 300 at the W2 closeout (2026-09-21): the 8-week rolling window measured n = 343–810 for the 15IS065 decision cluster, so the old 1000 was a spec residue mismatched with the window scale; after the fix W2-S1–S4 all PASS and the learner exits 0.",
+      "evidence": [
+        {
+          "resource": "repo://CHANGELOG.md#L119-L119",
+          "version": "repo-lines-v1:sha256:50ab24c4038d4546fcbff7f4248372975b6d6ce381fb0718a11a4be740191164:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNTBhYjI0YzQwMzhkNDU0NmZjYmZmN2Y0MjQ4MzcyOTc1YjZkNmNlMzgxZmIwNzE4YTExYTRiZTc0MDE5MTE2NCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNTBhYjI0YzQwMzhkNDU0NmZjYmZmN2Y0MjQ4MzcyOTc1YjZkNmNlMzgxZmIwNzE4YTExYTRiZTc0MDE5MTE2NCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOGUzODdhMjI2ZDZjZGMxZDQ4N2VmZWFiNzM2OTU3ZDI3ODQwYmE1Y2UxYjI1MGJlMGJkM2NiZTVjZjgzMTdjNCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiY2YxZGNkZDQxYzY5OWEzNWUxYmMyMGFmZjYwOGQ3YmQ1MDNhZmE2OGFmYzkxZjQyNTBhZTQ1NTkyMTU2NDdkMiJ9"
+        },
+        {
+          "resource": "repo://docs/superpowers/plans/2026-09-19-w2-shift-level-replay.md#L1851-L1851",
+          "version": "repo-lines-v1:sha256:c40ea25ad00f46512a75594c442b330e8bcc58a74fd092f8321ba9d41dee69b8:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYzQwZWEyNWFkMDBmNDY1MTJhNzU1OTRjNDQyYjMzMGU4YmNjNThhNzRmZDA5MmY4MzIxYmE5ZDQxZGVlNjliOCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYzQwZWEyNWFkMDBmNDY1MTJhNzU1OTRjNDQyYjMzMGU4YmNjNThhNzRmZDA5MmY4MzIxYmE5ZDQxZGVlNjliOCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYjUyYzJhM2JlNWIzOTQzOTdlNmYxYjg5ZDBmYmVjYTE4MWIyZTkyZDUwNDgxYzk3YTFlOWYyMjZiMDg0NDk0NCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMWMxMjk2ZGJjYzNkZmU4M2U4M2JiYTI2MDU3NjhhNTY3MDY4YjY4M2ZlNmRhZmFiY2U3MWY0OGY0MGZhOWVkOCJ9"
+        },
+        {
+          "resource": "repo://spike_w2/01_learn_v2.py#L425-L437",
+          "version": "repo-lines-v1:sha256:18286099f55f96842f7b72d2b2c4c33148c28007a1ced8eba52d6896bca2837a:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjUwMzA5Y2E5ZjBlZWFjZGQ5MmEwOTU0ZTdmYTIzNDAzMTI5MDJlNTRkMjhlMDU2N2NlYTY0NTNlNmFkZmRhZmMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg0MjdjOWVmYzE4ZDI3ZjYxNWQyMTcxMTIyZjcwYjE3ZDU2OGQzNGVjYTkyNmVlNjJmYjYyMWQzMmE2NjI3YjEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImQ1ZDNlMDZjZjcwMmE4MmM4MGYyZWU5OGNkMWMyMDA5Zjg4MzhmODA3NjlmYzMyYjQ2NGVlZmI4Yzg1M2FmMzMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImU5YTIwZDYwZWY5YzRmNzg0NTEyNzVjNjkzYTc5NGJhYzUyODBkZTg2ZTY4MjFkNGUxMTE0NDZkMDIxMWVjYjgifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_d307c7564d534a9e856cf702e0235281",
+      "statement": "DB-connected learner scripts are launched as conda run --no-capture-output -n paint-dss python <script> (Windows discipline): directly invoking the env interpreter crashed at psycopg2.connect with an access violation (exit -1073741819 = 0xC0000005, non-deterministic, DLL/PATH dependent), so that older guidance is void; python -c under conda run is single-line only (multi-line code goes in a script file); the M5 production sequence runs 01_learn_takt.py then 01_learn_v2.py back-to-back to rebuild the 14 learning tables.",
+      "evidence": [
+        {
+          "resource": "repo://AGENTS.md#L65-L67",
+          "version": "repo-lines-v1:sha256:e9f151e452ed971b196ea7386345464e783b5b734d34862114247f8681d771e7:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZGM2MmQzM2QyYTczYmI1NmY4MmZlODU0NjE2YjkzNjU5NDg5NDhiZmVmOTk5MWMxMzRhYTI2ZDczNDIyNDQ1MSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOTU2OTY3ODlkMzM2MTg1YzRiY2ZlYmI1ZDI4MDE4MTk5OTgwZjQzYTkzZWRmNTQ3MmUwN2RiZGNkOTI3M2U5NiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMzI4ZTVkYzYzNWNmNjM2OTk3MzdmMzI0NDg5NGYwOTZiNWE2M2E5YTEwMTk1ZjYzMjM3ODhiNDExZTUwMTk0YyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZDViNDRhYjdjYzA2ODJlOGI3MjNmNzI0MTM1YzZiZGMyMDlmN2Q0Y2UzN2I5NGFjODIzMjQxNTFiNDFhNDU3YiJ9"
+        },
+        {
+          "resource": "repo://docs/09-M5%E5%86%85%E7%BD%91%E5%9C%A8%E7%BA%BF%E9%AA%8C%E6%94%B6%E8%BF%90%E8%A1%8C%E6%89%8B%E5%86%8C.md#L54-L58",
+          "version": "repo-lines-v1:sha256:06fe6ae05af7571f79af268ffcbe9f11ee8d430a346b1ff506bfb694bf323446:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOWZjNjM0ZjRlMGM5OTY0NmU4NGVjY2Q5ZDVlOTA2ZmVhYjEzNDBjZjQyNWNkNTVhNTUzNWY3YmZiYzRiZGE5NSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiN2VjNTY4ZWFkZGNjNDg0MDI2ZjFlMzJhZjIyYzc1ZjM4NTM2MmNmMmM1YzFkZDk2OGMwNTkyZjU3MTk1ODMzMCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTRlZDExNTNmOWViOWMwMjY4ZDYxZDA1MzEwOWU3ZDJmNWU0MWQ3YjM5OTJjYzJhMWZhZTM1OWQ4YmM4NDdmYiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNDU5ZmI1ZjY0MTgxYjlmNTVkOTAzMTk4MWFkMDRkYTA5N2JjNGJhMWQyNTllNzVmNTRkNWI5MjVjYjMxZTBhZiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_4349b665eb504a508cec7bce1367da9d",
+      "statement": "Exit-code convention: learners exit 1 when any sanity gate fails (exit 0 = all gates PASS; the sanity report is written in both cases), while exit 2 is the reporting convention reserved for replay gate scripts (02_*, exit 0 过 / exit 2 未过); the 'ERROR conda.cli... failed' line conda run prints on a non-zero exit is that reporting artifact, not a crash — judge by the produced artifact.",
+      "evidence": [
+        {
+          "resource": "repo://AGENTS.md#L67-L67",
+          "version": "repo-lines-v1:sha256:95696789d336185c4bcfebb5d28018199980f43a93edf5472e07dbdcd9273e96:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOTU2OTY3ODlkMzM2MTg1YzRiY2ZlYmI1ZDI4MDE4MTk5OTgwZjQzYTkzZWRmNTQ3MmUwN2RiZGNkOTI3M2U5NiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOTU2OTY3ODlkMzM2MTg1YzRiY2ZlYmI1ZDI4MDE4MTk5OTgwZjQzYTkzZWRmNTQ3MmUwN2RiZGNkOTI3M2U5NiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZmZjNjEzMjgwM2MzMGU5ZmZiNWRlNjFlNjE5ODZiNjRiOTk1ZDk2YWRiMTk4MzM1OWNhZGJhNjg2NDc2ODc2OCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZDViNDRhYjdjYzA2ODJlOGI3MjNmNzI0MTM1YzZiZGMyMDlmN2Q0Y2UzN2I5NGFjODIzMjQxNTFiNDFhNDU3YiJ9"
+        },
+        {
+          "resource": "repo://README.md#L55-L55",
+          "version": "repo-lines-v1:sha256:7e86a01692d09e8917489c871f61fcee2777bd376a550280a94108877648b8ee:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiN2U4NmEwMTY5MmQwOWU4OTE3NDg5Yzg3MWY2MWZjZWUyNzc3YmQzNzZhNTUwMjgwYTk0MTA4ODc3NjQ4YjhlZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiN2U4NmEwMTY5MmQwOWU4OTE3NDg5Yzg3MWY2MWZjZWUyNzc3YmQzNzZhNTUwMjgwYTk0MTA4ODc3NjQ4YjhlZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYThkNWE1MDcxODI5MjU2YjMwYjA4ZDgzYmQ0ZjVkMDhjMTRlOWE5MTQ4YWU5MDczNTJhMWYyZGU0MTM2NDA2NCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjEsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiN2VjNTY4ZWFkZGNjNDg0MDI2ZjFlMzJhZjIyYzc1ZjM4NTM2MmNmMmM1YzFkZDk2OGMwNTkyZjU3MTk1ODMzMCJ9"
+        },
+        {
+          "resource": "repo://spike_w1/01_learn_takt.py#L757-L760",
+          "version": "repo-lines-v1:sha256:806c3500c9950842b2db5dfeb7abc6af28fcf9ee39df6a912e8342b61a19eb55:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNjIyZGNiZGRmMGUzZDc0ZmZmMTc1NWE4OTBiMWU1YjA5OTE3YzMwZjdhZjMyNDkyMTE1NTI1YzY4MjNlN2Q1NyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZTRlOWIxYWYwOGYxM2YxZGMwNTM5NjE1NjM4NWM5OTlmNTMxNjE2ODlmMGY4YTU4ZWVmNTk3NjcwMzQ1MWNjYiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMDBkNDlkMDE5Y2YxYmU5OTBkNGJiMDM1ODRkMmU2NGZjYmZhODQwNzkwZDFhZmRhMWMxMTMzN2Q0NWJlZDg1NiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTlmN2Y3YWExNjMwNTY3YzFiNWU2NjQ0ZTIxY2JlYzgzYTQzOTMzZGM1YjBkYTBkOTBjZDUzYmE0OGU5MTBkMiJ9"
+        },
+        {
+          "resource": "repo://spike_w2/01_learn_v2.py#L585-L588",
+          "version": "repo-lines-v1:sha256:806c3500c9950842b2db5dfeb7abc6af28fcf9ee39df6a912e8342b61a19eb55:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNjIyZGNiZGRmMGUzZDc0ZmZmMTc1NWE4OTBiMWU1YjA5OTE3YzMwZjdhZjMyNDkyMTE1NTI1YzY4MjNlN2Q1NyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZTRlOWIxYWYwOGYxM2YxZGMwNTM5NjE1NjM4NWM5OTlmNTMxNjE2ODlmMGY4YTU4ZWVmNTk3NjcwMzQ1MWNjYiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMjNhN2Q1YWVjZmZhZWE1ZTlhOWY0MmFmODI2YzgxMmE1OWNkN2M5NmEzZjU5OGFiMWEzNjM5N2NjMDM0ZTE4ZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTlmN2Y3YWExNjMwNTY3YzFiNWU2NjQ0ZTIxY2JlYzgzYTQzOTMzZGM1YjBkYTBkOTBjZDUzYmE0OGU5MTBkMiJ9"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.7.0",
+    "at": "2026-10-08T13:05:24.547Z"
+  }
+}
