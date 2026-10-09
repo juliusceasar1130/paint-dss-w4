@@ -1,7 +1,7 @@
 # MDS 审查报告独立复核（Recheck）
 
 > **复核对象**：`output/mds_data_definition_audit_report_20261009.md`（下称「原报告」）
-> **复核基准**：官方 200 字节定义（`docs/16_mds_official_200byte_definition_20261009.md` + `scratch/mds_official_200byte_raw.tsv`）× `analytics_db.ods.carbody_history` **全量 7,093,971 行**实测（2026-10-09，`DATE_EVT` 截至当日 15:27:56）
+> **复核基准**：官方 200 字节定义（`docs/16_mds_official_200byte_definition_20261009.md` + `docs/16_mds_official_200byte_raw.tsv`）× `analytics_db.ods.carbody_history` **全量 7,093,971 行**实测（2026-10-09，`DATE_EVT` 截至当日 15:27:56）
 > **复核日期**：2026-10-09
 > **复核方式**：只读 SQL 全表扫描 + 独立列互证（`BODY_ID`/`BODY_TYPE`/`DATE_EVT`/`SKID_ID`/`SKID_TYPE`/`MDS_TELEGRAM_TYPE`）+ `meta.refresh_carbody_dim()` 源码核查 + 样例行逐位目检。脚本与原始输出见 `scratch/tmp_mds_recheck_*.py` / `*_out.txt`。
 > **口径声明**：本复核**独立**于原报告，不复用其结论作为前提；凡原报告声明均重新用数据验证。结构（字节偏移）与语义（字段含义）分开判定。
@@ -258,7 +258,7 @@ agy 第二轮（21:08）通报其「已同步纠正 SkidDestination 5 位（209.
 | 证据 | 位置 |
 |:---|:---|
 | 官方定义结构化 + 自检 | `docs/16_mds_official_200byte_definition_20261009.md` |
-| 官方定义 verbatim | `scratch/mds_official_200byte_raw.tsv` |
+| 官方定义 verbatim | `docs/16_mds_official_200byte_raw.tsv` |
 | 官方×报告映射比对脚本/输出 | `scratch/tmp_mds_official_check.py` |
 | 结构/互证/值域主脚本与输出 | `scratch/tmp_mds_recheck_main.py` / `scratch/tmp_mds_recheck_out.txt` |
 | 深挖（差异分解/中段/特殊群体/skidType 交叉） | `scratch/tmp_mds_recheck_deep.py` / `scratch/tmp_mds_recheck_deep_out.txt` |

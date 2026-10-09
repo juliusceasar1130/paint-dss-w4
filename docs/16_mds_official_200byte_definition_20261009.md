@@ -3,7 +3,7 @@
 > **来源**：业务侧提供（车间 MES / PLC 官方 DB 块定义，EcoEMOS GUI 导出格式），2026-10-09 接收
 > **地位**：本项目 MDS 电报的**官方原始定义（200 字节 payload）**；2026-09 时代逆向俗称（vehicle_id / black_roof_flag / reserved_1/2 等，原 `docs/08_message_data_dictionary.md` §2 继承）与本文档冲突时以本文档为准
 > **范围**：纯 Payload，Byte 0..199，共 **200 字节**、**51 个字段**（其中 Byte 118..119 为 16 位部件布尔块）
-> **原文存档**：`scratch/mds_official_200byte_raw.tsv`（verbatim 保留，含换行/引号原始格式）
+> **原文存档**：`docs/16_mds_official_200byte_raw.tsv`（与本文件同目录，verbatim 保留，含换行/引号原始格式；2026-10-09 自 scratch 移入 git 版本化——业务侧原始导出为不可再生件）
 > **PG 映射**：本 200 字节 payload 在 PG 237 字符电报中的映射（位序 + 实测值域 + 待确认清单）见 `docs/18_MDS_DATA_237字符电报_PG映射参考.md`（开发依据，2026-10-09 全量定稿）
 > **相关**：`output/mds_data_definition_audit_report_20261009.md`（审计报告 v1.1，审计过程工件）、`output/mds_audit_report_recheck_20261009.md`（独立复核报告 v2，映射裁决证据）、`docs/17_滚床30字符实时报文字典.md`（滚床 30 字符报文，跨源互证）
 > **文档拆分史**：2026-10-09 ① 原 `docs/08_message_data_dictionary.md` 的 MDS 部分并入本文档，该文件更名 `docs/17_滚床30字符实时报文字典.md`（只留滚床报文）；② 本文档的 PG 映射部分拆出为 `docs/18_MDS_DATA_237字符电报_PG映射参考.md`，本文件回归官方 200 字节定义

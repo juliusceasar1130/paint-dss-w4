@@ -1,0 +1,72 @@
+Start adress
+Byte	End adress
+Byte	Length [Byte]	Data type	Name of data field	Text GUI EcoEMOS
+0	13	14	Char	"BodyId
+"	Body Number
+14	19	6	Char	"BodyType
+"	Body Type
+20	23	4	Char	Platform	Platform
+24	27	4	Char	SerialNumber	Serial Number
+28	31	4	Char	TopCoatColor	Top Coat Color
+32	35	4	Char	LineInfo	Line Info
+36	39	4	Char	MotorType	Motor Type
+40	43	4	Char	SteeringWheel	Steering Wheel
+44	47	4	Char	CoverType	Cover type
+48	51	4	Char	Sunroof	Sunroof
+52	57	6	Char	EngineModel	Engine model
+58	59	2	Char	InteriorTrim	InteriorTrim
+60	89	30	Char	FIS-Reserve	FIS-Reserve
+90	97	8	Char	APT_ColorCode1	APT_ColorCode1
+98	105	8	Char	APT_ColorCode2	APT_ColorCode2
+106	106	1	Char	CodeF	CodeF
+107	107	1	Char	CodeA	CodeA
+108	108	1	Char	CodeB	CodeB
+109	109	1	Char	KVS Flag	KVS Flag
+110	110	1	Char	TypeComparisionState	TypeComparisionState
+111	111	1	Char	EDCoatingProduction State	EDCoatingProduction State
+112	112	1	Char	RoofCheckingProduction State	RoofCheckingProduction State
+113	113	1	Char	UBSProductionState	UBSProductionState
+114	114	1	Char	TopCoatProductionState	TopCoatProductionState
+115	115	1	Char	PaintCheckerProduction State	PaintCheckerProduction State
+116	116	1	Char	SchwellerProductionState	SchwellerProductionState
+117	117	1	Char	AuditCheck	AuditCheck
+118	119	2	Bool: 0	FrontFenderLe	Front Fender Left
+	Bool: 1	FrontDoorLe	Front Door Left
+	Bool: 2	RearDoorLe	Rear Door Left
+	Bool: 3	RearSideLe	Rear Side Left
+	Bool: 4	MotorHood	Motor Hood
+	Bool: 5	Roof	Roof
+	Bool: 6	TrunkLid	Trunk Lid
+	Bool: 7	FrontFenderRi	Front Fender Right
+	Bool: 8	FrontDoorRi	Front Door Right
+	Bool: 9	RearDoorRi	Rear Door Right
+	Bool: 10	RearSideRi	Rear Side Right
+	Bool: 11	Reserve	Reserve
+	Bool: 12	Reserve	Reserve
+	Bool: 13	Reserve	Reserve
+	Bool: 14	"Control Character-
+not usable for payload"	
+	Bool: 15		
+120	120	1	Char	NoPaint	No Paint
+121	121	1	Char	SecondRun	Second Run
+122	122	1	Char	OrderType	Order Type
+123	123	1	Char	Spare	Spare
+124	127	4	DINT	ArrivalDate	Arrival Date
+128	131	4	DINT	ArrivalTime	Arrival Time
+132	135	4	DINT	CarrierID	Carrier ID
+136	149	14	Char	TIMESTAMP	TIMESTAMP
+150	150	1	Char	PTLine	PT Line
+151	151	1	Char	PVCLine	PVC Line
+152	153	2	Char	EDOvenLine	ED Oven Line
+154	155	2	Char	TCPreLine	TCPreparation Line
+156	156	1	Char	TCLine	TC Line
+157	157	1	Char	TCLineBlockRoof	TCLine BlockRoof
+158	159	2	Char	skidType	Skid Type
+160	163	4	DINT	skidId	Skid Number
+164	167	4	DINT	CleaningCycleCounter	Cleaning Cycle Counter
+168	171	4	DINT	LifeCycleCounter	Life Cycle Counter
+172	175	4	DINT	SkidDestination	Skid Destination
+176	176	1	Char	Identification Damaged Skid	Identification Damaged Skid
+177	177	1	Char	WriteOperation	Write Operation
+178	181	4	DINT	TabletDestination	Tablet Destination
+182	199	18	Char	Reserve2	Reserve2
